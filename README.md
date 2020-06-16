@@ -4,9 +4,12 @@ TypeSuite™ is a TypeScript client for the NetSuite [SuiteTalk Web Services API
 **Note: TypeSuite is currently in Alpha. There are still several features to add and bugs to fix,
 and there will likely be breaking changes. We'd love to get your feedback to get it out of Alpha ASAP.**
 
-TODO(david@): add a list of what it does, and why it is helpful
+TypeSuite was built by the team at [Stedi](https://www.stedi.com), a platform for B2Bb trade. If you're using
+TypeSuite to improve how your business operates, defintely take a look at Stedi!
 
-# Installation
+# Usage
+
+## Installation
 
 You can install TypeSuite via NPM:
 
@@ -16,7 +19,7 @@ npm install --save typesuite
 
 Or add it to your `package.json` manually.
 
-# Quickstart
+## Quickstart
 
 ```ts
 import { Configuration, TypeSuiteClient } from "typesuite";
@@ -40,9 +43,9 @@ const client = new TypeSuiteClient(config);
 ...
 ```
 
-# API Details
+## API Details
 
-## Configuration
+### Configuration
 
 The `Configuration` object holds generic NetSuite configuration information, including the account ID and auth
 credentials, API version information, and can even contain shared query options, if desired.
@@ -57,14 +60,14 @@ const config: Configuration = {
 };
 ```
 
-### API Version
+#### API Version
 
 Currently TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl);
 therefore, the only acceptable configuration option for `apiVersion` is `"2019_2"`.
 
 In future versions of TypeSuite we aim to support additional API versions, and will update the docs accordingly.
 
-### Authentication
+#### Authentication
 
 TypeSuite uses [NetSuite Token Based Auth (TBA)](https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSATH/NSATH.pdf),
 which requires a `consumerKey`, `consumerSecret`, `tokenKey`, and `tokenSecret`. 
@@ -81,9 +84,9 @@ const config: Configuration = {
 };
 ```
 
-## Reading from NetSuite
+### Reading from NetSuite
 
-### Searching for Records
+#### Searching for Records
 
 You can search NetSuite for all records of a certain type (e.g. a `_purchaseOrder`), matching all other criteria (e.g. a status of "pending receipt") in a given time period:
 
@@ -147,7 +150,7 @@ console.log("Found %d purchase orders", response.searchResult.totalRecords);
 Note that this will return the record references, not the actual record. You'll need to fetch a record,
 as shown below, to get the full contents.
 
-### Resolving a Record
+#### Resolving a Record
 
 You can fetch an individual record (e.g. a particular purchase order) from NetSuite:
 
@@ -176,7 +179,17 @@ const response = await client
 const purchaseOrder = poResponse.readResponse.record as PurchaseOrder;
 ```
 
-## Writing to NetSuite
+### Writing to NetSuite
 
 While TypeSuite currently supports types that can be written back to NetSuite, we don't yet have examples. Stay tuned
 for more!
+
+# Development
+
+## Build
+
+To build TypeSuite, run `npm run build`. Source code is located in `/src`.
+
+## Test
+
+To test TypeSuite, run `npm run test`. Tests are located in `/test` and use Jest.
