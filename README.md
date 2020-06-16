@@ -19,13 +19,13 @@ Or add it to your `package.json` manually.
 # Quickstart
 
 ```ts
-import * as typesuite from 'typesuite';
+import { Configuration, TypeSuiteClient } from "typesuite";
 
 // You can fetch your credentials from your NetSuite instance
 // We recommend storing them somewhere secure like AWS Secrets Manager
 const config: Configuration = {
   account: "NetSuite Account ID",
-  apiVersion: "2019_2",
+  apiVersion: "NetSuite API Version",
   token: {
     consumerKey: "NetSuite Consumer Key",
     consumerSecret: "NetSuite Consumer Secret",
@@ -35,22 +35,43 @@ const config: Configuration = {
 };
 
 // Create NetSuite client using above credentials
-const client: NetSuiteClient = await typesuite.NetSuite.createClient(config);
+const client = new TypeSuiteClient(config);
 
+...
 ```
 
 # API Details
 
-## Authentication
+## Configuration
 
-TypeSuite uses [NetSuite Token Based Auth (TBA)](https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSATH/NSATH.pdf),
-which requires a `consumerKey`, `consumerSecret`, `tokenKey`, and `tokenSecret`. You can provide these in the `Configuration`
-object:
+The `Configuration` object holds generic NetSuite configuration information, including the account ID and auth
+credentials, API version information, and can even contain shared query options, if desired.
 
 ```
 const config: Configuration = {
-  account: "NetSuite Account ID",
-  apiVersion: "2019_2",
+  account: "",
+  apiVersion: "",
+  token: {
+    ...
+  },
+};
+```
+
+### API Version
+
+Currently TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl);
+therefore, the only acceptable configuration option for `apiVersion` is `"2019_2"`.
+
+In future versions of TypeSuite we aim to support additional API versions, and will update the docs accordingly.
+
+### Authentication
+
+TypeSuite uses [NetSuite Token Based Auth (TBA)](https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSATH/NSATH.pdf),
+which requires a `consumerKey`, `consumerSecret`, `tokenKey`, and `tokenSecret`. 
+
+```
+const config: Configuration = {
+  ...
   token: {
     consumerKey: "NetSuite Consumer Key",
     consumerSecret: "NetSuite Consumer Secret",
@@ -64,90 +85,98 @@ const config: Configuration = {
 
 ### Searching for Records
 
-You can search NetSuite for all records of a certain type, matching all other criteria:
+You can search NetSuite for all records of a certain type (e.g. a `_purchaseOrder`), matching all other criteria (e.g. a status of "pending receipt") in a given time period:
 
 ```
-const request = <SearchRequest><unknown>{
-  searchRecord: <TransactionSearchAdvanced>{
-    columns: <TransactionSearchRow>{
-      basic: <TransactionSearchRowBasic>{
-        internalId: [<SearchColumnSelectField>{}],
+// Add additional imports from our API version
+import { TransactionSearchBasic } from "typesuite/2019_2/platform_common";
+import { SearchRequest } from "typesuite/2019_2/platform_messages";
+import { RecordRef } from "typesuite/2019_2/platform_core";
+import { TransactionSearchAdvanced } from "typesuite/2019_2/transactions_sales";
+
+// Set up the correct time you'd like to start the search from
+const dateTime = ZonedDateTime.of(LocalDateTime.parse("2020-01-01T00:00"), ZoneId.UTC);
+const isoFormatter = new DateTimeFormatterBuilder().appendInstant(3).toFormatter(ResolverStyle.STRICT);
+
+// Construct the search request
+const searchAdvancedRequest = new SearchRequest({
+  searchRecord: new TransactionSearchAdvanced({
+    columns: {
+      basic: {
+        internalId: [{}],
       },
-      itemJoin: <ItemSearchRowBasic>{
-        internalId: [<SearchColumnSelectField>{}],
+      itemJoin: {
+        internalId: [{}],
       },
     },
-    criteria: <TransactionSearch>{
-      basic: <TransactionSearchBasic><unknown>{
-        closed: false,
-        mainLine: true,
-        status: {
-          operator: "anyOf",
-          searchValue: ["_purchaseOrderPendingReceipt"],
-        },
-        type: {
-          operator: "anyOf",
-          searchValue: ["_purchaseOrder"],
-        },
+    criteria: {
+      basic: {
+        queryTerms: new TransactionSearchBasic({
+          closed: false,
+          mainLine: true,
+          status: {
+            operator: "anyOf",
+            searchValue: ["_purchaseOrderPendingReceipt"],
+          },
+          type: {
+            operator: "anyOf",
+            searchValue: ["_purchaseOrder"],
+          },
+        }),
         dateCreated: {
           operator: "after",
-          searchValue: "2020-01-01T00:00:00.000Z" as unknown as Date,
+          searchValue: dateTime.format(isoFormatter),
         },
       },
     },
-  },
-};
-
-// Manually set the type on the request
-setTypeName(request.searchRecord, "com_netsuite_webservices_transactions_sales_2019_2.TransactionSearchAdvanced");
+  }),
+});
 
 // Perform NetSuite Search
 const response: any = await client
   .search(request)
   .catch((error: any) => {
-    console.log("Error during poll");
+    console.log("Error during search");
     throw error;
   });
 
-// Cast the response to the corect type to use
-const typedResponse: SearchResponse = response.value as SearchResponse;
-console.log("Found %d purchase orders.", typedResponse.searchResult.totalRecords);
+// Do interesting things with the response
+console.log("Found %d purchase orders", response.searchResult.totalRecords);
 ```
 
-TODO(david@): add more examples of advanced configuration for search
+Note that this will return the record references, not the actual record. You'll need to fetch a record,
+as shown below, to get the full contents.
 
 ### Resolving a Record
 
-You can also fetch an individual record from NetSuite:
+You can fetch an individual record (e.g. a particular purchase order) from NetSuite:
 
 ```
-// Create a PO GET request
-const poRequest = <GetRequest><unknown>{
-  baseRef: <RecordRef>{
-    internalId: "NetSuite Document ID",
-    externalId: "",
-    type: "purchaseOrder"
-  },
-};
+// Add additional imports
+import { GetRequest } from "typesuite/2019_2/platform_messages";
+import { PurchaseOrder } from "typesuite/2019_2/transactions_purchases";
 
-// Manually set the type for the request
-setTypeName(poRequest.baseRef, "com_netsuite_webservices_platform_core_2019_2.RecordRef");
+// Create a PO GET request
+const getRequest = new GetRequest({
+    baseRef: new RecordRef({
+      internalId: "NetSuite Document ID",
+      type: "purchaseOrder"
+    }),
+  });
 
 // Perform the request
-const poRequest = await client
+const response = await client
   .get(getRequest)
   .catch(function (error: any) {
     console.log("Error fetching purchaseOrder");
     throw error;
   });
 
-// Cast the response to the corect type to use
-const purchaseOrder: PurchaseOrder = poResponse.value as PurchaseOrder;
+// Cast the response record appropriately
+const purchaseOrder = poResponse.readResponse.record as PurchaseOrder;
 ```
-
-TODO(david@): add more examples of advanced configuration for fetching documents
 
 ## Writing to NetSuite
 
-TODO(david@): add examples once we know how to write to NetSuite
-
+While TypeSuite currently supports types that can be written back to NetSuite, we don't yet have examples. Stay tuned
+for more!
