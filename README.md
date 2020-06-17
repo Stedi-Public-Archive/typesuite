@@ -4,8 +4,8 @@ TypeSuite™ is a TypeScript client for the NetSuite [SuiteTalk Web Services API
 **Note: TypeSuite is currently in Alpha. There are still several features to add and bugs to fix,
 and there will likely be breaking changes. We'd love to get your feedback to get it out of Alpha ASAP.**
 
-TypeSuite was built by the team at [Stedi](https://www.stedi.com), a platform for B2Bb trade. If you're using
-TypeSuite to improve how your business operates, defintely take a look at Stedi!
+TypeSuite was built by the team at [Stedi](https://www.stedi.com), a platform for B2B trade. If you're using
+TypeSuite to improve how your business operates, definitely take a look at Stedi!
 
 # Usage
 
