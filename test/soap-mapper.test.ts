@@ -1,4 +1,4 @@
-import { SoapMapper } from "../src/soapMapper";
+import { SoapMapper } from "../src/soap-mapper";
 import { TokenPassport } from "../src/netsuite_webservices/2019_2/platform_core";
 import { GetRequest } from "../src/netsuite_webservices/2019_2/platform_messages";
 

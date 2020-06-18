@@ -1,2 +1,2 @@
 export * from "./client";
-export * from "./soapMapper";
+export * from "./soap-mapper";

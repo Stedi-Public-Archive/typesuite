@@ -10,7 +10,7 @@ import {
 import { UnexpectedErrorFault } from "./netsuite_webservices/2019_2/platform_faults";
 import { TransactionSearchBasic } from "./netsuite_webservices/2019_2/platform_common";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
-import { SoapMapper } from "./soapMapper";
+import { SoapMapper } from "./soap-mapper";
 
 export interface Configuration {
   account: string,
