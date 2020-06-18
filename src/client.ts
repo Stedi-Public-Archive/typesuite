@@ -14,7 +14,7 @@ import { SoapMapper } from "./soap-mapper";
 
 export interface Configuration {
   account: string,
-  apiVersion: string,
+  apiVersion: "2019_2",
   token: {
     consumerKey: string,
     consumerSecret: string,
