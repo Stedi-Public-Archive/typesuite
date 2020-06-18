@@ -14,7 +14,7 @@ TypeSuite to improve how your business operates, definitely take a look at Stedi
 You can install TypeSuite via NPM:
 
 ```sh
-npm install --save typesuite
+npm install --save git+https://github.com/StediInc/TypeSuite.git
 ```
 
 Or add it to your `package.json` manually.

@@ -1,2 +1,9 @@
-lib/
+build/
 node_modules/
+
+# dist files
+/*.d.ts
+/*.js
+/2019_2
+/netsuite_webservices
+/xmlsoap
