@@ -2,8 +2,9 @@
 TypeSuite™ is a TypeScript client for the NetSuite [SuiteTalk Web Services
 API](https://www.netsuite.com/portal/developers/resources/suitetalk-documentation.shtml).
 
-**Note: TypeSuite is currently in alpha. There are still several features to add and bugs to fix,
-and there will likely be breaking changes. We'd love to get your feedback to get it out of alpha ASAP.**
+**Note: TypeSuite is currently in alpha and subject to [several limitations](#current-limitations). There are still
+several features to add and bugs to fix, and there will likely be breaking changes. We'd love to get your feedback
+to get it out of alpha ASAP.**
 
 TypeSuite was built by the team at [Stedi](https://www.stedi.com), a platform for B2B trade. If you're using
 TypeSuite to improve how your business operates, we'd love to hear from you.
@@ -19,8 +20,6 @@ npm install --save git+https://github.com/StediInc/TypeSuite.git
 ```
 
 Or add it to your `package.json` manually.
-
-Don't miss the section on Current Limitations towards the bottom of this file.
 
 ## Quickstart
 
@@ -193,7 +192,7 @@ Building requests to the NetSuite SuiteTalk API frequently involves instantiatin
 minimize the amount of code required to build all the necessary objects, in many cases an object literal can be
 provided instead of a fully instantiated object.  There are two cases where a fully instantiated object is
 required.  The first case is the outermost object, typically the Request object, which must be created by calling
-the class' constructor. In the example below, a GetRequest is explicitly instantiated via `new`.
+the class' constructor. In the example below, a `GetRequest` is explicitly instantiated via `new`.
 
 ```ts
 const getRequest = new GetRequest({
@@ -202,7 +201,7 @@ const getRequest = new GetRequest({
 ```
 
 The second case where a fully instantiated object is required is where you provide an object that is a subclass of
-type that is expected for that field.  For example, GetRequest has single field called `baseRef` whose type is
+type that is expected for that field.  For example, `GetRequest` has single field called `baseRef` whose type is
 `PlatformCore.BaseRef`.  `PlatformCore.BaseRef` is an abstract type that isn't meant to be used directly.  Instead,
 you provide one of its subclasses, which includes `RecordRef`.  In order for the correct xml for this request to
 be generated, you must provide a fully instantiated `RecordRef`. 
@@ -247,9 +246,9 @@ TODO: Quick implementation or write up
 
 ### Date handling
 
-Right now, you must convert Dates to a string manually.  This is due to a complication with one of
+Right now, you must convert `Date`s to a string manually.  This is due to a complication with one of
 the underlying libraries that TypeSuite uses and will be fixed in a later release.  However, it will always be
-possible to provide a string for any field in the NetSuite API that holds a Date.
+possible to provide a string for any field in the NetSuite API that holds a `Date`.
 
 ```ts
   const dateTime = ZonedDateTime.of(LocalDateTime.parse("2020-01-01T00:00"), ZoneId.UTC);
