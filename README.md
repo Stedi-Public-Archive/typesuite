@@ -11,7 +11,7 @@ TypeSuite to improve how your business operates, we'd love to hear from you.
 
 ## Installation
 
-You can install TypeSuite via NPM:
+You can install TypeSuite via npm:
 
 ```sh
 npm install --save git+https://github.com/StediInc/TypeSuite.git
@@ -62,10 +62,10 @@ const config: Configuration = {
 
 #### API Version
 
-Currently TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl);
+Currently, TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl);
 therefore, the only acceptable configuration option for `apiVersion` is `"2019_2"`.
 
-In future versions of TypeSuite we aim to support additional API versions, and will update the docs accordingly.
+We aim to support additional API versions in future versions of TypeSuite, and will update the docs accordingly.
 
 #### Authentication
 
