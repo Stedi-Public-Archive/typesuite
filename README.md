@@ -235,10 +235,6 @@ const searchRequest = new SearchRequest({
 
 As mentioned above, TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl).
 
-### Available ports
-
-TODO: Quick implementation or write up
-
 ### Date handling
 
 Right now, you must convert `Date`s to a string manually.  This is due to a complication with one of
