@@ -12,13 +12,6 @@
   "license": "MIT",
   "main": "typesuite.js",
   "typings": "typesuite.d.ts",
-  "files": [
-    "*.d.ts",
-    "*.js",
-    "2019_2/**/*",
-    "netsuite_webservices/**/*",
-    "xmlsoap/**/*"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StediInc/netsuite-adapters.git"
