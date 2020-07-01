@@ -11,7 +11,7 @@
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
   "main": "./lib/typesuite.js",
-  "typings": "/lib/typesuite.d.ts",
+  "typings": "./lib/typesuite.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StediInc/netsuite-adapters.git"
