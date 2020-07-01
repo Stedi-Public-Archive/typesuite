@@ -7,7 +7,7 @@
     "NetSuite",
     "SuiteTalk"
   ],
-  "author": "David Farber <david+github@stedi.com>",
+  "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
   "main": "./lib/typesuite.js",
