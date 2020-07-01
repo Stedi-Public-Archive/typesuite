@@ -10,8 +10,8 @@
   "author": "David Farber <david+github@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
-  "main": "typesuite.js",
-  "typings": "typesuite.d.ts",
+  "main": "./lib/typesuite.js",
+  "typings": "/lib/typesuite.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StediInc/netsuite-adapters.git"
@@ -19,32 +19,15 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc",
-    "postbuild": "cp build/src/{client,soap-mapper,typesuite}.{d.ts,js} .; cp -R build/src/netsuite_webservices/* .; cp -R build/src/{xmlsoap,netsuite_webservices} .",
-    "clean": "rm -rf build/; rm *.{d.ts,js}; rm -rf {xmlsoap,netsuite_webservices,2019_2}",
-    "deepClean": "npm run clean; rm -rf node_modules",
-    "test": "jest test --testMatch '**/*.test.ts'"
+    "clean": "rm -rf lib"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
-    "jest": "^25.5.4",
-    "jest-mock-extended": "^1.0.8",
-    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "got": "^11.3.0",
     "jsonix": "^3.0.0",
     "xml-formatter": "^2.0.1"
-  },
-  "jest": {
-    "roots": [
-      "<rootDir>/test"
-    ],
-    "testMatch": [
-      "**/*.test.ts"
-    ],
-    "preset": "ts-jest",
-    "testEnvironment": "node"
   }
 }
