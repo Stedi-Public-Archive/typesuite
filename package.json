@@ -17,8 +17,8 @@
     "url": "git+https://github.com/StediInc/TypeSuite.git"
   },
   "scripts": {
-    "postinstall": "npm run build",
-    "build": "tsc",
+    "postinstall": "npm run tsc",
+    "tsc": "tsc",
     "clean": "rm -rf lib"
   },
   "devDependencies": {
