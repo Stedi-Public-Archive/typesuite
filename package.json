@@ -26,8 +26,8 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc",
-    "postbuild": "cp build/src/{client,soap-mapper,typesuite}.{d.ts,js} .; cp -R build/src/netsuite_webservices/* .; cp -R build/src/{xmlsoap,netsuite_webservices} .",
-    "clean": "rm -rf build/; rm *.{d.ts,js}; rm -rf {xmlsoap,netsuite_webservices,2019_2}",
+    "postbuild": "script/postbuild.sh",
+    "clean": "script/clean.sh",
     "deepClean": "npm run clean; rm -rf node_modules",
     "test": "jest test --testMatch '**/*.test.ts'"
   },
