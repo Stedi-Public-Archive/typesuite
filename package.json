@@ -24,7 +24,7 @@
     "url": "git+https://github.com/StediInc/netsuite-adapters.git"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "postinstall": "npm run build",
     "build": "tsc",
     "postbuild": "script/postbuild.sh",
     "clean": "script/clean.sh",
