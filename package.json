@@ -7,27 +7,20 @@
     "NetSuite",
     "SuiteTalk"
   ],
-  "author": "David Farber <david+github@stedi.com>",
+  "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
   "main": "typesuite.js",
   "typings": "typesuite.d.ts",
-  "files": [
-    "*.d.ts",
-    "*.js",
-    "2019_2/**/*",
-    "netsuite_webservices/**/*",
-    "xmlsoap/**/*"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StediInc/netsuite-adapters.git"
+    "url": "git+https://github.com/StediInc/TypeSuite.git"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "postinstall": "npm run build",
     "build": "tsc",
-    "postbuild": "cp build/src/{client,soap-mapper,typesuite}.{d.ts,js} .; cp -R build/src/netsuite_webservices/* .; cp -R build/src/{xmlsoap,netsuite_webservices} .",
-    "clean": "rm -rf build/; rm *.{d.ts,js}; rm -rf {xmlsoap,netsuite_webservices,2019_2}",
+    "postbuild": "script/postbuild.sh",
+    "clean": "script/clean.sh",
     "deepClean": "npm run clean; rm -rf node_modules",
     "test": "jest test --testMatch '**/*.test.ts'"
   },
