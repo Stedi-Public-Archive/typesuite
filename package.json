@@ -7,21 +7,14 @@
     "NetSuite",
     "SuiteTalk"
   ],
-  "author": "David Farber <david+github@stedi.com>",
+  "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
   "main": "typesuite.js",
   "typings": "typesuite.d.ts",
-  "files": [
-    "*.d.ts",
-    "*.js",
-    "2019_2/**/*",
-    "netsuite_webservices/**/*",
-    "xmlsoap/**/*"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StediInc/netsuite-adapters.git"
+    "url": "git+https://github.com/StediInc/TypeSuite.git"
   },
   "scripts": {
     "postinstall": "npm run build",
