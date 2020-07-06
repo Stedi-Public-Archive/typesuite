@@ -1,0 +1,6 @@
+ignores: [
+  "depcheck",
+  "@types/jest"
+]
+ignore-dirs: ["lib"]
+
