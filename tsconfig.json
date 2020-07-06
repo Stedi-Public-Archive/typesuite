@@ -11,10 +11,9 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "declaration": true,
-    "outDir": "build"
+    "outDir": "./lib"
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ]
 }

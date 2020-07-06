@@ -10,41 +10,24 @@
   "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
-  "main": "typesuite.js",
-  "typings": "typesuite.d.ts",
+  "main": "./lib/typesuite.js",
+  "typings": "./lib/typesuite.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StediInc/TypeSuite.git"
   },
   "scripts": {
-    "postinstall": "npm run build",
-    "build": "tsc",
-    "postbuild": "script/postbuild.sh",
-    "clean": "script/clean.sh",
-    "deepClean": "npm run clean; rm -rf node_modules",
-    "test": "jest test --testMatch '**/*.test.ts'"
+    "postinstall": "npm run tsc",
+    "tsc": "tsc",
+    "clean": "rm -rf lib"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.11.1",
-    "jest": "^25.5.4",
-    "jest-mock-extended": "^1.0.8",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
+    "@types/node": "^13.11.1"
   },
   "dependencies": {
     "got": "^11.3.0",
     "jsonix": "^3.0.0",
+    "typescript": "^3.8.3",
     "xml-formatter": "^2.0.1"
-  },
-  "jest": {
-    "roots": [
-      "<rootDir>/test"
-    ],
-    "testMatch": [
-      "**/*.test.ts"
-    ],
-    "preset": "ts-jest",
-    "testEnvironment": "node"
   }
 }
