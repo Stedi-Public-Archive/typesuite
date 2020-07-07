@@ -1,5 +1,5 @@
 {
-  "name": "typesuite",
+  "name": "@stedi/typesuite",
   "version": "0.4.0",
   "description": "TypeScript client for NetSuite SuiteTalk SOAP API",
   "keywords": [
@@ -10,14 +10,15 @@
   "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/StediInc/TypeSuite#README.md",
   "license": "MIT",
-  "main": "./lib/typesuite.js",
-  "typings": "./lib/typesuite.d.ts",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StediInc/TypeSuite.git"
   },
   "scripts": {
     "clean": "rm -rf lib",
+    "build": "tsc",
     "test": "tsc && LOG_LEVEL=WARN jest --runInBand --testMatch '**/*.test.ts' && depcheck .",
     "tsc": "tsc"
   },
