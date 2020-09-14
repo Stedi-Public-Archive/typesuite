@@ -32,7 +32,7 @@
     "cz-conventional-changelog": "3.2.0",
     "depcheck": "0.9.2",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-jest": "23.17.1",
+    "eslint-plugin-jest": "24.0.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint": "7.3.1",
     "husky": "4.2.5",
