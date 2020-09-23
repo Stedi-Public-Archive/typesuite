@@ -1,4 +1,5 @@
 # TypeSuite™
+
 TypeSuite™ is a TypeScript client for the NetSuite [SuiteTalk Web Services
 API](https://www.netsuite.com/portal/developers/resources/suitetalk-documentation.shtml).
 
@@ -16,7 +17,7 @@ TypeSuite to improve how your business operates, we'd love to hear from you.
 You can install TypeSuite via npm:
 
 ```sh
-npm install --save git+https://github.com/StediInc/TypeSuite.git
+npm install --save git+https://github.com/Stedi/TypeSuite.git
 ```
 
 Or add it to your `package.json` manually.
@@ -70,7 +71,7 @@ We aim to support additional API versions in future versions of TypeSuite, and w
 #### Authentication
 
 TypeSuite uses [NetSuite Token Based Auth (TBA)](https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSATH/NSATH.pdf),
-which requires a `consumerKey`, `consumerSecret`, `tokenKey`, and `tokenSecret`. 
+which requires a `consumerKey`, `consumerSecret`, `tokenKey`, and `tokenSecret`.
 
 ```ts
 const config: Configuration = {
@@ -98,8 +99,13 @@ import { SearchRequest } from "typesuite/2019_2/platform_messages";
 import { TransactionSearchAdvanced } from "typesuite/2019_2/transactions_sales";
 
 // Set up the correct time you'd like to start the search from
-const dateTime = ZonedDateTime.of(LocalDateTime.parse("2020-01-01T00:00"), ZoneId.UTC);
-const isoFormatter = new DateTimeFormatterBuilder().appendInstant(3).toFormatter(ResolverStyle.STRICT);
+const dateTime = ZonedDateTime.of(
+  LocalDateTime.parse("2020-01-01T00:00"),
+  ZoneId.UTC
+);
+const isoFormatter = new DateTimeFormatterBuilder()
+  .appendInstant(3)
+  .toFormatter(ResolverStyle.STRICT);
 
 // Construct the search request
 const searchAdvancedRequest = new SearchRequest({
@@ -159,19 +165,17 @@ import { PurchaseOrder } from "typesuite/2019_2/transactions_purchases";
 
 // Create a PO GET request
 const getRequest = new GetRequest({
-    baseRef: new RecordRef({
-      internalId: "NetSuite Document ID",
-      type: "purchaseOrder"
-    }),
-  });
+  baseRef: new RecordRef({
+    internalId: "NetSuite Document ID",
+    type: "purchaseOrder",
+  }),
+});
 
 // Perform the request
-const response = await client
-  .get(getRequest)
-  .catch(function (error: any) {
-    console.log("Error fetching purchaseOrder");
-    throw error;
-  });
+const response = await client.get(getRequest).catch(function (error: any) {
+  console.log("Error fetching purchaseOrder");
+  throw error;
+});
 
 // Cast the response record appropriately
 const purchaseOrder = response.readResponse.record as PurchaseOrder;
@@ -184,10 +188,10 @@ for more!
 
 ### A note on instantiated objects vs object literals
 
-Building requests to the NetSuite SuiteTalk API frequently involves instantiating quite a few objects.  In order to
+Building requests to the NetSuite SuiteTalk API frequently involves instantiating quite a few objects. In order to
 minimize the amount of code required to build all the necessary objects, in many cases an object literal can be
-provided instead of a fully instantiated object.  There are two cases where a fully instantiated object is
-required.  The first case is the outermost object, typically the Request object, which must be created by calling
+provided instead of a fully instantiated object. There are two cases where a fully instantiated object is
+required. The first case is the outermost object, typically the Request object, which must be created by calling
 the class' constructor. In the example below, a `SearchRequest` is explicitly instantiated via `new`.
 
 ```ts
@@ -197,10 +201,10 @@ const SearchRequest = new SearchRequest({
 ```
 
 The second case where a fully instantiated object is required is where you provide an object that is a subclass of
-type that is expected for that field.  For example, `SearchRequest` has single field called `searchRecord` whose
-type is `PlatformCore.SearchRecord`.  `PlatformCore.SearchRecord` is an abstract type that isn't meant to be used
-directly.  Instead, you provide one of its subclasses, which includes `TransactionSearchBasic`.  In order for the
-correct xml for this request to be generated, you must provide a fully instantiated `TransactionSearchBasic`. 
+type that is expected for that field. For example, `SearchRequest` has single field called `searchRecord` whose
+type is `PlatformCore.SearchRecord`. `PlatformCore.SearchRecord` is an abstract type that isn't meant to be used
+directly. Instead, you provide one of its subclasses, which includes `TransactionSearchBasic`. In order for the
+correct xml for this request to be generated, you must provide a fully instantiated `TransactionSearchBasic`.
 
 ```ts
 const SearchRequest = new SearchRequest({
@@ -210,7 +214,7 @@ const SearchRequest = new SearchRequest({
   });
 ```
 
-In all other cases you can simply supply an object literal with the data needed for your request.  For example,
+In all other cases you can simply supply an object literal with the data needed for your request. For example,
 the `status` and `type` fields of `TransactionSearchBasic` have a type of `PlatformCore.SearchEnumMultiSelectField`,
 but it is not necessary to create these objects by calling `new`.
 
@@ -237,22 +241,27 @@ As mentioned above, TypeSuite only supports the [2019_2 WSDL](https://webservice
 
 ### Date handling
 
-Right now, you must convert `Date`s to a string manually.  This is due to a complication with one of
-the underlying libraries that TypeSuite uses and will be fixed in a later release.  However, it will always be
+Right now, you must convert `Date`s to a string manually. This is due to a complication with one of
+the underlying libraries that TypeSuite uses and will be fixed in a later release. However, it will always be
 possible to provide a string for any field in the NetSuite API that holds a `Date`.
 
 ```ts
-  const dateTime = ZonedDateTime.of(LocalDateTime.parse("2020-01-01T00:00"), ZoneId.UTC);
-  const isoFormatter = new DateTimeFormatterBuilder().appendInstant(3).toFormatter(ResolverStyle.STRICT);
+const dateTime = ZonedDateTime.of(
+  LocalDateTime.parse("2020-01-01T00:00"),
+  ZoneId.UTC
+);
+const isoFormatter = new DateTimeFormatterBuilder()
+  .appendInstant(3)
+  .toFormatter(ResolverStyle.STRICT);
 
-  const searchRequest = new SearchRequest({
-    searchRecord: new TransactionSearchBasic({
-      dateCreated: {
-        operator: "after",
-        searchValue: dateTime.format(isoFormatter),
-      },
-    }),
-  });
+const searchRequest = new SearchRequest({
+  searchRecord: new TransactionSearchBasic({
+    dateCreated: {
+      operator: "after",
+      searchValue: dateTime.format(isoFormatter),
+    },
+  }),
+});
 ```
 
 # Development
