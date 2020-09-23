@@ -8,13 +8,13 @@
     "SuiteTalk"
   ],
   "author": "Stedi Engineering <engineering@stedi.com>",
-  "homepage": "https://github.com/StediInc/TypeSuite#README.md",
+  "homepage": "https://github.com/Stedi/TypeSuite#README.md",
   "license": "MIT",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StediInc/TypeSuite.git"
+    "url": "git+https://github.com/Stedi/TypeSuite.git"
   },
   "scripts": {
     "clean": "rm -rf lib",
