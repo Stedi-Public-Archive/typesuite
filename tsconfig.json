@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "lib": [
-      "es2019"
-    ],
+    "lib": ["es2019"],
     "esModuleInterop": true,
     "declaration": true,
     "strict": true,
@@ -21,12 +19,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "outDir": "./lib"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src", "scripts"]
 }

@@ -17,33 +17,35 @@
     "url": "git+https://github.com/Stedi/TypeSuite.git"
   },
   "scripts": {
+    "gen:types": "ts-node scripts/generate-types.ts",
     "clean": "rm -rf lib",
     "build": "tsc",
-    "test": "tsc && LOG_LEVEL=WARN jest --runInBand --testMatch '**/*.test.ts' && depcheck .",
+    "test": "tsc && jest && depcheck .",
     "tsc": "tsc"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@types/jest": "26.0.14",
-    "@types/node": "^14.11.2",
+    "@types/node": "14.11.2",
     "@typescript-eslint/eslint-plugin": "4.0.0",
     "@typescript-eslint/parser": "3.10.1",
     "cz-conventional-changelog": "3.3.0",
     "depcheck": "1.2.0",
     "eslint": "7.11.0",
-    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-jest": "24.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.4",
     "husky": "4.3.0",
     "jest": "25.5.4",
     "prettier": "2.1.2",
     "ts-jest": "25.5.1",
-    "typescript": "^3.8.3"
+    "ts-node": "9.0.0",
+    "typescript": "3.8.3"
   },
   "dependencies": {
-    "got": "^11.3.0",
-    "jsonix": "^3.0.0"
+    "got": "11.3.0",
+    "jsonix": "3.0.0"
   },
   "config": {
     "commitizen": {
