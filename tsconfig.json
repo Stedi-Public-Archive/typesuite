@@ -10,17 +10,18 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
+    "noFallthroughCasesInSwitch": true,
     "inlineSourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": true,
+    "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./node_modules/@types"],
-    "outDir": "./lib"
+    "outDir": "./dist"
   },
-  "include": ["src", "test"]
+  "include": ["src", "test", "scripts"]
 }

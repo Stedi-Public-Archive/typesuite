@@ -36,7 +36,7 @@ interface PropertyInfo {
 
 type WriteFn = (message?: string, ...optionalParams: string[]) => void;
 
-class TypeGenerator {
+export default class TypeGenerator {
   private readonly processedModules: Record<string, FileModule> = {};
   private readonly mappingsDir: string;
   private readonly targetDirectory: string;
@@ -261,20 +261,3 @@ class FileModule {
     );
   }
 }
-
-function generate() {
-  const mappingsDir = `${__dirname}/../netsuite_webservices/2019_2/__mappings/`;
-  const generator = new TypeGenerator(
-    mappingsDir,
-    `${__dirname}/../netsuite_webservices/2019_2/`
-  );
-
-  const mappingModules = fs
-    .readdirSync(mappingsDir, { withFileTypes: true })
-    .filter((item) => item.name.endsWith(".js"))
-    .map((item) => item.name.replace(/\.js$/, ""));
-
-  mappingModules.forEach((mappingName) => generator.generateTypes(mappingName));
-}
-
-generate();

@@ -1,4 +1,4 @@
-import got, { Got, RequestError, Response } from "got";
+import got, { Got } from "got";
 import Request from "got/dist/source/core"; // Really, got?
 import { createHmac, randomBytes } from "crypto";
 import {

@@ -12,16 +12,21 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Stedi/TypeSuite.git"
   },
   "scripts": {
-    "gen:types": "ts-node src/util/generate-types.ts",
-    "clean": "rm -rf lib",
-    "build": "tsc",
+    "gen:types": "ts-node scripts/generate-types.ts",
+    "clean": "rm -rf dist lib",
+    "build": "npm run clean && tsc",
+    "jest": "jest",
     "test": "tsc && jest && depcheck .",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "prepublishOnly": "npm run build && mv dist/src lib"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
