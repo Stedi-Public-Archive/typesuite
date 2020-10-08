@@ -263,10 +263,10 @@ class FileModule {
 }
 
 function generate() {
-  const mappingsDir = `${__dirname}/../src/netsuite_webservices/2019_2/__mappings/`;
+  const mappingsDir = `${__dirname}/../netsuite_webservices/2019_2/__mappings/`;
   const generator = new TypeGenerator(
     mappingsDir,
-    `${__dirname}/../src/netsuite_webservices/2019_2/`
+    `${__dirname}/../netsuite_webservices/2019_2/`
   );
 
   const mappingModules = fs

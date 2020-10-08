@@ -17,7 +17,7 @@
     "url": "git+https://github.com/Stedi/TypeSuite.git"
   },
   "scripts": {
-    "gen:types": "ts-node scripts/generate-types.ts",
+    "gen:types": "ts-node src/util/generate-types.ts",
     "clean": "rm -rf lib",
     "build": "tsc",
     "test": "tsc && jest && depcheck .",
