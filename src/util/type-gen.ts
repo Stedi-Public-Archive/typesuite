@@ -69,7 +69,7 @@ export default class TypeGenerator {
     };
 
     if (mappings.needsSoapTypesImport) {
-      write('import * as SoapTypes from "../soap-types";');
+      write('import * as SoapTypes from "../../util/soap-types";');
     }
 
     mappings.dependencies

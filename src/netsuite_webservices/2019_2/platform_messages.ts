@@ -1,4 +1,4 @@
-import * as SoapTypes from "../soap-types";
+import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 
 const mappingsName = "com_netsuite_webservices_platform_messages_2019_2";

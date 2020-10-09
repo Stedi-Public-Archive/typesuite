@@ -1,4 +1,4 @@
-import * as SoapTypes from "../soap-types";
+import * as SoapTypes from "../../util/soap-types";
 import * as GeneralCommunicationTypes from "./general_communication_types";
 import * as PlatformCore from "./platform_core";
 import * as DocumentsFilecabinet from "./documents_filecabinet";
