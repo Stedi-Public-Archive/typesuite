@@ -1,68 +1,58 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformFaultsTypes from "./platform_faults_types";
 import * as PlatformCoreTypes from "./platform_core_types";
 
-const mappingsName = "com_netsuite_webservices_platform_core_2019_2";
-
-export class SearchColumnCustomField extends SoapTypes.Base {
+export class SearchColumnCustomField {
   customLabel?: string;
   internalId?: string;
   scriptId?: string;
   constructor(props: SearchColumnCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customLabel = props.customLabel;
     this.internalId = props.internalId;
     this.scriptId = props.scriptId;
   }
 }
 
-export class CustomFieldList extends SoapTypes.Base {
+export class CustomFieldList {
   customField?: CustomFieldRef[];
   constructor(props: CustomFieldList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customField = props.customField;
   }
 }
 
-export class SearchEnumMultiSelectField extends SoapTypes.Base {
+export class SearchEnumMultiSelectField {
   searchValue?: string[];
   operator?: PlatformCoreTypes.SearchEnumMultiSelectFieldOperator;
   constructor(props: SearchEnumMultiSelectField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
 }
 
-export class BaseRefList extends SoapTypes.Base {
+export class BaseRefList {
   baseRef?: BaseRef[];
   constructor(props: BaseRefList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
   }
 }
 
-export class DeletedRecordList extends SoapTypes.Base {
+export class DeletedRecordList {
   deletedRecord?: DeletedRecord[];
   constructor(props: DeletedRecordList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deletedRecord = props.deletedRecord;
   }
 }
 
-export class WsRoleList extends SoapTypes.Base {
+export class WsRoleList {
   wsRole?: WsRole[];
   constructor(props: WsRoleList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.wsRole = props.wsRole;
   }
 }
 
-export class SearchCustomField extends SoapTypes.Base {
+export class SearchCustomField {
   internalId?: string;
   scriptId?: string;
   constructor(props: SearchCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.internalId = props.internalId;
     this.scriptId = props.scriptId;
   }
@@ -71,52 +61,48 @@ export class SearchCustomField extends SoapTypes.Base {
 export class SearchBooleanCustomField extends SearchCustomField {
   searchValue?: boolean;
   constructor(props: SearchBooleanCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class SearchColumnField extends SoapTypes.Base {
+export class SearchColumnField {
   customLabel?: string;
   constructor(props: SearchColumnField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customLabel = props.customLabel;
   }
 }
 
-export class BudgetExchangeRateFilter extends SoapTypes.Base {
+export class BudgetExchangeRateFilter {
   period: RecordRef;
   fromSubsidiary?: RecordRef;
   toSubsidiary?: RecordRef;
   constructor(props: BudgetExchangeRateFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.period = props.period;
     this.fromSubsidiary = props.fromSubsidiary;
     this.toSubsidiary = props.toSubsidiary;
   }
 }
 
-export class GetSelectFilterByFieldValueList extends SoapTypes.Base {
+export class GetSelectFilterByFieldValueList {
   filterBy: GetSelectFilterByFieldValue[];
   constructor(props: GetSelectFilterByFieldValueList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filterBy = props.filterBy;
   }
 }
 
-export class GetSavedSearchResult extends SoapTypes.Base {
+export class GetSavedSearchResult {
   status: Status;
   totalRecords?: number;
   recordRefList?: RecordRefList;
   constructor(props: GetSavedSearchResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.recordRefList = props.recordRefList;
   }
 }
 
-export class PostingTransactionSummaryField extends SoapTypes.Base {
+export class PostingTransactionSummaryField {
   period?: boolean;
   account?: boolean;
   parentItem?: boolean;
@@ -128,7 +114,6 @@ export class PostingTransactionSummaryField extends SoapTypes.Base {
   subsidiary?: boolean;
   book?: boolean;
   constructor(props: PostingTransactionSummaryField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.period = props.period;
     this.account = props.account;
     this.parentItem = props.parentItem;
@@ -145,15 +130,14 @@ export class PostingTransactionSummaryField extends SoapTypes.Base {
 export class SearchColumnLongCustomField extends SearchColumnCustomField {
   searchValue?: number;
   constructor(props: SearchColumnLongCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class DetachReference extends SoapTypes.Base {
+export class DetachReference {
   detachFrom: BaseRef;
   constructor(props: DetachReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.detachFrom = props.detachFrom;
   }
 }
@@ -161,7 +145,7 @@ export class DetachReference extends SoapTypes.Base {
 export class DetachBasicReference extends DetachReference {
   detachedRecord: BaseRef;
   constructor(props: DetachBasicReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.detachedRecord = props.detachedRecord;
   }
 }
@@ -171,17 +155,16 @@ export class SearchDoubleCustomField extends SearchCustomField {
   searchValue2?: number;
   operator?: PlatformCoreTypes.SearchDoubleFieldOperator;
   constructor(props: SearchDoubleCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
     this.operator = props.operator;
   }
 }
 
-export class BaseRef extends SoapTypes.Base {
+export class BaseRef {
   name?: string;
   constructor(props: BaseRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.name = props.name;
   }
 }
@@ -191,7 +174,7 @@ export class RecordRef extends BaseRef {
   externalId?: string;
   type?: PlatformCoreTypes.RecordType;
   constructor(props: RecordRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.internalId = props.internalId;
     this.externalId = props.externalId;
     this.type = props.type;
@@ -201,66 +184,61 @@ export class RecordRef extends BaseRef {
 export class CustomizationRef extends RecordRef {
   scriptId?: string;
   constructor(props: CustomizationRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.scriptId = props.scriptId;
   }
 }
 
-export class CustomFieldRef extends SoapTypes.Base {
+export class CustomFieldRef {
   internalId?: string;
   scriptId?: string;
   constructor(props: CustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.internalId = props.internalId;
     this.scriptId = props.scriptId;
   }
 }
 
 export class DateCustomFieldRef extends CustomFieldRef {
-  value: SoapTypes.Dateish;
+  value: string;
   constructor(props: DateCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
 
-export class SearchTextNumberField extends SoapTypes.Base {
+export class SearchTextNumberField {
   searchValue?: string;
   searchValue2?: string;
   operator?: PlatformCoreTypes.SearchTextNumberFieldOperator;
   constructor(props: SearchTextNumberField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
     this.operator = props.operator;
   }
 }
 
-export class SearchMultiSelectField extends SoapTypes.Base {
+export class SearchMultiSelectField {
   searchValue?: RecordRef[];
   operator?: PlatformCoreTypes.SearchMultiSelectFieldOperator;
   constructor(props: SearchMultiSelectField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
 }
 
-export class DimensionList extends SoapTypes.Base {
+export class DimensionList {
   dimension?: DimensionRef[];
   constructor(props: DimensionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.dimension = props.dimension;
   }
 }
 
-export class StatusDetail extends SoapTypes.Base {
+export class StatusDetail {
   code?: PlatformFaultsTypes.StatusDetailCodeType;
   message?: string;
   afterSubmitFailed?: boolean;
   type?: PlatformFaultsTypes.StatusDetailType;
   constructor(props: StatusDetail) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.code = props.code;
     this.message = props.message;
     this.afterSubmitFailed = props.afterSubmitFailed;
@@ -271,7 +249,7 @@ export class StatusDetail extends SoapTypes.Base {
 export class StringCustomFieldRef extends CustomFieldRef {
   value: string;
   constructor(props: StringCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
@@ -282,7 +260,7 @@ export class InitializeAuxRef extends BaseRef {
   externalId?: string;
   scriptId?: string;
   constructor(props: InitializeAuxRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.type = props.type;
     this.internalId = props.internalId;
     this.externalId = props.externalId;
@@ -290,13 +268,12 @@ export class InitializeAuxRef extends BaseRef {
   }
 }
 
-export class GetSelectValueResult extends SoapTypes.Base {
+export class GetSelectValueResult {
   status: Status;
   totalRecords?: number;
   totalPages?: number;
   baseRefList?: BaseRefList;
   constructor(props: GetSelectValueResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.totalPages = props.totalPages;
@@ -304,21 +281,17 @@ export class GetSelectValueResult extends SoapTypes.Base {
   }
 }
 
-export class SearchRow extends SoapTypes.Base {
-  constructor(props: SearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class SearchRow {}
 
 export class SearchColumnMultiSelectCustomField extends SearchColumnCustomField {
   searchValue?: ListOrRecordRef[];
   constructor(props: SearchColumnMultiSelectCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class SsoCredentials extends SoapTypes.Base {
+export class SsoCredentials {
   email: string;
   password: string;
   account: string;
@@ -326,7 +299,6 @@ export class SsoCredentials extends SoapTypes.Base {
   authenticationToken: string;
   partnerId: string;
   constructor(props: SsoCredentials) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.email = props.email;
     this.password = props.password;
     this.account = props.account;
@@ -337,9 +309,9 @@ export class SsoCredentials extends SoapTypes.Base {
 }
 
 export class SearchColumnDateCustomField extends SearchColumnCustomField {
-  searchValue?: SoapTypes.Dateish;
+  searchValue?: string;
   constructor(props: SearchColumnDateCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
@@ -348,7 +320,7 @@ export class SearchStringCustomField extends SearchCustomField {
   searchValue?: string;
   operator?: PlatformCoreTypes.SearchStringFieldOperator;
   constructor(props: SearchStringCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
@@ -357,17 +329,16 @@ export class SearchStringCustomField extends SearchCustomField {
 export class SearchColumnStringField extends SearchColumnField {
   searchValue?: string;
   constructor(props: SearchColumnStringField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class GetAllResult extends SoapTypes.Base {
+export class GetAllResult {
   status: Status;
   totalRecords?: number;
   recordList?: RecordList;
   constructor(props: GetAllResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.recordList = props.recordList;
@@ -380,7 +351,7 @@ export class CustomTransactionRef extends BaseRef {
   typeId?: string;
   scriptId?: string;
   constructor(props: CustomTransactionRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.internalId = props.internalId;
     this.externalId = props.externalId;
     this.typeId = props.typeId;
@@ -388,33 +359,30 @@ export class CustomTransactionRef extends BaseRef {
   }
 }
 
-export class CurrencyRateList extends SoapTypes.Base {
+export class CurrencyRateList {
   currencyRate?: CurrencyRate[];
   constructor(props: CurrencyRateList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.currencyRate = props.currencyRate;
   }
 }
 
-export class DataCenterUrls extends SoapTypes.Base {
+export class DataCenterUrls {
   restDomain: string;
   webservicesDomain: string;
   systemDomain: string;
   constructor(props: DataCenterUrls) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.restDomain = props.restDomain;
     this.webservicesDomain = props.webservicesDomain;
     this.systemDomain = props.systemDomain;
   }
 }
 
-export class SsoPassport extends SoapTypes.Base {
+export class SsoPassport {
   authenticationToken: string;
   partnerId: string;
   partnerAccount: string;
   partnerUserId: string;
   constructor(props: SsoPassport) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.authenticationToken = props.authenticationToken;
     this.partnerId = props.partnerId;
     this.partnerAccount = props.partnerAccount;
@@ -422,7 +390,7 @@ export class SsoPassport extends SoapTypes.Base {
   }
 }
 
-export class PostingTransactionSummary extends SoapTypes.Base {
+export class PostingTransactionSummary {
   period?: RecordRef;
   account?: RecordRef;
   parentItem?: RecordRef;
@@ -435,7 +403,6 @@ export class PostingTransactionSummary extends SoapTypes.Base {
   book?: RecordRef;
   amount: number;
   constructor(props: PostingTransactionSummary) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.period = props.period;
     this.account = props.account;
     this.parentItem = props.parentItem;
@@ -450,7 +417,7 @@ export class PostingTransactionSummary extends SoapTypes.Base {
   }
 }
 
-export class PostingTransactionSummaryFilter extends SoapTypes.Base {
+export class PostingTransactionSummaryFilter {
   period?: RecordRefList;
   account?: RecordRefList;
   parentItem?: RecordRefList;
@@ -462,7 +429,6 @@ export class PostingTransactionSummaryFilter extends SoapTypes.Base {
   subsidiary?: RecordRefList;
   book?: RecordRefList;
   constructor(props: PostingTransactionSummaryFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.period = props.period;
     this.account = props.account;
     this.parentItem = props.parentItem;
@@ -479,7 +445,7 @@ export class PostingTransactionSummaryFilter extends SoapTypes.Base {
 export class SearchColumnBooleanCustomField extends SearchColumnCustomField {
   searchValue?: boolean;
   constructor(props: SearchColumnBooleanCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
@@ -488,13 +454,13 @@ export class SearchEnumMultiSelectCustomField extends SearchCustomField {
   searchValue?: string[];
   operator?: PlatformCoreTypes.SearchEnumMultiSelectFieldOperator;
   constructor(props: SearchEnumMultiSelectCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
 }
 
-export class SearchResult extends SoapTypes.Base {
+export class SearchResult {
   status: Status;
   totalRecords?: number;
   pageSize?: number;
@@ -504,7 +470,6 @@ export class SearchResult extends SoapTypes.Base {
   recordList?: RecordList;
   searchRowList?: SearchRowList;
   constructor(props: SearchResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.pageSize = props.pageSize;
@@ -516,11 +481,10 @@ export class SearchResult extends SoapTypes.Base {
   }
 }
 
-export class GetCurrencyRateResult extends SoapTypes.Base {
+export class GetCurrencyRateResult {
   status: Status;
   currencyRateList?: CurrencyRateList;
   constructor(props: GetCurrencyRateResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.currencyRateList = props.currencyRateList;
   }
@@ -529,46 +493,42 @@ export class GetCurrencyRateResult extends SoapTypes.Base {
 export class SelectCustomFieldRef extends CustomFieldRef {
   value: ListOrRecordRef;
   constructor(props: SelectCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
 
-export class RecordRefList extends SoapTypes.Base {
+export class RecordRefList {
   recordRef?: RecordRef[];
   constructor(props: RecordRefList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.recordRef = props.recordRef;
   }
 }
 
-export class SearchDoubleField extends SoapTypes.Base {
+export class SearchDoubleField {
   searchValue?: number;
   searchValue2?: number;
   operator?: PlatformCoreTypes.SearchDoubleFieldOperator;
   constructor(props: SearchDoubleField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
     this.operator = props.operator;
   }
 }
 
-export class SearchRowList extends SoapTypes.Base {
+export class SearchRowList {
   searchRow?: SearchRow[];
   constructor(props: SearchRowList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchRow = props.searchRow;
   }
 }
 
-export class AsyncStatusResult extends SoapTypes.Base {
+export class AsyncStatusResult {
   jobId: string;
   status: PlatformCoreTypes.AsyncStatusType;
   percentCompleted: number;
   estRemainingDuration: number;
   constructor(props: AsyncStatusResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.jobId = props.jobId;
     this.status = props.status;
     this.percentCompleted = props.percentCompleted;
@@ -576,19 +536,14 @@ export class AsyncStatusResult extends SoapTypes.Base {
   }
 }
 
-export class SearchRowBasic extends SearchRow {
-  constructor(props: SearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class SearchRowBasic extends SearchRow {}
 
-export class ChangeEmail extends SoapTypes.Base {
+export class ChangeEmail {
   currentPassword: string;
   newEmail: string;
   newEmail2: string;
   justThisAccount?: boolean;
   constructor(props: ChangeEmail) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.currentPassword = props.currentPassword;
     this.newEmail = props.newEmail;
     this.newEmail2 = props.newEmail2;
@@ -596,31 +551,21 @@ export class ChangeEmail extends SoapTypes.Base {
   }
 }
 
-export class SearchRecord extends SoapTypes.Base {
-  constructor(props: SearchRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class SearchRecord {}
 
-export class SearchRecordBasic extends SearchRecord {
-  constructor(props: SearchRecordBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class SearchRecordBasic extends SearchRecord {}
 
-export class SearchCustomFieldList extends SoapTypes.Base {
+export class SearchCustomFieldList {
   customField?: SearchCustomField[];
   constructor(props: SearchCustomFieldList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customField = props.customField;
   }
 }
 
-export class DeletionReason extends SoapTypes.Base {
+export class DeletionReason {
   deletionReasonCode: RecordRef;
   deletionReasonMemo?: string;
   constructor(props: DeletionReason) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deletionReasonCode = props.deletionReasonCode;
     this.deletionReasonMemo = props.deletionReasonMemo;
   }
@@ -631,17 +576,16 @@ export class InitializeRef extends BaseRef {
   internalId?: string;
   externalId?: string;
   constructor(props: InitializeRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.type = props.type;
     this.internalId = props.internalId;
     this.externalId = props.externalId;
   }
 }
 
-export class AttachReference extends SoapTypes.Base {
+export class AttachReference {
   attachTo: BaseRef;
   constructor(props: AttachReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.attachTo = props.attachTo;
   }
 }
@@ -650,7 +594,7 @@ export class AttachContactReference extends AttachReference {
   contact: RecordRef;
   contactRole?: RecordRef;
   constructor(props: AttachContactReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.contact = props.contact;
     this.contactRole = props.contactRole;
   }
@@ -659,15 +603,14 @@ export class AttachContactReference extends AttachReference {
 export class SearchColumnBooleanField extends SearchColumnField {
   searchValue?: boolean;
   constructor(props: SearchColumnBooleanField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class Record extends SoapTypes.Base {
+export class Record {
   nullFieldList?: NullField;
   constructor(props: Record) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.nullFieldList = props.nullFieldList;
   }
 }
@@ -675,26 +618,24 @@ export class Record extends SoapTypes.Base {
 export class AttachBasicReference extends AttachReference {
   attachedRecord: BaseRef;
   constructor(props: AttachBasicReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.attachedRecord = props.attachedRecord;
   }
 }
 
 export type SearchBooleanField = boolean | { searchValue?: boolean };
 
-export class NullField extends SoapTypes.Base {
+export class NullField {
   name?: string[];
   constructor(props: NullField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.name = props.name;
   }
 }
 
-export class GetItemAvailabilityResult extends SoapTypes.Base {
+export class GetItemAvailabilityResult {
   status: Status;
   itemAvailabilityList?: ItemAvailabilityList;
   constructor(props: GetItemAvailabilityResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.itemAvailabilityList = props.itemAvailabilityList;
   }
@@ -703,14 +644,14 @@ export class GetItemAvailabilityResult extends SoapTypes.Base {
 export class SearchColumnTextNumberField extends SearchColumnField {
   searchValue?: string;
   constructor(props: SearchColumnTextNumberField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class ItemAvailability extends SoapTypes.Base {
+export class ItemAvailability {
   item: RecordRef;
-  lastQtyAvailableChange?: SoapTypes.Dateish;
+  lastQtyAvailableChange?: string;
   locationId?: RecordRef;
   quantityOnHand?: number;
   onHandValueMli?: number;
@@ -721,7 +662,6 @@ export class ItemAvailability extends SoapTypes.Base {
   quantityBackOrdered?: number;
   quantityAvailable?: number;
   constructor(props: ItemAvailability) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.lastQtyAvailableChange = props.lastQtyAvailableChange;
     this.locationId = props.locationId;
@@ -736,27 +676,25 @@ export class ItemAvailability extends SoapTypes.Base {
   }
 }
 
-export class CurrencyRateFilter extends SoapTypes.Base {
+export class CurrencyRateFilter {
   baseCurrency?: RecordRef;
   fromCurrency?: RecordRef;
-  effectiveDate?: SoapTypes.Dateish;
+  effectiveDate?: string;
   constructor(props: CurrencyRateFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseCurrency = props.baseCurrency;
     this.fromCurrency = props.fromCurrency;
     this.effectiveDate = props.effectiveDate;
   }
 }
 
-export class RecordList extends SoapTypes.Base {
+export class RecordList {
   record?: Record[];
   constructor(props: RecordList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class GetSelectValueFieldDescription extends SoapTypes.Base {
+export class GetSelectValueFieldDescription {
   recordType?: PlatformCoreTypes.RecordType;
   customRecordType?: RecordRef;
   customTransactionType?: RecordRef;
@@ -766,7 +704,6 @@ export class GetSelectValueFieldDescription extends SoapTypes.Base {
   filter?: GetSelectValueFilter;
   filterByValueList?: GetSelectFilterByFieldValueList;
   constructor(props: GetSelectValueFieldDescription) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.recordType = props.recordType;
     this.customRecordType = props.customRecordType;
     this.customTransactionType = props.customTransactionType;
@@ -781,7 +718,7 @@ export class GetSelectValueFieldDescription extends SoapTypes.Base {
 export class BooleanCustomFieldRef extends CustomFieldRef {
   value: boolean;
   constructor(props: BooleanCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
@@ -789,28 +726,26 @@ export class BooleanCustomFieldRef extends CustomFieldRef {
 export class SearchColumnSelectField extends SearchColumnField {
   searchValue?: RecordRef;
   constructor(props: SearchColumnSelectField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class DeletedRecord extends SoapTypes.Base {
-  deletedDate?: SoapTypes.Dateish;
+export class DeletedRecord {
+  deletedDate?: string;
   record?: BaseRef;
   constructor(props: DeletedRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deletedDate = props.deletedDate;
     this.record = props.record;
   }
 }
 
-export class WsRole extends SoapTypes.Base {
+export class WsRole {
   role?: RecordRef;
   isDefault?: boolean;
   isInactive?: boolean;
   isLoggedInRole?: boolean;
   constructor(props: WsRole) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.role = props.role;
     this.isDefault = props.isDefault;
     this.isInactive = props.isInactive;
@@ -818,7 +753,7 @@ export class WsRole extends SoapTypes.Base {
   }
 }
 
-export class GetDeletedResult extends SoapTypes.Base {
+export class GetDeletedResult {
   status: Status;
   totalRecords?: number;
   pageSize?: number;
@@ -826,7 +761,6 @@ export class GetDeletedResult extends SoapTypes.Base {
   pageIndex?: number;
   deletedRecordList?: DeletedRecordList;
   constructor(props: GetDeletedResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.pageSize = props.pageSize;
@@ -839,7 +773,7 @@ export class GetDeletedResult extends SoapTypes.Base {
 export class MultiSelectCustomFieldRef extends CustomFieldRef {
   value: ListOrRecordRef[];
   constructor(props: MultiSelectCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
@@ -847,50 +781,46 @@ export class MultiSelectCustomFieldRef extends CustomFieldRef {
 export class SearchColumnLongField extends SearchColumnField {
   searchValue?: number;
   constructor(props: SearchColumnLongField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class GetSelectFilterByFieldValue extends SoapTypes.Base {
+export class GetSelectFilterByFieldValue {
   sublist?: string;
   field: string;
   internalId: string;
   constructor(props: GetSelectFilterByFieldValue) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sublist = props.sublist;
     this.field = props.field;
     this.internalId = props.internalId;
   }
 }
 
-export class GetDeletedFilter extends SoapTypes.Base {
+export class GetDeletedFilter {
   deletedDate?: SearchDateField;
   type?: SearchEnumMultiSelectField;
   scriptId?: SearchStringField;
   constructor(props: GetDeletedFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deletedDate = props.deletedDate;
     this.type = props.type;
     this.scriptId = props.scriptId;
   }
 }
 
-export class ItemAvailabilityList extends SoapTypes.Base {
+export class ItemAvailabilityList {
   itemAvailability: ItemAvailability[];
   constructor(props: ItemAvailabilityList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemAvailability = props.itemAvailability;
   }
 }
 
-export class SearchDateField extends SoapTypes.Base {
+export class SearchDateField {
   predefinedSearchValue?: PlatformCoreTypes.SearchDate;
-  searchValue?: SoapTypes.Dateish;
-  searchValue2?: SoapTypes.Dateish;
+  searchValue?: string;
+  searchValue2?: string;
   operator?: PlatformCoreTypes.SearchDateFieldOperator;
   constructor(props: SearchDateField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.predefinedSearchValue = props.predefinedSearchValue;
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
@@ -901,72 +831,65 @@ export class SearchDateField extends SoapTypes.Base {
 export class SearchColumnSelectCustomField extends SearchColumnCustomField {
   searchValue?: ListOrRecordRef;
   constructor(props: SearchColumnSelectCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class GetDataCenterUrlsResult extends SoapTypes.Base {
+export class GetDataCenterUrlsResult {
   status: Status;
   dataCenterUrls?: DataCenterUrls;
   constructor(props: GetDataCenterUrlsResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.dataCenterUrls = props.dataCenterUrls;
   }
 }
 
-export class PostingTransactionSummaryList extends SoapTypes.Base {
+export class PostingTransactionSummaryList {
   postingTransactionSummary: PostingTransactionSummary[];
   constructor(props: PostingTransactionSummaryList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.postingTransactionSummary = props.postingTransactionSummary;
   }
 }
 
-export class DimensionRef extends SoapTypes.Base {
+export class DimensionRef {
   scriptId?: string;
   constructor(props: DimensionRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.scriptId = props.scriptId;
   }
 }
 
-export class SearchLongField extends SoapTypes.Base {
+export class SearchLongField {
   searchValue?: number;
   searchValue2?: number;
   operator?: PlatformCoreTypes.SearchLongFieldOperator;
   constructor(props: SearchLongField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
     this.operator = props.operator;
   }
 }
 
-export class CustomizationRefList extends SoapTypes.Base {
+export class CustomizationRefList {
   customizationRef?: CustomizationRef[];
   constructor(props: CustomizationRefList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customizationRef = props.customizationRef;
   }
 }
 
-export class GetSavedSearchRecord extends SoapTypes.Base {
+export class GetSavedSearchRecord {
   searchType?: PlatformCoreTypes.SearchRecordType;
   constructor(props: GetSavedSearchRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchType = props.searchType;
   }
 }
 
-export class CurrencyRate extends SoapTypes.Base {
+export class CurrencyRate {
   baseCurrency: RecordRef;
   fromCurrency: RecordRef;
   exchangeRate: number;
-  effectiveDate: SoapTypes.Dateish;
+  effectiveDate: string;
   constructor(props: CurrencyRate) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseCurrency = props.baseCurrency;
     this.fromCurrency = props.fromCurrency;
     this.exchangeRate = props.exchangeRate;
@@ -974,20 +897,18 @@ export class CurrencyRate extends SoapTypes.Base {
   }
 }
 
-export class Duration extends SoapTypes.Base {
+export class Duration {
   timeSpan: number;
   unit: PlatformCoreTypes.DurationUnit;
   constructor(props: Duration) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.timeSpan = props.timeSpan;
     this.unit = props.unit;
   }
 }
 
-export class CustomizationType extends SoapTypes.Base {
+export class CustomizationType {
   getCustomizationType?: PlatformCoreTypes.GetCustomizationType;
   constructor(props: CustomizationType) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getCustomizationType = props.getCustomizationType;
   }
 }
@@ -995,18 +916,17 @@ export class CustomizationType extends SoapTypes.Base {
 export class SearchColumnDoubleCustomField extends SearchColumnCustomField {
   searchValue?: number;
   constructor(props: SearchColumnDoubleCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class ListOrRecordRef extends SoapTypes.Base {
+export class ListOrRecordRef {
   name?: string;
   internalId?: string;
   externalId?: string;
   typeId?: string;
   constructor(props: ListOrRecordRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.name = props.name;
     this.internalId = props.internalId;
     this.externalId = props.externalId;
@@ -1017,12 +937,12 @@ export class ListOrRecordRef extends SoapTypes.Base {
 export class LongCustomFieldRef extends CustomFieldRef {
   value: number;
   constructor(props: LongCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
 
-export class TokenPassport extends SoapTypes.Base {
+export class TokenPassport {
   account: string;
   consumerKey: string;
   token: string;
@@ -1030,7 +950,6 @@ export class TokenPassport extends SoapTypes.Base {
   timestamp: number;
   signature: TokenPassportSignature;
   constructor(props: TokenPassport) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.account = props.account;
     this.consumerKey = props.consumerKey;
     this.token = props.token;
@@ -1043,40 +962,37 @@ export class TokenPassport extends SoapTypes.Base {
 export class DoubleCustomFieldRef extends CustomFieldRef {
   value: number;
   constructor(props: DoubleCustomFieldRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
 
-export class GetCustomizationIdResult extends SoapTypes.Base {
+export class GetCustomizationIdResult {
   status: Status;
   totalRecords?: number;
   customizationRefList?: CustomizationRefList;
   constructor(props: GetCustomizationIdResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.customizationRefList = props.customizationRefList;
   }
 }
 
-export class GetSelectValueFilter extends SoapTypes.Base {
+export class GetSelectValueFilter {
   filterValue: string;
   operator: PlatformCoreTypes.GetSelectValueFilterOperator;
   constructor(props: GetSelectValueFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filterValue = props.filterValue;
     this.operator = props.operator;
   }
 }
 
-export class Passport extends SoapTypes.Base {
+export class Passport {
   email: string;
   password: string;
   account: string;
   role?: RecordRef;
   constructor(props: Passport) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.email = props.email;
     this.password = props.password;
     this.account = props.account;
@@ -1084,7 +1000,7 @@ export class Passport extends SoapTypes.Base {
   }
 }
 
-export class BudgetExchangeRate extends SoapTypes.Base {
+export class BudgetExchangeRate {
   period: RecordRef;
   fromSubsidiary: RecordRef;
   toSubsidiary: RecordRef;
@@ -1092,7 +1008,6 @@ export class BudgetExchangeRate extends SoapTypes.Base {
   averageRate?: number;
   historicalRate?: number;
   constructor(props: BudgetExchangeRate) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.period = props.period;
     this.fromSubsidiary = props.fromSubsidiary;
     this.toSubsidiary = props.toSubsidiary;
@@ -1102,11 +1017,10 @@ export class BudgetExchangeRate extends SoapTypes.Base {
   }
 }
 
-export class Status extends SoapTypes.Base {
+export class Status {
   statusDetail?: StatusDetail[];
   isSuccess?: boolean;
   constructor(props: Status) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.statusDetail = props.statusDetail;
     this.isSuccess = props.isSuccess;
   }
@@ -1114,11 +1028,11 @@ export class Status extends SoapTypes.Base {
 
 export class SearchDateCustomField extends SearchCustomField {
   predefinedSearchValue?: PlatformCoreTypes.SearchDate;
-  searchValue?: SoapTypes.Dateish;
-  searchValue2?: SoapTypes.Dateish;
+  searchValue?: string;
+  searchValue2?: string;
   operator?: PlatformCoreTypes.SearchDateFieldOperator;
   constructor(props: SearchDateCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.predefinedSearchValue = props.predefinedSearchValue;
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
@@ -1130,7 +1044,7 @@ export class SearchMultiSelectCustomField extends SearchCustomField {
   searchValue?: ListOrRecordRef[];
   operator?: PlatformCoreTypes.SearchMultiSelectFieldOperator;
   constructor(props: SearchMultiSelectCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
@@ -1139,12 +1053,12 @@ export class SearchMultiSelectCustomField extends SearchCustomField {
 export class StringDimensionRef extends DimensionRef {
   value: string;
   constructor(props: StringDimensionRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
 
-export class GetPostingTransactionSummaryResult extends SoapTypes.Base {
+export class GetPostingTransactionSummaryResult {
   status: Status;
   totalRecords?: number;
   pageSize?: number;
@@ -1153,7 +1067,6 @@ export class GetPostingTransactionSummaryResult extends SoapTypes.Base {
   operationId?: string;
   postingTransactionSummaryList?: PostingTransactionSummaryList;
   constructor(props: GetPostingTransactionSummaryResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.totalRecords = props.totalRecords;
     this.pageSize = props.pageSize;
@@ -1167,7 +1080,7 @@ export class GetPostingTransactionSummaryResult extends SoapTypes.Base {
 export class SelectDimensionRef extends DimensionRef {
   value: ListOrRecordRef;
   constructor(props: SelectDimensionRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.value = props.value;
   }
 }
@@ -1175,43 +1088,39 @@ export class SelectDimensionRef extends DimensionRef {
 export class SearchColumnStringCustomField extends SearchColumnCustomField {
   searchValue?: string;
   constructor(props: SearchColumnStringCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class GetAllRecord extends SoapTypes.Base {
+export class GetAllRecord {
   recordType?: PlatformCoreTypes.GetAllRecordType;
   constructor(props: GetAllRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.recordType = props.recordType;
   }
 }
 
-export class SearchStringField extends SoapTypes.Base {
+export class SearchStringField {
   searchValue?: string;
   operator?: PlatformCoreTypes.SearchStringFieldOperator;
   constructor(props: SearchStringField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchValue = props.searchValue;
     this.operator = props.operator;
   }
 }
 
-export class InitializeRefList extends SoapTypes.Base {
+export class InitializeRefList {
   initializeRef?: InitializeRef[];
   constructor(props: InitializeRefList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.initializeRef = props.initializeRef;
   }
 }
 
-export class ChangePassword extends SoapTypes.Base {
+export class ChangePassword {
   currentPassword: string;
   newPassword?: string;
   newPassword2?: string;
   constructor(props: ChangePassword) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.currentPassword = props.currentPassword;
     this.newPassword = props.newPassword;
     this.newPassword2 = props.newPassword2;
@@ -1221,26 +1130,24 @@ export class ChangePassword extends SoapTypes.Base {
 export class SearchColumnEnumMultiSelectCustomField extends SearchColumnCustomField {
   searchValue?: string[];
   constructor(props: SearchColumnEnumMultiSelectCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class UpdateInviteeStatusReference extends SoapTypes.Base {
+export class UpdateInviteeStatusReference {
   eventId: RecordRef;
   responseCode: PlatformCoreTypes.CalendarEventAttendeeResponse;
   constructor(props: UpdateInviteeStatusReference) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.eventId = props.eventId;
     this.responseCode = props.responseCode;
   }
 }
 
-export class GetServerTimeResult extends SoapTypes.Base {
+export class GetServerTimeResult {
   status: Status;
-  serverTime: SoapTypes.Dateish;
+  serverTime: string;
   constructor(props: GetServerTimeResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.serverTime = props.serverTime;
   }
@@ -1252,7 +1159,7 @@ export class CustomRecordRef extends BaseRef {
   typeId?: string;
   scriptId?: string;
   constructor(props: CustomRecordRef) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.internalId = props.internalId;
     this.externalId = props.externalId;
     this.typeId = props.typeId;
@@ -1260,21 +1167,19 @@ export class CustomRecordRef extends BaseRef {
   }
 }
 
-export class BudgetExchangeRateList extends SoapTypes.Base {
+export class BudgetExchangeRateList {
   budgetExchangeRate: BudgetExchangeRate[];
   constructor(props: BudgetExchangeRateList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.budgetExchangeRate = props.budgetExchangeRate;
   }
 }
 
-export class InitializeRecord extends SoapTypes.Base {
+export class InitializeRecord {
   type: PlatformCoreTypes.InitializeType;
   reference?: InitializeRef;
   auxReference?: InitializeAuxRef;
   referenceList?: InitializeRefList;
   constructor(props: InitializeRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.type = props.type;
     this.reference = props.reference;
     this.auxReference = props.auxReference;
@@ -1285,7 +1190,7 @@ export class InitializeRecord extends SoapTypes.Base {
 export class SearchColumnEnumSelectField extends SearchColumnField {
   searchValue?: string;
   constructor(props: SearchColumnEnumSelectField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
@@ -1293,16 +1198,15 @@ export class SearchColumnEnumSelectField extends SearchColumnField {
 export class SearchColumnDoubleField extends SearchColumnField {
   searchValue?: number;
   constructor(props: SearchColumnDoubleField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class GetBudgetExchangeRateResult extends SoapTypes.Base {
+export class GetBudgetExchangeRateResult {
   status: Status;
   budgetExchangeRateList?: BudgetExchangeRateList;
   constructor(props: GetBudgetExchangeRateResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.budgetExchangeRateList = props.budgetExchangeRateList;
   }
@@ -1313,45 +1217,42 @@ export class SearchLongCustomField extends SearchCustomField {
   searchValue2?: number;
   operator?: PlatformCoreTypes.SearchLongFieldOperator;
   constructor(props: SearchLongCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
     this.searchValue2 = props.searchValue2;
     this.operator = props.operator;
   }
 }
 
-export class TokenPassportSignature extends SoapTypes.Base {
+export class TokenPassportSignature {
   value?: string;
   algorithm: string;
   constructor(props: TokenPassportSignature) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.value = props.value;
     this.algorithm = props.algorithm;
   }
 }
 
-export class ItemAvailabilityFilter extends SoapTypes.Base {
+export class ItemAvailabilityFilter {
   item: RecordRefList;
-  lastQtyAvailableChange?: SoapTypes.Dateish;
+  lastQtyAvailableChange?: string;
   constructor(props: ItemAvailabilityFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.lastQtyAvailableChange = props.lastQtyAvailableChange;
   }
 }
 
 export class SearchColumnDateField extends SearchColumnField {
-  searchValue?: SoapTypes.Dateish;
+  searchValue?: string;
   constructor(props: SearchColumnDateField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.searchValue = props.searchValue;
   }
 }
 
-export class SearchColumnCustomFieldList extends SoapTypes.Base {
+export class SearchColumnCustomFieldList {
   customField?: SearchColumnCustomField[];
   constructor(props: SearchColumnCustomFieldList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customField = props.customField;
   }
 }

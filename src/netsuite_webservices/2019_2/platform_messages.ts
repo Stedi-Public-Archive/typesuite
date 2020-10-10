@@ -1,186 +1,160 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 
-const mappingsName = "com_netsuite_webservices_platform_messages_2019_2";
-
-export class SearchPreferences extends SoapTypes.Base {
+export class SearchPreferences {
   bodyFieldsOnly?: boolean;
   returnSearchColumns?: boolean;
   pageSize?: number;
   constructor(props: SearchPreferences) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.bodyFieldsOnly = props.bodyFieldsOnly;
     this.returnSearchColumns = props.returnSearchColumns;
     this.pageSize = props.pageSize;
   }
 }
 
-export class DeleteListRequest extends SoapTypes.Base {
+export class DeleteListRequest {
   baseRef: PlatformCore.BaseRef[];
   deletionReason?: PlatformCore.DeletionReason;
   constructor(props: DeleteListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
     this.deletionReason = props.deletionReason;
   }
 }
 
-export class MapSsoRequest extends SoapTypes.Base {
+export class MapSsoRequest {
   ssoCredentials: PlatformCore.SsoCredentials;
   constructor(props: MapSsoRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.ssoCredentials = props.ssoCredentials;
   }
 }
 
-export class DocumentInfo extends SoapTypes.Base {
+export class DocumentInfo {
   nsId: string;
   constructor(props: DocumentInfo) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.nsId = props.nsId;
   }
 }
 
-export class AsyncUpsertListRequest extends SoapTypes.Base {
+export class AsyncUpsertListRequest {
   record: PlatformCore.Record[];
   constructor(props: AsyncUpsertListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class AttachRequest extends SoapTypes.Base {
+export class AttachRequest {
   attachReference: PlatformCore.AttachReference;
   constructor(props: AttachRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.attachReference = props.attachReference;
   }
 }
 
-export class DetachResponse extends SoapTypes.Base {
+export class DetachResponse {
   writeResponse: WriteResponse;
   constructor(props: DetachResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class UpdateInviteeStatusListRequest extends SoapTypes.Base {
+export class UpdateInviteeStatusListRequest {
   updateInviteeStatusReference: PlatformCore.UpdateInviteeStatusReference[];
   constructor(props: UpdateInviteeStatusListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.updateInviteeStatusReference = props.updateInviteeStatusReference;
   }
 }
 
-export class AsyncGetListRequest extends SoapTypes.Base {
+export class AsyncGetListRequest {
   baseRef: PlatformCore.BaseRef[];
   constructor(props: AsyncGetListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
   }
 }
 
-export class UpdateResponse extends SoapTypes.Base {
+export class UpdateResponse {
   writeResponse: WriteResponse;
   constructor(props: UpdateResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class GetSavedSearchResponse extends SoapTypes.Base {
+export class GetSavedSearchResponse {
   getSavedSearchResult: PlatformCore.GetSavedSearchResult;
   constructor(props: GetSavedSearchResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getSavedSearchResult = props.getSavedSearchResult;
   }
 }
 
-export class InitializeResponse extends SoapTypes.Base {
+export class InitializeResponse {
   readResponse: ReadResponse;
   constructor(props: InitializeResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.readResponse = props.readResponse;
   }
 }
 
-export class GetPostingTransactionSummaryResponse extends SoapTypes.Base {
+export class GetPostingTransactionSummaryResponse {
   getPostingTransactionSummaryResult: PlatformCore.GetPostingTransactionSummaryResult;
   constructor(props: GetPostingTransactionSummaryResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-    this.getPostingTransactionSummaryResult = props.getPostingTransactionSummaryResult;
+    this.getPostingTransactionSummaryResult =
+      props.getPostingTransactionSummaryResult;
   }
 }
 
-export class DeleteResponse extends SoapTypes.Base {
+export class DeleteResponse {
   writeResponse: WriteResponse;
   constructor(props: DeleteResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class AsyncResult extends SoapTypes.Base {
-  constructor(props: AsyncResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class AsyncResult {}
 
 export class AsyncAddListResult extends AsyncResult {
   writeResponseList: WriteResponseList;
   constructor(props: AsyncAddListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class GetServerTimeResponse extends SoapTypes.Base {
+export class GetServerTimeResponse {
   getServerTimeResult: PlatformCore.GetServerTimeResult;
   constructor(props: GetServerTimeResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getServerTimeResult = props.getServerTimeResult;
   }
 }
 
-export class GetRequest extends SoapTypes.Base {
+export class GetRequest {
   baseRef: PlatformCore.BaseRef;
   constructor(props: GetRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
   }
 }
 
-export class InitializeListResponse extends SoapTypes.Base {
+export class InitializeListResponse {
   readResponseList: ReadResponseList;
   constructor(props: InitializeListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.readResponseList = props.readResponseList;
   }
 }
 
-export class CheckAsyncStatusRequest extends SoapTypes.Base {
+export class CheckAsyncStatusRequest {
   jobId: string;
   constructor(props: CheckAsyncStatusRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.jobId = props.jobId;
   }
 }
 
-export class WriteResponse extends SoapTypes.Base {
+export class WriteResponse {
   status: PlatformCore.Status;
   baseRef?: PlatformCore.BaseRef;
   constructor(props: WriteResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.baseRef = props.baseRef;
   }
 }
 
-export class GetResponse extends SoapTypes.Base {
+export class GetResponse {
   readResponse: ReadResponse;
   constructor(props: GetResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.readResponse = props.readResponse;
   }
 }
@@ -188,49 +162,44 @@ export class GetResponse extends SoapTypes.Base {
 export class AsyncUpsertListResult extends AsyncResult {
   writeResponseList: WriteResponseList;
   constructor(props: AsyncUpsertListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class AddRequest extends SoapTypes.Base {
+export class AddRequest {
   record: PlatformCore.Record;
   constructor(props: AddRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class AsyncDeleteListRequest extends SoapTypes.Base {
+export class AsyncDeleteListRequest {
   baseRef: PlatformCore.BaseRef[];
   deletionReason?: PlatformCore.DeletionReason;
   constructor(props: AsyncDeleteListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
     this.deletionReason = props.deletionReason;
   }
 }
 
-export class SearchRequest extends SoapTypes.Base {
+export class SearchRequest {
   searchRecord: PlatformCore.SearchRecord;
   constructor(props: SearchRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchRecord = props.searchRecord;
   }
 }
 
-export class LogoutResponse extends SoapTypes.Base {
+export class LogoutResponse {
   sessionResponse: SessionResponse;
   constructor(props: LogoutResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }
 
-export class GetSelectValueResponse extends SoapTypes.Base {
+export class GetSelectValueResponse {
   getSelectValueResult: PlatformCore.GetSelectValueResult;
   constructor(props: GetSelectValueResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getSelectValueResult = props.getSelectValueResult;
   }
 }
@@ -238,102 +207,91 @@ export class GetSelectValueResponse extends SoapTypes.Base {
 export class AsyncSearchResult extends AsyncResult {
   searchResult: PlatformCore.SearchResult;
   constructor(props: AsyncSearchResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.searchResult = props.searchResult;
   }
 }
 
-export class UpdateInviteeStatusRequest extends SoapTypes.Base {
+export class UpdateInviteeStatusRequest {
   updateInviteeStatusReference: PlatformCore.UpdateInviteeStatusReference;
   constructor(props: UpdateInviteeStatusRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.updateInviteeStatusReference = props.updateInviteeStatusReference;
   }
 }
 
-export class SsoLoginResponse extends SoapTypes.Base {
+export class SsoLoginResponse {
   sessionResponse: SessionResponse;
   constructor(props: SsoLoginResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }
 
-export class AsyncInitializeListRequest extends SoapTypes.Base {
+export class AsyncInitializeListRequest {
   initializeRecord: PlatformCore.InitializeRecord[];
   constructor(props: AsyncInitializeListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.initializeRecord = props.initializeRecord;
   }
 }
 
-export class GetCurrencyRateResponse extends SoapTypes.Base {
+export class GetCurrencyRateResponse {
   getCurrencyRateResult: PlatformCore.GetCurrencyRateResult;
   constructor(props: GetCurrencyRateResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getCurrencyRateResult = props.getCurrencyRateResult;
   }
 }
 
-export class GetSavedSearchRequest extends SoapTypes.Base {
+export class GetSavedSearchRequest {
   record: PlatformCore.GetSavedSearchRecord;
   constructor(props: GetSavedSearchRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class SessionResponse extends SoapTypes.Base {
+export class SessionResponse {
   status: PlatformCore.Status;
   userId?: PlatformCore.RecordRef;
   wsRoleList?: PlatformCore.WsRoleList;
   constructor(props: SessionResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.userId = props.userId;
     this.wsRoleList = props.wsRoleList;
   }
 }
 
-export class AddListResponse extends SoapTypes.Base {
+export class AddListResponse {
   writeResponseList: WriteResponseList;
   constructor(props: AddListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class LoginRequest extends SoapTypes.Base {
+export class LoginRequest {
   passport: PlatformCore.Passport;
   constructor(props: LoginRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.passport = props.passport;
   }
 }
 
-export class UpdateRequest extends SoapTypes.Base {
+export class UpdateRequest {
   record: PlatformCore.Record;
   constructor(props: UpdateRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class GetAsyncResultRequest extends SoapTypes.Base {
+export class GetAsyncResultRequest {
   jobId: string;
   pageIndex: number;
   constructor(props: GetAsyncResultRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.jobId = props.jobId;
     this.pageIndex = props.pageIndex;
   }
 }
 
-export class ReadResponse extends SoapTypes.Base {
+export class ReadResponse {
   status: PlatformCore.Status;
   record?: PlatformCore.Record;
   constructor(props: ReadResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.record = props.record;
   }
@@ -342,171 +300,151 @@ export class ReadResponse extends SoapTypes.Base {
 export class AsyncDeleteListResult extends AsyncResult {
   writeResponseList: WriteResponseList;
   constructor(props: AsyncDeleteListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class SsoLoginRequest extends SoapTypes.Base {
+export class SsoLoginRequest {
   ssoPassport: PlatformCore.SsoPassport;
   constructor(props: SsoLoginRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.ssoPassport = props.ssoPassport;
   }
 }
 
-export class ApplicationInfo extends SoapTypes.Base {
+export class ApplicationInfo {
   applicationId: string;
   constructor(props: ApplicationInfo) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.applicationId = props.applicationId;
   }
 }
 
-export class PartnerInfo extends SoapTypes.Base {
+export class PartnerInfo {
   partnerId?: string;
   constructor(props: PartnerInfo) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partnerId = props.partnerId;
   }
 }
 
-export class AddListRequest extends SoapTypes.Base {
+export class AddListRequest {
   record: PlatformCore.Record[];
   constructor(props: AddListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class UpdateListRequest extends SoapTypes.Base {
+export class UpdateListRequest {
   record: PlatformCore.Record[];
   constructor(props: UpdateListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class UpdateListResponse extends SoapTypes.Base {
+export class UpdateListResponse {
   writeResponseList: WriteResponseList;
   constructor(props: UpdateListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class GetCustomizationIdResponse extends SoapTypes.Base {
+export class GetCustomizationIdResponse {
   getCustomizationIdResult: PlatformCore.GetCustomizationIdResult;
   constructor(props: GetCustomizationIdResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getCustomizationIdResult = props.getCustomizationIdResult;
   }
 }
 
-export class SearchMoreWithIdResponse extends SoapTypes.Base {
+export class SearchMoreWithIdResponse {
   searchResult: PlatformCore.SearchResult;
   constructor(props: SearchMoreWithIdResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchResult = props.searchResult;
   }
 }
 
-export class ChangeEmailResponse extends SoapTypes.Base {
+export class ChangeEmailResponse {
   sessionResponse: SessionResponse;
   constructor(props: ChangeEmailResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }
 
-export class GetDeletedResponse extends SoapTypes.Base {
+export class GetDeletedResponse {
   getDeletedResult: PlatformCore.GetDeletedResult;
   constructor(props: GetDeletedResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getDeletedResult = props.getDeletedResult;
   }
 }
 
-export class GetItemAvailabilityResponse extends SoapTypes.Base {
+export class GetItemAvailabilityResponse {
   getItemAvailabilityResult: PlatformCore.GetItemAvailabilityResult;
   constructor(props: GetItemAvailabilityResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getItemAvailabilityResult = props.getItemAvailabilityResult;
   }
 }
 
-export class GetItemAvailabilityRequest extends SoapTypes.Base {
+export class GetItemAvailabilityRequest {
   itemAvailabilityFilter: PlatformCore.ItemAvailabilityFilter;
   constructor(props: GetItemAvailabilityRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemAvailabilityFilter = props.itemAvailabilityFilter;
   }
 }
 
-export class GetDataCenterUrlsRequest extends SoapTypes.Base {
+export class GetDataCenterUrlsRequest {
   account: string;
   constructor(props: GetDataCenterUrlsRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.account = props.account;
   }
 }
 
-export class AsyncStatusResponse extends SoapTypes.Base {
+export class AsyncStatusResponse {
   asyncStatusResult: PlatformCore.AsyncStatusResult;
   constructor(props: AsyncStatusResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.asyncStatusResult = props.asyncStatusResult;
   }
 }
 
-export class GetCurrencyRateRequest extends SoapTypes.Base {
+export class GetCurrencyRateRequest {
   currencyRateFilter: PlatformCore.CurrencyRateFilter;
   constructor(props: GetCurrencyRateRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.currencyRateFilter = props.currencyRateFilter;
   }
 }
 
-export class GetCustomizationIdRequest extends SoapTypes.Base {
+export class GetCustomizationIdRequest {
   customizationType: PlatformCore.CustomizationType;
   includeInactives: boolean;
   constructor(props: GetCustomizationIdRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customizationType = props.customizationType;
     this.includeInactives = props.includeInactives;
   }
 }
 
-export class GetSelectValueRequest extends SoapTypes.Base {
+export class GetSelectValueRequest {
   fieldDescription: PlatformCore.GetSelectValueFieldDescription;
   pageIndex: number;
   constructor(props: GetSelectValueRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fieldDescription = props.fieldDescription;
     this.pageIndex = props.pageIndex;
   }
 }
 
-export class SearchNextResponse extends SoapTypes.Base {
+export class SearchNextResponse {
   searchResult: PlatformCore.SearchResult;
   constructor(props: SearchNextResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchResult = props.searchResult;
   }
 }
 
-export class AsyncSearchRequest extends SoapTypes.Base {
+export class AsyncSearchRequest {
   searchRecord: PlatformCore.SearchRecord;
   constructor(props: AsyncSearchRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchRecord = props.searchRecord;
   }
 }
 
-export class GetListRequest extends SoapTypes.Base {
+export class GetListRequest {
   baseRef: PlatformCore.BaseRef[];
   constructor(props: GetListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
   }
 }
@@ -514,103 +452,88 @@ export class GetListRequest extends SoapTypes.Base {
 export class AsyncUpdateListResult extends AsyncResult {
   writeResponseList: WriteResponseList;
   constructor(props: AsyncUpdateListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class AsyncUpdateListRequest extends SoapTypes.Base {
+export class AsyncUpdateListRequest {
   record: PlatformCore.Record[];
   constructor(props: AsyncUpdateListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class ChangeEmailRequest extends SoapTypes.Base {
+export class ChangeEmailRequest {
   changeEmail: PlatformCore.ChangeEmail;
   constructor(props: ChangeEmailRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.changeEmail = props.changeEmail;
   }
 }
 
-export class GetBudgetExchangeRateRequest extends SoapTypes.Base {
+export class GetBudgetExchangeRateRequest {
   budgetExchangeRateFilter: PlatformCore.BudgetExchangeRateFilter;
   constructor(props: GetBudgetExchangeRateRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.budgetExchangeRateFilter = props.budgetExchangeRateFilter;
   }
 }
 
-export class SearchMoreResponse extends SoapTypes.Base {
+export class SearchMoreResponse {
   searchResult: PlatformCore.SearchResult;
   constructor(props: SearchMoreResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchResult = props.searchResult;
   }
 }
 
-export class GetAsyncResultResponse extends SoapTypes.Base {
+export class GetAsyncResultResponse {
   asyncResult: AsyncResult;
   constructor(props: GetAsyncResultResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.asyncResult = props.asyncResult;
   }
 }
 
-export class SearchMoreWithIdRequest extends SoapTypes.Base {
+export class SearchMoreWithIdRequest {
   searchId: string;
   pageIndex: number;
   constructor(props: SearchMoreWithIdRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchId = props.searchId;
     this.pageIndex = props.pageIndex;
   }
 }
 
-export class SearchNextRequest extends SoapTypes.Base {
-  constructor(props: SearchNextRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class SearchNextRequest {}
 
-export class DetachRequest extends SoapTypes.Base {
+export class DetachRequest {
   detachReference: PlatformCore.DetachReference;
   constructor(props: DetachRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.detachReference = props.detachReference;
   }
 }
 
-export class SearchResponse extends SoapTypes.Base {
+export class SearchResponse {
   searchResult: PlatformCore.SearchResult;
   constructor(props: SearchResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.searchResult = props.searchResult;
   }
 }
 
-export class GetAllResponse extends SoapTypes.Base {
+export class GetAllResponse {
   getAllResult: PlatformCore.GetAllResult;
   constructor(props: GetAllResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getAllResult = props.getAllResult;
   }
 }
 
-export class AddResponse extends SoapTypes.Base {
+export class AddResponse {
   writeResponse: WriteResponse;
   constructor(props: AddResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class GetDataCenterUrlsResponse extends SoapTypes.Base {
+export class GetDataCenterUrlsResponse {
   getDataCenterUrlsResult: PlatformCore.GetDataCenterUrlsResult;
   constructor(props: GetDataCenterUrlsResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getDataCenterUrlsResult = props.getDataCenterUrlsResult;
   }
 }
@@ -618,58 +541,52 @@ export class GetDataCenterUrlsResponse extends SoapTypes.Base {
 export class AsyncGetListResult extends AsyncResult {
   readResponseList: ReadResponseList;
   constructor(props: AsyncGetListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.readResponseList = props.readResponseList;
   }
 }
 
-export class UpsertRequest extends SoapTypes.Base {
+export class UpsertRequest {
   record: PlatformCore.Record;
   constructor(props: UpsertRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class GetAllRequest extends SoapTypes.Base {
+export class GetAllRequest {
   record: PlatformCore.GetAllRecord;
   constructor(props: GetAllRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class MapSsoResponse extends SoapTypes.Base {
+export class MapSsoResponse {
   sessionResponse: SessionResponse;
   constructor(props: MapSsoResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }
 
-export class SearchMoreRequest extends SoapTypes.Base {
+export class SearchMoreRequest {
   pageIndex: number;
   constructor(props: SearchMoreRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.pageIndex = props.pageIndex;
   }
 }
 
-export class GetDeletedRequest extends SoapTypes.Base {
+export class GetDeletedRequest {
   getDeletedFilter: PlatformCore.GetDeletedFilter;
   pageIndex: number;
   constructor(props: GetDeletedRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getDeletedFilter = props.getDeletedFilter;
     this.pageIndex = props.pageIndex;
   }
 }
 
-export class DeleteRequest extends SoapTypes.Base {
+export class DeleteRequest {
   baseRef: PlatformCore.BaseRef;
   deletionReason?: PlatformCore.DeletionReason;
   constructor(props: DeleteRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.baseRef = props.baseRef;
     this.deletionReason = props.deletionReason;
   }
@@ -678,82 +595,67 @@ export class DeleteRequest extends SoapTypes.Base {
 export class AsyncInitializeListResult extends AsyncResult {
   readResponseList: ReadResponseList;
   constructor(props: AsyncInitializeListResult) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.readResponseList = props.readResponseList;
   }
 }
 
-export class ChangePasswordRequest extends SoapTypes.Base {
+export class ChangePasswordRequest {
   changePassword: PlatformCore.ChangePassword;
   constructor(props: ChangePasswordRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.changePassword = props.changePassword;
   }
 }
 
-export class WriteResponseList extends SoapTypes.Base {
+export class WriteResponseList {
   status?: PlatformCore.Status;
   writeResponse: WriteResponse[];
   constructor(props: WriteResponseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class GetBudgetExchangeRateResponse extends SoapTypes.Base {
+export class GetBudgetExchangeRateResponse {
   getBudgetExchangeRateResult: PlatformCore.GetBudgetExchangeRateResult;
   constructor(props: GetBudgetExchangeRateResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.getBudgetExchangeRateResult = props.getBudgetExchangeRateResult;
   }
 }
 
-export class ReadResponseList extends SoapTypes.Base {
+export class ReadResponseList {
   status?: PlatformCore.Status;
   readResponse?: ReadResponse[];
   constructor(props: ReadResponseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.status = props.status;
     this.readResponse = props.readResponse;
   }
 }
 
-export class UpsertResponse extends SoapTypes.Base {
+export class UpsertResponse {
   writeResponse: WriteResponse;
   constructor(props: UpsertResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class GetServerTimeRequest extends SoapTypes.Base {
-  constructor(props: GetServerTimeRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class GetServerTimeRequest {}
 
-export class LogoutRequest extends SoapTypes.Base {
-  constructor(props: LogoutRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-  }
-}
+export class LogoutRequest {}
 
-export class UpsertListRequest extends SoapTypes.Base {
+export class UpsertListRequest {
   record: PlatformCore.Record[];
   constructor(props: UpsertListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class GetPostingTransactionSummaryRequest extends SoapTypes.Base {
+export class GetPostingTransactionSummaryRequest {
   fields?: PlatformCore.PostingTransactionSummaryField;
   filters?: PlatformCore.PostingTransactionSummaryFilter;
   pageIndex: number;
   operationId?: string;
   constructor(props: GetPostingTransactionSummaryRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fields = props.fields;
     this.filters = props.filters;
     this.pageIndex = props.pageIndex;
@@ -761,106 +663,97 @@ export class GetPostingTransactionSummaryRequest extends SoapTypes.Base {
   }
 }
 
-export class UpsertListResponse extends SoapTypes.Base {
+export class UpsertListResponse {
   writeResponseList: WriteResponseList;
   constructor(props: UpsertListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class ChangePasswordResponse extends SoapTypes.Base {
+export class ChangePasswordResponse {
   sessionResponse: SessionResponse;
   constructor(props: ChangePasswordResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }
 
-export class DeleteListResponse extends SoapTypes.Base {
+export class DeleteListResponse {
   writeResponseList: WriteResponseList;
   constructor(props: DeleteListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class UpdateInviteeStatusResponse extends SoapTypes.Base {
+export class UpdateInviteeStatusResponse {
   writeResponse: WriteResponse;
   constructor(props: UpdateInviteeStatusResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class AsyncAddListRequest extends SoapTypes.Base {
+export class AsyncAddListRequest {
   record: PlatformCore.Record[];
   constructor(props: AsyncAddListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.record = props.record;
   }
 }
 
-export class InitializeRequest extends SoapTypes.Base {
+export class InitializeRequest {
   initializeRecord: PlatformCore.InitializeRecord;
   constructor(props: InitializeRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.initializeRecord = props.initializeRecord;
   }
 }
 
-export class InitializeListRequest extends SoapTypes.Base {
+export class InitializeListRequest {
   initializeRecord: PlatformCore.InitializeRecord[];
   constructor(props: InitializeListRequest) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.initializeRecord = props.initializeRecord;
   }
 }
 
-export class Preferences extends SoapTypes.Base {
+export class Preferences {
   warningAsError?: boolean;
   disableMandatoryCustomFieldValidation?: boolean;
   disableSystemNotesForCustomFields?: boolean;
   ignoreReadOnlyFields?: boolean;
   runServerSuiteScriptAndTriggerWorkflows?: boolean;
   constructor(props: Preferences) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.warningAsError = props.warningAsError;
-    this.disableMandatoryCustomFieldValidation = props.disableMandatoryCustomFieldValidation;
-    this.disableSystemNotesForCustomFields = props.disableSystemNotesForCustomFields;
+    this.disableMandatoryCustomFieldValidation =
+      props.disableMandatoryCustomFieldValidation;
+    this.disableSystemNotesForCustomFields =
+      props.disableSystemNotesForCustomFields;
     this.ignoreReadOnlyFields = props.ignoreReadOnlyFields;
-    this.runServerSuiteScriptAndTriggerWorkflows = props.runServerSuiteScriptAndTriggerWorkflows;
+    this.runServerSuiteScriptAndTriggerWorkflows =
+      props.runServerSuiteScriptAndTriggerWorkflows;
   }
 }
 
-export class GetListResponse extends SoapTypes.Base {
+export class GetListResponse {
   readResponseList: ReadResponseList;
   constructor(props: GetListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.readResponseList = props.readResponseList;
   }
 }
 
-export class AttachResponse extends SoapTypes.Base {
+export class AttachResponse {
   writeResponse: WriteResponse;
   constructor(props: AttachResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponse = props.writeResponse;
   }
 }
 
-export class UpdateInviteeStatusListResponse extends SoapTypes.Base {
+export class UpdateInviteeStatusListResponse {
   writeResponseList: WriteResponseList;
   constructor(props: UpdateInviteeStatusListResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.writeResponseList = props.writeResponseList;
   }
 }
 
-export class LoginResponse extends SoapTypes.Base {
+export class LoginResponse {
   sessionResponse: SessionResponse;
   constructor(props: LoginResponse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sessionResponse = props.sessionResponse;
   }
 }

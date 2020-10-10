@@ -1,17 +1,13 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as TransactionsDemandplanningTypes from "./transactions_demandplanning_types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 
-const mappingsName = "com_netsuite_webservices_transactions_demandplanning_2019_2";
-
-export class DemandPlan extends SoapTypes.Base {
-  startDate: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+export class DemandPlan {
+  startDate: string;
+  endDate?: string;
   calculatedQuantity?: number;
   periodDemandPlanList?: PeriodDemandPlanList;
   constructor(props: DemandPlan) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.startDate = props.startDate;
     this.endDate = props.endDate;
     this.calculatedQuantity = props.calculatedQuantity;
@@ -25,7 +21,7 @@ export class ItemDemandPlanSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ItemDemandPlanSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -42,15 +38,15 @@ export class ItemDemandPlan extends PlatformCore.Record {
   memo?: string;
   year?: number;
   month?: TransactionsDemandplanningTypes.DemandPlanMonth;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   demandPlanCalendarType?: TransactionsDemandplanningTypes.DemandPlanCalendarType;
   demandPlanMatrix?: DemandPlanMatrix;
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
   constructor(props: ItemDemandPlan) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;
     this.location = props.location;
@@ -76,7 +72,7 @@ export class ItemSupplyPlanSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ItemSupplyPlanSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.locationJoin = props.locationJoin;
@@ -85,16 +81,15 @@ export class ItemSupplyPlanSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class ItemSupplyPlanOrder extends SoapTypes.Base {
+export class ItemSupplyPlanOrder {
   orderLineId?: number;
-  orderDate?: SoapTypes.Dateish;
-  receiptDate?: SoapTypes.Dateish;
+  orderDate?: string;
+  receiptDate?: string;
   sourceLocation?: PlatformCore.RecordRef;
   quantity?: number;
   orderCreated?: boolean;
   orderType?: TransactionsDemandplanningTypes.ItemSupplyPlanOrderType;
   constructor(props: ItemSupplyPlanOrder) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.orderLineId = props.orderLineId;
     this.orderDate = props.orderDate;
     this.receiptDate = props.receiptDate;
@@ -105,11 +100,10 @@ export class ItemSupplyPlanOrder extends SoapTypes.Base {
   }
 }
 
-export class PeriodDemandPlan extends SoapTypes.Base {
+export class PeriodDemandPlan {
   quantity: number;
   dayOfTheWeek?: TransactionsDemandplanningTypes.DayOfTheWeek;
   constructor(props: PeriodDemandPlan) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.quantity = props.quantity;
     this.dayOfTheWeek = props.dayOfTheWeek;
   }
@@ -123,7 +117,7 @@ export class ItemDemandPlanSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ItemDemandPlanSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.lastAlternateSourceItemJoin = props.lastAlternateSourceItemJoin;
@@ -141,7 +135,7 @@ export class ItemDemandPlanSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ItemDemandPlanSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.lastAlternateSourceItemJoin = props.lastAlternateSourceItemJoin;
@@ -158,7 +152,7 @@ export class ItemSupplyPlanSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ItemSupplyPlanSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.locationJoin = props.locationJoin;
@@ -167,20 +161,18 @@ export class ItemSupplyPlanSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class DemandPlanMatrix extends SoapTypes.Base {
+export class DemandPlanMatrix {
   demandPlan?: DemandPlan[];
   replaceAll?: boolean;
   constructor(props: DemandPlanMatrix) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.demandPlan = props.demandPlan;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PeriodDemandPlanList extends SoapTypes.Base {
+export class PeriodDemandPlanList {
   periodDemandPlan?: PeriodDemandPlan[];
   constructor(props: PeriodDemandPlanList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.periodDemandPlan = props.periodDemandPlan;
   }
 }
@@ -197,7 +189,7 @@ export class ItemSupplyPlan extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ItemSupplyPlan) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;
     this.location = props.location;
@@ -217,7 +209,7 @@ export class ItemSupplyPlanSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ItemSupplyPlanSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -225,11 +217,10 @@ export class ItemSupplyPlanSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class ItemSupplyPlanOrderList extends SoapTypes.Base {
+export class ItemSupplyPlanOrderList {
   itemSupplyPlanOrder?: ItemSupplyPlanOrder[];
   replaceAll?: boolean;
   constructor(props: ItemSupplyPlanOrderList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemSupplyPlanOrder = props.itemSupplyPlanOrder;
     this.replaceAll = props.replaceAll;
   }

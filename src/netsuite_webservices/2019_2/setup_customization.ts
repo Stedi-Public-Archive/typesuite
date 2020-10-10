@@ -1,17 +1,13 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as SetupCustomizationTypes from "./setup_customization_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 
-const mappingsName = "com_netsuite_webservices_setup_customization_2019_2";
-
-export class CustomRecordTypeTabs extends SoapTypes.Base {
+export class CustomRecordTypeTabs {
   tabTitle?: string;
   tabParent?: PlatformCore.RecordRef;
   tabTitleLanguageValueList?: LanguageValueList;
   constructor(props: CustomRecordTypeTabs) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.tabTitle = props.tabTitle;
     this.tabParent = props.tabParent;
     this.tabTitleLanguageValueList = props.tabTitleLanguageValueList;
@@ -24,8 +20,8 @@ export class CustomRecord extends PlatformCore.Record {
   isInactive?: boolean;
   parent?: PlatformCore.RecordRef;
   disclaimer?: string;
-  created?: SoapTypes.Dateish;
-  lastModified?: SoapTypes.Dateish;
+  created?: string;
+  lastModified?: string;
   name?: string;
   autoName?: boolean;
   altName?: string;
@@ -64,7 +60,7 @@ export class CustomRecord extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomRecord) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customRecordId = props.customRecordId;
     this.customForm = props.customForm;
     this.isInactive = props.isInactive;
@@ -112,11 +108,10 @@ export class CustomRecord extends PlatformCore.Record {
   }
 }
 
-export class CustomRecordTypeTabsList extends SoapTypes.Base {
+export class CustomRecordTypeTabsList {
   tabs?: CustomRecordTypeTabs[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeTabsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.tabs = props.tabs;
     this.replaceAll = props.replaceAll;
   }
@@ -126,7 +121,7 @@ export class CustomFieldType extends PlatformCore.Record {
   fieldType?: SetupCustomizationTypes.CustomizationFieldType;
   scriptId?: string;
   constructor(props: CustomFieldType) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.fieldType = props.fieldType;
     this.scriptId = props.scriptId;
   }
@@ -171,7 +166,7 @@ export class OtherCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: OtherCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.recType = props.recType;
     this.label = props.label;
     this.owner = props.owner;
@@ -212,7 +207,7 @@ export class OtherCustomField extends CustomFieldType {
   }
 }
 
-export class TransactionColumnCustomFieldFilter extends SoapTypes.Base {
+export class TransactionColumnCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -220,7 +215,6 @@ export class TransactionColumnCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: TransactionColumnCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -230,7 +224,7 @@ export class TransactionColumnCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomSaleItem extends SoapTypes.Base {
+export class CustomSaleItem {
   item?: PlatformCore.RecordRef;
   line?: number;
   description?: string;
@@ -255,8 +249,8 @@ export class CustomSaleItem extends SoapTypes.Base {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
   costEstimate?: number;
@@ -278,7 +272,6 @@ export class CustomSaleItem extends SoapTypes.Base {
   vsoeDelivered?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CustomSaleItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.line = props.line;
     this.description = props.description;
@@ -328,19 +321,18 @@ export class CustomSaleItem extends SoapTypes.Base {
   }
 }
 
-export class CustomListTranslations extends SoapTypes.Base {
+export class CustomListTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   name?: string;
   constructor(props: CustomListTranslations) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.name = props.name;
   }
 }
 
-export class ItemOptionCustomFieldFilter extends SoapTypes.Base {
+export class ItemOptionCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -348,7 +340,6 @@ export class ItemOptionCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: ItemOptionCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -358,21 +349,19 @@ export class ItemOptionCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordTypeParentsList extends SoapTypes.Base {
+export class CustomRecordTypeParentsList {
   parents?: CustomRecordTypeParents[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeParentsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.parents = props.parents;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CrmCustomFieldFilterList extends SoapTypes.Base {
+export class CrmCustomFieldFilterList {
   filter?: CrmCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: CrmCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
@@ -384,7 +373,7 @@ export class CustomListSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: CustomListSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -392,21 +381,19 @@ export class CustomListSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class TransactionColumnCustomFieldFilterList extends SoapTypes.Base {
+export class TransactionColumnCustomFieldFilterList {
   filter?: TransactionColumnCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: TransactionColumnCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTranslationsList extends SoapTypes.Base {
+export class CustomRecordTranslationsList {
   customRecordTranslations?: CustomRecordTranslations[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTranslationsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customRecordTranslations = props.customRecordTranslations;
     this.replaceAll = props.replaceAll;
   }
@@ -425,7 +412,7 @@ export class CustomList extends PlatformCore.Record {
   translationsList?: CustomListTranslationsList;
   internalId?: string;
   constructor(props: CustomList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.name = props.name;
     this.owner = props.owner;
     this.isOrdered = props.isOrdered;
@@ -493,7 +480,7 @@ export class ItemCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: ItemCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.itemMatrix = props.itemMatrix;
@@ -548,7 +535,7 @@ export class ItemCustomField extends CustomFieldType {
   }
 }
 
-export class TransactionBodyCustomFieldFilter extends SoapTypes.Base {
+export class TransactionBodyCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -556,7 +543,6 @@ export class TransactionBodyCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: TransactionBodyCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -566,17 +552,16 @@ export class TransactionBodyCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomPurchaseItemList extends SoapTypes.Base {
+export class CustomPurchaseItemList {
   item?: CustomPurchaseItem[];
   replaceAll?: boolean;
   constructor(props: CustomPurchaseItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomTransactionLine extends SoapTypes.Base {
+export class CustomTransactionLine {
   account?: PlatformCore.RecordRef;
   line?: number;
   debit?: number;
@@ -589,7 +574,6 @@ export class CustomTransactionLine extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CustomTransactionLine) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.account = props.account;
     this.line = props.line;
     this.debit = props.debit;
@@ -648,7 +632,7 @@ export class CustomRecordCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: CustomRecordCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -694,21 +678,19 @@ export class CustomRecordCustomField extends CustomFieldType {
   }
 }
 
-export class ItemOptionCustomFieldFilterList extends SoapTypes.Base {
+export class ItemOptionCustomFieldFilterList {
   filter?: ItemOptionCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: ItemOptionCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeSublistsList extends SoapTypes.Base {
+export class CustomRecordTypeSublistsList {
   sublists?: CustomRecordTypeSublists[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeSublistsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sublists = props.sublists;
     this.replaceAll = props.replaceAll;
   }
@@ -780,7 +762,7 @@ export class TransactionBodyCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: TransactionBodyCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -848,22 +830,20 @@ export class TransactionBodyCustomField extends CustomFieldType {
   }
 }
 
-export class TransactionBodyCustomFieldFilterList extends SoapTypes.Base {
+export class TransactionBodyCustomFieldFilterList {
   filter?: TransactionBodyCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: TransactionBodyCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomFieldSubAccess extends SoapTypes.Base {
+export class CustomFieldSubAccess {
   sub?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
   constructor(props: CustomFieldSubAccess) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sub = props.sub;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
@@ -928,7 +908,7 @@ export class TransactionColumnCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: TransactionColumnCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -992,19 +972,18 @@ export class CustomListSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CustomListSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: CustomListSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
-export class CustomFieldTranslations extends SoapTypes.Base {
+export class CustomFieldTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   label?: string;
   help?: string;
   constructor(props: CustomFieldTranslations) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.label = props.label;
@@ -1012,7 +991,7 @@ export class CustomFieldTranslations extends SoapTypes.Base {
   }
 }
 
-export class ItemCustomFieldFilter extends SoapTypes.Base {
+export class ItemCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -1020,7 +999,6 @@ export class ItemCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: ItemCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -1030,29 +1008,26 @@ export class ItemCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordTypeFieldList extends SoapTypes.Base {
+export class CustomRecordTypeFieldList {
   customField?: CustomRecordCustomField[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeFieldList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customField = props.customField;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemsList extends SoapTypes.Base {
+export class ItemsList {
   items: PlatformCore.RecordRef[];
   constructor(props: ItemsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.items = props.items;
   }
 }
 
-export class LanguageValueList extends SoapTypes.Base {
+export class LanguageValueList {
   languageValue?: LanguageValue[];
   replaceAll?: boolean;
   constructor(props: LanguageValueList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.languageValue = props.languageValue;
     this.replaceAll = props.replaceAll;
   }
@@ -1074,7 +1049,7 @@ export class CustomSegment extends PlatformCore.Record {
   defaultSelection?: PlatformCore.RecordRef;
   internalId?: string;
   constructor(props: CustomSegment) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.scriptId = props.scriptId;
     this.recordScriptId = props.recordScriptId;
@@ -1092,44 +1067,40 @@ export class CustomSegment extends PlatformCore.Record {
   }
 }
 
-export class CustomRecordTypePermissionsList extends SoapTypes.Base {
+export class CustomRecordTypePermissionsList {
   permissions?: CustomRecordTypePermissions[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypePermissionsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.permissions = props.permissions;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomPurchaseExpenseList extends SoapTypes.Base {
+export class CustomPurchaseExpenseList {
   expense?: CustomPurchaseExpense[];
   replaceAll?: boolean;
   constructor(props: CustomPurchaseExpenseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeChildrenList extends SoapTypes.Base {
+export class CustomRecordTypeChildrenList {
   children?: CustomRecordTypeChildren[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeChildrenList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.children = props.children;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomListCustomValue extends SoapTypes.Base {
+export class CustomListCustomValue {
   value?: string;
   abbreviation?: string;
   isInactive?: boolean;
   valueId?: number;
   valueLanguageValueList?: LanguageValueList;
   constructor(props: CustomListCustomValue) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.value = props.value;
     this.abbreviation = props.abbreviation;
     this.isInactive = props.isInactive;
@@ -1139,8 +1110,8 @@ export class CustomListCustomValue extends SoapTypes.Base {
 }
 
 export class CustomPurchase extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   tranType?: PlatformCore.RecordRef;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
@@ -1152,14 +1123,14 @@ export class CustomPurchase extends PlatformCore.Record {
   entity?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   postingPeriod?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   currencyName?: string;
   billingAddress?: PlatformCommon.Address;
   exchangeRate?: number;
   entityTaxRegNum?: PlatformCore.RecordRef;
   terms?: PlatformCore.RecordRef;
-  dueDate?: SoapTypes.Dateish;
-  discountDate?: SoapTypes.Dateish;
+  dueDate?: string;
+  discountDate?: string;
   tranId?: string;
   createdFrom?: PlatformCore.RecordRef;
   userTotal?: number;
@@ -1185,7 +1156,7 @@ export class CustomPurchase extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomPurchase) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.tranType = props.tranType;
@@ -1234,119 +1205,108 @@ export class CustomPurchase extends PlatformCore.Record {
   }
 }
 
-export class CustomRecordTypeChildren extends SoapTypes.Base {
+export class CustomRecordTypeChildren {
   childDescr?: string;
   childTab?: PlatformCore.RecordRef;
   constructor(props: CustomRecordTypeChildren) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.childDescr = props.childDescr;
     this.childTab = props.childTab;
   }
 }
 
-export class CustomRecordTypeTranslations extends SoapTypes.Base {
+export class CustomRecordTypeTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   name?: string;
   constructor(props: CustomRecordTypeTranslations) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.name = props.name;
   }
 }
 
-export class CustomFieldTranslationsList extends SoapTypes.Base {
+export class CustomFieldTranslationsList {
   translations?: CustomFieldTranslations[];
   replaceAll?: boolean;
   constructor(props: CustomFieldTranslationsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemCustomFieldFilterList extends SoapTypes.Base {
+export class ItemCustomFieldFilterList {
   filter?: ItemCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: ItemCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomListCustomValueList extends SoapTypes.Base {
+export class CustomListCustomValueList {
   customValue?: CustomListCustomValue[];
   replaceAll?: boolean;
   constructor(props: CustomListCustomValueList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customValue = props.customValue;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomFieldDepartmentAccessList extends SoapTypes.Base {
+export class CustomFieldDepartmentAccessList {
   deptAccess?: CustomFieldDepartmentAccess[];
   replaceAll?: boolean;
   constructor(props: CustomFieldDepartmentAccessList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deptAccess = props.deptAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomTransactionLineList extends SoapTypes.Base {
+export class CustomTransactionLineList {
   customTransactionLine?: CustomTransactionLine[];
   replaceAll?: boolean;
   constructor(props: CustomTransactionLineList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customTransactionLine = props.customTransactionLine;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomSalePartnersList extends SoapTypes.Base {
+export class CustomSalePartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: CustomSalePartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomSaleItemList extends SoapTypes.Base {
+export class CustomSaleItemList {
   item?: CustomSaleItem[];
   replaceAll?: boolean;
   constructor(props: CustomSaleItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeManagers extends SoapTypes.Base {
+export class CustomRecordTypeManagers {
   managerEmp?: PlatformCore.RecordRef;
   constructor(props: CustomRecordTypeManagers) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.managerEmp = props.managerEmp;
   }
 }
 
-export class CustomRecordCustomFieldFilterList extends SoapTypes.Base {
+export class CustomRecordCustomFieldFilterList {
   filter?: CustomRecordCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: CustomRecordCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class CustomTransaction extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   tranType?: PlatformCore.RecordRef;
   tranId?: string;
@@ -1354,7 +1314,7 @@ export class CustomTransaction extends PlatformCore.Record {
   currency?: PlatformCore.RecordRef;
   voidJournal?: PlatformCore.RecordRef;
   exchangeRate?: number;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   memo?: string;
   tranStatus?: PlatformCore.RecordRef;
@@ -1368,7 +1328,7 @@ export class CustomTransaction extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomTransaction) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1394,86 +1354,78 @@ export class CustomTransaction extends PlatformCore.Record {
   }
 }
 
-export class CustomRecordTypeParents extends SoapTypes.Base {
+export class CustomRecordTypeParents {
   childDescr?: string;
   constructor(props: CustomRecordTypeParents) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.childDescr = props.childDescr;
   }
 }
 
-export class CustomFieldRoleAccessList extends SoapTypes.Base {
+export class CustomFieldRoleAccessList {
   roleAccess?: CustomFieldRoleAccess[];
   replaceAll?: boolean;
   constructor(props: CustomFieldRoleAccessList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.roleAccess = props.roleAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class LanguageValue extends SoapTypes.Base {
+export class LanguageValue {
   locale?: PlatformCommonTypes.Language;
   value?: string;
   constructor(props: LanguageValue) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.value = props.value;
   }
 }
 
-export class CustomListTranslationsList extends SoapTypes.Base {
+export class CustomListTranslationsList {
   translations?: CustomListTranslations[];
   replaceAll?: boolean;
   constructor(props: CustomListTranslationsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeOnlineForms extends SoapTypes.Base {
+export class CustomRecordTypeOnlineForms {
   onlineFormName?: string;
   isOnline?: string;
   templateName?: string;
   constructor(props: CustomRecordTypeOnlineForms) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.onlineFormName = props.onlineFormName;
     this.isOnline = props.isOnline;
     this.templateName = props.templateName;
   }
 }
 
-export class CustomRecordTypeForms extends SoapTypes.Base {
+export class CustomRecordTypeForms {
   formEdit?: string;
   formName?: string;
   formPref?: boolean;
   constructor(props: CustomRecordTypeForms) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.formEdit = props.formEdit;
     this.formName = props.formName;
     this.formPref = props.formPref;
   }
 }
 
-export class CustomRecordTypeFormsList extends SoapTypes.Base {
+export class CustomRecordTypeFormsList {
   forms?: CustomRecordTypeForms[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeFormsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.forms = props.forms;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeSublists extends SoapTypes.Base {
+export class CustomRecordTypeSublists {
   recordSearch?: PlatformCore.RecordRef;
   recordDescr?: string;
   recordDescrLanguageValueList?: LanguageValueList;
   recordTab?: PlatformCore.RecordRef;
   recordId?: string;
   constructor(props: CustomRecordTypeSublists) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.recordSearch = props.recordSearch;
     this.recordDescr = props.recordDescr;
     this.recordDescrLanguageValueList = props.recordDescrLanguageValueList;
@@ -1488,7 +1440,7 @@ export class CustomRecordSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: CustomRecordSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -1496,7 +1448,7 @@ export class CustomRecordSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class CrmCustomFieldFilter extends SoapTypes.Base {
+export class CrmCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -1504,7 +1456,6 @@ export class CrmCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: CrmCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -1514,13 +1465,12 @@ export class CrmCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomSaleSalesTeam extends SoapTypes.Base {
+export class CustomSaleSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: CustomSaleSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1528,19 +1478,18 @@ export class CustomSaleSalesTeam extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordTypeLinks extends SoapTypes.Base {
+export class CustomRecordTypeLinks {
   linkCenter?: PlatformCore.RecordRef;
   linkSection?: PlatformCore.RecordRef;
   linkLabel?: string;
   constructor(props: CustomRecordTypeLinks) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.linkCenter = props.linkCenter;
     this.linkSection = props.linkSection;
     this.linkLabel = props.linkLabel;
   }
 }
 
-export class CustomPurchaseExpense extends SoapTypes.Base {
+export class CustomPurchaseExpense {
   line?: number;
   category?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
@@ -1556,12 +1505,11 @@ export class CustomPurchaseExpense extends SoapTypes.Base {
   isBillable?: boolean;
   projectTask?: PlatformCore.RecordRef;
   amortizationSched?: PlatformCore.RecordRef;
-  amortizStartDate?: SoapTypes.Dateish;
-  amortizationEndDate?: SoapTypes.Dateish;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CustomPurchaseExpense) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.category = props.category;
     this.account = props.account;
@@ -1584,33 +1532,30 @@ export class CustomPurchaseExpense extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordTranslations extends SoapTypes.Base {
+export class CustomRecordTranslations {
   locale?: PlatformCommonTypes.Language;
   language?: string;
   label?: string;
   constructor(props: CustomRecordTranslations) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.language = props.language;
     this.label = props.label;
   }
 }
 
-export class CustomFieldSubAccessList extends SoapTypes.Base {
+export class CustomFieldSubAccessList {
   subAccess?: CustomFieldSubAccess[];
   replaceAll?: boolean;
   constructor(props: CustomFieldSubAccessList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.subAccess = props.subAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeTranslationsList extends SoapTypes.Base {
+export class CustomRecordTypeTranslationsList {
   translations?: CustomRecordTypeTranslations[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeTranslationsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
@@ -1671,7 +1616,7 @@ export class CrmCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: CrmCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -1775,7 +1720,7 @@ export class CustomRecordType extends PlatformCore.Record {
   customFieldList?: CustomRecordTypeFieldList;
   internalId?: string;
   constructor(props: CustomRecordType) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.recordName = props.recordName;
     this.includeName = props.includeName;
     this.showId = props.showId;
@@ -1824,10 +1769,9 @@ export class CustomRecordType extends PlatformCore.Record {
   }
 }
 
-export class FldFilterSelList extends SoapTypes.Base {
+export class FldFilterSelList {
   fldFilterSel: PlatformCore.RecordRef[];
   constructor(props: FldFilterSelList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilterSel = props.fldFilterSel;
   }
 }
@@ -1887,7 +1831,7 @@ export class EntityCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: EntityCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -1944,12 +1888,11 @@ export class EntityCustomField extends CustomFieldType {
   }
 }
 
-export class CustomFieldRoleAccess extends SoapTypes.Base {
+export class CustomFieldRoleAccess {
   role?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
   constructor(props: CustomFieldRoleAccess) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.role = props.role;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
@@ -1965,7 +1908,7 @@ export class CustomRecordSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: CustomRecordSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
     this.messagesJoin = props.messagesJoin;
@@ -1976,7 +1919,7 @@ export class CustomRecordSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class CustomPurchaseItem extends SoapTypes.Base {
+export class CustomPurchaseItem {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
   line?: number;
@@ -1997,14 +1940,13 @@ export class CustomPurchaseItem extends SoapTypes.Base {
   isBillable?: boolean;
   billVarianceStatus?: PlatformCommonTypes.TransactionBillVarianceStatus;
   amortizationSched?: PlatformCore.RecordRef;
-  amortizStartDate?: SoapTypes.Dateish;
-  amortizationEndDate?: SoapTypes.Dateish;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
   amortizationResidual?: string;
   taxAmount?: number;
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CustomPurchaseItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -2034,11 +1976,10 @@ export class CustomPurchaseItem extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordTypeLinksList extends SoapTypes.Base {
+export class CustomRecordTypeLinksList {
   links?: CustomRecordTypeLinks[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeLinksList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.links = props.links;
     this.replaceAll = props.replaceAll;
   }
@@ -2089,7 +2030,7 @@ export class ItemOptionCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: ItemOptionCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -2145,7 +2086,7 @@ export class CustomRecordSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: CustomRecordSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
     this.messagesJoin = props.messagesJoin;
@@ -2156,19 +2097,18 @@ export class CustomRecordSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class CustomFieldDepartmentAccess extends SoapTypes.Base {
+export class CustomFieldDepartmentAccess {
   dept?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
   constructor(props: CustomFieldDepartmentAccess) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.dept = props.dept;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
   }
 }
 
-export class EntityCustomFieldFilter extends SoapTypes.Base {
+export class EntityCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -2176,7 +2116,6 @@ export class EntityCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: EntityCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2227,7 +2166,7 @@ export class ItemNumberCustomField extends CustomFieldType {
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
   constructor(props: ItemNumberCustomField) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.label = props.label;
     this.owner = props.owner;
     this.description = props.description;
@@ -2270,17 +2209,16 @@ export class ItemNumberCustomField extends CustomFieldType {
   }
 }
 
-export class CustomRecordTypeOnlineFormsList extends SoapTypes.Base {
+export class CustomRecordTypeOnlineFormsList {
   onlineForms?: CustomRecordTypeOnlineForms[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeOnlineFormsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.onlineForms = props.onlineForms;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypePermissions extends SoapTypes.Base {
+export class CustomRecordTypePermissions {
   permittedRole?: PlatformCore.RecordRef;
   permittedLevel?: SetupCustomizationTypes.CustomRecordTypePermissionsPermittedLevel;
   restriction?: SetupCustomizationTypes.CustomRecordTypePermissionsRestriction;
@@ -2295,7 +2233,6 @@ export class CustomRecordTypePermissions extends SoapTypes.Base {
   sublistView?: PlatformCore.RecordRef;
   restrictSublistView?: boolean;
   constructor(props: CustomRecordTypePermissions) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.permittedRole = props.permittedRole;
     this.permittedLevel = props.permittedLevel;
     this.restriction = props.restriction;
@@ -2312,27 +2249,25 @@ export class CustomRecordTypePermissions extends SoapTypes.Base {
   }
 }
 
-export class EntityCustomFieldFilterList extends SoapTypes.Base {
+export class EntityCustomFieldFilterList {
   filter?: EntityCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: EntityCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class OtherCustomFieldFilterList extends SoapTypes.Base {
+export class OtherCustomFieldFilterList {
   filter?: OtherCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: OtherCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemNumberCustomFieldFilter extends SoapTypes.Base {
+export class ItemNumberCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -2341,7 +2276,6 @@ export class ItemNumberCustomFieldFilter extends SoapTypes.Base {
   fldfilterNull?: boolean;
   fldCompareField?: PlatformCore.RecordRef;
   constructor(props: ItemNumberCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2352,7 +2286,7 @@ export class ItemNumberCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class OtherCustomFieldFilter extends SoapTypes.Base {
+export class OtherCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -2360,7 +2294,6 @@ export class OtherCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: OtherCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2370,7 +2303,7 @@ export class OtherCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomRecordCustomFieldFilter extends SoapTypes.Base {
+export class CustomRecordCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
   fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
@@ -2378,7 +2311,6 @@ export class CustomRecordCustomFieldFilter extends SoapTypes.Base {
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
   constructor(props: CustomRecordCustomFieldFilter) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2388,31 +2320,28 @@ export class CustomRecordCustomFieldFilter extends SoapTypes.Base {
   }
 }
 
-export class CustomSaleSalesTeamList extends SoapTypes.Base {
+export class CustomSaleSalesTeamList {
   salesTeam?: CustomSaleSalesTeam[];
   replaceAll?: boolean;
   constructor(props: CustomSaleSalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemNumberCustomFieldFilterList extends SoapTypes.Base {
+export class ItemNumberCustomFieldFilterList {
   filter?: ItemNumberCustomFieldFilter[];
   replaceAll?: boolean;
   constructor(props: ItemNumberCustomFieldFilterList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CustomRecordTypeManagersList extends SoapTypes.Base {
+export class CustomRecordTypeManagersList {
   managers?: CustomRecordTypeManagers[];
   replaceAll?: boolean;
   constructor(props: CustomRecordTypeManagersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.managers = props.managers;
     this.replaceAll = props.replaceAll;
   }
@@ -2422,15 +2351,15 @@ export class CustomListSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CustomListSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: CustomListSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
 export class CustomSale extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   tranType?: PlatformCore.RecordRef;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
@@ -2439,7 +2368,7 @@ export class CustomSale extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   entity?: PlatformCore.RecordRef;
   billingAccount?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
   source?: string;
@@ -2452,25 +2381,25 @@ export class CustomSale extends PlatformCore.Record {
   location?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
-  dueDate?: SoapTypes.Dateish;
-  discountDate?: SoapTypes.Dateish;
+  dueDate?: string;
+  discountDate?: string;
   discountAmount?: number;
   salesRep?: PlatformCore.RecordRef;
   partner?: PlatformCore.RecordRef;
   leadSource?: PlatformCore.RecordRef;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   otherRefNum?: string;
   memo?: string;
   tranStatus?: PlatformCore.RecordRef;
-  salesEffectiveDate?: SoapTypes.Dateish;
+  salesEffectiveDate?: string;
   excludeCommission?: boolean;
   totalCostEstimate?: number;
   estGrossProfit?: number;
   estGrossProfitPercent?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   account?: PlatformCore.RecordRef;
   exchangeRate?: number;
   currencyName?: string;
@@ -2490,7 +2419,7 @@ export class CustomSale extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   shippingCost?: number;
   handlingCost?: number;
@@ -2525,7 +2454,7 @@ export class CustomSale extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomSale) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.tranType = props.tranType;

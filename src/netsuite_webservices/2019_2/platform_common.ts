@@ -1,8 +1,5 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommonTypes from "./platform_common_types";
-
-const mappingsName = "com_netsuite_webservices_platform_common_2019_2";
 
 export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -14,7 +11,7 @@ export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.Search
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ManufacturingCostTemplateSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -26,13 +23,12 @@ export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.Search
   }
 }
 
-export class GiftCertRedemption extends SoapTypes.Base {
+export class GiftCertRedemption {
   authCode?: PlatformCore.RecordRef;
   authCodeApplied?: number;
   authCodeAmtRemaining?: number;
   giftCertAvailable?: number;
   constructor(props: GiftCertRedemption) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.authCode = props.authCode;
     this.authCodeApplied = props.authCodeApplied;
     this.authCodeAmtRemaining = props.authCodeAmtRemaining;
@@ -47,7 +43,7 @@ export class PartnerCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   parent?: PlatformCore.SearchColumnSelectField[];
   constructor(props: PartnerCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -101,7 +97,7 @@ export class LocationSearchRowBasic extends PlatformCore.SearchRowBasic {
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: LocationSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address1 = props.address1;
     this.address2 = props.address2;
     this.address3 = props.address3;
@@ -161,7 +157,7 @@ export class NoteSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: NoteSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.author = props.author;
     this.direction = props.direction;
     this.externalId = props.externalId;
@@ -196,7 +192,7 @@ export class EntityGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   workCalendar?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: EntityGroupSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.email = props.email;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -241,7 +237,7 @@ export class PhoneCallSearchRowBasic extends PlatformCore.SearchRowBasic {
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: PhoneCallSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accessLevel = props.accessLevel;
     this.assigned = props.assigned;
     this.company = props.company;
@@ -624,7 +620,7 @@ export class TransactionSearchRowBasic extends PlatformCore.SearchRowBasic {
   webSite?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: TransactionSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.abbrev = props.abbrev;
     this.account = props.account;
     this.accountType = props.accountType;
@@ -990,7 +986,7 @@ export class AssemblyItemBomSearchRowBasic extends PlatformCore.SearchRowBasic {
   _default?: PlatformCore.SearchColumnBooleanField[];
   locations?: PlatformCore.SearchColumnSelectField[];
   constructor(props: AssemblyItemBomSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assembly = props.assembly;
     this.billOfMaterials = props.billOfMaterials;
     this._default = props._default;
@@ -1017,7 +1013,7 @@ export class BomSearchBasic extends PlatformCore.SearchRecordBasic {
   useComponentYield?: PlatformCore.SearchBooleanField;
   usedOnAssembly?: PlatformCore.SearchBooleanField;
   constructor(props: BomSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.availableForAllAssemblies = props.availableForAllAssemblies;
     this.availableForAllLocations = props.availableForAllLocations;
     this.createdDate = props.createdDate;
@@ -1047,7 +1043,7 @@ export class SalesRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: SalesRoleSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -1069,7 +1065,7 @@ export class MerchandiseHierarchyNodeSearchBasic extends PlatformCore.SearchReco
   name?: PlatformCore.SearchStringField;
   parentNode?: PlatformCore.SearchMultiSelectField;
   constructor(props: MerchandiseHierarchyNodeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -1082,11 +1078,10 @@ export class MerchandiseHierarchyNodeSearchBasic extends PlatformCore.SearchReco
   }
 }
 
-export class CustomSearchRowBasic extends SoapTypes.Base {
+export class CustomSearchRowBasic {
   customizationRef: PlatformCore.CustomizationRef;
   searchRowBasic: PlatformCore.SearchRowBasic;
   constructor(props: CustomSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customizationRef = props.customizationRef;
     this.searchRowBasic = props.searchRowBasic;
   }
@@ -1108,7 +1103,7 @@ export class ItemAccountMappingSearchRowBasic extends PlatformCore.SearchRowBasi
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ItemAccountMappingSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
     this.customDimension = props.customDimension;
@@ -1135,7 +1130,7 @@ export class InventoryDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   inventoryNumber?: PlatformCore.SearchMultiSelectField;
   quantity?: PlatformCore.SearchDoubleField;
   constructor(props: InventoryDetailSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -1155,7 +1150,7 @@ export class DepartmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: DepartmentSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -1183,7 +1178,7 @@ export class FolderSearchRowBasic extends PlatformCore.SearchRowBasic {
   parent?: PlatformCore.SearchColumnSelectField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   constructor(props: FolderSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.clazz = props.clazz;
     this.department = props.department;
     this.description = props.description;
@@ -1360,7 +1355,7 @@ export class CustomerSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: CustomerSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.addressee = props.addressee;
@@ -1527,7 +1522,7 @@ export class TopicSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: TopicSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -1569,7 +1564,7 @@ export class AccountingTransactionSearchRowBasic extends PlatformCore.SearchRowB
   tranIsVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
   vsoeAllocation?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: AccountingTransactionSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
     this.accountType = props.accountType;
@@ -1784,7 +1779,7 @@ export class CustomerSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: CustomerSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.address1 = props.address1;
@@ -2010,7 +2005,7 @@ export class CampaignSearchBasic extends PlatformCore.SearchRecordBasic {
   vertical?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: CampaignSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.audience = props.audience;
     this.baseCost = props.baseCost;
     this.campaignEventType = props.campaignEventType;
@@ -2123,7 +2118,7 @@ export class EntitySearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: EntitySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -2201,7 +2196,7 @@ export class BinSearchRowBasic extends PlatformCore.SearchRowBasic {
   memo?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: BinSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
     this.inactive = props.inactive;
@@ -2218,7 +2213,7 @@ export class EntityTaxRegistrationSearchRowBasic extends PlatformCore.SearchRowB
   nexusCountry?: PlatformCore.SearchColumnEnumSelectField[];
   taxRegistrationNumber?: PlatformCore.SearchColumnStringField[];
   constructor(props: EntityTaxRegistrationSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.id = props.id;
     this.nexusCountry = props.nexusCountry;
@@ -2242,7 +2237,7 @@ export class CustomRecordSearchRowBasic extends PlatformCore.SearchRowBasic {
   parent?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: CustomRecordSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.recType = props.recType;
     this.altName = props.altName;
     this.availableOffline = props.availableOffline;
@@ -2313,7 +2308,7 @@ export class IssueSearchRowBasic extends PlatformCore.SearchRowBasic {
   versionTarget?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: IssueSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.ageInMonths = props.ageInMonths;
     this.assigned = props.assigned;
     this.buildBroken = props.buildBroken;
@@ -2386,7 +2381,7 @@ export class ItemSupplyPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   units?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ItemSupplyPlanSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -2431,7 +2426,7 @@ export class BillingAccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: BillingAccountSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.billingSchedule = props.billingSchedule;
     this.cashSaleForm = props.cashSaleForm;
     this.clazz = props.clazz;
@@ -2474,7 +2469,7 @@ export class RevRecTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
   targetAccount?: PlatformCore.SearchColumnStringField[];
   useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: RevRecTemplateSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amorMethod = props.amorMethod;
     this.amorPeriod = props.amorPeriod;
     this.amorStartOffset = props.amorStartOffset;
@@ -2787,7 +2782,7 @@ export class ItemSearchBasic extends PlatformCore.SearchRecordBasic {
   yahooProductFeed?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ItemSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accBookRevRecForecastRule = props.accBookRevRecForecastRule;
     this.account = props.account;
     this.accountingBook = props.accountingBook;
@@ -3097,7 +3092,7 @@ export class CouponCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   useCount?: PlatformCore.SearchLongField;
   used?: PlatformCore.SearchBooleanField;
   constructor(props: CouponCodeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.code = props.code;
     this.dateSent = props.dateSent;
     this.externalId = props.externalId;
@@ -3123,7 +3118,7 @@ export class ExpenseCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ExpenseCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.description = props.description;
     this.externalId = props.externalId;
@@ -3253,7 +3248,7 @@ export class VendorSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: VendorSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.address1 = props.address1;
@@ -3432,7 +3427,7 @@ export class PartnerSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: PartnerSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.addressee = props.addressee;
     this.addressLabel = props.addressLabel;
@@ -3504,7 +3499,7 @@ export class ContactCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   _private?: PlatformCore.SearchBooleanField;
   sync?: PlatformCore.SearchBooleanField;
   constructor(props: ContactCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -3516,11 +3511,10 @@ export class ContactCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class InventoryAssignmentList extends SoapTypes.Base {
+export class InventoryAssignmentList {
   inventoryAssignment?: InventoryAssignment[];
   replaceAll?: boolean;
   constructor(props: InventoryAssignmentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.inventoryAssignment = props.inventoryAssignment;
     this.replaceAll = props.replaceAll;
   }
@@ -3533,7 +3527,7 @@ export class VendorCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   isTaxAgency?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: VendorCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -3553,7 +3547,7 @@ export class CouponCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   useCount?: PlatformCore.SearchColumnLongField[];
   used?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: CouponCodeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.code = props.code;
     this.dateSent = props.dateSent;
     this.externalId = props.externalId;
@@ -3583,7 +3577,7 @@ export class BillingScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   repeatEvery?: PlatformCore.SearchColumnLongField[];
   type?: PlatformCore.SearchColumnEnumSelectField[];
   constructor(props: BillingScheduleSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.applyToSubtotal = props.applyToSubtotal;
     this.externalId = props.externalId;
     this.frequency = props.frequency;
@@ -3616,7 +3610,7 @@ export class UsageSearchBasic extends PlatformCore.SearchRecordBasic {
   subscriptionLine?: PlatformCore.SearchMultiSelectField;
   subscriptionPlan?: PlatformCore.SearchMultiSelectField;
   constructor(props: UsageSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.customer = props.customer;
     this.date = props.date;
     this.externalId = props.externalId;
@@ -3644,7 +3638,7 @@ export class BomRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: BomRevisionSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.billOfMaterials = props.billOfMaterials;
     this.createdDate = props.createdDate;
     this.effectiveEndDate = props.effectiveEndDate;
@@ -3723,7 +3717,7 @@ export class OpportunitySearchRowBasic extends PlatformCore.SearchRowBasic {
   wonBy?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: OpportunitySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actionItem = props.actionItem;
     this.availableOffline = props.availableOffline;
     this.buyingReason = props.buyingReason;
@@ -3799,7 +3793,7 @@ export class ClassificationSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ClassificationSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -3821,7 +3815,7 @@ export class ClassificationSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ClassificationSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -3850,7 +3844,7 @@ export class ConsolidatedExchangeRateSearchRowBasic extends PlatformCore.SearchR
   toCurrency?: PlatformCore.SearchColumnStringField[];
   toSubsidiary?: PlatformCore.SearchColumnStringField[];
   constructor(props: ConsolidatedExchangeRateSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.averageRate = props.averageRate;
     this.closed = props.closed;
@@ -3875,7 +3869,7 @@ export class JobTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   parent?: PlatformCore.SearchColumnSelectField[];
   constructor(props: JobTypeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -3894,7 +3888,7 @@ export class PriceLevelSearchBasic extends PlatformCore.SearchRecordBasic {
   isOnline?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: PriceLevelSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.discountPct = props.discountPct;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -3923,7 +3917,7 @@ export class ItemSupplyPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   units?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ItemSupplyPlanSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.item = props.item;
@@ -3974,7 +3968,7 @@ export class ManufacturingOperationTaskSearchRowBasic extends PlatformCore.Searc
   workOrder?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ManufacturingOperationTaskSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualRunTime = props.actualRunTime;
     this.actualSetupTime = props.actualSetupTime;
     this.completedQuantity = props.completedQuantity;
@@ -4089,7 +4083,7 @@ export class ContactSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ContactSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -4182,7 +4176,7 @@ export class CostCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   itemCostType?: PlatformCore.SearchEnumMultiSelectField;
   name?: PlatformCore.SearchStringField;
   constructor(props: CostCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -4210,7 +4204,7 @@ export class BomRevisionComponentSearchBasic extends PlatformCore.SearchRecordBa
   units?: PlatformCore.SearchStringField;
   weight?: PlatformCore.SearchDoubleField;
   constructor(props: BomRevisionComponentSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.bomQuantity = props.bomQuantity;
     this.bomRevision = props.bomRevision;
     this.componentYield = props.componentYield;
@@ -4318,7 +4312,7 @@ export class PartnerSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: PartnerSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -4410,13 +4404,12 @@ export class PartnerSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
-export class LandedCostSummary extends SoapTypes.Base {
+export class LandedCostSummary {
   category?: PlatformCore.RecordRef;
   amount?: number;
   source?: PlatformCommonTypes.LandedCostSource;
   transaction?: PlatformCore.RecordRef;
   constructor(props: LandedCostSummary) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.category = props.category;
     this.amount = props.amount;
     this.source = props.source;
@@ -4604,7 +4597,7 @@ export class OriginatingLeadSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: OriginatingLeadSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.address1 = props.address1;
@@ -4811,7 +4804,7 @@ export class ProjectTaskAssignmentSearchBasic extends PlatformCore.SearchRecordB
   units?: PlatformCore.SearchDoubleField;
   workCalendar?: PlatformCore.SearchMultiSelectField;
   constructor(props: ProjectTaskAssignmentSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualWork = props.actualWork;
     this.cost = props.cost;
     this.costBase = props.costBase;
@@ -4873,7 +4866,7 @@ export class TimeBillSearchBasic extends PlatformCore.SearchRecordBasic {
   utilized?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: TimeBillSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this.approved = props.approved;
     this.billable = props.billable;
@@ -4916,7 +4909,7 @@ export class ItemBinNumberSearchBasic extends PlatformCore.SearchRecordBasic {
   quantityAvailable?: PlatformCore.SearchDoubleField;
   quantityOnHand?: PlatformCore.SearchDoubleField;
   constructor(props: ItemBinNumberSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.location = props.location;
     this.quantityAvailable = props.quantityAvailable;
@@ -4943,7 +4936,7 @@ export class FileSearchBasic extends PlatformCore.SearchRecordBasic {
   owner?: PlatformCore.SearchMultiSelectField;
   url?: PlatformCore.SearchStringField;
   constructor(props: FileSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.availableWithoutLogin = props.availableWithoutLogin;
     this.created = props.created;
     this.dateViewed = props.dateViewed;
@@ -4970,7 +4963,7 @@ export class WinLossReasonSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: WinLossReasonSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -5124,7 +5117,7 @@ export class EmployeeSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: EmployeeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.address1 = props.address1;
@@ -5289,7 +5282,7 @@ export class GlobalAccountMappingSearchBasic extends PlatformCore.SearchRecordBa
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: GlobalAccountMappingSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
     this.customDimension = props.customDimension;
@@ -5315,7 +5308,7 @@ export class NoteTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: NoteTypeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -5345,7 +5338,7 @@ export class AccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: AccountSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingContext = props.accountingContext;
     this.balance = props.balance;
     this.cashFlowRateType = props.cashFlowRateType;
@@ -5381,7 +5374,7 @@ export class NexusSearchBasic extends PlatformCore.SearchRecordBasic {
   taxAgency?: PlatformCore.SearchMultiSelectField;
   taxDateFromFulfillment?: PlatformCore.SearchBooleanField;
   constructor(props: NexusSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.country = props.country;
     this.description = props.description;
     this.externalId = props.externalId;
@@ -5400,7 +5393,7 @@ export class InventoryDetail extends PlatformCore.Record {
   inventoryAssignmentList?: InventoryAssignmentList;
   customForm?: PlatformCore.RecordRef;
   constructor(props: InventoryDetail) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.inventoryAssignmentList = props.inventoryAssignmentList;
     this.customForm = props.customForm;
   }
@@ -5489,7 +5482,7 @@ export class VendorSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: VendorSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.addressee = props.addressee;
@@ -5598,7 +5591,7 @@ export class ProjectTaskAssignmentSearchRowBasic extends PlatformCore.SearchRowB
   units?: PlatformCore.SearchColumnDoubleField[];
   workCalendar?: PlatformCore.SearchColumnSelectField[];
   constructor(props: ProjectTaskAssignmentSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualWork = props.actualWork;
     this.cost = props.cost;
     this.costBase = props.costBase;
@@ -5632,7 +5625,7 @@ export class WinLossReasonSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: WinLossReasonSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -5654,7 +5647,7 @@ export class UsageSearchRowBasic extends PlatformCore.SearchRowBasic {
   subscriptionLine?: PlatformCore.SearchColumnSelectField[];
   subscriptionPlan?: PlatformCore.SearchColumnSelectField[];
   constructor(props: UsageSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.customer = props.customer;
     this.date = props.date;
     this.externalId = props.externalId;
@@ -5677,7 +5670,7 @@ export class PartnerCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   parent?: PlatformCore.SearchMultiSelectField;
   constructor(props: PartnerCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -5705,7 +5698,7 @@ export class InventoryNumberSearchBasic extends PlatformCore.SearchRecordBasic {
   quantityOnOrder?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: InventoryNumberSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.expirationDate = props.expirationDate;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -5756,7 +5749,7 @@ export class RevRecScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   startOffset?: PlatformCore.SearchColumnLongField[];
   useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: RevRecScheduleSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.amorStatus = props.amorStatus;
     this.amorTemplate = props.amorTemplate;
@@ -5793,7 +5786,7 @@ export class RevRecScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
 export class LandedCost extends PlatformCore.Record {
   landedCostDataList?: LandedCostDataList;
   constructor(props: LandedCost) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.landedCostDataList = props.landedCostDataList;
   }
 }
@@ -5806,7 +5799,7 @@ export class CostCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   itemCostType?: PlatformCore.SearchColumnEnumSelectField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: CostCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -5831,7 +5824,7 @@ export class SiteCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   sitemapPriority?: PlatformCore.SearchColumnEnumSelectField[];
   urlComponent?: PlatformCore.SearchColumnStringField[];
   constructor(props: SiteCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.dateViewed = props.dateViewed;
     this.description = props.description;
     this.excludeFromSitemap = props.excludeFromSitemap;
@@ -5856,7 +5849,7 @@ export class CustomerCategorySearchBasic extends PlatformCore.SearchRecordBasic 
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: CustomerCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -5909,7 +5902,7 @@ export class CampaignSearchRowBasic extends PlatformCore.SearchRowBasic {
   vertical?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: CampaignSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.audience = props.audience;
     this.baseCost = props.baseCost;
     this.campaignId = props.campaignId;
@@ -5966,7 +5959,7 @@ export class PayrollItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   vendor?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: PayrollItemSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.expenseAccount = props.expenseAccount;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -5992,7 +5985,7 @@ export class TimeSheetSearchBasic extends PlatformCore.SearchRecordBasic {
   totalHours?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: TimeSheetSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this.employee = props.employee;
     this.externalId = props.externalId;
@@ -6006,7 +5999,7 @@ export class TimeSheetSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class TaxDetails extends SoapTypes.Base {
+export class TaxDetails {
   taxDetailsReference?: string;
   lineType?: string;
   lineName?: string;
@@ -6019,7 +6012,6 @@ export class TaxDetails extends SoapTypes.Base {
   taxAmount?: number;
   calcDetail?: string;
   constructor(props: TaxDetails) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.taxDetailsReference = props.taxDetailsReference;
     this.lineType = props.lineType;
     this.lineName = props.lineName;
@@ -6034,10 +6026,9 @@ export class TaxDetails extends SoapTypes.Base {
   }
 }
 
-export class RecurrenceDowMaskList extends SoapTypes.Base {
+export class RecurrenceDowMaskList {
   recurrenceDowMask: PlatformCommonTypes.RecurrenceDow[];
   constructor(props: RecurrenceDowMaskList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.recurrenceDowMask = props.recurrenceDowMask;
   }
 }
@@ -6050,7 +6041,7 @@ export class PriceLevelSearchRowBasic extends PlatformCore.SearchRowBasic {
   isOnline?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: PriceLevelSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.discountPct = props.discountPct;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -6099,7 +6090,7 @@ export class MseSubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: MseSubsidiarySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
     this.address = props.address;
@@ -6160,7 +6151,7 @@ export class FairValuePriceSearchBasic extends PlatformCore.SearchRecordBasic {
   startDate?: PlatformCore.SearchDateField;
   unitsType?: PlatformCore.SearchMultiSelectField;
   constructor(props: FairValuePriceSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.currency = props.currency;
     this.endDate = props.endDate;
     this.externalId = props.externalId;
@@ -6202,7 +6193,7 @@ export class EntityGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   workCalendar?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: EntityGroupSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.email = props.email;
     this.externalId = props.externalId;
     this.groupName = props.groupName;
@@ -6233,7 +6224,7 @@ export class SalesTaxItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   taxType?: PlatformCore.SearchColumnSelectField[];
   constructor(props: SalesTaxItemSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -6250,7 +6241,7 @@ export class PricingGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: PricingGroupSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -6320,7 +6311,7 @@ export class IssueSearchBasic extends PlatformCore.SearchRecordBasic {
   versionTarget?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: IssueSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.ageInMonths = props.ageInMonths;
     this.assigned = props.assigned;
     this.buildBroken = props.buildBroken;
@@ -6395,7 +6386,7 @@ export class CustomerStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   probability?: PlatformCore.SearchDoubleField;
   constructor(props: CustomerStatusSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -6529,7 +6520,7 @@ export class EmployeeSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: EmployeeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.addressee = props.addressee;
     this.addressLabel = props.addressLabel;
@@ -6652,13 +6643,12 @@ export class EmployeeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class Partners extends SoapTypes.Base {
+export class Partners {
   partner?: PlatformCore.RecordRef;
   partnerRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: Partners) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partner = props.partner;
     this.partnerRole = props.partnerRole;
     this.isPrimary = props.isPrimary;
@@ -6690,7 +6680,7 @@ export class TaxGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   unitPrice2?: PlatformCore.SearchDoubleField;
   zip?: PlatformCore.SearchStringField;
   constructor(props: TaxGroupSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.city = props.city;
     this.country = props.country;
     this.county = props.county;
@@ -6753,7 +6743,7 @@ export class SupportCaseSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: SupportCaseSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assigned = props.assigned;
     this.awaitingReply = props.awaitingReply;
     this.caseNumber = props.caseNumber;
@@ -6814,7 +6804,7 @@ export class FolderSearchBasic extends PlatformCore.SearchRecordBasic {
   size?: PlatformCore.SearchLongField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   constructor(props: FolderSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.clazz = props.clazz;
     this.department = props.department;
     this.description = props.description;
@@ -6953,7 +6943,7 @@ export class JobSearchRowBasic extends PlatformCore.SearchRowBasic {
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: JobSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.actualTime = props.actualTime;
     this.address = props.address;
@@ -7114,7 +7104,7 @@ export class InboundShipmentSearchBasic extends PlatformCore.SearchRecordBasic {
   vesselNumber?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: InboundShipmentSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualDeliveryDate = props.actualDeliveryDate;
     this.actualShippingDate = props.actualShippingDate;
     this.billOfLading = props.billOfLading;
@@ -7189,7 +7179,7 @@ export class ChargeSearchBasic extends PlatformCore.SearchRecordBasic {
   use?: PlatformCore.SearchEnumMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ChargeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amount = props.amount;
     this.billingAccount = props.billingAccount;
     this.billingItem = props.billingItem;
@@ -7238,7 +7228,7 @@ export class MessageSearchBasic extends PlatformCore.SearchRecordBasic {
   recipientEmail?: PlatformCore.SearchStringField;
   subject?: PlatformCore.SearchStringField;
   constructor(props: MessageSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.author = props.author;
     this.authorEmail = props.authorEmail;
     this.bcc = props.bcc;
@@ -7267,7 +7257,7 @@ export class PaymentMethodSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: PaymentMethodSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.creditCard = props.creditCard;
     this.externalId = props.externalId;
@@ -7287,7 +7277,7 @@ export class TopicSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: TopicSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -7305,7 +7295,7 @@ export class JobStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: JobStatusSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -7322,7 +7312,7 @@ export class CurrencyRateSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   transactionCurrency?: PlatformCore.SearchMultiSelectField;
   constructor(props: CurrencyRateSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.baseCurrency = props.baseCurrency;
     this.effectiveDate = props.effectiveDate;
     this.exchangeRate = props.exchangeRate;
@@ -7332,11 +7322,10 @@ export class CurrencyRateSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class LandedCostData extends SoapTypes.Base {
+export class LandedCostData {
   costCategory?: PlatformCore.RecordRef;
   amount?: number;
   constructor(props: LandedCostData) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.costCategory = props.costCategory;
     this.amount = props.amount;
   }
@@ -7369,7 +7358,7 @@ export class ChargeSearchRowBasic extends PlatformCore.SearchRowBasic {
   use?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ChargeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amount = props.amount;
     this.billingAccount = props.billingAccount;
     this.billingItem = props.billingItem;
@@ -7424,7 +7413,7 @@ export class ManufacturingRoutingSearchBasic extends PlatformCore.SearchRecordBa
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ManufacturingRoutingSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.autoCalculateLag = props.autoCalculateLag;
     this.billOfMaterials = props.billOfMaterials;
     this.externalId = props.externalId;
@@ -7519,7 +7508,7 @@ export class OpportunitySearchBasic extends PlatformCore.SearchRecordBasic {
   wonBy?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: OpportunitySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amount = props.amount;
     this.availableOffline = props.availableOffline;
     this.buyingReason = props.buyingReason;
@@ -7591,7 +7580,7 @@ export class OpportunitySearchBasic extends PlatformCore.SearchRecordBasic {
 export class GroupMemberSearchBasic extends PlatformCore.SearchRecordBasic {
   groupId: PlatformCore.RecordRef;
   constructor(props: GroupMemberSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.groupId = props.groupId;
   }
 }
@@ -7634,7 +7623,7 @@ export class EntitySearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: EntitySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.addressee = props.addressee;
     this.addressLabel = props.addressLabel;
@@ -7683,7 +7672,7 @@ export class VendorCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   isTaxAgency?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: VendorCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -7700,7 +7689,7 @@ export class EntityTaxRegistrationSearchBasic extends PlatformCore.SearchRecordB
   nexusCountry?: PlatformCore.SearchEnumMultiSelectField;
   taxRegistrationNumber?: PlatformCore.SearchStringField;
   constructor(props: EntityTaxRegistrationSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.id = props.id;
     this.nexusCountry = props.nexusCountry;
@@ -7729,7 +7718,7 @@ export class PhoneCallSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: PhoneCallSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assigned = props.assigned;
     this.company = props.company;
     this.completedDate = props.completedDate;
@@ -7758,7 +7747,7 @@ export class AssemblyItemBomSearchBasic extends PlatformCore.SearchRecordBasic {
   _default?: PlatformCore.SearchBooleanField;
   locations?: PlatformCore.SearchMultiSelectField;
   constructor(props: AssemblyItemBomSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assembly = props.assembly;
     this.billOfMaterials = props.billOfMaterials;
     this._default = props._default;
@@ -7812,7 +7801,7 @@ export class ProjectTaskSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ProjectTaskSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualWork = props.actualWork;
     this.assignee = props.assignee;
     this.company = props.company;
@@ -7878,7 +7867,7 @@ export class AddressSearchRowBasic extends PlatformCore.SearchRowBasic {
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: AddressSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -7912,7 +7901,7 @@ export class CustomerSubsidiaryRelationshipSearchBasic extends PlatformCore.Sear
   unbilledOrders?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: CustomerSubsidiaryRelationshipSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.balance = props.balance;
     this.depositBalance = props.depositBalance;
     this.entity = props.entity;
@@ -7936,7 +7925,7 @@ export class PricingGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: PricingGroupSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -7973,7 +7962,7 @@ export class BillingAccountSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: BillingAccountSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.billingSchedule = props.billingSchedule;
     this.cashSaleForm = props.cashSaleForm;
     this.clazz = props.clazz;
@@ -8002,14 +7991,13 @@ export class BillingAccountSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class PresentationItem extends SoapTypes.Base {
+export class PresentationItem {
   item?: PlatformCore.RecordRef;
   itemType?: PlatformCommonTypes.PresentationItemType;
   description?: string;
   onlinePrice?: number;
   basePrice?: number;
   constructor(props: PresentationItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.itemType = props.itemType;
     this.description = props.description;
@@ -8031,7 +8019,7 @@ export class PayrollItemSearchBasic extends PlatformCore.SearchRecordBasic {
   vendor?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: PayrollItemSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.expenseAccount = props.expenseAccount;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -8058,7 +8046,7 @@ export class ManufacturingCostTemplateSearchBasic extends PlatformCore.SearchRec
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ManufacturingCostTemplateSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -8083,7 +8071,7 @@ export class NoteSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: NoteSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.author = props.author;
     this.direction = props.direction;
     this.externalId = props.externalId;
@@ -8116,7 +8104,7 @@ export class GiftCertificateSearchBasic extends PlatformCore.SearchRecordBasic {
   sender?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: GiftCertificateSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amountAvailableBilled = props.amountAvailableBilled;
     this.amountRemaining = props.amountRemaining;
     this.createdDate = props.createdDate;
@@ -8154,7 +8142,7 @@ export class Address extends PlatformCore.Record {
   override?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: Address) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.internalId = props.internalId;
     this.country = props.country;
     this.attention = props.attention;
@@ -8200,7 +8188,7 @@ export class CalendarEventSearchRowBasic extends PlatformCore.SearchRowBasic {
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: CalendarEventSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accessLevel = props.accessLevel;
     this.attendee = props.attendee;
     this.company = props.company;
@@ -8236,7 +8224,7 @@ export class CustomerCategorySearchRowBasic extends PlatformCore.SearchRowBasic 
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: CustomerCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -8268,7 +8256,7 @@ export class AccountSearchBasic extends PlatformCore.SearchRecordBasic {
   type?: PlatformCore.SearchEnumMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: AccountSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingContext = props.accountingContext;
     this.balance = props.balance;
     this.cashFlowRateType = props.cashFlowRateType;
@@ -8332,7 +8320,7 @@ export class TimeBillSearchRowBasic extends PlatformCore.SearchRowBasic {
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: TimeBillSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this._break = props._break;
     this.clazz = props.clazz;
@@ -8378,7 +8366,7 @@ export class OtherNameCategorySearchRowBasic extends PlatformCore.SearchRowBasic
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: OtherNameCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -8397,7 +8385,7 @@ export class SalesTaxItemSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   taxType?: PlatformCore.SearchMultiSelectField;
   constructor(props: SalesTaxItemSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -8428,7 +8416,7 @@ export class ItemAccountMappingSearchBasic extends PlatformCore.SearchRecordBasi
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ItemAccountMappingSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
     this.customDimension = props.customDimension;
@@ -8461,7 +8449,7 @@ export class InstallmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   status?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: InstallmentSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amount = props.amount;
     this.amountPaid = props.amountPaid;
     this.amountRemaining = props.amountRemaining;
@@ -8476,11 +8464,11 @@ export class InstallmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
-export class TimeItem extends SoapTypes.Base {
+export class TimeItem {
   id?: number;
   employee?: PlatformCore.RecordRef;
   timeType?: PlatformCommonTypes.TimeItemTimeType;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   customer?: PlatformCore.RecordRef;
   isBillable?: boolean;
   payrollItem?: PlatformCore.RecordRef;
@@ -8501,7 +8489,6 @@ export class TimeItem extends SoapTypes.Base {
   isProductive?: boolean;
   isExempt?: boolean;
   constructor(props: TimeItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.employee = props.employee;
     this.timeType = props.timeType;
@@ -8550,7 +8537,7 @@ export class TermSearchBasic extends PlatformCore.SearchRecordBasic {
   repeatEvery?: PlatformCore.SearchLongField;
   splitEvenly?: PlatformCore.SearchBooleanField;
   constructor(props: TermSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.dateDriven = props.dateDriven;
     this.dayDiscountExpires = props.dayDiscountExpires;
     this.dayOfMonthNetDue = props.dayOfMonthNetDue;
@@ -8925,7 +8912,7 @@ export class TransactionSearchBasic extends PlatformCore.SearchRecordBasic {
   webSite?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: TransactionSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.accountType = props.accountType;
     this.acctCorpCardExp = props.acctCorpCardExp;
@@ -9287,7 +9274,7 @@ export class NoteTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: NoteTypeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -9313,7 +9300,7 @@ export class GlobalAccountMappingSearchRowBasic extends PlatformCore.SearchRowBa
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: GlobalAccountMappingSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
     this.customDimension = props.customDimension;
@@ -9370,7 +9357,7 @@ export class TimeEntrySearchRowBasic extends PlatformCore.SearchRowBasic {
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: TimeEntrySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this.billingClass = props.billingClass;
     this.billingStatus = props.billingStatus;
@@ -9432,7 +9419,7 @@ export class TermSearchRowBasic extends PlatformCore.SearchRowBasic {
   repeatEvery?: PlatformCore.SearchColumnLongField[];
   splitEvenly?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: TermSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.dateDriven = props.dateDriven;
     this.dayDiscountExpires = props.dayDiscountExpires;
     this.dayOfMonthNetDue = props.dayOfMonthNetDue;
@@ -9461,7 +9448,7 @@ export class InventoryDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
   inventoryNumber?: PlatformCore.SearchColumnSelectField[];
   quantity?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: InventoryDetailSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -9486,7 +9473,7 @@ export class PaycheckSearchRowBasic extends PlatformCore.SearchRowBasic {
   subjectWages?: PlatformCore.SearchColumnDoubleField[];
   taxableWages?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: PaycheckSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.amendedDate = props.amendedDate;
     this.amount = props.amount;
@@ -9514,7 +9501,7 @@ export class HcmJobSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: HcmJobSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.employmentCategory = props.employmentCategory;
     this.externalId = props.externalId;
@@ -9526,13 +9513,12 @@ export class HcmJobSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
-export class CustomerSalesTeam extends SoapTypes.Base {
+export class CustomerSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: CustomerSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -9548,7 +9534,7 @@ export class OtherNameCategorySearchBasic extends PlatformCore.SearchRecordBasic
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: OtherNameCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -9570,7 +9556,7 @@ export class PricingSearchRowBasic extends PlatformCore.SearchRowBasic {
   saleUnit?: PlatformCore.SearchColumnSelectField[];
   unitPrice?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: PricingSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.currency = props.currency;
     this.customer = props.customer;
     this.internalId = props.internalId;
@@ -9584,11 +9570,10 @@ export class PricingSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
-export class LandedCostDataList extends SoapTypes.Base {
+export class LandedCostDataList {
   landedCostData?: LandedCostData[];
   replaceAll?: boolean;
   constructor(props: LandedCostDataList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.landedCostData = props.landedCostData;
     this.replaceAll = props.replaceAll;
   }
@@ -9613,7 +9598,7 @@ export class BomSearchRowBasic extends PlatformCore.SearchRowBasic {
   useComponentYield?: PlatformCore.SearchColumnBooleanField[];
   usedOnAssembly?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: BomSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.availableForAllAssemblies = props.availableForAllAssemblies;
     this.availableForAllLocations = props.availableForAllLocations;
     this.createdDate = props.createdDate;
@@ -9651,7 +9636,7 @@ export class SolutionSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: SolutionSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assigned = props.assigned;
     this.caseCount = props.caseCount;
     this.createdDate = props.createdDate;
@@ -9828,7 +9813,7 @@ export class OriginatingLeadSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: OriginatingLeadSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
     this.addressee = props.addressee;
@@ -9988,12 +9973,11 @@ export class OriginatingLeadSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class AccountingBookDetail extends SoapTypes.Base {
+export class AccountingBookDetail {
   accountingBook?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   exchangeRate?: number;
   constructor(props: AccountingBookDetail) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.accountingBook = props.accountingBook;
     this.currency = props.currency;
     this.exchangeRate = props.exchangeRate;
@@ -10007,7 +9991,7 @@ export class InventoryNumberBinSearchRowBasic extends PlatformCore.SearchRowBasi
   quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
   quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: InventoryNumberBinSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.inventoryNumber = props.inventoryNumber;
     this.location = props.location;
@@ -10016,21 +10000,19 @@ export class InventoryNumberBinSearchRowBasic extends PlatformCore.SearchRowBasi
   }
 }
 
-export class AccountingBookDetailList extends SoapTypes.Base {
+export class AccountingBookDetailList {
   accountingBookDetail?: AccountingBookDetail[];
   replaceAll?: boolean;
   constructor(props: AccountingBookDetailList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.accountingBookDetail = props.accountingBookDetail;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class GiftCertRedemptionList extends SoapTypes.Base {
+export class GiftCertRedemptionList {
   giftCertRedemption?: GiftCertRedemption[];
   replaceAll?: boolean;
   constructor(props: GiftCertRedemptionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.giftCertRedemption = props.giftCertRedemption;
     this.replaceAll = props.replaceAll;
   }
@@ -10050,7 +10032,7 @@ export class UnitsTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   pluralName?: PlatformCore.SearchStringField;
   unitName?: PlatformCore.SearchStringField;
   constructor(props: UnitsTypeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.abbreviation = props.abbreviation;
     this.baseUnit = props.baseUnit;
     this.conversionRate = props.conversionRate;
@@ -10081,7 +10063,7 @@ export class TaxTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   reverseCharge?: PlatformCore.SearchColumnBooleanField[];
   taxInNetAmount?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: TaxTypeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.country = props.country;
     this.description = props.description;
     this.doesNotAddToTotal = props.doesNotAddToTotal;
@@ -10110,7 +10092,7 @@ export class CustomerSubsidiaryRelationshipSearchRowBasic extends PlatformCore.S
   unbilledorders?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: CustomerSubsidiaryRelationshipSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.balance = props.balance;
     this.depositbalance = props.depositbalance;
     this.entity = props.entity;
@@ -10135,7 +10117,7 @@ export class TimeSheetSearchRowBasic extends PlatformCore.SearchRowBasic {
   totalHours?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: TimeSheetSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this.employee = props.employee;
     this.endDate = props.endDate;
@@ -10159,7 +10141,7 @@ export class DepartmentSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: DepartmentSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -10172,11 +10154,10 @@ export class DepartmentSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class CustomSearchJoin extends SoapTypes.Base {
+export class CustomSearchJoin {
   customizationRef: PlatformCore.CustomizationRef;
   searchRecordBasic: PlatformCore.SearchRecordBasic;
   constructor(props: CustomSearchJoin) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.customizationRef = props.customizationRef;
     this.searchRecordBasic = props.searchRecordBasic;
   }
@@ -10202,7 +10183,7 @@ export class AddressSearchBasic extends PlatformCore.SearchRecordBasic {
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: AddressSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -10236,7 +10217,7 @@ export class UnitsTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   pluralName?: PlatformCore.SearchColumnStringField[];
   unitName?: PlatformCore.SearchColumnStringField[];
   constructor(props: UnitsTypeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.abbreviation = props.abbreviation;
     this.baseUnit = props.baseUnit;
     this.conversionRate = props.conversionRate;
@@ -10269,7 +10250,7 @@ export class FairValuePriceSearchRowBasic extends PlatformCore.SearchRowBasic {
   units?: PlatformCore.SearchColumnSelectField[];
   unitsType?: PlatformCore.SearchColumnSelectField[];
   constructor(props: FairValuePriceSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.currency = props.currency;
     this.endDate = props.endDate;
     this.externalId = props.externalId;
@@ -10299,7 +10280,7 @@ export class JobStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: JobStatusSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -10333,7 +10314,7 @@ export class TaxGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   unitPrice2?: PlatformCore.SearchColumnDoubleField[];
   zip?: PlatformCore.SearchColumnStringField[];
   constructor(props: TaxGroupSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.city = props.city;
     this.country = props.country;
     this.county = props.county;
@@ -10684,7 +10665,7 @@ export class ItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   yahooProductFeed?: PlatformCore.SearchColumnBooleanField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ItemSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accBookRevRecForecastRule = props.accBookRevRecForecastRule;
     this.accountingBook = props.accountingBook;
     this.accountingBookAmortization = props.accountingBookAmortization;
@@ -11034,7 +11015,7 @@ export class BudgetSearchRowBasic extends PlatformCore.SearchRowBasic {
   year2?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: BudgetSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
     this.amount = props.amount;
@@ -11076,7 +11057,7 @@ export class RevRecTemplateSearchBasic extends PlatformCore.SearchRecordBasic {
   targetAccount?: PlatformCore.SearchMultiSelectField;
   useForeignAmounts?: PlatformCore.SearchBooleanField;
   constructor(props: RevRecTemplateSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amorMethod = props.amorMethod;
     this.amorPeriod = props.amorPeriod;
     this.amorStartOffset = props.amorStartOffset;
@@ -11103,7 +11084,7 @@ export class InventoryNumberBinSearchBasic extends PlatformCore.SearchRecordBasi
   quantityAvailable?: PlatformCore.SearchDoubleField;
   quantityOnHand?: PlatformCore.SearchDoubleField;
   constructor(props: InventoryNumberBinSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.inventoryNumber = props.inventoryNumber;
     this.location = props.location;
@@ -11121,7 +11102,7 @@ export class MerchandiseHierarchyNodeSearchRowBasic extends PlatformCore.SearchR
   name?: PlatformCore.SearchColumnStringField[];
   parentNode?: PlatformCore.SearchColumnSelectField[];
   constructor(props: MerchandiseHierarchyNodeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.hierarchyLevel = props.hierarchyLevel;
@@ -11219,7 +11200,7 @@ export class JobSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: JobSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountNumber = props.accountNumber;
     this.actualTime = props.actualTime;
     this.address = props.address;
@@ -11340,7 +11321,7 @@ export class AccountingTransactionSearchBasic extends PlatformCore.SearchRecordB
   type?: PlatformCore.SearchEnumMultiSelectField;
   vsoeAllocation?: PlatformCore.SearchDoubleField;
   constructor(props: AccountingTransactionSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
     this.accountType = props.accountType;
@@ -11393,7 +11374,7 @@ export class GiftCertificateSearchRowBasic extends PlatformCore.SearchRowBasic {
   sender?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: GiftCertificateSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amountRemaining = props.amountRemaining;
     this.amtAvailBilled = props.amtAvailBilled;
     this.createdDate = props.createdDate;
@@ -11432,7 +11413,7 @@ export class MessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   recipientEmail?: PlatformCore.SearchColumnStringField[];
   subject?: PlatformCore.SearchColumnStringField[];
   constructor(props: MessageSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.author = props.author;
     this.authorEmail = props.authorEmail;
     this.bcc = props.bcc;
@@ -11461,7 +11442,7 @@ export class JobTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   parent?: PlatformCore.SearchMultiSelectField;
   constructor(props: JobTypeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
     this.internalId = props.internalId;
@@ -11479,7 +11460,7 @@ export class ContactRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: ContactRoleSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -11508,7 +11489,7 @@ export class ItemDemandPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   units?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ItemDemandPlanSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.alternateSourceItem = props.alternateSourceItem;
     this.analysisDuration = props.analysisDuration;
     this.demandDate = props.demandDate;
@@ -11537,7 +11518,7 @@ export class CurrencyRateSearchRowBasic extends PlatformCore.SearchRowBasic {
   internalId?: PlatformCore.SearchColumnSelectField[];
   transactionCurrency?: PlatformCore.SearchColumnSelectField[];
   constructor(props: CurrencyRateSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.baseCurrency = props.baseCurrency;
     this.effectiveDate = props.effectiveDate;
     this.exchangeRate = props.exchangeRate;
@@ -11555,7 +11536,7 @@ export class ContactRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: ContactRoleSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -11615,7 +11596,7 @@ export class MseSubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: MseSubsidiarySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
     this.address1 = props.address1;
@@ -11679,7 +11660,7 @@ export class PaycheckSearchBasic extends PlatformCore.SearchRecordBasic {
   payrollItem?: PlatformCore.SearchMultiSelectField;
   payrollItemType?: PlatformCore.SearchMultiSelectField;
   constructor(props: PaycheckSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.batchNumber = props.batchNumber;
     this.checkDate = props.checkDate;
@@ -11714,7 +11695,7 @@ export class PromotionCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   startDate?: PlatformCore.SearchDateField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: PromotionCodeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.applyDiscountTo = props.applyDiscountTo;
     this.code = props.code;
     this.description = props.description;
@@ -11748,7 +11729,7 @@ export class InstallmentSearchBasic extends PlatformCore.SearchRecordBasic {
   installmentNumber?: PlatformCore.SearchLongField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: InstallmentSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.amount = props.amount;
     this.amountPaid = props.amountPaid;
     this.amountRemaining = props.amountRemaining;
@@ -11794,7 +11775,7 @@ export class ManufacturingOperationTaskSearchBasic extends PlatformCore.SearchRe
   workOrder?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ManufacturingOperationTaskSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualRunTime = props.actualRunTime;
     this.actualSetupTime = props.actualSetupTime;
     this.completedQuantity = props.completedQuantity;
@@ -11844,7 +11825,7 @@ export class BomRevisionComponentSearchRowBasic extends PlatformCore.SearchRowBa
   weight?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: BomRevisionComponentSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.bomQuantity = props.bomQuantity;
     this.bomRevision = props.bomRevision;
     this.componentYield = props.componentYield;
@@ -11862,11 +11843,10 @@ export class BomRevisionComponentSearchRowBasic extends PlatformCore.SearchRowBa
   }
 }
 
-export class TaxDetailsList extends SoapTypes.Base {
+export class TaxDetailsList {
   taxDetails?: TaxDetails[];
   replaceAll?: boolean;
   constructor(props: TaxDetailsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.taxDetails = props.taxDetails;
     this.replaceAll = props.replaceAll;
   }
@@ -11883,7 +11863,7 @@ export class SiteCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchMultiSelectField;
   sitemapPriority?: PlatformCore.SearchEnumMultiSelectField;
   constructor(props: SiteCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.dateViewed = props.dateViewed;
     this.description = props.description;
     this.excludeFromSitemap = props.excludeFromSitemap;
@@ -11907,7 +11887,7 @@ export class NexusSearchRowBasic extends PlatformCore.SearchRowBasic {
   taxAgency?: PlatformCore.SearchColumnSelectField[];
   taxDateFromFulfillment?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: NexusSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.country = props.country;
     this.description = props.description;
     this.externalId = props.externalId;
@@ -11928,7 +11908,7 @@ export class ContactCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   _private?: PlatformCore.SearchColumnBooleanField[];
   sync?: PlatformCore.SearchColumnBooleanField[];
   constructor(props: ContactCategorySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -11947,7 +11927,7 @@ export class CustomListSearchRowBasic extends PlatformCore.SearchRowBasic {
   owner?: PlatformCore.SearchColumnSelectField[];
   scriptId?: PlatformCore.SearchColumnStringField[];
   constructor(props: CustomListSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.internalId = props.internalId;
     this.isInactive = props.isInactive;
@@ -11968,7 +11948,7 @@ export class ItemRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   obsoleteDate?: PlatformCore.SearchDateField;
   constructor(props: ItemRevisionSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.effectiveDate = props.effectiveDate;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -11998,7 +11978,7 @@ export class FileSearchRowBasic extends PlatformCore.SearchRowBasic {
   owner?: PlatformCore.SearchColumnSelectField[];
   url?: PlatformCore.SearchColumnStringField[];
   constructor(props: FileSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.availableWithoutLogin = props.availableWithoutLogin;
     this.created = props.created;
     this.dateViewed = props.dateViewed;
@@ -12064,7 +12044,7 @@ export class LocationSearchBasic extends PlatformCore.SearchRecordBasic {
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: LocationSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.allowStorePickup = props.allowStorePickup;
     this.autoAssignmentRegionSetting = props.autoAssignmentRegionSetting;
@@ -12136,7 +12116,7 @@ export class CalendarEventSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: CalendarEventSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accessLevel = props.accessLevel;
     this.attendee = props.attendee;
     this.calendar = props.calendar;
@@ -12171,7 +12151,7 @@ export class CustomerStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   probability?: PlatformCore.SearchColumnStringField[];
   constructor(props: CustomerStatusSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.includeInLeadReports = props.includeInLeadReports;
@@ -12192,7 +12172,7 @@ export class CustomerMessageSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   preferred?: PlatformCore.SearchBooleanField;
   constructor(props: CustomerMessageSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -12215,7 +12195,7 @@ export class BinSearchBasic extends PlatformCore.SearchRecordBasic {
   memo?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: BinSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -12281,7 +12261,7 @@ export class ContactSearchBasic extends PlatformCore.SearchRecordBasic {
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ContactSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.address = props.address;
     this.addressee = props.addressee;
     this.addressLabel = props.addressLabel;
@@ -12346,7 +12326,7 @@ export class ItemRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   obsoleteDate?: PlatformCore.SearchColumnDateField[];
   constructor(props: ItemRevisionSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.effectiveDate = props.effectiveDate;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -12376,7 +12356,7 @@ export class ResourceAllocationSearchRowBasic extends PlatformCore.SearchRowBasi
   startDate?: PlatformCore.SearchColumnDateField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ResourceAllocationSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.allocationType = props.allocationType;
     this.allocationUnit = props.allocationUnit;
     this.approvalStatus = props.approvalStatus;
@@ -12409,7 +12389,7 @@ export class BomRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   memo?: PlatformCore.SearchStringField;
   name?: PlatformCore.SearchStringField;
   constructor(props: BomRevisionSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.billOfMaterials = props.billOfMaterials;
     this.createdDate = props.createdDate;
     this.effectiveEndDate = props.effectiveEndDate;
@@ -12466,7 +12446,7 @@ export class SupportCaseSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: SupportCaseSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assigned = props.assigned;
     this.awaitingReply = props.awaitingReply;
     this.caseNumber = props.caseNumber;
@@ -12524,7 +12504,7 @@ export class PromotionCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   startDate?: PlatformCore.SearchColumnDateField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: PromotionCodeSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.code = props.code;
     this.description = props.description;
     this.discount = props.discount;
@@ -12550,7 +12530,7 @@ export class TaxDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   taxType?: PlatformCore.SearchMultiSelectField;
   tranId?: PlatformCore.SearchMultiSelectField;
   constructor(props: TaxDetailSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.lineNumber = props.lineNumber;
     this.taxAmount = props.taxAmount;
@@ -12572,7 +12552,7 @@ export class CustomListSearchBasic extends PlatformCore.SearchRecordBasic {
   owner?: PlatformCore.SearchMultiSelectField;
   scriptId?: PlatformCore.SearchStringField;
   constructor(props: CustomListSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.internalId = props.internalId;
     this.internalIdNumber = props.internalIdNumber;
@@ -12603,7 +12583,7 @@ export class AccountingPeriodSearchBasic extends PlatformCore.SearchRecordBasic 
   periodName?: PlatformCore.SearchStringField;
   startDate?: PlatformCore.SearchDateField;
   constructor(props: AccountingPeriodSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.allLocked = props.allLocked;
     this.allowNonGlChanges = props.allowNonGlChanges;
     this.apLocked = props.apLocked;
@@ -12635,7 +12615,7 @@ export class PaymentMethodSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   constructor(props: PaymentMethodSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.creditCard = props.creditCard;
     this.externalId = props.externalId;
@@ -12695,7 +12675,7 @@ export class ProjectTaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ProjectTaskSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualWork = props.actualWork;
     this.company = props.company;
     this.constraintType = props.constraintType;
@@ -12752,7 +12732,7 @@ export class CustomerMessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   preferred?: PlatformCore.SearchColumnStringField[];
   constructor(props: CustomerMessageSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -12775,7 +12755,7 @@ export class ExpenseCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ExpenseCategorySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.description = props.description;
     this.externalId = props.externalId;
@@ -12810,7 +12790,7 @@ export class VendorSubsidiaryRelationshipSearchBasic extends PlatformCore.Search
   unbilledOrdersBase?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: VendorSubsidiaryRelationshipSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.balance = props.balance;
     this.balanceBase = props.balanceBase;
     this.baseCurrency = props.baseCurrency;
@@ -12843,7 +12823,7 @@ export class HcmJobSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: HcmJobSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -12893,7 +12873,7 @@ export class SubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: SubsidiarySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
     this.address = props.address;
@@ -12947,7 +12927,7 @@ export class InventoryNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
   quantityonorder?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: InventoryNumberSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.expirationDate = props.expirationDate;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -12983,7 +12963,7 @@ export class BillingScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   repeatEvery?: PlatformCore.SearchLongField;
   type?: PlatformCore.SearchEnumMultiSelectField;
   constructor(props: BillingScheduleSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.applyToSubtotal = props.applyToSubtotal;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -13004,17 +12984,16 @@ export class BillingScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
-export class InventoryAssignment extends SoapTypes.Base {
+export class InventoryAssignment {
   internalId?: string;
   issueInventoryNumber?: PlatformCore.RecordRef;
   receiptInventoryNumber?: string;
   binNumber?: PlatformCore.RecordRef;
   toBinNumber?: PlatformCore.RecordRef;
   quantity?: number;
-  expirationDate?: SoapTypes.Dateish;
+  expirationDate?: string;
   quantityAvailable?: number;
   constructor(props: InventoryAssignment) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.internalId = props.internalId;
     this.issueInventoryNumber = props.issueInventoryNumber;
     this.receiptInventoryNumber = props.receiptInventoryNumber;
@@ -13043,7 +13022,7 @@ export class CustomRecordSearchBasic extends PlatformCore.SearchRecordBasic {
   parent?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: CustomRecordSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.recType = props.recType;
     this.availableOffline = props.availableOffline;
     this.created = props.created;
@@ -13093,7 +13072,7 @@ export class RevRecScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   templateName?: PlatformCore.SearchStringField;
   useForeignAmounts?: PlatformCore.SearchBooleanField;
   constructor(props: RevRecScheduleSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.amorStatus = props.amorStatus;
     this.amortizedAmount = props.amortizedAmount;
@@ -13174,7 +13153,7 @@ export class SubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: SubsidiarySearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
     this.address1 = props.address1;
@@ -13231,7 +13210,7 @@ export class SalesRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   constructor(props: SalesRoleSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.description = props.description;
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -13272,7 +13251,7 @@ export class TimeEntrySearchBasic extends PlatformCore.SearchRecordBasic {
   utilized?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: TimeEntrySearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.approvalStatus = props.approvalStatus;
     this.billable = props.billable;
     this.billingClass = props.billingClass;
@@ -13325,7 +13304,7 @@ export class BudgetSearchBasic extends PlatformCore.SearchRecordBasic {
   year2?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: BudgetSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
     this.amount = props.amount;
@@ -13364,7 +13343,7 @@ export class VendorSubsidiaryRelationshipSearchRowBasic extends PlatformCore.Sea
   unbilledordersbase?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: VendorSubsidiaryRelationshipSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.balance = props.balance;
     this.balancebase = props.balancebase;
     this.baseCurrency = props.baseCurrency;
@@ -13426,7 +13405,7 @@ export class InboundShipmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   vesselNumber?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: InboundShipmentSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualDeliveryDate = props.actualDeliveryDate;
     this.actualShippingDate = props.actualShippingDate;
     this.billOfLading = props.billOfLading;
@@ -13491,7 +13470,7 @@ export class SolutionSearchBasic extends PlatformCore.SearchRecordBasic {
   topic?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: SolutionSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this._abstract = props._abstract;
     this.assigned = props.assigned;
     this.caseCount = props.caseCount;
@@ -13526,7 +13505,7 @@ export class PricingSearchBasic extends PlatformCore.SearchRecordBasic {
   priceLevel?: PlatformCore.SearchMultiSelectField;
   rate?: PlatformCore.SearchDoubleField;
   constructor(props: PricingSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.assignedPriceLevel = props.assignedPriceLevel;
     this.currency = props.currency;
     this.customer = props.customer;
@@ -13558,7 +13537,7 @@ export class AccountingPeriodSearchRowBasic extends PlatformCore.SearchRowBasic 
   periodName?: PlatformCore.SearchColumnStringField[];
   startDate?: PlatformCore.SearchColumnDateField[];
   constructor(props: AccountingPeriodSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.allLocked = props.allLocked;
     this.allowNonGLChanges = props.allowNonGLChanges;
     this.apLocked = props.apLocked;
@@ -13595,7 +13574,7 @@ export class TaxTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   reverseCharge?: PlatformCore.SearchBooleanField;
   taxInNetAmount?: PlatformCore.SearchBooleanField;
   constructor(props: TaxTypeSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.country = props.country;
     this.description = props.description;
     this.doesNotAddToTotal = props.doesNotAddToTotal;
@@ -13646,7 +13625,7 @@ export class TaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: TaskSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accessLevel = props.accessLevel;
     this.actualTime = props.actualTime;
     this.assigned = props.assigned;
@@ -13709,7 +13688,7 @@ export class TaskSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: TaskSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.actualTime = props.actualTime;
     this.assigned = props.assigned;
     this.company = props.company;
@@ -13752,7 +13731,7 @@ export class ConsolidatedExchangeRateSearchBasic extends PlatformCore.SearchReco
   periodStartDate?: PlatformCore.SearchDateField;
   toSubsidiary?: PlatformCore.SearchMultiSelectField;
   constructor(props: ConsolidatedExchangeRateSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.accountingBook = props.accountingBook;
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -13772,7 +13751,7 @@ export class ItemBinNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
   quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
   quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
   constructor(props: ItemBinNumberSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.binNumber = props.binNumber;
     this.location = props.location;
     this.quantityAvailable = props.quantityAvailable;
@@ -13804,7 +13783,7 @@ export class ManufacturingRoutingSearchRowBasic extends PlatformCore.SearchRowBa
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
   constructor(props: ManufacturingRoutingSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.autoCalculateLag = props.autoCalculateLag;
     this.billOfMaterials = props.billOfMaterials;
     this.externalId = props.externalId;
@@ -13850,7 +13829,7 @@ export class ResourceAllocationSearchBasic extends PlatformCore.SearchRecordBasi
   startDate?: PlatformCore.SearchDateField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ResourceAllocationSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.allocationType = props.allocationType;
     this.allocationUnit = props.allocationUnit;
     this.approvalStatus = props.approvalStatus;
@@ -13893,7 +13872,7 @@ export class ItemDemandPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   units?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
   constructor(props: ItemDemandPlanSearchBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.alternateSourceItem = props.alternateSourceItem;
     this.analysisDuration = props.analysisDuration;
     this.demandDate = props.demandDate;
@@ -13927,7 +13906,7 @@ export class TaxDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
   taxType?: PlatformCore.SearchColumnSelectField[];
   tranId?: PlatformCore.SearchColumnLongField[];
   constructor(props: TaxDetailSearchRowBasic) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.account = props.account;
     this.details = props.details;
     this.lineNumber = props.lineNumber;

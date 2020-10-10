@@ -1,4 +1,1 @@
-
-export type BudgetBudgetType =
-  "_global" |
-  "_local";
+export type BudgetBudgetType = "_global" | "_local";
