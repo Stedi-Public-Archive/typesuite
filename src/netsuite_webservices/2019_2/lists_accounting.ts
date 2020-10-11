@@ -3,6 +3,30 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type PaymentCardProps = {
+  lastFourDigits?: string;
+  issuerIdNumber?: string;
+  entity?: PlatformCore.RecordRef;
+  mask?: string;
+  paymentMethod?: PlatformCore.RecordRef;
+  memo?: string;
+  state?: ListsAccountingTypes.PaymentInstrumentState;
+  isInactive?: boolean;
+  preserveOnFile?: boolean;
+  isDefault?: boolean;
+  cardNumber?: string;
+  expirationDate?: string;
+  cardBrand?: ListsAccountingTypes.PaymentCardBrand;
+  cardType?: ListsAccountingTypes.PaymentCardType;
+  nameOnCard?: string;
+  street?: string;
+  zipCode?: string;
+  validFromDate?: string;
+  issueNumber?: string;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class PaymentCard extends PlatformCore.Record {
   lastFourDigits?: string;
   issuerIdNumber?: string;
@@ -25,7 +49,7 @@ export class PaymentCard extends PlatformCore.Record {
   issueNumber?: string;
   internalId?: string;
   externalId?: string;
-  constructor(props: PaymentCard) {
+  constructor(props: PaymentCardProps) {
     super(props);
     this.lastFourDigits = props.lastFourDigits;
     this.issuerIdNumber = props.issuerIdNumber;
@@ -51,13 +75,21 @@ export class PaymentCard extends PlatformCore.Record {
   }
 }
 
+export type InventoryNumberLocationsProps = {
+  location?: string;
+  quantityOnHand?: number;
+  quantityAvailable?: number;
+  quantityOnOrder?: number;
+  quantityInTransit?: number;
+};
+
 export class InventoryNumberLocations {
   location?: string;
   quantityOnHand?: number;
   quantityAvailable?: number;
   quantityOnOrder?: number;
   quantityInTransit?: number;
-  constructor(props: InventoryNumberLocations) {
+  constructor(props: InventoryNumberLocationsProps) {
     this.location = props.location;
     this.quantityOnHand = props.quantityOnHand;
     this.quantityAvailable = props.quantityAvailable;
@@ -66,12 +98,19 @@ export class InventoryNumberLocations {
   }
 }
 
+export type OtherNameCategoryProps = {
+  name?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class OtherNameCategory extends PlatformCore.Record {
   name?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: OtherNameCategory) {
+  constructor(props: OtherNameCategoryProps) {
     super(props);
     this.name = props.name;
     this.isInactive = props.isInactive;
@@ -80,28 +119,43 @@ export class OtherNameCategory extends PlatformCore.Record {
   }
 }
 
+export type SalesRoleSearchProps = {
+  basic?: PlatformCommon.SalesRoleSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class SalesRoleSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.SalesRoleSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: SalesRoleSearch) {
+  constructor(props: SalesRoleSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type MatrixOptionListProps = {
+  matrixOption?: PlatformCore.SelectCustomFieldRef[];
+};
+
 export class MatrixOptionList {
   matrixOption?: PlatformCore.SelectCustomFieldRef[];
-  constructor(props: MatrixOptionList) {
+  constructor(props: MatrixOptionListProps) {
     this.matrixOption = props.matrixOption;
   }
 }
+
+export type FairValuePriceSearchProps = {
+  basic?: PlatformCommon.FairValuePriceSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class FairValuePriceSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.FairValuePriceSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: FairValuePriceSearch) {
+  constructor(props: FairValuePriceSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -109,13 +163,21 @@ export class FairValuePriceSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type AccountLocalizationsProps = {
+  accountingContext?: PlatformCore.RecordRef;
+  acctNumber?: string;
+  acctName?: string;
+  legalName?: string;
+  locale?: PlatformCommonTypes.Language;
+};
+
 export class AccountLocalizations {
   accountingContext?: PlatformCore.RecordRef;
   acctNumber?: string;
   acctName?: string;
   legalName?: string;
   locale?: PlatformCommonTypes.Language;
-  constructor(props: AccountLocalizations) {
+  constructor(props: AccountLocalizationsProps) {
     this.accountingContext = props.accountingContext;
     this.acctNumber = props.acctNumber;
     this.acctName = props.acctName;
@@ -123,6 +185,228 @@ export class AccountLocalizations {
     this.locale = props.locale;
   }
 }
+
+export type LotNumberedInventoryItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  includeChildren?: boolean;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  purchaseDescription?: string;
+  copyDescription?: boolean;
+  currency?: string;
+  cogsAccount?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  vendor?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  isTaxable?: boolean;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  handlingCost?: number;
+  weight?: number;
+  costingMethodDisplay?: string;
+  shippingCostUnits?: string;
+  handlingCostUnits?: string;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  safetyStockLevelUnits?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  isDropShipItem?: boolean;
+  isSpecialOrderItem?: boolean;
+  stockDescription?: string;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  producer?: boolean;
+  manufacturer?: string;
+  revRecSchedule?: PlatformCore.RecordRef;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufacturerAddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: string;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  shipPackage?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  softDescriptor?: PlatformCore.RecordRef;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  cost?: number;
+  costUnits?: string;
+  reorderMultiple?: number;
+  quantityReorderUnits?: string;
+  totalValue?: number;
+  useBins?: boolean;
+  averageCost?: number;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  lastPurchasePrice?: number;
+  autoReorderPoint?: boolean;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  safetyStockLevel?: number;
+  safetyStockLevelDays?: number;
+  backwardConsumptionDays?: number;
+  seasonalDemand?: boolean;
+  demandModifier?: number;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  quantityOnHand?: number;
+  quantityOnHandUnits?: string;
+  expirationDate?: string;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  onHandValueMli?: number;
+  serialNumbers?: string;
+  reorderPoint?: number;
+  preferredStockLevel?: number;
+  reorderPointUnits?: string;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  periodicLotSizeDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  forwardConsumptionDays?: number;
+  demandSource?: PlatformCore.RecordRef;
+  quantityOnOrder?: number;
+  preferredStockLevelUnits?: string;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  specialsDescription?: string;
+  relatedItemsDescription?: string;
+  featuredDescription?: string;
+  productFeedList?: ProductFeedList;
+  urlComponent?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  hierarchyVersionsList?: LotNumberedInventoryItemHierarchyVersionsList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  itemNumberOptionsList?: PlatformCore.RecordRefList;
+  numbersList?: LotNumberedInventoryItemNumbersList;
+  binNumberList?: InventoryItemBinNumberList;
+  siteCategoryList?: SiteCategoryList;
+  locationsList?: LotNumberedInventoryItemLocationsList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class LotNumberedInventoryItem extends PlatformCore.Record {
   createdDate?: string;
@@ -344,7 +628,7 @@ export class LotNumberedInventoryItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: LotNumberedInventoryItem) {
+  constructor(props: LotNumberedInventoryItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -568,14 +852,27 @@ export class LotNumberedInventoryItem extends PlatformCore.Record {
   }
 }
 
+export type PricingMatrixProps = {
+  pricing?: Pricing[];
+  replaceAll?: boolean;
+};
+
 export class PricingMatrix {
   pricing?: Pricing[];
   replaceAll?: boolean;
-  constructor(props: PricingMatrix) {
+  constructor(props: PricingMatrixProps) {
     this.pricing = props.pricing;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type UnitsTypeProps = {
+  name?: string;
+  isInactive?: boolean;
+  uomList?: UnitsTypeUomList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class UnitsType extends PlatformCore.Record {
   name?: string;
@@ -583,7 +880,7 @@ export class UnitsType extends PlatformCore.Record {
   uomList?: UnitsTypeUomList;
   internalId?: string;
   externalId?: string;
-  constructor(props: UnitsType) {
+  constructor(props: UnitsTypeProps) {
     super(props);
     this.name = props.name;
     this.isInactive = props.isInactive;
@@ -592,6 +889,17 @@ export class UnitsType extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type ItemRevisionProps = {
+  item?: PlatformCore.RecordRef;
+  name?: string;
+  effectiveDate?: string;
+  obsoleteDate?: string;
+  memo?: string;
+  inactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemRevision extends PlatformCore.Record {
   item?: PlatformCore.RecordRef;
@@ -602,7 +910,7 @@ export class ItemRevision extends PlatformCore.Record {
   inactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemRevision) {
+  constructor(props: ItemRevisionProps) {
     super(props);
     this.item = props.item;
     this.name = props.name;
@@ -615,13 +923,21 @@ export class ItemRevision extends PlatformCore.Record {
   }
 }
 
+export type OtherChargePurchaseItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class OtherChargePurchaseItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: OtherChargePurchaseItemHierarchyVersions) {
+  constructor(props: OtherChargePurchaseItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -630,22 +946,34 @@ export class OtherChargePurchaseItemHierarchyVersions {
   }
 }
 
+export type SerializedAssemblyItemBillOfMaterialsListProps = {
+  serializedAssemblyItemBillOfMaterials?: SerializedAssemblyItemBillOfMaterials[];
+  replaceAll?: boolean;
+};
+
 export class SerializedAssemblyItemBillOfMaterialsList {
   serializedAssemblyItemBillOfMaterials?: SerializedAssemblyItemBillOfMaterials[];
   replaceAll?: boolean;
-  constructor(props: SerializedAssemblyItemBillOfMaterialsList) {
+  constructor(props: SerializedAssemblyItemBillOfMaterialsListProps) {
     this.serializedAssemblyItemBillOfMaterials =
       props.serializedAssemblyItemBillOfMaterials;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type LocationSearchAdvancedProps = {
+  criteria?: LocationSearch;
+  columns?: LocationSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class LocationSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: LocationSearch;
   columns?: LocationSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: LocationSearchAdvanced) {
+  constructor(props: LocationSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -654,13 +982,21 @@ export class LocationSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type BomSearchProps = {
+  basic?: PlatformCommon.BomSearchBasic;
+  assemblyItemJoin?: PlatformCommon.AssemblyItemBomSearchBasic;
+  revisionJoin?: PlatformCommon.BomRevisionSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class BomSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.BomSearchBasic;
   assemblyItemJoin?: PlatformCommon.AssemblyItemBomSearchBasic;
   revisionJoin?: PlatformCommon.BomRevisionSearchBasic;
   transactionJoin?: PlatformCommon.TransactionSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: BomSearch) {
+  constructor(props: BomSearchProps) {
     super();
     this.basic = props.basic;
     this.assemblyItemJoin = props.assemblyItemJoin;
@@ -670,12 +1006,19 @@ export class BomSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type RevRecTemplateSearchAdvancedProps = {
+  criteria?: RevRecTemplateSearch;
+  columns?: RevRecTemplateSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class RevRecTemplateSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: RevRecTemplateSearch;
   columns?: RevRecTemplateSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: RevRecTemplateSearchAdvanced) {
+  constructor(props: RevRecTemplateSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -684,15 +1027,55 @@ export class RevRecTemplateSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type AccountingPeriodFiscalCalendarsListProps = {
+  accountingPeriodFiscalCalendars?: AccountingPeriodFiscalCalendars[];
+  replaceAll?: boolean;
+};
+
 export class AccountingPeriodFiscalCalendarsList {
   accountingPeriodFiscalCalendars?: AccountingPeriodFiscalCalendars[];
   replaceAll?: boolean;
-  constructor(props: AccountingPeriodFiscalCalendarsList) {
+  constructor(props: AccountingPeriodFiscalCalendarsListProps) {
     this.accountingPeriodFiscalCalendars =
       props.accountingPeriodFiscalCalendars;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type LocationProps = {
+  name?: string;
+  parent?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  isInactive?: boolean;
+  tranPrefix?: string;
+  mainAddress?: PlatformCommon.Address;
+  returnAddress?: PlatformCommon.Address;
+  locationType?: ListsAccountingTypes.LocationType;
+  timeZone?: ListsAccountingTypes.LocationTimeZone;
+  latitude?: number;
+  longitude?: number;
+  logo?: PlatformCore.RecordRef;
+  useBins?: boolean;
+  makeInventoryAvailable?: boolean;
+  makeInventoryAvailableStore?: boolean;
+  geolocationMethod?: ListsAccountingTypes.LocationGeolocationMethod;
+  autoAssignmentRegionSetting?: ListsAccountingTypes.LocationAutoAssignmentRegionSetting;
+  nextPickupCutOffTime?: string;
+  bufferStock?: number;
+  allowStorePickup?: boolean;
+  storePickupBufferStock?: number;
+  dailyShippingCapacity?: number;
+  totalShippingCapacity?: number;
+  includeLocationRegionsList?: LocationRegionsList;
+  excludeLocationRegionsList?: LocationRegionsList;
+  businessHoursList?: LocationBusinessHoursList;
+  classTranslationList?: ClassTranslationList;
+  includeInControlTower?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Location extends PlatformCore.Record {
   name?: string;
@@ -727,7 +1110,7 @@ export class Location extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Location) {
+  constructor(props: LocationProps) {
     super(props);
     this.name = props.name;
     this.parent = props.parent;
@@ -764,6 +1147,20 @@ export class Location extends PlatformCore.Record {
   }
 }
 
+export type NexusProps = {
+  country?: PlatformCommonTypes.Country;
+  state?: PlatformCore.RecordRef;
+  taxAgency?: PlatformCore.RecordRef;
+  taxAgencyPst?: PlatformCore.RecordRef;
+  taxCode?: PlatformCore.RecordRef;
+  description?: string;
+  parentNexus?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  taxDateFromFulfillment?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class Nexus extends PlatformCore.Record {
   country?: PlatformCommonTypes.Country;
   state?: PlatformCore.RecordRef;
@@ -776,7 +1173,7 @@ export class Nexus extends PlatformCore.Record {
   taxDateFromFulfillment?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: Nexus) {
+  constructor(props: NexusProps) {
     super(props);
     this.country = props.country;
     this.state = props.state;
@@ -792,40 +1189,62 @@ export class Nexus extends PlatformCore.Record {
   }
 }
 
+export type ExpenseCategoryRatesListProps = {
+  expenseCategoryRates?: ExpenseCategoryRates[];
+  replaceAll?: boolean;
+};
+
 export class ExpenseCategoryRatesList {
   expenseCategoryRates?: ExpenseCategoryRates[];
   replaceAll?: boolean;
-  constructor(props: ExpenseCategoryRatesList) {
+  constructor(props: ExpenseCategoryRatesListProps) {
     this.expenseCategoryRates = props.expenseCategoryRates;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TermSearchProps = {
+  basic?: PlatformCommon.TermSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class TermSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TermSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: TermSearch) {
+  constructor(props: TermSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type AssemblyItemBillOfMaterialsListProps = {
+  assemblyItemBillOfMaterials?: AssemblyItemBillOfMaterials[];
+  replaceAll?: boolean;
+};
+
 export class AssemblyItemBillOfMaterialsList {
   assemblyItemBillOfMaterials?: AssemblyItemBillOfMaterials[];
   replaceAll?: boolean;
-  constructor(props: AssemblyItemBillOfMaterialsList) {
+  constructor(props: AssemblyItemBillOfMaterialsListProps) {
     this.assemblyItemBillOfMaterials = props.assemblyItemBillOfMaterials;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TaxTypeSearchAdvancedProps = {
+  criteria?: TaxTypeSearch;
+  columns?: TaxTypeSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class TaxTypeSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TaxTypeSearch;
   columns?: TaxTypeSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TaxTypeSearchAdvanced) {
+  constructor(props: TaxTypeSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -833,6 +1252,21 @@ export class TaxTypeSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type RevRecScheduleProps = {
+  name?: string;
+  amortizationType?: ListsAccountingTypes.RevRecScheduleAmortizationType;
+  recurrenceType?: ListsAccountingTypes.RevRecScheduleRecurrenceType;
+  recogIntervalSrc?: ListsAccountingTypes.RevRecScheduleRecogIntervalSrc;
+  amortizationPeriod?: number;
+  periodOffset?: number;
+  revRecOffset?: number;
+  initialAmount?: number;
+  isInactive?: boolean;
+  recurrenceList?: RevRecScheduleRecurrenceList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class RevRecSchedule extends PlatformCore.Record {
   name?: string;
@@ -847,7 +1281,7 @@ export class RevRecSchedule extends PlatformCore.Record {
   recurrenceList?: RevRecScheduleRecurrenceList;
   internalId?: string;
   externalId?: string;
-  constructor(props: RevRecSchedule) {
+  constructor(props: RevRecScheduleProps) {
     super(props);
     this.name = props.name;
     this.amortizationType = props.amortizationType;
@@ -864,31 +1298,48 @@ export class RevRecSchedule extends PlatformCore.Record {
   }
 }
 
+export type CustomerCategorySearchRowProps = {
+  basic?: PlatformCommon.CustomerCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class CustomerCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CustomerCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: CustomerCategorySearchRow) {
+  constructor(props: CustomerCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type PaymentMethodVisualsProps = {
+  flags?: string;
+  location?: string;
+};
+
 export class PaymentMethodVisuals {
   flags?: string;
   location?: string;
-  constructor(props: PaymentMethodVisuals) {
+  constructor(props: PaymentMethodVisualsProps) {
     this.flags = props.flags;
     this.location = props.location;
   }
 }
+
+export type OtherNameCategorySearchAdvancedProps = {
+  criteria?: OtherNameCategorySearch;
+  columns?: OtherNameCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class OtherNameCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: OtherNameCategorySearch;
   columns?: OtherNameCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: OtherNameCategorySearchAdvanced) {
+  constructor(props: OtherNameCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -897,21 +1348,33 @@ export class OtherNameCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type BillingScheduleRecurrenceListProps = {
+  billingScheduleRecurrence?: BillingScheduleRecurrence[];
+  replaceAll?: boolean;
+};
+
 export class BillingScheduleRecurrenceList {
   billingScheduleRecurrence?: BillingScheduleRecurrence[];
   replaceAll?: boolean;
-  constructor(props: BillingScheduleRecurrenceList) {
+  constructor(props: BillingScheduleRecurrenceListProps) {
     this.billingScheduleRecurrence = props.billingScheduleRecurrence;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type GiftCertificateSearchAdvancedProps = {
+  criteria?: GiftCertificateSearch;
+  columns?: GiftCertificateSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class GiftCertificateSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: GiftCertificateSearch;
   columns?: GiftCertificateSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: GiftCertificateSearchAdvanced) {
+  constructor(props: GiftCertificateSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -919,6 +1382,27 @@ export class GiftCertificateSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type SubtotalItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  displayName?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  description?: string;
+  includeChildren?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SubtotalItem extends PlatformCore.Record {
   createdDate?: string;
@@ -939,7 +1423,7 @@ export class SubtotalItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: SubtotalItem) {
+  constructor(props: SubtotalItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -961,6 +1445,30 @@ export class SubtotalItem extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type TaxGroupProps = {
+  itemId?: string;
+  description?: string;
+  state?: string;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  taxitem1?: PlatformCore.RecordRef;
+  unitprice1?: string;
+  taxitem2?: PlatformCore.RecordRef;
+  unitprice2?: string;
+  piggyback?: boolean;
+  isInactive?: boolean;
+  rate?: number;
+  taxType?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  county?: string;
+  city?: string;
+  zip?: string;
+  nexusCountry?: PlatformCore.RecordRef;
+  isDefault?: boolean;
+  taxItemList?: TaxGroupTaxItemList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class TaxGroup extends PlatformCore.Record {
   itemId?: string;
@@ -984,7 +1492,7 @@ export class TaxGroup extends PlatformCore.Record {
   taxItemList?: TaxGroupTaxItemList;
   internalId?: string;
   externalId?: string;
-  constructor(props: TaxGroup) {
+  constructor(props: TaxGroupProps) {
     super(props);
     this.itemId = props.itemId;
     this.description = props.description;
@@ -1010,13 +1518,21 @@ export class TaxGroup extends PlatformCore.Record {
   }
 }
 
+export type PartnerCategoryProps = {
+  name?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class PartnerCategory extends PlatformCore.Record {
   name?: string;
   parent?: PlatformCore.RecordRef;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: PartnerCategory) {
+  constructor(props: PartnerCategoryProps) {
     super(props);
     this.name = props.name;
     this.parent = props.parent;
@@ -1026,6 +1542,15 @@ export class PartnerCategory extends PlatformCore.Record {
   }
 }
 
+export type RevRecScheduleSearchProps = {
+  basic?: PlatformCommon.RevRecScheduleSearchBasic;
+  appliedToTransactionJoin?: PlatformCommon.TransactionSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class RevRecScheduleSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.RevRecScheduleSearchBasic;
   appliedToTransactionJoin?: PlatformCommon.TransactionSearchBasic;
@@ -1033,7 +1558,7 @@ export class RevRecScheduleSearch extends PlatformCore.SearchRecord {
   itemJoin?: PlatformCommon.ItemSearchBasic;
   transactionJoin?: PlatformCommon.TransactionSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: RevRecScheduleSearch) {
+  constructor(props: RevRecScheduleSearchProps) {
     super();
     this.basic = props.basic;
     this.appliedToTransactionJoin = props.appliedToTransactionJoin;
@@ -1044,12 +1569,19 @@ export class RevRecScheduleSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type WinLossReasonSearchAdvancedProps = {
+  criteria?: WinLossReasonSearch;
+  columns?: WinLossReasonSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class WinLossReasonSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: WinLossReasonSearch;
   columns?: WinLossReasonSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: WinLossReasonSearchAdvanced) {
+  constructor(props: WinLossReasonSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1058,33 +1590,106 @@ export class WinLossReasonSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type InventoryItemBinNumberListProps = {
+  binNumber?: InventoryItemBinNumber[];
+  replaceAll?: boolean;
+};
+
 export class InventoryItemBinNumberList {
   binNumber?: InventoryItemBinNumber[];
   replaceAll?: boolean;
-  constructor(props: InventoryItemBinNumberList) {
+  constructor(props: InventoryItemBinNumberListProps) {
     this.binNumber = props.binNumber;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PaymentMethodSearchRowProps = {
+  basic?: PlatformCommon.PaymentMethodSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class PaymentMethodSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PaymentMethodSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: PaymentMethodSearchRow) {
+  constructor(props: PaymentMethodSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type LocationBusinessHoursListProps = {
+  locationBusinessHours?: LocationBusinessHours[];
+  replaceAll?: boolean;
+};
+
 export class LocationBusinessHoursList {
   locationBusinessHours?: LocationBusinessHours[];
   replaceAll?: boolean;
-  constructor(props: LocationBusinessHoursList) {
+  constructor(props: LocationBusinessHoursListProps) {
     this.locationBusinessHours = props.locationBusinessHours;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type OtherChargePurchaseItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  manufacturingChargeItem?: boolean;
+  cost?: number;
+  costUnits?: string;
+  expenseAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  issueProduct?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  location?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  amortizationPeriod?: number;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  costCategory?: PlatformCore.RecordRef;
+  overheadType?: ListsAccountingTypes.ItemOverheadType;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  currency?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  hierarchyVersionsList?: OtherChargePurchaseItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class OtherChargePurchaseItem extends PlatformCore.Record {
   createdDate?: string;
@@ -1142,7 +1747,7 @@ export class OtherChargePurchaseItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: OtherChargePurchaseItem) {
+  constructor(props: OtherChargePurchaseItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1202,13 +1807,21 @@ export class OtherChargePurchaseItem extends PlatformCore.Record {
   }
 }
 
+export type ItemGroupHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class ItemGroupHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: ItemGroupHierarchyVersions) {
+  constructor(props: ItemGroupHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -1217,16 +1830,31 @@ export class ItemGroupHierarchyVersions {
   }
 }
 
+export type ClassTranslationProps = {
+  locale?: string;
+  language?: string;
+  name?: string;
+};
+
 export class ClassTranslation {
   locale?: string;
   language?: string;
   name?: string;
-  constructor(props: ClassTranslation) {
+  constructor(props: ClassTranslationProps) {
     this.locale = props.locale;
     this.language = props.language;
     this.name = props.name;
   }
 }
+
+export type CustomerMessageProps = {
+  name?: string;
+  description?: string;
+  preferred?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomerMessage extends PlatformCore.Record {
   name?: string;
@@ -1235,7 +1863,7 @@ export class CustomerMessage extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomerMessage) {
+  constructor(props: CustomerMessageProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -1246,11 +1874,17 @@ export class CustomerMessage extends PlatformCore.Record {
   }
 }
 
+export type ExpenseCategorySearchRowProps = {
+  basic?: PlatformCommon.ExpenseCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ExpenseCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ExpenseCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ExpenseCategorySearchRow) {
+  constructor(props: ExpenseCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -1258,21 +1892,33 @@ export class ExpenseCategorySearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type AssemblyItemHierarchyVersionsListProps = {
+  assemblyItemHierarchyVersions?: AssemblyItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class AssemblyItemHierarchyVersionsList {
   assemblyItemHierarchyVersions?: AssemblyItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: AssemblyItemHierarchyVersionsList) {
+  constructor(props: AssemblyItemHierarchyVersionsListProps) {
     this.assemblyItemHierarchyVersions = props.assemblyItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomerCategoryProps = {
+  name?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomerCategory extends PlatformCore.Record {
   name?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomerCategory) {
+  constructor(props: CustomerCategoryProps) {
     super(props);
     this.name = props.name;
     this.isInactive = props.isInactive;
@@ -1281,12 +1927,19 @@ export class CustomerCategory extends PlatformCore.Record {
   }
 }
 
+export type BudgetCategoryProps = {
+  name?: string;
+  budgetType?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+} & PlatformCore.RecordProps;
+
 export class BudgetCategory extends PlatformCore.Record {
   name?: string;
   budgetType?: boolean;
   isInactive?: boolean;
   internalId?: string;
-  constructor(props: BudgetCategory) {
+  constructor(props: BudgetCategoryProps) {
     super(props);
     this.name = props.name;
     this.budgetType = props.budgetType;
@@ -1295,13 +1948,64 @@ export class BudgetCategory extends PlatformCore.Record {
   }
 }
 
+export type BillingScheduleSearchRowProps = {
+  basic?: PlatformCommon.BillingScheduleSearchRowBasic;
+};
+
 export class BillingScheduleSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.BillingScheduleSearchRowBasic;
-  constructor(props: BillingScheduleSearchRow) {
+  constructor(props: BillingScheduleSearchRowProps) {
     super();
     this.basic = props.basic;
   }
 }
+
+export type SubsidiaryProps = {
+  name?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  showSubsidiaryName?: boolean;
+  url?: string;
+  logo?: PlatformCore.RecordRef;
+  tranPrefix?: string;
+  pageLogo?: PlatformCore.RecordRef;
+  state?: string;
+  country?: PlatformCommonTypes.Country;
+  mainAddress?: PlatformCommon.Address;
+  shippingAddress?: PlatformCommon.Address;
+  returnAddress?: PlatformCommon.Address;
+  legalName?: string;
+  isElimination?: boolean;
+  fiscalCalendar?: PlatformCore.RecordRef;
+  taxFiscalCalendar?: PlatformCore.RecordRef;
+  allowPayroll?: boolean;
+  email?: string;
+  currency?: PlatformCore.RecordRef;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  fax?: string;
+  edition?: string;
+  federalIdNumber?: string;
+  addrLanguage?: string;
+  nonConsol?: string;
+  consol?: string;
+  state1TaxNumber?: string;
+  taxRegistrationList?: SubsidiaryTaxRegistrationList;
+  ssnOrTin?: string;
+  interCoAccount?: PlatformCore.RecordRef;
+  nexusList?: SubsidiaryNexusList;
+  accountingBookDetailList?: SubsidiaryAccountingBookDetailList;
+  checkLayout?: PlatformCore.RecordRef;
+  inboundEmail?: string;
+  classTranslationList?: ClassTranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Subsidiary extends PlatformCore.Record {
   name?: string;
@@ -1348,7 +2052,7 @@ export class Subsidiary extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Subsidiary) {
+  constructor(props: SubsidiaryProps) {
     super(props);
     this.name = props.name;
     this.parent = props.parent;
@@ -1397,34 +2101,61 @@ export class Subsidiary extends PlatformCore.Record {
   }
 }
 
+export type UnitsTypeSearchRowProps = {
+  basic?: PlatformCommon.UnitsTypeSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class UnitsTypeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.UnitsTypeSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: UnitsTypeSearchRow) {
+  constructor(props: UnitsTypeSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type PricingGroupSearchProps = {
+  basic?: PlatformCommon.PricingGroupSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
 
 export class PricingGroupSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PricingGroupSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: PricingGroupSearch) {
+  constructor(props: PricingGroupSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type BillingRatesMatrixProps = {
+  billingRates?: BillingRates[];
+  replaceAll?: boolean;
+};
+
 export class BillingRatesMatrix {
   billingRates?: BillingRates[];
   replaceAll?: boolean;
-  constructor(props: BillingRatesMatrix) {
+  constructor(props: BillingRatesMatrixProps) {
     this.billingRates = props.billingRates;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BomRevisionComponentProps = {
+  item?: PlatformCore.RecordRef;
+  description?: string;
+  componentYield?: number;
+  bomQuantity?: number;
+  itemSource?: PlatformCommonTypes.ItemSource;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  internalId?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class BomRevisionComponent {
   item?: PlatformCore.RecordRef;
@@ -1436,7 +2167,7 @@ export class BomRevisionComponent {
   units?: PlatformCore.RecordRef;
   internalId?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: BomRevisionComponent) {
+  constructor(props: BomRevisionComponentProps) {
     this.item = props.item;
     this.description = props.description;
     this.componentYield = props.componentYield;
@@ -1449,21 +2180,33 @@ export class BomRevisionComponent {
   }
 }
 
+export type SerializedInventoryItemNumbersListProps = {
+  numbers?: SerializedInventoryItemNumbers[];
+  replaceAll?: boolean;
+};
+
 export class SerializedInventoryItemNumbersList {
   numbers?: SerializedInventoryItemNumbers[];
   replaceAll?: boolean;
-  constructor(props: SerializedInventoryItemNumbersList) {
+  constructor(props: SerializedInventoryItemNumbersListProps) {
     this.numbers = props.numbers;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PriceLevelSearchAdvancedProps = {
+  criteria?: PriceLevelSearch;
+  columns?: PriceLevelSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class PriceLevelSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PriceLevelSearch;
   columns?: PriceLevelSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PriceLevelSearchAdvanced) {
+  constructor(props: PriceLevelSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1471,13 +2214,20 @@ export class PriceLevelSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ItemAccountMappingSearchAdvancedProps = {
+  criteria?: ItemAccountMappingSearch;
+  columns?: ItemAccountMappingSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ItemAccountMappingSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ItemAccountMappingSearch;
   columns?: ItemAccountMappingSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ItemAccountMappingSearchAdvanced) {
+  constructor(props: ItemAccountMappingSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1486,12 +2236,19 @@ export class ItemAccountMappingSearchAdvanced extends PlatformCore.SearchRecord 
   }
 }
 
+export type SalesRoleSearchAdvancedProps = {
+  criteria?: SalesRoleSearch;
+  columns?: SalesRoleSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class SalesRoleSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: SalesRoleSearch;
   columns?: SalesRoleSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: SalesRoleSearchAdvanced) {
+  constructor(props: SalesRoleSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1499,6 +2256,28 @@ export class SalesRoleSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ItemMemberProps = {
+  memberDescr?: string;
+  componentYield?: number;
+  bomQuantity?: number;
+  itemSource?: PlatformCommonTypes.ItemSource;
+  quantity?: number;
+  memberUnit?: PlatformCore.RecordRef;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  taxSchedule?: PlatformCore.RecordRef;
+  taxcode?: string;
+  item?: PlatformCore.RecordRef;
+  taxrate?: number;
+  effectiveDate?: string;
+  obsoleteDate?: string;
+  effectiveRevision?: PlatformCore.RecordRef;
+  obsoleteRevision?: PlatformCore.RecordRef;
+  lineNumber?: number;
+  memberKey?: string;
+};
 
 export class ItemMember {
   memberDescr?: string;
@@ -1520,7 +2299,7 @@ export class ItemMember {
   obsoleteRevision?: PlatformCore.RecordRef;
   lineNumber?: number;
   memberKey?: string;
-  constructor(props: ItemMember) {
+  constructor(props: ItemMemberProps) {
     this.memberDescr = props.memberDescr;
     this.componentYield = props.componentYield;
     this.bomQuantity = props.bomQuantity;
@@ -1543,24 +2322,61 @@ export class ItemMember {
   }
 }
 
+export type PriceLevelSearchProps = {
+  basic?: PlatformCommon.PriceLevelSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class PriceLevelSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PriceLevelSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: PriceLevelSearch) {
+  constructor(props: PriceLevelSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type ItemGroupHierarchyVersionsListProps = {
+  itemGroupHierarchyVersions?: ItemGroupHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class ItemGroupHierarchyVersionsList {
   itemGroupHierarchyVersions?: ItemGroupHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: ItemGroupHierarchyVersionsList) {
+  constructor(props: ItemGroupHierarchyVersionsListProps) {
     this.itemGroupHierarchyVersions = props.itemGroupHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemSearchProps = {
+  basic?: PlatformCommon.ItemSearchBasic;
+  accountingBookRevRecScheduleJoin?: PlatformCommon.RevRecTemplateSearchBasic;
+  assemblyItemBillOfMaterialsJoin?: PlatformCommon.AssemblyItemBomSearchBasic;
+  binNumberJoin?: PlatformCommon.BinSearchBasic;
+  binOnHandJoin?: PlatformCommon.ItemBinNumberSearchBasic;
+  correlatedItemJoin?: PlatformCommon.ItemSearchBasic;
+  effectiveRevisionJoin?: PlatformCommon.ItemRevisionSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  inventoryDetailJoin?: PlatformCommon.InventoryDetailSearchBasic;
+  inventoryLocationJoin?: PlatformCommon.LocationSearchBasic;
+  inventoryNumberJoin?: PlatformCommon.InventoryNumberSearchBasic;
+  inventoryNumberBinOnHandJoin?: PlatformCommon.InventoryNumberBinSearchBasic;
+  memberItemJoin?: PlatformCommon.ItemSearchBasic;
+  obsoleteRevisionJoin?: PlatformCommon.ItemRevisionSearchBasic;
+  parentJoin?: PlatformCommon.ItemSearchBasic;
+  preferredLocationJoin?: PlatformCommon.LocationSearchBasic;
+  preferredVendorJoin?: PlatformCommon.VendorSearchBasic;
+  pricingJoin?: PlatformCommon.PricingSearchBasic;
+  shopperJoin?: PlatformCommon.CustomerSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  vendorJoin?: PlatformCommon.VendorSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ItemSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ItemSearchBasic;
@@ -1587,7 +2403,7 @@ export class ItemSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ItemSearch) {
+  constructor(props: ItemSearchProps) {
     super();
     this.basic = props.basic;
     this.accountingBookRevRecScheduleJoin =
@@ -1618,12 +2434,19 @@ export class ItemSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type NexusSearchAdvancedProps = {
+  criteria?: NexusSearch;
+  columns?: NexusSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class NexusSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: NexusSearch;
   columns?: NexusSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: NexusSearchAdvanced) {
+  constructor(props: NexusSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1632,12 +2455,19 @@ export class NexusSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type CostCategorySearchAdvancedProps = {
+  criteria?: CostCategorySearch;
+  columns?: CostCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class CostCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CostCategorySearch;
   columns?: CostCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CostCategorySearchAdvanced) {
+  constructor(props: CostCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1645,6 +2475,14 @@ export class CostCategorySearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type NonInventoryPurchaseItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class NonInventoryPurchaseItemHierarchyVersions {
   isIncluded?: boolean;
@@ -1652,7 +2490,7 @@ export class NonInventoryPurchaseItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: NonInventoryPurchaseItemHierarchyVersions) {
+  constructor(props: NonInventoryPurchaseItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -1661,11 +2499,17 @@ export class NonInventoryPurchaseItemHierarchyVersions {
   }
 }
 
+export type DepartmentSearchRowProps = {
+  basic?: PlatformCommon.DepartmentSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class DepartmentSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.DepartmentSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: DepartmentSearchRow) {
+  constructor(props: DepartmentSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -1673,11 +2517,17 @@ export class DepartmentSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type CostCategorySearchProps = {
+  basic?: PlatformCommon.CostCategorySearchBasic;
+  accountJoin?: PlatformCommon.AccountSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+};
+
 export class CostCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CostCategorySearchBasic;
   accountJoin?: PlatformCommon.AccountSearchBasic;
   transactionJoin?: PlatformCommon.TransactionSearchBasic;
-  constructor(props: CostCategorySearch) {
+  constructor(props: CostCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
@@ -1685,22 +2535,34 @@ export class CostCategorySearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type LotNumberedInventoryItemNumbersProps = {
+  serialNumber?: PlatformCore.RecordRef;
+  quantityOnHand?: number;
+  expirationDate?: string;
+};
+
 export class LotNumberedInventoryItemNumbers {
   serialNumber?: PlatformCore.RecordRef;
   quantityOnHand?: number;
   expirationDate?: string;
-  constructor(props: LotNumberedInventoryItemNumbers) {
+  constructor(props: LotNumberedInventoryItemNumbersProps) {
     this.serialNumber = props.serialNumber;
     this.quantityOnHand = props.quantityOnHand;
     this.expirationDate = props.expirationDate;
   }
 }
 
+export type ExpenseCategorySearchProps = {
+  basic?: PlatformCommon.ExpenseCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class ExpenseCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ExpenseCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ExpenseCategorySearch) {
+  constructor(props: ExpenseCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -1708,12 +2570,19 @@ export class ExpenseCategorySearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type CurrencyRateSearchAdvancedProps = {
+  criteria?: CurrencyRateSearch;
+  columns?: CurrencyRateSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class CurrencyRateSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CurrencyRateSearch;
   columns?: CurrencyRateSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CurrencyRateSearchAdvanced) {
+  constructor(props: CurrencyRateSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1721,6 +2590,16 @@ export class CurrencyRateSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type BinProps = {
+  binNumber?: string;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+  isInactive?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Bin extends PlatformCore.Record {
   binNumber?: string;
@@ -1730,7 +2609,7 @@ export class Bin extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Bin) {
+  constructor(props: BinProps) {
     super(props);
     this.binNumber = props.binNumber;
     this.location = props.location;
@@ -1742,15 +2621,31 @@ export class Bin extends PlatformCore.Record {
   }
 }
 
+export type CurrencyRateSearchProps = {
+  basic?: PlatformCommon.CurrencyRateSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class CurrencyRateSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CurrencyRateSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: CurrencyRateSearch) {
+  constructor(props: CurrencyRateSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type GlobalAccountMappingSearchRowProps = {
+  basic?: PlatformCommon.GlobalAccountMappingSearchRowBasic;
+  classJoin?: PlatformCommon.ClassificationSearchRowBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchRowBasic;
+  destinationAccountJoin?: PlatformCommon.AccountSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  sourceAccountJoin?: PlatformCommon.AccountSearchRowBasic;
+  subsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class GlobalAccountMappingSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.GlobalAccountMappingSearchRowBasic;
@@ -1761,7 +2656,7 @@ export class GlobalAccountMappingSearchRow extends PlatformCore.SearchRow {
   sourceAccountJoin?: PlatformCommon.AccountSearchRowBasic;
   subsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: GlobalAccountMappingSearchRow) {
+  constructor(props: GlobalAccountMappingSearchRowProps) {
     super();
     this.basic = props.basic;
     this.classJoin = props.classJoin;
@@ -1774,6 +2669,19 @@ export class GlobalAccountMappingSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type InventoryNumberProps = {
+  inventoryNumber?: string;
+  item?: PlatformCore.RecordRef;
+  status?: string;
+  units?: string;
+  expirationDate?: string;
+  memo?: string;
+  locationsList?: InventoryNumberLocationsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class InventoryNumber extends PlatformCore.Record {
   inventoryNumber?: string;
   item?: PlatformCore.RecordRef;
@@ -1785,7 +2693,7 @@ export class InventoryNumber extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InventoryNumber) {
+  constructor(props: InventoryNumberProps) {
     super(props);
     this.inventoryNumber = props.inventoryNumber;
     this.item = props.item;
@@ -1800,6 +2708,17 @@ export class InventoryNumber extends PlatformCore.Record {
   }
 }
 
+export type TaxAcctProps = {
+  name?: string;
+  description?: string;
+  nexus?: PlatformCore.RecordRef;
+  country?: PlatformCommonTypes.Country;
+  taxAcctType?: ListsAccountingTypes.TaxAcctType;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class TaxAcct extends PlatformCore.Record {
   name?: string;
   description?: string;
@@ -1809,7 +2728,7 @@ export class TaxAcct extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: TaxAcct) {
+  constructor(props: TaxAcctProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -1822,6 +2741,15 @@ export class TaxAcct extends PlatformCore.Record {
   }
 }
 
+export type CostCategoryProps = {
+  name?: string;
+  account?: PlatformCore.RecordRef;
+  itemCostType?: ListsAccountingTypes.CostCategoryItemCostType;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class CostCategory extends PlatformCore.Record {
   name?: string;
   account?: PlatformCore.RecordRef;
@@ -1829,7 +2757,7 @@ export class CostCategory extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: CostCategory) {
+  constructor(props: CostCategoryProps) {
     super(props);
     this.name = props.name;
     this.account = props.account;
@@ -1840,13 +2768,21 @@ export class CostCategory extends PlatformCore.Record {
   }
 }
 
+export type CurrencyRateProps = {
+  baseCurrency?: PlatformCore.RecordRef;
+  transactionCurrency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  effectiveDate?: string;
+  internalId?: string;
+} & PlatformCore.RecordProps;
+
 export class CurrencyRate extends PlatformCore.Record {
   baseCurrency?: PlatformCore.RecordRef;
   transactionCurrency?: PlatformCore.RecordRef;
   exchangeRate?: number;
   effectiveDate?: string;
   internalId?: string;
-  constructor(props: CurrencyRate) {
+  constructor(props: CurrencyRateProps) {
     super(props);
     this.baseCurrency = props.baseCurrency;
     this.transactionCurrency = props.transactionCurrency;
@@ -1856,12 +2792,19 @@ export class CurrencyRate extends PlatformCore.Record {
   }
 }
 
+export type InventoryNumberSearchAdvancedProps = {
+  criteria?: InventoryNumberSearch;
+  columns?: InventoryNumberSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class InventoryNumberSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: InventoryNumberSearch;
   columns?: InventoryNumberSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: InventoryNumberSearchAdvanced) {
+  constructor(props: InventoryNumberSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1869,13 +2812,20 @@ export class InventoryNumberSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ItemSearchAdvancedProps = {
+  criteria?: ItemSearch;
+  columns?: ItemSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ItemSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ItemSearch;
   columns?: ItemSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ItemSearchAdvanced) {
+  constructor(props: ItemSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1884,21 +2834,33 @@ export class ItemSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type InventoryItemLocationsListProps = {
+  locations?: InventoryItemLocations[];
+  replaceAll?: boolean;
+};
+
 export class InventoryItemLocationsList {
   locations?: InventoryItemLocations[];
   replaceAll?: boolean;
-  constructor(props: InventoryItemLocationsList) {
+  constructor(props: InventoryItemLocationsListProps) {
     this.locations = props.locations;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ClassificationSearchAdvancedProps = {
+  criteria?: ClassificationSearch;
+  columns?: ClassificationSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ClassificationSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ClassificationSearch;
   columns?: ClassificationSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ClassificationSearchAdvanced) {
+  constructor(props: ClassificationSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1907,25 +2869,254 @@ export class ClassificationSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type ServiceItemTaskTemplatesProps = {
+  taskName?: string;
+  taskStartOffset?: number;
+  taskDuration?: PlatformCore.Duration;
+};
+
 export class ServiceItemTaskTemplates {
   taskName?: string;
   taskStartOffset?: number;
   taskDuration?: PlatformCore.Duration;
-  constructor(props: ServiceItemTaskTemplates) {
+  constructor(props: ServiceItemTaskTemplatesProps) {
     this.taskName = props.taskName;
     this.taskStartOffset = props.taskStartOffset;
     this.taskDuration = props.taskDuration;
   }
 }
 
+export type ServiceItemTaskTemplatesListProps = {
+  taskTemplates?: ServiceItemTaskTemplates[];
+  replaceAll?: boolean;
+};
+
 export class ServiceItemTaskTemplatesList {
   taskTemplates?: ServiceItemTaskTemplates[];
   replaceAll?: boolean;
-  constructor(props: ServiceItemTaskTemplatesList) {
+  constructor(props: ServiceItemTaskTemplatesListProps) {
     this.taskTemplates = props.taskTemplates;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type LotNumberedAssemblyItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  printItems?: boolean;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  useComponentYield?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  department?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  costCategory?: PlatformCore.RecordRef;
+  description?: string;
+  cogsAccount?: PlatformCore.RecordRef;
+  vendor?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  prodQtyVarianceAcct?: PlatformCore.RecordRef;
+  prodPriceVarianceAcct?: PlatformCore.RecordRef;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  wipVarianceAcct?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  scrapAcct?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  wipAcct?: PlatformCore.RecordRef;
+  handlingCost?: number;
+  weight?: number;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  isTaxable?: boolean;
+  costingMethodDisplay?: string;
+  rate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  stockDescription?: string;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufactureraddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  effectiveBomControl?: ListsAccountingTypes.AssemblyItemEffectiveBomControl;
+  manufacturerTaxId?: string;
+  defaultRevision?: string;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  isDropShipItem?: boolean;
+  isPhantom?: boolean;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: PlatformCore.RecordRef;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  issueProduct?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: PlatformCore.RecordRef;
+  isSpecialWorkOrderItem?: boolean;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  buildEntireAssembly?: boolean;
+  quantityOnHand?: number;
+  useMarginalRates?: boolean;
+  reorderMultiple?: number;
+  cost?: number;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  unbuildVarianceAccount?: PlatformCore.RecordRef;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  totalValue?: number;
+  useBins?: boolean;
+  averageCost?: number;
+  lastPurchasePrice?: number;
+  purchaseDescription?: string;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  buildTime?: number;
+  safetyStockLevel?: number;
+  safetyStockLevelDays?: number;
+  seasonalDemand?: boolean;
+  serialNumbers?: string;
+  reorderPoint?: number;
+  preferredStockLevel?: number;
+  expirationDate?: string;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  demandModifier?: number;
+  autoReorderPoint?: boolean;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  shipIndividually?: boolean;
+  shipPackage?: PlatformCore.RecordRef;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  quantityOnOrder?: number;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  urlComponent?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  shoppingDotComCategory?: string;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  productFeedList?: ProductFeedList;
+  relatedItemsDescription?: string;
+  onSpecial?: boolean;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  itemOptionsList?: ItemOptionsList;
+  itemNumberOptionsList?: PlatformCore.RecordRefList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  billOfMaterialsList?: LotNumberedAssemblyItemBillOfMaterialsList;
+  memberList?: ItemMemberList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  locationsList?: LotNumberedInventoryItemLocationsList;
+  siteCategoryList?: SiteCategoryList;
+  binNumberList?: InventoryItemBinNumberList;
+  numbersList?: LotNumberedInventoryItemNumbersList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: LotNumberedAssemblyItemHierarchyVersionsList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class LotNumberedAssemblyItem extends PlatformCore.Record {
   createdDate?: string;
@@ -2143,7 +3334,7 @@ export class LotNumberedAssemblyItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: LotNumberedAssemblyItem) {
+  constructor(props: LotNumberedAssemblyItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -2363,12 +3554,19 @@ export class LotNumberedAssemblyItem extends PlatformCore.Record {
   }
 }
 
+export type ConsolidatedExchangeRateSearchAdvancedProps = {
+  criteria?: ConsolidatedExchangeRateSearch;
+  columns?: ConsolidatedExchangeRateSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ConsolidatedExchangeRateSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ConsolidatedExchangeRateSearch;
   columns?: ConsolidatedExchangeRateSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ConsolidatedExchangeRateSearchAdvanced) {
+  constructor(props: ConsolidatedExchangeRateSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -2377,24 +3575,43 @@ export class ConsolidatedExchangeRateSearchAdvanced extends PlatformCore.SearchR
   }
 }
 
+export type WinLossReasonSearchRowProps = {
+  basic?: PlatformCommon.WinLossReasonSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class WinLossReasonSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.WinLossReasonSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: WinLossReasonSearchRow) {
+  constructor(props: WinLossReasonSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type InventoryItemHierarchyVersionsListProps = {
+  inventoryItemHierarchyVersions?: InventoryItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class InventoryItemHierarchyVersionsList {
   inventoryItemHierarchyVersions?: InventoryItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: InventoryItemHierarchyVersionsList) {
+  constructor(props: InventoryItemHierarchyVersionsListProps) {
     this.inventoryItemHierarchyVersions = props.inventoryItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type MerchandiseHierarchyNodeHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyLevel?: PlatformCore.RecordRef;
+  parentNode?: PlatformCore.RecordRef;
+};
 
 export class MerchandiseHierarchyNodeHierarchyVersions {
   isIncluded?: boolean;
@@ -2403,7 +3620,7 @@ export class MerchandiseHierarchyNodeHierarchyVersions {
   endDate?: string;
   hierarchyLevel?: PlatformCore.RecordRef;
   parentNode?: PlatformCore.RecordRef;
-  constructor(props: MerchandiseHierarchyNodeHierarchyVersions) {
+  constructor(props: MerchandiseHierarchyNodeHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -2413,19 +3630,30 @@ export class MerchandiseHierarchyNodeHierarchyVersions {
   }
 }
 
+export type SerializedInventoryItemNumbersProps = {
+  serialNumber?: PlatformCore.RecordRef;
+};
+
 export class SerializedInventoryItemNumbers {
   serialNumber?: PlatformCore.RecordRef;
-  constructor(props: SerializedInventoryItemNumbers) {
+  constructor(props: SerializedInventoryItemNumbersProps) {
     this.serialNumber = props.serialNumber;
   }
 }
+
+export type RevRecScheduleSearchAdvancedProps = {
+  criteria?: RevRecScheduleSearch;
+  columns?: RevRecScheduleSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class RevRecScheduleSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: RevRecScheduleSearch;
   columns?: RevRecScheduleSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: RevRecScheduleSearchAdvanced) {
+  constructor(props: RevRecScheduleSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -2433,6 +3661,62 @@ export class RevRecScheduleSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type NonInventoryPurchaseItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  cost?: number;
+  costUnits?: string;
+  expenseAccount?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  includeChildren?: boolean;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  taxSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  amortizationPeriod?: number;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  costCategory?: PlatformCore.RecordRef;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  currency?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  hierarchyVersionsList?: NonInventoryPurchaseItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class NonInventoryPurchaseItem extends PlatformCore.Record {
   createdDate?: string;
@@ -2488,7 +3772,7 @@ export class NonInventoryPurchaseItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: NonInventoryPurchaseItem) {
+  constructor(props: NonInventoryPurchaseItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -2546,34 +3830,57 @@ export class NonInventoryPurchaseItem extends PlatformCore.Record {
   }
 }
 
+export type SubsidiaryAccountingBookDetailListProps = {
+  subsidiaryAccountingBookDetail?: SubsidiaryAccountingBookDetail[];
+  replaceAll?: boolean;
+};
+
 export class SubsidiaryAccountingBookDetailList {
   subsidiaryAccountingBookDetail?: SubsidiaryAccountingBookDetail[];
   replaceAll?: boolean;
-  constructor(props: SubsidiaryAccountingBookDetailList) {
+  constructor(props: SubsidiaryAccountingBookDetailListProps) {
     this.subsidiaryAccountingBookDetail = props.subsidiaryAccountingBookDetail;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type OtherChargeResaleItemHierarchyVersionsListProps = {
+  otherChargeResaleItemHierarchyVersions?: OtherChargeResaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class OtherChargeResaleItemHierarchyVersionsList {
   otherChargeResaleItemHierarchyVersions?: OtherChargeResaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: OtherChargeResaleItemHierarchyVersionsList) {
+  constructor(props: OtherChargeResaleItemHierarchyVersionsListProps) {
     this.otherChargeResaleItemHierarchyVersions =
       props.otherChargeResaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type NonInventoryPurchaseItemHierarchyVersionsListProps = {
+  nonInventoryPurchaseItemHierarchyVersions?: NonInventoryPurchaseItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class NonInventoryPurchaseItemHierarchyVersionsList {
   nonInventoryPurchaseItemHierarchyVersions?: NonInventoryPurchaseItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: NonInventoryPurchaseItemHierarchyVersionsList) {
+  constructor(props: NonInventoryPurchaseItemHierarchyVersionsListProps) {
     this.nonInventoryPurchaseItemHierarchyVersions =
       props.nonInventoryPurchaseItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type OtherChargeResaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class OtherChargeResaleItemHierarchyVersions {
   isIncluded?: boolean;
@@ -2581,7 +3888,7 @@ export class OtherChargeResaleItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: OtherChargeResaleItemHierarchyVersions) {
+  constructor(props: OtherChargeResaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -2589,6 +3896,21 @@ export class OtherChargeResaleItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type BomRevisionProps = {
+  customForm?: PlatformCore.RecordRef;
+  name?: string;
+  createdDate?: string;
+  billOfMaterials?: PlatformCore.RecordRef;
+  memo?: string;
+  isInactive?: boolean;
+  effectiveStartDate?: string;
+  effectiveEndDate?: string;
+  componentList?: BomRevisionComponentList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class BomRevision extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -2603,7 +3925,7 @@ export class BomRevision extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: BomRevision) {
+  constructor(props: BomRevisionProps) {
     super(props);
     this.customForm = props.customForm;
     this.name = props.name;
@@ -2620,24 +3942,69 @@ export class BomRevision extends PlatformCore.Record {
   }
 }
 
+export type MerchandiseHierarchyNodeSearchProps = {
+  basic?: PlatformCommon.MerchandiseHierarchyNodeSearchBasic;
+  parentNodeJoin?: PlatformCommon.MerchandiseHierarchyNodeSearchBasic;
+};
+
 export class MerchandiseHierarchyNodeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.MerchandiseHierarchyNodeSearchBasic;
   parentNodeJoin?: PlatformCommon.MerchandiseHierarchyNodeSearchBasic;
-  constructor(props: MerchandiseHierarchyNodeSearch) {
+  constructor(props: MerchandiseHierarchyNodeSearchProps) {
     super();
     this.basic = props.basic;
     this.parentNodeJoin = props.parentNodeJoin;
   }
 }
 
+export type AccountLocalizationsListProps = {
+  accountLocalizations?: AccountLocalizations[];
+  replaceAll?: boolean;
+};
+
 export class AccountLocalizationsList {
   accountLocalizations?: AccountLocalizations[];
   replaceAll?: boolean;
-  constructor(props: AccountLocalizationsList) {
+  constructor(props: AccountLocalizationsListProps) {
     this.accountLocalizations = props.accountLocalizations;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type AccountProps = {
+  acctType?: ListsAccountingTypes.AccountType;
+  unitsType?: PlatformCore.RecordRef;
+  unit?: PlatformCore.RecordRef;
+  acctNumber?: string;
+  acctName?: string;
+  legalName?: string;
+  includeChildren?: boolean;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: string;
+  generalRate?: ListsAccountingTypes.ConsolidatedRate;
+  parent?: PlatformCore.RecordRef;
+  cashFlowRate?: ListsAccountingTypes.ConsolidatedRate;
+  billableExpensesAcct?: PlatformCore.RecordRef;
+  deferralAcct?: PlatformCore.RecordRef;
+  description?: string;
+  curDocNum?: number;
+  isInactive?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  restrictToAccountingBookList?: PlatformCore.RecordRefList;
+  inventory?: boolean;
+  eliminate?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  category1099Misc?: PlatformCore.RecordRef;
+  localizationsList?: AccountLocalizationsList;
+  openingBalance?: number;
+  tranDate?: string;
+  revalue?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Account extends PlatformCore.Record {
   acctType?: ListsAccountingTypes.AccountType;
@@ -2672,7 +4039,7 @@ export class Account extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Account) {
+  constructor(props: AccountProps) {
     super(props);
     this.acctType = props.acctType;
     this.unitsType = props.unitsType;
@@ -2709,13 +4076,21 @@ export class Account extends PlatformCore.Record {
   }
 }
 
+export type LeadSourceProps = {
+  name?: string;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class LeadSource extends PlatformCore.Record {
   name?: string;
   description?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: LeadSource) {
+  constructor(props: LeadSourceProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -2725,12 +4100,19 @@ export class LeadSource extends PlatformCore.Record {
   }
 }
 
+export type PartnerCategorySearchAdvancedProps = {
+  criteria?: PartnerCategorySearch;
+  columns?: PartnerCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class PartnerCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PartnerCategorySearch;
   columns?: PartnerCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PartnerCategorySearchAdvanced) {
+  constructor(props: PartnerCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -2739,12 +4121,19 @@ export class PartnerCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaxGroupTaxItemProps = {
+  taxName?: PlatformCore.RecordRef;
+  rate?: number;
+  basis?: number;
+  taxType?: string;
+};
+
 export class TaxGroupTaxItem {
   taxName?: PlatformCore.RecordRef;
   rate?: number;
   basis?: number;
   taxType?: string;
-  constructor(props: TaxGroupTaxItem) {
+  constructor(props: TaxGroupTaxItemProps) {
     this.taxName = props.taxName;
     this.rate = props.rate;
     this.basis = props.basis;
@@ -2752,30 +4141,46 @@ export class TaxGroupTaxItem {
   }
 }
 
+export type VendorCategorySearchProps = {
+  basic?: PlatformCommon.VendorCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class VendorCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.VendorCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: VendorCategorySearch) {
+  constructor(props: VendorCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type TermPercentagesListProps = {
+  termPercentages?: TermPercentages[];
+  replaceAll?: boolean;
+};
+
 export class TermPercentagesList {
   termPercentages?: TermPercentages[];
   replaceAll?: boolean;
-  constructor(props: TermPercentagesList) {
+  constructor(props: TermPercentagesListProps) {
     this.termPercentages = props.termPercentages;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type AccountingPeriodSearchRowProps = {
+  basic?: PlatformCommon.AccountingPeriodSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+};
+
 export class AccountingPeriodSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.AccountingPeriodSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
-  constructor(props: AccountingPeriodSearchRow) {
+  constructor(props: AccountingPeriodSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -2783,12 +4188,19 @@ export class AccountingPeriodSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type StateProps = {
+  country?: PlatformCommonTypes.Country;
+  fullName?: string;
+  shortname?: string;
+  internalId?: string;
+} & PlatformCore.RecordProps;
+
 export class State extends PlatformCore.Record {
   country?: PlatformCommonTypes.Country;
   fullName?: string;
   shortname?: string;
   internalId?: string;
-  constructor(props: State) {
+  constructor(props: StateProps) {
     super(props);
     this.country = props.country;
     this.fullName = props.fullName;
@@ -2796,6 +4208,41 @@ export class State extends PlatformCore.Record {
     this.internalId = props.internalId;
   }
 }
+
+export type SalesTaxItemProps = {
+  itemId?: string;
+  displayName?: string;
+  description?: string;
+  rate?: string;
+  taxType?: PlatformCore.RecordRef;
+  taxAgency?: PlatformCore.RecordRef;
+  purchaseAccount?: PlatformCore.RecordRef;
+  saleAccount?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  effectiveFrom?: string;
+  validUntil?: string;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  includeChildren?: boolean;
+  eccode?: boolean;
+  reverseCharge?: boolean;
+  parent?: PlatformCore.RecordRef;
+  service?: boolean;
+  exempt?: boolean;
+  isDefault?: boolean;
+  excludeFromTaxReports?: boolean;
+  available?: ListsAccountingTypes.SalesTaxItemAvailable;
+  export?: boolean;
+  taxAccount?: PlatformCore.RecordRef;
+  county?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  nexusCountry?: PlatformCore.RecordRef;
+  name?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SalesTaxItem extends PlatformCore.Record {
   itemId?: string;
@@ -2830,7 +4277,7 @@ export class SalesTaxItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: SalesTaxItem) {
+  constructor(props: SalesTaxItemProps) {
     super(props);
     this.itemId = props.itemId;
     this.displayName = props.displayName;
@@ -2867,44 +4314,72 @@ export class SalesTaxItem extends PlatformCore.Record {
   }
 }
 
+export type OtherNameCategorySearchProps = {
+  basic?: PlatformCommon.OtherNameCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class OtherNameCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.OtherNameCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: OtherNameCategorySearch) {
+  constructor(props: OtherNameCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type PartnerCategorySearchProps = {
+  basic?: PlatformCommon.PartnerCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
 
 export class PartnerCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PartnerCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: PartnerCategorySearch) {
+  constructor(props: PartnerCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type RevRecTemplateRecurrenceListProps = {
+  revRecTemplateRecurrence?: RevRecTemplateRecurrence[];
+  replaceAll?: boolean;
+};
+
 export class RevRecTemplateRecurrenceList {
   revRecTemplateRecurrence?: RevRecTemplateRecurrence[];
   replaceAll?: boolean;
-  constructor(props: RevRecTemplateRecurrenceList) {
+  constructor(props: RevRecTemplateRecurrenceListProps) {
     this.revRecTemplateRecurrence = props.revRecTemplateRecurrence;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TaxGroupSearchRowProps = {
+  basic?: PlatformCommon.TaxGroupSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class TaxGroupSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TaxGroupSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: TaxGroupSearchRow) {
+  constructor(props: TaxGroupSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type KitItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class KitItemHierarchyVersions {
   isIncluded?: boolean;
@@ -2912,7 +4387,7 @@ export class KitItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: KitItemHierarchyVersions) {
+  constructor(props: KitItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -2920,6 +4395,54 @@ export class KitItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type LotNumberedInventoryItemLocationsProps = {
+  location?: string;
+  quantityOnHand?: number;
+  onHandValueMli?: number;
+  serialNumbers?: string;
+  expirationDate?: string;
+  averageCostMli?: number;
+  lastPurchasePriceMli?: number;
+  reorderPoint?: number;
+  locationAllowStorePickup?: boolean;
+  locationStorePickupBufferStock?: number;
+  locationQtyAvailForStorePickup?: number;
+  preferredStockLevel?: number;
+  leadTime?: number;
+  defaultReturnCost?: number;
+  safetyStockLevel?: number;
+  cost?: number;
+  inventoryCostTemplate?: PlatformCore.RecordRef;
+  buildTime?: number;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  isWip?: boolean;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  costingLotSize?: number;
+  quantityOnOrder?: number;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  locationId?: PlatformCore.RecordRef;
+  locationlookup?: PlatformCore.RecordRef;
+  locationDisplay?: string;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  periodicLotSizeDays?: number;
+  supplyType?: PlatformCore.RecordRef;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  backwardConsumptionDays?: number;
+  forwardConsumptionDays?: number;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+};
 
 export class LotNumberedInventoryItemLocations {
   location?: string;
@@ -2967,7 +4490,7 @@ export class LotNumberedInventoryItemLocations {
   supplyTimeFence?: number;
   rescheduleInDays?: number;
   rescheduleOutDays?: number;
-  constructor(props: LotNumberedInventoryItemLocations) {
+  constructor(props: LotNumberedInventoryItemLocationsProps) {
     this.location = props.location;
     this.quantityOnHand = props.quantityOnHand;
     this.onHandValueMli = props.onHandValueMli;
@@ -3016,12 +4539,19 @@ export class LotNumberedInventoryItemLocations {
   }
 }
 
+export type WinLossReasonProps = {
+  name?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class WinLossReason extends PlatformCore.Record {
   name?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: WinLossReason) {
+  constructor(props: WinLossReasonProps) {
     super(props);
     this.name = props.name;
     this.isInactive = props.isInactive;
@@ -3029,6 +4559,224 @@ export class WinLossReason extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type AssemblyItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  printItems?: boolean;
+  vendor?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  department?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  description?: string;
+  cogsAccount?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  useComponentYield?: boolean;
+  wipVarianceAcct?: PlatformCore.RecordRef;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  scrapAcct?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  wipAcct?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  handlingCost?: number;
+  weight?: number;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  isTaxable?: boolean;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  rate?: number;
+  costingMethodDisplay?: string;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  stockDescription?: string;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufactureraddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  effectiveBomControl?: ListsAccountingTypes.AssemblyItemEffectiveBomControl;
+  defaultRevision?: string;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  isDropShipItem?: boolean;
+  isPhantom?: boolean;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: PlatformCore.RecordRef;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  issueProduct?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: PlatformCore.RecordRef;
+  isSpecialWorkOrderItem?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  prodQtyVarianceAcct?: PlatformCore.RecordRef;
+  prodPriceVarianceAcct?: PlatformCore.RecordRef;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  buildEntireAssembly?: boolean;
+  quantityOnHand?: number;
+  useMarginalRates?: boolean;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  unbuildVarianceAccount?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  totalValue?: number;
+  useBins?: boolean;
+  averageCost?: number;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  buildTime?: number;
+  lastPurchasePrice?: number;
+  purchaseDescription?: string;
+  safetyStockLevel?: number;
+  safetyStockLevelDays?: number;
+  seasonalDemand?: boolean;
+  reorderMultiple?: number;
+  cost?: number;
+  reorderPoint?: number;
+  demandModifier?: number;
+  distributionNetwork?: PlatformCore.RecordRef;
+  distributionCategory?: PlatformCore.RecordRef;
+  preferredStockLevel?: number;
+  autoReorderPoint?: boolean;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  quantityCommitted?: number;
+  shipIndividually?: boolean;
+  quantityAvailable?: number;
+  shipPackage?: PlatformCore.RecordRef;
+  quantityBackOrdered?: number;
+  storeDisplayName?: string;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  quantityOnOrder?: number;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  urlComponent?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  shoppingDotComCategory?: string;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  productFeedList?: ProductFeedList;
+  relatedItemsDescription?: string;
+  onSpecial?: boolean;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  itemOptionsList?: ItemOptionsList;
+  itemNumberOptionsList?: PlatformCore.RecordRefList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  memberList?: ItemMemberList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  billOfMaterialsList?: AssemblyItemBillOfMaterialsList;
+  locationsList?: InventoryItemLocationsList;
+  siteCategoryList?: SiteCategoryList;
+  binNumberList?: InventoryItemBinNumberList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: AssemblyItemHierarchyVersionsList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class AssemblyItem extends PlatformCore.Record {
   createdDate?: string;
@@ -3246,7 +4994,7 @@ export class AssemblyItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: AssemblyItem) {
+  constructor(props: AssemblyItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -3466,40 +5214,61 @@ export class AssemblyItem extends PlatformCore.Record {
   }
 }
 
+export type TranslationListProps = {
+  translation?: Translation[];
+  replaceAll?: boolean;
+};
+
 export class TranslationList {
   translation?: Translation[];
   replaceAll?: boolean;
-  constructor(props: TranslationList) {
+  constructor(props: TranslationListProps) {
     this.translation = props.translation;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ServiceResaleItemHierarchyVersionsListProps = {
+  serviceResaleItemHierarchyVersions?: ServiceResaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class ServiceResaleItemHierarchyVersionsList {
   serviceResaleItemHierarchyVersions?: ServiceResaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: ServiceResaleItemHierarchyVersionsList) {
+  constructor(props: ServiceResaleItemHierarchyVersionsListProps) {
     this.serviceResaleItemHierarchyVersions =
       props.serviceResaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ServiceSaleItemHierarchyVersionsListProps = {
+  serviceSaleItemHierarchyVersions?: ServiceSaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class ServiceSaleItemHierarchyVersionsList {
   serviceSaleItemHierarchyVersions?: ServiceSaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: ServiceSaleItemHierarchyVersionsList) {
+  constructor(props: ServiceSaleItemHierarchyVersionsListProps) {
     this.serviceSaleItemHierarchyVersions =
       props.serviceSaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type GiftCertificateSearchRowProps = {
+  basic?: PlatformCommon.GiftCertificateSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class GiftCertificateSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.GiftCertificateSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: GiftCertificateSearchRow) {
+  constructor(props: GiftCertificateSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -3507,24 +5276,66 @@ export class GiftCertificateSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type PriceProps = {
+  value?: number;
+  quantity?: number;
+};
+
 export class Price {
   value?: number;
   quantity?: number;
-  constructor(props: Price) {
+  constructor(props: PriceProps) {
     this.value = props.value;
     this.quantity = props.quantity;
   }
 }
 
+export type NoteTypeSearchRowProps = {
+  basic?: PlatformCommon.NoteTypeSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class NoteTypeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.NoteTypeSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: NoteTypeSearchRow) {
+  constructor(props: NoteTypeSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ItemGroupProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  includeStartEndLines?: boolean;
+  isVsoeBundle?: boolean;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  availableToPartners?: boolean;
+  isInactive?: boolean;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  parent?: PlatformCore.RecordRef;
+  description?: string;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  includeChildren?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  printItems?: boolean;
+  memberList?: ItemMemberList;
+  translationsList?: TranslationList;
+  hierarchyVersionsList?: ItemGroupHierarchyVersionsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemGroup extends PlatformCore.Record {
   createdDate?: string;
@@ -3556,7 +5367,7 @@ export class ItemGroup extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemGroup) {
+  constructor(props: ItemGroupProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -3590,24 +5401,42 @@ export class ItemGroup extends PlatformCore.Record {
   }
 }
 
+export type PresentationItemListProps = {
+  presentationItem?: PlatformCommon.PresentationItem[];
+  replaceAll?: boolean;
+};
+
 export class PresentationItemList {
   presentationItem?: PlatformCommon.PresentationItem[];
   replaceAll?: boolean;
-  constructor(props: PresentationItemList) {
+  constructor(props: PresentationItemListProps) {
     this.presentationItem = props.presentationItem;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type RevRecTemplateSearchProps = {
+  basic?: PlatformCommon.RevRecTemplateSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class RevRecTemplateSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.RevRecTemplateSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: RevRecTemplateSearch) {
+  constructor(props: RevRecTemplateSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type LotNumberedInventoryItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class LotNumberedInventoryItemHierarchyVersions {
   isIncluded?: boolean;
@@ -3615,7 +5444,7 @@ export class LotNumberedInventoryItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: LotNumberedInventoryItemHierarchyVersions) {
+  constructor(props: LotNumberedInventoryItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -3623,6 +5452,40 @@ export class LotNumberedInventoryItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type MarkupItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  description?: string;
+  nonPosting?: boolean;
+  account?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  rate?: string;
+  isPreTax?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  taxSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  expenseAccount?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class MarkupItem extends PlatformCore.Record {
   createdDate?: string;
@@ -3656,7 +5519,7 @@ export class MarkupItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: MarkupItem) {
+  constructor(props: MarkupItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -3692,6 +5555,16 @@ export class MarkupItem extends PlatformCore.Record {
   }
 }
 
+export type SubsidiarySearchRowProps = {
+  basic?: PlatformCommon.SubsidiarySearchRowBasic;
+  addressJoin?: PlatformCommon.AddressSearchRowBasic;
+  defaultAdvanceToApplyAccountJoin?: PlatformCommon.AccountSearchRowBasic;
+  returnAddressJoin?: PlatformCommon.AddressSearchRowBasic;
+  shippingAddressJoin?: PlatformCommon.AddressSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class SubsidiarySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.SubsidiarySearchRowBasic;
   addressJoin?: PlatformCommon.AddressSearchRowBasic;
@@ -3700,7 +5573,7 @@ export class SubsidiarySearchRow extends PlatformCore.SearchRow {
   shippingAddressJoin?: PlatformCommon.AddressSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: SubsidiarySearchRow) {
+  constructor(props: SubsidiarySearchRowProps) {
     super();
     this.basic = props.basic;
     this.addressJoin = props.addressJoin;
@@ -3713,13 +5586,21 @@ export class SubsidiarySearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type NonInventorySaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class NonInventorySaleItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: NonInventorySaleItemHierarchyVersions) {
+  constructor(props: NonInventorySaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -3728,25 +5609,45 @@ export class NonInventorySaleItemHierarchyVersions {
   }
 }
 
+export type PaymentMethodSearchProps = {
+  basic?: PlatformCommon.PaymentMethodSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class PaymentMethodSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PaymentMethodSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: PaymentMethodSearch) {
+  constructor(props: PaymentMethodSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type OtherNameCategorySearchRowProps = {
+  basic?: PlatformCommon.OtherNameCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class OtherNameCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.OtherNameCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: OtherNameCategorySearchRow) {
+  constructor(props: OtherNameCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type BillingScheduleRecurrenceProps = {
+  recurrenceId?: number;
+  count?: number;
+  units?: ListsAccountingTypes.BillingScheduleRecurrenceRecurrenceUnits;
+  relativeToPrevious?: boolean;
+  recurrenceDate?: string;
+  amount?: number;
+  paymentTerms?: PlatformCore.RecordRef;
+};
 
 export class BillingScheduleRecurrence {
   recurrenceId?: number;
@@ -3756,7 +5657,7 @@ export class BillingScheduleRecurrence {
   recurrenceDate?: string;
   amount?: number;
   paymentTerms?: PlatformCore.RecordRef;
-  constructor(props: BillingScheduleRecurrence) {
+  constructor(props: BillingScheduleRecurrenceProps) {
     this.recurrenceId = props.recurrenceId;
     this.count = props.count;
     this.units = props.units;
@@ -3767,26 +5668,55 @@ export class BillingScheduleRecurrence {
   }
 }
 
+export type ItemVendorListProps = {
+  itemVendor?: ItemVendor[];
+  replaceAll?: boolean;
+};
+
 export class ItemVendorList {
   itemVendor?: ItemVendor[];
   replaceAll?: boolean;
-  constructor(props: ItemVendorList) {
+  constructor(props: ItemVendorListProps) {
     this.itemVendor = props.itemVendor;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ClassificationSearchProps = {
+  basic?: PlatformCommon.ClassificationSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class ClassificationSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ClassificationSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ClassificationSearch) {
+  constructor(props: ClassificationSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type CurrencyProps = {
+  name?: string;
+  symbol?: string;
+  isBaseCurrency?: boolean;
+  isInactive?: boolean;
+  overrideCurrencyFormat?: boolean;
+  displaySymbol?: string;
+  symbolPlacement?: PlatformCommonTypes.CurrencySymbolPlacement;
+  locale?: ListsAccountingTypes.CurrencyLocale;
+  formatSample?: string;
+  exchangeRate?: number;
+  fxRateUpdateTimezone?: ListsAccountingTypes.CurrencyFxRateUpdateTimezone;
+  inclInFxRateUpdates?: boolean;
+  currencyPrecision?: ListsAccountingTypes.CurrencyCurrencyPrecision;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Currency extends PlatformCore.Record {
   name?: string;
@@ -3804,7 +5734,7 @@ export class Currency extends PlatformCore.Record {
   currencyPrecision?: ListsAccountingTypes.CurrencyCurrencyPrecision;
   internalId?: string;
   externalId?: string;
-  constructor(props: Currency) {
+  constructor(props: CurrencyProps) {
     super(props);
     this.name = props.name;
     this.symbol = props.symbol;
@@ -3823,6 +5753,51 @@ export class Currency extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type SerializedInventoryItemLocationsProps = {
+  location?: string;
+  quantityOnHand?: number;
+  onHandValueMli?: number;
+  serialNumbers?: string;
+  averageCostMli?: number;
+  lastPurchasePriceMli?: number;
+  reorderPoint?: number;
+  locationAllowStorePickup?: boolean;
+  locationStorePickupBufferStock?: number;
+  locationQtyAvailForStorePickup?: number;
+  preferredStockLevel?: number;
+  leadTime?: number;
+  defaultReturnCost?: number;
+  isWip?: boolean;
+  safetyStockLevel?: number;
+  cost?: number;
+  inventoryCostTemplate?: PlatformCore.RecordRef;
+  buildTime?: number;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  costingLotSize?: number;
+  quantityOnOrder?: number;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  locationId?: PlatformCore.RecordRef;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  periodicLotSizeDays?: number;
+  supplyType?: PlatformCore.RecordRef;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  backwardConsumptionDays?: number;
+  forwardConsumptionDays?: number;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+};
 
 export class SerializedInventoryItemLocations {
   location?: string;
@@ -3867,7 +5842,7 @@ export class SerializedInventoryItemLocations {
   supplyTimeFence?: number;
   rescheduleInDays?: number;
   rescheduleOutDays?: number;
-  constructor(props: SerializedInventoryItemLocations) {
+  constructor(props: SerializedInventoryItemLocationsProps) {
     this.location = props.location;
     this.quantityOnHand = props.quantityOnHand;
     this.onHandValueMli = props.onHandValueMli;
@@ -3913,16 +5888,30 @@ export class SerializedInventoryItemLocations {
   }
 }
 
+export type RevRecScheduleRecurrenceProps = {
+  incomeaccount?: PlatformCore.RecordRef;
+  periodOffset?: number;
+  recamount?: string;
+};
+
 export class RevRecScheduleRecurrence {
   incomeaccount?: PlatformCore.RecordRef;
   periodOffset?: number;
   recamount?: string;
-  constructor(props: RevRecScheduleRecurrence) {
+  constructor(props: RevRecScheduleRecurrenceProps) {
     this.incomeaccount = props.incomeaccount;
     this.periodOffset = props.periodOffset;
     this.recamount = props.recamount;
   }
 }
+
+export type LocationSearchProps = {
+  basic?: PlatformCommon.LocationSearchBasic;
+  addressJoin?: PlatformCommon.AddressSearchBasic;
+  returnAddressJoin?: PlatformCommon.AddressSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class LocationSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.LocationSearchBasic;
@@ -3930,7 +5919,7 @@ export class LocationSearch extends PlatformCore.SearchRecord {
   returnAddressJoin?: PlatformCommon.AddressSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: LocationSearch) {
+  constructor(props: LocationSearchProps) {
     super();
     this.basic = props.basic;
     this.addressJoin = props.addressJoin;
@@ -3940,13 +5929,21 @@ export class LocationSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type AssemblyItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class AssemblyItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: AssemblyItemHierarchyVersions) {
+  constructor(props: AssemblyItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -3954,6 +5951,72 @@ export class AssemblyItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type GiftCertificateItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  includeChildren?: boolean;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  salesDescription?: string;
+  incomeAccount?: PlatformCore.RecordRef;
+  liabilityAccount?: PlatformCore.RecordRef;
+  daysBeforeExpiration?: number;
+  isTaxable?: boolean;
+  rate?: number;
+  urlComponent?: string;
+  salesTaxCode?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  taxSchedule?: PlatformCore.RecordRef;
+  costEstimate?: number;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  billingSchedule?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  isFulfillable?: boolean;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  relatedItemsDescription?: string;
+  pricingMatrix?: PricingMatrix;
+  authCodesList?: GiftCertificateItemAuthCodesList;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  itemOptionsList?: ItemOptionsList;
+  presentationItemList?: PresentationItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class GiftCertificateItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4019,7 +6082,7 @@ export class GiftCertificateItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: GiftCertificateItem) {
+  constructor(props: GiftCertificateItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4087,6 +6150,17 @@ export class GiftCertificateItem extends PlatformCore.Record {
   }
 }
 
+export type GlobalAccountMappingSearchProps = {
+  basic?: PlatformCommon.GlobalAccountMappingSearchBasic;
+  classJoin?: PlatformCommon.ClassificationSearchBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchBasic;
+  destinationAccountJoin?: PlatformCommon.AccountSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  sourceAccountJoin?: PlatformCommon.AccountSearchBasic;
+  subsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class GlobalAccountMappingSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.GlobalAccountMappingSearchBasic;
   classJoin?: PlatformCommon.ClassificationSearchBasic;
@@ -4096,7 +6170,7 @@ export class GlobalAccountMappingSearch extends PlatformCore.SearchRecord {
   sourceAccountJoin?: PlatformCommon.AccountSearchBasic;
   subsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: GlobalAccountMappingSearch) {
+  constructor(props: GlobalAccountMappingSearchProps) {
     super();
     this.basic = props.basic;
     this.classJoin = props.classJoin;
@@ -4109,12 +6183,19 @@ export class GlobalAccountMappingSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type NoteTypeSearchAdvancedProps = {
+  criteria?: NoteTypeSearch;
+  columns?: NoteTypeSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class NoteTypeSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: NoteTypeSearch;
   columns?: NoteTypeSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: NoteTypeSearchAdvanced) {
+  constructor(props: NoteTypeSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -4123,6 +6204,15 @@ export class NoteTypeSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type RevRecScheduleSearchRowProps = {
+  basic?: PlatformCommon.RevRecScheduleSearchRowBasic;
+  appliedToTransactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class RevRecScheduleSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.RevRecScheduleSearchRowBasic;
   appliedToTransactionJoin?: PlatformCommon.TransactionSearchRowBasic;
@@ -4130,7 +6220,7 @@ export class RevRecScheduleSearchRow extends PlatformCore.SearchRow {
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: RevRecScheduleSearchRow) {
+  constructor(props: RevRecScheduleSearchRowProps) {
     super();
     this.basic = props.basic;
     this.appliedToTransactionJoin = props.appliedToTransactionJoin;
@@ -4141,13 +6231,21 @@ export class RevRecScheduleSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ServicePurchaseItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class ServicePurchaseItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: ServicePurchaseItemHierarchyVersions) {
+  constructor(props: ServicePurchaseItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -4155,6 +6253,18 @@ export class ServicePurchaseItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type ClassificationProps = {
+  name?: string;
+  includeChildren?: boolean;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  classTranslationList?: ClassTranslationList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Classification extends PlatformCore.Record {
   name?: string;
@@ -4166,7 +6276,7 @@ export class Classification extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Classification) {
+  constructor(props: ClassificationProps) {
     super(props);
     this.name = props.name;
     this.includeChildren = props.includeChildren;
@@ -4180,12 +6290,19 @@ export class Classification extends PlatformCore.Record {
   }
 }
 
+export type ContactRoleSearchAdvancedProps = {
+  criteria?: ContactRoleSearch;
+  columns?: ContactRoleSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ContactRoleSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ContactRoleSearch;
   columns?: ContactRoleSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ContactRoleSearchAdvanced) {
+  constructor(props: ContactRoleSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -4194,13 +6311,21 @@ export class ContactRoleSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type BomSearchRowProps = {
+  basic?: PlatformCommon.BomSearchRowBasic;
+  assemblyItemJoin?: PlatformCommon.AssemblyItemBomSearchRowBasic;
+  revisionJoin?: PlatformCommon.BomRevisionSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class BomSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.BomSearchRowBasic;
   assemblyItemJoin?: PlatformCommon.AssemblyItemBomSearchRowBasic;
   revisionJoin?: PlatformCommon.BomRevisionSearchRowBasic;
   transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: BomSearchRow) {
+  constructor(props: BomSearchRowProps) {
     super();
     this.basic = props.basic;
     this.assemblyItemJoin = props.assemblyItemJoin;
@@ -4210,6 +6335,16 @@ export class BomSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type UnitsTypeUomProps = {
+  internalId?: string;
+  unitName?: string;
+  pluralName?: string;
+  abbreviation?: string;
+  pluralAbbreviation?: string;
+  conversionRate?: number;
+  baseUnit?: boolean;
+};
+
 export class UnitsTypeUom {
   internalId?: string;
   unitName?: string;
@@ -4218,7 +6353,7 @@ export class UnitsTypeUom {
   pluralAbbreviation?: string;
   conversionRate?: number;
   baseUnit?: boolean;
-  constructor(props: UnitsTypeUom) {
+  constructor(props: UnitsTypeUomProps) {
     this.internalId = props.internalId;
     this.unitName = props.unitName;
     this.pluralName = props.pluralName;
@@ -4229,6 +6364,15 @@ export class UnitsTypeUom {
   }
 }
 
+export type AssemblyItemBillOfMaterialsProps = {
+  billOfMaterials?: PlatformCore.RecordRef;
+  currentRevision?: string;
+  masterDefault?: boolean;
+  defaultForLocationList?: PlatformCore.RecordRefList;
+  inactive?: string;
+  memo?: string;
+};
+
 export class AssemblyItemBillOfMaterials {
   billOfMaterials?: PlatformCore.RecordRef;
   currentRevision?: string;
@@ -4236,7 +6380,7 @@ export class AssemblyItemBillOfMaterials {
   defaultForLocationList?: PlatformCore.RecordRefList;
   inactive?: string;
   memo?: string;
-  constructor(props: AssemblyItemBillOfMaterials) {
+  constructor(props: AssemblyItemBillOfMaterialsProps) {
     this.billOfMaterials = props.billOfMaterials;
     this.currentRevision = props.currentRevision;
     this.masterDefault = props.masterDefault;
@@ -4246,17 +6390,43 @@ export class AssemblyItemBillOfMaterials {
   }
 }
 
+export type FairValuePriceSearchRowProps = {
+  basic?: PlatformCommon.FairValuePriceSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class FairValuePriceSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.FairValuePriceSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: FairValuePriceSearchRow) {
+  constructor(props: FairValuePriceSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type DescriptionItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  description?: string;
+  includeChildren?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class DescriptionItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4276,7 +6446,7 @@ export class DescriptionItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: DescriptionItem) {
+  constructor(props: DescriptionItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4298,6 +6468,17 @@ export class DescriptionItem extends PlatformCore.Record {
   }
 }
 
+export type SubsidiaryTaxRegistrationProps = {
+  id?: number;
+  nexusCountry?: PlatformCommonTypes.Country;
+  nexus?: PlatformCore.RecordRef;
+  taxAgency?: PlatformCore.RecordRef;
+  taxRegistrationNumber?: string;
+  taxEngine?: PlatformCore.RecordRef;
+  effectiveFrom?: string;
+  validUntil?: string;
+};
+
 export class SubsidiaryTaxRegistration {
   id?: number;
   nexusCountry?: PlatformCommonTypes.Country;
@@ -4307,7 +6488,7 @@ export class SubsidiaryTaxRegistration {
   taxEngine?: PlatformCore.RecordRef;
   effectiveFrom?: string;
   validUntil?: string;
-  constructor(props: SubsidiaryTaxRegistration) {
+  constructor(props: SubsidiaryTaxRegistrationProps) {
     this.id = props.id;
     this.nexusCountry = props.nexusCountry;
     this.nexus = props.nexus;
@@ -4318,6 +6499,20 @@ export class SubsidiaryTaxRegistration {
     this.validUntil = props.validUntil;
   }
 }
+
+export type GiftCertificateProps = {
+  giftCertCode?: string;
+  sender?: string;
+  name?: string;
+  email?: string;
+  message?: string;
+  expirationDate?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  originalAmount?: number;
+  amountRemaining?: number;
+  internalId?: string;
+} & PlatformCore.RecordProps;
 
 export class GiftCertificate extends PlatformCore.Record {
   giftCertCode?: string;
@@ -4331,7 +6526,7 @@ export class GiftCertificate extends PlatformCore.Record {
   originalAmount?: number;
   amountRemaining?: number;
   internalId?: string;
-  constructor(props: GiftCertificate) {
+  constructor(props: GiftCertificateProps) {
     super(props);
     this.giftCertCode = props.giftCertCode;
     this.sender = props.sender;
@@ -4347,14 +6542,28 @@ export class GiftCertificate extends PlatformCore.Record {
   }
 }
 
+export type SerializedInventoryItemLocationsListProps = {
+  locations?: SerializedInventoryItemLocations[];
+  replaceAll?: boolean;
+};
+
 export class SerializedInventoryItemLocationsList {
   locations?: SerializedInventoryItemLocations[];
   replaceAll?: boolean;
-  constructor(props: SerializedInventoryItemLocationsList) {
+  constructor(props: SerializedInventoryItemLocationsListProps) {
     this.locations = props.locations;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SalesRoleProps = {
+  name?: string;
+  description?: string;
+  isSalesRep?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SalesRole extends PlatformCore.Record {
   name?: string;
@@ -4363,7 +6572,7 @@ export class SalesRole extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SalesRole) {
+  constructor(props: SalesRoleProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -4373,6 +6582,30 @@ export class SalesRole extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type PaymentItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  description?: string;
+  paymentMethod?: PlatformCore.RecordRef;
+  undepFunds?: boolean;
+  includeChildren?: boolean;
+  issueProduct?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  displayName?: string;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PaymentItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4396,7 +6629,7 @@ export class PaymentItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: PaymentItem) {
+  constructor(props: PaymentItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4422,16 +6655,149 @@ export class PaymentItem extends PlatformCore.Record {
   }
 }
 
+export type RevRecTemplateRecurrenceProps = {
+  incomeaccount?: PlatformCore.RecordRef;
+  periodOffset?: number;
+  recamount?: string;
+};
+
 export class RevRecTemplateRecurrence {
   incomeaccount?: PlatformCore.RecordRef;
   periodOffset?: number;
   recamount?: string;
-  constructor(props: RevRecTemplateRecurrence) {
+  constructor(props: RevRecTemplateRecurrenceProps) {
     this.incomeaccount = props.incomeaccount;
     this.periodOffset = props.periodOffset;
     this.recamount = props.recamount;
   }
 }
+
+export type KitItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  parent?: PlatformCore.RecordRef;
+  printItems?: boolean;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  clazz?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  location?: PlatformCore.RecordRef;
+  description?: string;
+  incomeAccount?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  handlingCost?: number;
+  isTaxable?: boolean;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  weight?: number;
+  weightUnit?: PlatformCore.RecordRef;
+  rate?: number;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  stockDescription?: string;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufactureraddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: PlatformCore.RecordRef;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  issueProduct?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: PlatformCore.RecordRef;
+  isFulfillable?: boolean;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  costEstimate?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  shipPackage?: PlatformCore.RecordRef;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  outOfStockMessage?: string;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  urlComponent?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  itemOptionsList?: ItemOptionsList;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  nexTagCategory?: string;
+  productFeedList?: ProductFeedList;
+  relatedItemsDescription?: string;
+  onSpecial?: boolean;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  pricingMatrix?: PricingMatrix;
+  siteCategoryList?: SiteCategoryList;
+  memberList?: ItemMemberList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: KitItemHierarchyVersionsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class KitItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4558,7 +6924,7 @@ export class KitItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: KitItem) {
+  constructor(props: KitItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4687,11 +7053,17 @@ export class KitItem extends PlatformCore.Record {
   }
 }
 
+export type DepartmentSearchProps = {
+  basic?: PlatformCommon.DepartmentSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class DepartmentSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.DepartmentSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: DepartmentSearch) {
+  constructor(props: DepartmentSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -4699,12 +7071,19 @@ export class DepartmentSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type SubsidiarySearchAdvancedProps = {
+  criteria?: SubsidiarySearch;
+  columns?: SubsidiarySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class SubsidiarySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: SubsidiarySearch;
   columns?: SubsidiarySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: SubsidiarySearchAdvanced) {
+  constructor(props: SubsidiarySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -4713,28 +7092,44 @@ export class SubsidiarySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type RateProps = {
+  value?: number;
+  priceLevel?: PlatformCore.RecordRef;
+};
+
 export class Rate {
   value?: number;
   priceLevel?: PlatformCore.RecordRef;
-  constructor(props: Rate) {
+  constructor(props: RateProps) {
     this.value = props.value;
     this.priceLevel = props.priceLevel;
   }
 }
 
+export type TermPercentagesProps = {
+  percentage?: number;
+};
+
 export class TermPercentages {
   percentage?: number;
-  constructor(props: TermPercentages) {
+  constructor(props: TermPercentagesProps) {
     this.percentage = props.percentage;
   }
 }
+
+export type InventoryNumberSearchProps = {
+  basic?: PlatformCommon.InventoryNumberSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class InventoryNumberSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.InventoryNumberSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: InventoryNumberSearch) {
+  constructor(props: InventoryNumberSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -4742,6 +7137,40 @@ export class InventoryNumberSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type DiscountItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  description?: string;
+  nonPosting?: boolean;
+  account?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  rate?: string;
+  isPreTax?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  taxSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  expenseAccount?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class DiscountItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4775,7 +7204,7 @@ export class DiscountItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: DiscountItem) {
+  constructor(props: DiscountItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4810,6 +7239,80 @@ export class DiscountItem extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type OtherChargeSaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  taxSchedule?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  costEstimateUnits?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  minimumQuantityUnits?: string;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  isFulfillable?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  pricingMatrix?: PricingMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  hierarchyVersionsList?: OtherChargeSaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class OtherChargeSaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -4883,7 +7386,7 @@ export class OtherChargeSaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: OtherChargeSaleItem) {
+  constructor(props: OtherChargeSaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -4959,22 +7462,34 @@ export class OtherChargeSaleItem extends PlatformCore.Record {
   }
 }
 
+export type TaxTypeSearchProps = {
+  basic?: PlatformCommon.TaxTypeSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class TaxTypeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TaxTypeSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: TaxTypeSearch) {
+  constructor(props: TaxTypeSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type BinSearchAdvancedProps = {
+  criteria?: BinSearch;
+  columns?: BinSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class BinSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: BinSearch;
   columns?: BinSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: BinSearchAdvanced) {
+  constructor(props: BinSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -4982,13 +7497,20 @@ export class BinSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type AccountSearchAdvancedProps = {
+  criteria?: AccountSearch;
+  columns?: AccountSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class AccountSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: AccountSearch;
   columns?: AccountSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: AccountSearchAdvanced) {
+  constructor(props: AccountSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -4997,38 +7519,59 @@ export class AccountSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type CustomerMessageSearchRowProps = {
+  basic?: PlatformCommon.CustomerMessageSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class CustomerMessageSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CustomerMessageSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: CustomerMessageSearchRow) {
+  constructor(props: CustomerMessageSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type ProductFeedListProps = {
+  productFeed: ListsAccountingTypes.ItemProductFeed[];
+};
+
 export class ProductFeedList {
   productFeed: ListsAccountingTypes.ItemProductFeed[];
-  constructor(props: ProductFeedList) {
+  constructor(props: ProductFeedListProps) {
     this.productFeed = props.productFeed;
   }
 }
 
+export type SubsidiaryNexusListProps = {
+  nexus?: SubsidiaryNexus[];
+  replaceAll?: boolean;
+};
+
 export class SubsidiaryNexusList {
   nexus?: SubsidiaryNexus[];
   replaceAll?: boolean;
-  constructor(props: SubsidiaryNexusList) {
+  constructor(props: SubsidiaryNexusListProps) {
     this.nexus = props.nexus;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BomSearchAdvancedProps = {
+  criteria?: BomSearch;
+  columns?: BomSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class BomSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: BomSearch;
   columns?: BomSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: BomSearchAdvanced) {
+  constructor(props: BomSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -5037,30 +7580,52 @@ export class BomSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type PaymentMethodVisualsListProps = {
+  paymentMethodVisuals?: PaymentMethodVisuals[];
+  replaceAll?: boolean;
+};
+
 export class PaymentMethodVisualsList {
   paymentMethodVisuals?: PaymentMethodVisuals[];
   replaceAll?: boolean;
-  constructor(props: PaymentMethodVisualsList) {
+  constructor(props: PaymentMethodVisualsListProps) {
     this.paymentMethodVisuals = props.paymentMethodVisuals;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type LocationRegionsProps = {
+  region?: PlatformCore.RecordRef;
+};
+
 export class LocationRegions {
   region?: PlatformCore.RecordRef;
-  constructor(props: LocationRegions) {
+  constructor(props: LocationRegionsProps) {
     this.region = props.region;
   }
 }
 
+export type ClassTranslationListProps = {
+  classTranslation?: ClassTranslation[];
+  replaceAll?: boolean;
+};
+
 export class ClassTranslationList {
   classTranslation?: ClassTranslation[];
   replaceAll?: boolean;
-  constructor(props: ClassTranslationList) {
+  constructor(props: ClassTranslationListProps) {
     this.classTranslation = props.classTranslation;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorCategoryProps = {
+  name?: string;
+  isTaxAgency?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class VendorCategory extends PlatformCore.Record {
   name?: string;
@@ -5068,7 +7633,7 @@ export class VendorCategory extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: VendorCategory) {
+  constructor(props: VendorCategoryProps) {
     super(props);
     this.name = props.name;
     this.isTaxAgency = props.isTaxAgency;
@@ -5078,32 +7643,208 @@ export class VendorCategory extends PlatformCore.Record {
   }
 }
 
+export type ItemOptionsListProps = {
+  itemOptions: PlatformCore.RecordRef[];
+};
+
 export class ItemOptionsList {
   itemOptions: PlatformCore.RecordRef[];
-  constructor(props: ItemOptionsList) {
+  constructor(props: ItemOptionsListProps) {
     this.itemOptions = props.itemOptions;
   }
 }
 
+export type MerchandiseHierarchyNodeSearchRowProps = {
+  basic?: PlatformCommon.MerchandiseHierarchyNodeSearchRowBasic;
+  parentNodeJoin?: PlatformCommon.MerchandiseHierarchyNodeSearchRowBasic;
+};
+
 export class MerchandiseHierarchyNodeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.MerchandiseHierarchyNodeSearchRowBasic;
   parentNodeJoin?: PlatformCommon.MerchandiseHierarchyNodeSearchRowBasic;
-  constructor(props: MerchandiseHierarchyNodeSearchRow) {
+  constructor(props: MerchandiseHierarchyNodeSearchRowProps) {
     super();
     this.basic = props.basic;
     this.parentNodeJoin = props.parentNodeJoin;
   }
 }
 
+export type TaxGroupSearchProps = {
+  basic?: PlatformCommon.TaxGroupSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class TaxGroupSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TaxGroupSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: TaxGroupSearch) {
+  constructor(props: TaxGroupSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type NonInventoryResaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  copyDescription?: boolean;
+  cost?: number;
+  costUnits?: string;
+  expenseAccount?: PlatformCore.RecordRef;
+  intercoExpenseAccount?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  taxSchedule?: PlatformCore.RecordRef;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  isDropShipItem?: boolean;
+  isSpecialOrderItem?: boolean;
+  shippingCost?: number;
+  shippingCostUnits?: string;
+  handlingCost?: number;
+  handlingCostUnits?: string;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  weight?: number;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  costEstimateUnits?: string;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  amortizationPeriod?: number;
+  stockDescription?: string;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufacturerAddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: string;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  shipPackage?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  productFeedList?: ProductFeedList;
+  urlComponent?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  currency?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: NonInventoryResaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class NonInventoryResaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -5265,7 +8006,7 @@ export class NonInventoryResaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: NonInventoryResaleItem) {
+  constructor(props: NonInventoryResaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -5429,24 +8170,42 @@ export class NonInventoryResaleItem extends PlatformCore.Record {
   }
 }
 
+export type LotNumberedInventoryItemHierarchyVersionsListProps = {
+  lotNumberedInventoryItemHierarchyVersions?: LotNumberedInventoryItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class LotNumberedInventoryItemHierarchyVersionsList {
   lotNumberedInventoryItemHierarchyVersions?: LotNumberedInventoryItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: LotNumberedInventoryItemHierarchyVersionsList) {
+  constructor(props: LotNumberedInventoryItemHierarchyVersionsListProps) {
     this.lotNumberedInventoryItemHierarchyVersions =
       props.lotNumberedInventoryItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type BomRevisionComponentListProps = {
+  bomRevisionComponent?: BomRevisionComponent[];
+  replaceAll?: boolean;
+};
+
 export class BomRevisionComponentList {
   bomRevisionComponent?: BomRevisionComponent[];
   replaceAll?: boolean;
-  constructor(props: BomRevisionComponentList) {
+  constructor(props: BomRevisionComponentListProps) {
     this.bomRevisionComponent = props.bomRevisionComponent;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type MerchandiseHierarchyNodeProps = {
+  name?: string;
+  description?: string;
+  hierarchyVersionsList?: MerchandiseHierarchyNodeHierarchyVersionsList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class MerchandiseHierarchyNode extends PlatformCore.Record {
   name?: string;
@@ -5454,7 +8213,7 @@ export class MerchandiseHierarchyNode extends PlatformCore.Record {
   hierarchyVersionsList?: MerchandiseHierarchyNodeHierarchyVersionsList;
   internalId?: string;
   externalId?: string;
-  constructor(props: MerchandiseHierarchyNode) {
+  constructor(props: MerchandiseHierarchyNodeProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -5464,18 +8223,42 @@ export class MerchandiseHierarchyNode extends PlatformCore.Record {
   }
 }
 
+export type PricingProps = {
+  currency?: PlatformCore.RecordRef;
+  priceLevel?: PlatformCore.RecordRef;
+  discount?: number;
+  priceList?: PriceList;
+};
+
 export class Pricing {
   currency?: PlatformCore.RecordRef;
   priceLevel?: PlatformCore.RecordRef;
   discount?: number;
   priceList?: PriceList;
-  constructor(props: Pricing) {
+  constructor(props: PricingProps) {
     this.currency = props.currency;
     this.priceLevel = props.priceLevel;
     this.discount = props.discount;
     this.priceList = props.priceList;
   }
 }
+
+export type PaymentMethodProps = {
+  name?: string;
+  creditCard?: boolean;
+  undepFunds?: boolean;
+  account?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  isOnline?: boolean;
+  visualsList?: PaymentMethodVisualsList;
+  isDebitCard?: boolean;
+  merchantAccountsList?: PlatformCore.RecordRefList;
+  payPalEmailAddress?: string;
+  expressCheckoutArrangement?: string;
+  useExpressCheckout?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PaymentMethod extends PlatformCore.Record {
   name?: string;
@@ -5492,7 +8275,7 @@ export class PaymentMethod extends PlatformCore.Record {
   useExpressCheckout?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: PaymentMethod) {
+  constructor(props: PaymentMethodProps) {
     super(props);
     this.name = props.name;
     this.creditCard = props.creditCard;
@@ -5511,13 +8294,21 @@ export class PaymentMethod extends PlatformCore.Record {
   }
 }
 
+export type ConsolidatedExchangeRateSearchRowProps = {
+  basic?: PlatformCommon.ConsolidatedExchangeRateSearchRowBasic;
+  fromSubsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
+  periodJoin?: PlatformCommon.AccountingPeriodSearchRowBasic;
+  toSubsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class ConsolidatedExchangeRateSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ConsolidatedExchangeRateSearchRowBasic;
   fromSubsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
   periodJoin?: PlatformCommon.AccountingPeriodSearchRowBasic;
   toSubsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: ConsolidatedExchangeRateSearchRow) {
+  constructor(props: ConsolidatedExchangeRateSearchRowProps) {
     super();
     this.basic = props.basic;
     this.fromSubsidiaryJoin = props.fromSubsidiaryJoin;
@@ -5527,13 +8318,21 @@ export class ConsolidatedExchangeRateSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ServiceSaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class ServiceSaleItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: ServiceSaleItemHierarchyVersions) {
+  constructor(props: ServiceSaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -5542,11 +8341,17 @@ export class ServiceSaleItemHierarchyVersions {
   }
 }
 
+export type ItemRevisionSearchRowProps = {
+  basic?: PlatformCommon.ItemRevisionSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class ItemRevisionSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ItemRevisionSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: ItemRevisionSearchRow) {
+  constructor(props: ItemRevisionSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -5554,12 +8359,19 @@ export class ItemRevisionSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type SalesTaxItemSearchRowProps = {
+  basic?: PlatformCommon.SalesTaxItemSearchRowBasic;
+  taxTypeJoin?: PlatformCommon.TaxTypeSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class SalesTaxItemSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.SalesTaxItemSearchRowBasic;
   taxTypeJoin?: PlatformCommon.TaxTypeSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: SalesTaxItemSearchRow) {
+  constructor(props: SalesTaxItemSearchRowProps) {
     super();
     this.basic = props.basic;
     this.taxTypeJoin = props.taxTypeJoin;
@@ -5568,15 +8380,64 @@ export class SalesTaxItemSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type UnitsTypeSearchProps = {
+  basic?: PlatformCommon.UnitsTypeSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class UnitsTypeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.UnitsTypeSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: UnitsTypeSearch) {
+  constructor(props: UnitsTypeSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type InventoryItemLocationsProps = {
+  location?: string;
+  quantityOnHand?: number;
+  onHandValueMli?: number;
+  averageCostMli?: number;
+  lastPurchasePriceMli?: number;
+  reorderPoint?: number;
+  locationAllowStorePickup?: boolean;
+  locationStorePickupBufferStock?: number;
+  locationQtyAvailForStorePickup?: number;
+  preferredStockLevel?: number;
+  leadTime?: number;
+  defaultReturnCost?: number;
+  safetyStockLevel?: number;
+  cost?: number;
+  inventoryCostTemplate?: PlatformCore.RecordRef;
+  buildTime?: number;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  isWip?: boolean;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  costingLotSize?: number;
+  quantityOnOrder?: number;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  locationId?: PlatformCore.RecordRef;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  periodicLotSizeDays?: number;
+  supplyType?: PlatformCore.RecordRef;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  backwardConsumptionDays?: number;
+  forwardConsumptionDays?: number;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+};
 
 export class InventoryItemLocations {
   location?: string;
@@ -5620,7 +8481,7 @@ export class InventoryItemLocations {
   supplyTimeFence?: number;
   rescheduleInDays?: number;
   rescheduleOutDays?: number;
-  constructor(props: InventoryItemLocations) {
+  constructor(props: InventoryItemLocationsProps) {
     this.location = props.location;
     this.quantityOnHand = props.quantityOnHand;
     this.onHandValueMli = props.onHandValueMli;
@@ -5665,17 +8526,34 @@ export class InventoryItemLocations {
   }
 }
 
+export type CostCategorySearchRowProps = {
+  basic?: PlatformCommon.CostCategorySearchRowBasic;
+  accountJoin?: PlatformCommon.AccountSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+};
+
 export class CostCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CostCategorySearchRowBasic;
   accountJoin?: PlatformCommon.AccountSearchRowBasic;
   transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
-  constructor(props: CostCategorySearchRow) {
+  constructor(props: CostCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
     this.transactionJoin = props.transactionJoin;
   }
 }
+
+export type ItemAccountMappingSearchProps = {
+  basic?: PlatformCommon.ItemAccountMappingSearchBasic;
+  classJoin?: PlatformCommon.ClassificationSearchBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchBasic;
+  destinationAccountJoin?: PlatformCommon.AccountSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  sourceAccountJoin?: PlatformCommon.AccountSearchBasic;
+  subsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ItemAccountMappingSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ItemAccountMappingSearchBasic;
@@ -5686,7 +8564,7 @@ export class ItemAccountMappingSearch extends PlatformCore.SearchRecord {
   sourceAccountJoin?: PlatformCommon.AccountSearchBasic;
   subsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ItemAccountMappingSearch) {
+  constructor(props: ItemAccountMappingSearchProps) {
     super();
     this.basic = props.basic;
     this.classJoin = props.classJoin;
@@ -5699,12 +8577,19 @@ export class ItemAccountMappingSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type UnitsTypeSearchAdvancedProps = {
+  criteria?: UnitsTypeSearch;
+  columns?: UnitsTypeSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class UnitsTypeSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: UnitsTypeSearch;
   columns?: UnitsTypeSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: UnitsTypeSearchAdvanced) {
+  constructor(props: UnitsTypeSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -5712,13 +8597,20 @@ export class UnitsTypeSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type VendorCategorySearchAdvancedProps = {
+  criteria?: VendorCategorySearch;
+  columns?: VendorCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class VendorCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: VendorCategorySearch;
   columns?: VendorCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: VendorCategorySearchAdvanced) {
+  constructor(props: VendorCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -5727,22 +8619,34 @@ export class VendorCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type NonInventorySaleItemHierarchyVersionsListProps = {
+  nonInventorySaleItemHierarchyVersions?: NonInventorySaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class NonInventorySaleItemHierarchyVersionsList {
   nonInventorySaleItemHierarchyVersions?: NonInventorySaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: NonInventorySaleItemHierarchyVersionsList) {
+  constructor(props: NonInventorySaleItemHierarchyVersionsListProps) {
     this.nonInventorySaleItemHierarchyVersions =
       props.nonInventorySaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomerMessageSearchAdvancedProps = {
+  criteria?: CustomerMessageSearch;
+  columns?: CustomerMessageSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class CustomerMessageSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CustomerMessageSearch;
   columns?: CustomerMessageSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CustomerMessageSearchAdvanced) {
+  constructor(props: CustomerMessageSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -5750,6 +8654,29 @@ export class CustomerMessageSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type PaymentCardTokenProps = {
+  entity?: PlatformCore.RecordRef;
+  mask?: string;
+  paymentMethod?: PlatformCore.RecordRef;
+  memo?: string;
+  state?: ListsAccountingTypes.PaymentInstrumentState;
+  isInactive?: boolean;
+  preserveOnFile?: boolean;
+  isDefault?: boolean;
+  token?: string;
+  tokenExpirationDate?: string;
+  tokenFamily?: ListsAccountingTypes.TokenFamily;
+  tokenNamespace?: string;
+  cardIssuerIdNumber?: string;
+  cardBrand?: ListsAccountingTypes.PaymentCardBrand;
+  cardType?: ListsAccountingTypes.PaymentCardType;
+  cardNameOnCard?: string;
+  cardLastFourDigits?: string;
+  cardExpirationDate?: string;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PaymentCardToken extends PlatformCore.Record {
   entity?: PlatformCore.RecordRef;
@@ -5772,7 +8699,7 @@ export class PaymentCardToken extends PlatformCore.Record {
   cardExpirationDate?: string;
   internalId?: string;
   externalId?: string;
-  constructor(props: PaymentCardToken) {
+  constructor(props: PaymentCardTokenProps) {
     super(props);
     this.entity = props.entity;
     this.mask = props.mask;
@@ -5797,14 +8724,244 @@ export class PaymentCardToken extends PlatformCore.Record {
   }
 }
 
+export type GiftCertificateItemAuthCodesProps = {
+  authCode?: string;
+  used?: boolean;
+};
+
 export class GiftCertificateItemAuthCodes {
   authCode?: string;
   used?: boolean;
-  constructor(props: GiftCertificateItemAuthCodes) {
+  constructor(props: GiftCertificateItemAuthCodesProps) {
     this.authCode = props.authCode;
     this.used = props.used;
   }
 }
+
+export type SerializedAssemblyItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  printItems?: boolean;
+  isOnline?: boolean;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  useComponentYield?: boolean;
+  isInactive?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  availableToPartners?: boolean;
+  includeChildren?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  description?: string;
+  cogsAccount?: PlatformCore.RecordRef;
+  vendor?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  costCategory?: PlatformCore.RecordRef;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  prodQtyVarianceAcct?: PlatformCore.RecordRef;
+  prodPriceVarianceAcct?: PlatformCore.RecordRef;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  wipVarianceAcct?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  scrapAcct?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  wipAcct?: PlatformCore.RecordRef;
+  shippingCostUnits?: string;
+  handlingCost?: number;
+  weight?: number;
+  handlingCostUnits?: string;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  isTaxable?: boolean;
+  costingMethodDisplay?: string;
+  rate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  stockDescription?: string;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufactureraddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  effectiveBomControl?: ListsAccountingTypes.AssemblyItemEffectiveBomControl;
+  minimumQuantityUnits?: string;
+  defaultRevision?: string;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  isDropShipItem?: boolean;
+  isPhantom?: boolean;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: PlatformCore.RecordRef;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  issueProduct?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: PlatformCore.RecordRef;
+  isSpecialWorkOrderItem?: boolean;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  buildEntireAssembly?: boolean;
+  quantityOnHand?: number;
+  quantityOnHandUnits?: string;
+  useMarginalRates?: boolean;
+  reorderMultiple?: number;
+  cost?: number;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  unbuildVarianceAccount?: PlatformCore.RecordRef;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  totalValue?: number;
+  useBins?: boolean;
+  averageCost?: number;
+  lastPurchasePrice?: number;
+  purchaseDescription?: string;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  buildTime?: number;
+  safetyStockLevel?: number;
+  safetyStockLevelUnits?: string;
+  safetyStockLevelDays?: number;
+  seasonalDemand?: boolean;
+  serialNumbers?: string;
+  reorderPoint?: number;
+  reorderPointUnits?: string;
+  preferredStockLevel?: number;
+  preferredStockLevelUnits?: string;
+  demandModifier?: number;
+  autoReorderPoint?: boolean;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  demandSource?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  quantityOnOrder?: number;
+  shipPackage?: PlatformCore.RecordRef;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  urlComponent?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  outOfStockMessage?: string;
+  nexTagCategory?: string;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  productFeedList?: ProductFeedList;
+  relatedItemsDescription?: string;
+  onSpecial?: boolean;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  itemOptionsList?: ItemOptionsList;
+  itemNumberOptionsList?: PlatformCore.RecordRefList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  billOfMaterialsList?: SerializedAssemblyItemBillOfMaterialsList;
+  memberList?: ItemMemberList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  locationsList?: SerializedInventoryItemLocationsList;
+  siteCategoryList?: SiteCategoryList;
+  binNumberList?: InventoryItemBinNumberList;
+  numbersList?: SerializedInventoryItemNumbersList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: SerializedAssemblyItemHierarchyVersionsList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SerializedAssemblyItem extends PlatformCore.Record {
   createdDate?: string;
@@ -6029,7 +9186,7 @@ export class SerializedAssemblyItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: SerializedAssemblyItem) {
+  constructor(props: SerializedAssemblyItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -6256,24 +9413,45 @@ export class SerializedAssemblyItem extends PlatformCore.Record {
   }
 }
 
+export type PriceListProps = {
+  price?: Price[];
+};
+
 export class PriceList {
   price?: Price[];
-  constructor(props: PriceList) {
+  constructor(props: PriceListProps) {
     this.price = props.price;
   }
 }
+
+export type GiftCertificateSearchProps = {
+  basic?: PlatformCommon.GiftCertificateSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class GiftCertificateSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.GiftCertificateSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: GiftCertificateSearch) {
+  constructor(props: GiftCertificateSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type BillingScheduleMilestoneProps = {
+  milestoneId?: number;
+  milestoneAmount?: number;
+  milestoneTerms?: PlatformCore.RecordRef;
+  projectTask?: PlatformCore.RecordRef;
+  milestoneDate?: string;
+  milestoneCompleted?: boolean;
+  milestoneActualCompletionDate?: string;
+  comments?: string;
+};
 
 export class BillingScheduleMilestone {
   milestoneId?: number;
@@ -6284,7 +9462,7 @@ export class BillingScheduleMilestone {
   milestoneCompleted?: boolean;
   milestoneActualCompletionDate?: string;
   comments?: string;
-  constructor(props: BillingScheduleMilestone) {
+  constructor(props: BillingScheduleMilestoneProps) {
     this.milestoneId = props.milestoneId;
     this.milestoneAmount = props.milestoneAmount;
     this.milestoneTerms = props.milestoneTerms;
@@ -6296,14 +9474,27 @@ export class BillingScheduleMilestone {
   }
 }
 
+export type LotNumberedInventoryItemNumbersListProps = {
+  numbers?: LotNumberedInventoryItemNumbers[];
+  replaceAll?: boolean;
+};
+
 export class LotNumberedInventoryItemNumbersList {
   numbers?: LotNumberedInventoryItemNumbers[];
   replaceAll?: boolean;
-  constructor(props: LotNumberedInventoryItemNumbersList) {
+  constructor(props: LotNumberedInventoryItemNumbersListProps) {
     this.numbers = props.numbers;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BomRevisionSearchRowProps = {
+  basic?: PlatformCommon.BomRevisionSearchRowBasic;
+  billOfMaterialsJoin?: PlatformCommon.BomSearchRowBasic;
+  componentJoin?: PlatformCommon.BomRevisionComponentSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class BomRevisionSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.BomRevisionSearchRowBasic;
@@ -6311,7 +9502,7 @@ export class BomRevisionSearchRow extends PlatformCore.SearchRow {
   componentJoin?: PlatformCommon.BomRevisionComponentSearchRowBasic;
   transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: BomRevisionSearchRow) {
+  constructor(props: BomRevisionSearchRowProps) {
     super();
     this.basic = props.basic;
     this.billOfMaterialsJoin = props.billOfMaterialsJoin;
@@ -6321,13 +9512,21 @@ export class BomRevisionSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type NonInventoryResaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class NonInventoryResaleItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: NonInventoryResaleItemHierarchyVersions) {
+  constructor(props: NonInventoryResaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -6336,15 +9535,29 @@ export class NonInventoryResaleItemHierarchyVersions {
   }
 }
 
+export type CustomerMessageSearchProps = {
+  basic?: PlatformCommon.CustomerMessageSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class CustomerMessageSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CustomerMessageSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: CustomerMessageSearch) {
+  constructor(props: CustomerMessageSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type LotNumberedAssemblyItemBillOfMaterialsProps = {
+  billOfMaterials?: PlatformCore.RecordRef;
+  currentRevision?: string;
+  masterDefault?: boolean;
+  defaultForLocationList?: PlatformCore.RecordRefList;
+  inactive?: string;
+  memo?: string;
+};
 
 export class LotNumberedAssemblyItemBillOfMaterials {
   billOfMaterials?: PlatformCore.RecordRef;
@@ -6353,7 +9566,7 @@ export class LotNumberedAssemblyItemBillOfMaterials {
   defaultForLocationList?: PlatformCore.RecordRefList;
   inactive?: string;
   memo?: string;
-  constructor(props: LotNumberedAssemblyItemBillOfMaterials) {
+  constructor(props: LotNumberedAssemblyItemBillOfMaterialsProps) {
     this.billOfMaterials = props.billOfMaterials;
     this.currentRevision = props.currentRevision;
     this.masterDefault = props.masterDefault;
@@ -6363,11 +9576,17 @@ export class LotNumberedAssemblyItemBillOfMaterials {
   }
 }
 
+export type AccountingPeriodSearchProps = {
+  basic?: PlatformCommon.AccountingPeriodSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+};
+
 export class AccountingPeriodSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.AccountingPeriodSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
-  constructor(props: AccountingPeriodSearch) {
+  constructor(props: AccountingPeriodSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -6375,14 +9594,27 @@ export class AccountingPeriodSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaxGroupTaxItemListProps = {
+  taxItem?: TaxGroupTaxItem[];
+  replaceAll?: boolean;
+};
+
 export class TaxGroupTaxItemList {
   taxItem?: TaxGroupTaxItem[];
   replaceAll?: boolean;
-  constructor(props: TaxGroupTaxItemList) {
+  constructor(props: TaxGroupTaxItemListProps) {
     this.taxItem = props.taxItem;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SerializedInventoryItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class SerializedInventoryItemHierarchyVersions {
   isIncluded?: boolean;
@@ -6390,7 +9622,7 @@ export class SerializedInventoryItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: SerializedInventoryItemHierarchyVersions) {
+  constructor(props: SerializedInventoryItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -6399,21 +9631,33 @@ export class SerializedInventoryItemHierarchyVersions {
   }
 }
 
+export type ItemAccountingBookDetailListProps = {
+  itemAccountingBookDetail?: ItemAccountingBookDetail[];
+  replaceAll?: boolean;
+};
+
 export class ItemAccountingBookDetailList {
   itemAccountingBookDetail?: ItemAccountingBookDetail[];
   replaceAll?: boolean;
-  constructor(props: ItemAccountingBookDetailList) {
+  constructor(props: ItemAccountingBookDetailListProps) {
     this.itemAccountingBookDetail = props.itemAccountingBookDetail;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TaxTypeNexusesTaxProps = {
+  nexus?: PlatformCore.RecordRef;
+  description?: string;
+  saleTaxAcct?: PlatformCore.RecordRef;
+  purchTaxAcct?: PlatformCore.RecordRef;
+};
 
 export class TaxTypeNexusesTax {
   nexus?: PlatformCore.RecordRef;
   description?: string;
   saleTaxAcct?: PlatformCore.RecordRef;
   purchTaxAcct?: PlatformCore.RecordRef;
-  constructor(props: TaxTypeNexusesTax) {
+  constructor(props: TaxTypeNexusesTaxProps) {
     this.nexus = props.nexus;
     this.description = props.description;
     this.saleTaxAcct = props.saleTaxAcct;
@@ -6421,12 +9665,19 @@ export class TaxTypeNexusesTax {
   }
 }
 
+export type PricingGroupProps = {
+  name?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class PricingGroup extends PlatformCore.Record {
   name?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: PricingGroup) {
+  constructor(props: PricingGroupProps) {
     super(props);
     this.name = props.name;
     this.isInactive = props.isInactive;
@@ -6434,6 +9685,18 @@ export class PricingGroup extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type DepartmentProps = {
+  name?: string;
+  includeChildren?: boolean;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  classTranslationList?: ClassTranslationList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Department extends PlatformCore.Record {
   name?: string;
@@ -6445,7 +9708,7 @@ export class Department extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Department) {
+  constructor(props: DepartmentProps) {
     super(props);
     this.name = props.name;
     this.includeChildren = props.includeChildren;
@@ -6458,6 +9721,227 @@ export class Department extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type SerializedInventoryItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  includeChildren?: boolean;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  purchaseDescription?: string;
+  copyDescription?: boolean;
+  issueProduct?: PlatformCore.RecordRef;
+  currency?: string;
+  cogsAccount?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  vendor?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  taxSchedule?: PlatformCore.RecordRef;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  handlingCost?: number;
+  weight?: number;
+  costingMethodDisplay?: string;
+  shippingCostUnits?: string;
+  handlingCostUnits?: string;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  safetyStockLevelUnits?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  isDropShipItem?: boolean;
+  isSpecialOrderItem?: boolean;
+  stockDescription?: string;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  producer?: boolean;
+  manufacturer?: string;
+  revRecSchedule?: PlatformCore.RecordRef;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufacturerAddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: string;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  shipPackage?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  softDescriptor?: PlatformCore.RecordRef;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  cost?: number;
+  costUnits?: string;
+  quantityReorderUnits?: string;
+  reorderMultiple?: number;
+  totalValue?: number;
+  useBins?: boolean;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  autoReorderPoint?: boolean;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  averageCost?: number;
+  safetyStockLevel?: number;
+  lastPurchasePrice?: number;
+  safetyStockLevelDays?: number;
+  backwardConsumptionDays?: number;
+  seasonalDemand?: boolean;
+  demandModifier?: number;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  quantityOnHand?: number;
+  quantityOnHandUnits?: string;
+  onHandValueMli?: number;
+  serialNumbers?: string;
+  reorderPoint?: number;
+  preferredStockLevel?: number;
+  reorderPointUnits?: string;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  periodicLotSizeDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  forwardConsumptionDays?: number;
+  demandSource?: PlatformCore.RecordRef;
+  quantityOnOrder?: number;
+  preferredStockLevelUnits?: string;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityBackOrdered?: number;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  onSpecial?: boolean;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  specialsDescription?: string;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  featuredDescription?: string;
+  productFeedList?: ProductFeedList;
+  urlComponent?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  hierarchyVersionsList?: SerializedInventoryItemHierarchyVersionsList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  itemNumberOptionsList?: PlatformCore.RecordRefList;
+  numbersList?: SerializedInventoryItemNumbersList;
+  binNumberList?: InventoryItemBinNumberList;
+  siteCategoryList?: SiteCategoryList;
+  locationsList?: SerializedInventoryItemLocationsList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SerializedInventoryItem extends PlatformCore.Record {
   createdDate?: string;
@@ -6678,7 +10162,7 @@ export class SerializedInventoryItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: SerializedInventoryItem) {
+  constructor(props: SerializedInventoryItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -6901,24 +10385,42 @@ export class SerializedInventoryItem extends PlatformCore.Record {
   }
 }
 
+export type BillingScheduleMilestoneListProps = {
+  billingScheduleMilestone?: BillingScheduleMilestone[];
+  replaceAll?: boolean;
+};
+
 export class BillingScheduleMilestoneList {
   billingScheduleMilestone?: BillingScheduleMilestone[];
   replaceAll?: boolean;
-  constructor(props: BillingScheduleMilestoneList) {
+  constructor(props: BillingScheduleMilestoneListProps) {
     this.billingScheduleMilestone = props.billingScheduleMilestone;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ContactRoleSearchRowProps = {
+  basic?: PlatformCommon.ContactRoleSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class ContactRoleSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ContactRoleSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: ContactRoleSearchRow) {
+  constructor(props: ContactRoleSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ServiceResaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
 
 export class ServiceResaleItemHierarchyVersions {
   isIncluded?: boolean;
@@ -6926,7 +10428,7 @@ export class ServiceResaleItemHierarchyVersions {
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: ServiceResaleItemHierarchyVersions) {
+  constructor(props: ServiceResaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -6935,12 +10437,19 @@ export class ServiceResaleItemHierarchyVersions {
   }
 }
 
+export type PricingGroupSearchAdvancedProps = {
+  criteria?: PricingGroupSearch;
+  columns?: PricingGroupSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class PricingGroupSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PricingGroupSearch;
   columns?: PricingGroupSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PricingGroupSearchAdvanced) {
+  constructor(props: PricingGroupSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -6949,29 +10458,45 @@ export class PricingGroupSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type RateListProps = {
+  rate?: Rate[];
+};
+
 export class RateList {
   rate?: Rate[];
-  constructor(props: RateList) {
+  constructor(props: RateListProps) {
     this.rate = props.rate;
   }
 }
 
+export type MerchandiseHierarchyNodeHierarchyVersionsListProps = {
+  merchandiseHierarchyNodeHierarchyVersions?: MerchandiseHierarchyNodeHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class MerchandiseHierarchyNodeHierarchyVersionsList {
   merchandiseHierarchyNodeHierarchyVersions?: MerchandiseHierarchyNodeHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: MerchandiseHierarchyNodeHierarchyVersionsList) {
+  constructor(props: MerchandiseHierarchyNodeHierarchyVersionsListProps) {
     this.merchandiseHierarchyNodeHierarchyVersions =
       props.merchandiseHierarchyNodeHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TaxGroupSearchAdvancedProps = {
+  criteria?: TaxGroupSearch;
+  columns?: TaxGroupSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class TaxGroupSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TaxGroupSearch;
   columns?: TaxGroupSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TaxGroupSearchAdvanced) {
+  constructor(props: TaxGroupSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -6980,31 +10505,48 @@ export class TaxGroupSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaxTypeNexusesTaxListProps = {
+  nexusesTax?: TaxTypeNexusesTax[];
+  replaceAll?: boolean;
+};
+
 export class TaxTypeNexusesTaxList {
   nexusesTax?: TaxTypeNexusesTax[];
   replaceAll?: boolean;
-  constructor(props: TaxTypeNexusesTaxList) {
+  constructor(props: TaxTypeNexusesTaxListProps) {
     this.nexusesTax = props.nexusesTax;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type SubsidiaryAccountingBookDetailProps = {
+  accountingBook?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  bookStatus?: ListsAccountingTypes.AccountingBookStatus;
+};
+
 export class SubsidiaryAccountingBookDetail {
   accountingBook?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   bookStatus?: ListsAccountingTypes.AccountingBookStatus;
-  constructor(props: SubsidiaryAccountingBookDetail) {
+  constructor(props: SubsidiaryAccountingBookDetailProps) {
     this.accountingBook = props.accountingBook;
     this.currency = props.currency;
     this.bookStatus = props.bookStatus;
   }
 }
 
+export type BinSearchRowProps = {
+  basic?: PlatformCommon.BinSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class BinSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.BinSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: BinSearchRow) {
+  constructor(props: BinSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -7012,12 +10554,19 @@ export class BinSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type MerchandiseHierarchyNodeSearchAdvancedProps = {
+  criteria?: MerchandiseHierarchyNodeSearch;
+  columns?: MerchandiseHierarchyNodeSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class MerchandiseHierarchyNodeSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: MerchandiseHierarchyNodeSearch;
   columns?: MerchandiseHierarchyNodeSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: MerchandiseHierarchyNodeSearchAdvanced) {
+  constructor(props: MerchandiseHierarchyNodeSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -7026,13 +10575,21 @@ export class MerchandiseHierarchyNodeSearchAdvanced extends PlatformCore.SearchR
   }
 }
 
+export type BomRevisionSearchProps = {
+  basic?: PlatformCommon.BomRevisionSearchBasic;
+  billOfMaterialsJoin?: PlatformCommon.BomSearchBasic;
+  componentJoin?: PlatformCommon.BomRevisionComponentSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class BomRevisionSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.BomRevisionSearchBasic;
   billOfMaterialsJoin?: PlatformCommon.BomSearchBasic;
   componentJoin?: PlatformCommon.BomRevisionComponentSearchBasic;
   transactionJoin?: PlatformCommon.TransactionSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: BomRevisionSearch) {
+  constructor(props: BomRevisionSearchProps) {
     super();
     this.basic = props.basic;
     this.billOfMaterialsJoin = props.billOfMaterialsJoin;
@@ -7042,25 +10599,43 @@ export class BomRevisionSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaxTypeSearchRowProps = {
+  basic?: PlatformCommon.TaxTypeSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class TaxTypeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TaxTypeSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: TaxTypeSearchRow) {
+  constructor(props: TaxTypeSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type NexusSearchProps = {
+  basic?: PlatformCommon.NexusSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class NexusSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.NexusSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: NexusSearch) {
+  constructor(props: NexusSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ConsolidatedExchangeRateSearchProps = {
+  basic?: PlatformCommon.ConsolidatedExchangeRateSearchBasic;
+  fromSubsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
+  periodJoin?: PlatformCommon.AccountingPeriodSearchBasic;
+  toSubsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
 
 export class ConsolidatedExchangeRateSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ConsolidatedExchangeRateSearchBasic;
@@ -7068,7 +10643,7 @@ export class ConsolidatedExchangeRateSearch extends PlatformCore.SearchRecord {
   periodJoin?: PlatformCommon.AccountingPeriodSearchBasic;
   toSubsidiaryJoin?: PlatformCommon.SubsidiarySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: ConsolidatedExchangeRateSearch) {
+  constructor(props: ConsolidatedExchangeRateSearchProps) {
     super();
     this.basic = props.basic;
     this.fromSubsidiaryJoin = props.fromSubsidiaryJoin;
@@ -7078,50 +10653,77 @@ export class ConsolidatedExchangeRateSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type SerializedInventoryItemHierarchyVersionsListProps = {
+  serializedInventoryItemHierarchyVersions?: SerializedInventoryItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class SerializedInventoryItemHierarchyVersionsList {
   serializedInventoryItemHierarchyVersions?: SerializedInventoryItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: SerializedInventoryItemHierarchyVersionsList) {
+  constructor(props: SerializedInventoryItemHierarchyVersionsListProps) {
     this.serializedInventoryItemHierarchyVersions =
       props.serializedInventoryItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type KitItemHierarchyVersionsListProps = {
+  kitItemHierarchyVersions?: KitItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class KitItemHierarchyVersionsList {
   kitItemHierarchyVersions?: KitItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: KitItemHierarchyVersionsList) {
+  constructor(props: KitItemHierarchyVersionsListProps) {
     this.kitItemHierarchyVersions = props.kitItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ContactRoleSearchProps = {
+  basic?: PlatformCommon.ContactRoleSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class ContactRoleSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ContactRoleSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: ContactRoleSearch) {
+  constructor(props: ContactRoleSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type ItemMemberListProps = {
+  itemMember?: ItemMember[];
+  replaceAll?: boolean;
+};
+
 export class ItemMemberList {
   itemMember?: ItemMember[];
   replaceAll?: boolean;
-  constructor(props: ItemMemberList) {
+  constructor(props: ItemMemberListProps) {
     this.itemMember = props.itemMember;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaymentMethodSearchAdvancedProps = {
+  criteria?: PaymentMethodSearch;
+  columns?: PaymentMethodSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class PaymentMethodSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PaymentMethodSearch;
   columns?: PaymentMethodSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PaymentMethodSearchAdvanced) {
+  constructor(props: PaymentMethodSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -7130,6 +10732,15 @@ export class PaymentMethodSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type ContactCategoryProps = {
+  name?: string;
+  _private?: boolean;
+  sync?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class ContactCategory extends PlatformCore.Record {
   name?: string;
   _private?: boolean;
@@ -7137,7 +10748,7 @@ export class ContactCategory extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: ContactCategory) {
+  constructor(props: ContactCategoryProps) {
     super(props);
     this.name = props.name;
     this._private = props._private;
@@ -7148,31 +10759,48 @@ export class ContactCategory extends PlatformCore.Record {
   }
 }
 
+export type TermSearchRowProps = {
+  basic?: PlatformCommon.TermSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class TermSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TermSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: TermSearchRow) {
+  constructor(props: TermSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type AccountingPeriodFiscalCalendarsProps = {
+  fiscalCalendar?: PlatformCore.RecordRef;
+  parent?: PlatformCore.RecordRef;
+};
+
 export class AccountingPeriodFiscalCalendars {
   fiscalCalendar?: PlatformCore.RecordRef;
   parent?: PlatformCore.RecordRef;
-  constructor(props: AccountingPeriodFiscalCalendars) {
+  constructor(props: AccountingPeriodFiscalCalendarsProps) {
     this.fiscalCalendar = props.fiscalCalendar;
     this.parent = props.parent;
   }
 }
+
+export type BillingScheduleSearchAdvancedProps = {
+  criteria?: BillingScheduleSearch;
+  columns?: BillingScheduleSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class BillingScheduleSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: BillingScheduleSearch;
   columns?: BillingScheduleSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: BillingScheduleSearchAdvanced) {
+  constructor(props: BillingScheduleSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -7180,6 +10808,22 @@ export class BillingScheduleSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ExpenseCategoryProps = {
+  customForm?: PlatformCore.RecordRef;
+  name?: string;
+  description?: string;
+  expenseAcct?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  rateRequired?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  defaultRate?: number;
+  ratesList?: ExpenseCategoryRatesList;
+  translationsList?: TranslationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ExpenseCategory extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -7195,7 +10839,7 @@ export class ExpenseCategory extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ExpenseCategory) {
+  constructor(props: ExpenseCategoryProps) {
     super(props);
     this.customForm = props.customForm;
     this.name = props.name;
@@ -7213,32 +10857,50 @@ export class ExpenseCategory extends PlatformCore.Record {
   }
 }
 
+export type ExpenseCategoryRatesProps = {
+  subsidiary?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  defaultRate?: number;
+};
+
 export class ExpenseCategoryRates {
   subsidiary?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   defaultRate?: number;
-  constructor(props: ExpenseCategoryRates) {
+  constructor(props: ExpenseCategoryRatesProps) {
     this.subsidiary = props.subsidiary;
     this.currency = props.currency;
     this.defaultRate = props.defaultRate;
   }
 }
 
+export type GiftCertificateItemAuthCodesListProps = {
+  authCodes?: GiftCertificateItemAuthCodes[];
+  replaceAll?: boolean;
+};
+
 export class GiftCertificateItemAuthCodesList {
   authCodes?: GiftCertificateItemAuthCodes[];
   replaceAll?: boolean;
-  constructor(props: GiftCertificateItemAuthCodesList) {
+  constructor(props: GiftCertificateItemAuthCodesListProps) {
     this.authCodes = props.authCodes;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SiteCategoryProps = {
+  website?: PlatformCore.RecordRef;
+  category?: PlatformCore.RecordRef;
+  isDefault?: boolean;
+  categoryDescription?: string;
+};
 
 export class SiteCategory {
   website?: PlatformCore.RecordRef;
   category?: PlatformCore.RecordRef;
   isDefault?: boolean;
   categoryDescription?: string;
-  constructor(props: SiteCategory) {
+  constructor(props: SiteCategoryProps) {
     this.website = props.website;
     this.category = props.category;
     this.isDefault = props.isDefault;
@@ -7246,22 +10908,34 @@ export class SiteCategory {
   }
 }
 
+export type ContactCategorySearchProps = {
+  basic?: PlatformCommon.ContactCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class ContactCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ContactCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: ContactCategorySearch) {
+  constructor(props: ContactCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type TermSearchAdvancedProps = {
+  criteria?: TermSearch;
+  columns?: TermSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class TermSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TermSearch;
   columns?: TermSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TermSearchAdvanced) {
+  constructor(props: TermSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -7269,6 +10943,144 @@ export class TermSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type NonInventorySaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  taxSchedule?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  shippingCostUnits?: string;
+  handlingCost?: number;
+  handlingCostUnits?: string;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  weight?: number;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  costEstimateUnits?: string;
+  unitsType?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  stockDescription?: string;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  producer?: boolean;
+  manufacturer?: string;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufacturerAddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: string;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  shipPackage?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  isFulfillable?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  productFeedList?: ProductFeedList;
+  urlComponent?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  pricingMatrix?: PricingMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: NonInventorySaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class NonInventorySaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -7406,7 +11218,7 @@ export class NonInventorySaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: NonInventorySaleItem) {
+  constructor(props: NonInventorySaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -7546,13 +11358,21 @@ export class NonInventorySaleItem extends PlatformCore.Record {
   }
 }
 
+export type SerializedAssemblyItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class SerializedAssemblyItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: SerializedAssemblyItemHierarchyVersions) {
+  constructor(props: SerializedAssemblyItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -7560,6 +11380,24 @@ export class SerializedAssemblyItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type ItemAccountMappingProps = {
+  customForm?: PlatformCore.RecordRef;
+  effectiveDate?: string;
+  endDate?: string;
+  accountingBook?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  itemAccount?: ListsAccountingTypes.ItemAccountMappingItemAccount;
+  sourceAccount?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  destinationAccount?: PlatformCore.RecordRef;
+  customDimension?: PlatformCore.BaseRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemAccountMapping extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -7577,7 +11415,7 @@ export class ItemAccountMapping extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemAccountMapping) {
+  constructor(props: ItemAccountMappingProps) {
     super(props);
     this.customForm = props.customForm;
     this.effectiveDate = props.effectiveDate;
@@ -7597,11 +11435,17 @@ export class ItemAccountMapping extends PlatformCore.Record {
   }
 }
 
+export type AccountSearchRowProps = {
+  basic?: PlatformCommon.AccountSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class AccountSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.AccountSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: AccountSearchRow) {
+  constructor(props: AccountSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -7609,25 +11453,137 @@ export class AccountSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type WinLossReasonSearchProps = {
+  basic?: PlatformCommon.WinLossReasonSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class WinLossReasonSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.WinLossReasonSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: WinLossReasonSearch) {
+  constructor(props: WinLossReasonSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type PartnerCategorySearchRowProps = {
+  basic?: PlatformCommon.PartnerCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class PartnerCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PartnerCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: PartnerCategorySearchRow) {
+  constructor(props: PartnerCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ServiceSaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  taxSchedule?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  costEstimateUnits?: string;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  isFulfillable?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricingGroup?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  createJob?: boolean;
+  matrixItemNameTemplate?: string;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  urlComponent?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  itemTaskTemplatesList?: ServiceItemTaskTemplatesList;
+  featuredDescription?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  billingRatesMatrix?: BillingRatesMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  pricingMatrix?: PricingMatrix;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: ServiceSaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ServiceSaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -7729,7 +11685,7 @@ export class ServiceSaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ServiceSaleItem) {
+  constructor(props: ServiceSaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -7833,15 +11789,33 @@ export class ServiceSaleItem extends PlatformCore.Record {
   }
 }
 
+export type ContactCategorySearchRowProps = {
+  basic?: PlatformCommon.ContactCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class ContactCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ContactCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: ContactCategorySearchRow) {
+  constructor(props: ContactCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type LocationBusinessHoursProps = {
+  startTime?: string;
+  endTime?: string;
+  isSunday?: boolean;
+  isMonday?: boolean;
+  isTuesday?: boolean;
+  isWednesday?: boolean;
+  isThursday?: boolean;
+  isFriday?: boolean;
+  isSaturday?: boolean;
+  sameDayPickupCutOffTime?: string;
+};
 
 export class LocationBusinessHours {
   startTime?: string;
@@ -7854,7 +11828,7 @@ export class LocationBusinessHours {
   isFriday?: boolean;
   isSaturday?: boolean;
   sameDayPickupCutOffTime?: string;
-  constructor(props: LocationBusinessHours) {
+  constructor(props: LocationBusinessHoursProps) {
     this.startTime = props.startTime;
     this.endTime = props.endTime;
     this.isSunday = props.isSunday;
@@ -7867,6 +11841,22 @@ export class LocationBusinessHours {
     this.sameDayPickupCutOffTime = props.sameDayPickupCutOffTime;
   }
 }
+
+export type TranslationProps = {
+  locale?: PlatformCommonTypes.Language;
+  language?: string;
+  displayName?: string;
+  description?: string;
+  salesDescription?: string;
+  storeDisplayName?: string;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  featuredDescription?: string;
+  specialsDescription?: string;
+  pageTitle?: string;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+};
 
 export class Translation {
   locale?: PlatformCommonTypes.Language;
@@ -7882,7 +11872,7 @@ export class Translation {
   pageTitle?: string;
   noPriceMessage?: string;
   outOfStockMessage?: string;
-  constructor(props: Translation) {
+  constructor(props: TranslationProps) {
     this.locale = props.locale;
     this.language = props.language;
     this.displayName = props.displayName;
@@ -7899,21 +11889,32 @@ export class Translation {
   }
 }
 
+export type SerializedAssemblyItemHierarchyVersionsListProps = {
+  serializedAssemblyItemHierarchyVersions?: SerializedAssemblyItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class SerializedAssemblyItemHierarchyVersionsList {
   serializedAssemblyItemHierarchyVersions?: SerializedAssemblyItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: SerializedAssemblyItemHierarchyVersionsList) {
+  constructor(props: SerializedAssemblyItemHierarchyVersionsListProps) {
     this.serializedAssemblyItemHierarchyVersions =
       props.serializedAssemblyItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ItemRevisionSearchProps = {
+  basic?: PlatformCommon.ItemRevisionSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class ItemRevisionSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ItemRevisionSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: ItemRevisionSearch) {
+  constructor(props: ItemRevisionSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -7921,15 +11922,43 @@ export class ItemRevisionSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type ServicePurchaseItemHierarchyVersionsListProps = {
+  servicePurchaseItemHierarchyVersions?: ServicePurchaseItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class ServicePurchaseItemHierarchyVersionsList {
   servicePurchaseItemHierarchyVersions?: ServicePurchaseItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: ServicePurchaseItemHierarchyVersionsList) {
+  constructor(props: ServicePurchaseItemHierarchyVersionsListProps) {
     this.servicePurchaseItemHierarchyVersions =
       props.servicePurchaseItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type FairValuePriceProps = {
+  customForm?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  fairValue?: number;
+  fairValueFormula?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  unitsType?: PlatformCore.RecordRef;
+  units?: PlatformCore.RecordRef;
+  fairValueRangePolicy?: ListsAccountingTypes.FairValuePriceFairValueRangePolicy;
+  lowValue?: number;
+  lowValuePercent?: number;
+  highValue?: number;
+  highValuePercent?: number;
+  isVsoePrice?: boolean;
+  startDate?: string;
+  endDate?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+  dimensionList?: PlatformCore.DimensionList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class FairValuePrice extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -7952,7 +11981,7 @@ export class FairValuePrice extends PlatformCore.Record {
   dimensionList?: PlatformCore.DimensionList;
   internalId?: string;
   externalId?: string;
-  constructor(props: FairValuePrice) {
+  constructor(props: FairValuePriceProps) {
     super(props);
     this.customForm = props.customForm;
     this.item = props.item;
@@ -7977,13 +12006,21 @@ export class FairValuePrice extends PlatformCore.Record {
   }
 }
 
+export type InventoryItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class InventoryItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: InventoryItemHierarchyVersions) {
+  constructor(props: InventoryItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -7991,6 +12028,63 @@ export class InventoryItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type ServicePurchaseItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  manufacturingChargeItem?: boolean;
+  cost?: number;
+  costUnits?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  expenseAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  taxSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  amortizationPeriod?: number;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  costCategory?: PlatformCore.RecordRef;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  currency?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  hierarchyVersionsList?: ServicePurchaseItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ServicePurchaseItem extends PlatformCore.Record {
   createdDate?: string;
@@ -8047,7 +12141,7 @@ export class ServicePurchaseItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ServicePurchaseItem) {
+  constructor(props: ServicePurchaseItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -8106,11 +12200,17 @@ export class ServicePurchaseItem extends PlatformCore.Record {
   }
 }
 
+export type ClassificationSearchRowProps = {
+  basic?: PlatformCommon.ClassificationSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ClassificationSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ClassificationSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ClassificationSearchRow) {
+  constructor(props: ClassificationSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -8118,13 +12218,21 @@ export class ClassificationSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type InventoryItemBinNumberProps = {
+  binNumber?: PlatformCore.RecordRef;
+  onHand?: string;
+  onHandAvail?: string;
+  location?: string;
+  preferredBin?: boolean;
+};
+
 export class InventoryItemBinNumber {
   binNumber?: PlatformCore.RecordRef;
   onHand?: string;
   onHandAvail?: string;
   location?: string;
   preferredBin?: boolean;
-  constructor(props: InventoryItemBinNumber) {
+  constructor(props: InventoryItemBinNumberProps) {
     this.binNumber = props.binNumber;
     this.onHand = props.onHand;
     this.onHandAvail = props.onHandAvail;
@@ -8132,6 +12240,85 @@ export class InventoryItemBinNumber {
     this.preferredBin = props.preferredBin;
   }
 }
+
+export type DownloadItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  onSpecial?: boolean;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  department?: PlatformCore.RecordRef;
+  includeChildren?: boolean;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  incomeAccount?: PlatformCore.RecordRef;
+  numOfAllowedDownloads?: number;
+  daysBeforeExpiration?: number;
+  immediateDownload?: boolean;
+  isTaxable?: boolean;
+  issueProduct?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  billingSchedule?: PlatformCore.RecordRef;
+  isFulfillable?: boolean;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  featuredDescription?: string;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  pricingMatrix?: PricingMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  siteCategoryList?: SiteCategoryList;
+  presentationItemList?: PresentationItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class DownloadItem extends PlatformCore.Record {
   createdDate?: string;
@@ -8210,7 +12397,7 @@ export class DownloadItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: DownloadItem) {
+  constructor(props: DownloadItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -8291,34 +12478,64 @@ export class DownloadItem extends PlatformCore.Record {
   }
 }
 
+export type InventoryNumberLocationsListProps = {
+  locations?: InventoryNumberLocations[];
+  replaceAll?: boolean;
+};
+
 export class InventoryNumberLocationsList {
   locations?: InventoryNumberLocations[];
   replaceAll?: boolean;
-  constructor(props: InventoryNumberLocationsList) {
+  constructor(props: InventoryNumberLocationsListProps) {
     this.locations = props.locations;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type RevRecTemplateSearchRowProps = {
+  basic?: PlatformCommon.RevRecTemplateSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class RevRecTemplateSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.RevRecTemplateSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: RevRecTemplateSearchRow) {
+  constructor(props: RevRecTemplateSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type OtherChargePurchaseItemHierarchyVersionsListProps = {
+  otherChargePurchaseItemHierarchyVersions?: OtherChargePurchaseItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class OtherChargePurchaseItemHierarchyVersionsList {
   otherChargePurchaseItemHierarchyVersions?: OtherChargePurchaseItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: OtherChargePurchaseItemHierarchyVersionsList) {
+  constructor(props: OtherChargePurchaseItemHierarchyVersionsListProps) {
     this.otherChargePurchaseItemHierarchyVersions =
       props.otherChargePurchaseItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type RevRecTemplateProps = {
+  name?: string;
+  amortizationType?: ListsAccountingTypes.RevRecScheduleAmortizationType;
+  recurrenceType?: ListsAccountingTypes.RevRecScheduleRecurrenceType;
+  recogIntervalSrc?: ListsAccountingTypes.RevRecScheduleRecogIntervalSrc;
+  amortizationPeriod?: number;
+  periodOffset?: number;
+  revRecOffset?: number;
+  initialAmount?: number;
+  isInactive?: boolean;
+  recurrenceList?: RevRecTemplateRecurrenceList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class RevRecTemplate extends PlatformCore.Record {
   name?: string;
@@ -8333,7 +12550,7 @@ export class RevRecTemplate extends PlatformCore.Record {
   recurrenceList?: RevRecTemplateRecurrenceList;
   internalId?: string;
   externalId?: string;
-  constructor(props: RevRecTemplate) {
+  constructor(props: RevRecTemplateProps) {
     super(props);
     this.name = props.name;
     this.amortizationType = props.amortizationType;
@@ -8349,6 +12566,42 @@ export class RevRecTemplate extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type BillingScheduleProps = {
+  scheduleType?: ListsAccountingTypes.BillingScheduleType;
+  name?: string;
+  recurrencePattern?: ListsAccountingTypes.BillingScheduleRecurrencePattern;
+  project?: PlatformCore.RecordRef;
+  initialAmount?: string;
+  initialTerms?: PlatformCore.RecordRef;
+  frequency?: ListsAccountingTypes.BillingScheduleFrequency;
+  recurrenceDowMaskList?: PlatformCommon.RecurrenceDowMaskList;
+  yearMode?: ListsAccountingTypes.BillingScheduleRecurrenceMode;
+  yearDowim?: ListsAccountingTypes.BillingScheduleYearDowim;
+  yearDow?: ListsAccountingTypes.BillingScheduleYearDow;
+  yearDowimMonth?: ListsAccountingTypes.BillingScheduleYearDowimMonth;
+  yearMonth?: ListsAccountingTypes.BillingScheduleYearMonth;
+  yearDom?: number;
+  monthMode?: ListsAccountingTypes.BillingScheduleRecurrenceMode;
+  monthDowim?: ListsAccountingTypes.BillingScheduleMonthDowim;
+  monthDow?: ListsAccountingTypes.BillingScheduleMonthDow;
+  monthDom?: number;
+  dayPeriod?: number;
+  repeatEvery?: string;
+  billForActuals?: boolean;
+  numberRemaining?: number;
+  inArrears?: boolean;
+  recurrenceTerms?: PlatformCore.RecordRef;
+  isPublic?: boolean;
+  applyToSubtotal?: boolean;
+  transaction?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  seriesStartDate?: string;
+  recurrenceList?: BillingScheduleRecurrenceList;
+  milestoneList?: BillingScheduleMilestoneList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class BillingSchedule extends PlatformCore.Record {
   scheduleType?: ListsAccountingTypes.BillingScheduleType;
@@ -8384,7 +12637,7 @@ export class BillingSchedule extends PlatformCore.Record {
   milestoneList?: BillingScheduleMilestoneList;
   internalId?: string;
   externalId?: string;
-  constructor(props: BillingSchedule) {
+  constructor(props: BillingScheduleProps) {
     super(props);
     this.scheduleType = props.scheduleType;
     this.name = props.name;
@@ -8422,13 +12675,21 @@ export class BillingSchedule extends PlatformCore.Record {
   }
 }
 
+export type OtherChargeSaleItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class OtherChargeSaleItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: OtherChargeSaleItemHierarchyVersions) {
+  constructor(props: OtherChargeSaleItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -8437,12 +12698,19 @@ export class OtherChargeSaleItemHierarchyVersions {
   }
 }
 
+export type FairValuePriceSearchAdvancedProps = {
+  criteria?: FairValuePriceSearch;
+  columns?: FairValuePriceSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class FairValuePriceSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: FairValuePriceSearch;
   columns?: FairValuePriceSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: FairValuePriceSearchAdvanced) {
+  constructor(props: FairValuePriceSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -8450,6 +12718,24 @@ export class FairValuePriceSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type GeneralTokenProps = {
+  entity?: PlatformCore.RecordRef;
+  mask?: string;
+  supportedOperationsList?: GeneralTokenSupportedOperationsListList;
+  paymentMethod?: PlatformCore.RecordRef;
+  memo?: string;
+  state?: ListsAccountingTypes.PaymentInstrumentState;
+  isInactive?: boolean;
+  preserveOnFile?: boolean;
+  isDefault?: boolean;
+  token?: string;
+  tokenExpirationDate?: string;
+  tokenFamily?: ListsAccountingTypes.TokenFamily;
+  tokenNamespace?: string;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class GeneralToken extends PlatformCore.Record {
   entity?: PlatformCore.RecordRef;
@@ -8467,7 +12753,7 @@ export class GeneralToken extends PlatformCore.Record {
   tokenNamespace?: string;
   internalId?: string;
   externalId?: string;
-  constructor(props: GeneralToken) {
+  constructor(props: GeneralTokenProps) {
     super(props);
     this.entity = props.entity;
     this.mask = props.mask;
@@ -8487,12 +12773,19 @@ export class GeneralToken extends PlatformCore.Record {
   }
 }
 
+export type ContactCategorySearchAdvancedProps = {
+  criteria?: ContactCategorySearch;
+  columns?: ContactCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ContactCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ContactCategorySearch;
   columns?: ContactCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ContactCategorySearchAdvanced) {
+  constructor(props: ContactCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -8501,15 +12794,42 @@ export class ContactCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type SalesRoleSearchRowProps = {
+  basic?: PlatformCommon.SalesRoleSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class SalesRoleSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.SalesRoleSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: SalesRoleSearchRow) {
+  constructor(props: SalesRoleSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type TermProps = {
+  name?: string;
+  dateDriven?: boolean;
+  daysUntilNetDue?: number;
+  discountPercent?: number;
+  daysUntilExpiry?: number;
+  dayOfMonthNetDue?: number;
+  dueNextMonthIfWithinDays?: number;
+  discountPercentDateDriven?: number;
+  dayDiscountExpires?: number;
+  preferred?: boolean;
+  isInactive?: boolean;
+  installment?: boolean;
+  recurrenceFrequency?: PlatformCommonTypes.TermRecurrenceFrequency;
+  recurrenceCount?: number;
+  repeatEvery?: number;
+  splitEvenly?: boolean;
+  percentagesList?: TermPercentagesList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Term extends PlatformCore.Record {
   name?: string;
@@ -8531,7 +12851,7 @@ export class Term extends PlatformCore.Record {
   percentagesList?: TermPercentagesList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Term) {
+  constructor(props: TermProps) {
     super(props);
     this.name = props.name;
     this.dateDriven = props.dateDriven;
@@ -8555,32 +12875,50 @@ export class Term extends PlatformCore.Record {
   }
 }
 
+export type LotNumberedInventoryItemLocationsListProps = {
+  locations?: LotNumberedInventoryItemLocations[];
+  replaceAll?: boolean;
+};
+
 export class LotNumberedInventoryItemLocationsList {
   locations?: LotNumberedInventoryItemLocations[];
   replaceAll?: boolean;
-  constructor(props: LotNumberedInventoryItemLocationsList) {
+  constructor(props: LotNumberedInventoryItemLocationsListProps) {
     this.locations = props.locations;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TaxTypeNexusAccountsProps = {
+  nexus?: PlatformCore.RecordRef;
+  payablesAccount?: PlatformCore.RecordRef;
+  receivablesAccount?: PlatformCore.RecordRef;
+};
+
 export class TaxTypeNexusAccounts {
   nexus?: PlatformCore.RecordRef;
   payablesAccount?: PlatformCore.RecordRef;
   receivablesAccount?: PlatformCore.RecordRef;
-  constructor(props: TaxTypeNexusAccounts) {
+  constructor(props: TaxTypeNexusAccountsProps) {
     this.nexus = props.nexus;
     this.payablesAccount = props.payablesAccount;
     this.receivablesAccount = props.receivablesAccount;
   }
 }
 
+export type GlobalAccountMappingSearchAdvancedProps = {
+  criteria?: GlobalAccountMappingSearch;
+  columns?: GlobalAccountMappingSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class GlobalAccountMappingSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: GlobalAccountMappingSearch;
   columns?: GlobalAccountMappingSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: GlobalAccountMappingSearchAdvanced) {
+  constructor(props: GlobalAccountMappingSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -8589,14 +12927,27 @@ export class GlobalAccountMappingSearchAdvanced extends PlatformCore.SearchRecor
   }
 }
 
+export type UnitsTypeUomListProps = {
+  uom?: UnitsTypeUom[];
+  replaceAll?: boolean;
+};
+
 export class UnitsTypeUomList {
   uom?: UnitsTypeUom[];
   replaceAll?: boolean;
-  constructor(props: UnitsTypeUomList) {
+  constructor(props: UnitsTypeUomListProps) {
     this.uom = props.uom;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type NoteTypeProps = {
+  name?: string;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class NoteType extends PlatformCore.Record {
   name?: string;
@@ -8604,7 +12955,7 @@ export class NoteType extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: NoteType) {
+  constructor(props: NoteTypeProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -8614,41 +12965,63 @@ export class NoteType extends PlatformCore.Record {
   }
 }
 
+export type RevRecScheduleRecurrenceListProps = {
+  revRecScheduleRecurrence?: RevRecScheduleRecurrence[];
+  replaceAll?: boolean;
+};
+
 export class RevRecScheduleRecurrenceList {
   revRecScheduleRecurrence?: RevRecScheduleRecurrence[];
   replaceAll?: boolean;
-  constructor(props: RevRecScheduleRecurrenceList) {
+  constructor(props: RevRecScheduleRecurrenceListProps) {
     this.revRecScheduleRecurrence = props.revRecScheduleRecurrence;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type NoteTypeSearchProps = {
+  basic?: PlatformCommon.NoteTypeSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class NoteTypeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.NoteTypeSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: NoteTypeSearch) {
+  constructor(props: NoteTypeSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type PriceLevelSearchRowProps = {
+  basic?: PlatformCommon.PriceLevelSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class PriceLevelSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PriceLevelSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: PriceLevelSearchRow) {
+  constructor(props: PriceLevelSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ItemRevisionSearchAdvancedProps = {
+  criteria?: ItemRevisionSearch;
+  columns?: ItemRevisionSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ItemRevisionSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ItemRevisionSearch;
   columns?: ItemRevisionSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ItemRevisionSearchAdvanced) {
+  constructor(props: ItemRevisionSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -8657,32 +13030,49 @@ export class ItemRevisionSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type LotNumberedAssemblyItemBillOfMaterialsListProps = {
+  lotNumberedAssemblyItemBillOfMaterials?: LotNumberedAssemblyItemBillOfMaterials[];
+  replaceAll?: boolean;
+};
+
 export class LotNumberedAssemblyItemBillOfMaterialsList {
   lotNumberedAssemblyItemBillOfMaterials?: LotNumberedAssemblyItemBillOfMaterials[];
   replaceAll?: boolean;
-  constructor(props: LotNumberedAssemblyItemBillOfMaterialsList) {
+  constructor(props: LotNumberedAssemblyItemBillOfMaterialsListProps) {
     this.lotNumberedAssemblyItemBillOfMaterials =
       props.lotNumberedAssemblyItemBillOfMaterials;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CurrencyRateSearchRowProps = {
+  basic?: PlatformCommon.CurrencyRateSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class CurrencyRateSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CurrencyRateSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: CurrencyRateSearchRow) {
+  constructor(props: CurrencyRateSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type InventoryNumberSearchRowProps = {
+  basic?: PlatformCommon.InventoryNumberSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class InventoryNumberSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.InventoryNumberSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: InventoryNumberSearchRow) {
+  constructor(props: InventoryNumberSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -8691,14 +13081,252 @@ export class InventoryNumberSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type LocationRegionsListProps = {
+  locationRegions?: LocationRegions[];
+  replaceAll?: boolean;
+};
+
 export class LocationRegionsList {
   locationRegions?: LocationRegions[];
   replaceAll?: boolean;
-  constructor(props: LocationRegionsList) {
+  constructor(props: LocationRegionsListProps) {
     this.locationRegions = props.locationRegions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type InventoryItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  copyDescription?: boolean;
+  expenseAccount?: PlatformCore.RecordRef;
+  dateConvertedToInv?: string;
+  originalItemType?: ListsAccountingTypes.ItemType;
+  originalItemSubtype?: ListsAccountingTypes.ItemSubType;
+  cogsAccount?: PlatformCore.RecordRef;
+  intercoCogsAccount?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  fraudRisk?: ListsAccountingTypes.InventoryItemFraudRisk;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  dropshipExpenseAccount?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  assetAccount?: PlatformCore.RecordRef;
+  matchBillToReceipt?: boolean;
+  billQtyVarianceAcct?: PlatformCore.RecordRef;
+  billPriceVarianceAcct?: PlatformCore.RecordRef;
+  billExchRateVarianceAcct?: PlatformCore.RecordRef;
+  gainLossAccount?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  shippingCostUnits?: string;
+  handlingCost?: number;
+  handlingCostUnits?: string;
+  weight?: number;
+  weightUnit?: ListsAccountingTypes.ItemWeightUnit;
+  weightUnits?: string;
+  costingMethodDisplay?: string;
+  unitsType?: PlatformCore.RecordRef;
+  stockUnit?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  issueProduct?: PlatformCore.RecordRef;
+  billingSchedule?: PlatformCore.RecordRef;
+  trackLandedCost?: boolean;
+  matrixItemNameTemplate?: string;
+  isDropShipItem?: boolean;
+  isSpecialOrderItem?: boolean;
+  stockDescription?: string;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  intercoDefRevAccount?: PlatformCore.RecordRef;
+  producer?: boolean;
+  manufacturer?: string;
+  revRecSchedule?: PlatformCore.RecordRef;
+  mpn?: string;
+  multManufactureAddr?: boolean;
+  manufacturerAddr1?: string;
+  manufacturerCity?: string;
+  manufacturerState?: string;
+  manufacturerZip?: string;
+  countryOfManufacture?: PlatformCommonTypes.Country;
+  roundUpAsComponent?: boolean;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  defaultItemShipMethod?: PlatformCore.RecordRef;
+  itemCarrier?: PlatformCommonTypes.ShippingCarrier;
+  itemShipMethodList?: PlatformCore.RecordRefList;
+  manufacturerTaxId?: string;
+  scheduleBNumber?: string;
+  scheduleBQuantity?: number;
+  scheduleBCode?: string;
+  manufacturerTariff?: string;
+  preferenceCriterion?: ListsAccountingTypes.ItemPreferenceCriterion;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  minimumQuantityUnits?: string;
+  softDescriptor?: PlatformCore.RecordRef;
+  shipPackage?: PlatformCore.RecordRef;
+  shipIndividually?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  pricesIncludeTax?: boolean;
+  purchasePriceVarianceAcct?: PlatformCore.RecordRef;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  reorderPointUnits?: string;
+  useMarginalRates?: boolean;
+  preferredStockLevelUnits?: string;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  transferPrice?: number;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  costEstimateUnits?: string;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  preferredLocation?: PlatformCore.RecordRef;
+  isStorePickupAllowed?: boolean;
+  reorderMultiple?: number;
+  cost?: number;
+  lastInvtCountDate?: string;
+  nextInvtCountDate?: string;
+  invtCountInterval?: number;
+  invtClassification?: ListsAccountingTypes.ItemInvtClassification;
+  costUnits?: string;
+  totalValue?: number;
+  averageCost?: number;
+  useBins?: boolean;
+  quantityReorderUnits?: string;
+  leadTime?: number;
+  autoLeadTime?: boolean;
+  lastPurchasePrice?: number;
+  autoPreferredStockLevel?: boolean;
+  preferredStockLevelDays?: number;
+  safetyStockLevel?: number;
+  safetyStockLevelDays?: number;
+  backwardConsumptionDays?: number;
+  seasonalDemand?: boolean;
+  safetyStockLevelUnits?: string;
+  demandModifier?: number;
+  distributionNetwork?: PlatformCore.RecordRef;
+  distributionCategory?: PlatformCore.RecordRef;
+  autoReorderPoint?: boolean;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  featuredDescription?: string;
+  shoppingDotComCategory?: string;
+  shopzillaCategoryId?: number;
+  nexTagCategory?: string;
+  urlComponent?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isHazmatItem?: boolean;
+  hazmatId?: string;
+  hazmatShippingName?: string;
+  hazmatHazardClass?: string;
+  hazmatPackingGroup?: ListsAccountingTypes.HazmatPackingGroup;
+  hazmatItemUnits?: string;
+  hazmatItemUnitsQty?: number;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  costingMethod?: ListsAccountingTypes.ItemCostingMethod;
+  currency?: string;
+  preferredStockLevel?: number;
+  pricingMatrix?: PricingMatrix;
+  hierarchyVersionsList?: InventoryItemHierarchyVersionsList;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  defaultReturnCost?: number;
+  supplyReplenishmentMethod?: PlatformCore.RecordRef;
+  alternateDemandSourceItem?: PlatformCore.RecordRef;
+  fixedLotSize?: number;
+  periodicLotSizeType?: ListsAccountingTypes.PeriodicLotSizeType;
+  supplyType?: PlatformCore.RecordRef;
+  demandTimeFence?: number;
+  supplyTimeFence?: number;
+  rescheduleInDays?: number;
+  rescheduleOutDays?: number;
+  periodicLotSizeDays?: number;
+  supplyLotSizingMethod?: PlatformCore.RecordRef;
+  forwardConsumptionDays?: number;
+  demandSource?: PlatformCore.RecordRef;
+  quantityBackOrdered?: number;
+  quantityCommitted?: number;
+  quantityAvailable?: number;
+  quantityOnHand?: number;
+  onHandValueMli?: number;
+  quantityOnOrder?: number;
+  rate?: number;
+  reorderPoint?: number;
+  quantityCommittedUnits?: string;
+  salesTaxCode?: PlatformCore.RecordRef;
+  quantityAvailableUnits?: string;
+  quantityOnHandUnits?: string;
+  vendor?: PlatformCore.RecordRef;
+  quantityOnOrderUnits?: string;
+  productFeedList?: ProductFeedList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  itemOptionsList?: ItemOptionsList;
+  itemVendorList?: ItemVendorList;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  binNumberList?: InventoryItemBinNumberList;
+  locationsList?: InventoryItemLocationsList;
+  matrixOptionList?: MatrixOptionList;
+  presentationItemList?: PresentationItemList;
+  futureHorizon?: number;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class InventoryItem extends PlatformCore.Record {
   createdDate?: string;
@@ -8931,7 +13559,7 @@ export class InventoryItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InventoryItem) {
+  constructor(props: InventoryItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -9166,12 +13794,19 @@ export class InventoryItem extends PlatformCore.Record {
   }
 }
 
+export type SalesTaxItemSearchProps = {
+  basic?: PlatformCommon.SalesTaxItemSearchBasic;
+  taxTypeJoin?: PlatformCommon.TaxTypeSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class SalesTaxItemSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.SalesTaxItemSearchBasic;
   taxTypeJoin?: PlatformCommon.TaxTypeSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: SalesTaxItemSearch) {
+  constructor(props: SalesTaxItemSearchProps) {
     super();
     this.basic = props.basic;
     this.taxTypeJoin = props.taxTypeJoin;
@@ -9180,15 +13815,146 @@ export class SalesTaxItemSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type VendorCategorySearchRowProps = {
+  basic?: PlatformCommon.VendorCategorySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class VendorCategorySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.VendorCategorySearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: VendorCategorySearchRow) {
+  constructor(props: VendorCategorySearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ServiceResaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  manufacturingChargeItem?: boolean;
+  cost?: number;
+  costUnits?: string;
+  expenseAccount?: PlatformCore.RecordRef;
+  intercoExpenseAccount?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  taxSchedule?: PlatformCore.RecordRef;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  isTaxable?: boolean;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  costEstimateUnits?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  intercoDefRevAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  amortizationPeriod?: number;
+  minimumQuantity?: number;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  pricingGroup?: PlatformCore.RecordRef;
+  minimumQuantityUnits?: string;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  createJob?: boolean;
+  matrixItemNameTemplate?: string;
+  storeDisplayName?: string;
+  storeDisplayThumbnail?: PlatformCore.RecordRef;
+  storeDisplayImage?: PlatformCore.RecordRef;
+  storeDescription?: string;
+  storeDetailedDescription?: string;
+  storeItemTemplate?: PlatformCore.RecordRef;
+  pageTitle?: string;
+  urlComponent?: string;
+  metaTagHtml?: string;
+  excludeFromSitemap?: boolean;
+  sitemapPriority?: string;
+  searchKeywords?: string;
+  isDonationItem?: boolean;
+  showDefaultDonationAmount?: boolean;
+  maxDonationAmount?: number;
+  dontShowPrice?: boolean;
+  noPriceMessage?: string;
+  outOfStockMessage?: string;
+  onSpecial?: boolean;
+  outOfStockBehavior?: ListsAccountingTypes.ItemOutOfStockBehavior;
+  relatedItemsDescription?: string;
+  specialsDescription?: string;
+  itemTaskTemplatesList?: ServiceItemTaskTemplatesList;
+  featuredDescription?: string;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  currency?: string;
+  billingRatesMatrix?: BillingRatesMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  siteCategoryList?: SiteCategoryList;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  presentationItemList?: PresentationItemList;
+  hierarchyVersionsList?: ServiceResaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ServiceResaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -9314,7 +14080,7 @@ export class ServiceResaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ServiceResaleItem) {
+  constructor(props: ServiceResaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -9442,6 +14208,21 @@ export class ServiceResaleItem extends PlatformCore.Record {
   }
 }
 
+export type TaxTypeProps = {
+  name?: string;
+  description?: string;
+  doesNotAddToTotal?: boolean;
+  postToItemCost?: boolean;
+  taxInNetAmount?: boolean;
+  reverseCharge?: boolean;
+  isInactive?: boolean;
+  nexusAccountsList?: TaxTypeNexusAccountsList;
+  nexusesTaxList?: TaxTypeNexusesTaxList;
+  country?: PlatformCommonTypes.Country;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class TaxType extends PlatformCore.Record {
   name?: string;
   description?: string;
@@ -9455,7 +14236,7 @@ export class TaxType extends PlatformCore.Record {
   country?: PlatformCommonTypes.Country;
   internalId?: string;
   externalId?: string;
-  constructor(props: TaxType) {
+  constructor(props: TaxTypeProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -9472,12 +14253,19 @@ export class TaxType extends PlatformCore.Record {
   }
 }
 
+export type ExpenseCategorySearchAdvancedProps = {
+  criteria?: ExpenseCategorySearch;
+  columns?: ExpenseCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ExpenseCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ExpenseCategorySearch;
   columns?: ExpenseCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ExpenseCategorySearchAdvanced) {
+  constructor(props: ExpenseCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -9486,25 +14274,52 @@ export class ExpenseCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type CustomerCategorySearchProps = {
+  basic?: PlatformCommon.CustomerCategorySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class CustomerCategorySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CustomerCategorySearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: CustomerCategorySearch) {
+  constructor(props: CustomerCategorySearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type PricingGroupSearchRowProps = {
+  basic?: PlatformCommon.PricingGroupSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class PricingGroupSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PricingGroupSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: PricingGroupSearchRow) {
+  constructor(props: PricingGroupSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type ConsolidatedExchangeRateProps = {
+  postingPeriod?: string;
+  fromSubsidiary?: string;
+  fromCurrency?: string;
+  toSubsidiary?: string;
+  toCurrency?: string;
+  averageRate?: number;
+  currentRate?: number;
+  historicalRate?: number;
+  accountingBook?: string;
+  isPeriodClosed?: boolean;
+  isDerived?: boolean;
+  isEliminationSubsidiary?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ConsolidatedExchangeRate extends PlatformCore.Record {
   postingPeriod?: string;
@@ -9521,7 +14336,7 @@ export class ConsolidatedExchangeRate extends PlatformCore.Record {
   isEliminationSubsidiary?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: ConsolidatedExchangeRate) {
+  constructor(props: ConsolidatedExchangeRateProps) {
     super(props);
     this.postingPeriod = props.postingPeriod;
     this.fromSubsidiary = props.fromSubsidiary;
@@ -9540,12 +14355,19 @@ export class ConsolidatedExchangeRate extends PlatformCore.Record {
   }
 }
 
+export type CustomerCategorySearchAdvancedProps = {
+  criteria?: CustomerCategorySearch;
+  columns?: CustomerCategorySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class CustomerCategorySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CustomerCategorySearch;
   columns?: CustomerCategorySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CustomerCategorySearchAdvanced) {
+  constructor(props: CustomerCategorySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -9554,13 +14376,115 @@ export class CustomerCategorySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type BillingScheduleSearchProps = {
+  basic?: PlatformCommon.BillingScheduleSearchBasic;
+};
+
 export class BillingScheduleSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.BillingScheduleSearchBasic;
-  constructor(props: BillingScheduleSearch) {
+  constructor(props: BillingScheduleSearchProps) {
     super();
     this.basic = props.basic;
   }
 }
+
+export type OtherChargeResaleItemProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  purchaseDescription?: string;
+  manufacturingChargeItem?: boolean;
+  cost?: number;
+  costUnits?: string;
+  expenseAccount?: PlatformCore.RecordRef;
+  intercoExpenseAccount?: PlatformCore.RecordRef;
+  salesDescription?: string;
+  includeChildren?: boolean;
+  incomeAccount?: PlatformCore.RecordRef;
+  intercoIncomeAccount?: PlatformCore.RecordRef;
+  isTaxable?: boolean;
+  matrixType?: ListsAccountingTypes.ItemMatrixType;
+  taxSchedule?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  unitsType?: PlatformCore.RecordRef;
+  purchaseUnit?: PlatformCore.RecordRef;
+  saleUnit?: PlatformCore.RecordRef;
+  costEstimateUnits?: string;
+  issueProduct?: PlatformCore.RecordRef;
+  billingSchedule?: PlatformCore.RecordRef;
+  deferredRevenueAccount?: PlatformCore.RecordRef;
+  intercoDefRevAccount?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  deferralAccount?: PlatformCore.RecordRef;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  residual?: string;
+  deferRevRec?: boolean;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revenueAllocationGroup?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  directRevenuePosting?: boolean;
+  contingentRevenueHandling?: boolean;
+  revReclassFXAccount?: PlatformCore.RecordRef;
+  amortizationPeriod?: number;
+  minimumQuantity?: number;
+  minimumQuantityUnits?: string;
+  enforceMinQtyInternally?: boolean;
+  maximumQuantity?: number;
+  softDescriptor?: string;
+  isFulfillable?: boolean;
+  generateAccruals?: boolean;
+  costCategory?: PlatformCore.RecordRef;
+  purchaseOrderQuantity?: number;
+  purchaseOrderAmount?: number;
+  purchaseOrderQuantityDiff?: number;
+  receiptQuantity?: number;
+  receiptAmount?: number;
+  receiptQuantityDiff?: number;
+  pricesIncludeTax?: boolean;
+  quantityPricingSchedule?: PlatformCore.RecordRef;
+  useMarginalRates?: boolean;
+  overallQuantityPricingType?: ListsAccountingTypes.ItemOverallQuantityPricingType;
+  pricingGroup?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  itemId?: string;
+  upcCode?: string;
+  displayName?: string;
+  vendorName?: string;
+  parent?: PlatformCore.RecordRef;
+  isOnline?: boolean;
+  isGcoCompliant?: boolean;
+  offerSupport?: boolean;
+  isInactive?: boolean;
+  matrixItemNameTemplate?: string;
+  availableToPartners?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  vsoePrice?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  itemRevenueCategory?: PlatformCore.RecordRef;
+  currency?: string;
+  itemOptionsList?: ItemOptionsList;
+  matrixOptionList?: MatrixOptionList;
+  itemVendorList?: ItemVendorList;
+  pricingMatrix?: PricingMatrix;
+  accountingBookDetailList?: ItemAccountingBookDetailList;
+  purchaseTaxCode?: PlatformCore.RecordRef;
+  rate?: number;
+  salesTaxCode?: PlatformCore.RecordRef;
+  translationsList?: TranslationList;
+  vendor?: PlatformCore.RecordRef;
+  hierarchyVersionsList?: OtherChargeResaleItemHierarchyVersionsList;
+  consumptionUnit?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class OtherChargeResaleItem extends PlatformCore.Record {
   createdDate?: string;
@@ -9658,7 +14582,7 @@ export class OtherChargeResaleItem extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: OtherChargeResaleItem) {
+  constructor(props: OtherChargeResaleItemProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -9758,13 +14682,21 @@ export class OtherChargeResaleItem extends PlatformCore.Record {
   }
 }
 
+export type LocationSearchRowProps = {
+  basic?: PlatformCommon.LocationSearchRowBasic;
+  addressJoin?: PlatformCommon.AddressSearchRowBasic;
+  returnAddressJoin?: PlatformCommon.AddressSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class LocationSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.LocationSearchRowBasic;
   addressJoin?: PlatformCommon.AddressSearchRowBasic;
   returnAddressJoin?: PlatformCommon.AddressSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: LocationSearchRow) {
+  constructor(props: LocationSearchRowProps) {
     super();
     this.basic = props.basic;
     this.addressJoin = props.addressJoin;
@@ -9774,12 +14706,19 @@ export class LocationSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type DepartmentSearchAdvancedProps = {
+  criteria?: DepartmentSearch;
+  columns?: DepartmentSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class DepartmentSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: DepartmentSearch;
   columns?: DepartmentSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: DepartmentSearchAdvanced) {
+  constructor(props: DepartmentSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -9788,13 +14727,21 @@ export class DepartmentSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type ContactRoleProps = {
+  name?: string;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class ContactRole extends PlatformCore.Record {
   name?: string;
   description?: string;
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: ContactRole) {
+  constructor(props: ContactRoleProps) {
     super(props);
     this.name = props.name;
     this.description = props.description;
@@ -9804,6 +14751,15 @@ export class ContactRole extends PlatformCore.Record {
   }
 }
 
+export type SerializedAssemblyItemBillOfMaterialsProps = {
+  billOfMaterials?: PlatformCore.RecordRef;
+  currentRevision?: string;
+  masterDefault?: boolean;
+  defaultForLocationList?: PlatformCore.RecordRefList;
+  inactive?: string;
+  memo?: string;
+};
+
 export class SerializedAssemblyItemBillOfMaterials {
   billOfMaterials?: PlatformCore.RecordRef;
   currentRevision?: string;
@@ -9811,7 +14767,7 @@ export class SerializedAssemblyItemBillOfMaterials {
   defaultForLocationList?: PlatformCore.RecordRefList;
   inactive?: string;
   memo?: string;
-  constructor(props: SerializedAssemblyItemBillOfMaterials) {
+  constructor(props: SerializedAssemblyItemBillOfMaterialsProps) {
     this.billOfMaterials = props.billOfMaterials;
     this.currentRevision = props.currentRevision;
     this.masterDefault = props.masterDefault;
@@ -9820,6 +14776,17 @@ export class SerializedAssemblyItemBillOfMaterials {
     this.memo = props.memo;
   }
 }
+
+export type ItemVendorProps = {
+  vendor?: PlatformCore.RecordRef;
+  vendorCode?: string;
+  vendorCurrencyName?: string;
+  vendorCurrency?: PlatformCore.RecordRef;
+  purchasePrice?: number;
+  preferredVendor?: boolean;
+  schedule?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+};
 
 export class ItemVendor {
   vendor?: PlatformCore.RecordRef;
@@ -9830,7 +14797,7 @@ export class ItemVendor {
   preferredVendor?: boolean;
   schedule?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
-  constructor(props: ItemVendor) {
+  constructor(props: ItemVendorProps) {
     this.vendor = props.vendor;
     this.vendorCode = props.vendorCode;
     this.vendorCurrencyName = props.vendorCurrencyName;
@@ -9841,6 +14808,26 @@ export class ItemVendor {
     this.subsidiary = props.subsidiary;
   }
 }
+
+export type AccountingPeriodProps = {
+  periodName?: string;
+  parent?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  fiscalCalendar?: PlatformCore.RecordRef;
+  closedOnDate?: string;
+  isAdjust?: boolean;
+  fiscalCalendarsList?: AccountingPeriodFiscalCalendarsList;
+  isQuarter?: boolean;
+  isYear?: boolean;
+  closed?: boolean;
+  apLocked?: boolean;
+  arLocked?: boolean;
+  payrollLocked?: boolean;
+  allLocked?: boolean;
+  allowNonGLChanges?: boolean;
+  internalId?: string;
+} & PlatformCore.RecordProps;
 
 export class AccountingPeriod extends PlatformCore.Record {
   periodName?: string;
@@ -9860,7 +14847,7 @@ export class AccountingPeriod extends PlatformCore.Record {
   allLocked?: boolean;
   allowNonGLChanges?: boolean;
   internalId?: string;
-  constructor(props: AccountingPeriod) {
+  constructor(props: AccountingPeriodProps) {
     super(props);
     this.periodName = props.periodName;
     this.parent = props.parent;
@@ -9882,6 +14869,26 @@ export class AccountingPeriod extends PlatformCore.Record {
   }
 }
 
+export type BomProps = {
+  customForm?: PlatformCore.RecordRef;
+  name?: string;
+  usedOnAssembly?: boolean;
+  createdDate?: string;
+  isInactive?: boolean;
+  useComponentYield?: boolean;
+  memo?: string;
+  legacyBomForAssembly?: PlatformCore.RecordRef;
+  availableForAllAssemblies?: boolean;
+  restrictToAssembliesList?: PlatformCore.RecordRefList;
+  availableForAllLocations?: boolean;
+  restrictToLocationsList?: PlatformCore.RecordRefList;
+  subsidiaryList?: PlatformCore.RecordRefList;
+  includeChildren?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class Bom extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   name?: string;
@@ -9900,7 +14907,7 @@ export class Bom extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Bom) {
+  constructor(props: BomProps) {
     super(props);
     this.customForm = props.customForm;
     this.name = props.name;
@@ -9922,12 +14929,19 @@ export class Bom extends PlatformCore.Record {
   }
 }
 
+export type SalesTaxItemSearchAdvancedProps = {
+  criteria?: SalesTaxItemSearch;
+  columns?: SalesTaxItemSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class SalesTaxItemSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: SalesTaxItemSearch;
   columns?: SalesTaxItemSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: SalesTaxItemSearchAdvanced) {
+  constructor(props: SalesTaxItemSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -9935,13 +14949,20 @@ export class SalesTaxItemSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type BomRevisionSearchAdvancedProps = {
+  criteria?: BomRevisionSearch;
+  columns?: BomRevisionSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class BomRevisionSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: BomRevisionSearch;
   columns?: BomRevisionSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: BomRevisionSearchAdvanced) {
+  constructor(props: BomRevisionSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -9950,14 +14971,30 @@ export class BomRevisionSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaxTypeNexusAccountsListProps = {
+  taxTypeNexusAccounts?: TaxTypeNexusAccounts[];
+  replaceAll?: boolean;
+};
+
 export class TaxTypeNexusAccountsList {
   taxTypeNexusAccounts?: TaxTypeNexusAccounts[];
   replaceAll?: boolean;
-  constructor(props: TaxTypeNexusAccountsList) {
+  constructor(props: TaxTypeNexusAccountsListProps) {
     this.taxTypeNexusAccounts = props.taxTypeNexusAccounts;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemAccountMappingSearchRowProps = {
+  basic?: PlatformCommon.ItemAccountMappingSearchRowBasic;
+  classJoin?: PlatformCommon.ClassificationSearchRowBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchRowBasic;
+  destinationAccountJoin?: PlatformCommon.AccountSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  sourceAccountJoin?: PlatformCommon.AccountSearchRowBasic;
+  subsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ItemAccountMappingSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ItemAccountMappingSearchRowBasic;
@@ -9968,7 +15005,7 @@ export class ItemAccountMappingSearchRow extends PlatformCore.SearchRow {
   sourceAccountJoin?: PlatformCommon.AccountSearchRowBasic;
   subsidiaryJoin?: PlatformCommon.SubsidiarySearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ItemAccountMappingSearchRow) {
+  constructor(props: ItemAccountMappingSearchRowProps) {
     super();
     this.basic = props.basic;
     this.classJoin = props.classJoin;
@@ -9981,6 +15018,16 @@ export class ItemAccountMappingSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type PriceLevelProps = {
+  name?: string;
+  discountpct?: number;
+  updateExistingPrices?: boolean;
+  isOnline?: boolean;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class PriceLevel extends PlatformCore.Record {
   name?: string;
   discountpct?: number;
@@ -9989,7 +15036,7 @@ export class PriceLevel extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: PriceLevel) {
+  constructor(props: PriceLevelProps) {
     super(props);
     this.name = props.name;
     this.discountpct = props.discountpct;
@@ -10001,30 +15048,46 @@ export class PriceLevel extends PlatformCore.Record {
   }
 }
 
+export type SiteCategoryListProps = {
+  siteCategory?: SiteCategory[];
+  replaceAll?: boolean;
+};
+
 export class SiteCategoryList {
   siteCategory?: SiteCategory[];
   replaceAll?: boolean;
-  constructor(props: SiteCategoryList) {
+  constructor(props: SiteCategoryListProps) {
     this.siteCategory = props.siteCategory;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type LotNumberedAssemblyItemHierarchyVersionsListProps = {
+  lotNumberedAssemblyItemHierarchyVersions?: LotNumberedAssemblyItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class LotNumberedAssemblyItemHierarchyVersionsList {
   lotNumberedAssemblyItemHierarchyVersions?: LotNumberedAssemblyItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: LotNumberedAssemblyItemHierarchyVersionsList) {
+  constructor(props: LotNumberedAssemblyItemHierarchyVersionsListProps) {
     this.lotNumberedAssemblyItemHierarchyVersions =
       props.lotNumberedAssemblyItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type BinSearchProps = {
+  basic?: PlatformCommon.BinSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class BinSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.BinSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: BinSearch) {
+  constructor(props: BinSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -10032,15 +15095,47 @@ export class BinSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type OtherChargeSaleItemHierarchyVersionsListProps = {
+  otherChargeSaleItemHierarchyVersions?: OtherChargeSaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class OtherChargeSaleItemHierarchyVersionsList {
   otherChargeSaleItemHierarchyVersions?: OtherChargeSaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: OtherChargeSaleItemHierarchyVersionsList) {
+  constructor(props: OtherChargeSaleItemHierarchyVersionsListProps) {
     this.otherChargeSaleItemHierarchyVersions =
       props.otherChargeSaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemSearchRowProps = {
+  basic?: PlatformCommon.ItemSearchRowBasic;
+  accountingBookRevRecScheduleJoin?: PlatformCommon.RevRecTemplateSearchRowBasic;
+  assemblyItemBillOfMaterialsJoin?: PlatformCommon.AssemblyItemBomSearchRowBasic;
+  binNumberJoin?: PlatformCommon.BinSearchRowBasic;
+  binOnHandJoin?: PlatformCommon.ItemBinNumberSearchRowBasic;
+  correlatedItemJoin?: PlatformCommon.ItemSearchRowBasic;
+  effectiveRevisionJoin?: PlatformCommon.ItemRevisionSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  inventoryDetailJoin?: PlatformCommon.InventoryDetailSearchRowBasic;
+  inventoryLocationJoin?: PlatformCommon.LocationSearchRowBasic;
+  inventoryNumberJoin?: PlatformCommon.InventoryNumberSearchRowBasic;
+  inventoryNumberBinOnHandJoin?: PlatformCommon.InventoryNumberBinSearchRowBasic;
+  memberItemJoin?: PlatformCommon.ItemSearchRowBasic;
+  obsoleteRevisionJoin?: PlatformCommon.ItemRevisionSearchRowBasic;
+  parentJoin?: PlatformCommon.ItemSearchRowBasic;
+  preferredLocationJoin?: PlatformCommon.LocationSearchRowBasic;
+  preferredVendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  pricingJoin?: PlatformCommon.PricingSearchRowBasic;
+  shopperJoin?: PlatformCommon.CustomerSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  vendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ItemSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ItemSearchRowBasic;
@@ -10067,7 +15162,7 @@ export class ItemSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ItemSearchRow) {
+  constructor(props: ItemSearchRowProps) {
     super();
     this.basic = props.basic;
     this.accountingBookRevRecScheduleJoin =
@@ -10098,12 +15193,19 @@ export class ItemSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type AccountingPeriodSearchAdvancedProps = {
+  criteria?: AccountingPeriodSearch;
+  columns?: AccountingPeriodSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class AccountingPeriodSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: AccountingPeriodSearch;
   columns?: AccountingPeriodSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: AccountingPeriodSearchAdvanced) {
+  constructor(props: AccountingPeriodSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -10112,34 +15214,66 @@ export class AccountingPeriodSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type GeneralTokenSupportedOperationsListListProps = {
+  generalTokenSupportedOperationsList?: ListsAccountingTypes.PaymentInstrumentSupportedOperation[];
+};
+
 export class GeneralTokenSupportedOperationsListList {
   generalTokenSupportedOperationsList?: ListsAccountingTypes.PaymentInstrumentSupportedOperation[];
-  constructor(props: GeneralTokenSupportedOperationsListList) {
+  constructor(props: GeneralTokenSupportedOperationsListListProps) {
     this.generalTokenSupportedOperationsList =
       props.generalTokenSupportedOperationsList;
   }
 }
 
+export type NexusSearchRowProps = {
+  basic?: PlatformCommon.NexusSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class NexusSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.NexusSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: NexusSearchRow) {
+  constructor(props: NexusSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type BillingRatesProps = {
+  currency?: PlatformCore.RecordRef;
+  billingClass?: PlatformCore.RecordRef;
+  rateList?: RateList;
+};
+
 export class BillingRates {
   currency?: PlatformCore.RecordRef;
   billingClass?: PlatformCore.RecordRef;
   rateList?: RateList;
-  constructor(props: BillingRates) {
+  constructor(props: BillingRatesProps) {
     this.currency = props.currency;
     this.billingClass = props.billingClass;
     this.rateList = props.rateList;
   }
 }
+
+export type GlobalAccountMappingProps = {
+  customForm?: PlatformCore.RecordRef;
+  effectiveDate?: string;
+  endDate?: string;
+  accountingBook?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  sourceAccount?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  destinationAccount?: PlatformCore.RecordRef;
+  customDimension?: PlatformCore.BaseRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class GlobalAccountMapping extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -10156,7 +15290,7 @@ export class GlobalAccountMapping extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: GlobalAccountMapping) {
+  constructor(props: GlobalAccountMappingProps) {
     super(props);
     this.customForm = props.customForm;
     this.effectiveDate = props.effectiveDate;
@@ -10175,11 +15309,17 @@ export class GlobalAccountMapping extends PlatformCore.Record {
   }
 }
 
+export type AccountSearchProps = {
+  basic?: PlatformCommon.AccountSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class AccountSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.AccountSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: AccountSearch) {
+  constructor(props: AccountSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
@@ -10187,13 +15327,21 @@ export class AccountSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type LotNumberedAssemblyItemHierarchyVersionsProps = {
+  isIncluded?: boolean;
+  hierarchyVersion?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  hierarchyNode?: PlatformCore.RecordRef;
+};
+
 export class LotNumberedAssemblyItemHierarchyVersions {
   isIncluded?: boolean;
   hierarchyVersion?: PlatformCore.RecordRef;
   startDate?: string;
   endDate?: string;
   hierarchyNode?: PlatformCore.RecordRef;
-  constructor(props: LotNumberedAssemblyItemHierarchyVersions) {
+  constructor(props: LotNumberedAssemblyItemHierarchyVersionsProps) {
     this.isIncluded = props.isIncluded;
     this.hierarchyVersion = props.hierarchyVersion;
     this.startDate = props.startDate;
@@ -10201,6 +15349,17 @@ export class LotNumberedAssemblyItemHierarchyVersions {
     this.hierarchyNode = props.hierarchyNode;
   }
 }
+
+export type ItemAccountingBookDetailProps = {
+  accountingBook?: PlatformCore.RecordRef;
+  createRevenuePlansOn?: PlatformCore.RecordRef;
+  revenueRecognitionRule?: PlatformCore.RecordRef;
+  revRecForecastRule?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  sameAsPrimaryRevRec?: boolean;
+  amortizationTemplate?: PlatformCore.RecordRef;
+  sameAsPrimaryAmortization?: boolean;
+};
 
 export class ItemAccountingBookDetail {
   accountingBook?: PlatformCore.RecordRef;
@@ -10211,7 +15370,7 @@ export class ItemAccountingBookDetail {
   sameAsPrimaryRevRec?: boolean;
   amortizationTemplate?: PlatformCore.RecordRef;
   sameAsPrimaryAmortization?: boolean;
-  constructor(props: ItemAccountingBookDetail) {
+  constructor(props: ItemAccountingBookDetailProps) {
     this.accountingBook = props.accountingBook;
     this.createRevenuePlansOn = props.createRevenuePlansOn;
     this.revenueRecognitionRule = props.revenueRecognitionRule;
@@ -10223,33 +15382,58 @@ export class ItemAccountingBookDetail {
   }
 }
 
+export type NonInventoryResaleItemHierarchyVersionsListProps = {
+  nonInventoryResaleItemHierarchyVersions?: NonInventoryResaleItemHierarchyVersions[];
+  replaceAll?: boolean;
+};
+
 export class NonInventoryResaleItemHierarchyVersionsList {
   nonInventoryResaleItemHierarchyVersions?: NonInventoryResaleItemHierarchyVersions[];
   replaceAll?: boolean;
-  constructor(props: NonInventoryResaleItemHierarchyVersionsList) {
+  constructor(props: NonInventoryResaleItemHierarchyVersionsListProps) {
     this.nonInventoryResaleItemHierarchyVersions =
       props.nonInventoryResaleItemHierarchyVersions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type SubsidiaryTaxRegistrationListProps = {
+  subsidiaryTaxRegistration?: SubsidiaryTaxRegistration[];
+  replaceAll?: boolean;
+};
+
 export class SubsidiaryTaxRegistrationList {
   subsidiaryTaxRegistration?: SubsidiaryTaxRegistration[];
   replaceAll?: boolean;
-  constructor(props: SubsidiaryTaxRegistrationList) {
+  constructor(props: SubsidiaryTaxRegistrationListProps) {
     this.subsidiaryTaxRegistration = props.subsidiaryTaxRegistration;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type SubsidiaryNexusProps = {
+  nexusId?: PlatformCore.RecordRef;
+  country?: string;
+};
+
 export class SubsidiaryNexus {
   nexusId?: PlatformCore.RecordRef;
   country?: string;
-  constructor(props: SubsidiaryNexus) {
+  constructor(props: SubsidiaryNexusProps) {
     this.nexusId = props.nexusId;
     this.country = props.country;
   }
 }
+
+export type SubsidiarySearchProps = {
+  basic?: PlatformCommon.SubsidiarySearchBasic;
+  addressJoin?: PlatformCommon.AddressSearchBasic;
+  defaultAdvanceToApplyAccountJoin?: PlatformCommon.AccountSearchBasic;
+  returnAddressJoin?: PlatformCommon.AddressSearchBasic;
+  shippingAddressJoin?: PlatformCommon.AddressSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class SubsidiarySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.SubsidiarySearchBasic;
@@ -10259,7 +15443,7 @@ export class SubsidiarySearch extends PlatformCore.SearchRecord {
   shippingAddressJoin?: PlatformCommon.AddressSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: SubsidiarySearch) {
+  constructor(props: SubsidiarySearchProps) {
     super();
     this.basic = props.basic;
     this.addressJoin = props.addressJoin;

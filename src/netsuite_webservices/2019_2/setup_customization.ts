@@ -3,16 +3,69 @@ import * as PlatformCommon from "./platform_common";
 import * as SetupCustomizationTypes from "./setup_customization_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type CustomRecordTypeTabsProps = {
+  tabTitle?: string;
+  tabParent?: PlatformCore.RecordRef;
+  tabTitleLanguageValueList?: LanguageValueList;
+};
+
 export class CustomRecordTypeTabs {
   tabTitle?: string;
   tabParent?: PlatformCore.RecordRef;
   tabTitleLanguageValueList?: LanguageValueList;
-  constructor(props: CustomRecordTypeTabs) {
+  constructor(props: CustomRecordTypeTabsProps) {
     this.tabTitle = props.tabTitle;
     this.tabParent = props.tabParent;
     this.tabTitleLanguageValueList = props.tabTitleLanguageValueList;
   }
 }
+
+export type CustomRecordProps = {
+  customRecordId?: string;
+  customForm?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  parent?: PlatformCore.RecordRef;
+  disclaimer?: string;
+  created?: string;
+  lastModified?: string;
+  name?: string;
+  autoName?: boolean;
+  altName?: string;
+  owner?: PlatformCore.RecordRef;
+  recType?: PlatformCore.RecordRef;
+  enableNumbering?: boolean;
+  numberingPrefix?: string;
+  numberingSuffix?: string;
+  numberingMinDigits?: number;
+  description?: string;
+  numberingInit?: number;
+  numberingCurrentNumber?: number;
+  allowNumberingOverride?: boolean;
+  isNumberingUpdateable?: boolean;
+  translationsList?: CustomRecordTranslationsList;
+  includeName?: boolean;
+  showId?: boolean;
+  showCreationDate?: boolean;
+  showCreationDateOnList?: boolean;
+  showLastModified?: boolean;
+  showLastModifiedOnList?: boolean;
+  showOwner?: boolean;
+  showOwnerOnList?: boolean;
+  showOwnerAllowChange?: boolean;
+  usePermissions?: boolean;
+  allowAttachments?: boolean;
+  showNotes?: boolean;
+  enablEmailMerge?: boolean;
+  isOrdered?: boolean;
+  allowInlineEditing?: boolean;
+  isAvailableOffline?: boolean;
+  allowQuickSearch?: boolean;
+  recordName?: string;
+  scriptId?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomRecord extends PlatformCore.Record {
   customRecordId?: string;
@@ -59,7 +112,7 @@ export class CustomRecord extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomRecord) {
+  constructor(props: CustomRecordProps) {
     super(props);
     this.customRecordId = props.customRecordId;
     this.customForm = props.customForm;
@@ -108,24 +161,74 @@ export class CustomRecord extends PlatformCore.Record {
   }
 }
 
+export type CustomRecordTypeTabsListProps = {
+  tabs?: CustomRecordTypeTabs[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeTabsList {
   tabs?: CustomRecordTypeTabs[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeTabsList) {
+  constructor(props: CustomRecordTypeTabsListProps) {
     this.tabs = props.tabs;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomFieldTypeProps = {
+  fieldType?: SetupCustomizationTypes.CustomizationFieldType;
+  scriptId?: string;
+} & PlatformCore.RecordProps;
+
 export class CustomFieldType extends PlatformCore.Record {
   fieldType?: SetupCustomizationTypes.CustomizationFieldType;
   scriptId?: string;
-  constructor(props: CustomFieldType) {
+  constructor(props: CustomFieldTypeProps) {
     super(props);
     this.fieldType = props.fieldType;
     this.scriptId = props.scriptId;
   }
 }
+
+export type OtherCustomFieldProps = {
+  recType?: PlatformCore.RecordRef;
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  filterList?: OtherCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class OtherCustomField extends CustomFieldType {
   recType?: PlatformCore.RecordRef;
@@ -165,7 +268,7 @@ export class OtherCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: OtherCustomField) {
+  constructor(props: OtherCustomFieldProps) {
     super(props);
     this.recType = props.recType;
     this.label = props.label;
@@ -207,6 +310,15 @@ export class OtherCustomField extends CustomFieldType {
   }
 }
 
+export type TransactionColumnCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
+
 export class TransactionColumnCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
@@ -214,7 +326,7 @@ export class TransactionColumnCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: TransactionColumnCustomFieldFilter) {
+  constructor(props: TransactionColumnCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -223,6 +335,55 @@ export class TransactionColumnCustomFieldFilter {
     this.fldFilterNotNull = props.fldFilterNotNull;
   }
 }
+
+export type CustomSaleItemProps = {
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  description?: string;
+  amount?: number;
+  isTaxable?: boolean;
+  options?: PlatformCore.CustomFieldList;
+  deferRevRec?: boolean;
+  quantity?: number;
+  currentPercent?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  binNumbers?: string;
+  price?: PlatformCore.RecordRef;
+  rate?: string;
+  percentComplete?: number;
+  quantityOnHand?: number;
+  quantityAvailable?: number;
+  quantityRemaining?: number;
+  department?: PlatformCore.RecordRef;
+  licenseCode?: string;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
+  grossAmt?: number;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  taxDetailsReference?: string;
+  excludeFromRateRequest?: boolean;
+  catchUpPeriod?: PlatformCore.RecordRef;
+  giftCertFrom?: string;
+  giftCertRecipientName?: string;
+  giftCertRecipientEmail?: string;
+  giftCertMessage?: string;
+  taxAmount?: number;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeIsEstimate?: boolean;
+  vsoePrice?: number;
+  vsoeAmount?: number;
+  vsoeAllocation?: number;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CustomSaleItem {
   item?: PlatformCore.RecordRef;
@@ -271,7 +432,7 @@ export class CustomSaleItem {
   vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
   vsoeDelivered?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CustomSaleItem) {
+  constructor(props: CustomSaleItemProps) {
     this.item = props.item;
     this.line = props.line;
     this.description = props.description;
@@ -321,16 +482,31 @@ export class CustomSaleItem {
   }
 }
 
+export type CustomListTranslationsProps = {
+  locale?: PlatformCommonTypes.Language;
+  localeDescription?: string;
+  name?: string;
+};
+
 export class CustomListTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   name?: string;
-  constructor(props: CustomListTranslations) {
+  constructor(props: CustomListTranslationsProps) {
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.name = props.name;
   }
 }
+
+export type ItemOptionCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
 
 export class ItemOptionCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
@@ -339,7 +515,7 @@ export class ItemOptionCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: ItemOptionCustomFieldFilter) {
+  constructor(props: ItemOptionCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -349,30 +525,47 @@ export class ItemOptionCustomFieldFilter {
   }
 }
 
+export type CustomRecordTypeParentsListProps = {
+  parents?: CustomRecordTypeParents[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeParentsList {
   parents?: CustomRecordTypeParents[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeParentsList) {
+  constructor(props: CustomRecordTypeParentsListProps) {
     this.parents = props.parents;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CrmCustomFieldFilterListProps = {
+  filter?: CrmCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class CrmCustomFieldFilterList {
   filter?: CrmCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: CrmCustomFieldFilterList) {
+  constructor(props: CrmCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomListSearchAdvancedProps = {
+  criteria?: CustomListSearch;
+  columns?: CustomListSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class CustomListSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CustomListSearch;
   columns?: CustomListSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CustomListSearchAdvanced) {
+  constructor(props: CustomListSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -381,23 +574,47 @@ export class CustomListSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TransactionColumnCustomFieldFilterListProps = {
+  filter?: TransactionColumnCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class TransactionColumnCustomFieldFilterList {
   filter?: TransactionColumnCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: TransactionColumnCustomFieldFilterList) {
+  constructor(props: TransactionColumnCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTranslationsListProps = {
+  customRecordTranslations?: CustomRecordTranslations[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTranslationsList {
   customRecordTranslations?: CustomRecordTranslations[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTranslationsList) {
+  constructor(props: CustomRecordTranslationsListProps) {
     this.customRecordTranslations = props.customRecordTranslations;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomListProps = {
+  name?: string;
+  owner?: PlatformCore.RecordRef;
+  isOrdered?: boolean;
+  description?: string;
+  isMatrixOption?: boolean;
+  scriptId?: string;
+  convertToCustomRecord?: boolean;
+  isInactive?: boolean;
+  customValueList?: CustomListCustomValueList;
+  translationsList?: CustomListTranslationsList;
+  internalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomList extends PlatformCore.Record {
   name?: string;
@@ -411,7 +628,7 @@ export class CustomList extends PlatformCore.Record {
   customValueList?: CustomListCustomValueList;
   translationsList?: CustomListTranslationsList;
   internalId?: string;
-  constructor(props: CustomList) {
+  constructor(props: CustomListProps) {
     super(props);
     this.name = props.name;
     this.owner = props.owner;
@@ -426,6 +643,60 @@ export class CustomList extends PlatformCore.Record {
     this.internalId = props.internalId;
   }
 }
+
+export type ItemCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  itemMatrix?: boolean;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  globalSearch?: boolean;
+  isParent?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  subtab?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  parentSubtab?: PlatformCore.RecordRef;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  appliesToInventory?: boolean;
+  appliesToNonInventory?: boolean;
+  appliesToService?: boolean;
+  appliesToOtherCharge?: boolean;
+  appliesToGroup?: boolean;
+  appliesToKit?: boolean;
+  appliesToItemAssembly?: boolean;
+  availableToSso?: boolean;
+  itemSubType?: SetupCustomizationTypes.ItemCustomFieldItemSubType;
+  filterList?: ItemCustomFieldFilterList;
+  appliesToPriceList?: boolean;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class ItemCustomField extends CustomFieldType {
   label?: string;
@@ -479,7 +750,7 @@ export class ItemCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: ItemCustomField) {
+  constructor(props: ItemCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -535,6 +806,15 @@ export class ItemCustomField extends CustomFieldType {
   }
 }
 
+export type TransactionBodyCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
+
 export class TransactionBodyCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
@@ -542,7 +822,7 @@ export class TransactionBodyCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: TransactionBodyCustomFieldFilter) {
+  constructor(props: TransactionBodyCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -552,14 +832,33 @@ export class TransactionBodyCustomFieldFilter {
   }
 }
 
+export type CustomPurchaseItemListProps = {
+  item?: CustomPurchaseItem[];
+  replaceAll?: boolean;
+};
+
 export class CustomPurchaseItemList {
   item?: CustomPurchaseItem[];
   replaceAll?: boolean;
-  constructor(props: CustomPurchaseItemList) {
+  constructor(props: CustomPurchaseItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomTransactionLineProps = {
+  account?: PlatformCore.RecordRef;
+  line?: number;
+  debit?: number;
+  credit?: number;
+  amount?: number;
+  memo?: string;
+  entity?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CustomTransactionLine {
   account?: PlatformCore.RecordRef;
@@ -573,7 +872,7 @@ export class CustomTransactionLine {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CustomTransactionLine) {
+  constructor(props: CustomTransactionLineProps) {
     this.account = props.account;
     this.line = props.line;
     this.debit = props.debit;
@@ -587,6 +886,51 @@ export class CustomTransactionLine {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type CustomRecordCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  globalSearch?: boolean;
+  isParent?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  subtab?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  parentSubtab?: PlatformCore.RecordRef;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourcefilterby?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  recType?: string;
+  roleRestrict?: boolean;
+  filterList?: CustomRecordCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class CustomRecordCustomField extends CustomFieldType {
   label?: string;
@@ -631,7 +975,7 @@ export class CustomRecordCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: CustomRecordCustomField) {
+  constructor(props: CustomRecordCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -678,23 +1022,100 @@ export class CustomRecordCustomField extends CustomFieldType {
   }
 }
 
+export type ItemOptionCustomFieldFilterListProps = {
+  filter?: ItemOptionCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class ItemOptionCustomFieldFilterList {
   filter?: ItemOptionCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: ItemOptionCustomFieldFilterList) {
+  constructor(props: ItemOptionCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeSublistsListProps = {
+  sublists?: CustomRecordTypeSublists[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeSublistsList {
   sublists?: CustomRecordTypeSublists[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeSublistsList) {
+  constructor(props: CustomRecordTypeSublistsListProps) {
     this.sublists = props.sublists;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TransactionBodyCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  globalSearch?: boolean;
+  isParent?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  subtab?: PlatformCore.RecordRef;
+  availableToSso?: boolean;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  parentSubtab?: PlatformCore.RecordRef;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  bodyPurchase?: boolean;
+  bodySale?: boolean;
+  bodyOpportunity?: boolean;
+  bodyJournal?: boolean;
+  bodyExpenseReport?: boolean;
+  bodyStore?: boolean;
+  bodyTransferOrder?: boolean;
+  bodyItemReceipt?: boolean;
+  bodyItemReceiptOrder?: boolean;
+  bodyItemFulfillment?: boolean;
+  bodyItemFulfillmentOrder?: boolean;
+  bodyInventoryAdjustment?: boolean;
+  bodyBTegata?: boolean;
+  bodyAssemblyBuild?: boolean;
+  bodyPrintFlag?: boolean;
+  bodyPickingTicket?: boolean;
+  bodyOtherTransaction?: boolean;
+  bodyPrintPackingSlip?: boolean;
+  bodyCustomerPayment?: boolean;
+  bodyVendorPayment?: boolean;
+  bodyDeposit?: boolean;
+  bodyBom?: boolean;
+  bodyPrintStatement?: boolean;
+  filterList?: TransactionBodyCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class TransactionBodyCustomField extends CustomFieldType {
   label?: string;
@@ -761,7 +1182,7 @@ export class TransactionBodyCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: TransactionBodyCustomField) {
+  constructor(props: TransactionBodyCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -830,25 +1251,95 @@ export class TransactionBodyCustomField extends CustomFieldType {
   }
 }
 
+export type TransactionBodyCustomFieldFilterListProps = {
+  filter?: TransactionBodyCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class TransactionBodyCustomFieldFilterList {
   filter?: TransactionBodyCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: TransactionBodyCustomFieldFilterList) {
+  constructor(props: TransactionBodyCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomFieldSubAccessProps = {
+  sub?: PlatformCore.RecordRef;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+};
+
 export class CustomFieldSubAccess {
   sub?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
-  constructor(props: CustomFieldSubAccess) {
+  constructor(props: CustomFieldSubAccessProps) {
     this.sub = props.sub;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
   }
 }
+
+export type TransactionColumnCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  availableToSso?: boolean;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  linkText?: string;
+  isMandatory?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  colExpense?: boolean;
+  colPurchase?: boolean;
+  colSale?: boolean;
+  colOpportunity?: boolean;
+  colStore?: boolean;
+  colStoreHidden?: boolean;
+  colJournal?: boolean;
+  colBuild?: boolean;
+  colExpenseReport?: boolean;
+  colTime?: boolean;
+  colTransferOrder?: boolean;
+  colTimeGroup?: boolean;
+  colItemReceipt?: boolean;
+  colItemReceiptOrder?: boolean;
+  colItemFulfillment?: boolean;
+  colItemFulfillmentOrder?: boolean;
+  colPrintFlag?: boolean;
+  colPickingTicket?: boolean;
+  colPackingSlip?: boolean;
+  colReturnForm?: boolean;
+  colStoreWithGroups?: boolean;
+  colGroupOnInvoices?: boolean;
+  colKitItem?: boolean;
+  filterList?: TransactionColumnCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class TransactionColumnCustomField extends CustomFieldType {
   label?: string;
@@ -907,7 +1398,7 @@ export class TransactionColumnCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: TransactionColumnCustomField) {
+  constructor(props: TransactionColumnCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -968,28 +1459,49 @@ export class TransactionColumnCustomField extends CustomFieldType {
   }
 }
 
+export type CustomListSearchRowProps = {
+  basic?: PlatformCommon.CustomListSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class CustomListSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CustomListSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: CustomListSearchRow) {
+  constructor(props: CustomListSearchRowProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
 
+export type CustomFieldTranslationsProps = {
+  locale?: PlatformCommonTypes.Language;
+  localeDescription?: string;
+  label?: string;
+  help?: string;
+};
+
 export class CustomFieldTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   label?: string;
   help?: string;
-  constructor(props: CustomFieldTranslations) {
+  constructor(props: CustomFieldTranslationsProps) {
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.label = props.label;
     this.help = props.help;
   }
 }
+
+export type ItemCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
 
 export class ItemCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
@@ -998,7 +1510,7 @@ export class ItemCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: ItemCustomFieldFilter) {
+  constructor(props: ItemCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -1008,30 +1520,61 @@ export class ItemCustomFieldFilter {
   }
 }
 
+export type CustomRecordTypeFieldListProps = {
+  customField?: CustomRecordCustomField[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeFieldList {
   customField?: CustomRecordCustomField[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeFieldList) {
+  constructor(props: CustomRecordTypeFieldListProps) {
     this.customField = props.customField;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ItemsListProps = {
+  items: PlatformCore.RecordRef[];
+};
+
 export class ItemsList {
   items: PlatformCore.RecordRef[];
-  constructor(props: ItemsList) {
+  constructor(props: ItemsListProps) {
     this.items = props.items;
   }
 }
 
+export type LanguageValueListProps = {
+  languageValue?: LanguageValue[];
+  replaceAll?: boolean;
+};
+
 export class LanguageValueList {
   languageValue?: LanguageValue[];
   replaceAll?: boolean;
-  constructor(props: LanguageValueList) {
+  constructor(props: LanguageValueListProps) {
     this.languageValue = props.languageValue;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomSegmentProps = {
+  label?: string;
+  scriptId?: string;
+  recordScriptId?: string;
+  recordType?: PlatformCore.RecordRef;
+  fieldType?: SetupCustomizationTypes.CustomizationFieldType;
+  isInactive?: boolean;
+  showInList?: boolean;
+  filteredByList?: PlatformCore.RecordRefList;
+  hasGLImpact?: boolean;
+  help?: string;
+  description?: string;
+  isMandatory?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  internalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomSegment extends PlatformCore.Record {
   label?: string;
@@ -1048,7 +1591,7 @@ export class CustomSegment extends PlatformCore.Record {
   isMandatory?: boolean;
   defaultSelection?: PlatformCore.RecordRef;
   internalId?: string;
-  constructor(props: CustomSegment) {
+  constructor(props: CustomSegmentProps) {
     super(props);
     this.label = props.label;
     this.scriptId = props.scriptId;
@@ -1067,32 +1610,55 @@ export class CustomSegment extends PlatformCore.Record {
   }
 }
 
+export type CustomRecordTypePermissionsListProps = {
+  permissions?: CustomRecordTypePermissions[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypePermissionsList {
   permissions?: CustomRecordTypePermissions[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypePermissionsList) {
+  constructor(props: CustomRecordTypePermissionsListProps) {
     this.permissions = props.permissions;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomPurchaseExpenseListProps = {
+  expense?: CustomPurchaseExpense[];
+  replaceAll?: boolean;
+};
+
 export class CustomPurchaseExpenseList {
   expense?: CustomPurchaseExpense[];
   replaceAll?: boolean;
-  constructor(props: CustomPurchaseExpenseList) {
+  constructor(props: CustomPurchaseExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeChildrenListProps = {
+  children?: CustomRecordTypeChildren[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeChildrenList {
   children?: CustomRecordTypeChildren[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeChildrenList) {
+  constructor(props: CustomRecordTypeChildrenListProps) {
     this.children = props.children;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomListCustomValueProps = {
+  value?: string;
+  abbreviation?: string;
+  isInactive?: boolean;
+  valueId?: number;
+  valueLanguageValueList?: LanguageValueList;
+};
 
 export class CustomListCustomValue {
   value?: string;
@@ -1100,7 +1666,7 @@ export class CustomListCustomValue {
   isInactive?: boolean;
   valueId?: number;
   valueLanguageValueList?: LanguageValueList;
-  constructor(props: CustomListCustomValue) {
+  constructor(props: CustomListCustomValueProps) {
     this.value = props.value;
     this.abbreviation = props.abbreviation;
     this.isInactive = props.isInactive;
@@ -1108,6 +1674,54 @@ export class CustomListCustomValue {
     this.valueLanguageValueList = props.valueLanguageValueList;
   }
 }
+
+export type CustomPurchaseProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranType?: PlatformCore.RecordRef;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  billAddressList?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranDate?: string;
+  currencyName?: string;
+  billingAddress?: PlatformCommon.Address;
+  exchangeRate?: number;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  terms?: PlatformCore.RecordRef;
+  dueDate?: string;
+  discountDate?: string;
+  tranId?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  userTotal?: number;
+  discountAmount?: number;
+  taxTotal?: number;
+  paymentHold?: boolean;
+  memo?: string;
+  tranStatus?: PlatformCore.RecordRef;
+  availableVendorCredit?: number;
+  currency?: PlatformCore.RecordRef;
+  incoterm?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  status?: string;
+  transactionNumber?: string;
+  expenseList?: CustomPurchaseExpenseList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  itemList?: CustomPurchaseItemList;
+  purchaseOrderList?: PlatformCore.RecordRefList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomPurchase extends PlatformCore.Record {
   createdDate?: string;
@@ -1155,7 +1769,7 @@ export class CustomPurchase extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomPurchase) {
+  constructor(props: CustomPurchaseProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1205,104 +1819,184 @@ export class CustomPurchase extends PlatformCore.Record {
   }
 }
 
+export type CustomRecordTypeChildrenProps = {
+  childDescr?: string;
+  childTab?: PlatformCore.RecordRef;
+};
+
 export class CustomRecordTypeChildren {
   childDescr?: string;
   childTab?: PlatformCore.RecordRef;
-  constructor(props: CustomRecordTypeChildren) {
+  constructor(props: CustomRecordTypeChildrenProps) {
     this.childDescr = props.childDescr;
     this.childTab = props.childTab;
   }
 }
 
+export type CustomRecordTypeTranslationsProps = {
+  locale?: PlatformCommonTypes.Language;
+  localeDescription?: string;
+  name?: string;
+};
+
 export class CustomRecordTypeTranslations {
   locale?: PlatformCommonTypes.Language;
   localeDescription?: string;
   name?: string;
-  constructor(props: CustomRecordTypeTranslations) {
+  constructor(props: CustomRecordTypeTranslationsProps) {
     this.locale = props.locale;
     this.localeDescription = props.localeDescription;
     this.name = props.name;
   }
 }
 
+export type CustomFieldTranslationsListProps = {
+  translations?: CustomFieldTranslations[];
+  replaceAll?: boolean;
+};
+
 export class CustomFieldTranslationsList {
   translations?: CustomFieldTranslations[];
   replaceAll?: boolean;
-  constructor(props: CustomFieldTranslationsList) {
+  constructor(props: CustomFieldTranslationsListProps) {
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ItemCustomFieldFilterListProps = {
+  filter?: ItemCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class ItemCustomFieldFilterList {
   filter?: ItemCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: ItemCustomFieldFilterList) {
+  constructor(props: ItemCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomListCustomValueListProps = {
+  customValue?: CustomListCustomValue[];
+  replaceAll?: boolean;
+};
+
 export class CustomListCustomValueList {
   customValue?: CustomListCustomValue[];
   replaceAll?: boolean;
-  constructor(props: CustomListCustomValueList) {
+  constructor(props: CustomListCustomValueListProps) {
     this.customValue = props.customValue;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomFieldDepartmentAccessListProps = {
+  deptAccess?: CustomFieldDepartmentAccess[];
+  replaceAll?: boolean;
+};
+
 export class CustomFieldDepartmentAccessList {
   deptAccess?: CustomFieldDepartmentAccess[];
   replaceAll?: boolean;
-  constructor(props: CustomFieldDepartmentAccessList) {
+  constructor(props: CustomFieldDepartmentAccessListProps) {
     this.deptAccess = props.deptAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomTransactionLineListProps = {
+  customTransactionLine?: CustomTransactionLine[];
+  replaceAll?: boolean;
+};
+
 export class CustomTransactionLineList {
   customTransactionLine?: CustomTransactionLine[];
   replaceAll?: boolean;
-  constructor(props: CustomTransactionLineList) {
+  constructor(props: CustomTransactionLineListProps) {
     this.customTransactionLine = props.customTransactionLine;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomSalePartnersListProps = {
+  partners?: PlatformCommon.Partners[];
+  replaceAll?: boolean;
+};
+
 export class CustomSalePartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
-  constructor(props: CustomSalePartnersList) {
+  constructor(props: CustomSalePartnersListProps) {
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomSaleItemListProps = {
+  item?: CustomSaleItem[];
+  replaceAll?: boolean;
+};
+
 export class CustomSaleItemList {
   item?: CustomSaleItem[];
   replaceAll?: boolean;
-  constructor(props: CustomSaleItemList) {
+  constructor(props: CustomSaleItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeManagersProps = {
+  managerEmp?: PlatformCore.RecordRef;
+};
+
 export class CustomRecordTypeManagers {
   managerEmp?: PlatformCore.RecordRef;
-  constructor(props: CustomRecordTypeManagers) {
+  constructor(props: CustomRecordTypeManagersProps) {
     this.managerEmp = props.managerEmp;
   }
 }
 
+export type CustomRecordCustomFieldFilterListProps = {
+  filter?: CustomRecordCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordCustomFieldFilterList {
   filter?: CustomRecordCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordCustomFieldFilterList) {
+  constructor(props: CustomRecordCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomTransactionProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranType?: PlatformCore.RecordRef;
+  tranId?: string;
+  total?: number;
+  currency?: PlatformCore.RecordRef;
+  voidJournal?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  tranStatus?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  lineList?: CustomTransactionLineList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomTransaction extends PlatformCore.Record {
   createdDate?: string;
@@ -1327,7 +2021,7 @@ export class CustomTransaction extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomTransaction) {
+  constructor(props: CustomTransactionProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1354,70 +2048,114 @@ export class CustomTransaction extends PlatformCore.Record {
   }
 }
 
+export type CustomRecordTypeParentsProps = {
+  childDescr?: string;
+};
+
 export class CustomRecordTypeParents {
   childDescr?: string;
-  constructor(props: CustomRecordTypeParents) {
+  constructor(props: CustomRecordTypeParentsProps) {
     this.childDescr = props.childDescr;
   }
 }
 
+export type CustomFieldRoleAccessListProps = {
+  roleAccess?: CustomFieldRoleAccess[];
+  replaceAll?: boolean;
+};
+
 export class CustomFieldRoleAccessList {
   roleAccess?: CustomFieldRoleAccess[];
   replaceAll?: boolean;
-  constructor(props: CustomFieldRoleAccessList) {
+  constructor(props: CustomFieldRoleAccessListProps) {
     this.roleAccess = props.roleAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type LanguageValueProps = {
+  locale?: PlatformCommonTypes.Language;
+  value?: string;
+};
+
 export class LanguageValue {
   locale?: PlatformCommonTypes.Language;
   value?: string;
-  constructor(props: LanguageValue) {
+  constructor(props: LanguageValueProps) {
     this.locale = props.locale;
     this.value = props.value;
   }
 }
 
+export type CustomListTranslationsListProps = {
+  translations?: CustomListTranslations[];
+  replaceAll?: boolean;
+};
+
 export class CustomListTranslationsList {
   translations?: CustomListTranslations[];
   replaceAll?: boolean;
-  constructor(props: CustomListTranslationsList) {
+  constructor(props: CustomListTranslationsListProps) {
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeOnlineFormsProps = {
+  onlineFormName?: string;
+  isOnline?: string;
+  templateName?: string;
+};
+
 export class CustomRecordTypeOnlineForms {
   onlineFormName?: string;
   isOnline?: string;
   templateName?: string;
-  constructor(props: CustomRecordTypeOnlineForms) {
+  constructor(props: CustomRecordTypeOnlineFormsProps) {
     this.onlineFormName = props.onlineFormName;
     this.isOnline = props.isOnline;
     this.templateName = props.templateName;
   }
 }
 
+export type CustomRecordTypeFormsProps = {
+  formEdit?: string;
+  formName?: string;
+  formPref?: boolean;
+};
+
 export class CustomRecordTypeForms {
   formEdit?: string;
   formName?: string;
   formPref?: boolean;
-  constructor(props: CustomRecordTypeForms) {
+  constructor(props: CustomRecordTypeFormsProps) {
     this.formEdit = props.formEdit;
     this.formName = props.formName;
     this.formPref = props.formPref;
   }
 }
 
+export type CustomRecordTypeFormsListProps = {
+  forms?: CustomRecordTypeForms[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeFormsList {
   forms?: CustomRecordTypeForms[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeFormsList) {
+  constructor(props: CustomRecordTypeFormsListProps) {
     this.forms = props.forms;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomRecordTypeSublistsProps = {
+  recordSearch?: PlatformCore.RecordRef;
+  recordDescr?: string;
+  recordDescrLanguageValueList?: LanguageValueList;
+  recordTab?: PlatformCore.RecordRef;
+  recordId?: string;
+};
 
 export class CustomRecordTypeSublists {
   recordSearch?: PlatformCore.RecordRef;
@@ -1425,7 +2163,7 @@ export class CustomRecordTypeSublists {
   recordDescrLanguageValueList?: LanguageValueList;
   recordTab?: PlatformCore.RecordRef;
   recordId?: string;
-  constructor(props: CustomRecordTypeSublists) {
+  constructor(props: CustomRecordTypeSublistsProps) {
     this.recordSearch = props.recordSearch;
     this.recordDescr = props.recordDescr;
     this.recordDescrLanguageValueList = props.recordDescrLanguageValueList;
@@ -1434,12 +2172,19 @@ export class CustomRecordTypeSublists {
   }
 }
 
+export type CustomRecordSearchAdvancedProps = {
+  criteria?: CustomRecordSearch;
+  columns?: CustomRecordSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class CustomRecordSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CustomRecordSearch;
   columns?: CustomRecordSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CustomRecordSearchAdvanced) {
+  constructor(props: CustomRecordSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1448,6 +2193,15 @@ export class CustomRecordSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type CrmCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
+
 export class CrmCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
@@ -1455,7 +2209,7 @@ export class CrmCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: CrmCustomFieldFilter) {
+  constructor(props: CrmCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -1465,12 +2219,19 @@ export class CrmCustomFieldFilter {
   }
 }
 
+export type CustomSaleSalesTeamProps = {
+  employee?: PlatformCore.RecordRef;
+  salesRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
+
 export class CustomSaleSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: CustomSaleSalesTeam) {
+  constructor(props: CustomSaleSalesTeamProps) {
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1478,16 +2239,44 @@ export class CustomSaleSalesTeam {
   }
 }
 
+export type CustomRecordTypeLinksProps = {
+  linkCenter?: PlatformCore.RecordRef;
+  linkSection?: PlatformCore.RecordRef;
+  linkLabel?: string;
+};
+
 export class CustomRecordTypeLinks {
   linkCenter?: PlatformCore.RecordRef;
   linkSection?: PlatformCore.RecordRef;
   linkLabel?: string;
-  constructor(props: CustomRecordTypeLinks) {
+  constructor(props: CustomRecordTypeLinksProps) {
     this.linkCenter = props.linkCenter;
     this.linkSection = props.linkSection;
     this.linkLabel = props.linkLabel;
   }
 }
+
+export type CustomPurchaseExpenseProps = {
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  taxAmount?: number;
+  memo?: string;
+  grossAmt?: number;
+  taxDetailsReference?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  projectTask?: PlatformCore.RecordRef;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CustomPurchaseExpense {
   line?: number;
@@ -1509,7 +2298,7 @@ export class CustomPurchaseExpense {
   amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CustomPurchaseExpense) {
+  constructor(props: CustomPurchaseExpenseProps) {
     this.line = props.line;
     this.category = props.category;
     this.account = props.account;
@@ -1532,34 +2321,106 @@ export class CustomPurchaseExpense {
   }
 }
 
+export type CustomRecordTranslationsProps = {
+  locale?: PlatformCommonTypes.Language;
+  language?: string;
+  label?: string;
+};
+
 export class CustomRecordTranslations {
   locale?: PlatformCommonTypes.Language;
   language?: string;
   label?: string;
-  constructor(props: CustomRecordTranslations) {
+  constructor(props: CustomRecordTranslationsProps) {
     this.locale = props.locale;
     this.language = props.language;
     this.label = props.label;
   }
 }
 
+export type CustomFieldSubAccessListProps = {
+  subAccess?: CustomFieldSubAccess[];
+  replaceAll?: boolean;
+};
+
 export class CustomFieldSubAccessList {
   subAccess?: CustomFieldSubAccess[];
   replaceAll?: boolean;
-  constructor(props: CustomFieldSubAccessList) {
+  constructor(props: CustomFieldSubAccessListProps) {
     this.subAccess = props.subAccess;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeTranslationsListProps = {
+  translations?: CustomRecordTypeTranslations[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeTranslationsList {
   translations?: CustomRecordTypeTranslations[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeTranslationsList) {
+  constructor(props: CustomRecordTypeTranslationsListProps) {
     this.translations = props.translations;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CrmCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  globalSearch?: boolean;
+  isParent?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  subtab?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  parentSubtab?: PlatformCore.RecordRef;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  appliesToTask?: boolean;
+  appliesToMfgProjectTask?: boolean;
+  appliesToProjectTask?: boolean;
+  appliesToPhoneCall?: boolean;
+  appliesToEvent?: boolean;
+  appliesToCase?: boolean;
+  appliesToCampaign?: boolean;
+  appliesPerKeyword?: boolean;
+  appliesToSolution?: boolean;
+  appliesToIssue?: boolean;
+  availableExternally?: boolean;
+  availableToSso?: boolean;
+  showIssueChanges?: boolean;
+  filterList?: CrmCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class CrmCustomField extends CustomFieldType {
   label?: string;
@@ -1615,7 +2476,7 @@ export class CrmCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: CrmCustomField) {
+  constructor(props: CrmCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -1673,6 +2534,54 @@ export class CrmCustomField extends CustomFieldType {
   }
 }
 
+export type CustomRecordTypeProps = {
+  recordName?: string;
+  includeName?: boolean;
+  showId?: boolean;
+  showCreationDate?: boolean;
+  showCreationDateOnList?: boolean;
+  showLastModified?: boolean;
+  showLastModifiedOnList?: boolean;
+  showOwner?: boolean;
+  showOwnerOnList?: boolean;
+  showOwnerAllowChange?: boolean;
+  accessType?: SetupCustomizationTypes.CustomRecordTypeAccessType;
+  allowAttachments?: boolean;
+  showNotes?: boolean;
+  enableMailMerge?: boolean;
+  isOrdered?: boolean;
+  isAvailableOffline?: boolean;
+  allowQuickSearch?: boolean;
+  hierarchical?: boolean;
+  enableDle?: boolean;
+  enableNameTranslation?: boolean;
+  isInactive?: boolean;
+  disclaimer?: string;
+  enableNumbering?: boolean;
+  numberingPrefix?: string;
+  numberingSuffix?: string;
+  numberingMinDigits?: number;
+  numberingInit?: number;
+  numberingCurrentNumber?: number;
+  allowNumberingOverride?: boolean;
+  isNumberingUpdateable?: boolean;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  tabsList?: CustomRecordTypeTabsList;
+  sublistsList?: CustomRecordTypeSublistsList;
+  formsList?: CustomRecordTypeFormsList;
+  onlineFormsList?: CustomRecordTypeOnlineFormsList;
+  permissionsList?: CustomRecordTypePermissionsList;
+  linksList?: CustomRecordTypeLinksList;
+  managersList?: CustomRecordTypeManagersList;
+  childrenList?: CustomRecordTypeChildrenList;
+  parentsList?: CustomRecordTypeParentsList;
+  translationsList?: CustomRecordTypeTranslationsList;
+  scriptId?: string;
+  customFieldList?: CustomRecordTypeFieldList;
+  internalId?: string;
+} & PlatformCore.RecordProps;
+
 export class CustomRecordType extends PlatformCore.Record {
   recordName?: string;
   includeName?: boolean;
@@ -1719,7 +2628,7 @@ export class CustomRecordType extends PlatformCore.Record {
   scriptId?: string;
   customFieldList?: CustomRecordTypeFieldList;
   internalId?: string;
-  constructor(props: CustomRecordType) {
+  constructor(props: CustomRecordTypeProps) {
     super(props);
     this.recordName = props.recordName;
     this.includeName = props.includeName;
@@ -1769,12 +2678,72 @@ export class CustomRecordType extends PlatformCore.Record {
   }
 }
 
+export type FldFilterSelListProps = {
+  fldFilterSel: PlatformCore.RecordRef[];
+};
+
 export class FldFilterSelList {
   fldFilterSel: PlatformCore.RecordRef[];
-  constructor(props: FldFilterSelList) {
+  constructor(props: FldFilterSelListProps) {
     this.fldFilterSel = props.fldFilterSel;
   }
 }
+
+export type EntityCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  globalSearch?: boolean;
+  isParent?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  availableToSso?: boolean;
+  subtab?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  parentSubtab?: PlatformCore.RecordRef;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  customSegment?: PlatformCore.RecordRef;
+  appliesToCustomer?: boolean;
+  appliesToProject?: boolean;
+  appliesToVendor?: boolean;
+  appliesToEmployee?: boolean;
+  appliesToOtherName?: boolean;
+  appliesToContact?: boolean;
+  appliesToPartner?: boolean;
+  appliesToWebSite?: boolean;
+  appliesToGroup?: boolean;
+  availableExternally?: boolean;
+  filterList?: EntityCustomFieldFilterList;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  appliesToStatement?: boolean;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  appliesToPriceList?: boolean;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class EntityCustomField extends CustomFieldType {
   label?: string;
@@ -1830,7 +2799,7 @@ export class EntityCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: EntityCustomField) {
+  constructor(props: EntityCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -1888,16 +2857,32 @@ export class EntityCustomField extends CustomFieldType {
   }
 }
 
+export type CustomFieldRoleAccessProps = {
+  role?: PlatformCore.RecordRef;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+};
+
 export class CustomFieldRoleAccess {
   role?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
-  constructor(props: CustomFieldRoleAccess) {
+  constructor(props: CustomFieldRoleAccessProps) {
     this.role = props.role;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
   }
 }
+
+export type CustomRecordSearchRowProps = {
+  basic?: PlatformCommon.CustomRecordSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  messagesJoin?: PlatformCommon.MessageSearchRowBasic;
+  ownerJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class CustomRecordSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CustomRecordSearchRowBasic;
@@ -1907,7 +2892,7 @@ export class CustomRecordSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: CustomRecordSearchRow) {
+  constructor(props: CustomRecordSearchRowProps) {
     super();
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
@@ -1918,6 +2903,35 @@ export class CustomRecordSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type CustomPurchaseItemProps = {
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  line?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  serialNumbers?: string;
+  binNumbers?: string;
+  grossAmt?: number;
+  rate?: string;
+  amount?: number;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  billVarianceStatus?: PlatformCommonTypes.TransactionBillVarianceStatus;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  taxAmount?: number;
+  taxDetailsReference?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CustomPurchaseItem {
   item?: PlatformCore.RecordRef;
@@ -1946,7 +2960,7 @@ export class CustomPurchaseItem {
   taxAmount?: number;
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CustomPurchaseItem) {
+  constructor(props: CustomPurchaseItemProps) {
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -1976,14 +2990,65 @@ export class CustomPurchaseItem {
   }
 }
 
+export type CustomRecordTypeLinksListProps = {
+  links?: CustomRecordTypeLinks[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeLinksList {
   links?: CustomRecordTypeLinks[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeLinksList) {
+  constructor(props: CustomRecordTypeLinksListProps) {
     this.links = props.links;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemOptionCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  linkText?: string;
+  isMandatory?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  colPurchase?: boolean;
+  colSale?: boolean;
+  colOpportunity?: boolean;
+  colStore?: boolean;
+  colStoreHidden?: boolean;
+  colTransferOrder?: boolean;
+  colAllItems?: boolean;
+  itemsList?: ItemsList;
+  colKitItem?: boolean;
+  filterList?: ItemOptionCustomFieldFilterList;
+  colOptionLabel?: string;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  subAccessList?: CustomFieldSubAccessList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class ItemOptionCustomField extends CustomFieldType {
   label?: string;
@@ -2029,7 +3094,7 @@ export class ItemOptionCustomField extends CustomFieldType {
   subAccessList?: CustomFieldSubAccessList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: ItemOptionCustomField) {
+  constructor(props: ItemOptionCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -2077,6 +3142,16 @@ export class ItemOptionCustomField extends CustomFieldType {
   }
 }
 
+export type CustomRecordSearchProps = {
+  basic?: PlatformCommon.CustomRecordSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  messagesJoin?: PlatformCommon.MessageSearchBasic;
+  ownerJoin?: PlatformCommon.EmployeeSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class CustomRecordSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CustomRecordSearchBasic;
   fileJoin?: PlatformCommon.FileSearchBasic;
@@ -2085,7 +3160,7 @@ export class CustomRecordSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: CustomRecordSearch) {
+  constructor(props: CustomRecordSearchProps) {
     super();
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
@@ -2097,16 +3172,31 @@ export class CustomRecordSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type CustomFieldDepartmentAccessProps = {
+  dept?: PlatformCore.RecordRef;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+};
+
 export class CustomFieldDepartmentAccess {
   dept?: PlatformCore.RecordRef;
   accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
   searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
-  constructor(props: CustomFieldDepartmentAccess) {
+  constructor(props: CustomFieldDepartmentAccessProps) {
     this.dept = props.dept;
     this.accessLevel = props.accessLevel;
     this.searchLevel = props.searchLevel;
   }
 }
+
+export type EntityCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
 
 export class EntityCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
@@ -2115,7 +3205,7 @@ export class EntityCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: EntityCustomFieldFilter) {
+  constructor(props: EntityCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2124,6 +3214,48 @@ export class EntityCustomFieldFilter {
     this.fldFilterNotNull = props.fldFilterNotNull;
   }
 }
+
+export type ItemNumberCustomFieldProps = {
+  label?: string;
+  owner?: PlatformCore.RecordRef;
+  description?: string;
+  selectRecordType?: PlatformCore.RecordRef;
+  storeValue?: boolean;
+  showInList?: boolean;
+  insertBefore?: PlatformCore.RecordRef;
+  displayType?: SetupCustomizationTypes.CustomizationDisplayType;
+  displayWidth?: number;
+  displayHeight?: number;
+  help?: string;
+  linkText?: string;
+  isMandatory?: boolean;
+  checkSpelling?: boolean;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
+  defaultChecked?: boolean;
+  defaultValue?: string;
+  isFormula?: boolean;
+  defaultSelection?: PlatformCore.RecordRef;
+  dynamicDefault?: SetupCustomizationTypes.CustomizationDynamicDefault;
+  searchDefault?: PlatformCore.RecordRef;
+  searchCompareField?: PlatformCore.RecordRef;
+  sourceList?: PlatformCore.RecordRef;
+  sourceFrom?: PlatformCore.RecordRef;
+  sourceFilterBy?: PlatformCore.RecordRef;
+  accessLevel?: SetupCustomizationTypes.CustomizationAccessLevel;
+  searchLevel?: SetupCustomizationTypes.CustomizationSearchLevel;
+  filterList?: ItemNumberCustomFieldFilterList;
+  roleAccessList?: CustomFieldRoleAccessList;
+  deptAccessList?: CustomFieldDepartmentAccessList;
+  appliesToAllItems?: boolean;
+  appliesToSerialized?: boolean;
+  appliesToLots?: boolean;
+  appliesToGiftCerts?: boolean;
+  itemsList?: PlatformCore.RecordRefList;
+  translationsList?: CustomFieldTranslationsList;
+  internalId?: string;
+} & CustomFieldTypeProps;
 
 export class ItemNumberCustomField extends CustomFieldType {
   label?: string;
@@ -2165,7 +3297,7 @@ export class ItemNumberCustomField extends CustomFieldType {
   itemsList?: PlatformCore.RecordRefList;
   translationsList?: CustomFieldTranslationsList;
   internalId?: string;
-  constructor(props: ItemNumberCustomField) {
+  constructor(props: ItemNumberCustomFieldProps) {
     super(props);
     this.label = props.label;
     this.owner = props.owner;
@@ -2209,14 +3341,35 @@ export class ItemNumberCustomField extends CustomFieldType {
   }
 }
 
+export type CustomRecordTypeOnlineFormsListProps = {
+  onlineForms?: CustomRecordTypeOnlineForms[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeOnlineFormsList {
   onlineForms?: CustomRecordTypeOnlineForms[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeOnlineFormsList) {
+  constructor(props: CustomRecordTypeOnlineFormsListProps) {
     this.onlineForms = props.onlineForms;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomRecordTypePermissionsProps = {
+  permittedRole?: PlatformCore.RecordRef;
+  permittedLevel?: SetupCustomizationTypes.CustomRecordTypePermissionsPermittedLevel;
+  restriction?: SetupCustomizationTypes.CustomRecordTypePermissionsRestriction;
+  defaultForm?: PlatformCore.RecordRef;
+  restrictForm?: boolean;
+  searchForm?: PlatformCore.RecordRef;
+  searchResults?: PlatformCore.RecordRef;
+  listView?: PlatformCore.RecordRef;
+  listViewRestricted?: boolean;
+  dashboardView?: PlatformCore.RecordRef;
+  restrictDashboardView?: boolean;
+  sublistView?: PlatformCore.RecordRef;
+  restrictSublistView?: boolean;
+};
 
 export class CustomRecordTypePermissions {
   permittedRole?: PlatformCore.RecordRef;
@@ -2232,7 +3385,7 @@ export class CustomRecordTypePermissions {
   restrictDashboardView?: boolean;
   sublistView?: PlatformCore.RecordRef;
   restrictSublistView?: boolean;
-  constructor(props: CustomRecordTypePermissions) {
+  constructor(props: CustomRecordTypePermissionsProps) {
     this.permittedRole = props.permittedRole;
     this.permittedLevel = props.permittedLevel;
     this.restriction = props.restriction;
@@ -2249,23 +3402,43 @@ export class CustomRecordTypePermissions {
   }
 }
 
+export type EntityCustomFieldFilterListProps = {
+  filter?: EntityCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class EntityCustomFieldFilterList {
   filter?: EntityCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: EntityCustomFieldFilterList) {
+  constructor(props: EntityCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type OtherCustomFieldFilterListProps = {
+  filter?: OtherCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class OtherCustomFieldFilterList {
   filter?: OtherCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: OtherCustomFieldFilterList) {
+  constructor(props: OtherCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemNumberCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterNotNull?: boolean;
+  fldfilterNull?: boolean;
+  fldCompareField?: PlatformCore.RecordRef;
+};
 
 export class ItemNumberCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
@@ -2275,7 +3448,7 @@ export class ItemNumberCustomFieldFilter {
   fldFilterNotNull?: boolean;
   fldfilterNull?: boolean;
   fldCompareField?: PlatformCore.RecordRef;
-  constructor(props: ItemNumberCustomFieldFilter) {
+  constructor(props: ItemNumberCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2286,6 +3459,15 @@ export class ItemNumberCustomFieldFilter {
   }
 }
 
+export type OtherCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
+
 export class OtherCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
   fldFilterChecked?: boolean;
@@ -2293,7 +3475,7 @@ export class OtherCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: OtherCustomFieldFilter) {
+  constructor(props: OtherCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2302,6 +3484,15 @@ export class OtherCustomFieldFilter {
     this.fldFilterNotNull = props.fldFilterNotNull;
   }
 }
+
+export type CustomRecordCustomFieldFilterProps = {
+  fldFilter?: PlatformCore.RecordRef;
+  fldFilterChecked?: boolean;
+  fldFilterCompareType?: SetupCustomizationTypes.CustomizationFilterCompareType;
+  fldFilterVal?: string;
+  fldFilterSelList?: FldFilterSelList;
+  fldFilterNotNull?: boolean;
+};
 
 export class CustomRecordCustomFieldFilter {
   fldFilter?: PlatformCore.RecordRef;
@@ -2310,7 +3501,7 @@ export class CustomRecordCustomFieldFilter {
   fldFilterVal?: string;
   fldFilterSelList?: FldFilterSelList;
   fldFilterNotNull?: boolean;
-  constructor(props: CustomRecordCustomFieldFilter) {
+  constructor(props: CustomRecordCustomFieldFilterProps) {
     this.fldFilter = props.fldFilter;
     this.fldFilterChecked = props.fldFilterChecked;
     this.fldFilterCompareType = props.fldFilterCompareType;
@@ -2320,42 +3511,160 @@ export class CustomRecordCustomFieldFilter {
   }
 }
 
+export type CustomSaleSalesTeamListProps = {
+  salesTeam?: CustomSaleSalesTeam[];
+  replaceAll?: boolean;
+};
+
 export class CustomSaleSalesTeamList {
   salesTeam?: CustomSaleSalesTeam[];
   replaceAll?: boolean;
-  constructor(props: CustomSaleSalesTeamList) {
+  constructor(props: CustomSaleSalesTeamListProps) {
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ItemNumberCustomFieldFilterListProps = {
+  filter?: ItemNumberCustomFieldFilter[];
+  replaceAll?: boolean;
+};
+
 export class ItemNumberCustomFieldFilterList {
   filter?: ItemNumberCustomFieldFilter[];
   replaceAll?: boolean;
-  constructor(props: ItemNumberCustomFieldFilterList) {
+  constructor(props: ItemNumberCustomFieldFilterListProps) {
     this.filter = props.filter;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomRecordTypeManagersListProps = {
+  managers?: CustomRecordTypeManagers[];
+  replaceAll?: boolean;
+};
+
 export class CustomRecordTypeManagersList {
   managers?: CustomRecordTypeManagers[];
   replaceAll?: boolean;
-  constructor(props: CustomRecordTypeManagersList) {
+  constructor(props: CustomRecordTypeManagersListProps) {
     this.managers = props.managers;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomListSearchProps = {
+  basic?: PlatformCommon.CustomListSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class CustomListSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CustomListSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: CustomListSearch) {
+  constructor(props: CustomListSearchProps) {
     super();
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
 }
+
+export type CustomSaleProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranType?: PlatformCore.RecordRef;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  billingAccount?: PlatformCore.RecordRef;
+  tranDate?: string;
+  tranId?: string;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  source?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  opportunity?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  terms?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  dueDate?: string;
+  discountDate?: string;
+  discountAmount?: number;
+  salesRep?: PlatformCore.RecordRef;
+  partner?: PlatformCore.RecordRef;
+  leadSource?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  otherRefNum?: string;
+  memo?: string;
+  tranStatus?: PlatformCore.RecordRef;
+  salesEffectiveDate?: string;
+  excludeCommission?: boolean;
+  totalCostEstimate?: number;
+  estGrossProfit?: number;
+  estGrossProfitPercent?: number;
+  revRecSchedule?: PlatformCore.RecordRef;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
+  account?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  currencyName?: string;
+  promoCode?: PlatformCore.RecordRef;
+  discountItem?: PlatformCore.RecordRef;
+  discountRate?: string;
+  isTaxable?: boolean;
+  toBePrinted?: boolean;
+  toBeEmailed?: boolean;
+  toBeFaxed?: boolean;
+  fax?: string;
+  messageSel?: PlatformCore.RecordRef;
+  message?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  shippingAddress?: PlatformCommon.Address;
+  shipIsResidential?: boolean;
+  shipAddressList?: PlatformCore.RecordRef;
+  fob?: string;
+  shipDate?: string;
+  shipMethod?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  handlingCost?: number;
+  trackingNumbers?: string;
+  linkedTrackingNumbers?: string;
+  salesGroup?: PlatformCore.RecordRef;
+  subTotal?: number;
+  revenueStatus?: PlatformCommonTypes.RevenueStatus;
+  recognizedRevenue?: number;
+  deferredRevenue?: number;
+  revRecOnRevCommitment?: boolean;
+  syncSalesTeams?: boolean;
+  discountTotal?: number;
+  taxTotal?: number;
+  altShippingCost?: number;
+  altHandlingCost?: number;
+  total?: number;
+  status?: string;
+  job?: PlatformCore.RecordRef;
+  email?: string;
+  giftCertApplied?: number;
+  tranIsVsoeBundle?: boolean;
+  vsoeAutoCalc?: boolean;
+  syncPartnerTeams?: boolean;
+  partnersList?: CustomSalePartnersList;
+  itemList?: CustomSaleItemList;
+  giftCertRedemptionList?: PlatformCommon.GiftCertRedemptionList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  salesTeamList?: CustomSaleSalesTeamList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomSale extends PlatformCore.Record {
   createdDate?: string;
@@ -2453,7 +3762,7 @@ export class CustomSale extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomSale) {
+  constructor(props: CustomSaleProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;

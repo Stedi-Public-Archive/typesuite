@@ -23,6 +23,7 @@
     "gen:types": "ts-node scripts/generate-types.ts && prettier -w src/netsuite_webservices/2019_2/*.ts",
     "clean": "rm -rf dist lib",
     "build": "npm run clean && tsc",
+    "lint": "eslint --ignore *.js src",
     "jest": "jest",
     "test": "tsc && jest && depcheck .",
     "tsc": "tsc",

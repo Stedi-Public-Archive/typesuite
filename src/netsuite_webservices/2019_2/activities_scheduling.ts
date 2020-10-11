@@ -4,21 +4,33 @@ import * as ActivitiesSchedulingTypes from "./activities_scheduling_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 import * as PlatformCoreTypes from "./platform_core_types";
 
+export type TaskContactListProps = {
+  contact?: TaskContact[];
+  replaceAll?: boolean;
+};
+
 export class TaskContactList {
   contact?: TaskContact[];
   replaceAll?: boolean;
-  constructor(props: TaskContactList) {
+  constructor(props: TaskContactListProps) {
     this.contact = props.contact;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ProjectTaskSearchAdvancedProps = {
+  criteria?: ProjectTaskSearch;
+  columns?: ProjectTaskSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ProjectTaskSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ProjectTaskSearch;
   columns?: ProjectTaskSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ProjectTaskSearchAdvanced) {
+  constructor(props: ProjectTaskSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -27,14 +39,37 @@ export class ProjectTaskSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type CalendarEventAttendeeListProps = {
+  attendee?: CalendarEventAttendee[];
+  replaceAll?: boolean;
+};
+
 export class CalendarEventAttendeeList {
   attendee?: CalendarEventAttendee[];
   replaceAll?: boolean;
-  constructor(props: CalendarEventAttendeeList) {
+  constructor(props: CalendarEventAttendeeListProps) {
     this.attendee = props.attendee;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TaskSearchProps = {
+  basic?: PlatformCommon.TaskSearchBasic;
+  assignedJoin?: PlatformCommon.EmployeeSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  companyCustomerJoin?: PlatformCommon.CustomerSearchBasic;
+  contactJoin?: PlatformCommon.ContactSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class TaskSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TaskSearchBasic;
@@ -52,7 +87,7 @@ export class TaskSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: TaskSearch) {
+  constructor(props: TaskSearchProps) {
     super();
     this.basic = props.basic;
     this.assignedJoin = props.assignedJoin;
@@ -72,21 +107,33 @@ export class TaskSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type PhoneCallTimeItemListProps = {
+  timeItem?: PlatformCommon.TimeItem[];
+  replaceAll?: boolean;
+};
+
 export class PhoneCallTimeItemList {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
-  constructor(props: PhoneCallTimeItemList) {
+  constructor(props: PhoneCallTimeItemListProps) {
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CalendarEventSearchAdvancedProps = {
+  criteria?: CalendarEventSearch;
+  columns?: CalendarEventSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class CalendarEventSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: CalendarEventSearch;
   columns?: CalendarEventSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: CalendarEventSearchAdvanced) {
+  constructor(props: CalendarEventSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -94,6 +141,19 @@ export class CalendarEventSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ResourceAllocationSearchRowProps = {
+  basic?: PlatformCommon.ResourceAllocationSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchRowBasic;
+  requestedByJoin?: PlatformCommon.EntitySearchRowBasic;
+  resourceJoin?: PlatformCommon.EntitySearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  vendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ResourceAllocationSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ResourceAllocationSearchRowBasic;
@@ -106,7 +166,7 @@ export class ResourceAllocationSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ResourceAllocationSearchRow) {
+  constructor(props: ResourceAllocationSearchRowProps) {
     super();
     this.basic = props.basic;
     this.customerJoin = props.customerJoin;
@@ -121,13 +181,21 @@ export class ResourceAllocationSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ProjectTaskPredecessorProps = {
+  task?: PlatformCore.RecordRef;
+  type?: ActivitiesSchedulingTypes.ProjectTaskPredecessorPredecessorType;
+  lagDays?: number;
+  startDate?: string;
+  endDate?: string;
+};
+
 export class ProjectTaskPredecessor {
   task?: PlatformCore.RecordRef;
   type?: ActivitiesSchedulingTypes.ProjectTaskPredecessorPredecessorType;
   lagDays?: number;
   startDate?: string;
   endDate?: string;
-  constructor(props: ProjectTaskPredecessor) {
+  constructor(props: ProjectTaskPredecessorProps) {
     this.task = props.task;
     this.type = props.type;
     this.lagDays = props.lagDays;
@@ -135,6 +203,19 @@ export class ProjectTaskPredecessor {
     this.endDate = props.endDate;
   }
 }
+
+export type ResourceAllocationSearchProps = {
+  basic?: PlatformCommon.ResourceAllocationSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchBasic;
+  requestedByJoin?: PlatformCommon.EntitySearchBasic;
+  resourceJoin?: PlatformCommon.EntitySearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  vendorJoin?: PlatformCommon.VendorSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ResourceAllocationSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ResourceAllocationSearchBasic;
@@ -147,7 +228,7 @@ export class ResourceAllocationSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ResourceAllocationSearch) {
+  constructor(props: ResourceAllocationSearchProps) {
     super();
     this.basic = props.basic;
     this.customerJoin = props.customerJoin;
@@ -162,55 +243,86 @@ export class ResourceAllocationSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type CalendarEventResourceListProps = {
+  resource?: CalendarEventResource[];
+  replaceAll?: boolean;
+};
+
 export class CalendarEventResourceList {
   resource?: CalendarEventResource[];
   replaceAll?: boolean;
-  constructor(props: CalendarEventResourceList) {
+  constructor(props: CalendarEventResourceListProps) {
     this.resource = props.resource;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ExclusionDateListProps = {
+  exclusionDate: string[];
+};
+
 export class ExclusionDateList {
   exclusionDate: string[];
-  constructor(props: ExclusionDateList) {
+  constructor(props: ExclusionDateListProps) {
     this.exclusionDate = props.exclusionDate;
   }
 }
 
+export type PhoneCallContactListProps = {
+  contact?: PhoneCallContact[];
+  replaceAll?: boolean;
+};
+
 export class PhoneCallContactList {
   contact?: PhoneCallContact[];
   replaceAll?: boolean;
-  constructor(props: PhoneCallContactList) {
+  constructor(props: PhoneCallContactListProps) {
     this.contact = props.contact;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CalendarEventTimeItemListProps = {
+  timeItem?: PlatformCommon.TimeItem[];
+  replaceAll?: boolean;
+};
+
 export class CalendarEventTimeItemList {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
-  constructor(props: CalendarEventTimeItemList) {
+  constructor(props: CalendarEventTimeItemListProps) {
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CalendarEventResourceProps = {
+  resource?: PlatformCore.RecordRef;
+  location?: string;
+};
+
 export class CalendarEventResource {
   resource?: PlatformCore.RecordRef;
   location?: string;
-  constructor(props: CalendarEventResource) {
+  constructor(props: CalendarEventResourceProps) {
     this.resource = props.resource;
     this.location = props.location;
   }
 }
+
+export type ResourceAllocationSearchAdvancedProps = {
+  criteria?: ResourceAllocationSearch;
+  columns?: ResourceAllocationSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ResourceAllocationSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ResourceAllocationSearch;
   columns?: ResourceAllocationSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ResourceAllocationSearchAdvanced) {
+  constructor(props: ResourceAllocationSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -219,14 +331,35 @@ export class ResourceAllocationSearchAdvanced extends PlatformCore.SearchRecord 
   }
 }
 
+export type ProjectTaskPredecessorListProps = {
+  projectTaskPredecessor?: ProjectTaskPredecessor[];
+  replaceAll?: boolean;
+};
+
 export class ProjectTaskPredecessorList {
   projectTaskPredecessor?: ProjectTaskPredecessor[];
   replaceAll?: boolean;
-  constructor(props: ProjectTaskPredecessorList) {
+  constructor(props: ProjectTaskPredecessorListProps) {
     this.projectTaskPredecessor = props.projectTaskPredecessor;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CalendarEventSearchProps = {
+  basic?: PlatformCommon.CalendarEventSearchBasic;
+  attendeeJoin?: PlatformCommon.EntitySearchBasic;
+  attendeeContactJoin?: PlatformCommon.ContactSearchBasic;
+  attendeeCustomerJoin?: PlatformCommon.CustomerSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class CalendarEventSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CalendarEventSearchBasic;
@@ -242,7 +375,7 @@ export class CalendarEventSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: CalendarEventSearch) {
+  constructor(props: CalendarEventSearchProps) {
     super();
     this.basic = props.basic;
     this.attendeeJoin = props.attendeeJoin;
@@ -260,14 +393,59 @@ export class CalendarEventSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type TaskTimeItemListProps = {
+  timeItem?: PlatformCommon.TimeItem[];
+  replaceAll?: boolean;
+};
+
 export class TaskTimeItemList {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
-  constructor(props: TaskTimeItemList) {
+  constructor(props: TaskTimeItemListProps) {
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CalendarEventProps = {
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  supportCase?: PlatformCore.RecordRef;
+  transaction?: PlatformCore.RecordRef;
+  period?: number;
+  frequency?: PlatformCommonTypes.RecurrenceFrequency;
+  recurrenceDowMaskList?: PlatformCommon.RecurrenceDowMaskList;
+  recurrenceDow?: PlatformCommonTypes.RecurrenceDow;
+  recurrenceDowim?: PlatformCommonTypes.RecurrenceDowim;
+  seriesStartDate?: string;
+  endByDate?: string;
+  noEndDate?: boolean;
+  sendEmail?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  title?: string;
+  recurrence?: string;
+  location?: string;
+  startDate?: string;
+  allDayEvent?: boolean;
+  timedEvent?: boolean;
+  reminderType?: ActivitiesSchedulingTypes.CalendarEventReminderType;
+  reminderMinutes?: string;
+  status?: ActivitiesSchedulingTypes.CalendarEventStatus;
+  accessLevel?: ActivitiesSchedulingTypes.CalendarEventAccessLevel;
+  organizer?: PlatformCore.RecordRef;
+  message?: string;
+  createdDate?: string;
+  endDate?: string;
+  exclusionDateList?: ExclusionDateList;
+  lastModifiedDate?: string;
+  owner?: PlatformCore.RecordRef;
+  attendeeList?: CalendarEventAttendeeList;
+  resourceList?: CalendarEventResourceList;
+  timeItemList?: CalendarEventTimeItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CalendarEvent extends PlatformCore.Record {
   company?: PlatformCore.RecordRef;
@@ -307,7 +485,7 @@ export class CalendarEvent extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CalendarEvent) {
+  constructor(props: CalendarEventProps) {
     super(props);
     this.company = props.company;
     this.contact = props.contact;
@@ -349,6 +527,20 @@ export class CalendarEvent extends PlatformCore.Record {
   }
 }
 
+export type ProjectTaskSearchRowProps = {
+  basic?: PlatformCommon.ProjectTaskSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  predecessorJoin?: PlatformCommon.ProjectTaskSearchRowBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchRowBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchRowBasic;
+  successorJoin?: PlatformCommon.ProjectTaskSearchRowBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ProjectTaskSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ProjectTaskSearchRowBasic;
   jobJoin?: PlatformCommon.JobSearchRowBasic;
@@ -361,7 +553,7 @@ export class ProjectTaskSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ProjectTaskSearchRow) {
+  constructor(props: ProjectTaskSearchRowProps) {
     super();
     this.basic = props.basic;
     this.jobJoin = props.jobJoin;
@@ -376,6 +568,37 @@ export class ProjectTaskSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type PhoneCallProps = {
+  message?: string;
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  supportCase?: PlatformCore.RecordRef;
+  transaction?: PlatformCore.RecordRef;
+  milestone?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  title?: string;
+  owner?: PlatformCore.RecordRef;
+  assigned?: PlatformCore.RecordRef;
+  sendEmail?: boolean;
+  startDate?: string;
+  endDate?: string;
+  timedEvent?: boolean;
+  completedDate?: string;
+  phone?: string;
+  status?: ActivitiesSchedulingTypes.PhoneCallStatus;
+  priority?: ActivitiesSchedulingTypes.PhoneCallPriority;
+  accessLevel?: boolean;
+  reminderType?: ActivitiesSchedulingTypes.PhoneCallReminderType;
+  reminderMinutes?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  contactList?: PhoneCallContactList;
+  timeItemList?: PhoneCallTimeItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PhoneCall extends PlatformCore.Record {
   message?: string;
@@ -406,7 +629,7 @@ export class PhoneCall extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: PhoneCall) {
+  constructor(props: PhoneCallProps) {
     super(props);
     this.message = props.message;
     this.company = props.company;
@@ -438,6 +661,43 @@ export class PhoneCall extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type ProjectTaskProps = {
+  customForm?: PlatformCore.RecordRef;
+  eventId?: PlatformCore.RecordRef;
+  percentTimeComplete?: number;
+  title?: string;
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  order?: PlatformCore.RecordRef;
+  owner?: PlatformCore.RecordRef;
+  parent?: PlatformCore.RecordRef;
+  priority?: PlatformCore.RecordRef;
+  estimatedWork?: number;
+  estimatedWorkBaseline?: number;
+  constraintType?: ActivitiesSchedulingTypes.ProjectTaskConstraintType;
+  startDate?: string;
+  startDateBaseline?: string;
+  endDate?: string;
+  finishByDate?: string;
+  endDateBaseline?: string;
+  actualWork?: number;
+  remainingWork?: number;
+  message?: string;
+  isMilestone?: boolean;
+  isOnCriticalPath?: string;
+  slackMinutes?: number;
+  lateEnd?: string;
+  lateStart?: string;
+  status?: ActivitiesSchedulingTypes.ProjectTaskStatus;
+  nonBillableTask?: boolean;
+  assigneeList?: ProjectTaskAssigneeList;
+  predecessorList?: ProjectTaskPredecessorList;
+  timeItemList?: ProjectTaskTimeItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ProjectTask extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -474,7 +734,7 @@ export class ProjectTask extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ProjectTask) {
+  constructor(props: ProjectTaskProps) {
     super(props);
     this.customForm = props.customForm;
     this.eventId = props.eventId;
@@ -513,12 +773,19 @@ export class ProjectTask extends PlatformCore.Record {
   }
 }
 
+export type TaskSearchAdvancedProps = {
+  criteria?: TaskSearch;
+  columns?: TaskSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class TaskSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TaskSearch;
   columns?: TaskSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TaskSearchAdvanced) {
+  constructor(props: TaskSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -527,12 +794,19 @@ export class TaskSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type PhoneCallSearchAdvancedProps = {
+  criteria?: PhoneCallSearch;
+  columns?: PhoneCallSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class PhoneCallSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PhoneCallSearch;
   columns?: PhoneCallSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PhoneCallSearchAdvanced) {
+  constructor(props: PhoneCallSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -540,6 +814,17 @@ export class PhoneCallSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ProjectTaskAssigneeProps = {
+  resource?: PlatformCore.RecordRef;
+  units?: number;
+  serviceItem?: PlatformCore.RecordRef;
+  estimatedWork?: number;
+  unitCost?: number;
+  unitPrice?: number;
+  cost?: number;
+  price?: number;
+};
 
 export class ProjectTaskAssignee {
   resource?: PlatformCore.RecordRef;
@@ -550,7 +835,7 @@ export class ProjectTaskAssignee {
   unitPrice?: number;
   cost?: number;
   price?: number;
-  constructor(props: ProjectTaskAssignee) {
+  constructor(props: ProjectTaskAssigneeProps) {
     this.resource = props.resource;
     this.units = props.units;
     this.serviceItem = props.serviceItem;
@@ -561,6 +846,22 @@ export class ProjectTaskAssignee {
     this.price = props.price;
   }
 }
+
+export type CalendarEventSearchRowProps = {
+  basic?: PlatformCommon.CalendarEventSearchRowBasic;
+  attendeeJoin?: PlatformCommon.EntitySearchRowBasic;
+  attendeeContactJoin?: PlatformCommon.ContactSearchRowBasic;
+  attendeeCustomerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchRowBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchRowBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class CalendarEventSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CalendarEventSearchRowBasic;
@@ -576,7 +877,7 @@ export class CalendarEventSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: CalendarEventSearchRow) {
+  constructor(props: CalendarEventSearchRowProps) {
     super();
     this.basic = props.basic;
     this.attendeeJoin = props.attendeeJoin;
@@ -594,12 +895,19 @@ export class CalendarEventSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type PhoneCallContactProps = {
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  phone?: string;
+  email?: string;
+};
+
 export class PhoneCallContact {
   company?: PlatformCore.RecordRef;
   contact?: PlatformCore.RecordRef;
   phone?: string;
   email?: string;
-  constructor(props: PhoneCallContact) {
+  constructor(props: PhoneCallContactProps) {
     this.company = props.company;
     this.contact = props.contact;
     this.phone = props.phone;
@@ -607,18 +915,43 @@ export class PhoneCallContact {
   }
 }
 
+export type CalendarEventAttendeeProps = {
+  sendEmail?: boolean;
+  attendee?: PlatformCore.RecordRef;
+  response?: PlatformCoreTypes.CalendarEventAttendeeResponse;
+  attendance?: ActivitiesSchedulingTypes.CalendarEventAttendeeAttendance;
+};
+
 export class CalendarEventAttendee {
   sendEmail?: boolean;
   attendee?: PlatformCore.RecordRef;
   response?: PlatformCoreTypes.CalendarEventAttendeeResponse;
   attendance?: ActivitiesSchedulingTypes.CalendarEventAttendeeAttendance;
-  constructor(props: CalendarEventAttendee) {
+  constructor(props: CalendarEventAttendeeProps) {
     this.sendEmail = props.sendEmail;
     this.attendee = props.attendee;
     this.response = props.response;
     this.attendance = props.attendance;
   }
 }
+
+export type TaskSearchRowProps = {
+  basic?: PlatformCommon.TaskSearchRowBasic;
+  assignedJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  companyCustomerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  contactJoin?: PlatformCommon.ContactSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchRowBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchRowBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class TaskSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TaskSearchRowBasic;
@@ -636,7 +969,7 @@ export class TaskSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: TaskSearchRow) {
+  constructor(props: TaskSearchRowProps) {
     super();
     this.basic = props.basic;
     this.assignedJoin = props.assignedJoin;
@@ -656,14 +989,35 @@ export class TaskSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ProjectTaskAssigneeListProps = {
+  projectTaskAssignee?: ProjectTaskAssignee[];
+  replaceAll?: boolean;
+};
+
 export class ProjectTaskAssigneeList {
   projectTaskAssignee?: ProjectTaskAssignee[];
   replaceAll?: boolean;
-  constructor(props: ProjectTaskAssigneeList) {
+  constructor(props: ProjectTaskAssigneeListProps) {
     this.projectTaskAssignee = props.projectTaskAssignee;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PhoneCallSearchRowProps = {
+  basic?: PlatformCommon.PhoneCallSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  companyCustomerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  contactJoin?: PlatformCommon.ContactSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchRowBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchRowBasic;
+  participantJoin?: PlatformCommon.EntitySearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class PhoneCallSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PhoneCallSearchRowBasic;
@@ -679,7 +1033,7 @@ export class PhoneCallSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: PhoneCallSearchRow) {
+  constructor(props: PhoneCallSearchRowProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -696,6 +1050,44 @@ export class PhoneCallSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type TaskProps = {
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  supportCase?: PlatformCore.RecordRef;
+  transaction?: PlatformCore.RecordRef;
+  milestone?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  title?: string;
+  assigned?: PlatformCore.RecordRef;
+  sendEmail?: boolean;
+  timedEvent?: boolean;
+  estimatedTime?: PlatformCore.Duration;
+  estimatedTimeOverride?: PlatformCore.Duration;
+  actualTime?: PlatformCore.Duration;
+  timeRemaining?: PlatformCore.Duration;
+  percentTimeComplete?: number;
+  percentComplete?: number;
+  parent?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  dueDate?: string;
+  completedDate?: string;
+  priority?: ActivitiesSchedulingTypes.TaskPriority;
+  status?: ActivitiesSchedulingTypes.TaskStatus;
+  message?: string;
+  accessLevel?: boolean;
+  reminderType?: ActivitiesSchedulingTypes.TaskReminderType;
+  reminderMinutes?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  owner?: PlatformCore.RecordRef;
+  contactList?: TaskContactList;
+  timeItemList?: TaskTimeItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Task extends PlatformCore.Record {
   company?: PlatformCore.RecordRef;
@@ -733,7 +1125,7 @@ export class Task extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Task) {
+  constructor(props: TaskProps) {
     super(props);
     this.company = props.company;
     this.contact = props.contact;
@@ -773,14 +1165,35 @@ export class Task extends PlatformCore.Record {
   }
 }
 
+export type TaskContactProps = {
+  company?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+};
+
 export class TaskContact {
   company?: PlatformCore.RecordRef;
   contact?: PlatformCore.RecordRef;
-  constructor(props: TaskContact) {
+  constructor(props: TaskContactProps) {
     this.company = props.company;
     this.contact = props.contact;
   }
 }
+
+export type PhoneCallSearchProps = {
+  basic?: PlatformCommon.PhoneCallSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  companyCustomerJoin?: PlatformCommon.CustomerSearchBasic;
+  contactJoin?: PlatformCommon.ContactSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  opportunityJoin?: PlatformCommon.OpportunitySearchBasic;
+  originatingLeadJoin?: PlatformCommon.OriginatingLeadSearchBasic;
+  participantJoin?: PlatformCommon.EntitySearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class PhoneCallSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PhoneCallSearchBasic;
@@ -796,7 +1209,7 @@ export class PhoneCallSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: PhoneCallSearch) {
+  constructor(props: PhoneCallSearchProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -813,6 +1226,26 @@ export class PhoneCallSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type ResourceAllocationProps = {
+  requestedby?: PlatformCore.RecordRef;
+  approvalStatus?: ActivitiesSchedulingTypes.ResourceAllocationApprovalStatus;
+  nextApprover?: PlatformCore.RecordRef;
+  allocationResource?: PlatformCore.RecordRef;
+  project?: PlatformCore.RecordRef;
+  notes?: string;
+  startDate?: string;
+  endDate?: string;
+  allocationAmount?: number;
+  allocationUnit?: ActivitiesSchedulingTypes.ResourceAllocationAllocationUnit;
+  numberHours?: number;
+  percentOfTime?: number;
+  allocationType?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ResourceAllocation extends PlatformCore.Record {
   requestedby?: PlatformCore.RecordRef;
@@ -832,7 +1265,7 @@ export class ResourceAllocation extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ResourceAllocation) {
+  constructor(props: ResourceAllocationProps) {
     super(props);
     this.requestedby = props.requestedby;
     this.approvalStatus = props.approvalStatus;
@@ -854,14 +1287,33 @@ export class ResourceAllocation extends PlatformCore.Record {
   }
 }
 
+export type ProjectTaskTimeItemListProps = {
+  timeItem?: PlatformCommon.TimeItem[];
+  replaceAll?: boolean;
+};
+
 export class ProjectTaskTimeItemList {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
-  constructor(props: ProjectTaskTimeItemList) {
+  constructor(props: ProjectTaskTimeItemListProps) {
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ProjectTaskSearchProps = {
+  basic?: PlatformCommon.ProjectTaskSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  predecessorJoin?: PlatformCommon.ProjectTaskSearchBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchBasic;
+  successorJoin?: PlatformCommon.ProjectTaskSearchBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ProjectTaskSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ProjectTaskSearchBasic;
@@ -875,7 +1327,7 @@ export class ProjectTaskSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ProjectTaskSearch) {
+  constructor(props: ProjectTaskSearchProps) {
     super();
     this.basic = props.basic;
     this.jobJoin = props.jobJoin;

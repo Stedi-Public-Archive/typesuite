@@ -1,9 +1,14 @@
 import * as PlatformFaultsTypes from "./platform_faults_types";
 
+export type SoapFaultProps = {
+  code: PlatformFaultsTypes.FaultCodeType;
+  message: string;
+};
+
 export class SoapFault {
   code: PlatformFaultsTypes.FaultCodeType;
   message: string;
-  constructor(props: SoapFault) {
+  constructor(props: SoapFaultProps) {
     this.code = props.code;
     this.message = props.message;
   }

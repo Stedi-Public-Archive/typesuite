@@ -1,6 +1,17 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type ManufacturingCostTemplateSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
@@ -10,7 +21,7 @@ export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.Search
   name?: PlatformCore.SearchColumnStringField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ManufacturingCostTemplateSearchRowBasic) {
+  constructor(props: ManufacturingCostTemplateSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -23,12 +34,19 @@ export class ManufacturingCostTemplateSearchRowBasic extends PlatformCore.Search
   }
 }
 
+export type GiftCertRedemptionProps = {
+  authCode?: PlatformCore.RecordRef;
+  authCodeApplied?: number;
+  authCodeAmtRemaining?: number;
+  giftCertAvailable?: number;
+};
+
 export class GiftCertRedemption {
   authCode?: PlatformCore.RecordRef;
   authCodeApplied?: number;
   authCodeAmtRemaining?: number;
   giftCertAvailable?: number;
-  constructor(props: GiftCertRedemption) {
+  constructor(props: GiftCertRedemptionProps) {
     this.authCode = props.authCode;
     this.authCodeApplied = props.authCodeApplied;
     this.authCodeAmtRemaining = props.authCodeAmtRemaining;
@@ -36,13 +54,21 @@ export class GiftCertRedemption {
   }
 }
 
+export type PartnerCategorySearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class PartnerCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   parent?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: PartnerCategorySearchRowBasic) {
+  constructor(props: PartnerCategorySearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -51,6 +77,52 @@ export class PartnerCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
     this.parent = props.parent;
   }
 }
+
+export type LocationSearchRowBasicProps = {
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  allowStorePickup?: PlatformCore.SearchColumnBooleanField[];
+  autoAssignmentRegionSetting?: PlatformCore.SearchColumnEnumSelectField[];
+  bufferStock?: PlatformCore.SearchColumnLongField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  dailyShippingCapacity?: PlatformCore.SearchColumnLongField[];
+  endTime?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  geolocationMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isFriday?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isIncludeInCt?: PlatformCore.SearchColumnBooleanField[];
+  isMonday?: PlatformCore.SearchColumnBooleanField[];
+  isOffice?: PlatformCore.SearchColumnBooleanField[];
+  isSaturday?: PlatformCore.SearchColumnBooleanField[];
+  isSunday?: PlatformCore.SearchColumnBooleanField[];
+  isThursday?: PlatformCore.SearchColumnBooleanField[];
+  isTuesday?: PlatformCore.SearchColumnBooleanField[];
+  isWednesday?: PlatformCore.SearchColumnBooleanField[];
+  latitude?: PlatformCore.SearchColumnDoubleField[];
+  locationType?: PlatformCore.SearchColumnEnumSelectField[];
+  longitude?: PlatformCore.SearchColumnDoubleField[];
+  makeInventoryAvailable?: PlatformCore.SearchColumnBooleanField[];
+  makeInventoryAvailableStore?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  nextPickupCutOffTime?: PlatformCore.SearchColumnDateField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  sameDayPickupCutOffTime?: PlatformCore.SearchColumnDateField[];
+  startTime?: PlatformCore.SearchColumnDateField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  storePickupBufferStock?: PlatformCore.SearchColumnDoubleField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  timeZone?: PlatformCore.SearchColumnEnumSelectField[];
+  totalShippingCapacity?: PlatformCore.SearchColumnLongField[];
+  tranPrefix?: PlatformCore.SearchColumnStringField[];
+  usesBins?: PlatformCore.SearchColumnBooleanField[];
+  zip?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class LocationSearchRowBasic extends PlatformCore.SearchRowBasic {
   address1?: PlatformCore.SearchColumnStringField[];
@@ -96,7 +168,7 @@ export class LocationSearchRowBasic extends PlatformCore.SearchRowBasic {
   usesBins?: PlatformCore.SearchColumnBooleanField[];
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: LocationSearchRowBasic) {
+  constructor(props: LocationSearchRowBasicProps) {
     super();
     this.address1 = props.address1;
     this.address2 = props.address2;
@@ -144,6 +216,20 @@ export class LocationSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type NoteSearchBasicProps = {
+  author?: PlatformCore.SearchMultiSelectField;
+  direction?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  note?: PlatformCore.SearchStringField;
+  noteDate?: PlatformCore.SearchDateField;
+  noteType?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class NoteSearchBasic extends PlatformCore.SearchRecordBasic {
   author?: PlatformCore.SearchMultiSelectField;
   direction?: PlatformCore.SearchBooleanField;
@@ -156,7 +242,7 @@ export class NoteSearchBasic extends PlatformCore.SearchRecordBasic {
   noteType?: PlatformCore.SearchMultiSelectField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: NoteSearchBasic) {
+  constructor(props: NoteSearchBasicProps) {
     super();
     this.author = props.author;
     this.direction = props.direction;
@@ -171,6 +257,27 @@ export class NoteSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type EntityGroupSearchBasicProps = {
+  email?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  groupName?: PlatformCore.SearchStringField;
+  groupOwner?: PlatformCore.SearchMultiSelectField;
+  groupType?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDynamic?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isManufacturingWorkCenter?: PlatformCore.SearchBooleanField;
+  isPrivate?: PlatformCore.SearchBooleanField;
+  laborResources?: PlatformCore.SearchDoubleField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  machineResources?: PlatformCore.SearchDoubleField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  workCalendar?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class EntityGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   email?: PlatformCore.SearchStringField;
@@ -191,7 +298,7 @@ export class EntityGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   workCalendar?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: EntityGroupSearchBasic) {
+  constructor(props: EntityGroupSearchBasicProps) {
     super();
     this.email = props.email;
     this.externalId = props.externalId;
@@ -213,6 +320,30 @@ export class EntityGroupSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type PhoneCallSearchRowBasicProps = {
+  accessLevel?: PlatformCore.SearchColumnStringField[];
+  assigned?: PlatformCore.SearchColumnSelectField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  completedDate?: PlatformCore.SearchColumnDateField[];
+  contact?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  markdone?: PlatformCore.SearchColumnStringField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  priority?: PlatformCore.SearchColumnEnumSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  startTime?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  transaction?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class PhoneCallSearchRowBasic extends PlatformCore.SearchRowBasic {
   accessLevel?: PlatformCore.SearchColumnStringField[];
@@ -236,7 +367,7 @@ export class PhoneCallSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: PhoneCallSearchRowBasic) {
+  constructor(props: PhoneCallSearchRowBasicProps) {
     super();
     this.accessLevel = props.accessLevel;
     this.assigned = props.assigned;
@@ -261,6 +392,365 @@ export class PhoneCallSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type TransactionSearchRowBasicProps = {
+  abbrev?: PlatformCore.SearchColumnStringField[];
+  account?: PlatformCore.SearchColumnSelectField[];
+  accountType?: PlatformCore.SearchColumnEnumSelectField[];
+  acctCorpCardExp?: PlatformCore.SearchColumnSelectField[];
+  actualShipDate?: PlatformCore.SearchColumnDateField[];
+  altSalesAmount?: PlatformCore.SearchColumnDoubleField[];
+  altSalesNetAmount?: PlatformCore.SearchColumnDoubleField[];
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  amountPaid?: PlatformCore.SearchColumnDoubleField[];
+  amountRemaining?: PlatformCore.SearchColumnDoubleField[];
+  amountUnbilled?: PlatformCore.SearchColumnDoubleField[];
+  appliedToForeignAmount?: PlatformCore.SearchColumnDoubleField[];
+  appliedToIsFxVariance?: PlatformCore.SearchColumnBooleanField[];
+  appliedToLinkAmount?: PlatformCore.SearchColumnDoubleField[];
+  appliedToLinkType?: PlatformCore.SearchColumnStringField[];
+  appliedToTransaction?: PlatformCore.SearchColumnSelectField[];
+  applyingForeignAmount?: PlatformCore.SearchColumnDoubleField[];
+  applyingIsFxVariance?: PlatformCore.SearchColumnBooleanField[];
+  applyingLinkAmount?: PlatformCore.SearchColumnDoubleField[];
+  applyingLinkType?: PlatformCore.SearchColumnStringField[];
+  applyingTransaction?: PlatformCore.SearchColumnSelectField[];
+  approvalStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  authCode?: PlatformCore.SearchColumnStringField[];
+  autoCalculateLag?: PlatformCore.SearchColumnBooleanField[];
+  avsStreetMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  avsZipMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  billable?: PlatformCore.SearchColumnBooleanField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billedDate?: PlatformCore.SearchColumnDateField[];
+  billingAccount?: PlatformCore.SearchColumnSelectField[];
+  billingAmount?: PlatformCore.SearchColumnDoubleField[];
+  billingSchedule?: PlatformCore.SearchColumnSelectField[];
+  billingTransaction?: PlatformCore.SearchColumnSelectField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billVarianceStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  billZip?: PlatformCore.SearchColumnStringField[];
+  binNumber?: PlatformCore.SearchColumnStringField[];
+  binNumberQuantity?: PlatformCore.SearchColumnDoubleField[];
+  bomQuantity?: PlatformCore.SearchColumnDoubleField[];
+  buildEntireAssembly?: PlatformCore.SearchColumnBooleanField[];
+  buildVariance?: PlatformCore.SearchColumnDoubleField[];
+  built?: PlatformCore.SearchColumnDoubleField[];
+  canHaveStackablePromotions?: PlatformCore.SearchColumnBooleanField[];
+  catchUpPeriod?: PlatformCore.SearchColumnStringField[];
+  ccCustomerCode?: PlatformCore.SearchColumnStringField[];
+  ccExpDate?: PlatformCore.SearchColumnDateField[];
+  ccHolderName?: PlatformCore.SearchColumnStringField[];
+  ccNumber?: PlatformCore.SearchColumnStringField[];
+  ccStreet?: PlatformCore.SearchColumnStringField[];
+  ccZipCode?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  cleared?: PlatformCore.SearchColumnBooleanField[];
+  closed?: PlatformCore.SearchColumnBooleanField[];
+  closeDate?: PlatformCore.SearchColumnDateField[];
+  cogsAmount?: PlatformCore.SearchColumnDoubleField[];
+  commissionEffectiveDate?: PlatformCore.SearchColumnDateField[];
+  commit?: PlatformCore.SearchColumnEnumSelectField[];
+  componentYield?: PlatformCore.SearchColumnDoubleField[];
+  confirmationNumber?: PlatformCore.SearchColumnStringField[];
+  contribution?: PlatformCore.SearchColumnDoubleField[];
+  contributionPrimary?: PlatformCore.SearchColumnDoubleField[];
+  costComponentAmount?: PlatformCore.SearchColumnDoubleField[];
+  costComponentCategory?: PlatformCore.SearchColumnStringField[];
+  costComponentItem?: PlatformCore.SearchColumnStringField[];
+  costComponentQuantity?: PlatformCore.SearchColumnDoubleField[];
+  costComponentStandardCost?: PlatformCore.SearchColumnDoubleField[];
+  costEstimate?: PlatformCore.SearchColumnDoubleField[];
+  costEstimateRate?: PlatformCore.SearchColumnDoubleField[];
+  costEstimateType?: PlatformCore.SearchColumnEnumSelectField[];
+  createdBy?: PlatformCore.SearchColumnSelectField[];
+  createdFrom?: PlatformCore.SearchColumnSelectField[];
+  creditAmount?: PlatformCore.SearchColumnDoubleField[];
+  cscMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  customForm?: PlatformCore.SearchColumnSelectField[];
+  customGL?: PlatformCore.SearchColumnBooleanField[];
+  custType?: PlatformCore.SearchColumnSelectField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  daysOpen?: PlatformCore.SearchColumnLongField[];
+  daysOverdue?: PlatformCore.SearchColumnLongField[];
+  debitAmount?: PlatformCore.SearchColumnDoubleField[];
+  deferredRevenue?: PlatformCore.SearchColumnDoubleField[];
+  deferRevRec?: PlatformCore.SearchColumnBooleanField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  depositDate?: PlatformCore.SearchColumnDateField[];
+  depositTransaction?: PlatformCore.SearchColumnSelectField[];
+  discountAmount?: PlatformCore.SearchColumnDoubleField[];
+  docUnit?: PlatformCore.SearchColumnStringField[];
+  drAccount?: PlatformCore.SearchColumnStringField[];
+  dueDate?: PlatformCore.SearchColumnDateField[];
+  effectiveRate?: PlatformCore.SearchColumnDoubleField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  entity?: PlatformCore.SearchColumnSelectField[];
+  entityStatus?: PlatformCore.SearchColumnSelectField[];
+  estGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  estGrossProfitPct?: PlatformCore.SearchColumnDoubleField[];
+  estGrossProfitPercent?: PlatformCore.SearchColumnDoubleField[];
+  exchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  excludeCommission?: PlatformCore.SearchColumnBooleanField[];
+  excludeFromRateRequest?: PlatformCore.SearchColumnBooleanField[];
+  expectedCloseDate?: PlatformCore.SearchColumnDateField[];
+  expectedReceiptDate?: PlatformCore.SearchColumnDateField[];
+  expenseCategory?: PlatformCore.SearchColumnSelectField[];
+  expenseDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  firmed?: PlatformCore.SearchColumnBooleanField[];
+  forecastType?: PlatformCore.SearchColumnEnumSelectField[];
+  fulfillingTransaction?: PlatformCore.SearchColumnSelectField[];
+  fxAccount?: PlatformCore.SearchColumnStringField[];
+  fxAmount?: PlatformCore.SearchColumnDoubleField[];
+  fxCostEstimate?: PlatformCore.SearchColumnDoubleField[];
+  fxCostEstimateRate?: PlatformCore.SearchColumnDoubleField[];
+  fxEstGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  fxTranCostEstimate?: PlatformCore.SearchColumnDoubleField[];
+  fxVsoeAllocation?: PlatformCore.SearchColumnDoubleField[];
+  fxVsoeAmount?: PlatformCore.SearchColumnDoubleField[];
+  fxVsoePrice?: PlatformCore.SearchColumnDoubleField[];
+  gcoAvailabelToCharge?: PlatformCore.SearchColumnBooleanField[];
+  gcoAvailableToRefund?: PlatformCore.SearchColumnBooleanField[];
+  gcoAvsStreetMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  gcoAvsZipMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  gcoBuyerAccountAge?: PlatformCore.SearchColumnLongField[];
+  gcoBuyerIp?: PlatformCore.SearchColumnStringField[];
+  gcoChargeAmount?: PlatformCore.SearchColumnDoubleField[];
+  gcoChargebackAmount?: PlatformCore.SearchColumnDoubleField[];
+  gcoConfirmedChargedTotal?: PlatformCore.SearchColumnDoubleField[];
+  gcoConfirmedRefundedTotal?: PlatformCore.SearchColumnDoubleField[];
+  gcoCreditcardNumber?: PlatformCore.SearchColumnStringField[];
+  gcoCscMatch?: PlatformCore.SearchColumnEnumSelectField[];
+  gcoFinancialState?: PlatformCore.SearchColumnStringField[];
+  gcoFulfillmentState?: PlatformCore.SearchColumnStringField[];
+  gcoOrderId?: PlatformCore.SearchColumnStringField[];
+  gcoOrderTotal?: PlatformCore.SearchColumnDoubleField[];
+  gcoPromotionAmount?: PlatformCore.SearchColumnDoubleField[];
+  gcoPromotionName?: PlatformCore.SearchColumnStringField[];
+  gcoRefundAmount?: PlatformCore.SearchColumnDoubleField[];
+  gcoShippingTotal?: PlatformCore.SearchColumnDoubleField[];
+  gcoStateChangedDetail?: PlatformCore.SearchColumnStringField[];
+  giftCert?: PlatformCore.SearchColumnStringField[];
+  grossAmount?: PlatformCore.SearchColumnDoubleField[];
+  includeInForecast?: PlatformCore.SearchColumnBooleanField[];
+  incoterm?: PlatformCore.SearchColumnSelectField[];
+  intercoStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  intercoTransaction?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  inventoryLocation?: PlatformCore.SearchColumnSelectField[];
+  inventorySubsidiary?: PlatformCore.SearchColumnSelectField[];
+  inVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
+  isAllocation?: PlatformCore.SearchColumnBooleanField[];
+  isBackflush?: PlatformCore.SearchColumnBooleanField[];
+  isGcoChargeback?: PlatformCore.SearchColumnBooleanField[];
+  isGcoChargeConfirmed?: PlatformCore.SearchColumnBooleanField[];
+  isGcoPaymentGuaranteed?: PlatformCore.SearchColumnBooleanField[];
+  isGcoRefundConfirmed?: PlatformCore.SearchColumnBooleanField[];
+  isInsideDelivery?: PlatformCore.SearchColumnBooleanField[];
+  isInsidePickup?: PlatformCore.SearchColumnBooleanField[];
+  isIntercompanyAdjustment?: PlatformCore.SearchColumnBooleanField[];
+  isInTransitPayment?: PlatformCore.SearchColumnBooleanField[];
+  isMultiShipTo?: PlatformCore.SearchColumnBooleanField[];
+  isReversal?: PlatformCore.SearchColumnBooleanField[];
+  isRevRecTransaction?: PlatformCore.SearchColumnBooleanField[];
+  isScrap?: PlatformCore.SearchColumnBooleanField[];
+  isShipAddress?: PlatformCore.SearchColumnBooleanField[];
+  isTransferPriceCosting?: PlatformCore.SearchColumnBooleanField[];
+  isWip?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  itemFulfillmentChoice?: PlatformCore.SearchColumnEnumSelectField[];
+  itemRevision?: PlatformCore.SearchColumnSelectField[];
+  landedCostPerLine?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  leadSource?: PlatformCore.SearchColumnSelectField[];
+  line?: PlatformCore.SearchColumnLongField[];
+  lineSequenceNumber?: PlatformCore.SearchColumnLongField[];
+  lineUniqueKey?: PlatformCore.SearchColumnLongField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  locationAutoAssigned?: PlatformCore.SearchColumnBooleanField[];
+  mainLine?: PlatformCore.SearchColumnBooleanField[];
+  mainName?: PlatformCore.SearchColumnStringField[];
+  manufacturingRouting?: PlatformCore.SearchColumnSelectField[];
+  matchBillToReceipt?: PlatformCore.SearchColumnBooleanField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  memoMain?: PlatformCore.SearchColumnStringField[];
+  memorized?: PlatformCore.SearchColumnBooleanField[];
+  merchantAccount?: PlatformCore.SearchColumnSelectField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  multiSubsidiary?: PlatformCore.SearchColumnBooleanField[];
+  netAmount?: PlatformCore.SearchColumnDoubleField[];
+  netAmountNoTax?: PlatformCore.SearchColumnDoubleField[];
+  nextApprover?: PlatformCore.SearchColumnSelectField[];
+  nextBillDate?: PlatformCore.SearchColumnDateField[];
+  nexus?: PlatformCore.SearchColumnSelectField[];
+  noAutoAssignLocation?: PlatformCore.SearchColumnBooleanField[];
+  nonReimbursable?: PlatformCore.SearchColumnBooleanField[];
+  oneTimeTotal?: PlatformCore.SearchColumnDoubleField[];
+  opportunity?: PlatformCore.SearchColumnSelectField[];
+  options?: PlatformCore.SearchColumnStringField[];
+  orderPriority?: PlatformCore.SearchColumnDoubleField[];
+  originator?: PlatformCore.SearchColumnEnumSelectField[];
+  otherRefNum?: PlatformCore.SearchColumnTextNumberField[];
+  overheadParentItem?: PlatformCore.SearchColumnSelectField[];
+  overrideInstallments?: PlatformCore.SearchColumnBooleanField[];
+  packageCount?: PlatformCore.SearchColumnLongField[];
+  paidAmount?: PlatformCore.SearchColumnDoubleField[];
+  paidTransaction?: PlatformCore.SearchColumnSelectField[];
+  partner?: PlatformCore.SearchColumnSelectField[];
+  partnerContribution?: PlatformCore.SearchColumnDoubleField[];
+  partnerRole?: PlatformCore.SearchColumnSelectField[];
+  partnerTeamMember?: PlatformCore.SearchColumnSelectField[];
+  payingAmount?: PlatformCore.SearchColumnDoubleField[];
+  payingTransaction?: PlatformCore.SearchColumnSelectField[];
+  paymentApproved?: PlatformCore.SearchColumnBooleanField[];
+  paymentEventDate?: PlatformCore.SearchColumnDateField[];
+  paymentEventHoldReason?: PlatformCore.SearchColumnEnumSelectField[];
+  paymentEventPurchaseCardUsed?: PlatformCore.SearchColumnBooleanField[];
+  paymentEventPurchaseDataSent?: PlatformCore.SearchColumnBooleanField[];
+  paymentEventResult?: PlatformCore.SearchColumnEnumSelectField[];
+  paymentEventType?: PlatformCore.SearchColumnEnumSelectField[];
+  paymentHold?: PlatformCore.SearchColumnBooleanField[];
+  paymentMethod?: PlatformCore.SearchColumnSelectField[];
+  paymentOption?: PlatformCore.SearchColumnSelectField[];
+  payPalPending?: PlatformCore.SearchColumnBooleanField[];
+  payPalStatus?: PlatformCore.SearchColumnStringField[];
+  payPalTranId?: PlatformCore.SearchColumnStringField[];
+  payrollBatch?: PlatformCore.SearchColumnStringField[];
+  pnRefNum?: PlatformCore.SearchColumnStringField[];
+  poRate?: PlatformCore.SearchColumnDoubleField[];
+  posting?: PlatformCore.SearchColumnBooleanField[];
+  postingPeriod?: PlatformCore.SearchColumnSelectField[];
+  priceLevel?: PlatformCore.SearchColumnSelectField[];
+  print?: PlatformCore.SearchColumnStringField[];
+  probability?: PlatformCore.SearchColumnDoubleField[];
+  projectedAmount?: PlatformCore.SearchColumnDoubleField[];
+  projectTask?: PlatformCore.SearchColumnSelectField[];
+  promoCode?: PlatformCore.SearchColumnSelectField[];
+  purchaseOrder?: PlatformCore.SearchColumnSelectField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+  quantityBilled?: PlatformCore.SearchColumnDoubleField[];
+  quantityCommitted?: PlatformCore.SearchColumnDoubleField[];
+  quantityPacked?: PlatformCore.SearchColumnDoubleField[];
+  quantityPicked?: PlatformCore.SearchColumnDoubleField[];
+  quantityRevCommitted?: PlatformCore.SearchColumnDoubleField[];
+  quantityShipRecv?: PlatformCore.SearchColumnDoubleField[];
+  quantityUom?: PlatformCore.SearchColumnDoubleField[];
+  rate?: PlatformCore.SearchColumnDoubleField[];
+  realizedGainPostingTransaction?: PlatformCore.SearchColumnStringField[];
+  recognizedRevenue?: PlatformCore.SearchColumnDoubleField[];
+  recordType?: PlatformCore.SearchColumnStringField[];
+  recurAnnuallyTotal?: PlatformCore.SearchColumnDoubleField[];
+  recurMonthlyTotal?: PlatformCore.SearchColumnDoubleField[];
+  recurQuarterlyTotal?: PlatformCore.SearchColumnDoubleField[];
+  recurringBill?: PlatformCore.SearchColumnBooleanField[];
+  recurWeeklyTotal?: PlatformCore.SearchColumnDoubleField[];
+  refNumber?: PlatformCore.SearchColumnLongField[];
+  revCommitStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  revCommittingTransaction?: PlatformCore.SearchColumnSelectField[];
+  revenueStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  reversalDate?: PlatformCore.SearchColumnDateField[];
+  reversalNumber?: PlatformCore.SearchColumnStringField[];
+  revRecEndDate?: PlatformCore.SearchColumnDateField[];
+  revRecOnRevCommitment?: PlatformCore.SearchColumnBooleanField[];
+  revRecStartDate?: PlatformCore.SearchColumnDateField[];
+  rgAccount?: PlatformCore.SearchColumnSelectField[];
+  rgAmount?: PlatformCore.SearchColumnDoubleField[];
+  salesEffectiveDate?: PlatformCore.SearchColumnDateField[];
+  salesOrder?: PlatformCore.SearchColumnSelectField[];
+  salesRep?: PlatformCore.SearchColumnSelectField[];
+  salesTeamMember?: PlatformCore.SearchColumnSelectField[];
+  salesTeamRole?: PlatformCore.SearchColumnSelectField[];
+  schedulingMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  serialNumber?: PlatformCore.SearchColumnStringField[];
+  serialNumberCost?: PlatformCore.SearchColumnDoubleField[];
+  serialNumberCostAdjustment?: PlatformCore.SearchColumnDoubleField[];
+  serialNumberQuantity?: PlatformCore.SearchColumnDoubleField[];
+  serialNumbers?: PlatformCore.SearchColumnStringField[];
+  shipAddress?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCarrier?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipComplete?: PlatformCore.SearchColumnBooleanField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipDate?: PlatformCore.SearchColumnDateField[];
+  shipGroup?: PlatformCore.SearchColumnLongField[];
+  shipMethod?: PlatformCore.SearchColumnSelectField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shippingAmount?: PlatformCore.SearchColumnDoubleField[];
+  shipRecvStatusLine?: PlatformCore.SearchColumnBooleanField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipTo?: PlatformCore.SearchColumnSelectField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  signedAmount?: PlatformCore.SearchColumnDoubleField[];
+  source?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionLine?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  subsidiaryTaxRegNum?: PlatformCore.SearchColumnStringField[];
+  taxAmount?: PlatformCore.SearchColumnDoubleField[];
+  taxCode?: PlatformCore.SearchColumnSelectField[];
+  taxLine?: PlatformCore.SearchColumnBooleanField[];
+  taxPeriod?: PlatformCore.SearchColumnSelectField[];
+  taxPointDate?: PlatformCore.SearchColumnDateField[];
+  taxTotal?: PlatformCore.SearchColumnDoubleField[];
+  termInMonths?: PlatformCore.SearchColumnLongField[];
+  terms?: PlatformCore.SearchColumnSelectField[];
+  termsOfSale?: PlatformCore.SearchColumnStringField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  toBeEmailed?: PlatformCore.SearchColumnBooleanField[];
+  toBePrinted?: PlatformCore.SearchColumnBooleanField[];
+  toSubsidiary?: PlatformCore.SearchColumnSelectField[];
+  total?: PlatformCore.SearchColumnDoubleField[];
+  totalCostEstimate?: PlatformCore.SearchColumnDoubleField[];
+  trackingNumbers?: PlatformCore.SearchColumnStringField[];
+  tranDate?: PlatformCore.SearchColumnDateField[];
+  tranEstGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  tranFxEstGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  tranId?: PlatformCore.SearchColumnStringField[];
+  tranIsVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
+  transactionDiscount?: PlatformCore.SearchColumnBooleanField[];
+  transactionLineType?: PlatformCore.SearchColumnEnumSelectField[];
+  transactionNumber?: PlatformCore.SearchColumnStringField[];
+  transferLocation?: PlatformCore.SearchColumnSelectField[];
+  transferOrderItemLine?: PlatformCore.SearchColumnStringField[];
+  transferOrderQuantityCommitted?: PlatformCore.SearchColumnDoubleField[];
+  transferOrderQuantityPacked?: PlatformCore.SearchColumnDoubleField[];
+  transferOrderQuantityPicked?: PlatformCore.SearchColumnDoubleField[];
+  transferOrderQuantityReceived?: PlatformCore.SearchColumnDoubleField[];
+  transferOrderQuantityShipped?: PlatformCore.SearchColumnDoubleField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  unit?: PlatformCore.SearchColumnStringField[];
+  unitCostOverride?: PlatformCore.SearchColumnDoubleField[];
+  vendType?: PlatformCore.SearchColumnSelectField[];
+  visibleToCustomer?: PlatformCore.SearchColumnBooleanField[];
+  vsoeAllocation?: PlatformCore.SearchColumnDoubleField[];
+  vsoeAmount?: PlatformCore.SearchColumnDoubleField[];
+  vsoeDeferral?: PlatformCore.SearchColumnEnumSelectField[];
+  vsoeDelivered?: PlatformCore.SearchColumnBooleanField[];
+  vsoePermitDiscount?: PlatformCore.SearchColumnEnumSelectField[];
+  vsoePrice?: PlatformCore.SearchColumnDoubleField[];
+  webSite?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class TransactionSearchRowBasic extends PlatformCore.SearchRowBasic {
   abbrev?: PlatformCore.SearchColumnStringField[];
@@ -619,7 +1109,7 @@ export class TransactionSearchRowBasic extends PlatformCore.SearchRowBasic {
   vsoePrice?: PlatformCore.SearchColumnDoubleField[];
   webSite?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: TransactionSearchRowBasic) {
+  constructor(props: TransactionSearchRowBasicProps) {
     super();
     this.abbrev = props.abbrev;
     this.account = props.account;
@@ -980,12 +1470,19 @@ export class TransactionSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type AssemblyItemBomSearchRowBasicProps = {
+  assembly?: PlatformCore.SearchColumnSelectField[];
+  billOfMaterials?: PlatformCore.SearchColumnSelectField[];
+  _default?: PlatformCore.SearchColumnBooleanField[];
+  locations?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class AssemblyItemBomSearchRowBasic extends PlatformCore.SearchRowBasic {
   assembly?: PlatformCore.SearchColumnSelectField[];
   billOfMaterials?: PlatformCore.SearchColumnSelectField[];
   _default?: PlatformCore.SearchColumnBooleanField[];
   locations?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: AssemblyItemBomSearchRowBasic) {
+  constructor(props: AssemblyItemBomSearchRowBasicProps) {
     super();
     this.assembly = props.assembly;
     this.billOfMaterials = props.billOfMaterials;
@@ -993,6 +1490,26 @@ export class AssemblyItemBomSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.locations = props.locations;
   }
 }
+
+export type BomSearchBasicProps = {
+  availableForAllAssemblies?: PlatformCore.SearchBooleanField;
+  availableForAllLocations?: PlatformCore.SearchBooleanField;
+  createdDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  includeChildren?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  legacyBomForAssembly?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  restrictToAssemblies?: PlatformCore.SearchMultiSelectField;
+  restrictToLocations?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  useComponentYield?: PlatformCore.SearchBooleanField;
+  usedOnAssembly?: PlatformCore.SearchBooleanField;
+};
 
 export class BomSearchBasic extends PlatformCore.SearchRecordBasic {
   availableForAllAssemblies?: PlatformCore.SearchBooleanField;
@@ -1012,7 +1529,7 @@ export class BomSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   useComponentYield?: PlatformCore.SearchBooleanField;
   usedOnAssembly?: PlatformCore.SearchBooleanField;
-  constructor(props: BomSearchBasic) {
+  constructor(props: BomSearchBasicProps) {
     super();
     this.availableForAllAssemblies = props.availableForAllAssemblies;
     this.availableForAllLocations = props.availableForAllLocations;
@@ -1034,6 +1551,16 @@ export class BomSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type SalesRoleSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class SalesRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -1042,7 +1569,7 @@ export class SalesRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: SalesRoleSearchBasic) {
+  constructor(props: SalesRoleSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -1054,6 +1581,18 @@ export class SalesRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type MerchandiseHierarchyNodeSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  hierarchyLevel?: PlatformCore.SearchMultiSelectField;
+  hierarchyVersion?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  name?: PlatformCore.SearchStringField;
+  parentNode?: PlatformCore.SearchMultiSelectField;
+};
+
 export class MerchandiseHierarchyNodeSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -1064,7 +1603,7 @@ export class MerchandiseHierarchyNodeSearchBasic extends PlatformCore.SearchReco
   internalIdNumber?: PlatformCore.SearchLongField;
   name?: PlatformCore.SearchStringField;
   parentNode?: PlatformCore.SearchMultiSelectField;
-  constructor(props: MerchandiseHierarchyNodeSearchBasic) {
+  constructor(props: MerchandiseHierarchyNodeSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -1078,14 +1617,36 @@ export class MerchandiseHierarchyNodeSearchBasic extends PlatformCore.SearchReco
   }
 }
 
+export type CustomSearchRowBasicProps = {
+  customizationRef: PlatformCore.CustomizationRef;
+  searchRowBasic: PlatformCore.SearchRowBasic;
+};
+
 export class CustomSearchRowBasic {
   customizationRef: PlatformCore.CustomizationRef;
   searchRowBasic: PlatformCore.SearchRowBasic;
-  constructor(props: CustomSearchRowBasic) {
+  constructor(props: CustomSearchRowBasicProps) {
     this.customizationRef = props.customizationRef;
     this.searchRowBasic = props.searchRowBasic;
   }
 }
+
+export type ItemAccountMappingSearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  customDimension?: PlatformCore.SearchColumnSelectCustomField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  destinationAccount?: PlatformCore.SearchColumnSelectField[];
+  effectiveDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  itemAccount?: PlatformCore.SearchColumnEnumSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  sourceAccount?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ItemAccountMappingSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnSelectField[];
@@ -1102,7 +1663,7 @@ export class ItemAccountMappingSearchRowBasic extends PlatformCore.SearchRowBasi
   sourceAccount?: PlatformCore.SearchColumnSelectField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ItemAccountMappingSearchRowBasic) {
+  constructor(props: ItemAccountMappingSearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
@@ -1121,6 +1682,16 @@ export class ItemAccountMappingSearchRowBasic extends PlatformCore.SearchRowBasi
   }
 }
 
+export type InventoryDetailSearchBasicProps = {
+  binNumber?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  inventoryNumber?: PlatformCore.SearchMultiSelectField;
+  quantity?: PlatformCore.SearchDoubleField;
+};
+
 export class InventoryDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   binNumber?: PlatformCore.SearchMultiSelectField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -1129,7 +1700,7 @@ export class InventoryDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   inventoryNumber?: PlatformCore.SearchMultiSelectField;
   quantity?: PlatformCore.SearchDoubleField;
-  constructor(props: InventoryDetailSearchBasic) {
+  constructor(props: InventoryDetailSearchBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
@@ -1141,6 +1712,16 @@ export class InventoryDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type DepartmentSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class DepartmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
@@ -1149,7 +1730,7 @@ export class DepartmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: DepartmentSearchRowBasic) {
+  constructor(props: DepartmentSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -1160,6 +1741,24 @@ export class DepartmentSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type FolderSearchRowBasicProps = {
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  folderSize?: PlatformCore.SearchColumnLongField[];
+  group?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  numFiles?: PlatformCore.SearchColumnLongField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+};
 
 export class FolderSearchRowBasic extends PlatformCore.SearchRowBasic {
   clazz?: PlatformCore.SearchColumnSelectField[];
@@ -1177,7 +1776,7 @@ export class FolderSearchRowBasic extends PlatformCore.SearchRowBasic {
   owner?: PlatformCore.SearchColumnSelectField[];
   parent?: PlatformCore.SearchColumnSelectField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: FolderSearchRowBasic) {
+  constructor(props: FolderSearchRowBasicProps) {
     super();
     this.clazz = props.clazz;
     this.department = props.department;
@@ -1196,6 +1795,165 @@ export class FolderSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.subsidiary = props.subsidiary;
   }
 }
+
+export type CustomerSearchBasicProps = {
+  accountNumber?: PlatformCore.SearchStringField;
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  assignedSite?: PlatformCore.SearchMultiSelectField;
+  assignedSiteId?: PlatformCore.SearchMultiSelectField;
+  attention?: PlatformCore.SearchStringField;
+  availableOffline?: PlatformCore.SearchBooleanField;
+  balance?: PlatformCore.SearchDoubleField;
+  billAddress?: PlatformCore.SearchStringField;
+  boughtAmount?: PlatformCore.SearchDoubleField;
+  boughtDate?: PlatformCore.SearchDateField;
+  buyingReason?: PlatformCore.SearchMultiSelectField;
+  buyingTimeFrame?: PlatformCore.SearchMultiSelectField;
+  category?: PlatformCore.SearchMultiSelectField;
+  ccCustomerCode?: PlatformCore.SearchStringField;
+  ccDefault?: PlatformCore.SearchBooleanField;
+  ccExpDate?: PlatformCore.SearchDateField;
+  ccHolderName?: PlatformCore.SearchStringField;
+  ccNumber?: PlatformCore.SearchStringField;
+  ccState?: PlatformCore.SearchMultiSelectField;
+  ccStateFrom?: PlatformCore.SearchDateField;
+  ccType?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  classBought?: PlatformCore.SearchMultiSelectField;
+  comments?: PlatformCore.SearchStringField;
+  companyName?: PlatformCore.SearchStringField;
+  consolBalance?: PlatformCore.SearchDoubleField;
+  consolDaysOverdue?: PlatformCore.SearchLongField;
+  consolDepositBalance?: PlatformCore.SearchDoubleField;
+  consolOverdueBalance?: PlatformCore.SearchDoubleField;
+  consolUnbilledOrders?: PlatformCore.SearchDoubleField;
+  contact?: PlatformCore.SearchStringField;
+  contribution?: PlatformCore.SearchLongField;
+  conversionDate?: PlatformCore.SearchDateField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  creditHold?: PlatformCore.SearchEnumMultiSelectField;
+  creditHoldOverride?: PlatformCore.SearchBooleanField;
+  creditLimit?: PlatformCore.SearchDoubleField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  custStage?: PlatformCore.SearchMultiSelectField;
+  custStatus?: PlatformCore.SearchMultiSelectField;
+  dateClosed?: PlatformCore.SearchDateField;
+  dateCreated?: PlatformCore.SearchDateField;
+  daysOverdue?: PlatformCore.SearchLongField;
+  defaultOrderPriority?: PlatformCore.SearchDoubleField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  depositBalance?: PlatformCore.SearchDoubleField;
+  deptBought?: PlatformCore.SearchMultiSelectField;
+  drAccount?: PlatformCore.SearchMultiSelectField;
+  email?: PlatformCore.SearchStringField;
+  emailPreference?: PlatformCore.SearchEnumMultiSelectField;
+  emailTransactions?: PlatformCore.SearchBooleanField;
+  endDate?: PlatformCore.SearchDateField;
+  entityId?: PlatformCore.SearchStringField;
+  entityStatus?: PlatformCore.SearchMultiSelectField;
+  estimatedBudget?: PlatformCore.SearchDoubleField;
+  explicitConversion?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  faxTransactions?: PlatformCore.SearchBooleanField;
+  firstName?: PlatformCore.SearchStringField;
+  firstOrderDate?: PlatformCore.SearchDateField;
+  firstSaleDate?: PlatformCore.SearchDateField;
+  fxAccount?: PlatformCore.SearchMultiSelectField;
+  fxBalance?: PlatformCore.SearchDoubleField;
+  fxConsolBalance?: PlatformCore.SearchDoubleField;
+  fxConsolUnbilledOrders?: PlatformCore.SearchDoubleField;
+  fxUnbilledOrders?: PlatformCore.SearchDoubleField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  groupPricingLevel?: PlatformCore.SearchMultiSelectField;
+  hasDuplicates?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isBudgetApproved?: PlatformCore.SearchBooleanField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPerson?: PlatformCore.SearchBooleanField;
+  isReportedLead?: PlatformCore.SearchBooleanField;
+  isShipAddress?: PlatformCore.SearchBooleanField;
+  itemPricingLevel?: PlatformCore.SearchMultiSelectField;
+  itemPricingUnitPrice?: PlatformCore.SearchDoubleField;
+  itemsBought?: PlatformCore.SearchMultiSelectField;
+  itemsOrdered?: PlatformCore.SearchMultiSelectField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  lastOrderDate?: PlatformCore.SearchDateField;
+  lastSaleDate?: PlatformCore.SearchDateField;
+  leadDate?: PlatformCore.SearchDateField;
+  leadSource?: PlatformCore.SearchMultiSelectField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  locationBought?: PlatformCore.SearchMultiSelectField;
+  manualCreditHold?: PlatformCore.SearchBooleanField;
+  merchantAccount?: PlatformCore.SearchMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  monthlyClosing?: PlatformCore.SearchEnumMultiSelectField;
+  onCreditHold?: PlatformCore.SearchBooleanField;
+  orderedAmount?: PlatformCore.SearchDoubleField;
+  orderedDate?: PlatformCore.SearchDateField;
+  otherRelationships?: PlatformCore.SearchEnumMultiSelectField;
+  overdueBalance?: PlatformCore.SearchDoubleField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  parentItemsBought?: PlatformCore.SearchMultiSelectField;
+  parentItemsOrdered?: PlatformCore.SearchMultiSelectField;
+  partner?: PlatformCore.SearchMultiSelectField;
+  partnerContribution?: PlatformCore.SearchLongField;
+  partnerRole?: PlatformCore.SearchMultiSelectField;
+  partnerTeamMember?: PlatformCore.SearchMultiSelectField;
+  pec?: PlatformCore.SearchStringField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  priceLevel?: PlatformCore.SearchMultiSelectField;
+  pricingGroup?: PlatformCore.SearchMultiSelectField;
+  pricingItem?: PlatformCore.SearchMultiSelectField;
+  printTransactions?: PlatformCore.SearchBooleanField;
+  prospectDate?: PlatformCore.SearchDateField;
+  pstExempt?: PlatformCore.SearchBooleanField;
+  receivablesAccount?: PlatformCore.SearchMultiSelectField;
+  reminderDate?: PlatformCore.SearchDateField;
+  resaleNumber?: PlatformCore.SearchStringField;
+  role?: PlatformCore.SearchMultiSelectField;
+  salesReadiness?: PlatformCore.SearchMultiSelectField;
+  salesRep?: PlatformCore.SearchMultiSelectField;
+  salesTeamMember?: PlatformCore.SearchMultiSelectField;
+  salesTeamRole?: PlatformCore.SearchMultiSelectField;
+  salutation?: PlatformCore.SearchStringField;
+  shipAddress?: PlatformCore.SearchStringField;
+  shipComplete?: PlatformCore.SearchBooleanField;
+  shippingItem?: PlatformCore.SearchMultiSelectField;
+  sourceSite?: PlatformCore.SearchMultiSelectField;
+  sourceSiteId?: PlatformCore.SearchMultiSelectField;
+  stage?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  state?: PlatformCore.SearchStringField;
+  subsidBought?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxable?: PlatformCore.SearchBooleanField;
+  terms?: PlatformCore.SearchMultiSelectField;
+  territory?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  unbilledOrders?: PlatformCore.SearchDoubleField;
+  url?: PlatformCore.SearchStringField;
+  vatRegNumber?: PlatformCore.SearchStringField;
+  webLead?: PlatformCore.SearchBooleanField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class CustomerSearchBasic extends PlatformCore.SearchRecordBasic {
   accountNumber?: PlatformCore.SearchStringField;
@@ -1354,7 +2112,7 @@ export class CustomerSearchBasic extends PlatformCore.SearchRecordBasic {
   webLead?: PlatformCore.SearchBooleanField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: CustomerSearchBasic) {
+  constructor(props: CustomerSearchBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -1515,13 +2273,21 @@ export class CustomerSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type TopicSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class TopicSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: TopicSearchRowBasic) {
+  constructor(props: TopicSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -1530,6 +2296,40 @@ export class TopicSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type AccountingTransactionSearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnSelectField[];
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  accountType?: PlatformCore.SearchColumnStringField[];
+  altSalesAmount?: PlatformCore.SearchColumnDoubleField[];
+  altSalesNetAmount?: PlatformCore.SearchColumnDoubleField[];
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  baseCurrency?: PlatformCore.SearchColumnStringField[];
+  catchUpPeriod?: PlatformCore.SearchColumnStringField[];
+  creditAmount?: PlatformCore.SearchColumnDoubleField[];
+  customGL?: PlatformCore.SearchColumnBooleanField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  debitAmount?: PlatformCore.SearchColumnDoubleField[];
+  deferRevRec?: PlatformCore.SearchColumnBooleanField[];
+  exchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  fxAmount?: PlatformCore.SearchColumnDoubleField[];
+  grossAmount?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  multiSubsidiary?: PlatformCore.SearchColumnBooleanField[];
+  netAmount?: PlatformCore.SearchColumnDoubleField[];
+  posting?: PlatformCore.SearchColumnBooleanField[];
+  quantityRevCommitted?: PlatformCore.SearchColumnDoubleField[];
+  recognizedRevenue?: PlatformCore.SearchColumnDoubleField[];
+  revCommitStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  revenueStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  revRecEndDate?: PlatformCore.SearchColumnDateField[];
+  revRecOnRevCommitment?: PlatformCore.SearchColumnBooleanField[];
+  revRecStartDate?: PlatformCore.SearchColumnDateField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  tranIsVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
+  vsoeAllocation?: PlatformCore.SearchColumnDoubleField[];
+};
 
 export class AccountingTransactionSearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnSelectField[];
@@ -1563,7 +2363,7 @@ export class AccountingTransactionSearchRowBasic extends PlatformCore.SearchRowB
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   tranIsVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
   vsoeAllocation?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: AccountingTransactionSearchRowBasic) {
+  constructor(props: AccountingTransactionSearchRowBasicProps) {
     super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
@@ -1598,6 +2398,187 @@ export class AccountingTransactionSearchRowBasic extends PlatformCore.SearchRowB
     this.vsoeAllocation = props.vsoeAllocation;
   }
 }
+
+export type CustomerSearchRowBasicProps = {
+  accountNumber?: PlatformCore.SearchColumnStringField[];
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altContact?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  assignedSite?: PlatformCore.SearchColumnSelectField[];
+  assignedSiteId?: PlatformCore.SearchColumnLongField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  availableOffline?: PlatformCore.SearchColumnBooleanField[];
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  buyingReason?: PlatformCore.SearchColumnStringField[];
+  buyingTimeFrame?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  ccCustomerCode?: PlatformCore.SearchColumnStringField[];
+  ccDefault?: PlatformCore.SearchColumnBooleanField[];
+  ccExpDate?: PlatformCore.SearchColumnDateField[];
+  ccHolderName?: PlatformCore.SearchColumnStringField[];
+  ccInternalId?: PlatformCore.SearchColumnStringField[];
+  ccNumber?: PlatformCore.SearchColumnStringField[];
+  ccState?: PlatformCore.SearchColumnSelectField[];
+  ccStateFrom?: PlatformCore.SearchColumnDateField[];
+  ccType?: PlatformCore.SearchColumnSelectField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  companyName?: PlatformCore.SearchColumnStringField[];
+  consolBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolDaysOverdue?: PlatformCore.SearchColumnLongField[];
+  consolDepositBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolOverdueBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  contact?: PlatformCore.SearchColumnStringField[];
+  contribution?: PlatformCore.SearchColumnDoubleField[];
+  contributionPrimary?: PlatformCore.SearchColumnDoubleField[];
+  conversionDate?: PlatformCore.SearchColumnDateField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  creditHold?: PlatformCore.SearchColumnEnumSelectField[];
+  creditHoldOverride?: PlatformCore.SearchColumnBooleanField[];
+  creditLimit?: PlatformCore.SearchColumnDoubleField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  dateClosed?: PlatformCore.SearchColumnDateField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  daysOverdue?: PlatformCore.SearchColumnLongField[];
+  defaultOrderPriority?: PlatformCore.SearchColumnDoubleField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  depositBalance?: PlatformCore.SearchColumnDoubleField[];
+  drAccount?: PlatformCore.SearchColumnStringField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  emailPreference?: PlatformCore.SearchColumnEnumSelectField[];
+  emailTransactions?: PlatformCore.SearchColumnBooleanField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  entityStatus?: PlatformCore.SearchColumnSelectField[];
+  estimatedBudget?: PlatformCore.SearchColumnDoubleField[];
+  explicitConversion?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  faxTransactions?: PlatformCore.SearchColumnBooleanField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  firstOrderDate?: PlatformCore.SearchColumnDateField[];
+  firstSaleDate?: PlatformCore.SearchColumnDateField[];
+  fxAccount?: PlatformCore.SearchColumnStringField[];
+  fxBalance?: PlatformCore.SearchColumnDoubleField[];
+  fxConsolBalance?: PlatformCore.SearchColumnDoubleField[];
+  fxConsolUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  fxUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  groupPricingLevel?: PlatformCore.SearchColumnStringField[];
+  hasDuplicates?: PlatformCore.SearchColumnBooleanField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isBudgetApproved?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isPerson?: PlatformCore.SearchColumnBooleanField[];
+  isShipAddress?: PlatformCore.SearchColumnBooleanField[];
+  itemPricingLevel?: PlatformCore.SearchColumnStringField[];
+  itemPricingUnitPrice?: PlatformCore.SearchColumnDoubleField[];
+  jobEndDate?: PlatformCore.SearchColumnDateField[];
+  jobProjectedEnd?: PlatformCore.SearchColumnDateField[];
+  jobStartDate?: PlatformCore.SearchColumnDateField[];
+  jobType?: PlatformCore.SearchColumnSelectField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  lastOrderDate?: PlatformCore.SearchColumnDateField[];
+  lastSaleDate?: PlatformCore.SearchColumnDateField[];
+  leadDate?: PlatformCore.SearchColumnDateField[];
+  leadSource?: PlatformCore.SearchColumnSelectField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  manualCreditHold?: PlatformCore.SearchColumnBooleanField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  monthlyClosing?: PlatformCore.SearchColumnEnumSelectField[];
+  onCreditHold?: PlatformCore.SearchColumnBooleanField[];
+  overdueBalance?: PlatformCore.SearchColumnDoubleField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  partner?: PlatformCore.SearchColumnSelectField[];
+  partnerContribution?: PlatformCore.SearchColumnDoubleField[];
+  partnerRole?: PlatformCore.SearchColumnStringField[];
+  partnerTeamMember?: PlatformCore.SearchColumnSelectField[];
+  pec?: PlatformCore.SearchColumnStringField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  prefCCProcessor?: PlatformCore.SearchColumnSelectField[];
+  priceLevel?: PlatformCore.SearchColumnSelectField[];
+  pricingGroup?: PlatformCore.SearchColumnStringField[];
+  pricingItem?: PlatformCore.SearchColumnStringField[];
+  printTransactions?: PlatformCore.SearchColumnBooleanField[];
+  prospectDate?: PlatformCore.SearchColumnDateField[];
+  receivablesAccount?: PlatformCore.SearchColumnStringField[];
+  reminderDays?: PlatformCore.SearchColumnLongField[];
+  resaleNumber?: PlatformCore.SearchColumnStringField[];
+  role?: PlatformCore.SearchColumnStringField[];
+  salesReadiness?: PlatformCore.SearchColumnStringField[];
+  salesRep?: PlatformCore.SearchColumnSelectField[];
+  salesTeamMember?: PlatformCore.SearchColumnSelectField[];
+  salesTeamRole?: PlatformCore.SearchColumnSelectField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipComplete?: PlatformCore.SearchColumnBooleanField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shippingItem?: PlatformCore.SearchColumnSelectField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  sourceSite?: PlatformCore.SearchColumnSelectField[];
+  sourceSiteId?: PlatformCore.SearchColumnLongField[];
+  stage?: PlatformCore.SearchColumnEnumSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  taxable?: PlatformCore.SearchColumnBooleanField[];
+  taxItem?: PlatformCore.SearchColumnSelectField[];
+  terms?: PlatformCore.SearchColumnSelectField[];
+  territory?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  unbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  vatRegNumber?: PlatformCore.SearchColumnStringField[];
+  webLead?: PlatformCore.SearchColumnBooleanField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class CustomerSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountNumber?: PlatformCore.SearchColumnStringField[];
@@ -1778,7 +2759,7 @@ export class CustomerSearchRowBasic extends PlatformCore.SearchRowBasic {
   webLead?: PlatformCore.SearchColumnBooleanField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: CustomerSearchRowBasic) {
+  constructor(props: CustomerSearchRowBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -1961,6 +2942,51 @@ export class CustomerSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CampaignSearchBasicProps = {
+  audience?: PlatformCore.SearchMultiSelectField;
+  baseCost?: PlatformCore.SearchDoubleField;
+  campaignEventType?: PlatformCore.SearchEnumMultiSelectField;
+  campaignId?: PlatformCore.SearchStringField;
+  category?: PlatformCore.SearchMultiSelectField;
+  channel?: PlatformCore.SearchMultiSelectField;
+  cost?: PlatformCore.SearchDoubleField;
+  createdDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  event?: PlatformCore.SearchStringField;
+  expectedRevenue?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  family?: PlatformCore.SearchMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isSalesCampaign?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  keyword?: PlatformCore.SearchStringField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  manager?: PlatformCore.SearchMultiSelectField;
+  managerRole?: PlatformCore.SearchMultiSelectField;
+  number?: PlatformCore.SearchLongField;
+  offer?: PlatformCore.SearchMultiSelectField;
+  promoCode?: PlatformCore.SearchMultiSelectField;
+  recipient?: PlatformCore.SearchMultiSelectField;
+  response?: PlatformCore.SearchEnumMultiSelectField;
+  responseCategory?: PlatformCore.SearchEnumMultiSelectField;
+  responseCode?: PlatformCore.SearchLongField;
+  responseComments?: PlatformCore.SearchStringField;
+  responseDate?: PlatformCore.SearchDateField;
+  scheduleDate?: PlatformCore.SearchDateField;
+  searchEngine?: PlatformCore.SearchMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  subscription?: PlatformCore.SearchMultiSelectField;
+  template?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  vertical?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class CampaignSearchBasic extends PlatformCore.SearchRecordBasic {
   audience?: PlatformCore.SearchMultiSelectField;
   baseCost?: PlatformCore.SearchDoubleField;
@@ -2004,7 +3030,7 @@ export class CampaignSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   vertical?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: CampaignSearchBasic) {
+  constructor(props: CampaignSearchBasicProps) {
     super();
     this.audience = props.audience;
     this.baseCost = props.baseCost;
@@ -2050,6 +3076,74 @@ export class CampaignSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type EntitySearchRowBasicProps = {
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class EntitySearchRowBasic extends PlatformCore.SearchRowBasic {
   address?: PlatformCore.SearchColumnStringField[];
@@ -2117,7 +3211,7 @@ export class EntitySearchRowBasic extends PlatformCore.SearchRowBasic {
   type?: PlatformCore.SearchColumnEnumSelectField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: EntitySearchRowBasic) {
+  constructor(props: EntitySearchRowBasicProps) {
     super();
     this.address = props.address;
     this.address1 = props.address1;
@@ -2187,6 +3281,16 @@ export class EntitySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type BinSearchRowBasicProps = {
+  binNumber?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  inactive?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnStringField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class BinSearchRowBasic extends PlatformCore.SearchRowBasic {
   binNumber?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -2195,7 +3299,7 @@ export class BinSearchRowBasic extends PlatformCore.SearchRowBasic {
   location?: PlatformCore.SearchColumnStringField[];
   memo?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: BinSearchRowBasic) {
+  constructor(props: BinSearchRowBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
@@ -2207,12 +3311,19 @@ export class BinSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type EntityTaxRegistrationSearchRowBasicProps = {
+  address?: PlatformCore.SearchColumnSelectField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  nexusCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  taxRegistrationNumber?: PlatformCore.SearchColumnStringField[];
+};
+
 export class EntityTaxRegistrationSearchRowBasic extends PlatformCore.SearchRowBasic {
   address?: PlatformCore.SearchColumnSelectField[];
   id?: PlatformCore.SearchColumnLongField[];
   nexusCountry?: PlatformCore.SearchColumnEnumSelectField[];
   taxRegistrationNumber?: PlatformCore.SearchColumnStringField[];
-  constructor(props: EntityTaxRegistrationSearchRowBasic) {
+  constructor(props: EntityTaxRegistrationSearchRowBasicProps) {
     super();
     this.address = props.address;
     this.id = props.id;
@@ -2220,6 +3331,23 @@ export class EntityTaxRegistrationSearchRowBasic extends PlatformCore.SearchRowB
     this.taxRegistrationNumber = props.taxRegistrationNumber;
   }
 }
+
+export type CustomRecordSearchRowBasicProps = {
+  recType: PlatformCore.RecordRef;
+  altName?: PlatformCore.SearchColumnStringField[];
+  availableOffline?: PlatformCore.SearchColumnBooleanField[];
+  created?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  lastModified?: PlatformCore.SearchColumnDateField[];
+  lastModifiedBy?: PlatformCore.SearchColumnSelectField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class CustomRecordSearchRowBasic extends PlatformCore.SearchRowBasic {
   recType: PlatformCore.RecordRef;
@@ -2236,7 +3364,7 @@ export class CustomRecordSearchRowBasic extends PlatformCore.SearchRowBasic {
   owner?: PlatformCore.SearchColumnSelectField[];
   parent?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: CustomRecordSearchRowBasic) {
+  constructor(props: CustomRecordSearchRowBasicProps) {
     super();
     this.recType = props.recType;
     this.altName = props.altName;
@@ -2254,6 +3382,60 @@ export class CustomRecordSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type IssueSearchRowBasicProps = {
+  ageInMonths?: PlatformCore.SearchColumnLongField[];
+  assigned?: PlatformCore.SearchColumnSelectField[];
+  buildBroken?: PlatformCore.SearchColumnSelectField[];
+  buildFixed?: PlatformCore.SearchColumnSelectField[];
+  buildTarget?: PlatformCore.SearchColumnSelectField[];
+  caseCount?: PlatformCore.SearchColumnLongField[];
+  caseNumber?: PlatformCore.SearchColumnStringField[];
+  closedDate?: PlatformCore.SearchColumnDateField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  dateReleased?: PlatformCore.SearchColumnDateField[];
+  duplicateOf?: PlatformCore.SearchColumnSelectField[];
+  employeeOrTeam?: PlatformCore.SearchColumnSelectField[];
+  eventStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  externalAbstract?: PlatformCore.SearchColumnStringField[];
+  externalDetails?: PlatformCore.SearchColumnStringField[];
+  externalFixedIn?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  externalStatus?: PlatformCore.SearchColumnSelectField[];
+  fixed?: PlatformCore.SearchColumnDateField[];
+  fixedBy?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isOwner?: PlatformCore.SearchColumnBooleanField[];
+  isReviewed?: PlatformCore.SearchColumnBooleanField[];
+  isShowStopper?: PlatformCore.SearchColumnBooleanField[];
+  issueAbstract?: PlatformCore.SearchColumnStringField[];
+  issueStatus?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  module?: PlatformCore.SearchColumnStringField[];
+  number?: PlatformCore.SearchColumnStringField[];
+  originalFixedIn?: PlatformCore.SearchColumnStringField[];
+  priority?: PlatformCore.SearchColumnSelectField[];
+  product?: PlatformCore.SearchColumnSelectField[];
+  productTeam?: PlatformCore.SearchColumnSelectField[];
+  relatedIssue?: PlatformCore.SearchColumnSelectField[];
+  relationship?: PlatformCore.SearchColumnEnumSelectField[];
+  relationshipComment?: PlatformCore.SearchColumnStringField[];
+  reportedBy?: PlatformCore.SearchColumnSelectField[];
+  reproduce?: PlatformCore.SearchColumnSelectField[];
+  resolved?: PlatformCore.SearchColumnDateField[];
+  resolvedBy?: PlatformCore.SearchColumnSelectField[];
+  reviewer?: PlatformCore.SearchColumnSelectField[];
+  severity?: PlatformCore.SearchColumnSelectField[];
+  source?: PlatformCore.SearchColumnEnumSelectField[];
+  tags?: PlatformCore.SearchColumnSelectField[];
+  type?: PlatformCore.SearchColumnStringField[];
+  userType?: PlatformCore.SearchColumnSelectField[];
+  versionBroken?: PlatformCore.SearchColumnSelectField[];
+  versionFixed?: PlatformCore.SearchColumnSelectField[];
+  versionTarget?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class IssueSearchRowBasic extends PlatformCore.SearchRowBasic {
   ageInMonths?: PlatformCore.SearchColumnLongField[];
@@ -2307,7 +3489,7 @@ export class IssueSearchRowBasic extends PlatformCore.SearchRowBasic {
   versionFixed?: PlatformCore.SearchColumnSelectField[];
   versionTarget?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: IssueSearchRowBasic) {
+  constructor(props: IssueSearchRowBasicProps) {
     super();
     this.ageInMonths = props.ageInMonths;
     this.assigned = props.assigned;
@@ -2363,6 +3545,25 @@ export class IssueSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ItemSupplyPlanSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  orderCreated?: PlatformCore.SearchBooleanField;
+  orderDate?: PlatformCore.SearchDateField;
+  orderType?: PlatformCore.SearchMultiSelectField;
+  quantity?: PlatformCore.SearchDoubleField;
+  receiptDate?: PlatformCore.SearchDateField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  units?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ItemSupplyPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -2380,7 +3581,7 @@ export class ItemSupplyPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   units?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ItemSupplyPlanSearchBasic) {
+  constructor(props: ItemSupplyPlanSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -2400,6 +3601,32 @@ export class ItemSupplyPlanSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type BillingAccountSearchRowBasicProps = {
+  billingSchedule?: PlatformCore.SearchColumnSelectField[];
+  cashSaleForm?: PlatformCore.SearchColumnSelectField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  customerDefault?: PlatformCore.SearchColumnBooleanField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  frequency?: PlatformCore.SearchColumnEnumSelectField[];
+  idNumber?: PlatformCore.SearchColumnStringField[];
+  inactive?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  invoiceForm?: PlatformCore.SearchColumnSelectField[];
+  lastBillCycleDate?: PlatformCore.SearchColumnDateField[];
+  lastBillDate?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nextBillCycleDate?: PlatformCore.SearchColumnDateField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class BillingAccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   billingSchedule?: PlatformCore.SearchColumnSelectField[];
@@ -2425,7 +3652,7 @@ export class BillingAccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   startDate?: PlatformCore.SearchColumnDateField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: BillingAccountSearchRowBasic) {
+  constructor(props: BillingAccountSearchRowBasicProps) {
     super();
     this.billingSchedule = props.billingSchedule;
     this.cashSaleForm = props.cashSaleForm;
@@ -2453,6 +3680,23 @@ export class BillingAccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type RevRecTemplateSearchRowBasicProps = {
+  amorMethod?: PlatformCore.SearchColumnStringField[];
+  amorPeriod?: PlatformCore.SearchColumnStringField[];
+  amorStartOffset?: PlatformCore.SearchColumnStringField[];
+  amorTermSrc?: PlatformCore.SearchColumnStringField[];
+  amorType?: PlatformCore.SearchColumnStringField[];
+  contraAccount?: PlatformCore.SearchColumnStringField[];
+  deferralAccount?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  periodOffset?: PlatformCore.SearchColumnStringField[];
+  targetAccount?: PlatformCore.SearchColumnStringField[];
+  useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
+};
+
 export class RevRecTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
   amorMethod?: PlatformCore.SearchColumnStringField[];
   amorPeriod?: PlatformCore.SearchColumnStringField[];
@@ -2468,7 +3712,7 @@ export class RevRecTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
   periodOffset?: PlatformCore.SearchColumnStringField[];
   targetAccount?: PlatformCore.SearchColumnStringField[];
   useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: RevRecTemplateSearchRowBasic) {
+  constructor(props: RevRecTemplateSearchRowBasicProps) {
     super();
     this.amorMethod = props.amorMethod;
     this.amorPeriod = props.amorPeriod;
@@ -2486,6 +3730,302 @@ export class RevRecTemplateSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.useForeignAmounts = props.useForeignAmounts;
   }
 }
+
+export type ItemSearchBasicProps = {
+  accBookRevRecForecastRule?: PlatformCore.SearchMultiSelectField;
+  account?: PlatformCore.SearchMultiSelectField;
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  accountingBookAmortization?: PlatformCore.SearchMultiSelectField;
+  accountingBookCreatePlansOn?: PlatformCore.SearchMultiSelectField;
+  accountingBookRevRecRule?: PlatformCore.SearchMultiSelectField;
+  accountingBookRevRecSchedule?: PlatformCore.SearchMultiSelectField;
+  allowedShippingMethod?: PlatformCore.SearchMultiSelectField;
+  alternateDemandSourceItem?: PlatformCore.SearchMultiSelectField;
+  atpLeadTime?: PlatformCore.SearchDoubleField;
+  atpMethod?: PlatformCore.SearchEnumMultiSelectField;
+  autoLeadTime?: PlatformCore.SearchBooleanField;
+  autoPreferredStockLevel?: PlatformCore.SearchBooleanField;
+  autoReorderPoint?: PlatformCore.SearchBooleanField;
+  availableToPartners?: PlatformCore.SearchBooleanField;
+  averageCost?: PlatformCore.SearchDoubleField;
+  backwardConsumptionDays?: PlatformCore.SearchLongField;
+  binNumber?: PlatformCore.SearchStringField;
+  binOnHandAvail?: PlatformCore.SearchDoubleField;
+  binOnHandCount?: PlatformCore.SearchDoubleField;
+  bomQuantity?: PlatformCore.SearchDoubleField;
+  buildEntireAssembly?: PlatformCore.SearchBooleanField;
+  buildTime?: PlatformCore.SearchDoubleField;
+  buyItNowPrice?: PlatformCore.SearchDoubleField;
+  caption?: PlatformCore.SearchStringField;
+  category?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  component?: PlatformCore.SearchMultiSelectField;
+  componentOf?: PlatformCore.SearchMultiSelectField;
+  componentYield?: PlatformCore.SearchDoubleField;
+  consumptionUnit?: PlatformCore.SearchMultiSelectField;
+  contingentRevenueHandling?: PlatformCore.SearchBooleanField;
+  copyDescription?: PlatformCore.SearchBooleanField;
+  correlatedItem?: PlatformCore.SearchMultiSelectField;
+  correlatedItemCorrelation?: PlatformCore.SearchDoubleField;
+  correlatedItemCount?: PlatformCore.SearchLongField;
+  correlatedItemLift?: PlatformCore.SearchDoubleField;
+  correlatedItemPurchaseRate?: PlatformCore.SearchDoubleField;
+  cost?: PlatformCore.SearchDoubleField;
+  costAccountingStatus?: PlatformCore.SearchEnumMultiSelectField;
+  costCategory?: PlatformCore.SearchMultiSelectField;
+  costEstimate?: PlatformCore.SearchDoubleField;
+  costEstimateType?: PlatformCore.SearchEnumMultiSelectField;
+  costingMethod?: PlatformCore.SearchEnumMultiSelectField;
+  countryOfManufacture?: PlatformCore.SearchEnumMultiSelectField;
+  created?: PlatformCore.SearchDateField;
+  createJob?: PlatformCore.SearchBooleanField;
+  createRevenuePlansOn?: PlatformCore.SearchMultiSelectField;
+  dateViewed?: PlatformCore.SearchDateField;
+  daysBeforeExpiration?: PlatformCore.SearchDoubleField;
+  defaultReturnCost?: PlatformCore.SearchDoubleField;
+  defaultShippingMethod?: PlatformCore.SearchMultiSelectField;
+  deferRevRec?: PlatformCore.SearchBooleanField;
+  demandModifier?: PlatformCore.SearchDoubleField;
+  demandSource?: PlatformCore.SearchEnumMultiSelectField;
+  demandTimeFence?: PlatformCore.SearchLongField;
+  department?: PlatformCore.SearchMultiSelectField;
+  directRevenuePosting?: PlatformCore.SearchBooleanField;
+  displayIneBayStore?: PlatformCore.SearchBooleanField;
+  displayName?: PlatformCore.SearchStringField;
+  distributionCategory?: PlatformCore.SearchMultiSelectField;
+  distributionNetwork?: PlatformCore.SearchMultiSelectField;
+  dontShowPrice?: PlatformCore.SearchBooleanField;
+  eBayItemDescription?: PlatformCore.SearchStringField;
+  eBayItemSubtitle?: PlatformCore.SearchStringField;
+  eBayItemTitle?: PlatformCore.SearchStringField;
+  ebayRelistingOption?: PlatformCore.SearchEnumMultiSelectField;
+  effectiveBomControl?: PlatformCore.SearchEnumMultiSelectField;
+  effectiveDate?: PlatformCore.SearchDateField;
+  effectiveRevision?: PlatformCore.SearchMultiSelectField;
+  endAuctionsWhenOutOfStock?: PlatformCore.SearchBooleanField;
+  excludeFromSitemap?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  featuredDescription?: PlatformCore.SearchStringField;
+  feedDescription?: PlatformCore.SearchStringField;
+  feedName?: PlatformCore.SearchStringField;
+  fixedLotSize?: PlatformCore.SearchDoubleField;
+  forwardConsumptionDays?: PlatformCore.SearchLongField;
+  fraudRisk?: PlatformCore.SearchEnumMultiSelectField;
+  froogleProductFeed?: PlatformCore.SearchBooleanField;
+  futureHorizon?: PlatformCore.SearchLongField;
+  fxCost?: PlatformCore.SearchDoubleField;
+  generateAccruals?: PlatformCore.SearchBooleanField;
+  giftCertAuthCode?: PlatformCore.SearchStringField;
+  giftCertEmail?: PlatformCore.SearchStringField;
+  giftCertExpDate?: PlatformCore.SearchDateField;
+  giftCertFrom?: PlatformCore.SearchStringField;
+  giftCertMsg?: PlatformCore.SearchStringField;
+  giftCertOrigAmt?: PlatformCore.SearchStringField;
+  giftCertRecipient?: PlatformCore.SearchStringField;
+  hierarchyNode?: PlatformCore.SearchMultiSelectField;
+  hierarchyVersion?: PlatformCore.SearchMultiSelectField;
+  imageUrl?: PlatformCore.SearchStringField;
+  includeChildren?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  inventoryLocation?: PlatformCore.SearchMultiSelectField;
+  invtClassification?: PlatformCore.SearchEnumMultiSelectField;
+  invtCountInterval?: PlatformCore.SearchLongField;
+  isAvailable?: PlatformCore.SearchBooleanField;
+  isDropShipItem?: PlatformCore.SearchBooleanField;
+  isFulfillable?: PlatformCore.SearchBooleanField;
+  isGcoCompliant?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isLotItem?: PlatformCore.SearchBooleanField;
+  isOnline?: PlatformCore.SearchBooleanField;
+  isPreferredVendor?: PlatformCore.SearchBooleanField;
+  isSerialItem?: PlatformCore.SearchBooleanField;
+  isSpecialOrderItem?: PlatformCore.SearchBooleanField;
+  isSpecialWorkOrderItem?: PlatformCore.SearchBooleanField;
+  isStorePickupAllowed?: PlatformCore.SearchBooleanField;
+  issueProduct?: PlatformCore.SearchMultiSelectField;
+  isTaxable?: PlatformCore.SearchBooleanField;
+  isVsoeBundle?: PlatformCore.SearchBooleanField;
+  isWip?: PlatformCore.SearchBooleanField;
+  itemId?: PlatformCore.SearchStringField;
+  itemRevenueCategory?: PlatformCore.SearchMultiSelectField;
+  itemUrl?: PlatformCore.SearchStringField;
+  lastInvtCountDate?: PlatformCore.SearchDateField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastPurchasePrice?: PlatformCore.SearchDoubleField;
+  lastQuantityAvailableChange?: PlatformCore.SearchDateField;
+  leadTime?: PlatformCore.SearchLongField;
+  listingDuration?: PlatformCore.SearchEnumMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  locationAllowStorePickup?: PlatformCore.SearchBooleanField;
+  locationAtpLeadTime?: PlatformCore.SearchDoubleField;
+  locationAverageCost?: PlatformCore.SearchDoubleField;
+  locationBuildTime?: PlatformCore.SearchDoubleField;
+  locationCost?: PlatformCore.SearchDoubleField;
+  locationCostAccountingStatus?: PlatformCore.SearchEnumMultiSelectField;
+  locationDefaultReturnCost?: PlatformCore.SearchDoubleField;
+  locationDemandSource?: PlatformCore.SearchEnumMultiSelectField;
+  locationDemandTimeFence?: PlatformCore.SearchLongField;
+  locationFixedLotSize?: PlatformCore.SearchDoubleField;
+  locationInventoryCostTemplate?: PlatformCore.SearchMultiSelectField;
+  locationInvtClassification?: PlatformCore.SearchEnumMultiSelectField;
+  locationInvtCountInterval?: PlatformCore.SearchLongField;
+  locationLastInvtCountDate?: PlatformCore.SearchDateField;
+  locationLeadTime?: PlatformCore.SearchLongField;
+  locationNextInvtCountDate?: PlatformCore.SearchDateField;
+  locationPeriodicLotSizeDays?: PlatformCore.SearchLongField;
+  locationPeriodicLotSizeType?: PlatformCore.SearchEnumMultiSelectField;
+  locationPreferredStockLevel?: PlatformCore.SearchDoubleField;
+  locationQtyAvailForStorePickup?: PlatformCore.SearchDoubleField;
+  locationQuantityAvailable?: PlatformCore.SearchDoubleField;
+  locationQuantityBackOrdered?: PlatformCore.SearchDoubleField;
+  locationQuantityCommitted?: PlatformCore.SearchDoubleField;
+  locationQuantityInTransit?: PlatformCore.SearchDoubleField;
+  locationQuantityOnHand?: PlatformCore.SearchDoubleField;
+  locationQuantityOnOrder?: PlatformCore.SearchDoubleField;
+  locationReorderPoint?: PlatformCore.SearchDoubleField;
+  locationRescheduleInDays?: PlatformCore.SearchLongField;
+  locationRescheduleOutDays?: PlatformCore.SearchLongField;
+  locationSafetyStockLevel?: PlatformCore.SearchDoubleField;
+  locationStorePickupBufferStock?: PlatformCore.SearchDoubleField;
+  locationSupplyLotSizingMethod?: PlatformCore.SearchEnumMultiSelectField;
+  locationSupplyTimeFence?: PlatformCore.SearchLongField;
+  locationSupplyType?: PlatformCore.SearchEnumMultiSelectField;
+  locationTotalValue?: PlatformCore.SearchDoubleField;
+  locBackwardConsumptionDays?: PlatformCore.SearchLongField;
+  locForwardConsumptionDays?: PlatformCore.SearchLongField;
+  manufacturer?: PlatformCore.SearchStringField;
+  manufactureraddr1?: PlatformCore.SearchStringField;
+  manufacturerCity?: PlatformCore.SearchStringField;
+  manufacturerState?: PlatformCore.SearchStringField;
+  manufacturerTariff?: PlatformCore.SearchStringField;
+  manufacturerTaxId?: PlatformCore.SearchStringField;
+  manufacturerZip?: PlatformCore.SearchStringField;
+  manufacturingChargeItem?: PlatformCore.SearchBooleanField;
+  matchBillToReceipt?: PlatformCore.SearchBooleanField;
+  matrix?: PlatformCore.SearchBooleanField;
+  matrixChild?: PlatformCore.SearchBooleanField;
+  maximumQuantity?: PlatformCore.SearchLongField;
+  metaTagHtml?: PlatformCore.SearchStringField;
+  minimumQuantity?: PlatformCore.SearchLongField;
+  mossApplies?: PlatformCore.SearchBooleanField;
+  mpn?: PlatformCore.SearchStringField;
+  multManufactureAddr?: PlatformCore.SearchBooleanField;
+  nexTagCategory?: PlatformCore.SearchStringField;
+  nexTagProductFeed?: PlatformCore.SearchBooleanField;
+  nextInvtCountDate?: PlatformCore.SearchDateField;
+  numActiveListings?: PlatformCore.SearchLongField;
+  numberAllowedDownloads?: PlatformCore.SearchDoubleField;
+  numCurrentlyListed?: PlatformCore.SearchLongField;
+  obsoleteDate?: PlatformCore.SearchDateField;
+  obsoleteRevision?: PlatformCore.SearchMultiSelectField;
+  offerSupport?: PlatformCore.SearchBooleanField;
+  onlineCustomerPrice?: PlatformCore.SearchDoubleField;
+  onSpecial?: PlatformCore.SearchBooleanField;
+  otherVendor?: PlatformCore.SearchMultiSelectField;
+  outOfStockBehavior?: PlatformCore.SearchMultiSelectField;
+  overallQuantityPricingType?: PlatformCore.SearchEnumMultiSelectField;
+  overheadType?: PlatformCore.SearchEnumMultiSelectField;
+  pageTitle?: PlatformCore.SearchStringField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  periodicLotSizeDays?: PlatformCore.SearchLongField;
+  periodicLotSizeType?: PlatformCore.SearchEnumMultiSelectField;
+  preferenceCriterion?: PlatformCore.SearchStringField;
+  preferredBin?: PlatformCore.SearchBooleanField;
+  preferredLocation?: PlatformCore.SearchMultiSelectField;
+  preferredStockLevel?: PlatformCore.SearchDoubleField;
+  preferredStockLevelDays?: PlatformCore.SearchLongField;
+  price?: PlatformCore.SearchDoubleField;
+  pricesIncludeTax?: PlatformCore.SearchBooleanField;
+  pricingGroup?: PlatformCore.SearchMultiSelectField;
+  primaryCategory?: PlatformCore.SearchLongField;
+  purchaseOrderAmount?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantity?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantityDiff?: PlatformCore.SearchDoubleField;
+  purchaseUnit?: PlatformCore.SearchMultiSelectField;
+  quantityAvailable?: PlatformCore.SearchDoubleField;
+  quantityBackOrdered?: PlatformCore.SearchDoubleField;
+  quantityCommitted?: PlatformCore.SearchDoubleField;
+  quantityOnHand?: PlatformCore.SearchDoubleField;
+  quantityOnOrder?: PlatformCore.SearchDoubleField;
+  quantityPricingSchedule?: PlatformCore.SearchMultiSelectField;
+  receiptAmount?: PlatformCore.SearchDoubleField;
+  receiptQuantity?: PlatformCore.SearchDoubleField;
+  receiptQuantityDiff?: PlatformCore.SearchDoubleField;
+  reorderMultiple?: PlatformCore.SearchLongField;
+  reorderPoint?: PlatformCore.SearchDoubleField;
+  rescheduleInDays?: PlatformCore.SearchLongField;
+  rescheduleOutDays?: PlatformCore.SearchLongField;
+  reservePrice?: PlatformCore.SearchDoubleField;
+  revenueAllocationGroup?: PlatformCore.SearchMultiSelectField;
+  revenueRecognitionRule?: PlatformCore.SearchMultiSelectField;
+  revRecForecastRule?: PlatformCore.SearchMultiSelectField;
+  revRecSchedule?: PlatformCore.SearchMultiSelectField;
+  roundUpAsComponent?: PlatformCore.SearchBooleanField;
+  safetyStockLevel?: PlatformCore.SearchDoubleField;
+  safetyStockLevelDays?: PlatformCore.SearchLongField;
+  salesDescription?: PlatformCore.SearchStringField;
+  saleUnit?: PlatformCore.SearchMultiSelectField;
+  sameAsPrimaryBookAmortization?: PlatformCore.SearchBooleanField;
+  sameAsPrimaryBookRevRec?: PlatformCore.SearchBooleanField;
+  scheduleBCode?: PlatformCore.SearchEnumMultiSelectField;
+  scheduleBNumber?: PlatformCore.SearchStringField;
+  scheduleBQuantity?: PlatformCore.SearchStringField;
+  searchKeywords?: PlatformCore.SearchStringField;
+  seasonalDemand?: PlatformCore.SearchBooleanField;
+  sellOnEBay?: PlatformCore.SearchBooleanField;
+  serialNumber?: PlatformCore.SearchStringField;
+  serialNumberLocation?: PlatformCore.SearchMultiSelectField;
+  shipIndividually?: PlatformCore.SearchBooleanField;
+  shipPackage?: PlatformCore.SearchMultiSelectField;
+  shippingCarrier?: PlatformCore.SearchEnumMultiSelectField;
+  shippingRate?: PlatformCore.SearchDoubleField;
+  shoppingDotComCategory?: PlatformCore.SearchStringField;
+  shoppingProductFeed?: PlatformCore.SearchBooleanField;
+  shopzillaCategoryId?: PlatformCore.SearchLongField;
+  shopzillaProductFeed?: PlatformCore.SearchBooleanField;
+  sitemapPriority?: PlatformCore.SearchEnumMultiSelectField;
+  softDescriptor?: PlatformCore.SearchMultiSelectField;
+  startingPrice?: PlatformCore.SearchDoubleField;
+  stockDescription?: PlatformCore.SearchStringField;
+  stockUnit?: PlatformCore.SearchMultiSelectField;
+  storeDescription?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  subType?: PlatformCore.SearchEnumMultiSelectField;
+  supplyLotSizingMethod?: PlatformCore.SearchEnumMultiSelectField;
+  supplyReplenishmentMethod?: PlatformCore.SearchEnumMultiSelectField;
+  supplyTimeFence?: PlatformCore.SearchLongField;
+  supplyType?: PlatformCore.SearchEnumMultiSelectField;
+  taxCode?: PlatformCore.SearchMultiSelectField;
+  taxSchedule?: PlatformCore.SearchMultiSelectField;
+  thumbnailUrl?: PlatformCore.SearchStringField;
+  totalValue?: PlatformCore.SearchDoubleField;
+  trackLandedCost?: PlatformCore.SearchBooleanField;
+  transferPrice?: PlatformCore.SearchDoubleField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  unitsType?: PlatformCore.SearchMultiSelectField;
+  upcCode?: PlatformCore.SearchStringField;
+  urlComponent?: PlatformCore.SearchStringField;
+  useBins?: PlatformCore.SearchBooleanField;
+  useComponentYield?: PlatformCore.SearchBooleanField;
+  useMarginalRates?: PlatformCore.SearchBooleanField;
+  vendor?: PlatformCore.SearchMultiSelectField;
+  vendorCode?: PlatformCore.SearchStringField;
+  vendorCost?: PlatformCore.SearchDoubleField;
+  vendorCostEntered?: PlatformCore.SearchDoubleField;
+  vendorName?: PlatformCore.SearchStringField;
+  vendorPriceCurrency?: PlatformCore.SearchMultiSelectField;
+  vsoeDeferral?: PlatformCore.SearchEnumMultiSelectField;
+  vsoeDelivered?: PlatformCore.SearchBooleanField;
+  vsoePermitDiscount?: PlatformCore.SearchEnumMultiSelectField;
+  vsoePrice?: PlatformCore.SearchDoubleField;
+  vsoeSopGroup?: PlatformCore.SearchEnumMultiSelectField;
+  webSite?: PlatformCore.SearchMultiSelectField;
+  weight?: PlatformCore.SearchDoubleField;
+  yahooProductFeed?: PlatformCore.SearchBooleanField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ItemSearchBasic extends PlatformCore.SearchRecordBasic {
   accBookRevRecForecastRule?: PlatformCore.SearchMultiSelectField;
@@ -2781,7 +4321,7 @@ export class ItemSearchBasic extends PlatformCore.SearchRecordBasic {
   weight?: PlatformCore.SearchDoubleField;
   yahooProductFeed?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ItemSearchBasic) {
+  constructor(props: ItemSearchBasicProps) {
     super();
     this.accBookRevRecForecastRule = props.accBookRevRecForecastRule;
     this.account = props.account;
@@ -3079,6 +4619,20 @@ export class ItemSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CouponCodeSearchBasicProps = {
+  code?: PlatformCore.SearchStringField;
+  dateSent?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  id?: PlatformCore.SearchLongField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  promotion?: PlatformCore.SearchMultiSelectField;
+  recipient?: PlatformCore.SearchMultiSelectField;
+  useCount?: PlatformCore.SearchLongField;
+  used?: PlatformCore.SearchBooleanField;
+};
+
 export class CouponCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   code?: PlatformCore.SearchStringField;
   dateSent?: PlatformCore.SearchDateField;
@@ -3091,7 +4645,7 @@ export class CouponCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   recipient?: PlatformCore.SearchMultiSelectField;
   useCount?: PlatformCore.SearchLongField;
   used?: PlatformCore.SearchBooleanField;
-  constructor(props: CouponCodeSearchBasic) {
+  constructor(props: CouponCodeSearchBasicProps) {
     super();
     this.code = props.code;
     this.dateSent = props.dateSent;
@@ -3107,6 +4661,18 @@ export class CouponCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ExpenseCategorySearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  rateRequired?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class ExpenseCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnSelectField[];
   description?: PlatformCore.SearchColumnStringField[];
@@ -3117,7 +4683,7 @@ export class ExpenseCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   rateRequired?: PlatformCore.SearchColumnBooleanField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ExpenseCategorySearchRowBasic) {
+  constructor(props: ExpenseCategorySearchRowBasicProps) {
     super();
     this.account = props.account;
     this.description = props.description;
@@ -3130,6 +4696,124 @@ export class ExpenseCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type VendorSearchRowBasicProps = {
+  accountNumber?: PlatformCore.SearchColumnStringField[];
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altContact?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  companyName?: PlatformCore.SearchColumnStringField[];
+  contact?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  creditLimit?: PlatformCore.SearchColumnDoubleField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  currentExchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  eligibleForCommission?: PlatformCore.SearchColumnBooleanField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  emailPreference?: PlatformCore.SearchColumnEnumSelectField[];
+  emailTransactions?: PlatformCore.SearchColumnBooleanField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  expenseAccount?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  faxTransactions?: PlatformCore.SearchColumnBooleanField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  fxBalance?: PlatformCore.SearchColumnDoubleField[];
+  fxUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  hasDuplicates?: PlatformCore.SearchColumnBooleanField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  incoterm?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  is1099Eligible?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isJobResourceVend?: PlatformCore.SearchColumnBooleanField[];
+  isPerson?: PlatformCore.SearchColumnBooleanField[];
+  laborCost?: PlatformCore.SearchColumnDoubleField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  payablesAccount?: PlatformCore.SearchColumnSelectField[];
+  pec?: PlatformCore.SearchColumnStringField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  predConfidence?: PlatformCore.SearchColumnDoubleField[];
+  predictedDays?: PlatformCore.SearchColumnDoubleField[];
+  printOnCheckAs?: PlatformCore.SearchColumnStringField[];
+  printTransactions?: PlatformCore.SearchColumnBooleanField[];
+  purchaseOrderAmount?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantity?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  receiptAmount?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantity?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  taxIdNum?: PlatformCore.SearchColumnStringField[];
+  terms?: PlatformCore.SearchColumnSelectField[];
+  timeApprover?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  unbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  vatRegNumber?: PlatformCore.SearchColumnStringField[];
+  workCalendar?: PlatformCore.SearchColumnSelectField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class VendorSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountNumber?: PlatformCore.SearchColumnStringField[];
@@ -3247,7 +4931,7 @@ export class VendorSearchRowBasic extends PlatformCore.SearchRowBasic {
   workCalendar?: PlatformCore.SearchColumnSelectField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: VendorSearchRowBasic) {
+  constructor(props: VendorSearchRowBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -3367,6 +5051,67 @@ export class VendorSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type PartnerSearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  assignTasks?: PlatformCore.SearchBooleanField;
+  attention?: PlatformCore.SearchStringField;
+  billAddress?: PlatformCore.SearchStringField;
+  category?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  comments?: PlatformCore.SearchStringField;
+  commissionPlan?: PlatformCore.SearchMultiSelectField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  dateCreated?: PlatformCore.SearchDateField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  department?: PlatformCore.SearchMultiSelectField;
+  eligibleForCommission?: PlatformCore.SearchBooleanField;
+  email?: PlatformCore.SearchStringField;
+  emailPreference?: PlatformCore.SearchEnumMultiSelectField;
+  entityId?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  firstName?: PlatformCore.SearchStringField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  hasDuplicates?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPerson?: PlatformCore.SearchBooleanField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  otherRelationships?: PlatformCore.SearchEnumMultiSelectField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  partnerCode?: PlatformCore.SearchStringField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  promoCode?: PlatformCore.SearchMultiSelectField;
+  salutation?: PlatformCore.SearchStringField;
+  shipAddress?: PlatformCore.SearchStringField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  url?: PlatformCore.SearchStringField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class PartnerSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
   addressee?: PlatformCore.SearchStringField;
@@ -3426,7 +5171,7 @@ export class PartnerSearchBasic extends PlatformCore.SearchRecordBasic {
   url?: PlatformCore.SearchStringField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: PartnerSearchBasic) {
+  constructor(props: PartnerSearchBasicProps) {
     super();
     this.address = props.address;
     this.addressee = props.addressee;
@@ -3489,6 +5234,17 @@ export class PartnerSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ContactCategorySearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  _private?: PlatformCore.SearchBooleanField;
+  sync?: PlatformCore.SearchBooleanField;
+};
+
 export class ContactCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -3498,7 +5254,7 @@ export class ContactCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   _private?: PlatformCore.SearchBooleanField;
   sync?: PlatformCore.SearchBooleanField;
-  constructor(props: ContactCategorySearchBasic) {
+  constructor(props: ContactCategorySearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -3511,14 +5267,27 @@ export class ContactCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InventoryAssignmentListProps = {
+  inventoryAssignment?: InventoryAssignment[];
+  replaceAll?: boolean;
+};
+
 export class InventoryAssignmentList {
   inventoryAssignment?: InventoryAssignment[];
   replaceAll?: boolean;
-  constructor(props: InventoryAssignmentList) {
+  constructor(props: InventoryAssignmentListProps) {
     this.inventoryAssignment = props.inventoryAssignment;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorCategorySearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isTaxAgency?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
 
 export class VendorCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -3526,7 +5295,7 @@ export class VendorCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   isTaxAgency?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: VendorCategorySearchRowBasic) {
+  constructor(props: VendorCategorySearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -3535,6 +5304,18 @@ export class VendorCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type CouponCodeSearchRowBasicProps = {
+  code?: PlatformCore.SearchColumnStringField[];
+  dateSent?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  promotion?: PlatformCore.SearchColumnStringField[];
+  recipient?: PlatformCore.SearchColumnStringField[];
+  useCount?: PlatformCore.SearchColumnLongField[];
+  used?: PlatformCore.SearchColumnBooleanField[];
+};
 
 export class CouponCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   code?: PlatformCore.SearchColumnStringField[];
@@ -3546,7 +5327,7 @@ export class CouponCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   recipient?: PlatformCore.SearchColumnStringField[];
   useCount?: PlatformCore.SearchColumnLongField[];
   used?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: CouponCodeSearchRowBasic) {
+  constructor(props: CouponCodeSearchRowBasicProps) {
     super();
     this.code = props.code;
     this.dateSent = props.dateSent;
@@ -3559,6 +5340,24 @@ export class CouponCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.used = props.used;
   }
 }
+
+export type BillingScheduleSearchRowBasicProps = {
+  applyToSubtotal?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  frequency?: PlatformCore.SearchColumnEnumSelectField[];
+  inArrears?: PlatformCore.SearchColumnBooleanField[];
+  initialAmount?: PlatformCore.SearchColumnStringField[];
+  initialTerms?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isPublic?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  recurrenceCount?: PlatformCore.SearchColumnLongField[];
+  recurrencePattern?: PlatformCore.SearchColumnEnumSelectField[];
+  recurrenceTerms?: PlatformCore.SearchColumnStringField[];
+  repeatEvery?: PlatformCore.SearchColumnLongField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+};
 
 export class BillingScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   applyToSubtotal?: PlatformCore.SearchColumnBooleanField[];
@@ -3576,7 +5375,7 @@ export class BillingScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   recurrenceTerms?: PlatformCore.SearchColumnStringField[];
   repeatEvery?: PlatformCore.SearchColumnLongField[];
   type?: PlatformCore.SearchColumnEnumSelectField[];
-  constructor(props: BillingScheduleSearchRowBasic) {
+  constructor(props: BillingScheduleSearchRowBasicProps) {
     super();
     this.applyToSubtotal = props.applyToSubtotal;
     this.externalId = props.externalId;
@@ -3596,6 +5395,21 @@ export class BillingScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type UsageSearchBasicProps = {
+  customer?: PlatformCore.SearchMultiSelectField;
+  date?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  quantity?: PlatformCore.SearchDoubleField;
+  subscription?: PlatformCore.SearchMultiSelectField;
+  subscriptionLine?: PlatformCore.SearchMultiSelectField;
+  subscriptionPlan?: PlatformCore.SearchMultiSelectField;
+};
+
 export class UsageSearchBasic extends PlatformCore.SearchRecordBasic {
   customer?: PlatformCore.SearchMultiSelectField;
   date?: PlatformCore.SearchDateField;
@@ -3609,7 +5423,7 @@ export class UsageSearchBasic extends PlatformCore.SearchRecordBasic {
   subscription?: PlatformCore.SearchMultiSelectField;
   subscriptionLine?: PlatformCore.SearchMultiSelectField;
   subscriptionPlan?: PlatformCore.SearchMultiSelectField;
-  constructor(props: UsageSearchBasic) {
+  constructor(props: UsageSearchBasicProps) {
     super();
     this.customer = props.customer;
     this.date = props.date;
@@ -3626,6 +5440,19 @@ export class UsageSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type BomRevisionSearchRowBasicProps = {
+  billOfMaterials?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  effectiveEndDate?: PlatformCore.SearchColumnDateField[];
+  effectiveStartDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class BomRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   billOfMaterials?: PlatformCore.SearchColumnSelectField[];
   createdDate?: PlatformCore.SearchColumnDateField[];
@@ -3637,7 +5464,7 @@ export class BomRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   memo?: PlatformCore.SearchColumnStringField[];
   name?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: BomRevisionSearchRowBasic) {
+  constructor(props: BomRevisionSearchRowBasicProps) {
     super();
     this.billOfMaterials = props.billOfMaterials;
     this.createdDate = props.createdDate;
@@ -3651,6 +5478,72 @@ export class BomRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type OpportunitySearchRowBasicProps = {
+  actionItem?: PlatformCore.SearchColumnStringField[];
+  availableOffline?: PlatformCore.SearchColumnBooleanField[];
+  buyingReason?: PlatformCore.SearchColumnStringField[];
+  buyingTimeFrame?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  closeDate?: PlatformCore.SearchColumnDateField[];
+  competitor?: PlatformCore.SearchColumnSelectField[];
+  contribution?: PlatformCore.SearchColumnDoubleField[];
+  contributionPrimary?: PlatformCore.SearchColumnDoubleField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  custType?: PlatformCore.SearchColumnStringField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  daysOpen?: PlatformCore.SearchColumnLongField[];
+  daysToClose?: PlatformCore.SearchColumnLongField[];
+  decisionMaker?: PlatformCore.SearchColumnSelectField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  entity?: PlatformCore.SearchColumnSelectField[];
+  entityStatus?: PlatformCore.SearchColumnSelectField[];
+  estimatedBudget?: PlatformCore.SearchColumnDoubleField[];
+  expectedCloseDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  forecastType?: PlatformCore.SearchColumnEnumSelectField[];
+  foreignProjectedAmount?: PlatformCore.SearchColumnDoubleField[];
+  foreignRangeHigh?: PlatformCore.SearchColumnDoubleField[];
+  foreignRangeLow?: PlatformCore.SearchColumnDoubleField[];
+  fxTranCostEstimate?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isBudgetApproved?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  leadSource?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  partner?: PlatformCore.SearchColumnSelectField[];
+  partnerContribution?: PlatformCore.SearchColumnDoubleField[];
+  partnerRole?: PlatformCore.SearchColumnSelectField[];
+  partnerTeamMember?: PlatformCore.SearchColumnSelectField[];
+  period?: PlatformCore.SearchColumnStringField[];
+  probability?: PlatformCore.SearchColumnDoubleField[];
+  projAltSalesAmt?: PlatformCore.SearchColumnDoubleField[];
+  projectedTotal?: PlatformCore.SearchColumnDoubleField[];
+  rangeHigh?: PlatformCore.SearchColumnDoubleField[];
+  rangeHighAlt?: PlatformCore.SearchColumnDoubleField[];
+  rangeLow?: PlatformCore.SearchColumnDoubleField[];
+  rangeLowAlt?: PlatformCore.SearchColumnDoubleField[];
+  salesReadiness?: PlatformCore.SearchColumnStringField[];
+  salesRep?: PlatformCore.SearchColumnSelectField[];
+  salesTeamMember?: PlatformCore.SearchColumnSelectField[];
+  salesTeamRole?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  taxPeriod?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  total?: PlatformCore.SearchColumnDoubleField[];
+  tranCostEstimate?: PlatformCore.SearchColumnDoubleField[];
+  tranDate?: PlatformCore.SearchColumnDateField[];
+  tranEstGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  tranEstGrossProfitPct?: PlatformCore.SearchColumnDoubleField[];
+  tranFxEstGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  tranId?: PlatformCore.SearchColumnStringField[];
+  weightedTotal?: PlatformCore.SearchColumnDoubleField[];
+  winLossReason?: PlatformCore.SearchColumnSelectField[];
+  wonBy?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class OpportunitySearchRowBasic extends PlatformCore.SearchRowBasic {
   actionItem?: PlatformCore.SearchColumnStringField[];
@@ -3716,7 +5609,7 @@ export class OpportunitySearchRowBasic extends PlatformCore.SearchRowBasic {
   winLossReason?: PlatformCore.SearchColumnSelectField[];
   wonBy?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: OpportunitySearchRowBasic) {
+  constructor(props: OpportunitySearchRowBasicProps) {
     super();
     this.actionItem = props.actionItem;
     this.availableOffline = props.availableOffline;
@@ -3784,6 +5677,16 @@ export class OpportunitySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ClassificationSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class ClassificationSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
@@ -3792,7 +5695,7 @@ export class ClassificationSearchRowBasic extends PlatformCore.SearchRowBasic {
   nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ClassificationSearchRowBasic) {
+  constructor(props: ClassificationSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -3804,6 +5707,18 @@ export class ClassificationSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ClassificationSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  nameNoHierarchy?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ClassificationSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -3814,7 +5729,7 @@ export class ClassificationSearchBasic extends PlatformCore.SearchRecordBasic {
   nameNoHierarchy?: PlatformCore.SearchStringField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ClassificationSearchBasic) {
+  constructor(props: ClassificationSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -3827,6 +5742,23 @@ export class ClassificationSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ConsolidatedExchangeRateSearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnStringField[];
+  averageRate?: PlatformCore.SearchColumnStringField[];
+  closed?: PlatformCore.SearchColumnBooleanField[];
+  currentRate?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fromCurrency?: PlatformCore.SearchColumnStringField[];
+  fromSubsidiary?: PlatformCore.SearchColumnStringField[];
+  historicalRate?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  periodEndDate?: PlatformCore.SearchColumnDateField[];
+  periodName?: PlatformCore.SearchColumnStringField[];
+  periodStartDate?: PlatformCore.SearchColumnDateField[];
+  toCurrency?: PlatformCore.SearchColumnStringField[];
+  toSubsidiary?: PlatformCore.SearchColumnStringField[];
+};
 
 export class ConsolidatedExchangeRateSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnStringField[];
@@ -3843,7 +5775,7 @@ export class ConsolidatedExchangeRateSearchRowBasic extends PlatformCore.SearchR
   periodStartDate?: PlatformCore.SearchColumnDateField[];
   toCurrency?: PlatformCore.SearchColumnStringField[];
   toSubsidiary?: PlatformCore.SearchColumnStringField[];
-  constructor(props: ConsolidatedExchangeRateSearchRowBasic) {
+  constructor(props: ConsolidatedExchangeRateSearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.averageRate = props.averageRate;
@@ -3862,13 +5794,21 @@ export class ConsolidatedExchangeRateSearchRowBasic extends PlatformCore.SearchR
   }
 }
 
+export type JobTypeSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class JobTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   parent?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: JobTypeSearchRowBasic) {
+  constructor(props: JobTypeSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -3877,6 +5817,17 @@ export class JobTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.parent = props.parent;
   }
 }
+
+export type PriceLevelSearchBasicProps = {
+  discountPct?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isOnline?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
 
 export class PriceLevelSearchBasic extends PlatformCore.SearchRecordBasic {
   discountPct?: PlatformCore.SearchDoubleField;
@@ -3887,7 +5838,7 @@ export class PriceLevelSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   isOnline?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: PriceLevelSearchBasic) {
+  constructor(props: PriceLevelSearchBasicProps) {
     super();
     this.discountPct = props.discountPct;
     this.externalId = props.externalId;
@@ -3899,6 +5850,24 @@ export class PriceLevelSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type ItemSupplyPlanSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  orderCreated?: PlatformCore.SearchColumnBooleanField[];
+  orderDate?: PlatformCore.SearchColumnDateField[];
+  orderType?: PlatformCore.SearchColumnSelectField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+  quantityUom?: PlatformCore.SearchColumnDoubleField[];
+  receiptDate?: PlatformCore.SearchColumnDateField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  units?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ItemSupplyPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -3916,7 +5885,7 @@ export class ItemSupplyPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   units?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ItemSupplyPlanSearchRowBasic) {
+  constructor(props: ItemSupplyPlanSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -3935,6 +5904,39 @@ export class ItemSupplyPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ManufacturingOperationTaskSearchRowBasicProps = {
+  actualRunTime?: PlatformCore.SearchColumnDoubleField[];
+  actualSetupTime?: PlatformCore.SearchColumnDoubleField[];
+  completedQuantity?: PlatformCore.SearchColumnDoubleField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  estimatedWork?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  inputQuantity?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  laborResources?: PlatformCore.SearchColumnDoubleField[];
+  lagAmount?: PlatformCore.SearchColumnDoubleField[];
+  lagType?: PlatformCore.SearchColumnEnumSelectField[];
+  lagUnits?: PlatformCore.SearchColumnStringField[];
+  machineResources?: PlatformCore.SearchColumnDoubleField[];
+  manufacturingCostTemplate?: PlatformCore.SearchColumnSelectField[];
+  manufacturingWorkCenter?: PlatformCore.SearchColumnSelectField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  order?: PlatformCore.SearchColumnDoubleField[];
+  predecessor?: PlatformCore.SearchColumnSelectField[];
+  predecessorType?: PlatformCore.SearchColumnStringField[];
+  remainingQuantity?: PlatformCore.SearchColumnDoubleField[];
+  runRate?: PlatformCore.SearchColumnDoubleField[];
+  runTime?: PlatformCore.SearchColumnDoubleField[];
+  sequence?: PlatformCore.SearchColumnLongField[];
+  setupTime?: PlatformCore.SearchColumnDoubleField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnSelectField[];
+  workOrder?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ManufacturingOperationTaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   actualRunTime?: PlatformCore.SearchColumnDoubleField[];
@@ -3967,7 +5969,7 @@ export class ManufacturingOperationTaskSearchRowBasic extends PlatformCore.Searc
   status?: PlatformCore.SearchColumnSelectField[];
   workOrder?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ManufacturingOperationTaskSearchRowBasic) {
+  constructor(props: ManufacturingOperationTaskSearchRowBasicProps) {
     super();
     this.actualRunTime = props.actualRunTime;
     this.actualSetupTime = props.actualSetupTime;
@@ -4001,6 +6003,88 @@ export class ManufacturingOperationTaskSearchRowBasic extends PlatformCore.Searc
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ContactSearchRowBasicProps = {
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  availableOffline?: PlatformCore.SearchColumnBooleanField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  contactRole?: PlatformCore.SearchColumnSelectField[];
+  contactSource?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  hasDuplicates?: PlatformCore.SearchColumnBooleanField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ContactSearchRowBasic extends PlatformCore.SearchRowBasic {
   address?: PlatformCore.SearchColumnStringField[];
@@ -4082,7 +6166,7 @@ export class ContactSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ContactSearchRowBasic) {
+  constructor(props: ContactSearchRowBasicProps) {
     super();
     this.address = props.address;
     this.address1 = props.address1;
@@ -4166,6 +6250,17 @@ export class ContactSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CostCategorySearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  itemCostType?: PlatformCore.SearchEnumMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class CostCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -4175,7 +6270,7 @@ export class CostCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   itemCostType?: PlatformCore.SearchEnumMultiSelectField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: CostCategorySearchBasic) {
+  constructor(props: CostCategorySearchBasicProps) {
     super();
     this.account = props.account;
     this.externalId = props.externalId;
@@ -4187,6 +6282,23 @@ export class CostCategorySearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type BomRevisionComponentSearchBasicProps = {
+  bomQuantity?: PlatformCore.SearchDoubleField;
+  bomRevision?: PlatformCore.SearchMultiSelectField;
+  componentYield?: PlatformCore.SearchDoubleField;
+  description?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  itemSource?: PlatformCore.SearchEnumMultiSelectField;
+  itemSubtype?: PlatformCore.SearchStringField;
+  itemType?: PlatformCore.SearchMultiSelectField;
+  lineId?: PlatformCore.SearchLongField;
+  quantity?: PlatformCore.SearchDoubleField;
+  units?: PlatformCore.SearchStringField;
+  weight?: PlatformCore.SearchDoubleField;
+};
 
 export class BomRevisionComponentSearchBasic extends PlatformCore.SearchRecordBasic {
   bomQuantity?: PlatformCore.SearchDoubleField;
@@ -4203,7 +6315,7 @@ export class BomRevisionComponentSearchBasic extends PlatformCore.SearchRecordBa
   quantity?: PlatformCore.SearchDoubleField;
   units?: PlatformCore.SearchStringField;
   weight?: PlatformCore.SearchDoubleField;
-  constructor(props: BomRevisionComponentSearchBasic) {
+  constructor(props: BomRevisionComponentSearchBasicProps) {
     super();
     this.bomQuantity = props.bomQuantity;
     this.bomRevision = props.bomRevision;
@@ -4221,6 +6333,97 @@ export class BomRevisionComponentSearchBasic extends PlatformCore.SearchRecordBa
     this.weight = props.weight;
   }
 }
+
+export type PartnerSearchRowBasicProps = {
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  assignTasks?: PlatformCore.SearchColumnBooleanField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnStringField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  companyName?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  eligibleForCommission?: PlatformCore.SearchColumnBooleanField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  emailPreference?: PlatformCore.SearchColumnEnumSelectField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  hasDuplicates?: PlatformCore.SearchColumnBooleanField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isPerson?: PlatformCore.SearchColumnBooleanField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  partnerCode?: PlatformCore.SearchColumnStringField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  promoCode?: PlatformCore.SearchColumnStringField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class PartnerSearchRowBasic extends PlatformCore.SearchRowBasic {
   address?: PlatformCore.SearchColumnStringField[];
@@ -4311,7 +6514,7 @@ export class PartnerSearchRowBasic extends PlatformCore.SearchRowBasic {
   url?: PlatformCore.SearchColumnStringField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: PartnerSearchRowBasic) {
+  constructor(props: PartnerSearchRowBasicProps) {
     super();
     this.address = props.address;
     this.address1 = props.address1;
@@ -4404,18 +6607,206 @@ export class PartnerSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type LandedCostSummaryProps = {
+  category?: PlatformCore.RecordRef;
+  amount?: number;
+  source?: PlatformCommonTypes.LandedCostSource;
+  transaction?: PlatformCore.RecordRef;
+};
+
 export class LandedCostSummary {
   category?: PlatformCore.RecordRef;
   amount?: number;
   source?: PlatformCommonTypes.LandedCostSource;
   transaction?: PlatformCore.RecordRef;
-  constructor(props: LandedCostSummary) {
+  constructor(props: LandedCostSummaryProps) {
     this.category = props.category;
     this.amount = props.amount;
     this.source = props.source;
     this.transaction = props.transaction;
   }
 }
+
+export type OriginatingLeadSearchRowBasicProps = {
+  accountNumber?: PlatformCore.SearchColumnStringField[];
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  altContact?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  assignedSite?: PlatformCore.SearchColumnSelectField[];
+  assignedSiteId?: PlatformCore.SearchColumnLongField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  availableOffline?: PlatformCore.SearchColumnBooleanField[];
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  buyingReason?: PlatformCore.SearchColumnStringField[];
+  buyingTimeFrame?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  ccCustomerCode?: PlatformCore.SearchColumnStringField[];
+  ccDefault?: PlatformCore.SearchColumnBooleanField[];
+  ccExpDate?: PlatformCore.SearchColumnDateField[];
+  ccHolderName?: PlatformCore.SearchColumnStringField[];
+  ccInternalId?: PlatformCore.SearchColumnStringField[];
+  ccNumber?: PlatformCore.SearchColumnStringField[];
+  ccState?: PlatformCore.SearchColumnSelectField[];
+  ccStateFrom?: PlatformCore.SearchColumnDateField[];
+  ccType?: PlatformCore.SearchColumnSelectField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  companyName?: PlatformCore.SearchColumnStringField[];
+  consolBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolDaysOverdue?: PlatformCore.SearchColumnLongField[];
+  consolDepositBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolOverdueBalance?: PlatformCore.SearchColumnDoubleField[];
+  consolUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  contact?: PlatformCore.SearchColumnStringField[];
+  contribution?: PlatformCore.SearchColumnDoubleField[];
+  contributionPrimary?: PlatformCore.SearchColumnDoubleField[];
+  conversionDate?: PlatformCore.SearchColumnDateField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  creditHold?: PlatformCore.SearchColumnEnumSelectField[];
+  creditHoldOverride?: PlatformCore.SearchColumnBooleanField[];
+  creditLimit?: PlatformCore.SearchColumnDoubleField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  dateClosed?: PlatformCore.SearchColumnDateField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  daysOverdue?: PlatformCore.SearchColumnLongField[];
+  defaultOrderPriority?: PlatformCore.SearchColumnDoubleField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  depositBalance?: PlatformCore.SearchColumnDoubleField[];
+  drAccount?: PlatformCore.SearchColumnStringField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  emailPreference?: PlatformCore.SearchColumnEnumSelectField[];
+  emailTransactions?: PlatformCore.SearchColumnBooleanField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  entityStatus?: PlatformCore.SearchColumnSelectField[];
+  estimatedBudget?: PlatformCore.SearchColumnDoubleField[];
+  explicitConversion?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  faxTransactions?: PlatformCore.SearchColumnBooleanField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  firstOrderDate?: PlatformCore.SearchColumnDateField[];
+  firstSaleDate?: PlatformCore.SearchColumnDateField[];
+  fxAccount?: PlatformCore.SearchColumnStringField[];
+  fxBalance?: PlatformCore.SearchColumnDoubleField[];
+  fxConsolBalance?: PlatformCore.SearchColumnDoubleField[];
+  fxConsolUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  fxUnbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  groupPricingLevel?: PlatformCore.SearchColumnStringField[];
+  hasDuplicates?: PlatformCore.SearchColumnBooleanField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isBudgetApproved?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isPerson?: PlatformCore.SearchColumnBooleanField[];
+  isShipAddress?: PlatformCore.SearchColumnBooleanField[];
+  itemPricingLevel?: PlatformCore.SearchColumnStringField[];
+  itemPricingUnitPrice?: PlatformCore.SearchColumnDoubleField[];
+  jobEndDate?: PlatformCore.SearchColumnDateField[];
+  jobProjectedEnd?: PlatformCore.SearchColumnDateField[];
+  jobStartDate?: PlatformCore.SearchColumnDateField[];
+  jobType?: PlatformCore.SearchColumnSelectField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  lastOrderDate?: PlatformCore.SearchColumnDateField[];
+  lastSaleDate?: PlatformCore.SearchColumnDateField[];
+  leadDate?: PlatformCore.SearchColumnDateField[];
+  leadSource?: PlatformCore.SearchColumnSelectField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  manualCreditHold?: PlatformCore.SearchColumnBooleanField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  monthlyClosing?: PlatformCore.SearchColumnEnumSelectField[];
+  onCreditHold?: PlatformCore.SearchColumnBooleanField[];
+  overdueBalance?: PlatformCore.SearchColumnDoubleField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  partner?: PlatformCore.SearchColumnSelectField[];
+  partnerContribution?: PlatformCore.SearchColumnDoubleField[];
+  partnerRole?: PlatformCore.SearchColumnStringField[];
+  partnerTeamMember?: PlatformCore.SearchColumnSelectField[];
+  pec?: PlatformCore.SearchColumnStringField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  prefCCProcessor?: PlatformCore.SearchColumnSelectField[];
+  priceLevel?: PlatformCore.SearchColumnSelectField[];
+  pricingGroup?: PlatformCore.SearchColumnStringField[];
+  pricingItem?: PlatformCore.SearchColumnStringField[];
+  printTransactions?: PlatformCore.SearchColumnBooleanField[];
+  prospectDate?: PlatformCore.SearchColumnDateField[];
+  receivablesAccount?: PlatformCore.SearchColumnStringField[];
+  reminderDays?: PlatformCore.SearchColumnLongField[];
+  resaleNumber?: PlatformCore.SearchColumnStringField[];
+  role?: PlatformCore.SearchColumnStringField[];
+  salesReadiness?: PlatformCore.SearchColumnStringField[];
+  salesRep?: PlatformCore.SearchColumnSelectField[];
+  salesTeamMember?: PlatformCore.SearchColumnSelectField[];
+  salesTeamRole?: PlatformCore.SearchColumnSelectField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipComplete?: PlatformCore.SearchColumnBooleanField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shippingItem?: PlatformCore.SearchColumnSelectField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  sourceSite?: PlatformCore.SearchColumnSelectField[];
+  sourceSiteId?: PlatformCore.SearchColumnLongField[];
+  stage?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  state?: PlatformCore.SearchColumnEnumSelectField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  taxable?: PlatformCore.SearchColumnBooleanField[];
+  taxItem?: PlatformCore.SearchColumnSelectField[];
+  terms?: PlatformCore.SearchColumnSelectField[];
+  territory?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  unbilledOrders?: PlatformCore.SearchColumnDoubleField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  vatRegNumber?: PlatformCore.SearchColumnStringField[];
+  webLead?: PlatformCore.SearchColumnBooleanField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class OriginatingLeadSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountNumber?: PlatformCore.SearchColumnStringField[];
@@ -4596,7 +6987,7 @@ export class OriginatingLeadSearchRowBasic extends PlatformCore.SearchRowBasic {
   webLead?: PlatformCore.SearchColumnBooleanField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: OriginatingLeadSearchRowBasic) {
+  constructor(props: OriginatingLeadSearchRowBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -4779,6 +7170,32 @@ export class OriginatingLeadSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ProjectTaskAssignmentSearchBasicProps = {
+  actualWork?: PlatformCore.SearchDoubleField;
+  cost?: PlatformCore.SearchDoubleField;
+  costBase?: PlatformCore.SearchDoubleField;
+  endDate?: PlatformCore.SearchDateField;
+  estimatedWork?: PlatformCore.SearchDoubleField;
+  estimatedWorkBaseline?: PlatformCore.SearchDoubleField;
+  grossProfit?: PlatformCore.SearchDoubleField;
+  grossProfitBase?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  price?: PlatformCore.SearchDoubleField;
+  priceBase?: PlatformCore.SearchDoubleField;
+  resource?: PlatformCore.SearchMultiSelectField;
+  resourceName?: PlatformCore.SearchStringField;
+  serviceItem?: PlatformCore.SearchStringField;
+  serviceItemDesc?: PlatformCore.SearchStringField;
+  startDate?: PlatformCore.SearchDateField;
+  unitCost?: PlatformCore.SearchDoubleField;
+  unitCostBase?: PlatformCore.SearchDoubleField;
+  unitPrice?: PlatformCore.SearchDoubleField;
+  unitPriceBase?: PlatformCore.SearchDoubleField;
+  units?: PlatformCore.SearchDoubleField;
+  workCalendar?: PlatformCore.SearchMultiSelectField;
+};
+
 export class ProjectTaskAssignmentSearchBasic extends PlatformCore.SearchRecordBasic {
   actualWork?: PlatformCore.SearchDoubleField;
   cost?: PlatformCore.SearchDoubleField;
@@ -4803,7 +7220,7 @@ export class ProjectTaskAssignmentSearchBasic extends PlatformCore.SearchRecordB
   unitPriceBase?: PlatformCore.SearchDoubleField;
   units?: PlatformCore.SearchDoubleField;
   workCalendar?: PlatformCore.SearchMultiSelectField;
-  constructor(props: ProjectTaskAssignmentSearchBasic) {
+  constructor(props: ProjectTaskAssignmentSearchBasicProps) {
     super();
     this.actualWork = props.actualWork;
     this.cost = props.cost;
@@ -4830,6 +7247,42 @@ export class ProjectTaskAssignmentSearchBasic extends PlatformCore.SearchRecordB
     this.workCalendar = props.workCalendar;
   }
 }
+
+export type TimeBillSearchBasicProps = {
+  approvalStatus?: PlatformCore.SearchMultiSelectField;
+  approved?: PlatformCore.SearchBooleanField;
+  billable?: PlatformCore.SearchBooleanField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  date?: PlatformCore.SearchDateField;
+  dateCreated?: PlatformCore.SearchDateField;
+  department?: PlatformCore.SearchMultiSelectField;
+  duration?: PlatformCore.SearchDoubleField;
+  employee?: PlatformCore.SearchMultiSelectField;
+  exempt?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModified?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  paidByPayroll?: PlatformCore.SearchBooleanField;
+  paidExternally?: PlatformCore.SearchBooleanField;
+  payItem?: PlatformCore.SearchMultiSelectField;
+  productive?: PlatformCore.SearchBooleanField;
+  rejectionNote?: PlatformCore.SearchStringField;
+  status?: PlatformCore.SearchBooleanField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  temporaryLocalJurisdiction?: PlatformCore.SearchMultiSelectField;
+  temporaryStateJurisdiction?: PlatformCore.SearchMultiSelectField;
+  timeModified?: PlatformCore.SearchBooleanField;
+  timeSheet?: PlatformCore.SearchMultiSelectField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  utilized?: PlatformCore.SearchBooleanField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class TimeBillSearchBasic extends PlatformCore.SearchRecordBasic {
   approvalStatus?: PlatformCore.SearchMultiSelectField;
@@ -4865,7 +7318,7 @@ export class TimeBillSearchBasic extends PlatformCore.SearchRecordBasic {
   type?: PlatformCore.SearchEnumMultiSelectField;
   utilized?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: TimeBillSearchBasic) {
+  constructor(props: TimeBillSearchBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this.approved = props.approved;
@@ -4903,12 +7356,19 @@ export class TimeBillSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ItemBinNumberSearchBasicProps = {
+  binNumber?: PlatformCore.SearchMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  quantityAvailable?: PlatformCore.SearchDoubleField;
+  quantityOnHand?: PlatformCore.SearchDoubleField;
+};
+
 export class ItemBinNumberSearchBasic extends PlatformCore.SearchRecordBasic {
   binNumber?: PlatformCore.SearchMultiSelectField;
   location?: PlatformCore.SearchMultiSelectField;
   quantityAvailable?: PlatformCore.SearchDoubleField;
   quantityOnHand?: PlatformCore.SearchDoubleField;
-  constructor(props: ItemBinNumberSearchBasic) {
+  constructor(props: ItemBinNumberSearchBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.location = props.location;
@@ -4916,6 +7376,26 @@ export class ItemBinNumberSearchBasic extends PlatformCore.SearchRecordBasic {
     this.quantityOnHand = props.quantityOnHand;
   }
 }
+
+export type FileSearchBasicProps = {
+  availableWithoutLogin?: PlatformCore.SearchBooleanField;
+  created?: PlatformCore.SearchDateField;
+  dateViewed?: PlatformCore.SearchDateField;
+  description?: PlatformCore.SearchStringField;
+  documentSize?: PlatformCore.SearchLongField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fileType?: PlatformCore.SearchEnumMultiSelectField;
+  folder?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isAvailable?: PlatformCore.SearchBooleanField;
+  isLink?: PlatformCore.SearchBooleanField;
+  modified?: PlatformCore.SearchDateField;
+  name?: PlatformCore.SearchStringField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  url?: PlatformCore.SearchStringField;
+};
 
 export class FileSearchBasic extends PlatformCore.SearchRecordBasic {
   availableWithoutLogin?: PlatformCore.SearchBooleanField;
@@ -4935,7 +7415,7 @@ export class FileSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   owner?: PlatformCore.SearchMultiSelectField;
   url?: PlatformCore.SearchStringField;
-  constructor(props: FileSearchBasic) {
+  constructor(props: FileSearchBasicProps) {
     super();
     this.availableWithoutLogin = props.availableWithoutLogin;
     this.created = props.created;
@@ -4957,12 +7437,19 @@ export class FileSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type WinLossReasonSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class WinLossReasonSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: WinLossReasonSearchRowBasic) {
+  constructor(props: WinLossReasonSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -4970,6 +7457,153 @@ export class WinLossReasonSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type EmployeeSearchRowBasicProps = {
+  accountNumber?: PlatformCore.SearchColumnStringField[];
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  alienNumber?: PlatformCore.SearchColumnStringField[];
+  allocation?: PlatformCore.SearchColumnDoubleField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  approvalLimit?: PlatformCore.SearchColumnDoubleField[];
+  approver?: PlatformCore.SearchColumnSelectField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  authWorkDate?: PlatformCore.SearchColumnDateField[];
+  baseWage?: PlatformCore.SearchColumnDoubleField[];
+  baseWageType?: PlatformCore.SearchEnumMultiSelectField[];
+  billAddress?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billingClass?: PlatformCore.SearchColumnSelectField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  birthDate?: PlatformCore.SearchColumnDateField[];
+  birthDay?: PlatformCore.SearchColumnDateField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  compensationCurrency?: PlatformCore.SearchColumnEnumSelectField[];
+  concurrentWebServicesUser?: PlatformCore.SearchColumnBooleanField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultAcctCorpCardExp?: PlatformCore.SearchColumnSelectField[];
+  defaultExpenseReportCurrency?: PlatformCore.SearchColumnSelectField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  eligibleForCommission?: PlatformCore.SearchColumnBooleanField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  employeeStatus?: PlatformCore.SearchColumnSelectField[];
+  employeeType?: PlatformCore.SearchColumnSelectField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  ethnicity?: PlatformCore.SearchColumnSelectField[];
+  expenseLimit?: PlatformCore.SearchColumnDoubleField[];
+  expenseReportCurrency?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  firstName?: PlatformCore.SearchColumnStringField[];
+  gender?: PlatformCore.SearchColumnEnumSelectField[];
+  giveAccess?: PlatformCore.SearchColumnBooleanField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  hireDate?: PlatformCore.SearchColumnDateField[];
+  homePhone?: PlatformCore.SearchColumnStringField[];
+  i9Verified?: PlatformCore.SearchColumnBooleanField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isJobResource?: PlatformCore.SearchColumnBooleanField[];
+  isSalesRep?: PlatformCore.SearchColumnBooleanField[];
+  isSupportRep?: PlatformCore.SearchColumnBooleanField[];
+  isTemplate?: PlatformCore.SearchColumnBooleanField[];
+  job?: PlatformCore.SearchColumnSelectField[];
+  laborCost?: PlatformCore.SearchColumnDoubleField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastName?: PlatformCore.SearchColumnStringField[];
+  lastPaidDate?: PlatformCore.SearchColumnDateField[];
+  lastReviewDate?: PlatformCore.SearchColumnDateField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  maritalStatus?: PlatformCore.SearchColumnSelectField[];
+  middleName?: PlatformCore.SearchColumnStringField[];
+  mobilePhone?: PlatformCore.SearchColumnStringField[];
+  nextReviewDate?: PlatformCore.SearchColumnDateField[];
+  offlineAccess?: PlatformCore.SearchColumnBooleanField[];
+  payFrequency?: PlatformCore.SearchColumnEnumSelectField[];
+  permChangeDate?: PlatformCore.SearchColumnDateField[];
+  permChangeLevel?: PlatformCore.SearchColumnStringField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  permissionChange?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  positionTitle?: PlatformCore.SearchColumnStringField[];
+  primaryEarningAmount?: PlatformCore.SearchColumnDoubleField[];
+  primaryEarningItem?: PlatformCore.SearchColumnStringField[];
+  primaryEarningType?: PlatformCore.SearchColumnStringField[];
+  purchaseOrderApprovalLimit?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderApprover?: PlatformCore.SearchColumnSelectField[];
+  purchaseOrderLimit?: PlatformCore.SearchColumnDoubleField[];
+  releaseDate?: PlatformCore.SearchColumnDateField[];
+  residentStatus?: PlatformCore.SearchColumnSelectField[];
+  role?: PlatformCore.SearchColumnSelectField[];
+  roleChange?: PlatformCore.SearchColumnStringField[];
+  roleChangeAction?: PlatformCore.SearchColumnStringField[];
+  roleChangeDate?: PlatformCore.SearchColumnDateField[];
+  salesRole?: PlatformCore.SearchColumnSelectField[];
+  salutation?: PlatformCore.SearchColumnStringField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  socialSecurityNumber?: PlatformCore.SearchColumnStringField[];
+  startDateTimeOffCalc?: PlatformCore.SearchColumnDateField[];
+  state?: PlatformCore.SearchColumnEnumSelectField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  supervisor?: PlatformCore.SearchColumnSelectField[];
+  terminationCategory?: PlatformCore.SearchColumnEnumSelectField[];
+  terminationDetails?: PlatformCore.SearchColumnStringField[];
+  terminationReason?: PlatformCore.SearchColumnSelectField[];
+  terminationRegretted?: PlatformCore.SearchColumnEnumSelectField[];
+  timeApprover?: PlatformCore.SearchColumnSelectField[];
+  timeOffPlan?: PlatformCore.SearchColumnStringField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  usePerquest?: PlatformCore.SearchColumnBooleanField[];
+  useTimeData?: PlatformCore.SearchColumnBooleanField[];
+  visaExpDate?: PlatformCore.SearchColumnDateField[];
+  visaType?: PlatformCore.SearchColumnSelectField[];
+  workCalendar?: PlatformCore.SearchColumnStringField[];
+  workplace?: PlatformCore.SearchColumnSelectField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class EmployeeSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountNumber?: PlatformCore.SearchColumnStringField[];
@@ -5116,7 +7750,7 @@ export class EmployeeSearchRowBasic extends PlatformCore.SearchRowBasic {
   workplace?: PlatformCore.SearchColumnSelectField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: EmployeeSearchRowBasic) {
+  constructor(props: EmployeeSearchRowBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -5265,6 +7899,24 @@ export class EmployeeSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type GlobalAccountMappingSearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  customDimension?: PlatformCore.SearchMultiSelectCustomField;
+  department?: PlatformCore.SearchMultiSelectField;
+  destinationAccount?: PlatformCore.SearchMultiSelectField;
+  effectiveDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  location?: PlatformCore.SearchMultiSelectField;
+  sourceAccount?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class GlobalAccountMappingSearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
   clazz?: PlatformCore.SearchMultiSelectField;
@@ -5281,7 +7933,7 @@ export class GlobalAccountMappingSearchBasic extends PlatformCore.SearchRecordBa
   sourceAccount?: PlatformCore.SearchMultiSelectField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: GlobalAccountMappingSearchBasic) {
+  constructor(props: GlobalAccountMappingSearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
@@ -5301,13 +7953,21 @@ export class GlobalAccountMappingSearchBasic extends PlatformCore.SearchRecordBa
   }
 }
 
+export type NoteTypeSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class NoteTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: NoteTypeSearchRowBasic) {
+  constructor(props: NoteTypeSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -5316,6 +7976,28 @@ export class NoteTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type AccountSearchRowBasicProps = {
+  accountingContext?: PlatformCore.SearchColumnStringField[];
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  cashFlowRateType?: PlatformCore.SearchColumnEnumSelectField[];
+  category1099Misc?: PlatformCore.SearchColumnSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  generalRateType?: PlatformCore.SearchColumnEnumSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  legalName?: PlatformCore.SearchColumnStringField[];
+  locale?: PlatformCore.SearchColumnStringField[];
+  localizedLegalName?: PlatformCore.SearchColumnStringField[];
+  localizedName?: PlatformCore.SearchColumnStringField[];
+  localizedNumber?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  number?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class AccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingContext?: PlatformCore.SearchColumnStringField[];
@@ -5337,7 +8019,7 @@ export class AccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: AccountSearchRowBasic) {
+  constructor(props: AccountSearchRowBasicProps) {
     super();
     this.accountingContext = props.accountingContext;
     this.balance = props.balance;
@@ -5361,6 +8043,20 @@ export class AccountSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type NexusSearchBasicProps = {
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  parentNexus?: PlatformCore.SearchMultiSelectField;
+  state?: PlatformCore.SearchMultiSelectField;
+  taxAgency?: PlatformCore.SearchMultiSelectField;
+  taxDateFromFulfillment?: PlatformCore.SearchBooleanField;
+};
+
 export class NexusSearchBasic extends PlatformCore.SearchRecordBasic {
   country?: PlatformCore.SearchEnumMultiSelectField;
   description?: PlatformCore.SearchStringField;
@@ -5373,7 +8069,7 @@ export class NexusSearchBasic extends PlatformCore.SearchRecordBasic {
   state?: PlatformCore.SearchMultiSelectField;
   taxAgency?: PlatformCore.SearchMultiSelectField;
   taxDateFromFulfillment?: PlatformCore.SearchBooleanField;
-  constructor(props: NexusSearchBasic) {
+  constructor(props: NexusSearchBasicProps) {
     super();
     this.country = props.country;
     this.description = props.description;
@@ -5389,15 +8085,104 @@ export class NexusSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InventoryDetailProps = {
+  inventoryAssignmentList?: InventoryAssignmentList;
+  customForm?: PlatformCore.RecordRef;
+} & PlatformCore.RecordProps;
+
 export class InventoryDetail extends PlatformCore.Record {
   inventoryAssignmentList?: InventoryAssignmentList;
   customForm?: PlatformCore.RecordRef;
-  constructor(props: InventoryDetail) {
+  constructor(props: InventoryDetailProps) {
     super(props);
     this.inventoryAssignmentList = props.inventoryAssignmentList;
     this.customForm = props.customForm;
   }
 }
+
+export type VendorSearchBasicProps = {
+  accountNumber?: PlatformCore.SearchStringField;
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  attention?: PlatformCore.SearchStringField;
+  balance?: PlatformCore.SearchDoubleField;
+  billAddress?: PlatformCore.SearchStringField;
+  category?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  comments?: PlatformCore.SearchStringField;
+  contact?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  creditLimit?: PlatformCore.SearchDoubleField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  currentExchangeRate?: PlatformCore.SearchDoubleField;
+  dateCreated?: PlatformCore.SearchDateField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  eligibleForCommission?: PlatformCore.SearchBooleanField;
+  email?: PlatformCore.SearchStringField;
+  emailPreference?: PlatformCore.SearchEnumMultiSelectField;
+  emailTransactions?: PlatformCore.SearchBooleanField;
+  entityId?: PlatformCore.SearchStringField;
+  expenseAccount?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  faxTransactions?: PlatformCore.SearchBooleanField;
+  firstName?: PlatformCore.SearchStringField;
+  fxBalance?: PlatformCore.SearchDoubleField;
+  fxUnbilledOrders?: PlatformCore.SearchDoubleField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  hasDuplicates?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  incoterm?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  is1099Eligible?: PlatformCore.SearchBooleanField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isJobResourceVend?: PlatformCore.SearchBooleanField;
+  isPerson?: PlatformCore.SearchBooleanField;
+  laborCost?: PlatformCore.SearchDoubleField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  otherRelationships?: PlatformCore.SearchEnumMultiSelectField;
+  payablesAccount?: PlatformCore.SearchMultiSelectField;
+  pec?: PlatformCore.SearchStringField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  predConfidence?: PlatformCore.SearchDoubleField;
+  predictedDays?: PlatformCore.SearchDoubleField;
+  printTransactions?: PlatformCore.SearchBooleanField;
+  purchaseOrderAmount?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantity?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantityDiff?: PlatformCore.SearchDoubleField;
+  receiptAmount?: PlatformCore.SearchDoubleField;
+  receiptQuantity?: PlatformCore.SearchDoubleField;
+  receiptQuantityDiff?: PlatformCore.SearchDoubleField;
+  salutation?: PlatformCore.SearchStringField;
+  shipAddress?: PlatformCore.SearchStringField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxIdNum?: PlatformCore.SearchStringField;
+  timeApprover?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  unbilledOrders?: PlatformCore.SearchDoubleField;
+  url?: PlatformCore.SearchStringField;
+  vatRegNumber?: PlatformCore.SearchStringField;
+  workCalendar?: PlatformCore.SearchMultiSelectField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class VendorSearchBasic extends PlatformCore.SearchRecordBasic {
   accountNumber?: PlatformCore.SearchStringField;
@@ -5481,7 +8266,7 @@ export class VendorSearchBasic extends PlatformCore.SearchRecordBasic {
   workCalendar?: PlatformCore.SearchMultiSelectField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: VendorSearchBasic) {
+  constructor(props: VendorSearchBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -5567,6 +8352,31 @@ export class VendorSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ProjectTaskAssignmentSearchRowBasicProps = {
+  actualWork?: PlatformCore.SearchColumnDoubleField[];
+  cost?: PlatformCore.SearchColumnDoubleField[];
+  costBase?: PlatformCore.SearchColumnDoubleField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  estimatedWork?: PlatformCore.SearchColumnDoubleField[];
+  estimatedWorkBaseline?: PlatformCore.SearchColumnDoubleField[];
+  grossProfit?: PlatformCore.SearchColumnDoubleField[];
+  grossProfitBase?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  price?: PlatformCore.SearchColumnDoubleField[];
+  priceBase?: PlatformCore.SearchColumnDoubleField[];
+  resource?: PlatformCore.SearchColumnSelectField[];
+  resourceName?: PlatformCore.SearchColumnStringField[];
+  serviceItem?: PlatformCore.SearchColumnStringField[];
+  serviceItemDesc?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  unitCost?: PlatformCore.SearchColumnDoubleField[];
+  unitCostBase?: PlatformCore.SearchColumnDoubleField[];
+  unitPrice?: PlatformCore.SearchColumnDoubleField[];
+  unitPriceBase?: PlatformCore.SearchColumnDoubleField[];
+  units?: PlatformCore.SearchColumnDoubleField[];
+  workCalendar?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class ProjectTaskAssignmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   actualWork?: PlatformCore.SearchColumnDoubleField[];
   cost?: PlatformCore.SearchColumnDoubleField[];
@@ -5590,7 +8400,7 @@ export class ProjectTaskAssignmentSearchRowBasic extends PlatformCore.SearchRowB
   unitPriceBase?: PlatformCore.SearchColumnDoubleField[];
   units?: PlatformCore.SearchColumnDoubleField[];
   workCalendar?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: ProjectTaskAssignmentSearchRowBasic) {
+  constructor(props: ProjectTaskAssignmentSearchRowBasicProps) {
     super();
     this.actualWork = props.actualWork;
     this.cost = props.cost;
@@ -5617,6 +8427,15 @@ export class ProjectTaskAssignmentSearchRowBasic extends PlatformCore.SearchRowB
   }
 }
 
+export type WinLossReasonSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class WinLossReasonSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -5624,7 +8443,7 @@ export class WinLossReasonSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: WinLossReasonSearchBasic) {
+  constructor(props: WinLossReasonSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -5634,6 +8453,19 @@ export class WinLossReasonSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type UsageSearchRowBasicProps = {
+  customer?: PlatformCore.SearchColumnSelectField[];
+  date?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionLine?: PlatformCore.SearchColumnSelectField[];
+  subscriptionPlan?: PlatformCore.SearchColumnSelectField[];
+};
 
 export class UsageSearchRowBasic extends PlatformCore.SearchRowBasic {
   customer?: PlatformCore.SearchColumnSelectField[];
@@ -5646,7 +8478,7 @@ export class UsageSearchRowBasic extends PlatformCore.SearchRowBasic {
   subscription?: PlatformCore.SearchColumnSelectField[];
   subscriptionLine?: PlatformCore.SearchColumnSelectField[];
   subscriptionPlan?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: UsageSearchRowBasic) {
+  constructor(props: UsageSearchRowBasicProps) {
     super();
     this.customer = props.customer;
     this.date = props.date;
@@ -5661,6 +8493,16 @@ export class UsageSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type PartnerCategorySearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  parent?: PlatformCore.SearchMultiSelectField;
+};
+
 export class PartnerCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -5669,7 +8511,7 @@ export class PartnerCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   parent?: PlatformCore.SearchMultiSelectField;
-  constructor(props: PartnerCategorySearchBasic) {
+  constructor(props: PartnerCategorySearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -5680,6 +8522,24 @@ export class PartnerCategorySearchBasic extends PlatformCore.SearchRecordBasic {
     this.parent = props.parent;
   }
 }
+
+export type InventoryNumberSearchBasicProps = {
+  expirationDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  inventoryNumber?: PlatformCore.SearchStringField;
+  isOnHand?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  quantityAvailable?: PlatformCore.SearchDoubleField;
+  quantityInTransit?: PlatformCore.SearchDoubleField;
+  quantityOnHand?: PlatformCore.SearchDoubleField;
+  quantityOnOrder?: PlatformCore.SearchDoubleField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class InventoryNumberSearchBasic extends PlatformCore.SearchRecordBasic {
   expirationDate?: PlatformCore.SearchDateField;
@@ -5697,7 +8557,7 @@ export class InventoryNumberSearchBasic extends PlatformCore.SearchRecordBasic {
   quantityOnHand?: PlatformCore.SearchDoubleField;
   quantityOnOrder?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: InventoryNumberSearchBasic) {
+  constructor(props: InventoryNumberSearchBasicProps) {
     super();
     this.expirationDate = props.expirationDate;
     this.externalId = props.externalId;
@@ -5716,6 +8576,39 @@ export class InventoryNumberSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type RevRecScheduleSearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  amorStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  amorTemplate?: PlatformCore.SearchColumnStringField[];
+  amortizedAmount?: PlatformCore.SearchColumnDoubleField[];
+  amorType?: PlatformCore.SearchColumnEnumSelectField[];
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  currency?: PlatformCore.SearchColumnStringField[];
+  deferredAmount?: PlatformCore.SearchColumnDoubleField[];
+  destAcct?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  initialAmt?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isRecognized?: PlatformCore.SearchColumnBooleanField[];
+  jeDoc?: PlatformCore.SearchColumnStringField[];
+  lineSequenceNumber?: PlatformCore.SearchColumnLongField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameUrl?: PlatformCore.SearchColumnStringField[];
+  pctComplete?: PlatformCore.SearchColumnDoubleField[];
+  pctRecognition?: PlatformCore.SearchColumnDoubleField[];
+  periodOffset?: PlatformCore.SearchColumnLongField[];
+  recurAmount?: PlatformCore.SearchColumnDoubleField[];
+  recurFxAmount?: PlatformCore.SearchColumnDoubleField[];
+  schedDate?: PlatformCore.SearchColumnDateField[];
+  scheduleNumber?: PlatformCore.SearchColumnStringField[];
+  sourceAcct?: PlatformCore.SearchColumnStringField[];
+  srcDocLine?: PlatformCore.SearchColumnStringField[];
+  srcTran?: PlatformCore.SearchColumnStringField[];
+  srcTranPostPeriod?: PlatformCore.SearchColumnStringField[];
+  startOffset?: PlatformCore.SearchColumnLongField[];
+  useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
+};
 
 export class RevRecScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnSelectField[];
@@ -5748,7 +8641,7 @@ export class RevRecScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   srcTranPostPeriod?: PlatformCore.SearchColumnStringField[];
   startOffset?: PlatformCore.SearchColumnLongField[];
   useForeignAmounts?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: RevRecScheduleSearchRowBasic) {
+  constructor(props: RevRecScheduleSearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.amorStatus = props.amorStatus;
@@ -5783,13 +8676,26 @@ export class RevRecScheduleSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type LandedCostProps = {
+  landedCostDataList?: LandedCostDataList;
+} & PlatformCore.RecordProps;
+
 export class LandedCost extends PlatformCore.Record {
   landedCostDataList?: LandedCostDataList;
-  constructor(props: LandedCost) {
+  constructor(props: LandedCostProps) {
     super(props);
     this.landedCostDataList = props.landedCostDataList;
   }
 }
+
+export type CostCategorySearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  itemCostType?: PlatformCore.SearchColumnEnumSelectField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
 
 export class CostCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnSelectField[];
@@ -5798,7 +8704,7 @@ export class CostCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   itemCostType?: PlatformCore.SearchColumnEnumSelectField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: CostCategorySearchRowBasic) {
+  constructor(props: CostCategorySearchRowBasicProps) {
     super();
     this.account = props.account;
     this.externalId = props.externalId;
@@ -5808,6 +8714,22 @@ export class CostCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type SiteCategorySearchRowBasicProps = {
+  dateViewed?: PlatformCore.SearchColumnDateField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  excludeFromSitemap?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fullName?: PlatformCore.SearchColumnStringField[];
+  hidden?: PlatformCore.SearchColumnBooleanField[];
+  hits?: PlatformCore.SearchColumnLongField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  longDescription?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  pageTitle?: PlatformCore.SearchColumnStringField[];
+  sitemapPriority?: PlatformCore.SearchColumnEnumSelectField[];
+  urlComponent?: PlatformCore.SearchColumnStringField[];
+};
 
 export class SiteCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   dateViewed?: PlatformCore.SearchColumnDateField[];
@@ -5823,7 +8745,7 @@ export class SiteCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   pageTitle?: PlatformCore.SearchColumnStringField[];
   sitemapPriority?: PlatformCore.SearchColumnEnumSelectField[];
   urlComponent?: PlatformCore.SearchColumnStringField[];
-  constructor(props: SiteCategorySearchRowBasic) {
+  constructor(props: SiteCategorySearchRowBasicProps) {
     super();
     this.dateViewed = props.dateViewed;
     this.description = props.description;
@@ -5841,6 +8763,15 @@ export class SiteCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerCategorySearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class CustomerCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -5848,7 +8779,7 @@ export class CustomerCategorySearchBasic extends PlatformCore.SearchRecordBasic 
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: CustomerCategorySearchBasic) {
+  constructor(props: CustomerCategorySearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -5858,6 +8789,50 @@ export class CustomerCategorySearchBasic extends PlatformCore.SearchRecordBasic 
     this.name = props.name;
   }
 }
+
+export type CampaignSearchRowBasicProps = {
+  audience?: PlatformCore.SearchColumnSelectField[];
+  baseCost?: PlatformCore.SearchColumnDoubleField[];
+  campaignId?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  channel?: PlatformCore.SearchColumnSelectField[];
+  cost?: PlatformCore.SearchColumnDoubleField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  event?: PlatformCore.SearchColumnStringField[];
+  executedDate?: PlatformCore.SearchColumnDateField[];
+  expectedRevenue?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  family?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isSalesCampaign?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  keyword?: PlatformCore.SearchColumnStringField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  managerRole?: PlatformCore.SearchColumnSelectField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  offer?: PlatformCore.SearchColumnSelectField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  promoCode?: PlatformCore.SearchColumnStringField[];
+  recipient?: PlatformCore.SearchColumnSelectField[];
+  response?: PlatformCore.SearchColumnEnumSelectField[];
+  responseCategory?: PlatformCore.SearchColumnEnumSelectField[];
+  responseCode?: PlatformCore.SearchColumnLongField[];
+  responseDate?: PlatformCore.SearchColumnDateField[];
+  responseNotes?: PlatformCore.SearchColumnStringField[];
+  revenue?: PlatformCore.SearchColumnDoubleField[];
+  roi?: PlatformCore.SearchColumnDoubleField[];
+  scheduledDate?: PlatformCore.SearchColumnDateField[];
+  searchEngine?: PlatformCore.SearchColumnSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  vertical?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class CampaignSearchRowBasic extends PlatformCore.SearchRowBasic {
   audience?: PlatformCore.SearchColumnSelectField[];
@@ -5901,7 +8876,7 @@ export class CampaignSearchRowBasic extends PlatformCore.SearchRowBasic {
   url?: PlatformCore.SearchColumnStringField[];
   vertical?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: CampaignSearchRowBasic) {
+  constructor(props: CampaignSearchRowBasicProps) {
     super();
     this.audience = props.audience;
     this.baseCost = props.baseCost;
@@ -5947,6 +8922,19 @@ export class CampaignSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type PayrollItemSearchRowBasicProps = {
+  expenseAccount?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  itemTypeNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  liabilityAccount?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnStringField[];
+  vendor?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class PayrollItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   expenseAccount?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -5958,7 +8946,7 @@ export class PayrollItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnStringField[];
   vendor?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: PayrollItemSearchRowBasic) {
+  constructor(props: PayrollItemSearchRowBasicProps) {
     super();
     this.expenseAccount = props.expenseAccount;
     this.externalId = props.externalId;
@@ -5973,6 +8961,19 @@ export class PayrollItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type TimeSheetSearchBasicProps = {
+  approvalStatus?: PlatformCore.SearchMultiSelectField;
+  employee?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  id?: PlatformCore.SearchLongField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  timeSheetDate?: PlatformCore.SearchDateField;
+  totalHours?: PlatformCore.SearchDoubleField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class TimeSheetSearchBasic extends PlatformCore.SearchRecordBasic {
   approvalStatus?: PlatformCore.SearchMultiSelectField;
   employee?: PlatformCore.SearchMultiSelectField;
@@ -5984,7 +8985,7 @@ export class TimeSheetSearchBasic extends PlatformCore.SearchRecordBasic {
   timeSheetDate?: PlatformCore.SearchDateField;
   totalHours?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: TimeSheetSearchBasic) {
+  constructor(props: TimeSheetSearchBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this.employee = props.employee;
@@ -5999,6 +9000,20 @@ export class TimeSheetSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type TaxDetailsProps = {
+  taxDetailsReference?: string;
+  lineType?: string;
+  lineName?: string;
+  netAmount?: number;
+  grossAmount?: number;
+  taxType?: PlatformCore.RecordRef;
+  taxCode?: PlatformCore.RecordRef;
+  taxBasis?: number;
+  taxRate?: number;
+  taxAmount?: number;
+  calcDetail?: string;
+};
+
 export class TaxDetails {
   taxDetailsReference?: string;
   lineType?: string;
@@ -6011,7 +9026,7 @@ export class TaxDetails {
   taxRate?: number;
   taxAmount?: number;
   calcDetail?: string;
-  constructor(props: TaxDetails) {
+  constructor(props: TaxDetailsProps) {
     this.taxDetailsReference = props.taxDetailsReference;
     this.lineType = props.lineType;
     this.lineName = props.lineName;
@@ -6026,12 +9041,25 @@ export class TaxDetails {
   }
 }
 
+export type RecurrenceDowMaskListProps = {
+  recurrenceDowMask: PlatformCommonTypes.RecurrenceDow[];
+};
+
 export class RecurrenceDowMaskList {
   recurrenceDowMask: PlatformCommonTypes.RecurrenceDow[];
-  constructor(props: RecurrenceDowMaskList) {
+  constructor(props: RecurrenceDowMaskListProps) {
     this.recurrenceDowMask = props.recurrenceDowMask;
   }
 }
+
+export type PriceLevelSearchRowBasicProps = {
+  discountPct?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isOnline?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
 
 export class PriceLevelSearchRowBasic extends PlatformCore.SearchRowBasic {
   discountPct?: PlatformCore.SearchColumnDoubleField[];
@@ -6040,7 +9068,7 @@ export class PriceLevelSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   isOnline?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: PriceLevelSearchRowBasic) {
+  constructor(props: PriceLevelSearchRowBasicProps) {
     super();
     this.discountPct = props.discountPct;
     this.externalId = props.externalId;
@@ -6050,6 +9078,46 @@ export class PriceLevelSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type MseSubsidiarySearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  accountingBookCurrency?: PlatformCore.SearchMultiSelectField;
+  address?: PlatformCore.SearchStringField;
+  city?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  effectiveFrom?: PlatformCore.SearchDateField;
+  email?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isElimination?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  legalName?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  nameNoHierarchy?: PlatformCore.SearchStringField;
+  nexus?: PlatformCore.SearchMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  primary?: PlatformCore.SearchBooleanField;
+  purchaseOrderAmount?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantity?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantityDiff?: PlatformCore.SearchDoubleField;
+  receiptAmount?: PlatformCore.SearchDoubleField;
+  receiptQuantity?: PlatformCore.SearchDoubleField;
+  receiptQuantityDiff?: PlatformCore.SearchDoubleField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxEngine?: PlatformCore.SearchMultiSelectField;
+  taxIdNum?: PlatformCore.SearchStringField;
+  taxRegistrationNumber?: PlatformCore.SearchStringField;
+  tranPrefix?: PlatformCore.SearchStringField;
+  url?: PlatformCore.SearchStringField;
+  validUntil?: PlatformCore.SearchDateField;
+  zip?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class MseSubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -6089,7 +9157,7 @@ export class MseSubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   validUntil?: PlatformCore.SearchDateField;
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: MseSubsidiarySearchBasic) {
+  constructor(props: MseSubsidiarySearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
@@ -6131,6 +9199,27 @@ export class MseSubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type FairValuePriceSearchBasicProps = {
+  currency?: PlatformCore.SearchMultiSelectField;
+  endDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fairValue?: PlatformCore.SearchDoubleField;
+  fairValueFormula?: PlatformCore.SearchMultiSelectField;
+  fairValueRangePolicy?: PlatformCore.SearchEnumMultiSelectField;
+  highValue?: PlatformCore.SearchDoubleField;
+  highValuePercent?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isVsoePrice?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  itemRevenueCategory?: PlatformCore.SearchMultiSelectField;
+  lowValue?: PlatformCore.SearchDoubleField;
+  lowValuePercent?: PlatformCore.SearchDoubleField;
+  startDate?: PlatformCore.SearchDateField;
+  unitsType?: PlatformCore.SearchMultiSelectField;
+};
+
 export class FairValuePriceSearchBasic extends PlatformCore.SearchRecordBasic {
   currency?: PlatformCore.SearchMultiSelectField;
   endDate?: PlatformCore.SearchDateField;
@@ -6150,7 +9239,7 @@ export class FairValuePriceSearchBasic extends PlatformCore.SearchRecordBasic {
   lowValuePercent?: PlatformCore.SearchDoubleField;
   startDate?: PlatformCore.SearchDateField;
   unitsType?: PlatformCore.SearchMultiSelectField;
-  constructor(props: FairValuePriceSearchBasic) {
+  constructor(props: FairValuePriceSearchBasicProps) {
     super();
     this.currency = props.currency;
     this.endDate = props.endDate;
@@ -6173,6 +9262,27 @@ export class FairValuePriceSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type EntityGroupSearchRowBasicProps = {
+  email?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  groupName?: PlatformCore.SearchColumnStringField[];
+  groupType?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDynamic?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isManufacturingWorkCenter?: PlatformCore.SearchColumnBooleanField[];
+  isPrivate?: PlatformCore.SearchColumnBooleanField[];
+  laborResources?: PlatformCore.SearchColumnDoubleField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  machineResources?: PlatformCore.SearchColumnDoubleField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  savedSearch?: PlatformCore.SearchColumnStringField[];
+  size?: PlatformCore.SearchColumnLongField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  workCalendar?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class EntityGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   email?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -6192,7 +9302,7 @@ export class EntityGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   workCalendar?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: EntityGroupSearchRowBasic) {
+  constructor(props: EntityGroupSearchRowBasicProps) {
     super();
     this.email = props.email;
     this.externalId = props.externalId;
@@ -6215,6 +9325,16 @@ export class EntityGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type SalesTaxItemSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  itemId?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  taxType?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class SalesTaxItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -6223,7 +9343,7 @@ export class SalesTaxItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   itemId?: PlatformCore.SearchColumnStringField[];
   name?: PlatformCore.SearchColumnStringField[];
   taxType?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: SalesTaxItemSearchRowBasic) {
+  constructor(props: SalesTaxItemSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -6235,12 +9355,19 @@ export class SalesTaxItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type PricingGroupSearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class PricingGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: PricingGroupSearchRowBasic) {
+  constructor(props: PricingGroupSearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -6248,6 +9375,69 @@ export class PricingGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type IssueSearchBasicProps = {
+  ageInMonths?: PlatformCore.SearchLongField;
+  assigned?: PlatformCore.SearchMultiSelectField;
+  buildBroken?: PlatformCore.SearchMultiSelectField;
+  buildBrokenName?: PlatformCore.SearchStringField;
+  buildFixed?: PlatformCore.SearchMultiSelectField;
+  buildFixedName?: PlatformCore.SearchStringField;
+  buildTarget?: PlatformCore.SearchMultiSelectField;
+  buildTargetName?: PlatformCore.SearchStringField;
+  caseCount?: PlatformCore.SearchLongField;
+  caseNumber?: PlatformCore.SearchStringField;
+  closedDate?: PlatformCore.SearchDateField;
+  createdDate?: PlatformCore.SearchDateField;
+  dateReleased?: PlatformCore.SearchDateField;
+  details?: PlatformCore.SearchStringField;
+  duplicateOf?: PlatformCore.SearchMultiSelectField;
+  eFix?: PlatformCore.SearchBooleanField;
+  employeeOrTeam?: PlatformCore.SearchMultiSelectField;
+  eventStatus?: PlatformCore.SearchEnumMultiSelectField;
+  externalAbstract?: PlatformCore.SearchStringField;
+  externalDetails?: PlatformCore.SearchStringField;
+  externalFixedIn?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  externalStatus?: PlatformCore.SearchMultiSelectField;
+  fixed?: PlatformCore.SearchDateField;
+  fixedBy?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isOwner?: PlatformCore.SearchBooleanField;
+  isReviewed?: PlatformCore.SearchBooleanField;
+  isShowStopper?: PlatformCore.SearchBooleanField;
+  issueAbstract?: PlatformCore.SearchStringField;
+  issueNumber?: PlatformCore.SearchStringField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  module?: PlatformCore.SearchMultiSelectField;
+  number?: PlatformCore.SearchLongField;
+  originalFixedIn?: PlatformCore.SearchStringField;
+  priority?: PlatformCore.SearchMultiSelectField;
+  product?: PlatformCore.SearchMultiSelectField;
+  productTeam?: PlatformCore.SearchMultiSelectField;
+  relatedIssue?: PlatformCore.SearchMultiSelectField;
+  relationship?: PlatformCore.SearchEnumMultiSelectField;
+  relationshipComment?: PlatformCore.SearchStringField;
+  reportedBy?: PlatformCore.SearchMultiSelectField;
+  reproduce?: PlatformCore.SearchMultiSelectField;
+  resolved?: PlatformCore.SearchDateField;
+  resolvedBy?: PlatformCore.SearchMultiSelectField;
+  reviewer?: PlatformCore.SearchMultiSelectField;
+  severity?: PlatformCore.SearchMultiSelectField;
+  source?: PlatformCore.SearchEnumMultiSelectField;
+  status?: PlatformCore.SearchMultiSelectField;
+  tags?: PlatformCore.SearchMultiSelectField;
+  tracking?: PlatformCore.SearchBooleanField;
+  type?: PlatformCore.SearchMultiSelectField;
+  userType?: PlatformCore.SearchMultiSelectField;
+  versionBroken?: PlatformCore.SearchMultiSelectField;
+  versionFixed?: PlatformCore.SearchMultiSelectField;
+  versionTarget?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class IssueSearchBasic extends PlatformCore.SearchRecordBasic {
   ageInMonths?: PlatformCore.SearchLongField;
@@ -6310,7 +9500,7 @@ export class IssueSearchBasic extends PlatformCore.SearchRecordBasic {
   versionFixed?: PlatformCore.SearchMultiSelectField;
   versionTarget?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: IssueSearchBasic) {
+  constructor(props: IssueSearchBasicProps) {
     super();
     this.ageInMonths = props.ageInMonths;
     this.assigned = props.assigned;
@@ -6375,6 +9565,18 @@ export class IssueSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CustomerStatusSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  includeInLeadReports?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  probability?: PlatformCore.SearchDoubleField;
+};
+
 export class CustomerStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -6385,7 +9587,7 @@ export class CustomerStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   probability?: PlatformCore.SearchDoubleField;
-  constructor(props: CustomerStatusSearchBasic) {
+  constructor(props: CustomerStatusSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -6398,6 +9600,128 @@ export class CustomerStatusSearchBasic extends PlatformCore.SearchRecordBasic {
     this.probability = props.probability;
   }
 }
+
+export type EmployeeSearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  alienNumber?: PlatformCore.SearchStringField;
+  allocation?: PlatformCore.SearchDoubleField;
+  anniversary?: PlatformCore.SearchDateField;
+  approvalLimit?: PlatformCore.SearchDoubleField;
+  approver?: PlatformCore.SearchMultiSelectField;
+  attention?: PlatformCore.SearchStringField;
+  authWorkDate?: PlatformCore.SearchDateField;
+  baseWage?: PlatformCore.SearchDoubleField;
+  baseWageType?: PlatformCore.SearchEnumMultiSelectField;
+  billAddress?: PlatformCore.SearchStringField;
+  billingClass?: PlatformCore.SearchMultiSelectField;
+  birthDate?: PlatformCore.SearchDateField;
+  birthDay?: PlatformCore.SearchDateField;
+  cContribution?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  comments?: PlatformCore.SearchStringField;
+  commissionPlan?: PlatformCore.SearchMultiSelectField;
+  compensationCurrency?: PlatformCore.SearchEnumMultiSelectField;
+  concurrentWebServicesUser?: PlatformCore.SearchBooleanField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  dateCreated?: PlatformCore.SearchDateField;
+  deduction?: PlatformCore.SearchMultiSelectField;
+  defaultAcctCorpCardExp?: PlatformCore.SearchMultiSelectField;
+  defaultExpenseReportCurrency?: PlatformCore.SearchMultiSelectField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  department?: PlatformCore.SearchMultiSelectField;
+  earning?: PlatformCore.SearchMultiSelectField;
+  education?: PlatformCore.SearchMultiSelectField;
+  eligibleForCommission?: PlatformCore.SearchBooleanField;
+  email?: PlatformCore.SearchStringField;
+  employeeStatus?: PlatformCore.SearchMultiSelectField;
+  employeeType?: PlatformCore.SearchMultiSelectField;
+  employeeTypeKpi?: PlatformCore.SearchBooleanField;
+  entityId?: PlatformCore.SearchStringField;
+  ethnicity?: PlatformCore.SearchMultiSelectField;
+  expenseLimit?: PlatformCore.SearchDoubleField;
+  expenseReportCurrency?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  firstName?: PlatformCore.SearchStringField;
+  gender?: PlatformCore.SearchEnumMultiSelectField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  hireDate?: PlatformCore.SearchDateField;
+  i9Verified?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isJobResource?: PlatformCore.SearchBooleanField;
+  isTemplate?: PlatformCore.SearchBooleanField;
+  job?: PlatformCore.SearchMultiSelectField;
+  jobDescription?: PlatformCore.SearchStringField;
+  laborCost?: PlatformCore.SearchDoubleField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  lastPaidDate?: PlatformCore.SearchDateField;
+  lastReviewDate?: PlatformCore.SearchDateField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  maritalStatus?: PlatformCore.SearchMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  nextReviewDate?: PlatformCore.SearchDateField;
+  offlineAccess?: PlatformCore.SearchBooleanField;
+  payFrequency?: PlatformCore.SearchEnumMultiSelectField;
+  permChangeDate?: PlatformCore.SearchDateField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  permissionChange?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  positionTitle?: PlatformCore.SearchMultiSelectField;
+  primaryEarningAmount?: PlatformCore.SearchDoubleField;
+  primaryEarningItem?: PlatformCore.SearchStringField;
+  primaryEarningType?: PlatformCore.SearchStringField;
+  purchaseOrderApprovalLimit?: PlatformCore.SearchDoubleField;
+  purchaseOrderApprover?: PlatformCore.SearchMultiSelectField;
+  purchaseOrderLimit?: PlatformCore.SearchDoubleField;
+  releaseDate?: PlatformCore.SearchDateField;
+  residentStatus?: PlatformCore.SearchMultiSelectField;
+  role?: PlatformCore.SearchMultiSelectField;
+  roleChange?: PlatformCore.SearchMultiSelectField;
+  roleChangeDate?: PlatformCore.SearchDateField;
+  salesRep?: PlatformCore.SearchBooleanField;
+  salesRole?: PlatformCore.SearchMultiSelectField;
+  salutation?: PlatformCore.SearchStringField;
+  socialSecurityNumber?: PlatformCore.SearchStringField;
+  startDateTimeOffCalc?: PlatformCore.SearchDateField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  supervisor?: PlatformCore.SearchMultiSelectField;
+  supportRep?: PlatformCore.SearchBooleanField;
+  terminationCategory?: PlatformCore.SearchEnumMultiSelectField;
+  terminationDetails?: PlatformCore.SearchStringField;
+  terminationReason?: PlatformCore.SearchMultiSelectField;
+  terminationRegretted?: PlatformCore.SearchEnumMultiSelectField;
+  timeApprover?: PlatformCore.SearchMultiSelectField;
+  timeOffPlan?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  usePerquest?: PlatformCore.SearchBooleanField;
+  useTimeData?: PlatformCore.SearchBooleanField;
+  visaExpDate?: PlatformCore.SearchDateField;
+  visaType?: PlatformCore.SearchMultiSelectField;
+  withholding?: PlatformCore.SearchMultiSelectField;
+  workCalendar?: PlatformCore.SearchMultiSelectField;
+  workplace?: PlatformCore.SearchMultiSelectField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class EmployeeSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
@@ -6519,7 +9843,7 @@ export class EmployeeSearchBasic extends PlatformCore.SearchRecordBasic {
   workplace?: PlatformCore.SearchMultiSelectField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: EmployeeSearchBasic) {
+  constructor(props: EmployeeSearchBasicProps) {
     super();
     this.address = props.address;
     this.addressee = props.addressee;
@@ -6643,18 +9967,50 @@ export class EmployeeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type PartnersProps = {
+  partner?: PlatformCore.RecordRef;
+  partnerRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
+
 export class Partners {
   partner?: PlatformCore.RecordRef;
   partnerRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: Partners) {
+  constructor(props: PartnersProps) {
     this.partner = props.partner;
     this.partnerRole = props.partnerRole;
     this.isPrimary = props.isPrimary;
     this.contribution = props.contribution;
   }
 }
+
+export type TaxGroupSearchBasicProps = {
+  city?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  includeChildren?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefault?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  itemId?: PlatformCore.SearchStringField;
+  piggyBack?: PlatformCore.SearchBooleanField;
+  rate?: PlatformCore.SearchDoubleField;
+  state?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxItem1?: PlatformCore.SearchMultiSelectField;
+  taxItem2?: PlatformCore.SearchMultiSelectField;
+  taxType?: PlatformCore.SearchMultiSelectField;
+  unitPrice1?: PlatformCore.SearchDoubleField;
+  unitPrice2?: PlatformCore.SearchDoubleField;
+  zip?: PlatformCore.SearchStringField;
+};
 
 export class TaxGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   city?: PlatformCore.SearchStringField;
@@ -6679,7 +10035,7 @@ export class TaxGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   unitPrice1?: PlatformCore.SearchDoubleField;
   unitPrice2?: PlatformCore.SearchDoubleField;
   zip?: PlatformCore.SearchStringField;
-  constructor(props: TaxGroupSearchBasic) {
+  constructor(props: TaxGroupSearchBasicProps) {
     super();
     this.city = props.city;
     this.country = props.country;
@@ -6705,6 +10061,44 @@ export class TaxGroupSearchBasic extends PlatformCore.SearchRecordBasic {
     this.zip = props.zip;
   }
 }
+
+export type SupportCaseSearchRowBasicProps = {
+  assigned?: PlatformCore.SearchColumnSelectField[];
+  awaitingReply?: PlatformCore.SearchColumnBooleanField[];
+  caseNumber?: PlatformCore.SearchColumnStringField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  contact?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  customerStage?: PlatformCore.SearchColumnEnumSelectField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  escalatee?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  helpDesk?: PlatformCore.SearchColumnBooleanField[];
+  inboundEmail?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  issue?: PlatformCore.SearchColumnSelectField[];
+  issueNumber?: PlatformCore.SearchColumnStringField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  lastMessageDate?: PlatformCore.SearchColumnDateField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  lastReopenedDate?: PlatformCore.SearchColumnDateField[];
+  locked?: PlatformCore.SearchColumnBooleanField[];
+  module?: PlatformCore.SearchColumnSelectField[];
+  origin?: PlatformCore.SearchColumnSelectField[];
+  priority?: PlatformCore.SearchColumnSelectField[];
+  product?: PlatformCore.SearchColumnSelectField[];
+  profile?: PlatformCore.SearchColumnSelectField[];
+  serialNumber?: PlatformCore.SearchColumnStringField[];
+  stage?: PlatformCore.SearchColumnEnumSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class SupportCaseSearchRowBasic extends PlatformCore.SearchRowBasic {
   assigned?: PlatformCore.SearchColumnSelectField[];
@@ -6742,7 +10136,7 @@ export class SupportCaseSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: SupportCaseSearchRowBasic) {
+  constructor(props: SupportCaseSearchRowBasicProps) {
     super();
     this.assigned = props.assigned;
     this.awaitingReply = props.awaitingReply;
@@ -6782,6 +10176,29 @@ export class SupportCaseSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type FolderSearchBasicProps = {
+  clazz?: PlatformCore.SearchMultiSelectField;
+  department?: PlatformCore.SearchMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  group?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isTopLevel?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  numFiles?: PlatformCore.SearchLongField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  predecessor?: PlatformCore.SearchMultiSelectField;
+  _private?: PlatformCore.SearchBooleanField;
+  size?: PlatformCore.SearchLongField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+};
+
 export class FolderSearchBasic extends PlatformCore.SearchRecordBasic {
   clazz?: PlatformCore.SearchMultiSelectField;
   department?: PlatformCore.SearchMultiSelectField;
@@ -6803,7 +10220,7 @@ export class FolderSearchBasic extends PlatformCore.SearchRecordBasic {
   _private?: PlatformCore.SearchBooleanField;
   size?: PlatformCore.SearchLongField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
-  constructor(props: FolderSearchBasic) {
+  constructor(props: FolderSearchBasicProps) {
     super();
     this.clazz = props.clazz;
     this.department = props.department;
@@ -6827,6 +10244,122 @@ export class FolderSearchBasic extends PlatformCore.SearchRecordBasic {
     this.subsidiary = props.subsidiary;
   }
 }
+
+export type JobSearchRowBasicProps = {
+  accountNumber?: PlatformCore.SearchColumnStringField[];
+  actualTime?: PlatformCore.SearchColumnDoubleField[];
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  addressInternalId?: PlatformCore.SearchColumnStringField[];
+  addressLabel?: PlatformCore.SearchColumnStringField[];
+  addressPhone?: PlatformCore.SearchColumnStringField[];
+  allocatePayrollExpenses?: PlatformCore.SearchColumnBooleanField[];
+  allowAllResourcesForTasks?: PlatformCore.SearchColumnBooleanField[];
+  allowExpenses?: PlatformCore.SearchColumnBooleanField[];
+  allowTime?: PlatformCore.SearchColumnBooleanField[];
+  altContact?: PlatformCore.SearchColumnStringField[];
+  altEmail?: PlatformCore.SearchColumnStringField[];
+  altName?: PlatformCore.SearchColumnStringField[];
+  altPhone?: PlatformCore.SearchColumnStringField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  billAddress1?: PlatformCore.SearchColumnStringField[];
+  billAddress2?: PlatformCore.SearchColumnStringField[];
+  billAddress3?: PlatformCore.SearchColumnStringField[];
+  billAddressee?: PlatformCore.SearchColumnStringField[];
+  billAttention?: PlatformCore.SearchColumnStringField[];
+  billCity?: PlatformCore.SearchColumnStringField[];
+  billCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  billCountryCode?: PlatformCore.SearchColumnStringField[];
+  billingSchedule?: PlatformCore.SearchColumnSelectField[];
+  billPhone?: PlatformCore.SearchColumnStringField[];
+  billState?: PlatformCore.SearchColumnStringField[];
+  billZipCode?: PlatformCore.SearchColumnStringField[];
+  calculatedEndDate?: PlatformCore.SearchColumnDateField[];
+  calculatedEndDateBaseline?: PlatformCore.SearchColumnDateField[];
+  category?: PlatformCore.SearchColumnSelectField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  comments?: PlatformCore.SearchColumnStringField[];
+  companyName?: PlatformCore.SearchColumnStringField[];
+  contact?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  defaultTaxReg?: PlatformCore.SearchColumnStringField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  entityId?: PlatformCore.SearchColumnStringField[];
+  entityNumber?: PlatformCore.SearchColumnLongField[];
+  entityStatus?: PlatformCore.SearchColumnSelectField[];
+  estimatedCost?: PlatformCore.SearchColumnDoubleField[];
+  estimatedGrossProfit?: PlatformCore.SearchColumnDoubleField[];
+  estimatedGrossProfitPercent?: PlatformCore.SearchColumnDoubleField[];
+  estimatedLaborCost?: PlatformCore.SearchColumnDoubleField[];
+  estimatedLaborCostBaseline?: PlatformCore.SearchColumnDoubleField[];
+  estimatedLaborRevenue?: PlatformCore.SearchColumnDoubleField[];
+  estimatedRevenue?: PlatformCore.SearchColumnDoubleField[];
+  estimatedTime?: PlatformCore.SearchColumnDoubleField[];
+  estimatedTimeOverride?: PlatformCore.SearchColumnDoubleField[];
+  estimatedTimeOverrideBaseline?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  globalSubscriptionStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  image?: PlatformCore.SearchColumnSelectField[];
+  includeCrmTasksInTotals?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefaultBilling?: PlatformCore.SearchColumnBooleanField[];
+  isDefaultShipping?: PlatformCore.SearchColumnBooleanField[];
+  isExemptTime?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isProductiveTime?: PlatformCore.SearchColumnBooleanField[];
+  isUtilizedTime?: PlatformCore.SearchColumnBooleanField[];
+  jobBillingType?: PlatformCore.SearchColumnEnumSelectField[];
+  jobItem?: PlatformCore.SearchColumnSelectField[];
+  jobPrice?: PlatformCore.SearchColumnDoubleField[];
+  jobResource?: PlatformCore.SearchColumnSelectField[];
+  jobResourceRole?: PlatformCore.SearchColumnSelectField[];
+  language?: PlatformCore.SearchColumnEnumSelectField[];
+  lastBaselineDate?: PlatformCore.SearchColumnDateField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  level?: PlatformCore.SearchColumnEnumSelectField[];
+  limitTimeToAssignees?: PlatformCore.SearchColumnBooleanField[];
+  materializeTime?: PlatformCore.SearchColumnBooleanField[];
+  percentComplete?: PlatformCore.SearchColumnDoubleField[];
+  percentTimeComplete?: PlatformCore.SearchColumnDoubleField[];
+  permission?: PlatformCore.SearchColumnEnumSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  phoneticName?: PlatformCore.SearchColumnStringField[];
+  projectedEndDate?: PlatformCore.SearchColumnDateField[];
+  projectedEndDateBaseline?: PlatformCore.SearchColumnDateField[];
+  projectExpenseType?: PlatformCore.SearchColumnSelectField[];
+  revRecForecastRule?: PlatformCore.SearchColumnSelectField[];
+  shipAddress1?: PlatformCore.SearchColumnStringField[];
+  shipAddress2?: PlatformCore.SearchColumnStringField[];
+  shipAddress3?: PlatformCore.SearchColumnStringField[];
+  shipAddressee?: PlatformCore.SearchColumnStringField[];
+  shipAttention?: PlatformCore.SearchColumnStringField[];
+  shipCity?: PlatformCore.SearchColumnStringField[];
+  shipCountry?: PlatformCore.SearchColumnEnumSelectField[];
+  shipCountryCode?: PlatformCore.SearchColumnStringField[];
+  shipPhone?: PlatformCore.SearchColumnStringField[];
+  shipState?: PlatformCore.SearchColumnStringField[];
+  shipZip?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  startDateBaseline?: PlatformCore.SearchColumnDateField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  subscription?: PlatformCore.SearchColumnSelectField[];
+  subscriptionDate?: PlatformCore.SearchColumnDateField[];
+  subscriptionStatus?: PlatformCore.SearchColumnBooleanField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  timeApproval?: PlatformCore.SearchColumnSelectField[];
+  timeRemaining?: PlatformCore.SearchColumnDoubleField[];
+  usePercentCompleteOverride?: PlatformCore.SearchColumnBooleanField[];
+  zipCode?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class JobSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountNumber?: PlatformCore.SearchColumnStringField[];
@@ -6942,7 +10475,7 @@ export class JobSearchRowBasic extends PlatformCore.SearchRowBasic {
   usePercentCompleteOverride?: PlatformCore.SearchColumnBooleanField[];
   zipCode?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: JobSearchRowBasic) {
+  constructor(props: JobSearchRowBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.actualTime = props.actualTime;
@@ -7060,6 +10593,51 @@ export class JobSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type InboundShipmentSearchBasicProps = {
+  actualDeliveryDate?: PlatformCore.SearchDateField;
+  actualShippingDate?: PlatformCore.SearchDateField;
+  billOfLading?: PlatformCore.SearchStringField;
+  createdDate?: PlatformCore.SearchDateField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  expectedDeliveryDate?: PlatformCore.SearchDateField;
+  expectedRate?: PlatformCore.SearchDoubleField;
+  expectedShippingDate?: PlatformCore.SearchDateField;
+  externalDocumentNumber?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  incoterm?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  itemEffectiveDate?: PlatformCore.SearchDateField;
+  itemExchangeRate?: PlatformCore.SearchDoubleField;
+  landedCostAllocationMethod?: PlatformCore.SearchEnumMultiSelectField;
+  landedCostAmount?: PlatformCore.SearchDoubleField;
+  landedCostCostCategory?: PlatformCore.SearchMultiSelectField;
+  landedCostCurrency?: PlatformCore.SearchMultiSelectField;
+  landedCostEffectiveDate?: PlatformCore.SearchDateField;
+  landedCostExchangeRate?: PlatformCore.SearchDoubleField;
+  memo?: PlatformCore.SearchStringField;
+  poAmount?: PlatformCore.SearchDoubleField;
+  poRate?: PlatformCore.SearchDoubleField;
+  purchaseOrder?: PlatformCore.SearchMultiSelectField;
+  quantityBilled?: PlatformCore.SearchDoubleField;
+  quantityExpected?: PlatformCore.SearchDoubleField;
+  quantityReceived?: PlatformCore.SearchDoubleField;
+  quantityRemaining?: PlatformCore.SearchDoubleField;
+  receivingLocation?: PlatformCore.SearchMultiSelectField;
+  shipmentBaseCurrency?: PlatformCore.SearchMultiSelectField;
+  shipmentNumber?: PlatformCore.SearchMultiSelectField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  totalUnitCost?: PlatformCore.SearchDoubleField;
+  unit?: PlatformCore.SearchMultiSelectField;
+  unitLandedCost?: PlatformCore.SearchDoubleField;
+  vendor?: PlatformCore.SearchMultiSelectField;
+  vesselNumber?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class InboundShipmentSearchBasic extends PlatformCore.SearchRecordBasic {
   actualDeliveryDate?: PlatformCore.SearchDateField;
   actualShippingDate?: PlatformCore.SearchDateField;
@@ -7103,7 +10681,7 @@ export class InboundShipmentSearchBasic extends PlatformCore.SearchRecordBasic {
   vendor?: PlatformCore.SearchMultiSelectField;
   vesselNumber?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: InboundShipmentSearchBasic) {
+  constructor(props: InboundShipmentSearchBasicProps) {
     super();
     this.actualDeliveryDate = props.actualDeliveryDate;
     this.actualShippingDate = props.actualShippingDate;
@@ -7150,6 +10728,36 @@ export class InboundShipmentSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ChargeSearchBasicProps = {
+  amount?: PlatformCore.SearchDoubleField;
+  billingAccount?: PlatformCore.SearchMultiSelectField;
+  billingItem?: PlatformCore.SearchMultiSelectField;
+  billTo?: PlatformCore.SearchMultiSelectField;
+  chargeDate?: PlatformCore.SearchDateField;
+  chargeType?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  createdDate?: PlatformCore.SearchDateField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  department?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  location?: PlatformCore.SearchMultiSelectField;
+  modifiedDate?: PlatformCore.SearchDateField;
+  postingPeriod?: PlatformCore.RecordRef;
+  postingPeriodRelative?: PlatformCommonTypes.PostingPeriodDate;
+  quantity?: PlatformCore.SearchDoubleField;
+  rate?: PlatformCore.SearchDoubleField;
+  rule?: PlatformCore.SearchMultiSelectField;
+  runId?: PlatformCore.SearchStringField;
+  salesOrder?: PlatformCore.SearchLongField;
+  stage?: PlatformCore.SearchEnumMultiSelectField;
+  subscriptionLine?: PlatformCore.SearchMultiSelectField;
+  use?: PlatformCore.SearchEnumMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ChargeSearchBasic extends PlatformCore.SearchRecordBasic {
   amount?: PlatformCore.SearchDoubleField;
   billingAccount?: PlatformCore.SearchMultiSelectField;
@@ -7178,7 +10786,7 @@ export class ChargeSearchBasic extends PlatformCore.SearchRecordBasic {
   subscriptionLine?: PlatformCore.SearchMultiSelectField;
   use?: PlatformCore.SearchEnumMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ChargeSearchBasic) {
+  constructor(props: ChargeSearchBasicProps) {
     super();
     this.amount = props.amount;
     this.billingAccount = props.billingAccount;
@@ -7210,6 +10818,25 @@ export class ChargeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type MessageSearchBasicProps = {
+  author?: PlatformCore.SearchMultiSelectField;
+  authorEmail?: PlatformCore.SearchStringField;
+  bcc?: PlatformCore.SearchStringField;
+  cc?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  hasAttachment?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  internalOnly?: PlatformCore.SearchBooleanField;
+  message?: PlatformCore.SearchStringField;
+  messageDate?: PlatformCore.SearchDateField;
+  messageType?: PlatformCore.SearchEnumMultiSelectField;
+  recipient?: PlatformCore.SearchMultiSelectField;
+  recipientEmail?: PlatformCore.SearchStringField;
+  subject?: PlatformCore.SearchStringField;
+};
+
 export class MessageSearchBasic extends PlatformCore.SearchRecordBasic {
   author?: PlatformCore.SearchMultiSelectField;
   authorEmail?: PlatformCore.SearchStringField;
@@ -7227,7 +10854,7 @@ export class MessageSearchBasic extends PlatformCore.SearchRecordBasic {
   recipient?: PlatformCore.SearchMultiSelectField;
   recipientEmail?: PlatformCore.SearchStringField;
   subject?: PlatformCore.SearchStringField;
-  constructor(props: MessageSearchBasic) {
+  constructor(props: MessageSearchBasicProps) {
     super();
     this.author = props.author;
     this.authorEmail = props.authorEmail;
@@ -7248,6 +10875,16 @@ export class MessageSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type PaymentMethodSearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnSelectField[];
+  creditCard?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDebitCard?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class PaymentMethodSearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnSelectField[];
   creditCard?: PlatformCore.SearchColumnBooleanField[];
@@ -7256,7 +10893,7 @@ export class PaymentMethodSearchRowBasic extends PlatformCore.SearchRowBasic {
   isDebitCard?: PlatformCore.SearchColumnBooleanField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: PaymentMethodSearchRowBasic) {
+  constructor(props: PaymentMethodSearchRowBasicProps) {
     super();
     this.account = props.account;
     this.creditCard = props.creditCard;
@@ -7268,6 +10905,16 @@ export class PaymentMethodSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type TopicSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class TopicSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -7276,7 +10923,7 @@ export class TopicSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: TopicSearchBasic) {
+  constructor(props: TopicSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -7288,13 +10935,21 @@ export class TopicSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type JobStatusSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class JobStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: JobStatusSearchRowBasic) {
+  constructor(props: JobStatusSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -7304,6 +10959,15 @@ export class JobStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CurrencyRateSearchBasicProps = {
+  baseCurrency?: PlatformCore.SearchMultiSelectField;
+  effectiveDate?: PlatformCore.SearchDateField;
+  exchangeRate?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  transactionCurrency?: PlatformCore.SearchMultiSelectField;
+};
+
 export class CurrencyRateSearchBasic extends PlatformCore.SearchRecordBasic {
   baseCurrency?: PlatformCore.SearchMultiSelectField;
   effectiveDate?: PlatformCore.SearchDateField;
@@ -7311,7 +10975,7 @@ export class CurrencyRateSearchBasic extends PlatformCore.SearchRecordBasic {
   internalId?: PlatformCore.SearchMultiSelectField;
   internalIdNumber?: PlatformCore.SearchLongField;
   transactionCurrency?: PlatformCore.SearchMultiSelectField;
-  constructor(props: CurrencyRateSearchBasic) {
+  constructor(props: CurrencyRateSearchBasicProps) {
     super();
     this.baseCurrency = props.baseCurrency;
     this.effectiveDate = props.effectiveDate;
@@ -7322,14 +10986,47 @@ export class CurrencyRateSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type LandedCostDataProps = {
+  costCategory?: PlatformCore.RecordRef;
+  amount?: number;
+};
+
 export class LandedCostData {
   costCategory?: PlatformCore.RecordRef;
   amount?: number;
-  constructor(props: LandedCostData) {
+  constructor(props: LandedCostDataProps) {
     this.costCategory = props.costCategory;
     this.amount = props.amount;
   }
 }
+
+export type ChargeSearchRowBasicProps = {
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  billingAccount?: PlatformCore.SearchColumnSelectField[];
+  billingItem?: PlatformCore.SearchColumnSelectField[];
+  billTo?: PlatformCore.SearchColumnSelectField[];
+  chargeDate?: PlatformCore.SearchColumnDateField[];
+  chargeType?: PlatformCore.SearchColumnSelectField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  modifiedDate?: PlatformCore.SearchColumnDateField[];
+  postingPeriod?: PlatformCore.SearchColumnStringField[];
+  quantity?: PlatformCore.SearchColumnStringField[];
+  rate?: PlatformCore.SearchColumnStringField[];
+  rule?: PlatformCore.SearchColumnSelectField[];
+  runId?: PlatformCore.SearchColumnStringField[];
+  salesOrder?: PlatformCore.SearchColumnStringField[];
+  stage?: PlatformCore.SearchColumnEnumSelectField[];
+  subscriptionLine?: PlatformCore.SearchColumnSelectField[];
+  use?: PlatformCore.SearchColumnEnumSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ChargeSearchRowBasic extends PlatformCore.SearchRowBasic {
   amount?: PlatformCore.SearchColumnDoubleField[];
@@ -7357,7 +11054,7 @@ export class ChargeSearchRowBasic extends PlatformCore.SearchRowBasic {
   subscriptionLine?: PlatformCore.SearchColumnSelectField[];
   use?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ChargeSearchRowBasic) {
+  constructor(props: ChargeSearchRowBasicProps) {
     super();
     this.amount = props.amount;
     this.billingAccount = props.billingAccount;
@@ -7387,6 +11084,33 @@ export class ChargeSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ManufacturingRoutingSearchBasicProps = {
+  autoCalculateLag?: PlatformCore.SearchBooleanField;
+  billOfMaterials?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefault?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lagAmount?: PlatformCore.SearchDoubleField;
+  lagType?: PlatformCore.SearchEnumMultiSelectField;
+  lagUnits?: PlatformCore.SearchStringField;
+  location?: PlatformCore.SearchMultiSelectField;
+  manufacturingCostTemplate?: PlatformCore.SearchMultiSelectField;
+  manufacturingWorkCenter?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  operationName?: PlatformCore.SearchStringField;
+  operationYield?: PlatformCore.SearchDoubleField;
+  runRate?: PlatformCore.SearchDoubleField;
+  sequence?: PlatformCore.SearchLongField;
+  setupTime?: PlatformCore.SearchDoubleField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ManufacturingRoutingSearchBasic extends PlatformCore.SearchRecordBasic {
   autoCalculateLag?: PlatformCore.SearchBooleanField;
   billOfMaterials?: PlatformCore.SearchMultiSelectField;
@@ -7412,7 +11136,7 @@ export class ManufacturingRoutingSearchBasic extends PlatformCore.SearchRecordBa
   setupTime?: PlatformCore.SearchDoubleField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ManufacturingRoutingSearchBasic) {
+  constructor(props: ManufacturingRoutingSearchBasicProps) {
     super();
     this.autoCalculateLag = props.autoCalculateLag;
     this.billOfMaterials = props.billOfMaterials;
@@ -7440,6 +11164,74 @@ export class ManufacturingRoutingSearchBasic extends PlatformCore.SearchRecordBa
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type OpportunitySearchBasicProps = {
+  amount?: PlatformCore.SearchDoubleField;
+  availableOffline?: PlatformCore.SearchBooleanField;
+  buyingReason?: PlatformCore.SearchMultiSelectField;
+  buyingTimeFrame?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  closeDate?: PlatformCore.SearchDateField;
+  competitor?: PlatformCore.SearchMultiSelectField;
+  contribution?: PlatformCore.SearchLongField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  custType?: PlatformCore.SearchMultiSelectField;
+  dateCreated?: PlatformCore.SearchDateField;
+  daysOpen?: PlatformCore.SearchLongField;
+  daysToClose?: PlatformCore.SearchLongField;
+  department?: PlatformCore.SearchMultiSelectField;
+  entity?: PlatformCore.SearchMultiSelectField;
+  entityStatus?: PlatformCore.SearchMultiSelectField;
+  estimatedBudget?: PlatformCore.SearchDoubleField;
+  expectedCloseDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  forecastType?: PlatformCore.SearchEnumMultiSelectField;
+  foreignProjectedAmount?: PlatformCore.SearchDoubleField;
+  foreignRangeHigh?: PlatformCore.SearchDoubleField;
+  foreignRangeLow?: PlatformCore.SearchDoubleField;
+  fxTranCostEstimate?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isBudgetApproved?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  leadSource?: PlatformCore.SearchMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  number?: PlatformCore.SearchLongField;
+  partner?: PlatformCore.SearchMultiSelectField;
+  partnerContribution?: PlatformCore.SearchLongField;
+  partnerRole?: PlatformCore.SearchMultiSelectField;
+  partnerTeamMember?: PlatformCore.SearchMultiSelectField;
+  postingPeriod?: PlatformCore.RecordRef;
+  postingPeriodRelative?: PlatformCommonTypes.PostingPeriodDate;
+  probability?: PlatformCore.SearchLongField;
+  projAltSalesAmt?: PlatformCore.SearchDoubleField;
+  projectedTotal?: PlatformCore.SearchDoubleField;
+  rangeHigh?: PlatformCore.SearchDoubleField;
+  rangeHighAlt?: PlatformCore.SearchDoubleField;
+  rangeLow?: PlatformCore.SearchDoubleField;
+  rangeLowAlt?: PlatformCore.SearchDoubleField;
+  salesReadiness?: PlatformCore.SearchMultiSelectField;
+  salesRep?: PlatformCore.SearchMultiSelectField;
+  salesTeamMember?: PlatformCore.SearchMultiSelectField;
+  salesTeamRole?: PlatformCore.SearchMultiSelectField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxPeriod?: PlatformCore.RecordRef;
+  taxPeriodRelative?: PlatformCommonTypes.PostingPeriodDate;
+  title?: PlatformCore.SearchStringField;
+  tranCostEstimate?: PlatformCore.SearchDoubleField;
+  tranDate?: PlatformCore.SearchDateField;
+  tranEstGrossProfit?: PlatformCore.SearchDoubleField;
+  tranEstGrossProfitPct?: PlatformCore.SearchDoubleField;
+  tranFxEstGrossProfit?: PlatformCore.SearchDoubleField;
+  tranId?: PlatformCore.SearchStringField;
+  winLossReason?: PlatformCore.SearchMultiSelectField;
+  wonBy?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class OpportunitySearchBasic extends PlatformCore.SearchRecordBasic {
   amount?: PlatformCore.SearchDoubleField;
@@ -7507,7 +11299,7 @@ export class OpportunitySearchBasic extends PlatformCore.SearchRecordBasic {
   winLossReason?: PlatformCore.SearchMultiSelectField;
   wonBy?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: OpportunitySearchBasic) {
+  constructor(props: OpportunitySearchBasicProps) {
     super();
     this.amount = props.amount;
     this.availableOffline = props.availableOffline;
@@ -7577,13 +11369,56 @@ export class OpportunitySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type GroupMemberSearchBasicProps = {
+  groupId: PlatformCore.RecordRef;
+};
+
 export class GroupMemberSearchBasic extends PlatformCore.SearchRecordBasic {
   groupId: PlatformCore.RecordRef;
-  constructor(props: GroupMemberSearchBasic) {
+  constructor(props: GroupMemberSearchBasicProps) {
     super();
     this.groupId = props.groupId;
   }
 }
+
+export type EntitySearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  attention?: PlatformCore.SearchStringField;
+  city?: PlatformCore.SearchStringField;
+  comments?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  dateCreated?: PlatformCore.SearchDateField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  email?: PlatformCore.SearchStringField;
+  entityId?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class EntitySearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
@@ -7622,7 +11457,7 @@ export class EntitySearchBasic extends PlatformCore.SearchRecordBasic {
   type?: PlatformCore.SearchEnumMultiSelectField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: EntitySearchBasic) {
+  constructor(props: EntitySearchBasicProps) {
     super();
     this.address = props.address;
     this.addressee = props.addressee;
@@ -7663,6 +11498,16 @@ export class EntitySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type VendorCategorySearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isTaxAgency?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class VendorCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -7671,7 +11516,7 @@ export class VendorCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   isTaxAgency?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: VendorCategorySearchBasic) {
+  constructor(props: VendorCategorySearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -7683,12 +11528,19 @@ export class VendorCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type EntityTaxRegistrationSearchBasicProps = {
+  address?: PlatformCore.SearchMultiSelectField;
+  id?: PlatformCore.SearchLongField;
+  nexusCountry?: PlatformCore.SearchEnumMultiSelectField;
+  taxRegistrationNumber?: PlatformCore.SearchStringField;
+};
+
 export class EntityTaxRegistrationSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchMultiSelectField;
   id?: PlatformCore.SearchLongField;
   nexusCountry?: PlatformCore.SearchEnumMultiSelectField;
   taxRegistrationNumber?: PlatformCore.SearchStringField;
-  constructor(props: EntityTaxRegistrationSearchBasic) {
+  constructor(props: EntityTaxRegistrationSearchBasicProps) {
     super();
     this.address = props.address;
     this.id = props.id;
@@ -7696,6 +11548,28 @@ export class EntityTaxRegistrationSearchBasic extends PlatformCore.SearchRecordB
     this.taxRegistrationNumber = props.taxRegistrationNumber;
   }
 }
+
+export type PhoneCallSearchBasicProps = {
+  assigned?: PlatformCore.SearchMultiSelectField;
+  company?: PlatformCore.SearchMultiSelectField;
+  completedDate?: PlatformCore.SearchDateField;
+  contact?: PlatformCore.SearchMultiSelectField;
+  createdBy?: PlatformCore.SearchMultiSelectField;
+  createdDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isPrivate?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  owner?: PlatformCore.SearchBooleanField;
+  phone?: PlatformCore.SearchStringField;
+  priority?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class PhoneCallSearchBasic extends PlatformCore.SearchRecordBasic {
   assigned?: PlatformCore.SearchMultiSelectField;
@@ -7717,7 +11591,7 @@ export class PhoneCallSearchBasic extends PlatformCore.SearchRecordBasic {
   status?: PlatformCore.SearchEnumMultiSelectField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: PhoneCallSearchBasic) {
+  constructor(props: PhoneCallSearchBasicProps) {
     super();
     this.assigned = props.assigned;
     this.company = props.company;
@@ -7741,12 +11615,19 @@ export class PhoneCallSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type AssemblyItemBomSearchBasicProps = {
+  assembly?: PlatformCore.SearchMultiSelectField;
+  billOfMaterials?: PlatformCore.SearchMultiSelectField;
+  _default?: PlatformCore.SearchBooleanField;
+  locations?: PlatformCore.SearchMultiSelectField;
+};
+
 export class AssemblyItemBomSearchBasic extends PlatformCore.SearchRecordBasic {
   assembly?: PlatformCore.SearchMultiSelectField;
   billOfMaterials?: PlatformCore.SearchMultiSelectField;
   _default?: PlatformCore.SearchBooleanField;
   locations?: PlatformCore.SearchMultiSelectField;
-  constructor(props: AssemblyItemBomSearchBasic) {
+  constructor(props: AssemblyItemBomSearchBasicProps) {
     super();
     this.assembly = props.assembly;
     this.billOfMaterials = props.billOfMaterials;
@@ -7754,6 +11635,53 @@ export class AssemblyItemBomSearchBasic extends PlatformCore.SearchRecordBasic {
     this.locations = props.locations;
   }
 }
+
+export type ProjectTaskSearchBasicProps = {
+  actualWork?: PlatformCore.SearchDoubleField;
+  assignee?: PlatformCore.SearchMultiSelectField;
+  company?: PlatformCore.SearchMultiSelectField;
+  constraintType?: PlatformCore.SearchEnumMultiSelectField;
+  contact?: PlatformCore.SearchMultiSelectField;
+  cost?: PlatformCore.SearchDoubleField;
+  costBase?: PlatformCore.SearchDoubleField;
+  costBaseBaseline?: PlatformCore.SearchDoubleField;
+  costBaseline?: PlatformCore.SearchDoubleField;
+  costBaseVariance?: PlatformCore.SearchDoubleField;
+  costVariance?: PlatformCore.SearchDoubleField;
+  costVariancePercent?: PlatformCore.SearchDoubleField;
+  createdDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  endDateBaseline?: PlatformCore.SearchDateField;
+  endDateVariance?: PlatformCore.SearchDoubleField;
+  estimatedWork?: PlatformCore.SearchDoubleField;
+  estimatedWorkBaseline?: PlatformCore.SearchDoubleField;
+  estimatedWorkVariance?: PlatformCore.SearchDoubleField;
+  estimatedWorkVariancePercent?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  finishByDate?: PlatformCore.SearchDateField;
+  id?: PlatformCore.SearchLongField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isMilestone?: PlatformCore.SearchBooleanField;
+  isSummaryTask?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  nonBillableTask?: PlatformCore.SearchBooleanField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  percentWorkComplete?: PlatformCore.SearchDoubleField;
+  predecessor?: PlatformCore.SearchMultiSelectField;
+  predecessors?: PlatformCore.SearchStringField;
+  priority?: PlatformCore.SearchEnumMultiSelectField;
+  remainingWork?: PlatformCore.SearchDoubleField;
+  startDate?: PlatformCore.SearchDateField;
+  startDateBaseline?: PlatformCore.SearchDateField;
+  startDateVariance?: PlatformCore.SearchDoubleField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  successor?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ProjectTaskSearchBasic extends PlatformCore.SearchRecordBasic {
   actualWork?: PlatformCore.SearchDoubleField;
@@ -7800,7 +11728,7 @@ export class ProjectTaskSearchBasic extends PlatformCore.SearchRecordBasic {
   successor?: PlatformCore.SearchMultiSelectField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ProjectTaskSearchBasic) {
+  constructor(props: ProjectTaskSearchBasicProps) {
     super();
     this.actualWork = props.actualWork;
     this.assignee = props.assignee;
@@ -7849,6 +11777,25 @@ export class ProjectTaskSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type AddressSearchRowBasicProps = {
+  address?: PlatformCore.SearchColumnStringField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  addressee?: PlatformCore.SearchColumnStringField[];
+  attention?: PlatformCore.SearchColumnStringField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  countryCode?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  override?: PlatformCore.SearchColumnBooleanField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  zip?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class AddressSearchRowBasic extends PlatformCore.SearchRowBasic {
   address?: PlatformCore.SearchColumnStringField[];
   address1?: PlatformCore.SearchColumnStringField[];
@@ -7866,7 +11813,7 @@ export class AddressSearchRowBasic extends PlatformCore.SearchRowBasic {
   state?: PlatformCore.SearchColumnStringField[];
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: AddressSearchRowBasic) {
+  constructor(props: AddressSearchRowBasicProps) {
     super();
     this.address = props.address;
     this.address1 = props.address1;
@@ -7887,6 +11834,21 @@ export class AddressSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerSubsidiaryRelationshipSearchBasicProps = {
+  balance?: PlatformCore.SearchDoubleField;
+  depositBalance?: PlatformCore.SearchDoubleField;
+  entity?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isPrimarySub?: PlatformCore.SearchBooleanField;
+  primaryCurrency?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  unbilledOrders?: PlatformCore.SearchDoubleField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class CustomerSubsidiaryRelationshipSearchBasic extends PlatformCore.SearchRecordBasic {
   balance?: PlatformCore.SearchDoubleField;
   depositBalance?: PlatformCore.SearchDoubleField;
@@ -7900,7 +11862,7 @@ export class CustomerSubsidiaryRelationshipSearchBasic extends PlatformCore.Sear
   subsidiary?: PlatformCore.SearchMultiSelectField;
   unbilledOrders?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: CustomerSubsidiaryRelationshipSearchBasic) {
+  constructor(props: CustomerSubsidiaryRelationshipSearchBasicProps) {
     super();
     this.balance = props.balance;
     this.depositBalance = props.depositBalance;
@@ -7917,6 +11879,15 @@ export class CustomerSubsidiaryRelationshipSearchBasic extends PlatformCore.Sear
   }
 }
 
+export type PricingGroupSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class PricingGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -7924,7 +11895,7 @@ export class PricingGroupSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: PricingGroupSearchBasic) {
+  constructor(props: PricingGroupSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -7934,6 +11905,34 @@ export class PricingGroupSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type BillingAccountSearchBasicProps = {
+  billingSchedule?: PlatformCore.SearchMultiSelectField;
+  cashSaleForm?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  customerDefault?: PlatformCore.SearchBooleanField;
+  dateCreated?: PlatformCore.SearchDateField;
+  department?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  frequency?: PlatformCore.SearchEnumMultiSelectField;
+  idNumber?: PlatformCore.SearchStringField;
+  inactive?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  invoiceForm?: PlatformCore.SearchMultiSelectField;
+  lastBillCycleDate?: PlatformCore.SearchDateField;
+  lastBillDate?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  nextBillCycleDate?: PlatformCore.SearchDateField;
+  startDate?: PlatformCore.SearchDateField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class BillingAccountSearchBasic extends PlatformCore.SearchRecordBasic {
   billingSchedule?: PlatformCore.SearchMultiSelectField;
@@ -7961,7 +11960,7 @@ export class BillingAccountSearchBasic extends PlatformCore.SearchRecordBasic {
   startDate?: PlatformCore.SearchDateField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: BillingAccountSearchBasic) {
+  constructor(props: BillingAccountSearchBasicProps) {
     super();
     this.billingSchedule = props.billingSchedule;
     this.cashSaleForm = props.cashSaleForm;
@@ -7991,13 +11990,21 @@ export class BillingAccountSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type PresentationItemProps = {
+  item?: PlatformCore.RecordRef;
+  itemType?: PlatformCommonTypes.PresentationItemType;
+  description?: string;
+  onlinePrice?: number;
+  basePrice?: number;
+};
+
 export class PresentationItem {
   item?: PlatformCore.RecordRef;
   itemType?: PlatformCommonTypes.PresentationItemType;
   description?: string;
   onlinePrice?: number;
   basePrice?: number;
-  constructor(props: PresentationItem) {
+  constructor(props: PresentationItemProps) {
     this.item = props.item;
     this.itemType = props.itemType;
     this.description = props.description;
@@ -8005,6 +12012,20 @@ export class PresentationItem {
     this.basePrice = props.basePrice;
   }
 }
+
+export type PayrollItemSearchBasicProps = {
+  expenseAccount?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  itemTypeNoHierarchy?: PlatformCore.SearchEnumMultiSelectField;
+  liabilityAccount?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  vendor?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class PayrollItemSearchBasic extends PlatformCore.SearchRecordBasic {
   expenseAccount?: PlatformCore.SearchMultiSelectField;
@@ -8018,7 +12039,7 @@ export class PayrollItemSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   vendor?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: PayrollItemSearchBasic) {
+  constructor(props: PayrollItemSearchBasicProps) {
     super();
     this.expenseAccount = props.expenseAccount;
     this.externalId = props.externalId;
@@ -8034,6 +12055,19 @@ export class PayrollItemSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ManufacturingCostTemplateSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ManufacturingCostTemplateSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -8045,7 +12079,7 @@ export class ManufacturingCostTemplateSearchBasic extends PlatformCore.SearchRec
   name?: PlatformCore.SearchStringField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ManufacturingCostTemplateSearchBasic) {
+  constructor(props: ManufacturingCostTemplateSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -8060,6 +12094,18 @@ export class ManufacturingCostTemplateSearchBasic extends PlatformCore.SearchRec
   }
 }
 
+export type NoteSearchRowBasicProps = {
+  author?: PlatformCore.SearchColumnSelectField[];
+  direction?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  note?: PlatformCore.SearchColumnStringField[];
+  noteDate?: PlatformCore.SearchColumnDateField[];
+  noteType?: PlatformCore.SearchColumnStringField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class NoteSearchRowBasic extends PlatformCore.SearchRowBasic {
   author?: PlatformCore.SearchColumnSelectField[];
   direction?: PlatformCore.SearchColumnStringField[];
@@ -8070,7 +12116,7 @@ export class NoteSearchRowBasic extends PlatformCore.SearchRowBasic {
   noteType?: PlatformCore.SearchColumnStringField[];
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: NoteSearchRowBasic) {
+  constructor(props: NoteSearchRowBasicProps) {
     super();
     this.author = props.author;
     this.direction = props.direction;
@@ -8083,6 +12129,27 @@ export class NoteSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type GiftCertificateSearchBasicProps = {
+  amountAvailableBilled?: PlatformCore.SearchDoubleField;
+  amountRemaining?: PlatformCore.SearchDoubleField;
+  createdDate?: PlatformCore.SearchDateField;
+  email?: PlatformCore.SearchStringField;
+  expirationDate?: PlatformCore.SearchDateField;
+  giftCertCode?: PlatformCore.SearchStringField;
+  incomeAccount?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isActive?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  liabilityAccount?: PlatformCore.SearchMultiSelectField;
+  message?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  originalAmount?: PlatformCore.SearchDoubleField;
+  purchaseDate?: PlatformCore.SearchDateField;
+  sender?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class GiftCertificateSearchBasic extends PlatformCore.SearchRecordBasic {
   amountAvailableBilled?: PlatformCore.SearchDoubleField;
@@ -8103,7 +12170,7 @@ export class GiftCertificateSearchBasic extends PlatformCore.SearchRecordBasic {
   purchaseDate?: PlatformCore.SearchDateField;
   sender?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: GiftCertificateSearchBasic) {
+  constructor(props: GiftCertificateSearchBasicProps) {
     super();
     this.amountAvailableBilled = props.amountAvailableBilled;
     this.amountRemaining = props.amountRemaining;
@@ -8126,6 +12193,23 @@ export class GiftCertificateSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type AddressProps = {
+  internalId?: string;
+  country?: PlatformCommonTypes.Country;
+  attention?: string;
+  addressee?: string;
+  addrPhone?: string;
+  addr1?: string;
+  addr2?: string;
+  addr3?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  addrText?: string;
+  override?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+} & PlatformCore.RecordProps;
+
 export class Address extends PlatformCore.Record {
   internalId?: string;
   country?: PlatformCommonTypes.Country;
@@ -8141,7 +12225,7 @@ export class Address extends PlatformCore.Record {
   addrText?: string;
   override?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: Address) {
+  constructor(props: AddressProps) {
     super(props);
     this.internalId = props.internalId;
     this.country = props.country;
@@ -8159,6 +12243,35 @@ export class Address extends PlatformCore.Record {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type CalendarEventSearchRowBasicProps = {
+  accessLevel?: PlatformCore.SearchColumnEnumSelectField[];
+  attendee?: PlatformCore.SearchColumnSelectField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  completedDate?: PlatformCore.SearchColumnDateField[];
+  contact?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  endTime?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  instanceEnd?: PlatformCore.SearchColumnDateField[];
+  instanceStart?: PlatformCore.SearchColumnDateField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnStringField[];
+  markdone?: PlatformCore.SearchColumnStringField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  organizer?: PlatformCore.SearchColumnSelectField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  recurrence?: PlatformCore.SearchColumnStringField[];
+  resource?: PlatformCore.SearchColumnSelectField[];
+  response?: PlatformCore.SearchColumnEnumSelectField[];
+  startDate?: PlatformCore.SearchColumnStringField[];
+  startTime?: PlatformCore.SearchColumnStringField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  transaction?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class CalendarEventSearchRowBasic extends PlatformCore.SearchRowBasic {
   accessLevel?: PlatformCore.SearchColumnEnumSelectField[];
@@ -8187,7 +12300,7 @@ export class CalendarEventSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: CalendarEventSearchRowBasic) {
+  constructor(props: CalendarEventSearchRowBasicProps) {
     super();
     this.accessLevel = props.accessLevel;
     this.attendee = props.attendee;
@@ -8218,12 +12331,19 @@ export class CalendarEventSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerCategorySearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class CustomerCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: CustomerCategorySearchRowBasic) {
+  constructor(props: CustomerCategorySearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -8231,6 +12351,31 @@ export class CustomerCategorySearchRowBasic extends PlatformCore.SearchRowBasic 
     this.name = props.name;
   }
 }
+
+export type AccountSearchBasicProps = {
+  accountingContext?: PlatformCore.SearchMultiSelectField;
+  balance?: PlatformCore.SearchDoubleField;
+  cashFlowRateType?: PlatformCore.SearchEnumMultiSelectField;
+  category1099Misc?: PlatformCore.SearchMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  generalRateType?: PlatformCore.SearchEnumMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  legalName?: PlatformCore.SearchStringField;
+  locale?: PlatformCore.SearchEnumMultiSelectField;
+  localizedLegalName?: PlatformCore.SearchStringField;
+  localizedName?: PlatformCore.SearchStringField;
+  localizedNumber?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  number?: PlatformCore.SearchStringField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class AccountSearchBasic extends PlatformCore.SearchRecordBasic {
   accountingContext?: PlatformCore.SearchMultiSelectField;
@@ -8255,7 +12400,7 @@ export class AccountSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   type?: PlatformCore.SearchEnumMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: AccountSearchBasic) {
+  constructor(props: AccountSearchBasicProps) {
     super();
     this.accountingContext = props.accountingContext;
     this.balance = props.balance;
@@ -8281,6 +12426,45 @@ export class AccountSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type TimeBillSearchRowBasicProps = {
+  approvalStatus?: PlatformCore.SearchColumnSelectField[];
+  _break?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  date?: PlatformCore.SearchColumnDateField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  durationDecimal?: PlatformCore.SearchColumnDoubleField[];
+  employee?: PlatformCore.SearchColumnSelectField[];
+  endTime?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  hours?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isBillable?: PlatformCore.SearchColumnBooleanField[];
+  isExempt?: PlatformCore.SearchColumnBooleanField[];
+  isProductive?: PlatformCore.SearchColumnBooleanField[];
+  isUtilized?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnStringField[];
+  lastModified?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  paidExternally?: PlatformCore.SearchColumnBooleanField[];
+  payItem?: PlatformCore.SearchColumnSelectField[];
+  payrollDate?: PlatformCore.SearchColumnDateField[];
+  rate?: PlatformCore.SearchColumnDoubleField[];
+  rejectionNote?: PlatformCore.SearchColumnStringField[];
+  startTime?: PlatformCore.SearchColumnDateField[];
+  status?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnStringField[];
+  supervisorApproval?: PlatformCore.SearchColumnBooleanField[];
+  temporaryLocalJurisdiction?: PlatformCore.SearchColumnStringField[];
+  temporaryStateJurisdiction?: PlatformCore.SearchColumnStringField[];
+  timeModified?: PlatformCore.SearchColumnBooleanField[];
+  timeSheet?: PlatformCore.SearchColumnSelectField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class TimeBillSearchRowBasic extends PlatformCore.SearchRowBasic {
   approvalStatus?: PlatformCore.SearchColumnSelectField[];
@@ -8319,7 +12503,7 @@ export class TimeBillSearchRowBasic extends PlatformCore.SearchRowBasic {
   timeSheet?: PlatformCore.SearchColumnSelectField[];
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: TimeBillSearchRowBasic) {
+  constructor(props: TimeBillSearchRowBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this._break = props._break;
@@ -8360,12 +12544,19 @@ export class TimeBillSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type OtherNameCategorySearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class OtherNameCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: OtherNameCategorySearchRowBasic) {
+  constructor(props: OtherNameCategorySearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -8373,6 +12564,18 @@ export class OtherNameCategorySearchRowBasic extends PlatformCore.SearchRowBasic
     this.name = props.name;
   }
 }
+
+export type SalesTaxItemSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  itemId?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  taxType?: PlatformCore.SearchMultiSelectField;
+};
 
 export class SalesTaxItemSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
@@ -8384,7 +12587,7 @@ export class SalesTaxItemSearchBasic extends PlatformCore.SearchRecordBasic {
   itemId?: PlatformCore.SearchStringField;
   name?: PlatformCore.SearchStringField;
   taxType?: PlatformCore.SearchMultiSelectField;
-  constructor(props: SalesTaxItemSearchBasic) {
+  constructor(props: SalesTaxItemSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -8397,6 +12600,25 @@ export class SalesTaxItemSearchBasic extends PlatformCore.SearchRecordBasic {
     this.taxType = props.taxType;
   }
 }
+
+export type ItemAccountMappingSearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  customDimension?: PlatformCore.SearchMultiSelectCustomField;
+  department?: PlatformCore.SearchMultiSelectField;
+  destinationAccount?: PlatformCore.SearchMultiSelectField;
+  effectiveDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  itemAccount?: PlatformCore.SearchEnumMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  sourceAccount?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ItemAccountMappingSearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -8415,7 +12637,7 @@ export class ItemAccountMappingSearchBasic extends PlatformCore.SearchRecordBasi
   sourceAccount?: PlatformCore.SearchMultiSelectField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ItemAccountMappingSearchBasic) {
+  constructor(props: ItemAccountMappingSearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
@@ -8436,6 +12658,20 @@ export class ItemAccountMappingSearchBasic extends PlatformCore.SearchRecordBasi
   }
 }
 
+export type InstallmentSearchRowBasicProps = {
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  amountPaid?: PlatformCore.SearchColumnDoubleField[];
+  amountRemaining?: PlatformCore.SearchColumnDoubleField[];
+  daysOverdue?: PlatformCore.SearchColumnLongField[];
+  dueDate?: PlatformCore.SearchColumnDateField[];
+  fxAmount?: PlatformCore.SearchColumnDoubleField[];
+  fxAmountPaid?: PlatformCore.SearchColumnDoubleField[];
+  fxAmountRemaining?: PlatformCore.SearchColumnDoubleField[];
+  installmentNumber?: PlatformCore.SearchColumnLongField[];
+  status?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class InstallmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   amount?: PlatformCore.SearchColumnDoubleField[];
   amountPaid?: PlatformCore.SearchColumnDoubleField[];
@@ -8448,7 +12684,7 @@ export class InstallmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   installmentNumber?: PlatformCore.SearchColumnLongField[];
   status?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: InstallmentSearchRowBasic) {
+  constructor(props: InstallmentSearchRowBasicProps) {
     super();
     this.amount = props.amount;
     this.amountPaid = props.amountPaid;
@@ -8463,6 +12699,32 @@ export class InstallmentSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type TimeItemProps = {
+  id?: number;
+  employee?: PlatformCore.RecordRef;
+  timeType?: PlatformCommonTypes.TimeItemTimeType;
+  tranDate?: string;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  payrollItem?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  temporaryLocalJurisdiction?: PlatformCore.RecordRef;
+  temporaryStateJurisdiction?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  hours?: PlatformCore.Duration;
+  price?: PlatformCore.RecordRef;
+  rate?: number;
+  overrideRate?: boolean;
+  hoursTotal?: PlatformCore.Duration;
+  caseTaskEvent?: PlatformCore.RecordRef;
+  memo?: string;
+  isUtilized?: boolean;
+  isProductive?: boolean;
+  isExempt?: boolean;
+};
 
 export class TimeItem {
   id?: number;
@@ -8488,7 +12750,7 @@ export class TimeItem {
   isUtilized?: boolean;
   isProductive?: boolean;
   isExempt?: boolean;
-  constructor(props: TimeItem) {
+  constructor(props: TimeItemProps) {
     this.id = props.id;
     this.employee = props.employee;
     this.timeType = props.timeType;
@@ -8515,6 +12777,29 @@ export class TimeItem {
   }
 }
 
+export type TermSearchBasicProps = {
+  dateDriven?: PlatformCore.SearchBooleanField;
+  dayDiscountExpires?: PlatformCore.SearchLongField;
+  dayOfMonthNetDue?: PlatformCore.SearchLongField;
+  daysUntilExpiry?: PlatformCore.SearchLongField;
+  daysUntilNetDue?: PlatformCore.SearchLongField;
+  discountPercent?: PlatformCore.SearchDoubleField;
+  discountPercentDateDriven?: PlatformCore.SearchDoubleField;
+  dueNextMonthIfWithinDays?: PlatformCore.SearchLongField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  installment?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  preferred?: PlatformCore.SearchBooleanField;
+  recurrenceCount?: PlatformCore.SearchLongField;
+  recurrenceFrequency?: PlatformCore.SearchEnumMultiSelectField;
+  repeatEvery?: PlatformCore.SearchLongField;
+  splitEvenly?: PlatformCore.SearchBooleanField;
+};
+
 export class TermSearchBasic extends PlatformCore.SearchRecordBasic {
   dateDriven?: PlatformCore.SearchBooleanField;
   dayDiscountExpires?: PlatformCore.SearchLongField;
@@ -8536,7 +12821,7 @@ export class TermSearchBasic extends PlatformCore.SearchRecordBasic {
   recurrenceFrequency?: PlatformCore.SearchEnumMultiSelectField;
   repeatEvery?: PlatformCore.SearchLongField;
   splitEvenly?: PlatformCore.SearchBooleanField;
-  constructor(props: TermSearchBasic) {
+  constructor(props: TermSearchBasicProps) {
     super();
     this.dateDriven = props.dateDriven;
     this.dayDiscountExpires = props.dayDiscountExpires;
@@ -8560,6 +12845,358 @@ export class TermSearchBasic extends PlatformCore.SearchRecordBasic {
     this.splitEvenly = props.splitEvenly;
   }
 }
+
+export type TransactionSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  accountType?: PlatformCore.SearchEnumMultiSelectField;
+  acctCorpCardExp?: PlatformCore.SearchMultiSelectField;
+  actualShipDate?: PlatformCore.SearchDateField;
+  altSalesAmount?: PlatformCore.SearchDoubleField;
+  altSalesNetAmount?: PlatformCore.SearchDoubleField;
+  amount?: PlatformCore.SearchDoubleField;
+  amountPaid?: PlatformCore.SearchDoubleField;
+  amountRemaining?: PlatformCore.SearchDoubleField;
+  amountUnbilled?: PlatformCore.SearchDoubleField;
+  anyLineItem?: PlatformCore.SearchMultiSelectField;
+  appliedToForeignAmount?: PlatformCore.SearchDoubleField;
+  appliedToIsFxVariance?: PlatformCore.SearchBooleanField;
+  appliedToLinkAmount?: PlatformCore.SearchDoubleField;
+  appliedToLinkType?: PlatformCore.SearchEnumMultiSelectField;
+  appliedToTransaction?: PlatformCore.SearchMultiSelectField;
+  applyingForeignAmount?: PlatformCore.SearchDoubleField;
+  applyingIsFxVariance?: PlatformCore.SearchBooleanField;
+  applyingLinkAmount?: PlatformCore.SearchDoubleField;
+  applyingLinkType?: PlatformCore.SearchEnumMultiSelectField;
+  applyingTransaction?: PlatformCore.SearchMultiSelectField;
+  approvalStatus?: PlatformCore.SearchEnumMultiSelectField;
+  authCode?: PlatformCore.SearchStringField;
+  autoCalculateLag?: PlatformCore.SearchBooleanField;
+  avsStreetMatch?: PlatformCore.SearchEnumMultiSelectField;
+  avsZipMatch?: PlatformCore.SearchEnumMultiSelectField;
+  billable?: PlatformCore.SearchBooleanField;
+  billAddress?: PlatformCore.SearchStringField;
+  billAddressee?: PlatformCore.SearchStringField;
+  billAttention?: PlatformCore.SearchStringField;
+  billCity?: PlatformCore.SearchStringField;
+  billCountry?: PlatformCore.SearchEnumMultiSelectField;
+  billCounty?: PlatformCore.SearchStringField;
+  billedDate?: PlatformCore.SearchDateField;
+  billingAccount?: PlatformCore.SearchMultiSelectField;
+  billingSchedule?: PlatformCore.SearchMultiSelectField;
+  billingStatus?: PlatformCore.SearchBooleanField;
+  billingTransaction?: PlatformCore.SearchMultiSelectField;
+  billPhone?: PlatformCore.SearchStringField;
+  billState?: PlatformCore.SearchStringField;
+  billVarianceStatus?: PlatformCore.SearchEnumMultiSelectField;
+  billZip?: PlatformCore.SearchStringField;
+  binNumber?: PlatformCore.SearchStringField;
+  binNumberQuantity?: PlatformCore.SearchDoubleField;
+  bomQuantity?: PlatformCore.SearchDoubleField;
+  bookSpecificTransaction?: PlatformCore.SearchBooleanField;
+  buildEntireAssembly?: PlatformCore.SearchBooleanField;
+  buildVariance?: PlatformCore.SearchDoubleField;
+  built?: PlatformCore.SearchDoubleField;
+  canHaveStackablePromotions?: PlatformCore.SearchBooleanField;
+  catchUpPeriod?: PlatformCore.SearchMultiSelectField;
+  ccCustomerCode?: PlatformCore.SearchStringField;
+  ccExpireDate?: PlatformCore.SearchDateField;
+  ccName?: PlatformCore.SearchStringField;
+  ccNumber?: PlatformCore.SearchStringField;
+  chargeType?: PlatformCore.SearchEnumMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  cleared?: PlatformCore.SearchBooleanField;
+  closed?: PlatformCore.SearchBooleanField;
+  closeDate?: PlatformCore.SearchDateField;
+  cogs?: PlatformCore.SearchBooleanField;
+  commissionEffectiveDate?: PlatformCore.SearchDateField;
+  commit?: PlatformCore.SearchEnumMultiSelectField;
+  componentYield?: PlatformCore.SearchDoubleField;
+  confirmationNumber?: PlatformCore.SearchStringField;
+  contribution?: PlatformCore.SearchLongField;
+  costComponentAmount?: PlatformCore.SearchDoubleField;
+  costComponentCategory?: PlatformCore.SearchMultiSelectField;
+  costComponentItem?: PlatformCore.SearchMultiSelectField;
+  costComponentQuantity?: PlatformCore.SearchDoubleField;
+  costComponentStandardCost?: PlatformCore.SearchDoubleField;
+  costEstimate?: PlatformCore.SearchDoubleField;
+  costEstimateRate?: PlatformCore.SearchDoubleField;
+  costEstimateType?: PlatformCore.SearchEnumMultiSelectField;
+  createdBy?: PlatformCore.SearchMultiSelectField;
+  createdFrom?: PlatformCore.SearchMultiSelectField;
+  creditAmount?: PlatformCore.SearchDoubleField;
+  cscMatch?: PlatformCore.SearchEnumMultiSelectField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  customerSubOf?: PlatformCore.SearchMultiSelectField;
+  customForm?: PlatformCore.SearchMultiSelectField;
+  customGL?: PlatformCore.SearchBooleanField;
+  custType?: PlatformCore.SearchMultiSelectField;
+  dateCreated?: PlatformCore.SearchDateField;
+  daysOpen?: PlatformCore.SearchLongField;
+  daysOverdue?: PlatformCore.SearchLongField;
+  debitAmount?: PlatformCore.SearchDoubleField;
+  deferredRevenue?: PlatformCore.SearchDoubleField;
+  deferRevRec?: PlatformCore.SearchBooleanField;
+  department?: PlatformCore.SearchMultiSelectField;
+  depositDate?: PlatformCore.SearchDateField;
+  depositTransaction?: PlatformCore.SearchMultiSelectField;
+  drAccount?: PlatformCore.SearchMultiSelectField;
+  dueDate?: PlatformCore.SearchDateField;
+  email?: PlatformCore.SearchStringField;
+  employee?: PlatformCore.SearchMultiSelectField;
+  endDate?: PlatformCore.SearchDateField;
+  entity?: PlatformCore.SearchMultiSelectField;
+  entityStatus?: PlatformCore.SearchMultiSelectField;
+  estGrossProfit?: PlatformCore.SearchDoubleField;
+  estGrossProfitPct?: PlatformCore.SearchDoubleField;
+  exchangeRate?: PlatformCore.SearchDoubleField;
+  excludeCommission?: PlatformCore.SearchBooleanField;
+  excludeFromRateRequest?: PlatformCore.SearchBooleanField;
+  expectedCloseDate?: PlatformCore.SearchDateField;
+  expectedReceiptDate?: PlatformCore.SearchDateField;
+  expenseCategory?: PlatformCore.SearchMultiSelectField;
+  expenseDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  finChrg?: PlatformCore.SearchBooleanField;
+  firmed?: PlatformCore.SearchBooleanField;
+  forecastType?: PlatformCore.SearchEnumMultiSelectField;
+  fulfillingTransaction?: PlatformCore.SearchMultiSelectField;
+  fxAccount?: PlatformCore.SearchMultiSelectField;
+  fxAmount?: PlatformCore.SearchDoubleField;
+  fxCostEstimate?: PlatformCore.SearchDoubleField;
+  fxCostEstimateRate?: PlatformCore.SearchDoubleField;
+  fxEstGrossProfit?: PlatformCore.SearchDoubleField;
+  fxTranCostEstimate?: PlatformCore.SearchDoubleField;
+  fxVsoeAllocation?: PlatformCore.SearchDoubleField;
+  fxVsoeAmount?: PlatformCore.SearchDoubleField;
+  fxVsoePrice?: PlatformCore.SearchDoubleField;
+  gcoAvailabelToCharge?: PlatformCore.SearchBooleanField;
+  gcoAvailableToRefund?: PlatformCore.SearchBooleanField;
+  gcoAvsStreetMatch?: PlatformCore.SearchEnumMultiSelectField;
+  gcoAvsZipMatch?: PlatformCore.SearchEnumMultiSelectField;
+  gcoBuyerAccountAge?: PlatformCore.SearchLongField;
+  gcoBuyerIp?: PlatformCore.SearchStringField;
+  gcoChargeAmount?: PlatformCore.SearchDoubleField;
+  gcoChargebackAmount?: PlatformCore.SearchDoubleField;
+  gcoConfirmedChargedTotal?: PlatformCore.SearchDoubleField;
+  gcoConfirmedRefundedTotal?: PlatformCore.SearchDoubleField;
+  gcoCreditcardNumber?: PlatformCore.SearchStringField;
+  gcoCscMatch?: PlatformCore.SearchEnumMultiSelectField;
+  gcoFinancialState?: PlatformCore.SearchStringField;
+  gcoFulfillmentState?: PlatformCore.SearchStringField;
+  gcoOrderId?: PlatformCore.SearchStringField;
+  gcoOrderTotal?: PlatformCore.SearchDoubleField;
+  gcoPromotionAmount?: PlatformCore.SearchDoubleField;
+  gcoPromotionName?: PlatformCore.SearchStringField;
+  gcoRefundAmount?: PlatformCore.SearchDoubleField;
+  gcoShippingTotal?: PlatformCore.SearchDoubleField;
+  gcoStateChangedDetail?: PlatformCore.SearchStringField;
+  giftCertificate?: PlatformCore.SearchStringField;
+  grossAmount?: PlatformCore.SearchDoubleField;
+  includeInForecast?: PlatformCore.SearchBooleanField;
+  incoterm?: PlatformCore.SearchMultiSelectField;
+  intercoStatus?: PlatformCore.SearchEnumMultiSelectField;
+  intercoTransaction?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  inventoryLocation?: PlatformCore.SearchMultiSelectField;
+  inventorySubsidiary?: PlatformCore.SearchMultiSelectField;
+  inVsoeBundle?: PlatformCore.SearchBooleanField;
+  isAllocation?: PlatformCore.SearchBooleanField;
+  isBackflush?: PlatformCore.SearchBooleanField;
+  isGcoChargeback?: PlatformCore.SearchBooleanField;
+  isGcoChargeConfirmed?: PlatformCore.SearchBooleanField;
+  isGcoPaymentGuaranteed?: PlatformCore.SearchBooleanField;
+  isGcoRefundConfirmed?: PlatformCore.SearchBooleanField;
+  isInsideDelivery?: PlatformCore.SearchBooleanField;
+  isInsidePickup?: PlatformCore.SearchBooleanField;
+  isIntercompanyAdjustment?: PlatformCore.SearchBooleanField;
+  isInTransitPayment?: PlatformCore.SearchBooleanField;
+  isMultiShipTo?: PlatformCore.SearchBooleanField;
+  isPayPalMeth?: PlatformCore.SearchBooleanField;
+  isReversal?: PlatformCore.SearchBooleanField;
+  isRevRecTransaction?: PlatformCore.SearchBooleanField;
+  isScrap?: PlatformCore.SearchBooleanField;
+  isShipAddress?: PlatformCore.SearchBooleanField;
+  isTransferPriceCosting?: PlatformCore.SearchBooleanField;
+  isVsoeAlloc?: PlatformCore.SearchBooleanField;
+  isWip?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  itemFulfillmentChoice?: PlatformCore.SearchEnumMultiSelectField;
+  itemRevision?: PlatformCore.SearchMultiSelectField;
+  itemSubOf?: PlatformCore.SearchMultiSelectField;
+  landedCostPerLine?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  leadSource?: PlatformCore.SearchMultiSelectField;
+  lineUniqueKey?: PlatformCore.SearchLongField;
+  location?: PlatformCore.SearchMultiSelectField;
+  locationAutoAssigned?: PlatformCore.SearchBooleanField;
+  mainLine?: PlatformCore.SearchBooleanField;
+  mainName?: PlatformCore.SearchMultiSelectField;
+  manufacturingRouting?: PlatformCore.SearchMultiSelectField;
+  matchBillToReceipt?: PlatformCore.SearchBooleanField;
+  memo?: PlatformCore.SearchStringField;
+  memoMain?: PlatformCore.SearchStringField;
+  memorized?: PlatformCore.SearchBooleanField;
+  merchantAccount?: PlatformCore.SearchStringField;
+  message?: PlatformCore.SearchStringField;
+  multiSubsidiary?: PlatformCore.SearchBooleanField;
+  nameText?: PlatformCore.SearchStringField;
+  netAmount?: PlatformCore.SearchDoubleField;
+  nextApprover?: PlatformCore.SearchMultiSelectField;
+  nextBillDate?: PlatformCore.SearchDateField;
+  nexus?: PlatformCore.SearchMultiSelectField;
+  noAutoAssignLocation?: PlatformCore.SearchBooleanField;
+  nonReimbursable?: PlatformCore.SearchBooleanField;
+  number?: PlatformCore.SearchLongField;
+  oneTimeTotal?: PlatformCore.SearchDoubleField;
+  opportunity?: PlatformCore.SearchMultiSelectField;
+  orderPriority?: PlatformCore.SearchDoubleField;
+  otherRefNum?: PlatformCore.SearchTextNumberField;
+  otherRefNumNonDeposit?: PlatformCore.SearchTextNumberField;
+  overheadParentItem?: PlatformCore.SearchMultiSelectField;
+  overrideInstallments?: PlatformCore.SearchBooleanField;
+  packageCount?: PlatformCore.SearchLongField;
+  paidTransaction?: PlatformCore.SearchMultiSelectField;
+  parent?: PlatformCore.SearchLongField;
+  partner?: PlatformCore.SearchMultiSelectField;
+  partnerContribution?: PlatformCore.SearchLongField;
+  partnerRole?: PlatformCore.SearchMultiSelectField;
+  partnerTeamMember?: PlatformCore.SearchMultiSelectField;
+  payingTransaction?: PlatformCore.SearchMultiSelectField;
+  paymentApproved?: PlatformCore.SearchBooleanField;
+  paymentEventDate?: PlatformCore.SearchDateField;
+  paymentEventHoldReason?: PlatformCore.SearchEnumMultiSelectField;
+  paymentEventPurchaseCardUsed?: PlatformCore.SearchBooleanField;
+  paymentEventPurchaseDataSent?: PlatformCore.SearchBooleanField;
+  paymentEventResult?: PlatformCore.SearchEnumMultiSelectField;
+  paymentEventType?: PlatformCore.SearchEnumMultiSelectField;
+  paymentHold?: PlatformCore.SearchBooleanField;
+  paymentMethod?: PlatformCore.SearchMultiSelectField;
+  paymentOption?: PlatformCore.SearchStringField;
+  payPalPending?: PlatformCore.SearchBooleanField;
+  payPalStatus?: PlatformCore.SearchStringField;
+  payPalTranId?: PlatformCore.SearchStringField;
+  pnRefNum?: PlatformCore.SearchStringField;
+  poAsText?: PlatformCore.SearchStringField;
+  posting?: PlatformCore.SearchBooleanField;
+  postingPeriod?: PlatformCore.RecordRef;
+  postingPeriodRelative?: PlatformCommonTypes.PostingPeriodDate;
+  priceLevel?: PlatformCore.SearchMultiSelectField;
+  printedPickingTicket?: PlatformCore.SearchBooleanField;
+  probability?: PlatformCore.SearchLongField;
+  projectedAmount?: PlatformCore.SearchDoubleField;
+  projectTask?: PlatformCore.SearchMultiSelectField;
+  promoCode?: PlatformCore.SearchMultiSelectField;
+  purchaseOrder?: PlatformCore.SearchMultiSelectField;
+  quantity?: PlatformCore.SearchDoubleField;
+  quantityBilled?: PlatformCore.SearchDoubleField;
+  quantityCommitted?: PlatformCore.SearchDoubleField;
+  quantityPacked?: PlatformCore.SearchDoubleField;
+  quantityPicked?: PlatformCore.SearchDoubleField;
+  quantityRevCommitted?: PlatformCore.SearchDoubleField;
+  quantityShipRecv?: PlatformCore.SearchDoubleField;
+  recognizedRevenue?: PlatformCore.SearchDoubleField;
+  recordType?: PlatformCore.SearchStringField;
+  recurAnnuallyTotal?: PlatformCore.SearchDoubleField;
+  recurMonthlyTotal?: PlatformCore.SearchDoubleField;
+  recurQuarterlyTotal?: PlatformCore.SearchDoubleField;
+  recurringBill?: PlatformCore.SearchBooleanField;
+  recurWeeklyTotal?: PlatformCore.SearchDoubleField;
+  refNumber?: PlatformCore.SearchLongField;
+  revCommitStatus?: PlatformCore.SearchEnumMultiSelectField;
+  revCommittingStatus?: PlatformCore.SearchBooleanField;
+  revCommittingTransaction?: PlatformCore.SearchMultiSelectField;
+  revenueStatus?: PlatformCore.SearchEnumMultiSelectField;
+  reversalDate?: PlatformCore.SearchDateField;
+  reversalNumber?: PlatformCore.SearchStringField;
+  revRecEndDate?: PlatformCore.SearchDateField;
+  revRecOnRevCommitment?: PlatformCore.SearchBooleanField;
+  revRecStartDate?: PlatformCore.SearchDateField;
+  revRecTermInMonths?: PlatformCore.SearchLongField;
+  salesEffectiveDate?: PlatformCore.SearchDateField;
+  salesOrder?: PlatformCore.SearchMultiSelectField;
+  salesRep?: PlatformCore.SearchMultiSelectField;
+  salesTeamMember?: PlatformCore.SearchMultiSelectField;
+  salesTeamRole?: PlatformCore.SearchMultiSelectField;
+  schedulingMethod?: PlatformCore.SearchEnumMultiSelectField;
+  serialNumber?: PlatformCore.SearchStringField;
+  serialNumberCost?: PlatformCore.SearchDoubleField;
+  serialNumberCostAdjustment?: PlatformCore.SearchDoubleField;
+  serialNumberQuantity?: PlatformCore.SearchDoubleField;
+  serialNumbers?: PlatformCore.SearchStringField;
+  shipAddress?: PlatformCore.SearchStringField;
+  shipAddressee?: PlatformCore.SearchStringField;
+  shipAttention?: PlatformCore.SearchStringField;
+  shipCarrier?: PlatformCore.SearchEnumMultiSelectField;
+  shipCity?: PlatformCore.SearchStringField;
+  shipComplete?: PlatformCore.SearchBooleanField;
+  shipCountry?: PlatformCore.SearchEnumMultiSelectField;
+  shipCounty?: PlatformCore.SearchStringField;
+  shipDate?: PlatformCore.SearchDateField;
+  shipGroup?: PlatformCore.SearchLongField;
+  shipMethod?: PlatformCore.SearchMultiSelectField;
+  shipPhone?: PlatformCore.SearchStringField;
+  shipping?: PlatformCore.SearchBooleanField;
+  shipRecvStatus?: PlatformCore.SearchBooleanField;
+  shipRecvStatusLine?: PlatformCore.SearchBooleanField;
+  shipState?: PlatformCore.SearchMultiSelectField;
+  shipTo?: PlatformCore.SearchMultiSelectField;
+  shipZip?: PlatformCore.SearchStringField;
+  source?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  statistical?: PlatformCore.SearchBooleanField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  subscription?: PlatformCore.SearchMultiSelectField;
+  subsidiaryTaxRegNum?: PlatformCore.SearchMultiSelectField;
+  subscriptionLine?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxItem?: PlatformCore.SearchMultiSelectField;
+  taxLine?: PlatformCore.SearchBooleanField;
+  taxPeriod?: PlatformCore.RecordRef;
+  taxPeriodRelative?: PlatformCommonTypes.PostingPeriodDate;
+  taxPointDate?: PlatformCore.SearchDateField;
+  taxRate?: PlatformCore.SearchDoubleField;
+  terms?: PlatformCore.SearchMultiSelectField;
+  termsOfSale?: PlatformCore.SearchEnumMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  toBeEmailed?: PlatformCore.SearchBooleanField;
+  toBePrinted?: PlatformCore.SearchBooleanField;
+  toSubsidiary?: PlatformCore.SearchMultiSelectField;
+  totalAmount?: PlatformCore.SearchDoubleField;
+  trackingNumbers?: PlatformCore.SearchStringField;
+  tranCostEstimate?: PlatformCore.SearchDoubleField;
+  tranDate?: PlatformCore.SearchDateField;
+  tranEstGrossProfit?: PlatformCore.SearchDoubleField;
+  tranEstGrossProfitPct?: PlatformCore.SearchDoubleField;
+  tranFxEstGrossProfit?: PlatformCore.SearchDoubleField;
+  tranId?: PlatformCore.SearchStringField;
+  tranIsVsoeBundle?: PlatformCore.SearchBooleanField;
+  transactionDiscount?: PlatformCore.SearchBooleanField;
+  transactionLineType?: PlatformCore.SearchEnumMultiSelectField;
+  transactionNumber?: PlatformCore.SearchStringField;
+  transferLocation?: PlatformCore.SearchMultiSelectField;
+  transferOrderQuantityCommitted?: PlatformCore.SearchDoubleField;
+  transferOrderQuantityPacked?: PlatformCore.SearchDoubleField;
+  transferOrderQuantityPicked?: PlatformCore.SearchDoubleField;
+  transferOrderQuantityReceived?: PlatformCore.SearchDoubleField;
+  transferOrderQuantityShipped?: PlatformCore.SearchDoubleField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  unit?: PlatformCore.SearchMultiSelectField;
+  unitCostOverride?: PlatformCore.SearchDoubleField;
+  unitsType?: PlatformCore.SearchMultiSelectField;
+  vendType?: PlatformCore.SearchMultiSelectField;
+  visibleToCustomer?: PlatformCore.SearchBooleanField;
+  voided?: PlatformCore.SearchBooleanField;
+  vsoeAllocation?: PlatformCore.SearchDoubleField;
+  vsoeAmount?: PlatformCore.SearchDoubleField;
+  vsoeDeferral?: PlatformCore.SearchEnumMultiSelectField;
+  vsoeDelivered?: PlatformCore.SearchBooleanField;
+  vsoePermitDiscount?: PlatformCore.SearchEnumMultiSelectField;
+  vsoePrice?: PlatformCore.SearchDoubleField;
+  webSite?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class TransactionSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
@@ -8911,7 +13548,7 @@ export class TransactionSearchBasic extends PlatformCore.SearchRecordBasic {
   vsoePrice?: PlatformCore.SearchDoubleField;
   webSite?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: TransactionSearchBasic) {
+  constructor(props: TransactionSearchBasicProps) {
     super();
     this.account = props.account;
     this.accountType = props.accountType;
@@ -9265,6 +13902,16 @@ export class TransactionSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type NoteTypeSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class NoteTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -9273,7 +13920,7 @@ export class NoteTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: NoteTypeSearchBasic) {
+  constructor(props: NoteTypeSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -9284,6 +13931,22 @@ export class NoteTypeSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type GlobalAccountMappingSearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  customDimension?: PlatformCore.SearchColumnSelectCustomField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  destinationAccount?: PlatformCore.SearchColumnSelectField[];
+  effectiveDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  sourceAccount?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class GlobalAccountMappingSearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnSelectField[];
@@ -9299,7 +13962,7 @@ export class GlobalAccountMappingSearchRowBasic extends PlatformCore.SearchRowBa
   sourceAccount?: PlatformCore.SearchColumnSelectField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: GlobalAccountMappingSearchRowBasic) {
+  constructor(props: GlobalAccountMappingSearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.clazz = props.clazz;
@@ -9316,6 +13979,47 @@ export class GlobalAccountMappingSearchRowBasic extends PlatformCore.SearchRowBa
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type TimeEntrySearchRowBasicProps = {
+  approvalStatus?: PlatformCore.SearchColumnSelectField[];
+  billingClass?: PlatformCore.SearchColumnSelectField[];
+  billingStatus?: PlatformCore.SearchColumnStringField[];
+  _break?: PlatformCore.SearchColumnStringField[];
+  caseTaskEvent?: PlatformCore.SearchColumnSelectField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  classNoHierarchy?: PlatformCore.SearchColumnSelectField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  date?: PlatformCore.SearchColumnDateField[];
+  dateCreated?: PlatformCore.SearchColumnDateField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  departmentNoHierarchy?: PlatformCore.SearchColumnSelectField[];
+  durationDecimal?: PlatformCore.SearchColumnDoubleField[];
+  employee?: PlatformCore.SearchColumnSelectField[];
+  endTime?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  hours?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isBillable?: PlatformCore.SearchColumnBooleanField[];
+  isExempt?: PlatformCore.SearchColumnBooleanField[];
+  isProductive?: PlatformCore.SearchColumnBooleanField[];
+  isUtilized?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnStringField[];
+  lastModified?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  locationNoHierarchy?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  nextApprover?: PlatformCore.SearchColumnSelectField[];
+  paidExternally?: PlatformCore.SearchColumnBooleanField[];
+  payItem?: PlatformCore.SearchColumnSelectField[];
+  payrollDate?: PlatformCore.SearchColumnDateField[];
+  rate?: PlatformCore.SearchColumnDoubleField[];
+  startTime?: PlatformCore.SearchColumnDateField[];
+  subsidiary?: PlatformCore.SearchColumnStringField[];
+  subsidiaryNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  timeSheet?: PlatformCore.SearchColumnStringField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class TimeEntrySearchRowBasic extends PlatformCore.SearchRowBasic {
   approvalStatus?: PlatformCore.SearchColumnSelectField[];
@@ -9356,7 +14060,7 @@ export class TimeEntrySearchRowBasic extends PlatformCore.SearchRowBasic {
   timeSheet?: PlatformCore.SearchColumnStringField[];
   type?: PlatformCore.SearchColumnEnumSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: TimeEntrySearchRowBasic) {
+  constructor(props: TimeEntrySearchRowBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this.billingClass = props.billingClass;
@@ -9399,6 +14103,27 @@ export class TimeEntrySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type TermSearchRowBasicProps = {
+  dateDriven?: PlatformCore.SearchColumnBooleanField[];
+  dayDiscountExpires?: PlatformCore.SearchColumnLongField[];
+  dayOfMonthNetDue?: PlatformCore.SearchColumnLongField[];
+  daysUntilExpiry?: PlatformCore.SearchColumnLongField[];
+  daysUntilNetDue?: PlatformCore.SearchColumnLongField[];
+  discountPercent?: PlatformCore.SearchColumnDoubleField[];
+  discountPercentDateDriven?: PlatformCore.SearchColumnDoubleField[];
+  dueNextMonthIfWithinDays?: PlatformCore.SearchColumnLongField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  installment?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  preferred?: PlatformCore.SearchColumnBooleanField[];
+  recurrenceCount?: PlatformCore.SearchColumnLongField[];
+  recurrenceFrequency?: PlatformCore.SearchColumnStringField[];
+  repeatEvery?: PlatformCore.SearchColumnLongField[];
+  splitEvenly?: PlatformCore.SearchColumnBooleanField[];
+};
+
 export class TermSearchRowBasic extends PlatformCore.SearchRowBasic {
   dateDriven?: PlatformCore.SearchColumnBooleanField[];
   dayDiscountExpires?: PlatformCore.SearchColumnLongField[];
@@ -9418,7 +14143,7 @@ export class TermSearchRowBasic extends PlatformCore.SearchRowBasic {
   recurrenceFrequency?: PlatformCore.SearchColumnStringField[];
   repeatEvery?: PlatformCore.SearchColumnLongField[];
   splitEvenly?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: TermSearchRowBasic) {
+  constructor(props: TermSearchRowBasicProps) {
     super();
     this.dateDriven = props.dateDriven;
     this.dayDiscountExpires = props.dayDiscountExpires;
@@ -9441,13 +14166,21 @@ export class TermSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type InventoryDetailSearchRowBasicProps = {
+  binNumber?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  inventoryNumber?: PlatformCore.SearchColumnSelectField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+};
+
 export class InventoryDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
   binNumber?: PlatformCore.SearchColumnSelectField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   inventoryNumber?: PlatformCore.SearchColumnSelectField[];
   quantity?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: InventoryDetailSearchRowBasic) {
+  constructor(props: InventoryDetailSearchRowBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
@@ -9456,6 +14189,23 @@ export class InventoryDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.quantity = props.quantity;
   }
 }
+
+export type PaycheckSearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnSelectField[];
+  amendedDate?: PlatformCore.SearchColumnDateField[];
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  batchNumber?: PlatformCore.SearchColumnLongField[];
+  checkDate?: PlatformCore.SearchColumnDateField[];
+  employee?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  hasGLImpact?: PlatformCore.SearchColumnBooleanField[];
+  hours?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  payrollItem?: PlatformCore.SearchColumnSelectField[];
+  payrollItemType?: PlatformCore.SearchColumnSelectField[];
+  subjectWages?: PlatformCore.SearchColumnDoubleField[];
+  taxableWages?: PlatformCore.SearchColumnDoubleField[];
+};
 
 export class PaycheckSearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnSelectField[];
@@ -9472,7 +14222,7 @@ export class PaycheckSearchRowBasic extends PlatformCore.SearchRowBasic {
   payrollItemType?: PlatformCore.SearchColumnSelectField[];
   subjectWages?: PlatformCore.SearchColumnDoubleField[];
   taxableWages?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: PaycheckSearchRowBasic) {
+  constructor(props: PaycheckSearchRowBasicProps) {
     super();
     this.account = props.account;
     this.amendedDate = props.amendedDate;
@@ -9491,6 +14241,17 @@ export class PaycheckSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type HcmJobSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  employmentCategory?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  jobId?: PlatformCore.SearchColumnStringField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class HcmJobSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   employmentCategory?: PlatformCore.SearchColumnSelectField[];
@@ -9500,7 +14261,7 @@ export class HcmJobSearchRowBasic extends PlatformCore.SearchRowBasic {
   jobId?: PlatformCore.SearchColumnStringField[];
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: HcmJobSearchRowBasic) {
+  constructor(props: HcmJobSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.employmentCategory = props.employmentCategory;
@@ -9513,18 +14274,34 @@ export class HcmJobSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerSalesTeamProps = {
+  employee?: PlatformCore.RecordRef;
+  salesRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
+
 export class CustomerSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: CustomerSalesTeam) {
+  constructor(props: CustomerSalesTeamProps) {
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
     this.contribution = props.contribution;
   }
 }
+
+export type OtherNameCategorySearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
 
 export class OtherNameCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -9533,7 +14310,7 @@ export class OtherNameCategorySearchBasic extends PlatformCore.SearchRecordBasic
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: OtherNameCategorySearchBasic) {
+  constructor(props: OtherNameCategorySearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -9543,6 +14320,19 @@ export class OtherNameCategorySearchBasic extends PlatformCore.SearchRecordBasic
     this.name = props.name;
   }
 }
+
+export type PricingSearchRowBasicProps = {
+  currency?: PlatformCore.SearchColumnSelectField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  maximumQuantity?: PlatformCore.SearchColumnDoubleField[];
+  minimumQuantity?: PlatformCore.SearchColumnDoubleField[];
+  priceLevel?: PlatformCore.SearchColumnSelectField[];
+  quantityRange?: PlatformCore.SearchColumnStringField[];
+  saleUnit?: PlatformCore.SearchColumnSelectField[];
+  unitPrice?: PlatformCore.SearchColumnDoubleField[];
+};
 
 export class PricingSearchRowBasic extends PlatformCore.SearchRowBasic {
   currency?: PlatformCore.SearchColumnSelectField[];
@@ -9555,7 +14345,7 @@ export class PricingSearchRowBasic extends PlatformCore.SearchRowBasic {
   quantityRange?: PlatformCore.SearchColumnStringField[];
   saleUnit?: PlatformCore.SearchColumnSelectField[];
   unitPrice?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: PricingSearchRowBasic) {
+  constructor(props: PricingSearchRowBasicProps) {
     super();
     this.currency = props.currency;
     this.customer = props.customer;
@@ -9570,14 +14360,39 @@ export class PricingSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type LandedCostDataListProps = {
+  landedCostData?: LandedCostData[];
+  replaceAll?: boolean;
+};
+
 export class LandedCostDataList {
   landedCostData?: LandedCostData[];
   replaceAll?: boolean;
-  constructor(props: LandedCostDataList) {
+  constructor(props: LandedCostDataListProps) {
     this.landedCostData = props.landedCostData;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BomSearchRowBasicProps = {
+  availableForAllAssemblies?: PlatformCore.SearchColumnBooleanField[];
+  availableForAllLocations?: PlatformCore.SearchColumnBooleanField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  includeChildren?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  legacyBomForAssembly?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  restrictToAssemblies?: PlatformCore.SearchColumnSelectField[];
+  restrictToLocations?: PlatformCore.SearchColumnSelectField[];
+  revisionName?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  subsidiaryNoHierarchy?: PlatformCore.SearchColumnSelectField[];
+  useComponentYield?: PlatformCore.SearchColumnBooleanField[];
+  usedOnAssembly?: PlatformCore.SearchColumnBooleanField[];
+};
 
 export class BomSearchRowBasic extends PlatformCore.SearchRowBasic {
   availableForAllAssemblies?: PlatformCore.SearchColumnBooleanField[];
@@ -9597,7 +14412,7 @@ export class BomSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiaryNoHierarchy?: PlatformCore.SearchColumnSelectField[];
   useComponentYield?: PlatformCore.SearchColumnBooleanField[];
   usedOnAssembly?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: BomSearchRowBasic) {
+  constructor(props: BomSearchRowBasicProps) {
     super();
     this.availableForAllAssemblies = props.availableForAllAssemblies;
     this.availableForAllLocations = props.availableForAllLocations;
@@ -9619,6 +14434,24 @@ export class BomSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type SolutionSearchRowBasicProps = {
+  assigned?: PlatformCore.SearchColumnSelectField[];
+  caseCount?: PlatformCore.SearchColumnLongField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  displayOnline?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  previewref?: PlatformCore.SearchColumnStringField[];
+  solutionCode?: PlatformCore.SearchColumnStringField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class SolutionSearchRowBasic extends PlatformCore.SearchRowBasic {
   assigned?: PlatformCore.SearchColumnSelectField[];
   caseCount?: PlatformCore.SearchColumnLongField[];
@@ -9635,7 +14468,7 @@ export class SolutionSearchRowBasic extends PlatformCore.SearchRowBasic {
   status?: PlatformCore.SearchColumnEnumSelectField[];
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: SolutionSearchRowBasic) {
+  constructor(props: SolutionSearchRowBasicProps) {
     super();
     this.assigned = props.assigned;
     this.caseCount = props.caseCount;
@@ -9654,6 +14487,165 @@ export class SolutionSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type OriginatingLeadSearchBasicProps = {
+  accountNumber?: PlatformCore.SearchStringField;
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  assignedSite?: PlatformCore.SearchMultiSelectField;
+  assignedSiteId?: PlatformCore.SearchMultiSelectField;
+  attention?: PlatformCore.SearchStringField;
+  availableOffline?: PlatformCore.SearchBooleanField;
+  balance?: PlatformCore.SearchDoubleField;
+  billAddress?: PlatformCore.SearchStringField;
+  boughtAmount?: PlatformCore.SearchDoubleField;
+  boughtDate?: PlatformCore.SearchDateField;
+  buyingReason?: PlatformCore.SearchMultiSelectField;
+  buyingTimeFrame?: PlatformCore.SearchMultiSelectField;
+  category?: PlatformCore.SearchMultiSelectField;
+  ccCustomerCode?: PlatformCore.SearchStringField;
+  ccDefault?: PlatformCore.SearchBooleanField;
+  ccExpDate?: PlatformCore.SearchDateField;
+  ccHolderName?: PlatformCore.SearchStringField;
+  ccNumber?: PlatformCore.SearchStringField;
+  ccState?: PlatformCore.SearchMultiSelectField;
+  ccStateFrom?: PlatformCore.SearchDateField;
+  ccType?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  classBought?: PlatformCore.SearchMultiSelectField;
+  comments?: PlatformCore.SearchStringField;
+  companyName?: PlatformCore.SearchStringField;
+  consolBalance?: PlatformCore.SearchDoubleField;
+  consolDaysOverdue?: PlatformCore.SearchLongField;
+  consolDepositBalance?: PlatformCore.SearchDoubleField;
+  consolOverdueBalance?: PlatformCore.SearchDoubleField;
+  consolUnbilledOrders?: PlatformCore.SearchDoubleField;
+  contact?: PlatformCore.SearchStringField;
+  contribution?: PlatformCore.SearchLongField;
+  conversionDate?: PlatformCore.SearchDateField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  creditHold?: PlatformCore.SearchEnumMultiSelectField;
+  creditHoldOverride?: PlatformCore.SearchBooleanField;
+  creditLimit?: PlatformCore.SearchDoubleField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  custStage?: PlatformCore.SearchMultiSelectField;
+  custStatus?: PlatformCore.SearchMultiSelectField;
+  dateClosed?: PlatformCore.SearchDateField;
+  dateCreated?: PlatformCore.SearchDateField;
+  daysOverdue?: PlatformCore.SearchLongField;
+  defaultOrderPriority?: PlatformCore.SearchDoubleField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  depositBalance?: PlatformCore.SearchDoubleField;
+  deptBought?: PlatformCore.SearchMultiSelectField;
+  drAccount?: PlatformCore.SearchMultiSelectField;
+  email?: PlatformCore.SearchStringField;
+  emailPreference?: PlatformCore.SearchEnumMultiSelectField;
+  emailTransactions?: PlatformCore.SearchBooleanField;
+  endDate?: PlatformCore.SearchDateField;
+  entityId?: PlatformCore.SearchStringField;
+  entityStatus?: PlatformCore.SearchMultiSelectField;
+  estimatedBudget?: PlatformCore.SearchDoubleField;
+  explicitConversion?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  faxTransactions?: PlatformCore.SearchBooleanField;
+  firstName?: PlatformCore.SearchStringField;
+  firstOrderDate?: PlatformCore.SearchDateField;
+  firstSaleDate?: PlatformCore.SearchDateField;
+  fxAccount?: PlatformCore.SearchMultiSelectField;
+  fxBalance?: PlatformCore.SearchDoubleField;
+  fxConsolBalance?: PlatformCore.SearchDoubleField;
+  fxConsolUnbilledOrders?: PlatformCore.SearchDoubleField;
+  fxUnbilledOrders?: PlatformCore.SearchDoubleField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  groupPricingLevel?: PlatformCore.SearchMultiSelectField;
+  hasDuplicates?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isBudgetApproved?: PlatformCore.SearchBooleanField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPerson?: PlatformCore.SearchBooleanField;
+  isReportedLead?: PlatformCore.SearchBooleanField;
+  isShipAddress?: PlatformCore.SearchBooleanField;
+  itemPricingLevel?: PlatformCore.SearchMultiSelectField;
+  itemPricingUnitPrice?: PlatformCore.SearchDoubleField;
+  itemsBought?: PlatformCore.SearchMultiSelectField;
+  itemsOrdered?: PlatformCore.SearchMultiSelectField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  lastOrderDate?: PlatformCore.SearchDateField;
+  lastSaleDate?: PlatformCore.SearchDateField;
+  leadDate?: PlatformCore.SearchDateField;
+  leadSource?: PlatformCore.SearchMultiSelectField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  locationBought?: PlatformCore.SearchMultiSelectField;
+  manualCreditHold?: PlatformCore.SearchBooleanField;
+  merchantAccount?: PlatformCore.SearchMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  monthlyClosing?: PlatformCore.SearchEnumMultiSelectField;
+  onCreditHold?: PlatformCore.SearchBooleanField;
+  orderedAmount?: PlatformCore.SearchDoubleField;
+  orderedDate?: PlatformCore.SearchDateField;
+  otherRelationships?: PlatformCore.SearchEnumMultiSelectField;
+  overdueBalance?: PlatformCore.SearchDoubleField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  parentItemsBought?: PlatformCore.SearchMultiSelectField;
+  parentItemsOrdered?: PlatformCore.SearchMultiSelectField;
+  partner?: PlatformCore.SearchMultiSelectField;
+  partnerContribution?: PlatformCore.SearchLongField;
+  partnerRole?: PlatformCore.SearchMultiSelectField;
+  partnerTeamMember?: PlatformCore.SearchMultiSelectField;
+  pec?: PlatformCore.SearchStringField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  priceLevel?: PlatformCore.SearchMultiSelectField;
+  pricingGroup?: PlatformCore.SearchMultiSelectField;
+  pricingItem?: PlatformCore.SearchMultiSelectField;
+  printTransactions?: PlatformCore.SearchBooleanField;
+  prospectDate?: PlatformCore.SearchDateField;
+  pstExempt?: PlatformCore.SearchBooleanField;
+  receivablesAccount?: PlatformCore.SearchMultiSelectField;
+  reminderDate?: PlatformCore.SearchDateField;
+  resaleNumber?: PlatformCore.SearchStringField;
+  role?: PlatformCore.SearchMultiSelectField;
+  salesReadiness?: PlatformCore.SearchMultiSelectField;
+  salesRep?: PlatformCore.SearchMultiSelectField;
+  salesTeamMember?: PlatformCore.SearchMultiSelectField;
+  salesTeamRole?: PlatformCore.SearchMultiSelectField;
+  salutation?: PlatformCore.SearchStringField;
+  shipAddress?: PlatformCore.SearchStringField;
+  shipComplete?: PlatformCore.SearchBooleanField;
+  shippingItem?: PlatformCore.SearchMultiSelectField;
+  sourceSite?: PlatformCore.SearchMultiSelectField;
+  sourceSiteId?: PlatformCore.SearchMultiSelectField;
+  stage?: PlatformCore.SearchMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  state?: PlatformCore.SearchStringField;
+  subsidBought?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxable?: PlatformCore.SearchBooleanField;
+  terms?: PlatformCore.SearchMultiSelectField;
+  territory?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  unbilledOrders?: PlatformCore.SearchDoubleField;
+  url?: PlatformCore.SearchStringField;
+  vatRegNumber?: PlatformCore.SearchStringField;
+  webLead?: PlatformCore.SearchBooleanField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class OriginatingLeadSearchBasic extends PlatformCore.SearchRecordBasic {
   accountNumber?: PlatformCore.SearchStringField;
@@ -9812,7 +14804,7 @@ export class OriginatingLeadSearchBasic extends PlatformCore.SearchRecordBasic {
   webLead?: PlatformCore.SearchBooleanField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: OriginatingLeadSearchBasic) {
+  constructor(props: OriginatingLeadSearchBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.address = props.address;
@@ -9973,16 +14965,30 @@ export class OriginatingLeadSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type AccountingBookDetailProps = {
+  accountingBook?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+};
+
 export class AccountingBookDetail {
   accountingBook?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   exchangeRate?: number;
-  constructor(props: AccountingBookDetail) {
+  constructor(props: AccountingBookDetailProps) {
     this.accountingBook = props.accountingBook;
     this.currency = props.currency;
     this.exchangeRate = props.exchangeRate;
   }
 }
+
+export type InventoryNumberBinSearchRowBasicProps = {
+  binNumber?: PlatformCore.SearchColumnSelectField[];
+  inventoryNumber?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
+  quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
+};
 
 export class InventoryNumberBinSearchRowBasic extends PlatformCore.SearchRowBasic {
   binNumber?: PlatformCore.SearchColumnSelectField[];
@@ -9990,7 +14996,7 @@ export class InventoryNumberBinSearchRowBasic extends PlatformCore.SearchRowBasi
   location?: PlatformCore.SearchColumnSelectField[];
   quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
   quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: InventoryNumberBinSearchRowBasic) {
+  constructor(props: InventoryNumberBinSearchRowBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.inventoryNumber = props.inventoryNumber;
@@ -10000,23 +15006,48 @@ export class InventoryNumberBinSearchRowBasic extends PlatformCore.SearchRowBasi
   }
 }
 
+export type AccountingBookDetailListProps = {
+  accountingBookDetail?: AccountingBookDetail[];
+  replaceAll?: boolean;
+};
+
 export class AccountingBookDetailList {
   accountingBookDetail?: AccountingBookDetail[];
   replaceAll?: boolean;
-  constructor(props: AccountingBookDetailList) {
+  constructor(props: AccountingBookDetailListProps) {
     this.accountingBookDetail = props.accountingBookDetail;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type GiftCertRedemptionListProps = {
+  giftCertRedemption?: GiftCertRedemption[];
+  replaceAll?: boolean;
+};
+
 export class GiftCertRedemptionList {
   giftCertRedemption?: GiftCertRedemption[];
   replaceAll?: boolean;
-  constructor(props: GiftCertRedemptionList) {
+  constructor(props: GiftCertRedemptionListProps) {
     this.giftCertRedemption = props.giftCertRedemption;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type UnitsTypeSearchBasicProps = {
+  abbreviation?: PlatformCore.SearchStringField;
+  baseUnit?: PlatformCore.SearchBooleanField;
+  conversionRate?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInActive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  pluralAbbreviation?: PlatformCore.SearchStringField;
+  pluralName?: PlatformCore.SearchStringField;
+  unitName?: PlatformCore.SearchStringField;
+};
 
 export class UnitsTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   abbreviation?: PlatformCore.SearchStringField;
@@ -10031,7 +15062,7 @@ export class UnitsTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   pluralAbbreviation?: PlatformCore.SearchStringField;
   pluralName?: PlatformCore.SearchStringField;
   unitName?: PlatformCore.SearchStringField;
-  constructor(props: UnitsTypeSearchBasic) {
+  constructor(props: UnitsTypeSearchBasicProps) {
     super();
     this.abbreviation = props.abbreviation;
     this.baseUnit = props.baseUnit;
@@ -10048,6 +15079,22 @@ export class UnitsTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type TaxTypeSearchRowBasicProps = {
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  doesNotAddToTotal?: PlatformCore.SearchColumnBooleanField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nexus?: PlatformCore.SearchColumnSelectField[];
+  payablesAccount?: PlatformCore.SearchColumnSelectField[];
+  postToItemCost?: PlatformCore.SearchColumnBooleanField[];
+  receivablesAccount?: PlatformCore.SearchColumnSelectField[];
+  reverseCharge?: PlatformCore.SearchColumnBooleanField[];
+  taxInNetAmount?: PlatformCore.SearchColumnBooleanField[];
+};
+
 export class TaxTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   country?: PlatformCore.SearchColumnEnumSelectField[];
   description?: PlatformCore.SearchColumnStringField[];
@@ -10062,7 +15109,7 @@ export class TaxTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   receivablesAccount?: PlatformCore.SearchColumnSelectField[];
   reverseCharge?: PlatformCore.SearchColumnBooleanField[];
   taxInNetAmount?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: TaxTypeSearchRowBasic) {
+  constructor(props: TaxTypeSearchRowBasicProps) {
     super();
     this.country = props.country;
     this.description = props.description;
@@ -10080,6 +15127,19 @@ export class TaxTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerSubsidiaryRelationshipSearchRowBasicProps = {
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  depositbalance?: PlatformCore.SearchColumnDoubleField[];
+  entity?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isprimarysub?: PlatformCore.SearchColumnBooleanField[];
+  primaryCurrency?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  unbilledorders?: PlatformCore.SearchColumnDoubleField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class CustomerSubsidiaryRelationshipSearchRowBasic extends PlatformCore.SearchRowBasic {
   balance?: PlatformCore.SearchColumnDoubleField[];
   depositbalance?: PlatformCore.SearchColumnDoubleField[];
@@ -10091,7 +15151,7 @@ export class CustomerSubsidiaryRelationshipSearchRowBasic extends PlatformCore.S
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   unbilledorders?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: CustomerSubsidiaryRelationshipSearchRowBasic) {
+  constructor(props: CustomerSubsidiaryRelationshipSearchRowBasicProps) {
     super();
     this.balance = props.balance;
     this.depositbalance = props.depositbalance;
@@ -10106,6 +15166,18 @@ export class CustomerSubsidiaryRelationshipSearchRowBasic extends PlatformCore.S
   }
 }
 
+export type TimeSheetSearchRowBasicProps = {
+  approvalStatus?: PlatformCore.SearchColumnSelectField[];
+  employee?: PlatformCore.SearchColumnSelectField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  totalHours?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class TimeSheetSearchRowBasic extends PlatformCore.SearchRowBasic {
   approvalStatus?: PlatformCore.SearchColumnSelectField[];
   employee?: PlatformCore.SearchColumnSelectField[];
@@ -10116,7 +15188,7 @@ export class TimeSheetSearchRowBasic extends PlatformCore.SearchRowBasic {
   startDate?: PlatformCore.SearchColumnDateField[];
   totalHours?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: TimeSheetSearchRowBasic) {
+  constructor(props: TimeSheetSearchRowBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this.employee = props.employee;
@@ -10130,6 +15202,18 @@ export class TimeSheetSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type DepartmentSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  nameNoHierarchy?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class DepartmentSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -10140,7 +15224,7 @@ export class DepartmentSearchBasic extends PlatformCore.SearchRecordBasic {
   nameNoHierarchy?: PlatformCore.SearchStringField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: DepartmentSearchBasic) {
+  constructor(props: DepartmentSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -10154,14 +15238,40 @@ export class DepartmentSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CustomSearchJoinProps = {
+  customizationRef: PlatformCore.CustomizationRef;
+  searchRecordBasic: PlatformCore.SearchRecordBasic;
+};
+
 export class CustomSearchJoin {
   customizationRef: PlatformCore.CustomizationRef;
   searchRecordBasic: PlatformCore.SearchRecordBasic;
-  constructor(props: CustomSearchJoin) {
+  constructor(props: CustomSearchJoinProps) {
     this.customizationRef = props.customizationRef;
     this.searchRecordBasic = props.searchRecordBasic;
   }
 }
+
+export type AddressSearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  address1?: PlatformCore.SearchStringField;
+  address2?: PlatformCore.SearchStringField;
+  address3?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  attention?: PlatformCore.SearchStringField;
+  city?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  countryCode?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  override?: PlatformCore.SearchBooleanField;
+  phone?: PlatformCore.SearchStringField;
+  state?: PlatformCore.SearchStringField;
+  zip?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class AddressSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
@@ -10182,7 +15292,7 @@ export class AddressSearchBasic extends PlatformCore.SearchRecordBasic {
   state?: PlatformCore.SearchStringField;
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: AddressSearchBasic) {
+  constructor(props: AddressSearchBasicProps) {
     super();
     this.address = props.address;
     this.address1 = props.address1;
@@ -10205,6 +15315,19 @@ export class AddressSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type UnitsTypeSearchRowBasicProps = {
+  abbreviation?: PlatformCore.SearchColumnStringField[];
+  baseUnit?: PlatformCore.SearchColumnBooleanField[];
+  conversionRate?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInActive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  pluralAbbreviation?: PlatformCore.SearchColumnStringField[];
+  pluralName?: PlatformCore.SearchColumnStringField[];
+  unitName?: PlatformCore.SearchColumnStringField[];
+};
+
 export class UnitsTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   abbreviation?: PlatformCore.SearchColumnStringField[];
   baseUnit?: PlatformCore.SearchColumnBooleanField[];
@@ -10216,7 +15339,7 @@ export class UnitsTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
   pluralAbbreviation?: PlatformCore.SearchColumnStringField[];
   pluralName?: PlatformCore.SearchColumnStringField[];
   unitName?: PlatformCore.SearchColumnStringField[];
-  constructor(props: UnitsTypeSearchRowBasic) {
+  constructor(props: UnitsTypeSearchRowBasicProps) {
     super();
     this.abbreviation = props.abbreviation;
     this.baseUnit = props.baseUnit;
@@ -10230,6 +15353,26 @@ export class UnitsTypeSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.unitName = props.unitName;
   }
 }
+
+export type FairValuePriceSearchRowBasicProps = {
+  currency?: PlatformCore.SearchColumnSelectField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fairValue?: PlatformCore.SearchColumnDoubleField[];
+  fairValueFormula?: PlatformCore.SearchColumnSelectField[];
+  fairValueRangePolicy?: PlatformCore.SearchColumnEnumSelectField[];
+  highValue?: PlatformCore.SearchColumnDoubleField[];
+  highValuePercent?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isVsoePrice?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  itemRevenueCategory?: PlatformCore.SearchColumnSelectField[];
+  lowValue?: PlatformCore.SearchColumnDoubleField[];
+  lowValuePercent?: PlatformCore.SearchColumnDoubleField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  units?: PlatformCore.SearchColumnSelectField[];
+  unitsType?: PlatformCore.SearchColumnSelectField[];
+};
 
 export class FairValuePriceSearchRowBasic extends PlatformCore.SearchRowBasic {
   currency?: PlatformCore.SearchColumnSelectField[];
@@ -10249,7 +15392,7 @@ export class FairValuePriceSearchRowBasic extends PlatformCore.SearchRowBasic {
   startDate?: PlatformCore.SearchColumnDateField[];
   units?: PlatformCore.SearchColumnSelectField[];
   unitsType?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: FairValuePriceSearchRowBasic) {
+  constructor(props: FairValuePriceSearchRowBasicProps) {
     super();
     this.currency = props.currency;
     this.endDate = props.endDate;
@@ -10271,6 +15414,16 @@ export class FairValuePriceSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type JobStatusSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class JobStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -10279,7 +15432,7 @@ export class JobStatusSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: JobStatusSearchBasic) {
+  constructor(props: JobStatusSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -10290,6 +15443,30 @@ export class JobStatusSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type TaxGroupSearchRowBasicProps = {
+  city?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  county?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  includeChildren?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefault?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  itemId?: PlatformCore.SearchColumnStringField[];
+  piggyBack?: PlatformCore.SearchColumnBooleanField[];
+  rate?: PlatformCore.SearchColumnDoubleField[];
+  state?: PlatformCore.SearchColumnSelectField[];
+  stateDisplayName?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  subsidiaryNoHierarchy?: PlatformCore.SearchColumnSelectField[];
+  taxItem1?: PlatformCore.SearchColumnSelectField[];
+  taxItem2?: PlatformCore.SearchColumnSelectField[];
+  taxType?: PlatformCore.SearchColumnSelectField[];
+  unitPrice1?: PlatformCore.SearchColumnDoubleField[];
+  unitPrice2?: PlatformCore.SearchColumnDoubleField[];
+  zip?: PlatformCore.SearchColumnStringField[];
+};
 
 export class TaxGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   city?: PlatformCore.SearchColumnStringField[];
@@ -10313,7 +15490,7 @@ export class TaxGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
   unitPrice1?: PlatformCore.SearchColumnDoubleField[];
   unitPrice2?: PlatformCore.SearchColumnDoubleField[];
   zip?: PlatformCore.SearchColumnStringField[];
-  constructor(props: TaxGroupSearchRowBasic) {
+  constructor(props: TaxGroupSearchRowBasicProps) {
     super();
     this.city = props.city;
     this.country = props.country;
@@ -10338,6 +15515,333 @@ export class TaxGroupSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.zip = props.zip;
   }
 }
+
+export type ItemSearchRowBasicProps = {
+  accBookRevRecForecastRule?: PlatformCore.SearchColumnSelectField[];
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  accountingBookAmortization?: PlatformCore.SearchColumnSelectField[];
+  accountingBookCreatePlansOn?: PlatformCore.SearchColumnSelectField[];
+  accountingBookRevRecRule?: PlatformCore.SearchColumnSelectField[];
+  accountingBookRevRecSchedule?: PlatformCore.SearchColumnSelectField[];
+  allowedShippingMethod?: PlatformCore.SearchColumnSelectField[];
+  alternateDemandSourceItem?: PlatformCore.SearchColumnStringField[];
+  assetAccount?: PlatformCore.SearchColumnSelectField[];
+  atpLeadTime?: PlatformCore.SearchColumnDoubleField[];
+  atpMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  autoLeadTime?: PlatformCore.SearchColumnBooleanField[];
+  autoPreferredStockLevel?: PlatformCore.SearchColumnBooleanField[];
+  autoReorderPoint?: PlatformCore.SearchColumnBooleanField[];
+  availableToPartners?: PlatformCore.SearchColumnBooleanField[];
+  averageCost?: PlatformCore.SearchColumnDoubleField[];
+  backwardConsumptionDays?: PlatformCore.SearchColumnLongField[];
+  basePrice?: PlatformCore.SearchColumnDoubleField[];
+  billExchRateVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  billPriceVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  billQtyVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  binNumber?: PlatformCore.SearchColumnStringField[];
+  binOnHandAvail?: PlatformCore.SearchColumnDoubleField[];
+  binOnHandCount?: PlatformCore.SearchColumnDoubleField[];
+  bomQuantity?: PlatformCore.SearchColumnDoubleField[];
+  buildEntireAssembly?: PlatformCore.SearchColumnBooleanField[];
+  buildTime?: PlatformCore.SearchColumnDoubleField[];
+  buyItNowPrice?: PlatformCore.SearchColumnDoubleField[];
+  category?: PlatformCore.SearchColumnStringField[];
+  categoryPreferred?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnSelectField[];
+  componentYield?: PlatformCore.SearchColumnDoubleField[];
+  consumptionUnit?: PlatformCore.SearchColumnSelectField[];
+  contingentRevenueHandling?: PlatformCore.SearchColumnBooleanField[];
+  copyDescription?: PlatformCore.SearchColumnBooleanField[];
+  correlatedItem?: PlatformCore.SearchColumnSelectField[];
+  correlatedItemCorrelation?: PlatformCore.SearchColumnDoubleField[];
+  correlatedItemCount?: PlatformCore.SearchColumnLongField[];
+  correlatedItemLift?: PlatformCore.SearchColumnDoubleField[];
+  correlatedItemPurchaseRate?: PlatformCore.SearchColumnDoubleField[];
+  cost?: PlatformCore.SearchColumnDoubleField[];
+  costAccountingStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  costCategory?: PlatformCore.SearchColumnStringField[];
+  costEstimate?: PlatformCore.SearchColumnDoubleField[];
+  costEstimateType?: PlatformCore.SearchColumnEnumSelectField[];
+  costingMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  countryOfManufacture?: PlatformCore.SearchColumnEnumSelectField[];
+  created?: PlatformCore.SearchColumnDateField[];
+  createJob?: PlatformCore.SearchColumnBooleanField[];
+  createRevenuePlansOn?: PlatformCore.SearchColumnSelectField[];
+  custReturnVarianceAccount?: PlatformCore.SearchColumnSelectField[];
+  dateViewed?: PlatformCore.SearchColumnDateField[];
+  daysBeforeExpiration?: PlatformCore.SearchColumnStringField[];
+  defaultReturnCost?: PlatformCore.SearchColumnDoubleField[];
+  defaultShippingMethod?: PlatformCore.SearchColumnStringField[];
+  deferredExpenseAccount?: PlatformCore.SearchColumnSelectField[];
+  deferredRevenueAccount?: PlatformCore.SearchColumnSelectField[];
+  deferRevRec?: PlatformCore.SearchColumnBooleanField[];
+  demandModifier?: PlatformCore.SearchColumnDoubleField[];
+  demandSource?: PlatformCore.SearchColumnEnumSelectField[];
+  demandTimeFence?: PlatformCore.SearchColumnLongField[];
+  department?: PlatformCore.SearchColumnSelectField[];
+  departmentnohierarchy?: PlatformCore.SearchColumnSelectField[];
+  directRevenuePosting?: PlatformCore.SearchColumnBooleanField[];
+  displayIneBayStore?: PlatformCore.SearchColumnBooleanField[];
+  displayName?: PlatformCore.SearchColumnStringField[];
+  distributionCategory?: PlatformCore.SearchColumnSelectField[];
+  distributionNetwork?: PlatformCore.SearchColumnSelectField[];
+  dontShowPrice?: PlatformCore.SearchColumnBooleanField[];
+  eBayItemDescription?: PlatformCore.SearchColumnStringField[];
+  eBayItemSubtitle?: PlatformCore.SearchColumnStringField[];
+  eBayItemTitle?: PlatformCore.SearchColumnStringField[];
+  ebayRelistingOption?: PlatformCore.SearchColumnEnumSelectField[];
+  effectiveBomControl?: PlatformCore.SearchColumnEnumSelectField[];
+  effectiveDate?: PlatformCore.SearchColumnDateField[];
+  effectiveRevision?: PlatformCore.SearchColumnSelectField[];
+  endAuctionsWhenOutOfStock?: PlatformCore.SearchColumnBooleanField[];
+  excludeFromSitemap?: PlatformCore.SearchColumnBooleanField[];
+  expenseAccount?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  featuredDescription?: PlatformCore.SearchColumnStringField[];
+  feedDescription?: PlatformCore.SearchColumnStringField[];
+  feedName?: PlatformCore.SearchColumnStringField[];
+  fixedLotSize?: PlatformCore.SearchColumnDoubleField[];
+  forwardConsumptionDays?: PlatformCore.SearchColumnLongField[];
+  fraudRisk?: PlatformCore.SearchColumnEnumSelectField[];
+  froogleProductFeed?: PlatformCore.SearchColumnBooleanField[];
+  futureHorizon?: PlatformCore.SearchColumnLongField[];
+  fxCost?: PlatformCore.SearchColumnDoubleField[];
+  gainLossAccount?: PlatformCore.SearchColumnSelectField[];
+  generateAccruals?: PlatformCore.SearchColumnBooleanField[];
+  giftCertAuthCode?: PlatformCore.SearchColumnStringField[];
+  giftCertEmail?: PlatformCore.SearchColumnStringField[];
+  giftCertExpirationDate?: PlatformCore.SearchColumnStringField[];
+  giftCertFrom?: PlatformCore.SearchColumnStringField[];
+  giftCertMessage?: PlatformCore.SearchColumnStringField[];
+  giftCertOriginalAmount?: PlatformCore.SearchColumnStringField[];
+  giftCertRecipient?: PlatformCore.SearchColumnStringField[];
+  hierarchyNode?: PlatformCore.SearchColumnStringField[];
+  hierarchyVersion?: PlatformCore.SearchColumnStringField[];
+  hits?: PlatformCore.SearchColumnLongField[];
+  imageUrl?: PlatformCore.SearchColumnStringField[];
+  includeChildren?: PlatformCore.SearchColumnBooleanField[];
+  incomeAccount?: PlatformCore.SearchColumnSelectField[];
+  intercoDefRevAccount?: PlatformCore.SearchColumnSelectField[];
+  intercoExpenseAccount?: PlatformCore.SearchColumnSelectField[];
+  intercoIncomeAccount?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  inventoryLocation?: PlatformCore.SearchColumnSelectField[];
+  invtClassification?: PlatformCore.SearchColumnEnumSelectField[];
+  invtCountInterval?: PlatformCore.SearchColumnLongField[];
+  isAvailable?: PlatformCore.SearchColumnBooleanField[];
+  isDropShipItem?: PlatformCore.SearchColumnBooleanField[];
+  isFulfillable?: PlatformCore.SearchColumnBooleanField[];
+  isGcoCompliant?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isLotItem?: PlatformCore.SearchColumnBooleanField[];
+  isOnline?: PlatformCore.SearchColumnBooleanField[];
+  isSerialItem?: PlatformCore.SearchColumnBooleanField[];
+  isSpecialOrderItem?: PlatformCore.SearchColumnBooleanField[];
+  isSpecialWorkOrderItem?: PlatformCore.SearchColumnBooleanField[];
+  isStorePickupAllowed?: PlatformCore.SearchColumnBooleanField[];
+  issueProduct?: PlatformCore.SearchColumnSelectField[];
+  isTaxable?: PlatformCore.SearchColumnBooleanField[];
+  isVsoeBundle?: PlatformCore.SearchColumnBooleanField[];
+  isWip?: PlatformCore.SearchColumnBooleanField[];
+  itemId?: PlatformCore.SearchColumnStringField[];
+  itemRevenueCategory?: PlatformCore.SearchColumnSelectField[];
+  itemUrl?: PlatformCore.SearchColumnStringField[];
+  lastInvtCountDate?: PlatformCore.SearchColumnDateField[];
+  lastPurchasePrice?: PlatformCore.SearchColumnDoubleField[];
+  lastQuantityAvailableChange?: PlatformCore.SearchColumnDateField[];
+  leadTime?: PlatformCore.SearchColumnLongField[];
+  liabilityAccount?: PlatformCore.SearchColumnSelectField[];
+  listingDuration?: PlatformCore.SearchColumnEnumSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  locationAllowStorePickup?: PlatformCore.SearchColumnBooleanField[];
+  locationAtpLeadTime?: PlatformCore.SearchColumnDoubleField[];
+  locationAverageCost?: PlatformCore.SearchColumnDoubleField[];
+  locationBinQuantityAvailable?: PlatformCore.SearchColumnStringField[];
+  locationBuildTime?: PlatformCore.SearchColumnDoubleField[];
+  locationCost?: PlatformCore.SearchColumnDoubleField[];
+  locationCostAccountingStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  locationDefaultReturnCost?: PlatformCore.SearchColumnDoubleField[];
+  locationDemandSource?: PlatformCore.SearchColumnEnumSelectField[];
+  locationDemandTimeFence?: PlatformCore.SearchColumnLongField[];
+  locationFixedLotSize?: PlatformCore.SearchColumnDoubleField[];
+  locationInventoryCostTemplate?: PlatformCore.SearchColumnStringField[];
+  locationInvtClassification?: PlatformCore.SearchColumnEnumSelectField[];
+  locationInvtCountInterval?: PlatformCore.SearchColumnLongField[];
+  locationLastInvtCountDate?: PlatformCore.SearchColumnDateField[];
+  locationLeadTime?: PlatformCore.SearchColumnLongField[];
+  locationNextInvtCountDate?: PlatformCore.SearchColumnDateField[];
+  locationPeriodicLotSizeDays?: PlatformCore.SearchColumnLongField[];
+  locationPeriodicLotSizeType?: PlatformCore.SearchColumnEnumSelectField[];
+  locationPreferredStockLevel?: PlatformCore.SearchColumnDoubleField[];
+  locationQtyAvailForStorePickup?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityAvailable?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityBackOrdered?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityCommitted?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityInTransit?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityOnHand?: PlatformCore.SearchColumnDoubleField[];
+  locationQuantityOnOrder?: PlatformCore.SearchColumnDoubleField[];
+  locationReOrderPoint?: PlatformCore.SearchColumnDoubleField[];
+  locationRescheduleInDays?: PlatformCore.SearchColumnLongField[];
+  locationRescheduleOutDays?: PlatformCore.SearchColumnLongField[];
+  locationSafetyStockLevel?: PlatformCore.SearchColumnDoubleField[];
+  locationStorePickupBufferStock?: PlatformCore.SearchColumnDoubleField[];
+  locationSupplyLotSizingMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  locationSupplyTimeFence?: PlatformCore.SearchColumnLongField[];
+  locationSupplyType?: PlatformCore.SearchColumnEnumSelectField[];
+  locationTotalValue?: PlatformCore.SearchColumnDoubleField[];
+  locBackwardConsumptionDays?: PlatformCore.SearchColumnLongField[];
+  locForwardConsumptionDays?: PlatformCore.SearchColumnLongField[];
+  manufacturer?: PlatformCore.SearchColumnStringField[];
+  manufacturerAddr1?: PlatformCore.SearchColumnStringField[];
+  manufacturerCity?: PlatformCore.SearchColumnStringField[];
+  manufacturerState?: PlatformCore.SearchColumnStringField[];
+  manufacturerTariff?: PlatformCore.SearchColumnStringField[];
+  manufacturerTaxId?: PlatformCore.SearchColumnStringField[];
+  manufacturerZip?: PlatformCore.SearchColumnStringField[];
+  manufacturingChargeItem?: PlatformCore.SearchColumnBooleanField[];
+  matchBillToReceipt?: PlatformCore.SearchColumnBooleanField[];
+  maximumQuantity?: PlatformCore.SearchColumnStringField[];
+  memberItem?: PlatformCore.SearchColumnSelectField[];
+  memberQuantity?: PlatformCore.SearchColumnDoubleField[];
+  metaTagHtml?: PlatformCore.SearchColumnStringField[];
+  minimumQuantity?: PlatformCore.SearchColumnStringField[];
+  modified?: PlatformCore.SearchColumnDateField[];
+  mossApplies?: PlatformCore.SearchColumnBooleanField[];
+  mpn?: PlatformCore.SearchColumnStringField[];
+  multManufactureAddr?: PlatformCore.SearchColumnBooleanField[];
+  nextagCategory?: PlatformCore.SearchColumnStringField[];
+  nextagProductFeed?: PlatformCore.SearchColumnBooleanField[];
+  nextInvtCountDate?: PlatformCore.SearchColumnDateField[];
+  noPriceMessage?: PlatformCore.SearchColumnStringField[];
+  numActiveListings?: PlatformCore.SearchColumnLongField[];
+  numberAllowedDownloads?: PlatformCore.SearchColumnStringField[];
+  numCurrentlyListed?: PlatformCore.SearchColumnLongField[];
+  obsoleteDate?: PlatformCore.SearchColumnDateField[];
+  obsoleteRevision?: PlatformCore.SearchColumnSelectField[];
+  offerSupport?: PlatformCore.SearchColumnBooleanField[];
+  onlineCustomerPrice?: PlatformCore.SearchColumnDoubleField[];
+  onlinePrice?: PlatformCore.SearchColumnDoubleField[];
+  onSpecial?: PlatformCore.SearchColumnBooleanField[];
+  otherPrices?: PlatformCore.SearchColumnDoubleField[];
+  otherVendor?: PlatformCore.SearchColumnSelectField[];
+  outOfStockBehavior?: PlatformCore.SearchColumnStringField[];
+  outOfStockMessage?: PlatformCore.SearchColumnStringField[];
+  overallQuantityPricingType?: PlatformCore.SearchColumnEnumSelectField[];
+  overheadType?: PlatformCore.SearchColumnEnumSelectField[];
+  pageTitle?: PlatformCore.SearchColumnStringField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  periodicLotSizeDays?: PlatformCore.SearchColumnLongField[];
+  periodicLotSizeType?: PlatformCore.SearchColumnEnumSelectField[];
+  preferenceCriterion?: PlatformCore.SearchColumnStringField[];
+  preferredBin?: PlatformCore.SearchColumnBooleanField[];
+  preferredLocation?: PlatformCore.SearchColumnSelectField[];
+  preferredStockLevel?: PlatformCore.SearchColumnDoubleField[];
+  preferredStockLevelDays?: PlatformCore.SearchColumnLongField[];
+  pricesIncludeTax?: PlatformCore.SearchColumnBooleanField[];
+  pricingGroup?: PlatformCore.SearchColumnSelectField[];
+  primaryCategory?: PlatformCore.SearchColumnStringField[];
+  prodPriceVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  prodQtyVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  purchaseDescription?: PlatformCore.SearchColumnStringField[];
+  purchaseOrderAmount?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantity?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  purchasePriceVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  purchaseUnit?: PlatformCore.SearchColumnSelectField[];
+  quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
+  quantityBackOrdered?: PlatformCore.SearchColumnDoubleField[];
+  quantityCommitted?: PlatformCore.SearchColumnDoubleField[];
+  quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
+  quantityOnOrder?: PlatformCore.SearchColumnDoubleField[];
+  quantityPricingSchedule?: PlatformCore.SearchColumnSelectField[];
+  receiptAmount?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantity?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  reorderMultiple?: PlatformCore.SearchColumnLongField[];
+  reOrderPoint?: PlatformCore.SearchColumnDoubleField[];
+  rescheduleInDays?: PlatformCore.SearchColumnLongField[];
+  rescheduleOutDays?: PlatformCore.SearchColumnLongField[];
+  reservePrice?: PlatformCore.SearchColumnDoubleField[];
+  revenueAllocationGroup?: PlatformCore.SearchColumnSelectField[];
+  revenueRecognitionRule?: PlatformCore.SearchColumnSelectField[];
+  revRecForecastRule?: PlatformCore.SearchColumnSelectField[];
+  revReclassFXAccount?: PlatformCore.SearchColumnSelectField[];
+  revRecSchedule?: PlatformCore.SearchColumnSelectField[];
+  roundUpAsComponent?: PlatformCore.SearchColumnBooleanField[];
+  safetyStockLevel?: PlatformCore.SearchColumnDoubleField[];
+  safetyStockLevelDays?: PlatformCore.SearchColumnLongField[];
+  salesDescription?: PlatformCore.SearchColumnStringField[];
+  salesTaxCode?: PlatformCore.SearchColumnSelectField[];
+  saleUnit?: PlatformCore.SearchColumnSelectField[];
+  sameAsPrimaryBookAmortization?: PlatformCore.SearchColumnBooleanField[];
+  sameAsPrimaryBookRevRec?: PlatformCore.SearchColumnBooleanField[];
+  scheduleBCode?: PlatformCore.SearchColumnEnumSelectField[];
+  scheduleBNumber?: PlatformCore.SearchColumnStringField[];
+  scheduleBQuantity?: PlatformCore.SearchColumnStringField[];
+  scrapAcct?: PlatformCore.SearchColumnSelectField[];
+  searchKeywords?: PlatformCore.SearchColumnStringField[];
+  seasonalDemand?: PlatformCore.SearchColumnBooleanField[];
+  sellOnEBay?: PlatformCore.SearchColumnBooleanField[];
+  serialNumber?: PlatformCore.SearchColumnStringField[];
+  serialNumberLocation?: PlatformCore.SearchColumnStringField[];
+  shipIndividually?: PlatformCore.SearchColumnBooleanField[];
+  shipPackage?: PlatformCore.SearchColumnSelectField[];
+  shippingCarrier?: PlatformCore.SearchColumnEnumSelectField[];
+  shippingRate?: PlatformCore.SearchColumnDoubleField[];
+  shoppingDotComCategory?: PlatformCore.SearchColumnStringField[];
+  shoppingProductFeed?: PlatformCore.SearchColumnBooleanField[];
+  shopzillaCategoryId?: PlatformCore.SearchColumnLongField[];
+  shopzillaProductFeed?: PlatformCore.SearchColumnBooleanField[];
+  sitemapPriority?: PlatformCore.SearchColumnEnumSelectField[];
+  softDescriptor?: PlatformCore.SearchColumnSelectField[];
+  startingPrice?: PlatformCore.SearchColumnDoubleField[];
+  stockDescription?: PlatformCore.SearchColumnStringField[];
+  stockUnit?: PlatformCore.SearchColumnSelectField[];
+  storeDescription?: PlatformCore.SearchColumnStringField[];
+  storeDetailedDescription?: PlatformCore.SearchColumnStringField[];
+  storeDisplayImage?: PlatformCore.SearchColumnSelectField[];
+  storeDisplayName?: PlatformCore.SearchColumnStringField[];
+  storeDisplayThumbnail?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  subType?: PlatformCore.SearchColumnEnumSelectField[];
+  supplyLotSizingMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  supplyReplenishmentMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  supplyTimeFence?: PlatformCore.SearchColumnLongField[];
+  supplyType?: PlatformCore.SearchColumnEnumSelectField[];
+  taxSchedule?: PlatformCore.SearchColumnSelectField[];
+  thumbNailUrl?: PlatformCore.SearchColumnStringField[];
+  totalValue?: PlatformCore.SearchColumnDoubleField[];
+  trackLandedCost?: PlatformCore.SearchColumnBooleanField[];
+  transferPrice?: PlatformCore.SearchColumnDoubleField[];
+  type?: PlatformCore.SearchColumnEnumSelectField[];
+  unbuildVarianceAccount?: PlatformCore.SearchColumnSelectField[];
+  unitsType?: PlatformCore.SearchColumnSelectField[];
+  upcCode?: PlatformCore.SearchColumnStringField[];
+  urlComponent?: PlatformCore.SearchColumnStringField[];
+  useBins?: PlatformCore.SearchColumnBooleanField[];
+  useComponentYield?: PlatformCore.SearchColumnBooleanField[];
+  useMarginalRates?: PlatformCore.SearchColumnBooleanField[];
+  vendor?: PlatformCore.SearchColumnSelectField[];
+  vendorCode?: PlatformCore.SearchColumnStringField[];
+  vendorCost?: PlatformCore.SearchColumnDoubleField[];
+  vendorCostEntered?: PlatformCore.SearchColumnDoubleField[];
+  vendorName?: PlatformCore.SearchColumnStringField[];
+  vendorPriceCurrency?: PlatformCore.SearchColumnStringField[];
+  vendorSchedule?: PlatformCore.SearchColumnSelectField[];
+  vendReturnVarianceAccount?: PlatformCore.SearchColumnSelectField[];
+  vsoeDeferral?: PlatformCore.SearchColumnEnumSelectField[];
+  vsoeDelivered?: PlatformCore.SearchColumnBooleanField[];
+  vsoePermitDiscount?: PlatformCore.SearchColumnEnumSelectField[];
+  vsoePrice?: PlatformCore.SearchColumnDoubleField[];
+  vsoeSopGroup?: PlatformCore.SearchColumnEnumSelectField[];
+  webSite?: PlatformCore.SearchColumnSelectField[];
+  weight?: PlatformCore.SearchColumnDoubleField[];
+  weightUnit?: PlatformCore.SearchColumnEnumSelectField[];
+  wipAcct?: PlatformCore.SearchColumnSelectField[];
+  wipVarianceAcct?: PlatformCore.SearchColumnSelectField[];
+  yahooProductFeed?: PlatformCore.SearchColumnBooleanField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   accBookRevRecForecastRule?: PlatformCore.SearchColumnSelectField[];
@@ -10664,7 +16168,7 @@ export class ItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   wipVarianceAcct?: PlatformCore.SearchColumnSelectField[];
   yahooProductFeed?: PlatformCore.SearchColumnBooleanField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ItemSearchRowBasic) {
+  constructor(props: ItemSearchRowBasicProps) {
     super();
     this.accBookRevRecForecastRule = props.accBookRevRecForecastRule;
     this.accountingBook = props.accountingBook;
@@ -10993,6 +16497,29 @@ export class ItemSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type BudgetSearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnStringField[];
+  accountingBook?: PlatformCore.SearchColumnStringField[];
+  amount?: PlatformCore.SearchColumnDoubleField[];
+  category?: PlatformCore.SearchColumnStringField[];
+  clazz?: PlatformCore.SearchColumnStringField[];
+  classnohierarchy?: PlatformCore.SearchColumnStringField[];
+  currency?: PlatformCore.SearchColumnStringField[];
+  customer?: PlatformCore.SearchColumnStringField[];
+  department?: PlatformCore.SearchColumnStringField[];
+  departmentnohierarchy?: PlatformCore.SearchColumnStringField[];
+  global?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnStringField[];
+  location?: PlatformCore.SearchColumnStringField[];
+  locationnohierarchy?: PlatformCore.SearchColumnStringField[];
+  subsidiary?: PlatformCore.SearchColumnStringField[];
+  subsidiarynohierarchy?: PlatformCore.SearchColumnStringField[];
+  year?: PlatformCore.SearchColumnStringField[];
+  year2?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class BudgetSearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnStringField[];
   accountingBook?: PlatformCore.SearchColumnStringField[];
@@ -11014,7 +16541,7 @@ export class BudgetSearchRowBasic extends PlatformCore.SearchRowBasic {
   year?: PlatformCore.SearchColumnStringField[];
   year2?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: BudgetSearchRowBasic) {
+  constructor(props: BudgetSearchRowBasicProps) {
     super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
@@ -11039,6 +16566,25 @@ export class BudgetSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type RevRecTemplateSearchBasicProps = {
+  amorMethod?: PlatformCore.SearchEnumMultiSelectField;
+  amorPeriod?: PlatformCore.SearchLongField;
+  amorStartOffset?: PlatformCore.SearchLongField;
+  amorTermSrc?: PlatformCore.SearchEnumMultiSelectField;
+  amorType?: PlatformCore.SearchEnumMultiSelectField;
+  contraAccount?: PlatformCore.SearchMultiSelectField;
+  deferralAccount?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  periodOffset?: PlatformCore.SearchLongField;
+  targetAccount?: PlatformCore.SearchMultiSelectField;
+  useForeignAmounts?: PlatformCore.SearchBooleanField;
+};
+
 export class RevRecTemplateSearchBasic extends PlatformCore.SearchRecordBasic {
   amorMethod?: PlatformCore.SearchEnumMultiSelectField;
   amorPeriod?: PlatformCore.SearchLongField;
@@ -11056,7 +16602,7 @@ export class RevRecTemplateSearchBasic extends PlatformCore.SearchRecordBasic {
   periodOffset?: PlatformCore.SearchLongField;
   targetAccount?: PlatformCore.SearchMultiSelectField;
   useForeignAmounts?: PlatformCore.SearchBooleanField;
-  constructor(props: RevRecTemplateSearchBasic) {
+  constructor(props: RevRecTemplateSearchBasicProps) {
     super();
     this.amorMethod = props.amorMethod;
     this.amorPeriod = props.amorPeriod;
@@ -11077,13 +16623,21 @@ export class RevRecTemplateSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InventoryNumberBinSearchBasicProps = {
+  binNumber?: PlatformCore.SearchMultiSelectField;
+  inventoryNumber?: PlatformCore.SearchStringField;
+  location?: PlatformCore.SearchMultiSelectField;
+  quantityAvailable?: PlatformCore.SearchDoubleField;
+  quantityOnHand?: PlatformCore.SearchDoubleField;
+};
+
 export class InventoryNumberBinSearchBasic extends PlatformCore.SearchRecordBasic {
   binNumber?: PlatformCore.SearchMultiSelectField;
   inventoryNumber?: PlatformCore.SearchStringField;
   location?: PlatformCore.SearchMultiSelectField;
   quantityAvailable?: PlatformCore.SearchDoubleField;
   quantityOnHand?: PlatformCore.SearchDoubleField;
-  constructor(props: InventoryNumberBinSearchBasic) {
+  constructor(props: InventoryNumberBinSearchBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.inventoryNumber = props.inventoryNumber;
@@ -11093,6 +16647,16 @@ export class InventoryNumberBinSearchBasic extends PlatformCore.SearchRecordBasi
   }
 }
 
+export type MerchandiseHierarchyNodeSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  hierarchyLevel?: PlatformCore.SearchColumnSelectField[];
+  hierarchyVersion?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  parentNode?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class MerchandiseHierarchyNodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -11101,7 +16665,7 @@ export class MerchandiseHierarchyNodeSearchRowBasic extends PlatformCore.SearchR
   internalId?: PlatformCore.SearchColumnSelectField[];
   name?: PlatformCore.SearchColumnStringField[];
   parentNode?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: MerchandiseHierarchyNodeSearchRowBasic) {
+  constructor(props: MerchandiseHierarchyNodeSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -11112,6 +16676,94 @@ export class MerchandiseHierarchyNodeSearchRowBasic extends PlatformCore.SearchR
     this.parentNode = props.parentNode;
   }
 }
+
+export type JobSearchBasicProps = {
+  accountNumber?: PlatformCore.SearchStringField;
+  actualTime?: PlatformCore.SearchDoubleField;
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  allocatePayrollExpenses?: PlatformCore.SearchBooleanField;
+  allowAllResourcesForTasks?: PlatformCore.SearchBooleanField;
+  allowExpenses?: PlatformCore.SearchBooleanField;
+  allowTime?: PlatformCore.SearchBooleanField;
+  applyProjectExpenseTypeToAll?: PlatformCore.SearchBooleanField;
+  attention?: PlatformCore.SearchStringField;
+  billingSchedule?: PlatformCore.SearchMultiSelectField;
+  calculatedEndDate?: PlatformCore.SearchDateField;
+  calculatedEndDateBaseline?: PlatformCore.SearchDateField;
+  category?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  comments?: PlatformCore.SearchStringField;
+  contact?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  dateCreated?: PlatformCore.SearchDateField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  email?: PlatformCore.SearchStringField;
+  endDate?: PlatformCore.SearchDateField;
+  entityId?: PlatformCore.SearchStringField;
+  estCost?: PlatformCore.SearchDoubleField;
+  estEndDate?: PlatformCore.SearchDateField;
+  estimatedGrossProfit?: PlatformCore.SearchDoubleField;
+  estimatedGrossProfitPercent?: PlatformCore.SearchDoubleField;
+  estimatedLaborCost?: PlatformCore.SearchDoubleField;
+  estimatedLaborCostBaseline?: PlatformCore.SearchDoubleField;
+  estimatedLaborRevenue?: PlatformCore.SearchDoubleField;
+  estimatedTime?: PlatformCore.SearchDoubleField;
+  estimatedTimeOverride?: PlatformCore.SearchDoubleField;
+  estimatedTimeOverrideBaseline?: PlatformCore.SearchDoubleField;
+  estRevenue?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  image?: PlatformCore.SearchStringField;
+  includeCrmTasksInTotals?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isExemptTime?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isProductiveTime?: PlatformCore.SearchBooleanField;
+  isUtilizedTime?: PlatformCore.SearchBooleanField;
+  jobBillingType?: PlatformCore.SearchEnumMultiSelectField;
+  jobItem?: PlatformCore.SearchMultiSelectField;
+  jobPrice?: PlatformCore.SearchDoubleField;
+  jobResource?: PlatformCore.SearchMultiSelectField;
+  jobResourceRole?: PlatformCore.SearchMultiSelectField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastBaselineDate?: PlatformCore.SearchDateField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  limitTimeToAssignees?: PlatformCore.SearchBooleanField;
+  materializeTime?: PlatformCore.SearchBooleanField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  pctComplete?: PlatformCore.SearchLongField;
+  percentTimeComplete?: PlatformCore.SearchLongField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  projectedEndDateBaseline?: PlatformCore.SearchDateField;
+  projectExpenseType?: PlatformCore.SearchMultiSelectField;
+  revRecForecastRule?: PlatformCore.SearchMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  startDateBaseline?: PlatformCore.SearchDateField;
+  state?: PlatformCore.SearchStringField;
+  status?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  timeApproval?: PlatformCore.SearchMultiSelectField;
+  timeRemaining?: PlatformCore.SearchDoubleField;
+  type?: PlatformCore.SearchMultiSelectField;
+  usePercentCompleteOverride?: PlatformCore.SearchBooleanField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class JobSearchBasic extends PlatformCore.SearchRecordBasic {
   accountNumber?: PlatformCore.SearchStringField;
@@ -11199,7 +16851,7 @@ export class JobSearchBasic extends PlatformCore.SearchRecordBasic {
   usePercentCompleteOverride?: PlatformCore.SearchBooleanField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: JobSearchBasic) {
+  constructor(props: JobSearchBasicProps) {
     super();
     this.accountNumber = props.accountNumber;
     this.actualTime = props.actualTime;
@@ -11289,6 +16941,39 @@ export class JobSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type AccountingTransactionSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  accountType?: PlatformCore.SearchMultiSelectField;
+  altSalesAmount?: PlatformCore.SearchDoubleField;
+  altSalesNetAmount?: PlatformCore.SearchDoubleField;
+  amount?: PlatformCore.SearchDoubleField;
+  bookSpecificTransaction?: PlatformCore.SearchBooleanField;
+  catchUpPeriod?: PlatformCore.SearchMultiSelectField;
+  creditAmount?: PlatformCore.SearchDoubleField;
+  customGL?: PlatformCore.SearchBooleanField;
+  debitAmount?: PlatformCore.SearchDoubleField;
+  deferRevRec?: PlatformCore.SearchBooleanField;
+  exchangeRate?: PlatformCore.SearchDoubleField;
+  grossAmount?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  multiSubsidiary?: PlatformCore.SearchBooleanField;
+  netAmount?: PlatformCore.SearchDoubleField;
+  posting?: PlatformCore.SearchBooleanField;
+  quantityRevCommitted?: PlatformCore.SearchDoubleField;
+  recognizedRevenue?: PlatformCore.SearchDoubleField;
+  revCommitStatus?: PlatformCore.SearchEnumMultiSelectField;
+  revenueStatus?: PlatformCore.SearchEnumMultiSelectField;
+  revRecEndDate?: PlatformCore.SearchDateField;
+  revRecOnRevCommitment?: PlatformCore.SearchBooleanField;
+  revRecStartDate?: PlatformCore.SearchDateField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  tranIsVsoeBundle?: PlatformCore.SearchBooleanField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  vsoeAllocation?: PlatformCore.SearchDoubleField;
+};
+
 export class AccountingTransactionSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -11320,7 +17005,7 @@ export class AccountingTransactionSearchBasic extends PlatformCore.SearchRecordB
   tranIsVsoeBundle?: PlatformCore.SearchBooleanField;
   type?: PlatformCore.SearchEnumMultiSelectField;
   vsoeAllocation?: PlatformCore.SearchDoubleField;
-  constructor(props: AccountingTransactionSearchBasic) {
+  constructor(props: AccountingTransactionSearchBasicProps) {
     super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
@@ -11355,6 +17040,26 @@ export class AccountingTransactionSearchBasic extends PlatformCore.SearchRecordB
   }
 }
 
+export type GiftCertificateSearchRowBasicProps = {
+  amountRemaining?: PlatformCore.SearchColumnDoubleField[];
+  amtAvailBilled?: PlatformCore.SearchColumnDoubleField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  expirationDate?: PlatformCore.SearchColumnDateField[];
+  gcActive?: PlatformCore.SearchColumnBooleanField[];
+  giftCertCode?: PlatformCore.SearchColumnStringField[];
+  incomeAcct?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  liabilityAcct?: PlatformCore.SearchColumnStringField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  originalAmount?: PlatformCore.SearchColumnDoubleField[];
+  purchaseDate?: PlatformCore.SearchColumnDateField[];
+  sender?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class GiftCertificateSearchRowBasic extends PlatformCore.SearchRowBasic {
   amountRemaining?: PlatformCore.SearchColumnDoubleField[];
   amtAvailBilled?: PlatformCore.SearchColumnDoubleField[];
@@ -11373,7 +17078,7 @@ export class GiftCertificateSearchRowBasic extends PlatformCore.SearchRowBasic {
   purchaseDate?: PlatformCore.SearchColumnDateField[];
   sender?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: GiftCertificateSearchRowBasic) {
+  constructor(props: GiftCertificateSearchRowBasicProps) {
     super();
     this.amountRemaining = props.amountRemaining;
     this.amtAvailBilled = props.amtAvailBilled;
@@ -11395,6 +17100,25 @@ export class GiftCertificateSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type MessageSearchRowBasicProps = {
+  author?: PlatformCore.SearchColumnSelectField[];
+  authorEmail?: PlatformCore.SearchColumnStringField[];
+  bcc?: PlatformCore.SearchColumnStringField[];
+  cc?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  hasAttachment?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  internalOnly?: PlatformCore.SearchColumnBooleanField[];
+  isEmailed?: PlatformCore.SearchColumnBooleanField[];
+  isIncoming?: PlatformCore.SearchColumnBooleanField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  messageDate?: PlatformCore.SearchColumnDateField[];
+  messageType?: PlatformCore.SearchColumnEnumSelectField[];
+  recipient?: PlatformCore.SearchColumnSelectField[];
+  recipientEmail?: PlatformCore.SearchColumnStringField[];
+  subject?: PlatformCore.SearchColumnStringField[];
+};
+
 export class MessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   author?: PlatformCore.SearchColumnSelectField[];
   authorEmail?: PlatformCore.SearchColumnStringField[];
@@ -11412,7 +17136,7 @@ export class MessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   recipient?: PlatformCore.SearchColumnSelectField[];
   recipientEmail?: PlatformCore.SearchColumnStringField[];
   subject?: PlatformCore.SearchColumnStringField[];
-  constructor(props: MessageSearchRowBasic) {
+  constructor(props: MessageSearchRowBasicProps) {
     super();
     this.author = props.author;
     this.authorEmail = props.authorEmail;
@@ -11433,6 +17157,16 @@ export class MessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type JobTypeSearchBasicProps = {
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  parent?: PlatformCore.SearchMultiSelectField;
+};
+
 export class JobTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   externalId?: PlatformCore.SearchMultiSelectField;
   externalIdString?: PlatformCore.SearchStringField;
@@ -11441,7 +17175,7 @@ export class JobTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   parent?: PlatformCore.SearchMultiSelectField;
-  constructor(props: JobTypeSearchBasic) {
+  constructor(props: JobTypeSearchBasicProps) {
     super();
     this.externalId = props.externalId;
     this.externalIdString = props.externalIdString;
@@ -11453,13 +17187,21 @@ export class JobTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ContactRoleSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class ContactRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: ContactRoleSearchRowBasic) {
+  constructor(props: ContactRoleSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -11468,6 +17210,27 @@ export class ContactRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type ItemDemandPlanSearchRowBasicProps = {
+  alternateSourceItem?: PlatformCore.SearchColumnSelectField[];
+  analysisDuration?: PlatformCore.SearchColumnLongField[];
+  demandDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  projectionDuration?: PlatformCore.SearchColumnLongField[];
+  projectionInterval?: PlatformCore.SearchColumnStringField[];
+  projectionMethod?: PlatformCore.SearchColumnStringField[];
+  projectionStartDate?: PlatformCore.SearchColumnDateField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+  quantityUom?: PlatformCore.SearchColumnDoubleField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  units?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ItemDemandPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   alternateSourceItem?: PlatformCore.SearchColumnSelectField[];
@@ -11488,7 +17251,7 @@ export class ItemDemandPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   units?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ItemDemandPlanSearchRowBasic) {
+  constructor(props: ItemDemandPlanSearchRowBasicProps) {
     super();
     this.alternateSourceItem = props.alternateSourceItem;
     this.analysisDuration = props.analysisDuration;
@@ -11511,13 +17274,21 @@ export class ItemDemandPlanSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CurrencyRateSearchRowBasicProps = {
+  baseCurrency?: PlatformCore.SearchColumnSelectField[];
+  effectiveDate?: PlatformCore.SearchColumnDateField[];
+  exchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  transactionCurrency?: PlatformCore.SearchColumnSelectField[];
+};
+
 export class CurrencyRateSearchRowBasic extends PlatformCore.SearchRowBasic {
   baseCurrency?: PlatformCore.SearchColumnSelectField[];
   effectiveDate?: PlatformCore.SearchColumnDateField[];
   exchangeRate?: PlatformCore.SearchColumnDoubleField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   transactionCurrency?: PlatformCore.SearchColumnSelectField[];
-  constructor(props: CurrencyRateSearchRowBasic) {
+  constructor(props: CurrencyRateSearchRowBasicProps) {
     super();
     this.baseCurrency = props.baseCurrency;
     this.effectiveDate = props.effectiveDate;
@@ -11527,6 +17298,16 @@ export class CurrencyRateSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ContactRoleSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class ContactRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -11535,7 +17316,7 @@ export class ContactRoleSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: ContactRoleSearchBasic) {
+  constructor(props: ContactRoleSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -11546,6 +17327,56 @@ export class ContactRoleSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type MseSubsidiarySearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  accountingBookCurrency?: PlatformCore.SearchColumnSelectField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  anonymousCustomerInboundEmail?: PlatformCore.SearchColumnStringField[];
+  anonymousCustomerOnlineForms?: PlatformCore.SearchColumnStringField[];
+  caseAssignmentTemplate?: PlatformCore.SearchColumnStringField[];
+  caseAutomaticClosureTemplate?: PlatformCore.SearchColumnStringField[];
+  caseCopyEmployeeTemplate?: PlatformCore.SearchColumnStringField[];
+  caseCreationTemplate?: PlatformCore.SearchColumnStringField[];
+  caseEscalationTemplate?: PlatformCore.SearchColumnStringField[];
+  caseUpdateTemplate?: PlatformCore.SearchColumnStringField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  companyNameForSupportMessages?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  effectiveFrom?: PlatformCore.SearchColumnDateField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  employeeCaseUpdateTemplate?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isElimination?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  legalName?: PlatformCore.SearchColumnStringField[];
+  mainSupportEmailAddress?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  nexus?: PlatformCore.SearchColumnSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  primary?: PlatformCore.SearchColumnBooleanField[];
+  purchaseOrderAmount?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantity?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  receiptAmount?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantity?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  taxEngine?: PlatformCore.SearchColumnSelectField[];
+  taxIdNum?: PlatformCore.SearchColumnStringField[];
+  taxRegistrationNumber?: PlatformCore.SearchColumnStringField[];
+  tranPrefix?: PlatformCore.SearchColumnStringField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  validUntil?: PlatformCore.SearchColumnDateField[];
+  zip?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class MseSubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnSelectField[];
@@ -11595,7 +17426,7 @@ export class MseSubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   validUntil?: PlatformCore.SearchColumnDateField[];
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: MseSubsidiarySearchRowBasic) {
+  constructor(props: MseSubsidiarySearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
@@ -11647,6 +17478,20 @@ export class MseSubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type PaycheckSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  batchNumber?: PlatformCore.SearchLongField;
+  checkDate?: PlatformCore.SearchDateField;
+  employee?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  hasGLImpact?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  payrollItem?: PlatformCore.SearchMultiSelectField;
+  payrollItemType?: PlatformCore.SearchMultiSelectField;
+};
+
 export class PaycheckSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   batchNumber?: PlatformCore.SearchLongField;
@@ -11659,7 +17504,7 @@ export class PaycheckSearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   payrollItem?: PlatformCore.SearchMultiSelectField;
   payrollItemType?: PlatformCore.SearchMultiSelectField;
-  constructor(props: PaycheckSearchBasic) {
+  constructor(props: PaycheckSearchBasicProps) {
     super();
     this.account = props.account;
     this.batchNumber = props.batchNumber;
@@ -11674,6 +17519,27 @@ export class PaycheckSearchBasic extends PlatformCore.SearchRecordBasic {
     this.payrollItemType = props.payrollItemType;
   }
 }
+
+export type PromotionCodeSearchBasicProps = {
+  applyDiscountTo?: PlatformCore.SearchEnumMultiSelectField;
+  code?: PlatformCore.SearchStringField;
+  description?: PlatformCore.SearchStringField;
+  discount?: PlatformCore.SearchMultiSelectField;
+  endDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  freeShipItem?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPublic?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  partner?: PlatformCore.SearchMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class PromotionCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   applyDiscountTo?: PlatformCore.SearchEnumMultiSelectField;
@@ -11694,7 +17560,7 @@ export class PromotionCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   partner?: PlatformCore.SearchMultiSelectField;
   startDate?: PlatformCore.SearchDateField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: PromotionCodeSearchBasic) {
+  constructor(props: PromotionCodeSearchBasicProps) {
     super();
     this.applyDiscountTo = props.applyDiscountTo;
     this.code = props.code;
@@ -11717,6 +17583,19 @@ export class PromotionCodeSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InstallmentSearchBasicProps = {
+  amount?: PlatformCore.SearchDoubleField;
+  amountPaid?: PlatformCore.SearchDoubleField;
+  amountRemaining?: PlatformCore.SearchDoubleField;
+  daysOverdue?: PlatformCore.SearchLongField;
+  dueDate?: PlatformCore.SearchDateField;
+  fxAmount?: PlatformCore.SearchDoubleField;
+  fxAmountPaid?: PlatformCore.SearchDoubleField;
+  fxAmountRemaining?: PlatformCore.SearchDoubleField;
+  installmentNumber?: PlatformCore.SearchLongField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class InstallmentSearchBasic extends PlatformCore.SearchRecordBasic {
   amount?: PlatformCore.SearchDoubleField;
   amountPaid?: PlatformCore.SearchDoubleField;
@@ -11728,7 +17607,7 @@ export class InstallmentSearchBasic extends PlatformCore.SearchRecordBasic {
   fxAmountRemaining?: PlatformCore.SearchDoubleField;
   installmentNumber?: PlatformCore.SearchLongField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: InstallmentSearchBasic) {
+  constructor(props: InstallmentSearchBasicProps) {
     super();
     this.amount = props.amount;
     this.amountPaid = props.amountPaid;
@@ -11742,6 +17621,39 @@ export class InstallmentSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ManufacturingOperationTaskSearchBasicProps = {
+  actualRunTime?: PlatformCore.SearchDoubleField;
+  actualSetupTime?: PlatformCore.SearchDoubleField;
+  completedQuantity?: PlatformCore.SearchDoubleField;
+  endDate?: PlatformCore.SearchDateField;
+  estimatedWork?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  id?: PlatformCore.SearchLongField;
+  inputQuantity?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  laborResources?: PlatformCore.SearchDoubleField;
+  lagAmount?: PlatformCore.SearchDoubleField;
+  lagType?: PlatformCore.SearchEnumMultiSelectField;
+  lagUnits?: PlatformCore.SearchStringField;
+  machineResources?: PlatformCore.SearchDoubleField;
+  manufacturingCostTemplate?: PlatformCore.SearchMultiSelectField;
+  manufacturingWorkCenter?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  order?: PlatformCore.SearchDoubleField;
+  predecessor?: PlatformCore.SearchMultiSelectField;
+  remainingQuantity?: PlatformCore.SearchDoubleField;
+  runRate?: PlatformCore.SearchDoubleField;
+  runTime?: PlatformCore.SearchDoubleField;
+  sequence?: PlatformCore.SearchLongField;
+  setupTime?: PlatformCore.SearchDoubleField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchMultiSelectField;
+  workOrder?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ManufacturingOperationTaskSearchBasic extends PlatformCore.SearchRecordBasic {
   actualRunTime?: PlatformCore.SearchDoubleField;
@@ -11774,7 +17686,7 @@ export class ManufacturingOperationTaskSearchBasic extends PlatformCore.SearchRe
   status?: PlatformCore.SearchMultiSelectField;
   workOrder?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ManufacturingOperationTaskSearchBasic) {
+  constructor(props: ManufacturingOperationTaskSearchBasicProps) {
     super();
     this.actualRunTime = props.actualRunTime;
     this.actualSetupTime = props.actualSetupTime;
@@ -11809,6 +17721,23 @@ export class ManufacturingOperationTaskSearchBasic extends PlatformCore.SearchRe
   }
 }
 
+export type BomRevisionComponentSearchRowBasicProps = {
+  bomQuantity?: PlatformCore.SearchColumnDoubleField[];
+  bomRevision?: PlatformCore.SearchColumnSelectField[];
+  componentYield?: PlatformCore.SearchColumnDoubleField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  itemSource?: PlatformCore.SearchColumnEnumSelectField[];
+  itemSubtype?: PlatformCore.SearchColumnStringField[];
+  itemType?: PlatformCore.SearchColumnSelectField[];
+  lineId?: PlatformCore.SearchColumnLongField[];
+  quantity?: PlatformCore.SearchColumnDoubleField[];
+  units?: PlatformCore.SearchColumnStringField[];
+  weight?: PlatformCore.SearchColumnDoubleField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class BomRevisionComponentSearchRowBasic extends PlatformCore.SearchRowBasic {
   bomQuantity?: PlatformCore.SearchColumnDoubleField[];
   bomRevision?: PlatformCore.SearchColumnSelectField[];
@@ -11824,7 +17753,7 @@ export class BomRevisionComponentSearchRowBasic extends PlatformCore.SearchRowBa
   units?: PlatformCore.SearchColumnStringField[];
   weight?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: BomRevisionComponentSearchRowBasic) {
+  constructor(props: BomRevisionComponentSearchRowBasicProps) {
     super();
     this.bomQuantity = props.bomQuantity;
     this.bomRevision = props.bomRevision;
@@ -11843,14 +17772,31 @@ export class BomRevisionComponentSearchRowBasic extends PlatformCore.SearchRowBa
   }
 }
 
+export type TaxDetailsListProps = {
+  taxDetails?: TaxDetails[];
+  replaceAll?: boolean;
+};
+
 export class TaxDetailsList {
   taxDetails?: TaxDetails[];
   replaceAll?: boolean;
-  constructor(props: TaxDetailsList) {
+  constructor(props: TaxDetailsListProps) {
     this.taxDetails = props.taxDetails;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SiteCategorySearchBasicProps = {
+  dateViewed?: PlatformCore.SearchDateField;
+  description?: PlatformCore.SearchStringField;
+  excludeFromSitemap?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  name?: PlatformCore.SearchMultiSelectField;
+  sitemapPriority?: PlatformCore.SearchEnumMultiSelectField;
+};
 
 export class SiteCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   dateViewed?: PlatformCore.SearchDateField;
@@ -11862,7 +17808,7 @@ export class SiteCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   internalIdNumber?: PlatformCore.SearchLongField;
   name?: PlatformCore.SearchMultiSelectField;
   sitemapPriority?: PlatformCore.SearchEnumMultiSelectField;
-  constructor(props: SiteCategorySearchBasic) {
+  constructor(props: SiteCategorySearchBasicProps) {
     super();
     this.dateViewed = props.dateViewed;
     this.description = props.description;
@@ -11876,6 +17822,18 @@ export class SiteCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type NexusSearchRowBasicProps = {
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  parentNexus?: PlatformCore.SearchColumnSelectField[];
+  state?: PlatformCore.SearchColumnSelectField[];
+  taxAgency?: PlatformCore.SearchColumnSelectField[];
+  taxDateFromFulfillment?: PlatformCore.SearchColumnBooleanField[];
+};
+
 export class NexusSearchRowBasic extends PlatformCore.SearchRowBasic {
   country?: PlatformCore.SearchColumnEnumSelectField[];
   description?: PlatformCore.SearchColumnStringField[];
@@ -11886,7 +17844,7 @@ export class NexusSearchRowBasic extends PlatformCore.SearchRowBasic {
   state?: PlatformCore.SearchColumnSelectField[];
   taxAgency?: PlatformCore.SearchColumnSelectField[];
   taxDateFromFulfillment?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: NexusSearchRowBasic) {
+  constructor(props: NexusSearchRowBasicProps) {
     super();
     this.country = props.country;
     this.description = props.description;
@@ -11900,6 +17858,15 @@ export class NexusSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ContactCategorySearchRowBasicProps = {
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  _private?: PlatformCore.SearchColumnBooleanField[];
+  sync?: PlatformCore.SearchColumnBooleanField[];
+};
+
 export class ContactCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
@@ -11907,7 +17874,7 @@ export class ContactCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   _private?: PlatformCore.SearchColumnBooleanField[];
   sync?: PlatformCore.SearchColumnBooleanField[];
-  constructor(props: ContactCategorySearchRowBasic) {
+  constructor(props: ContactCategorySearchRowBasicProps) {
     super();
     this.externalId = props.externalId;
     this.internalId = props.internalId;
@@ -11918,6 +17885,16 @@ export class ContactCategorySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomListSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isOrdered?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  scriptId?: PlatformCore.SearchColumnStringField[];
+};
+
 export class CustomListSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
@@ -11926,7 +17903,7 @@ export class CustomListSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   owner?: PlatformCore.SearchColumnSelectField[];
   scriptId?: PlatformCore.SearchColumnStringField[];
-  constructor(props: CustomListSearchRowBasic) {
+  constructor(props: CustomListSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.internalId = props.internalId;
@@ -11938,6 +17915,17 @@ export class CustomListSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type ItemRevisionSearchBasicProps = {
+  effectiveDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  obsoleteDate?: PlatformCore.SearchDateField;
+};
+
 export class ItemRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   effectiveDate?: PlatformCore.SearchDateField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -11947,7 +17935,7 @@ export class ItemRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   item?: PlatformCore.SearchMultiSelectField;
   name?: PlatformCore.SearchStringField;
   obsoleteDate?: PlatformCore.SearchDateField;
-  constructor(props: ItemRevisionSearchBasic) {
+  constructor(props: ItemRevisionSearchBasicProps) {
     super();
     this.effectiveDate = props.effectiveDate;
     this.externalId = props.externalId;
@@ -11959,6 +17947,25 @@ export class ItemRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
     this.obsoleteDate = props.obsoleteDate;
   }
 }
+
+export type FileSearchRowBasicProps = {
+  availableWithoutLogin?: PlatformCore.SearchColumnBooleanField[];
+  created?: PlatformCore.SearchColumnDateField[];
+  dateViewed?: PlatformCore.SearchColumnDateField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  documentSize?: PlatformCore.SearchColumnLongField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fileType?: PlatformCore.SearchColumnEnumSelectField[];
+  folder?: PlatformCore.SearchColumnSelectField[];
+  hits?: PlatformCore.SearchColumnLongField[];
+  hostedPath?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isAvailable?: PlatformCore.SearchColumnBooleanField[];
+  modified?: PlatformCore.SearchColumnDateField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  url?: PlatformCore.SearchColumnStringField[];
+};
 
 export class FileSearchRowBasic extends PlatformCore.SearchRowBasic {
   availableWithoutLogin?: PlatformCore.SearchColumnBooleanField[];
@@ -11977,7 +17984,7 @@ export class FileSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   owner?: PlatformCore.SearchColumnSelectField[];
   url?: PlatformCore.SearchColumnStringField[];
-  constructor(props: FileSearchRowBasic) {
+  constructor(props: FileSearchRowBasicProps) {
     super();
     this.availableWithoutLogin = props.availableWithoutLogin;
     this.created = props.created;
@@ -11997,6 +18004,53 @@ export class FileSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.url = props.url;
   }
 }
+
+export type LocationSearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  allowStorePickup?: PlatformCore.SearchBooleanField;
+  autoAssignmentRegionSetting?: PlatformCore.SearchEnumMultiSelectField;
+  bufferStock?: PlatformCore.SearchLongField;
+  city?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  dailyShippingCapacity?: PlatformCore.SearchLongField;
+  endTime?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  geolocationMethod?: PlatformCore.SearchEnumMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isFriday?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isIncludeInCt?: PlatformCore.SearchBooleanField;
+  isMonday?: PlatformCore.SearchBooleanField;
+  isOffice?: PlatformCore.SearchBooleanField;
+  isSaturday?: PlatformCore.SearchBooleanField;
+  isSunday?: PlatformCore.SearchBooleanField;
+  isThursday?: PlatformCore.SearchBooleanField;
+  isTuesday?: PlatformCore.SearchBooleanField;
+  isWednesday?: PlatformCore.SearchBooleanField;
+  latitude?: PlatformCore.SearchDoubleField;
+  locationType?: PlatformCore.SearchEnumMultiSelectField;
+  longitude?: PlatformCore.SearchDoubleField;
+  makeInventoryAvailable?: PlatformCore.SearchBooleanField;
+  makeInventoryAvailableStore?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  nameNoHierarchy?: PlatformCore.SearchStringField;
+  nextPickupCutOffTime?: PlatformCore.SearchDateField;
+  phone?: PlatformCore.SearchStringField;
+  sameDayPickupCutOffTime?: PlatformCore.SearchDateField;
+  startTime?: PlatformCore.SearchDateField;
+  state?: PlatformCore.SearchStringField;
+  storePickupBufferStock?: PlatformCore.SearchDoubleField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  timeZone?: PlatformCore.SearchEnumMultiSelectField;
+  totalShippingCapacity?: PlatformCore.SearchLongField;
+  tranprefix?: PlatformCore.SearchStringField;
+  usesBins?: PlatformCore.SearchBooleanField;
+  zip?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class LocationSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
@@ -12043,7 +18097,7 @@ export class LocationSearchBasic extends PlatformCore.SearchRecordBasic {
   usesBins?: PlatformCore.SearchBooleanField;
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: LocationSearchBasic) {
+  constructor(props: LocationSearchBasicProps) {
     super();
     this.address = props.address;
     this.allowStorePickup = props.allowStorePickup;
@@ -12092,6 +18146,31 @@ export class LocationSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CalendarEventSearchBasicProps = {
+  accessLevel?: PlatformCore.SearchEnumMultiSelectField;
+  attendee?: PlatformCore.SearchMultiSelectField;
+  calendar?: PlatformCore.SearchMultiSelectField;
+  completedDate?: PlatformCore.SearchDateField;
+  createdDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  instanceStart?: PlatformCore.SearchDateField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isUpcomingEvent?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchStringField;
+  message?: PlatformCore.SearchStringField;
+  organizer?: PlatformCore.SearchMultiSelectField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  resource?: PlatformCore.SearchMultiSelectField;
+  response?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class CalendarEventSearchBasic extends PlatformCore.SearchRecordBasic {
   accessLevel?: PlatformCore.SearchEnumMultiSelectField;
   attendee?: PlatformCore.SearchMultiSelectField;
@@ -12115,7 +18194,7 @@ export class CalendarEventSearchBasic extends PlatformCore.SearchRecordBasic {
   status?: PlatformCore.SearchEnumMultiSelectField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: CalendarEventSearchBasic) {
+  constructor(props: CalendarEventSearchBasicProps) {
     super();
     this.accessLevel = props.accessLevel;
     this.attendee = props.attendee;
@@ -12142,6 +18221,16 @@ export class CalendarEventSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CustomerStatusSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  includeInLeadReports?: PlatformCore.SearchColumnBooleanField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  probability?: PlatformCore.SearchColumnStringField[];
+};
+
 export class CustomerStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -12150,7 +18239,7 @@ export class CustomerStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   probability?: PlatformCore.SearchColumnStringField[];
-  constructor(props: CustomerStatusSearchRowBasic) {
+  constructor(props: CustomerStatusSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -12162,6 +18251,17 @@ export class CustomerStatusSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerMessageSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  preferred?: PlatformCore.SearchBooleanField;
+};
+
 export class CustomerMessageSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -12171,7 +18271,7 @@ export class CustomerMessageSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
   preferred?: PlatformCore.SearchBooleanField;
-  constructor(props: CustomerMessageSearchBasic) {
+  constructor(props: CustomerMessageSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -12184,6 +18284,18 @@ export class CustomerMessageSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type BinSearchBasicProps = {
+  binNumber?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  inactive?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class BinSearchBasic extends PlatformCore.SearchRecordBasic {
   binNumber?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -12194,7 +18306,7 @@ export class BinSearchBasic extends PlatformCore.SearchRecordBasic {
   location?: PlatformCore.SearchMultiSelectField;
   memo?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: BinSearchBasic) {
+  constructor(props: BinSearchBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.externalId = props.externalId;
@@ -12207,6 +18319,60 @@ export class BinSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ContactSearchBasicProps = {
+  address?: PlatformCore.SearchStringField;
+  addressee?: PlatformCore.SearchStringField;
+  addressLabel?: PlatformCore.SearchStringField;
+  addressPhone?: PlatformCore.SearchStringField;
+  attention?: PlatformCore.SearchStringField;
+  availableOffline?: PlatformCore.SearchBooleanField;
+  category?: PlatformCore.SearchMultiSelectField;
+  city?: PlatformCore.SearchStringField;
+  comments?: PlatformCore.SearchStringField;
+  company?: PlatformCore.SearchMultiSelectField;
+  contactRole?: PlatformCore.SearchMultiSelectField;
+  contactSource?: PlatformCore.SearchMultiSelectField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  county?: PlatformCore.SearchStringField;
+  dateCreated?: PlatformCore.SearchDateField;
+  defaultTaxReg?: PlatformCore.SearchMultiSelectField;
+  defaultTaxRegText?: PlatformCore.SearchStringField;
+  email?: PlatformCore.SearchStringField;
+  employer?: PlatformCore.SearchStringField;
+  entityId?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  firstName?: PlatformCore.SearchStringField;
+  giveAccess?: PlatformCore.SearchBooleanField;
+  globalSubscriptionStatus?: PlatformCore.SearchEnumMultiSelectField;
+  group?: PlatformCore.SearchMultiSelectField;
+  hasDuplicates?: PlatformCore.SearchBooleanField;
+  image?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDefaultBilling?: PlatformCore.SearchBooleanField;
+  isDefaultShipping?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPrivate?: PlatformCore.SearchBooleanField;
+  language?: PlatformCore.SearchEnumMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastName?: PlatformCore.SearchStringField;
+  level?: PlatformCore.SearchEnumMultiSelectField;
+  middleName?: PlatformCore.SearchStringField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  permission?: PlatformCore.SearchEnumMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  phoneticName?: PlatformCore.SearchStringField;
+  salutation?: PlatformCore.SearchStringField;
+  state?: PlatformCore.SearchStringField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  zipCode?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ContactSearchBasic extends PlatformCore.SearchRecordBasic {
   address?: PlatformCore.SearchStringField;
@@ -12260,7 +18426,7 @@ export class ContactSearchBasic extends PlatformCore.SearchRecordBasic {
   type?: PlatformCore.SearchEnumMultiSelectField;
   zipCode?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ContactSearchBasic) {
+  constructor(props: ContactSearchBasicProps) {
     super();
     this.address = props.address;
     this.addressee = props.addressee;
@@ -12316,6 +18482,17 @@ export class ContactSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ItemRevisionSearchRowBasicProps = {
+  effectiveDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  obsoleteDate?: PlatformCore.SearchColumnDateField[];
+};
+
 export class ItemRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   effectiveDate?: PlatformCore.SearchColumnDateField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -12325,7 +18502,7 @@ export class ItemRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
   memo?: PlatformCore.SearchColumnStringField[];
   name?: PlatformCore.SearchColumnStringField[];
   obsoleteDate?: PlatformCore.SearchColumnDateField[];
-  constructor(props: ItemRevisionSearchRowBasic) {
+  constructor(props: ItemRevisionSearchRowBasicProps) {
     super();
     this.effectiveDate = props.effectiveDate;
     this.externalId = props.externalId;
@@ -12337,6 +18514,25 @@ export class ItemRevisionSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.obsoleteDate = props.obsoleteDate;
   }
 }
+
+export type ResourceAllocationSearchRowBasicProps = {
+  allocationType?: PlatformCore.SearchColumnSelectField[];
+  allocationUnit?: PlatformCore.SearchColumnEnumSelectField[];
+  approvalStatus?: PlatformCore.SearchColumnEnumSelectField[];
+  project?: PlatformCore.SearchColumnSelectField[];
+  customer?: PlatformCore.SearchColumnSelectField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  nextApprover?: PlatformCore.SearchColumnSelectField[];
+  notes?: PlatformCore.SearchColumnStringField[];
+  numberHours?: PlatformCore.SearchColumnDoubleField[];
+  percentOfTime?: PlatformCore.SearchColumnDoubleField[];
+  requestedBy?: PlatformCore.SearchColumnSelectField[];
+  resource?: PlatformCore.SearchColumnSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ResourceAllocationSearchRowBasic extends PlatformCore.SearchRowBasic {
   allocationType?: PlatformCore.SearchColumnSelectField[];
@@ -12355,7 +18551,7 @@ export class ResourceAllocationSearchRowBasic extends PlatformCore.SearchRowBasi
   resource?: PlatformCore.SearchColumnSelectField[];
   startDate?: PlatformCore.SearchColumnDateField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ResourceAllocationSearchRowBasic) {
+  constructor(props: ResourceAllocationSearchRowBasicProps) {
     super();
     this.allocationType = props.allocationType;
     this.allocationUnit = props.allocationUnit;
@@ -12376,6 +18572,20 @@ export class ResourceAllocationSearchRowBasic extends PlatformCore.SearchRowBasi
   }
 }
 
+export type BomRevisionSearchBasicProps = {
+  billOfMaterials?: PlatformCore.SearchMultiSelectField;
+  createdDate?: PlatformCore.SearchDateField;
+  effectiveEndDate?: PlatformCore.SearchDateField;
+  effectiveStartDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  memo?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class BomRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   billOfMaterials?: PlatformCore.SearchMultiSelectField;
   createdDate?: PlatformCore.SearchDateField;
@@ -12388,7 +18598,7 @@ export class BomRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
   isInactive?: PlatformCore.SearchBooleanField;
   memo?: PlatformCore.SearchStringField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: BomRevisionSearchBasic) {
+  constructor(props: BomRevisionSearchBasicProps) {
     super();
     this.billOfMaterials = props.billOfMaterials;
     this.createdDate = props.createdDate;
@@ -12403,6 +18613,49 @@ export class BomRevisionSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type SupportCaseSearchBasicProps = {
+  assigned?: PlatformCore.SearchMultiSelectField;
+  awaitingReply?: PlatformCore.SearchBooleanField;
+  caseNumber?: PlatformCore.SearchStringField;
+  category?: PlatformCore.SearchMultiSelectField;
+  closedDate?: PlatformCore.SearchDateField;
+  company?: PlatformCore.SearchStringField;
+  contact?: PlatformCore.SearchStringField;
+  createdDate?: PlatformCore.SearchDateField;
+  email?: PlatformCore.SearchStringField;
+  escalateTo?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  helpDesk?: PlatformCore.SearchBooleanField;
+  inboundEmail?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  issue?: PlatformCore.SearchMultiSelectField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastMessage?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  lastReopenedDate?: PlatformCore.SearchDateField;
+  locked?: PlatformCore.SearchBooleanField;
+  message?: PlatformCore.SearchStringField;
+  messageAuthor?: PlatformCore.SearchMultiSelectField;
+  messageDate?: PlatformCore.SearchDateField;
+  messageType?: PlatformCore.SearchBooleanField;
+  module?: PlatformCore.SearchMultiSelectField;
+  number?: PlatformCore.SearchLongField;
+  origin?: PlatformCore.SearchMultiSelectField;
+  priority?: PlatformCore.SearchMultiSelectField;
+  product?: PlatformCore.SearchMultiSelectField;
+  profile?: PlatformCore.SearchMultiSelectField;
+  serialNumber?: PlatformCore.SearchStringField;
+  stage?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class SupportCaseSearchBasic extends PlatformCore.SearchRecordBasic {
   assigned?: PlatformCore.SearchMultiSelectField;
@@ -12445,7 +18698,7 @@ export class SupportCaseSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: SupportCaseSearchBasic) {
+  constructor(props: SupportCaseSearchBasicProps) {
     super();
     this.assigned = props.assigned;
     this.awaitingReply = props.awaitingReply;
@@ -12490,6 +18743,21 @@ export class SupportCaseSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type PromotionCodeSearchRowBasicProps = {
+  code?: PlatformCore.SearchColumnStringField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  discount?: PlatformCore.SearchColumnStringField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isPublic?: PlatformCore.SearchColumnBooleanField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class PromotionCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   code?: PlatformCore.SearchColumnStringField[];
   description?: PlatformCore.SearchColumnStringField[];
@@ -12503,7 +18771,7 @@ export class PromotionCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   name?: PlatformCore.SearchColumnStringField[];
   startDate?: PlatformCore.SearchColumnDateField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: PromotionCodeSearchRowBasic) {
+  constructor(props: PromotionCodeSearchRowBasicProps) {
     super();
     this.code = props.code;
     this.description = props.description;
@@ -12520,6 +18788,17 @@ export class PromotionCodeSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type TaxDetailSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  lineNumber?: PlatformCore.SearchLongField;
+  taxAmount?: PlatformCore.SearchDoubleField;
+  taxBasis?: PlatformCore.SearchDoubleField;
+  taxCode?: PlatformCore.SearchMultiSelectField;
+  taxRate?: PlatformCore.SearchDoubleField;
+  taxType?: PlatformCore.SearchMultiSelectField;
+  tranId?: PlatformCore.SearchMultiSelectField;
+};
+
 export class TaxDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   lineNumber?: PlatformCore.SearchLongField;
@@ -12529,7 +18808,7 @@ export class TaxDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   taxRate?: PlatformCore.SearchDoubleField;
   taxType?: PlatformCore.SearchMultiSelectField;
   tranId?: PlatformCore.SearchMultiSelectField;
-  constructor(props: TaxDetailSearchBasic) {
+  constructor(props: TaxDetailSearchBasicProps) {
     super();
     this.account = props.account;
     this.lineNumber = props.lineNumber;
@@ -12542,6 +18821,17 @@ export class TaxDetailSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type CustomListSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isOrdered?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  scriptId?: PlatformCore.SearchStringField;
+};
+
 export class CustomListSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   internalId?: PlatformCore.SearchMultiSelectField;
@@ -12551,7 +18841,7 @@ export class CustomListSearchBasic extends PlatformCore.SearchRecordBasic {
   name?: PlatformCore.SearchStringField;
   owner?: PlatformCore.SearchMultiSelectField;
   scriptId?: PlatformCore.SearchStringField;
-  constructor(props: CustomListSearchBasic) {
+  constructor(props: CustomListSearchBasicProps) {
     super();
     this.description = props.description;
     this.internalId = props.internalId;
@@ -12563,6 +18853,26 @@ export class CustomListSearchBasic extends PlatformCore.SearchRecordBasic {
     this.scriptId = props.scriptId;
   }
 }
+
+export type AccountingPeriodSearchBasicProps = {
+  allLocked?: PlatformCore.SearchBooleanField;
+  allowNonGlChanges?: PlatformCore.SearchBooleanField;
+  apLocked?: PlatformCore.SearchBooleanField;
+  arLocked?: PlatformCore.SearchBooleanField;
+  closed?: PlatformCore.SearchBooleanField;
+  closedOnDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isAdjust?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isQuarter?: PlatformCore.SearchBooleanField;
+  isYear?: PlatformCore.SearchBooleanField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  payrollLocked?: PlatformCore.SearchBooleanField;
+  periodName?: PlatformCore.SearchStringField;
+  startDate?: PlatformCore.SearchDateField;
+};
 
 export class AccountingPeriodSearchBasic extends PlatformCore.SearchRecordBasic {
   allLocked?: PlatformCore.SearchBooleanField;
@@ -12582,7 +18892,7 @@ export class AccountingPeriodSearchBasic extends PlatformCore.SearchRecordBasic 
   payrollLocked?: PlatformCore.SearchBooleanField;
   periodName?: PlatformCore.SearchStringField;
   startDate?: PlatformCore.SearchDateField;
-  constructor(props: AccountingPeriodSearchBasic) {
+  constructor(props: AccountingPeriodSearchBasicProps) {
     super();
     this.allLocked = props.allLocked;
     this.allowNonGlChanges = props.allowNonGlChanges;
@@ -12604,6 +18914,18 @@ export class AccountingPeriodSearchBasic extends PlatformCore.SearchRecordBasic 
   }
 }
 
+export type PaymentMethodSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  creditCard?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDebitCard?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+};
+
 export class PaymentMethodSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   creditCard?: PlatformCore.SearchBooleanField;
@@ -12614,7 +18936,7 @@ export class PaymentMethodSearchBasic extends PlatformCore.SearchRecordBasic {
   isDebitCard?: PlatformCore.SearchBooleanField;
   isInactive?: PlatformCore.SearchBooleanField;
   name?: PlatformCore.SearchStringField;
-  constructor(props: PaymentMethodSearchBasic) {
+  constructor(props: PaymentMethodSearchBasicProps) {
     super();
     this.account = props.account;
     this.creditCard = props.creditCard;
@@ -12627,6 +18949,54 @@ export class PaymentMethodSearchBasic extends PlatformCore.SearchRecordBasic {
     this.name = props.name;
   }
 }
+
+export type ProjectTaskSearchRowBasicProps = {
+  actualWork?: PlatformCore.SearchColumnDoubleField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  constraintType?: PlatformCore.SearchColumnEnumSelectField[];
+  contact?: PlatformCore.SearchColumnSelectField[];
+  cost?: PlatformCore.SearchColumnDoubleField[];
+  costBase?: PlatformCore.SearchColumnDoubleField[];
+  costBaseBaseline?: PlatformCore.SearchColumnDoubleField[];
+  costBaseline?: PlatformCore.SearchColumnDoubleField[];
+  costBaseVariance?: PlatformCore.SearchColumnDoubleField[];
+  costVariance?: PlatformCore.SearchColumnDoubleField[];
+  costVariancePercent?: PlatformCore.SearchColumnDoubleField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  endDateBaseline?: PlatformCore.SearchColumnDateField[];
+  endDateVariance?: PlatformCore.SearchColumnDoubleField[];
+  estimatedWork?: PlatformCore.SearchColumnDoubleField[];
+  estimatedWorkBaseline?: PlatformCore.SearchColumnDoubleField[];
+  estimatedWorkVariance?: PlatformCore.SearchColumnDoubleField[];
+  estimatedWorkVariancePercent?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  finishByDate?: PlatformCore.SearchColumnDateField[];
+  id?: PlatformCore.SearchColumnLongField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isMilestone?: PlatformCore.SearchColumnBooleanField[];
+  isSummaryTask?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  nonBillableTask?: PlatformCore.SearchColumnBooleanField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  percentWorkComplete?: PlatformCore.SearchColumnDoubleField[];
+  predecessor?: PlatformCore.SearchColumnSelectField[];
+  predecessorLagDays?: PlatformCore.SearchColumnDoubleField[];
+  predecessors?: PlatformCore.SearchColumnStringField[];
+  predecessorType?: PlatformCore.SearchColumnStringField[];
+  priority?: PlatformCore.SearchColumnEnumSelectField[];
+  remainingWork?: PlatformCore.SearchColumnDoubleField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  startDateBaseline?: PlatformCore.SearchColumnDateField[];
+  startDateVariance?: PlatformCore.SearchColumnDoubleField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  successor?: PlatformCore.SearchColumnSelectField[];
+  successorType?: PlatformCore.SearchColumnStringField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ProjectTaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   actualWork?: PlatformCore.SearchColumnDoubleField[];
@@ -12674,7 +19044,7 @@ export class ProjectTaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   successorType?: PlatformCore.SearchColumnStringField[];
   title?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ProjectTaskSearchRowBasic) {
+  constructor(props: ProjectTaskSearchRowBasicProps) {
     super();
     this.actualWork = props.actualWork;
     this.company = props.company;
@@ -12724,6 +19094,15 @@ export class ProjectTaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type CustomerMessageSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  preferred?: PlatformCore.SearchColumnStringField[];
+};
+
 export class CustomerMessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -12731,7 +19110,7 @@ export class CustomerMessageSearchRowBasic extends PlatformCore.SearchRowBasic {
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
   preferred?: PlatformCore.SearchColumnStringField[];
-  constructor(props: CustomerMessageSearchRowBasic) {
+  constructor(props: CustomerMessageSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -12741,6 +19120,20 @@ export class CustomerMessageSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.preferred = props.preferred;
   }
 }
+
+export type ExpenseCategorySearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  rateRequired?: PlatformCore.SearchBooleanField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class ExpenseCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
@@ -12754,7 +19147,7 @@ export class ExpenseCategorySearchBasic extends PlatformCore.SearchRecordBasic {
   rateRequired?: PlatformCore.SearchBooleanField;
   subsidiary?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ExpenseCategorySearchBasic) {
+  constructor(props: ExpenseCategorySearchBasicProps) {
     super();
     this.account = props.account;
     this.description = props.description;
@@ -12769,6 +19162,27 @@ export class ExpenseCategorySearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type VendorSubsidiaryRelationshipSearchBasicProps = {
+  balance?: PlatformCore.SearchDoubleField;
+  balanceBase?: PlatformCore.SearchDoubleField;
+  baseCurrency?: PlatformCore.SearchMultiSelectField;
+  creditLimit?: PlatformCore.SearchDoubleField;
+  entity?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  inTransitBalance?: PlatformCore.SearchDoubleField;
+  inTransitBalanceBase?: PlatformCore.SearchDoubleField;
+  isPrimarySub?: PlatformCore.SearchBooleanField;
+  primaryCurrency?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  taxItem?: PlatformCore.SearchMultiSelectField;
+  unbilledOrders?: PlatformCore.SearchDoubleField;
+  unbilledOrdersBase?: PlatformCore.SearchDoubleField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class VendorSubsidiaryRelationshipSearchBasic extends PlatformCore.SearchRecordBasic {
   balance?: PlatformCore.SearchDoubleField;
@@ -12789,7 +19203,7 @@ export class VendorSubsidiaryRelationshipSearchBasic extends PlatformCore.Search
   unbilledOrders?: PlatformCore.SearchDoubleField;
   unbilledOrdersBase?: PlatformCore.SearchDoubleField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: VendorSubsidiaryRelationshipSearchBasic) {
+  constructor(props: VendorSubsidiaryRelationshipSearchBasicProps) {
     super();
     this.balance = props.balance;
     this.balanceBase = props.balanceBase;
@@ -12812,6 +19226,18 @@ export class VendorSubsidiaryRelationshipSearchBasic extends PlatformCore.Search
   }
 }
 
+export type HcmJobSearchBasicProps = {
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  jobId?: PlatformCore.SearchStringField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class HcmJobSearchBasic extends PlatformCore.SearchRecordBasic {
   description?: PlatformCore.SearchStringField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -12822,7 +19248,7 @@ export class HcmJobSearchBasic extends PlatformCore.SearchRecordBasic {
   jobId?: PlatformCore.SearchStringField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: HcmJobSearchBasic) {
+  constructor(props: HcmJobSearchBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -12835,6 +19261,44 @@ export class HcmJobSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type SubsidiarySearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  accountingBookCurrency?: PlatformCore.SearchMultiSelectField;
+  address?: PlatformCore.SearchStringField;
+  city?: PlatformCore.SearchStringField;
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  effectiveFrom?: PlatformCore.SearchDateField;
+  email?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fax?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isElimination?: PlatformCore.SearchBooleanField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  legalName?: PlatformCore.SearchStringField;
+  name?: PlatformCore.SearchStringField;
+  nameNoHierarchy?: PlatformCore.SearchStringField;
+  nexus?: PlatformCore.SearchMultiSelectField;
+  phone?: PlatformCore.SearchStringField;
+  purchaseOrderAmount?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantity?: PlatformCore.SearchDoubleField;
+  purchaseOrderQuantityDiff?: PlatformCore.SearchDoubleField;
+  receiptAmount?: PlatformCore.SearchDoubleField;
+  receiptQuantity?: PlatformCore.SearchDoubleField;
+  receiptQuantityDiff?: PlatformCore.SearchDoubleField;
+  state?: PlatformCore.SearchStringField;
+  taxEngine?: PlatformCore.SearchMultiSelectField;
+  taxIdNum?: PlatformCore.SearchStringField;
+  taxRegistrationNumber?: PlatformCore.SearchStringField;
+  tranPrefix?: PlatformCore.SearchStringField;
+  url?: PlatformCore.SearchStringField;
+  validUntil?: PlatformCore.SearchDateField;
+  zip?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class SubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -12872,7 +19336,7 @@ export class SubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   validUntil?: PlatformCore.SearchDateField;
   zip?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: SubsidiarySearchBasic) {
+  constructor(props: SubsidiarySearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
@@ -12912,6 +19376,22 @@ export class SubsidiarySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InventoryNumberSearchRowBasicProps = {
+  expirationDate?: PlatformCore.SearchColumnDateField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  inventoryNumber?: PlatformCore.SearchColumnStringField[];
+  isonhand?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  quantityavailable?: PlatformCore.SearchColumnDoubleField[];
+  quantityintransit?: PlatformCore.SearchColumnDoubleField[];
+  quantityonhand?: PlatformCore.SearchColumnDoubleField[];
+  quantityonorder?: PlatformCore.SearchColumnDoubleField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class InventoryNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
   expirationDate?: PlatformCore.SearchColumnDateField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
@@ -12926,7 +19406,7 @@ export class InventoryNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
   quantityonhand?: PlatformCore.SearchColumnDoubleField[];
   quantityonorder?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: InventoryNumberSearchRowBasic) {
+  constructor(props: InventoryNumberSearchRowBasicProps) {
     super();
     this.expirationDate = props.expirationDate;
     this.externalId = props.externalId;
@@ -12943,6 +19423,26 @@ export class InventoryNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type BillingScheduleSearchBasicProps = {
+  applyToSubtotal?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  frequency?: PlatformCore.SearchEnumMultiSelectField;
+  inArrears?: PlatformCore.SearchBooleanField;
+  initialAmount?: PlatformCore.SearchDoubleField;
+  initialTerms?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isPublic?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  recurrenceCount?: PlatformCore.SearchLongField;
+  recurrencePattern?: PlatformCore.SearchEnumMultiSelectField;
+  recurrenceTerms?: PlatformCore.SearchMultiSelectField;
+  repeatEvery?: PlatformCore.SearchLongField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+};
 
 export class BillingScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   applyToSubtotal?: PlatformCore.SearchBooleanField;
@@ -12962,7 +19462,7 @@ export class BillingScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   recurrenceTerms?: PlatformCore.SearchMultiSelectField;
   repeatEvery?: PlatformCore.SearchLongField;
   type?: PlatformCore.SearchEnumMultiSelectField;
-  constructor(props: BillingScheduleSearchBasic) {
+  constructor(props: BillingScheduleSearchBasicProps) {
     super();
     this.applyToSubtotal = props.applyToSubtotal;
     this.externalId = props.externalId;
@@ -12984,6 +19484,17 @@ export class BillingScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type InventoryAssignmentProps = {
+  internalId?: string;
+  issueInventoryNumber?: PlatformCore.RecordRef;
+  receiptInventoryNumber?: string;
+  binNumber?: PlatformCore.RecordRef;
+  toBinNumber?: PlatformCore.RecordRef;
+  quantity?: number;
+  expirationDate?: string;
+  quantityAvailable?: number;
+};
+
 export class InventoryAssignment {
   internalId?: string;
   issueInventoryNumber?: PlatformCore.RecordRef;
@@ -12993,7 +19504,7 @@ export class InventoryAssignment {
   quantity?: number;
   expirationDate?: string;
   quantityAvailable?: number;
-  constructor(props: InventoryAssignment) {
+  constructor(props: InventoryAssignmentProps) {
     this.internalId = props.internalId;
     this.issueInventoryNumber = props.issueInventoryNumber;
     this.receiptInventoryNumber = props.receiptInventoryNumber;
@@ -13004,6 +19515,24 @@ export class InventoryAssignment {
     this.quantityAvailable = props.quantityAvailable;
   }
 }
+
+export type CustomRecordSearchBasicProps = {
+  recType: PlatformCore.RecordRef;
+  availableOffline?: PlatformCore.SearchBooleanField;
+  created?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  id?: PlatformCore.SearchLongField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  lastModified?: PlatformCore.SearchDateField;
+  lastModifiedBy?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  parent?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class CustomRecordSearchBasic extends PlatformCore.SearchRecordBasic {
   recType: PlatformCore.RecordRef;
@@ -13021,7 +19550,7 @@ export class CustomRecordSearchBasic extends PlatformCore.SearchRecordBasic {
   owner?: PlatformCore.SearchMultiSelectField;
   parent?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: CustomRecordSearchBasic) {
+  constructor(props: CustomRecordSearchBasicProps) {
     super();
     this.recType = props.recType;
     this.availableOffline = props.availableOffline;
@@ -13040,6 +19569,38 @@ export class CustomRecordSearchBasic extends PlatformCore.SearchRecordBasic {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type RevRecScheduleSearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  amorStatus?: PlatformCore.SearchEnumMultiSelectField;
+  amortizedAmount?: PlatformCore.SearchDoubleField;
+  amorType?: PlatformCore.SearchEnumMultiSelectField;
+  amount?: PlatformCore.SearchDoubleField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  deferredAmount?: PlatformCore.SearchDoubleField;
+  destAcct?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  initialAmt?: PlatformCore.SearchDoubleField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isRecognized?: PlatformCore.SearchBooleanField;
+  jeDoc?: PlatformCore.SearchMultiSelectField;
+  name?: PlatformCore.SearchStringField;
+  pctComplete?: PlatformCore.SearchDoubleField;
+  pctRecognition?: PlatformCore.SearchDoubleField;
+  periodOffset?: PlatformCore.SearchLongField;
+  postPeriod?: PlatformCore.SearchMultiSelectField;
+  schedDate?: PlatformCore.SearchDateField;
+  scheduleNumber?: PlatformCore.SearchLongField;
+  scheduleNumberText?: PlatformCore.SearchStringField;
+  sourceAcct?: PlatformCore.SearchMultiSelectField;
+  srcTranPostPeriod?: PlatformCore.SearchMultiSelectField;
+  srcTranType?: PlatformCore.SearchMultiSelectField;
+  startOffset?: PlatformCore.SearchLongField;
+  templateName?: PlatformCore.SearchStringField;
+  useForeignAmounts?: PlatformCore.SearchBooleanField;
+};
 
 export class RevRecScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -13071,7 +19632,7 @@ export class RevRecScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
   startOffset?: PlatformCore.SearchLongField;
   templateName?: PlatformCore.SearchStringField;
   useForeignAmounts?: PlatformCore.SearchBooleanField;
-  constructor(props: RevRecScheduleSearchBasic) {
+  constructor(props: RevRecScheduleSearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.amorStatus = props.amorStatus;
@@ -13104,6 +19665,55 @@ export class RevRecScheduleSearchBasic extends PlatformCore.SearchRecordBasic {
     this.useForeignAmounts = props.useForeignAmounts;
   }
 }
+
+export type SubsidiarySearchRowBasicProps = {
+  accountingBook?: PlatformCore.SearchColumnSelectField[];
+  accountingBookCurrency?: PlatformCore.SearchColumnSelectField[];
+  address1?: PlatformCore.SearchColumnStringField[];
+  address2?: PlatformCore.SearchColumnStringField[];
+  address3?: PlatformCore.SearchColumnStringField[];
+  anonymousCustomerInboundEmail?: PlatformCore.SearchColumnStringField[];
+  anonymousCustomerOnlineForms?: PlatformCore.SearchColumnStringField[];
+  caseAssignmentTemplate?: PlatformCore.SearchColumnStringField[];
+  caseAutomaticClosureTemplate?: PlatformCore.SearchColumnStringField[];
+  caseCopyEmployeeTemplate?: PlatformCore.SearchColumnStringField[];
+  caseCreationTemplate?: PlatformCore.SearchColumnStringField[];
+  caseEscalationTemplate?: PlatformCore.SearchColumnStringField[];
+  caseUpdateTemplate?: PlatformCore.SearchColumnStringField[];
+  city?: PlatformCore.SearchColumnStringField[];
+  companyNameForSupportMessages?: PlatformCore.SearchColumnStringField[];
+  country?: PlatformCore.SearchColumnEnumSelectField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  effectiveFrom?: PlatformCore.SearchColumnDateField[];
+  email?: PlatformCore.SearchColumnStringField[];
+  employeeCaseUpdateTemplate?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  fax?: PlatformCore.SearchColumnStringField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isElimination?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  legalName?: PlatformCore.SearchColumnStringField[];
+  mainSupportEmailAddress?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  nameNoHierarchy?: PlatformCore.SearchColumnStringField[];
+  nexus?: PlatformCore.SearchColumnSelectField[];
+  phone?: PlatformCore.SearchColumnStringField[];
+  purchaseOrderAmount?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantity?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrderQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  receiptAmount?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantity?: PlatformCore.SearchColumnDoubleField[];
+  receiptQuantityDiff?: PlatformCore.SearchColumnDoubleField[];
+  state?: PlatformCore.SearchColumnStringField[];
+  taxEngine?: PlatformCore.SearchColumnSelectField[];
+  taxIdNum?: PlatformCore.SearchColumnStringField[];
+  taxRegistrationNumber?: PlatformCore.SearchColumnStringField[];
+  tranPrefix?: PlatformCore.SearchColumnStringField[];
+  url?: PlatformCore.SearchColumnStringField[];
+  validUntil?: PlatformCore.SearchColumnDateField[];
+  zip?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class SubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   accountingBook?: PlatformCore.SearchColumnSelectField[];
@@ -13152,7 +19762,7 @@ export class SubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   validUntil?: PlatformCore.SearchColumnDateField[];
   zip?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: SubsidiarySearchRowBasic) {
+  constructor(props: SubsidiarySearchRowBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.accountingBookCurrency = props.accountingBookCurrency;
@@ -13203,13 +19813,21 @@ export class SubsidiarySearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type SalesRoleSearchRowBasicProps = {
+  description?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  name?: PlatformCore.SearchColumnStringField[];
+};
+
 export class SalesRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
   description?: PlatformCore.SearchColumnStringField[];
   externalId?: PlatformCore.SearchColumnSelectField[];
   internalId?: PlatformCore.SearchColumnSelectField[];
   isInactive?: PlatformCore.SearchColumnBooleanField[];
   name?: PlatformCore.SearchColumnStringField[];
-  constructor(props: SalesRoleSearchRowBasic) {
+  constructor(props: SalesRoleSearchRowBasicProps) {
     super();
     this.description = props.description;
     this.externalId = props.externalId;
@@ -13218,6 +19836,39 @@ export class SalesRoleSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.name = props.name;
   }
 }
+
+export type TimeEntrySearchBasicProps = {
+  approvalStatus?: PlatformCore.SearchMultiSelectField;
+  billable?: PlatformCore.SearchBooleanField;
+  billingClass?: PlatformCore.SearchMultiSelectField;
+  billingStatus?: PlatformCore.SearchBooleanField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  date?: PlatformCore.SearchDateField;
+  dateCreated?: PlatformCore.SearchDateField;
+  department?: PlatformCore.SearchMultiSelectField;
+  duration?: PlatformCore.SearchDoubleField;
+  employee?: PlatformCore.SearchMultiSelectField;
+  exempt?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isCharged?: PlatformCore.SearchBooleanField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModified?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  nextApprover?: PlatformCore.SearchMultiSelectField;
+  paidByPayroll?: PlatformCore.SearchBooleanField;
+  paidExternally?: PlatformCore.SearchBooleanField;
+  payItem?: PlatformCore.SearchMultiSelectField;
+  productive?: PlatformCore.SearchBooleanField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  type?: PlatformCore.SearchEnumMultiSelectField;
+  utilized?: PlatformCore.SearchBooleanField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
 
 export class TimeEntrySearchBasic extends PlatformCore.SearchRecordBasic {
   approvalStatus?: PlatformCore.SearchMultiSelectField;
@@ -13250,7 +19901,7 @@ export class TimeEntrySearchBasic extends PlatformCore.SearchRecordBasic {
   type?: PlatformCore.SearchEnumMultiSelectField;
   utilized?: PlatformCore.SearchBooleanField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: TimeEntrySearchBasic) {
+  constructor(props: TimeEntrySearchBasicProps) {
     super();
     this.approvalStatus = props.approvalStatus;
     this.billable = props.billable;
@@ -13285,6 +19936,26 @@ export class TimeEntrySearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type BudgetSearchBasicProps = {
+  account?: PlatformCore.SearchMultiSelectField;
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  amount?: PlatformCore.SearchDoubleField;
+  category?: PlatformCore.SearchMultiSelectField;
+  clazz?: PlatformCore.SearchMultiSelectField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  department?: PlatformCore.SearchMultiSelectField;
+  global?: PlatformCore.SearchBooleanField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  location?: PlatformCore.SearchMultiSelectField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  year?: PlatformCore.SearchMultiSelectField;
+  year2?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class BudgetSearchBasic extends PlatformCore.SearchRecordBasic {
   account?: PlatformCore.SearchMultiSelectField;
   accountingBook?: PlatformCore.SearchMultiSelectField;
@@ -13303,7 +19974,7 @@ export class BudgetSearchBasic extends PlatformCore.SearchRecordBasic {
   year?: PlatformCore.SearchMultiSelectField;
   year2?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: BudgetSearchBasic) {
+  constructor(props: BudgetSearchBasicProps) {
     super();
     this.account = props.account;
     this.accountingBook = props.accountingBook;
@@ -13325,6 +19996,25 @@ export class BudgetSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type VendorSubsidiaryRelationshipSearchRowBasicProps = {
+  balance?: PlatformCore.SearchColumnDoubleField[];
+  balancebase?: PlatformCore.SearchColumnDoubleField[];
+  baseCurrency?: PlatformCore.SearchColumnSelectField[];
+  creditlimit?: PlatformCore.SearchColumnDoubleField[];
+  entity?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  inTransitBalance?: PlatformCore.SearchColumnDoubleField[];
+  inTransitBalanceBase?: PlatformCore.SearchColumnDoubleField[];
+  isprimarysub?: PlatformCore.SearchColumnBooleanField[];
+  primaryCurrency?: PlatformCore.SearchColumnSelectField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  taxitem?: PlatformCore.SearchColumnSelectField[];
+  unbilledorders?: PlatformCore.SearchColumnDoubleField[];
+  unbilledordersbase?: PlatformCore.SearchColumnDoubleField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
+
 export class VendorSubsidiaryRelationshipSearchRowBasic extends PlatformCore.SearchRowBasic {
   balance?: PlatformCore.SearchColumnDoubleField[];
   balancebase?: PlatformCore.SearchColumnDoubleField[];
@@ -13342,7 +20032,7 @@ export class VendorSubsidiaryRelationshipSearchRowBasic extends PlatformCore.Sea
   unbilledorders?: PlatformCore.SearchColumnDoubleField[];
   unbilledordersbase?: PlatformCore.SearchColumnDoubleField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: VendorSubsidiaryRelationshipSearchRowBasic) {
+  constructor(props: VendorSubsidiaryRelationshipSearchRowBasicProps) {
     super();
     this.balance = props.balance;
     this.balancebase = props.balancebase;
@@ -13362,6 +20052,49 @@ export class VendorSubsidiaryRelationshipSearchRowBasic extends PlatformCore.Sea
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type InboundShipmentSearchRowBasicProps = {
+  actualDeliveryDate?: PlatformCore.SearchColumnDateField[];
+  actualShippingDate?: PlatformCore.SearchColumnDateField[];
+  billOfLading?: PlatformCore.SearchColumnStringField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  currency?: PlatformCore.SearchColumnSelectField[];
+  description?: PlatformCore.SearchColumnStringField[];
+  expectedDeliveryDate?: PlatformCore.SearchColumnDateField[];
+  expectedRate?: PlatformCore.SearchColumnDoubleField[];
+  expectedShippingDate?: PlatformCore.SearchColumnDateField[];
+  externalDocumentNumber?: PlatformCore.SearchColumnStringField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  incoterm?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  itemEffectiveDate?: PlatformCore.SearchColumnDateField[];
+  itemExchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  landedCostAllocationMethod?: PlatformCore.SearchColumnEnumSelectField[];
+  landedCostAmount?: PlatformCore.SearchColumnDoubleField[];
+  landedCostCostCategory?: PlatformCore.SearchColumnSelectField[];
+  landedCostCurrency?: PlatformCore.SearchColumnSelectField[];
+  landedCostEffectiveDate?: PlatformCore.SearchColumnDateField[];
+  landedCostExchangeRate?: PlatformCore.SearchColumnDoubleField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  poAmount?: PlatformCore.SearchColumnDoubleField[];
+  poRate?: PlatformCore.SearchColumnDoubleField[];
+  purchaseOrder?: PlatformCore.SearchColumnSelectField[];
+  quantityBilled?: PlatformCore.SearchColumnDoubleField[];
+  quantityExpected?: PlatformCore.SearchColumnDoubleField[];
+  quantityReceived?: PlatformCore.SearchColumnDoubleField[];
+  quantityRemaining?: PlatformCore.SearchColumnDoubleField[];
+  receivingLocation?: PlatformCore.SearchColumnSelectField[];
+  shipmentBaseCurrency?: PlatformCore.SearchColumnSelectField[];
+  shipmentNumber?: PlatformCore.SearchColumnStringField[];
+  status?: PlatformCore.SearchColumnStringField[];
+  totalUnitCost?: PlatformCore.SearchColumnDoubleField[];
+  unit?: PlatformCore.SearchColumnSelectField[];
+  unitLandedCost?: PlatformCore.SearchColumnDoubleField[];
+  vendor?: PlatformCore.SearchColumnSelectField[];
+  vesselNumber?: PlatformCore.SearchColumnStringField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class InboundShipmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   actualDeliveryDate?: PlatformCore.SearchColumnDateField[];
@@ -13404,7 +20137,7 @@ export class InboundShipmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   vendor?: PlatformCore.SearchColumnSelectField[];
   vesselNumber?: PlatformCore.SearchColumnStringField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: InboundShipmentSearchRowBasic) {
+  constructor(props: InboundShipmentSearchRowBasicProps) {
     super();
     this.actualDeliveryDate = props.actualDeliveryDate;
     this.actualShippingDate = props.actualShippingDate;
@@ -13449,6 +20182,28 @@ export class InboundShipmentSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type SolutionSearchBasicProps = {
+  _abstract?: PlatformCore.SearchStringField;
+  assigned?: PlatformCore.SearchMultiSelectField;
+  caseCount?: PlatformCore.SearchLongField;
+  code?: PlatformCore.SearchStringField;
+  createdDate?: PlatformCore.SearchDateField;
+  description?: PlatformCore.SearchStringField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  find?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  isOnline?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  number?: PlatformCore.SearchLongField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  title?: PlatformCore.SearchStringField;
+  topic?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class SolutionSearchBasic extends PlatformCore.SearchRecordBasic {
   _abstract?: PlatformCore.SearchStringField;
   assigned?: PlatformCore.SearchMultiSelectField;
@@ -13469,7 +20224,7 @@ export class SolutionSearchBasic extends PlatformCore.SearchRecordBasic {
   title?: PlatformCore.SearchStringField;
   topic?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: SolutionSearchBasic) {
+  constructor(props: SolutionSearchBasicProps) {
     super();
     this._abstract = props._abstract;
     this.assigned = props.assigned;
@@ -13493,6 +20248,19 @@ export class SolutionSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type PricingSearchBasicProps = {
+  assignedPriceLevel?: PlatformCore.SearchBooleanField;
+  currency?: PlatformCore.SearchMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  maximumQuantity?: PlatformCore.SearchDoubleField;
+  minimumQuantity?: PlatformCore.SearchDoubleField;
+  priceLevel?: PlatformCore.SearchMultiSelectField;
+  rate?: PlatformCore.SearchDoubleField;
+};
+
 export class PricingSearchBasic extends PlatformCore.SearchRecordBasic {
   assignedPriceLevel?: PlatformCore.SearchBooleanField;
   currency?: PlatformCore.SearchMultiSelectField;
@@ -13504,7 +20272,7 @@ export class PricingSearchBasic extends PlatformCore.SearchRecordBasic {
   minimumQuantity?: PlatformCore.SearchDoubleField;
   priceLevel?: PlatformCore.SearchMultiSelectField;
   rate?: PlatformCore.SearchDoubleField;
-  constructor(props: PricingSearchBasic) {
+  constructor(props: PricingSearchBasicProps) {
     super();
     this.assignedPriceLevel = props.assignedPriceLevel;
     this.currency = props.currency;
@@ -13518,6 +20286,25 @@ export class PricingSearchBasic extends PlatformCore.SearchRecordBasic {
     this.rate = props.rate;
   }
 }
+
+export type AccountingPeriodSearchRowBasicProps = {
+  allLocked?: PlatformCore.SearchColumnBooleanField[];
+  allowNonGLChanges?: PlatformCore.SearchColumnBooleanField[];
+  apLocked?: PlatformCore.SearchColumnBooleanField[];
+  arLocked?: PlatformCore.SearchColumnBooleanField[];
+  closed?: PlatformCore.SearchColumnBooleanField[];
+  closedOnDate?: PlatformCore.SearchColumnDateField[];
+  endDate?: PlatformCore.SearchColumnDateField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isAdjust?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  isQuarter?: PlatformCore.SearchColumnBooleanField[];
+  isYear?: PlatformCore.SearchColumnBooleanField[];
+  parent?: PlatformCore.SearchColumnSelectField[];
+  payrollLocked?: PlatformCore.SearchColumnBooleanField[];
+  periodName?: PlatformCore.SearchColumnStringField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+};
 
 export class AccountingPeriodSearchRowBasic extends PlatformCore.SearchRowBasic {
   allLocked?: PlatformCore.SearchColumnBooleanField[];
@@ -13536,7 +20323,7 @@ export class AccountingPeriodSearchRowBasic extends PlatformCore.SearchRowBasic 
   payrollLocked?: PlatformCore.SearchColumnBooleanField[];
   periodName?: PlatformCore.SearchColumnStringField[];
   startDate?: PlatformCore.SearchColumnDateField[];
-  constructor(props: AccountingPeriodSearchRowBasic) {
+  constructor(props: AccountingPeriodSearchRowBasicProps) {
     super();
     this.allLocked = props.allLocked;
     this.allowNonGLChanges = props.allowNonGLChanges;
@@ -13557,6 +20344,24 @@ export class AccountingPeriodSearchRowBasic extends PlatformCore.SearchRowBasic 
   }
 }
 
+export type TaxTypeSearchBasicProps = {
+  country?: PlatformCore.SearchEnumMultiSelectField;
+  description?: PlatformCore.SearchStringField;
+  doesNotAddToTotal?: PlatformCore.SearchBooleanField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isInactive?: PlatformCore.SearchBooleanField;
+  name?: PlatformCore.SearchStringField;
+  nexus?: PlatformCore.SearchMultiSelectField;
+  payablesAccount?: PlatformCore.SearchMultiSelectField;
+  postToItemCost?: PlatformCore.SearchBooleanField;
+  receivablesAccount?: PlatformCore.SearchMultiSelectField;
+  reverseCharge?: PlatformCore.SearchBooleanField;
+  taxInNetAmount?: PlatformCore.SearchBooleanField;
+};
+
 export class TaxTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   country?: PlatformCore.SearchEnumMultiSelectField;
   description?: PlatformCore.SearchStringField;
@@ -13573,7 +20378,7 @@ export class TaxTypeSearchBasic extends PlatformCore.SearchRecordBasic {
   receivablesAccount?: PlatformCore.SearchMultiSelectField;
   reverseCharge?: PlatformCore.SearchBooleanField;
   taxInNetAmount?: PlatformCore.SearchBooleanField;
-  constructor(props: TaxTypeSearchBasic) {
+  constructor(props: TaxTypeSearchBasicProps) {
     super();
     this.country = props.country;
     this.description = props.description;
@@ -13592,6 +20397,39 @@ export class TaxTypeSearchBasic extends PlatformCore.SearchRecordBasic {
     this.taxInNetAmount = props.taxInNetAmount;
   }
 }
+
+export type TaskSearchRowBasicProps = {
+  accessLevel?: PlatformCore.SearchColumnStringField[];
+  actualTime?: PlatformCore.SearchColumnDoubleField[];
+  assigned?: PlatformCore.SearchColumnSelectField[];
+  company?: PlatformCore.SearchColumnSelectField[];
+  completedDate?: PlatformCore.SearchColumnDateField[];
+  contact?: PlatformCore.SearchColumnSelectField[];
+  createdDate?: PlatformCore.SearchColumnDateField[];
+  dueDate?: PlatformCore.SearchColumnDateField[];
+  estimatedTime?: PlatformCore.SearchColumnDoubleField[];
+  estimatedTimeOverride?: PlatformCore.SearchColumnDoubleField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isJobSummaryTask?: PlatformCore.SearchColumnBooleanField[];
+  isJobTask?: PlatformCore.SearchColumnBooleanField[];
+  lastModifiedDate?: PlatformCore.SearchColumnDateField[];
+  markdone?: PlatformCore.SearchColumnStringField[];
+  message?: PlatformCore.SearchColumnStringField[];
+  milestone?: PlatformCore.SearchColumnSelectField[];
+  order?: PlatformCore.SearchColumnLongField[];
+  owner?: PlatformCore.SearchColumnSelectField[];
+  percentComplete?: PlatformCore.SearchColumnDoubleField[];
+  percentTimeComplete?: PlatformCore.SearchColumnDoubleField[];
+  priority?: PlatformCore.SearchColumnEnumSelectField[];
+  startDate?: PlatformCore.SearchColumnDateField[];
+  startTime?: PlatformCore.SearchColumnStringField[];
+  status?: PlatformCore.SearchColumnEnumSelectField[];
+  timeRemaining?: PlatformCore.SearchColumnDoubleField[];
+  title?: PlatformCore.SearchColumnStringField[];
+  transaction?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class TaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   accessLevel?: PlatformCore.SearchColumnStringField[];
@@ -13624,7 +20462,7 @@ export class TaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   title?: PlatformCore.SearchColumnStringField[];
   transaction?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: TaskSearchRowBasic) {
+  constructor(props: TaskSearchRowBasicProps) {
     super();
     this.accessLevel = props.accessLevel;
     this.actualTime = props.actualTime;
@@ -13659,6 +20497,36 @@ export class TaskSearchRowBasic extends PlatformCore.SearchRowBasic {
   }
 }
 
+export type TaskSearchBasicProps = {
+  actualTime?: PlatformCore.SearchDoubleField;
+  assigned?: PlatformCore.SearchMultiSelectField;
+  company?: PlatformCore.SearchMultiSelectField;
+  completedDate?: PlatformCore.SearchDateField;
+  contact?: PlatformCore.SearchMultiSelectField;
+  createdDate?: PlatformCore.SearchDateField;
+  endDate?: PlatformCore.SearchDateField;
+  estimatedTime?: PlatformCore.SearchDoubleField;
+  estimatedTimeOverride?: PlatformCore.SearchDoubleField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isJobSummaryTask?: PlatformCore.SearchBooleanField;
+  isJobTask?: PlatformCore.SearchBooleanField;
+  isPrivate?: PlatformCore.SearchBooleanField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  milestone?: PlatformCore.SearchLongField;
+  owner?: PlatformCore.SearchMultiSelectField;
+  percentComplete?: PlatformCore.SearchLongField;
+  percentTimeComplete?: PlatformCore.SearchLongField;
+  priority?: PlatformCore.SearchEnumMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  status?: PlatformCore.SearchEnumMultiSelectField;
+  timeRemaining?: PlatformCore.SearchDoubleField;
+  title?: PlatformCore.SearchStringField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class TaskSearchBasic extends PlatformCore.SearchRecordBasic {
   actualTime?: PlatformCore.SearchDoubleField;
   assigned?: PlatformCore.SearchMultiSelectField;
@@ -13687,7 +20555,7 @@ export class TaskSearchBasic extends PlatformCore.SearchRecordBasic {
   timeRemaining?: PlatformCore.SearchDoubleField;
   title?: PlatformCore.SearchStringField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: TaskSearchBasic) {
+  constructor(props: TaskSearchBasicProps) {
     super();
     this.actualTime = props.actualTime;
     this.assigned = props.assigned;
@@ -13719,6 +20587,19 @@ export class TaskSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type ConsolidatedExchangeRateSearchBasicProps = {
+  accountingBook?: PlatformCore.SearchMultiSelectField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  fromSubsidiary?: PlatformCore.SearchMultiSelectField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  isDerivedRate?: PlatformCore.SearchBooleanField;
+  period?: PlatformCore.SearchMultiSelectField;
+  periodStartDate?: PlatformCore.SearchDateField;
+  toSubsidiary?: PlatformCore.SearchMultiSelectField;
+};
+
 export class ConsolidatedExchangeRateSearchBasic extends PlatformCore.SearchRecordBasic {
   accountingBook?: PlatformCore.SearchMultiSelectField;
   externalId?: PlatformCore.SearchMultiSelectField;
@@ -13730,7 +20611,7 @@ export class ConsolidatedExchangeRateSearchBasic extends PlatformCore.SearchReco
   period?: PlatformCore.SearchMultiSelectField;
   periodStartDate?: PlatformCore.SearchDateField;
   toSubsidiary?: PlatformCore.SearchMultiSelectField;
-  constructor(props: ConsolidatedExchangeRateSearchBasic) {
+  constructor(props: ConsolidatedExchangeRateSearchBasicProps) {
     super();
     this.accountingBook = props.accountingBook;
     this.externalId = props.externalId;
@@ -13745,12 +20626,19 @@ export class ConsolidatedExchangeRateSearchBasic extends PlatformCore.SearchReco
   }
 }
 
+export type ItemBinNumberSearchRowBasicProps = {
+  binNumber?: PlatformCore.SearchColumnSelectField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
+  quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
+};
+
 export class ItemBinNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
   binNumber?: PlatformCore.SearchColumnSelectField[];
   location?: PlatformCore.SearchColumnSelectField[];
   quantityAvailable?: PlatformCore.SearchColumnDoubleField[];
   quantityOnHand?: PlatformCore.SearchColumnDoubleField[];
-  constructor(props: ItemBinNumberSearchRowBasic) {
+  constructor(props: ItemBinNumberSearchRowBasicProps) {
     super();
     this.binNumber = props.binNumber;
     this.location = props.location;
@@ -13758,6 +20646,31 @@ export class ItemBinNumberSearchRowBasic extends PlatformCore.SearchRowBasic {
     this.quantityOnHand = props.quantityOnHand;
   }
 }
+
+export type ManufacturingRoutingSearchRowBasicProps = {
+  autoCalculateLag?: PlatformCore.SearchColumnBooleanField[];
+  billOfMaterials?: PlatformCore.SearchColumnSelectField[];
+  externalId?: PlatformCore.SearchColumnSelectField[];
+  internalId?: PlatformCore.SearchColumnSelectField[];
+  isDefault?: PlatformCore.SearchColumnBooleanField[];
+  isInactive?: PlatformCore.SearchColumnBooleanField[];
+  item?: PlatformCore.SearchColumnSelectField[];
+  lagAmount?: PlatformCore.SearchColumnDoubleField[];
+  lagType?: PlatformCore.SearchColumnEnumSelectField[];
+  lagUnits?: PlatformCore.SearchColumnStringField[];
+  location?: PlatformCore.SearchColumnSelectField[];
+  manufacturingCostTemplate?: PlatformCore.SearchColumnSelectField[];
+  manufacturingWorkCenter?: PlatformCore.SearchColumnSelectField[];
+  memo?: PlatformCore.SearchColumnStringField[];
+  name?: PlatformCore.SearchColumnStringField[];
+  operationName?: PlatformCore.SearchColumnStringField[];
+  operationYield?: PlatformCore.SearchColumnDoubleField[];
+  runRate?: PlatformCore.SearchColumnDoubleField[];
+  sequence?: PlatformCore.SearchColumnLongField[];
+  setupTime?: PlatformCore.SearchColumnDoubleField[];
+  subsidiary?: PlatformCore.SearchColumnSelectField[];
+  customFieldList?: PlatformCore.SearchColumnCustomFieldList;
+};
 
 export class ManufacturingRoutingSearchRowBasic extends PlatformCore.SearchRowBasic {
   autoCalculateLag?: PlatformCore.SearchColumnBooleanField[];
@@ -13782,7 +20695,7 @@ export class ManufacturingRoutingSearchRowBasic extends PlatformCore.SearchRowBa
   setupTime?: PlatformCore.SearchColumnDoubleField[];
   subsidiary?: PlatformCore.SearchColumnSelectField[];
   customFieldList?: PlatformCore.SearchColumnCustomFieldList;
-  constructor(props: ManufacturingRoutingSearchRowBasic) {
+  constructor(props: ManufacturingRoutingSearchRowBasicProps) {
     super();
     this.autoCalculateLag = props.autoCalculateLag;
     this.billOfMaterials = props.billOfMaterials;
@@ -13809,6 +20722,27 @@ export class ManufacturingRoutingSearchRowBasic extends PlatformCore.SearchRowBa
   }
 }
 
+export type ResourceAllocationSearchBasicProps = {
+  allocationType?: PlatformCore.SearchMultiSelectField;
+  allocationUnit?: PlatformCore.SearchEnumMultiSelectField;
+  approvalStatus?: PlatformCore.SearchEnumMultiSelectField;
+  customer?: PlatformCore.SearchMultiSelectField;
+  endDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  nextApprover?: PlatformCore.SearchMultiSelectField;
+  notes?: PlatformCore.SearchStringField;
+  numberHours?: PlatformCore.SearchDoubleField;
+  percentOfTime?: PlatformCore.SearchDoubleField;
+  project?: PlatformCore.SearchMultiSelectField;
+  requestedBy?: PlatformCore.SearchMultiSelectField;
+  resource?: PlatformCore.SearchMultiSelectField;
+  startDate?: PlatformCore.SearchDateField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ResourceAllocationSearchBasic extends PlatformCore.SearchRecordBasic {
   allocationType?: PlatformCore.SearchMultiSelectField;
   allocationUnit?: PlatformCore.SearchEnumMultiSelectField;
@@ -13828,7 +20762,7 @@ export class ResourceAllocationSearchBasic extends PlatformCore.SearchRecordBasi
   resource?: PlatformCore.SearchMultiSelectField;
   startDate?: PlatformCore.SearchDateField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ResourceAllocationSearchBasic) {
+  constructor(props: ResourceAllocationSearchBasicProps) {
     super();
     this.allocationType = props.allocationType;
     this.allocationUnit = props.allocationUnit;
@@ -13851,6 +20785,28 @@ export class ResourceAllocationSearchBasic extends PlatformCore.SearchRecordBasi
   }
 }
 
+export type ItemDemandPlanSearchBasicProps = {
+  alternateSourceItem?: PlatformCore.SearchMultiSelectField;
+  analysisDuration?: PlatformCore.SearchLongField;
+  demandDate?: PlatformCore.SearchDateField;
+  externalId?: PlatformCore.SearchMultiSelectField;
+  externalIdString?: PlatformCore.SearchStringField;
+  internalId?: PlatformCore.SearchMultiSelectField;
+  internalIdNumber?: PlatformCore.SearchLongField;
+  item?: PlatformCore.SearchMultiSelectField;
+  lastModifiedDate?: PlatformCore.SearchDateField;
+  location?: PlatformCore.SearchMultiSelectField;
+  memo?: PlatformCore.SearchStringField;
+  projectionDuration?: PlatformCore.SearchLongField;
+  projectionInterval?: PlatformCore.SearchMultiSelectField;
+  projectionMethod?: PlatformCore.SearchEnumMultiSelectField;
+  projectionStartDate?: PlatformCore.SearchDateField;
+  quantity?: PlatformCore.SearchDoubleField;
+  subsidiary?: PlatformCore.SearchMultiSelectField;
+  units?: PlatformCore.SearchMultiSelectField;
+  customFieldList?: PlatformCore.SearchCustomFieldList;
+};
+
 export class ItemDemandPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   alternateSourceItem?: PlatformCore.SearchMultiSelectField;
   analysisDuration?: PlatformCore.SearchLongField;
@@ -13871,7 +20827,7 @@ export class ItemDemandPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   subsidiary?: PlatformCore.SearchMultiSelectField;
   units?: PlatformCore.SearchMultiSelectField;
   customFieldList?: PlatformCore.SearchCustomFieldList;
-  constructor(props: ItemDemandPlanSearchBasic) {
+  constructor(props: ItemDemandPlanSearchBasicProps) {
     super();
     this.alternateSourceItem = props.alternateSourceItem;
     this.analysisDuration = props.analysisDuration;
@@ -13895,6 +20851,18 @@ export class ItemDemandPlanSearchBasic extends PlatformCore.SearchRecordBasic {
   }
 }
 
+export type TaxDetailSearchRowBasicProps = {
+  account?: PlatformCore.SearchColumnStringField[];
+  details?: PlatformCore.SearchColumnStringField[];
+  lineNumber?: PlatformCore.SearchColumnLongField[];
+  taxAmount?: PlatformCore.SearchColumnDoubleField[];
+  taxBasis?: PlatformCore.SearchColumnDoubleField[];
+  taxCode?: PlatformCore.SearchColumnSelectField[];
+  taxRate?: PlatformCore.SearchColumnDoubleField[];
+  taxType?: PlatformCore.SearchColumnSelectField[];
+  tranId?: PlatformCore.SearchColumnLongField[];
+};
+
 export class TaxDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
   account?: PlatformCore.SearchColumnStringField[];
   details?: PlatformCore.SearchColumnStringField[];
@@ -13905,7 +20873,7 @@ export class TaxDetailSearchRowBasic extends PlatformCore.SearchRowBasic {
   taxRate?: PlatformCore.SearchColumnDoubleField[];
   taxType?: PlatformCore.SearchColumnSelectField[];
   tranId?: PlatformCore.SearchColumnLongField[];
-  constructor(props: TaxDetailSearchRowBasic) {
+  constructor(props: TaxDetailSearchRowBasicProps) {
     super();
     this.account = props.account;
     this.details = props.details;

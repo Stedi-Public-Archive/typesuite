@@ -2,12 +2,19 @@ import * as TransactionsDemandplanningTypes from "./transactions_demandplanning_
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 
+export type DemandPlanProps = {
+  startDate: string;
+  endDate?: string;
+  calculatedQuantity?: number;
+  periodDemandPlanList?: PeriodDemandPlanList;
+};
+
 export class DemandPlan {
   startDate: string;
   endDate?: string;
   calculatedQuantity?: number;
   periodDemandPlanList?: PeriodDemandPlanList;
-  constructor(props: DemandPlan) {
+  constructor(props: DemandPlanProps) {
     this.startDate = props.startDate;
     this.endDate = props.endDate;
     this.calculatedQuantity = props.calculatedQuantity;
@@ -15,12 +22,19 @@ export class DemandPlan {
   }
 }
 
+export type ItemDemandPlanSearchAdvancedProps = {
+  criteria?: ItemDemandPlanSearch;
+  columns?: ItemDemandPlanSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ItemDemandPlanSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ItemDemandPlanSearch;
   columns?: ItemDemandPlanSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ItemDemandPlanSearchAdvanced) {
+  constructor(props: ItemDemandPlanSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -28,6 +42,24 @@ export class ItemDemandPlanSearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ItemDemandPlanProps = {
+  customForm?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  units?: PlatformCore.RecordRef;
+  memo?: string;
+  year?: number;
+  month?: TransactionsDemandplanningTypes.DemandPlanMonth;
+  startDate?: string;
+  endDate?: string;
+  demandPlanCalendarType?: TransactionsDemandplanningTypes.DemandPlanCalendarType;
+  demandPlanMatrix?: DemandPlanMatrix;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemDemandPlan extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -45,7 +77,7 @@ export class ItemDemandPlan extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemDemandPlan) {
+  constructor(props: ItemDemandPlanProps) {
     super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;
@@ -65,13 +97,21 @@ export class ItemDemandPlan extends PlatformCore.Record {
   }
 }
 
+export type ItemSupplyPlanSearchRowProps = {
+  basic?: PlatformCommon.ItemSupplyPlanSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ItemSupplyPlanSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ItemSupplyPlanSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   locationJoin?: PlatformCommon.LocationSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ItemSupplyPlanSearchRow) {
+  constructor(props: ItemSupplyPlanSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -81,6 +121,16 @@ export class ItemSupplyPlanSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ItemSupplyPlanOrderProps = {
+  orderLineId?: number;
+  orderDate?: string;
+  receiptDate?: string;
+  sourceLocation?: PlatformCore.RecordRef;
+  quantity?: number;
+  orderCreated?: boolean;
+  orderType?: TransactionsDemandplanningTypes.ItemSupplyPlanOrderType;
+};
+
 export class ItemSupplyPlanOrder {
   orderLineId?: number;
   orderDate?: string;
@@ -89,7 +139,7 @@ export class ItemSupplyPlanOrder {
   quantity?: number;
   orderCreated?: boolean;
   orderType?: TransactionsDemandplanningTypes.ItemSupplyPlanOrderType;
-  constructor(props: ItemSupplyPlanOrder) {
+  constructor(props: ItemSupplyPlanOrderProps) {
     this.orderLineId = props.orderLineId;
     this.orderDate = props.orderDate;
     this.receiptDate = props.receiptDate;
@@ -100,14 +150,28 @@ export class ItemSupplyPlanOrder {
   }
 }
 
+export type PeriodDemandPlanProps = {
+  quantity: number;
+  dayOfTheWeek?: TransactionsDemandplanningTypes.DayOfTheWeek;
+};
+
 export class PeriodDemandPlan {
   quantity: number;
   dayOfTheWeek?: TransactionsDemandplanningTypes.DayOfTheWeek;
-  constructor(props: PeriodDemandPlan) {
+  constructor(props: PeriodDemandPlanProps) {
     this.quantity = props.quantity;
     this.dayOfTheWeek = props.dayOfTheWeek;
   }
 }
+
+export type ItemDemandPlanSearchRowProps = {
+  basic?: PlatformCommon.ItemDemandPlanSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  lastAlternateSourceItemJoin?: PlatformCommon.ItemSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ItemDemandPlanSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ItemDemandPlanSearchRowBasic;
@@ -116,7 +180,7 @@ export class ItemDemandPlanSearchRow extends PlatformCore.SearchRow {
   locationJoin?: PlatformCommon.LocationSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ItemDemandPlanSearchRow) {
+  constructor(props: ItemDemandPlanSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -126,6 +190,15 @@ export class ItemDemandPlanSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type ItemDemandPlanSearchProps = {
+  basic?: PlatformCommon.ItemDemandPlanSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  lastAlternateSourceItemJoin?: PlatformCommon.ItemSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ItemDemandPlanSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ItemDemandPlanSearchBasic;
@@ -134,7 +207,7 @@ export class ItemDemandPlanSearch extends PlatformCore.SearchRecord {
   locationJoin?: PlatformCommon.LocationSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ItemDemandPlanSearch) {
+  constructor(props: ItemDemandPlanSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -145,13 +218,21 @@ export class ItemDemandPlanSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type ItemSupplyPlanSearchProps = {
+  basic?: PlatformCommon.ItemSupplyPlanSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class ItemSupplyPlanSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ItemSupplyPlanSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
   locationJoin?: PlatformCommon.LocationSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ItemSupplyPlanSearch) {
+  constructor(props: ItemSupplyPlanSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -161,21 +242,43 @@ export class ItemSupplyPlanSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type DemandPlanMatrixProps = {
+  demandPlan?: DemandPlan[];
+  replaceAll?: boolean;
+};
+
 export class DemandPlanMatrix {
   demandPlan?: DemandPlan[];
   replaceAll?: boolean;
-  constructor(props: DemandPlanMatrix) {
+  constructor(props: DemandPlanMatrixProps) {
     this.demandPlan = props.demandPlan;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PeriodDemandPlanListProps = {
+  periodDemandPlan?: PeriodDemandPlan[];
+};
+
 export class PeriodDemandPlanList {
   periodDemandPlan?: PeriodDemandPlan[];
-  constructor(props: PeriodDemandPlanList) {
+  constructor(props: PeriodDemandPlanListProps) {
     this.periodDemandPlan = props.periodDemandPlan;
   }
 }
+
+export type ItemSupplyPlanProps = {
+  customForm?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  units?: PlatformCore.RecordRef;
+  memo?: string;
+  orderList?: ItemSupplyPlanOrderList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemSupplyPlan extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -188,7 +291,7 @@ export class ItemSupplyPlan extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemSupplyPlan) {
+  constructor(props: ItemSupplyPlanProps) {
     super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;
@@ -203,12 +306,19 @@ export class ItemSupplyPlan extends PlatformCore.Record {
   }
 }
 
+export type ItemSupplyPlanSearchAdvancedProps = {
+  criteria?: ItemSupplyPlanSearch;
+  columns?: ItemSupplyPlanSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ItemSupplyPlanSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ItemSupplyPlanSearch;
   columns?: ItemSupplyPlanSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ItemSupplyPlanSearchAdvanced) {
+  constructor(props: ItemSupplyPlanSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -217,10 +327,15 @@ export class ItemSupplyPlanSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type ItemSupplyPlanOrderListProps = {
+  itemSupplyPlanOrder?: ItemSupplyPlanOrder[];
+  replaceAll?: boolean;
+};
+
 export class ItemSupplyPlanOrderList {
   itemSupplyPlanOrder?: ItemSupplyPlanOrder[];
   replaceAll?: boolean;
-  constructor(props: ItemSupplyPlanOrderList) {
+  constructor(props: ItemSupplyPlanOrderListProps) {
     this.itemSupplyPlanOrder = props.itemSupplyPlanOrder;
     this.replaceAll = props.replaceAll;
   }

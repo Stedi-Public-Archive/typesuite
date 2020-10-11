@@ -2,6 +2,25 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as ListsSupportTypes from "./lists_support_types";
 
+export type SolutionProps = {
+  customForm?: PlatformCore.RecordRef;
+  solutionCode?: string;
+  title?: string;
+  message?: string;
+  status?: ListsSupportTypes.SolutionStatus;
+  displayOnline?: boolean;
+  assigned?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  longDescription?: string;
+  topicsList?: SolutionTopicsList;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  solutionsList?: SolutionsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class Solution extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   solutionCode?: string;
@@ -19,7 +38,7 @@ export class Solution extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Solution) {
+  constructor(props: SolutionProps) {
     super(props);
     this.customForm = props.customForm;
     this.solutionCode = props.solutionCode;
@@ -40,6 +59,18 @@ export class Solution extends PlatformCore.Record {
   }
 }
 
+export type SupportCaseStatusProps = {
+  name?: string;
+  insertBefore?: PlatformCore.RecordRef;
+  stage?: ListsSupportTypes.SupportCaseStatusStage;
+  caseOnHold?: boolean;
+  autoCloseCase?: boolean;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class SupportCaseStatus extends PlatformCore.Record {
   name?: string;
   insertBefore?: PlatformCore.RecordRef;
@@ -50,7 +81,7 @@ export class SupportCaseStatus extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCaseStatus) {
+  constructor(props: SupportCaseStatusProps) {
     super(props);
     this.name = props.name;
     this.insertBefore = props.insertBefore;
@@ -63,6 +94,51 @@ export class SupportCaseStatus extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type IssueProps = {
+  customForm?: PlatformCore.RecordRef;
+  issueNumber?: string;
+  createdDate?: string;
+  issueType?: PlatformCore.RecordRef;
+  product?: PlatformCore.RecordRef;
+  module?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  productTeam?: PlatformCore.RecordRef;
+  source?: PlatformCore.RecordRef;
+  reportedBy?: PlatformCore.RecordRef;
+  reproduce?: PlatformCore.RecordRef;
+  versionBroken?: PlatformCore.RecordRef;
+  buildBroken?: PlatformCore.RecordRef;
+  versionTarget?: PlatformCore.RecordRef;
+  buildTarget?: PlatformCore.RecordRef;
+  versionFixed?: PlatformCore.RecordRef;
+  buildFixed?: PlatformCore.RecordRef;
+  severity?: PlatformCore.RecordRef;
+  priority?: PlatformCore.RecordRef;
+  isShowStopper?: boolean;
+  assigned?: PlatformCore.RecordRef;
+  reviewer?: PlatformCore.RecordRef;
+  isReviewed?: boolean;
+  issueStatus?: PlatformCore.RecordRef;
+  lastModifiedDate?: string;
+  issueTagsList?: PlatformCore.RecordRefList;
+  issueAbstract?: string;
+  newDetails?: string;
+  isOwner?: boolean;
+  trackCode?: ListsSupportTypes.IssueTrackCode;
+  emailAssignee?: boolean;
+  emailEmployeesList?: EmailEmployeesList;
+  emailCellsList?: PlatformCore.RecordRefList;
+  externalAbstract?: string;
+  externalDetails?: string;
+  brokenInVersionList?: IssueVersionList;
+  targetVersionList?: IssueVersionList;
+  fixedInVersionList?: IssueVersionList;
+  relatedIssuesList?: IssueRelatedIssuesList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Issue extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -107,7 +183,7 @@ export class Issue extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Issue) {
+  constructor(props: IssueProps) {
     super(props);
     this.customForm = props.customForm;
     this.issueNumber = props.issueNumber;
@@ -154,6 +230,17 @@ export class Issue extends PlatformCore.Record {
   }
 }
 
+export type IssueSearchRowProps = {
+  basic?: PlatformCommon.IssueSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  productTeamJoin?: PlatformCommon.EntityGroupSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class IssueSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.IssueSearchRowBasic;
   caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
@@ -163,7 +250,7 @@ export class IssueSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: IssueSearchRow) {
+  constructor(props: IssueSearchRowProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -176,14 +263,28 @@ export class IssueSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type SupportCaseEscalateToListProps = {
+  escalateTo?: SupportCaseEscalateTo[];
+  replaceAll?: boolean;
+};
+
 export class SupportCaseEscalateToList {
   escalateTo?: SupportCaseEscalateTo[];
   replaceAll?: boolean;
-  constructor(props: SupportCaseEscalateToList) {
+  constructor(props: SupportCaseEscalateToListProps) {
     this.escalateTo = props.escalateTo;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SupportCaseOriginProps = {
+  name?: string;
+  insertBefore?: PlatformCore.RecordRef;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SupportCaseOrigin extends PlatformCore.Record {
   name?: string;
@@ -192,7 +293,7 @@ export class SupportCaseOrigin extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCaseOrigin) {
+  constructor(props: SupportCaseOriginProps) {
     super(props);
     this.name = props.name;
     this.insertBefore = props.insertBefore;
@@ -203,23 +304,36 @@ export class SupportCaseOrigin extends PlatformCore.Record {
   }
 }
 
+export type IssueRelatedIssuesProps = {
+  relationship?: ListsSupportTypes.IssueRelationship;
+  issueNumber?: PlatformCore.RecordRef;
+  relationshipComment?: string;
+};
+
 export class IssueRelatedIssues {
   relationship?: ListsSupportTypes.IssueRelationship;
   issueNumber?: PlatformCore.RecordRef;
   relationshipComment?: string;
-  constructor(props: IssueRelatedIssues) {
+  constructor(props: IssueRelatedIssuesProps) {
     this.relationship = props.relationship;
     this.issueNumber = props.issueNumber;
     this.relationshipComment = props.relationshipComment;
   }
 }
 
+export type IssueSearchAdvancedProps = {
+  criteria?: IssueSearch;
+  columns?: IssueSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class IssueSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: IssueSearch;
   columns?: IssueSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: IssueSearchAdvanced) {
+  constructor(props: IssueSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -228,30 +342,47 @@ export class IssueSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TopicSolutionProps = {
+  solution?: PlatformCore.RecordRef;
+  message?: string;
+};
+
 export class TopicSolution {
   solution?: PlatformCore.RecordRef;
   message?: string;
-  constructor(props: TopicSolution) {
+  constructor(props: TopicSolutionProps) {
     this.solution = props.solution;
     this.message = props.message;
   }
 }
 
+export type IssueRelatedIssuesListProps = {
+  issueRelatedIssues?: IssueRelatedIssues[];
+  replaceAll?: boolean;
+};
+
 export class IssueRelatedIssuesList {
   issueRelatedIssues?: IssueRelatedIssues[];
   replaceAll?: boolean;
-  constructor(props: IssueRelatedIssuesList) {
+  constructor(props: IssueRelatedIssuesListProps) {
     this.issueRelatedIssues = props.issueRelatedIssues;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TopicSearchAdvancedProps = {
+  criteria?: TopicSearch;
+  columns?: TopicSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class TopicSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TopicSearch;
   columns?: TopicSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TopicSearchAdvanced) {
+  constructor(props: TopicSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -260,14 +391,28 @@ export class TopicSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type IssueVersionListProps = {
+  issueVersion?: IssueVersion[];
+  replaceAll?: boolean;
+};
+
 export class IssueVersionList {
   issueVersion?: IssueVersion[];
   replaceAll?: boolean;
-  constructor(props: IssueVersionList) {
+  constructor(props: IssueVersionListProps) {
     this.issueVersion = props.issueVersion;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SupportCaseTypeProps = {
+  name?: string;
+  insertBefore?: PlatformCore.RecordRef;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SupportCaseType extends PlatformCore.Record {
   name?: string;
@@ -276,7 +421,7 @@ export class SupportCaseType extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCaseType) {
+  constructor(props: SupportCaseTypeProps) {
     super(props);
     this.name = props.name;
     this.insertBefore = props.insertBefore;
@@ -287,49 +432,76 @@ export class SupportCaseType extends PlatformCore.Record {
   }
 }
 
+export type SupportCaseSolutionsProps = {
+  solution?: PlatformCore.RecordRef;
+  message?: string;
+  dateApplied?: string;
+};
+
 export class SupportCaseSolutions {
   solution?: PlatformCore.RecordRef;
   message?: string;
   dateApplied?: string;
-  constructor(props: SupportCaseSolutions) {
+  constructor(props: SupportCaseSolutionsProps) {
     this.solution = props.solution;
     this.message = props.message;
     this.dateApplied = props.dateApplied;
   }
 }
 
+export type SolutionTopicsProps = {
+  topic?: PlatformCore.RecordRef;
+};
+
 export class SolutionTopics {
   topic?: PlatformCore.RecordRef;
-  constructor(props: SolutionTopics) {
+  constructor(props: SolutionTopicsProps) {
     this.topic = props.topic;
   }
 }
+
+export type SupportCaseEscalateToProps = {
+  escalatee?: PlatformCore.RecordRef;
+  email?: string;
+  phone?: string;
+};
 
 export class SupportCaseEscalateTo {
   escalatee?: PlatformCore.RecordRef;
   email?: string;
   phone?: string;
-  constructor(props: SupportCaseEscalateTo) {
+  constructor(props: SupportCaseEscalateToProps) {
     this.escalatee = props.escalatee;
     this.email = props.email;
     this.phone = props.phone;
   }
 }
 
+export type SolutionTopicsListProps = {
+  topics?: SolutionTopics[];
+  replaceAll?: boolean;
+};
+
 export class SolutionTopicsList {
   topics?: SolutionTopics[];
   replaceAll?: boolean;
-  constructor(props: SolutionTopicsList) {
+  constructor(props: SolutionTopicsListProps) {
     this.topics = props.topics;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TopicSearchRowProps = {
+  basic?: PlatformCommon.TopicSearchRowBasic;
+  solutionJoin?: PlatformCommon.SolutionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+};
+
 export class TopicSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TopicSearchRowBasic;
   solutionJoin?: PlatformCommon.SolutionSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
-  constructor(props: TopicSearchRow) {
+  constructor(props: TopicSearchRowProps) {
     super();
     this.basic = props.basic;
     this.solutionJoin = props.solutionJoin;
@@ -337,21 +509,47 @@ export class TopicSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type SolutionsProps = {
+  solution?: PlatformCore.RecordRef;
+  message?: string;
+};
+
 export class Solutions {
   solution?: PlatformCore.RecordRef;
   message?: string;
-  constructor(props: Solutions) {
+  constructor(props: SolutionsProps) {
     this.solution = props.solution;
     this.message = props.message;
   }
 }
 
+export type EmailEmployeesListProps = {
+  emailEmployees: PlatformCore.RecordRef[];
+};
+
 export class EmailEmployeesList {
   emailEmployees: PlatformCore.RecordRef[];
-  constructor(props: EmailEmployeesList) {
+  constructor(props: EmailEmployeesListProps) {
     this.emailEmployees = props.emailEmployees;
   }
 }
+
+export type SupportCaseSearchRowProps = {
+  basic?: PlatformCommon.SupportCaseSearchRowBasic;
+  companyJoin?: PlatformCommon.EntitySearchRowBasic;
+  contactJoin?: PlatformCommon.ContactSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  fileJoin?: PlatformCommon.FileSearchRowBasic;
+  issueJoin?: PlatformCommon.IssueSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  messagesJoin?: PlatformCommon.MessageSearchRowBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class SupportCaseSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.SupportCaseSearchRowBasic;
@@ -368,7 +566,7 @@ export class SupportCaseSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: SupportCaseSearchRow) {
+  constructor(props: SupportCaseSearchRowProps) {
     super();
     this.basic = props.basic;
     this.companyJoin = props.companyJoin;
@@ -387,17 +585,33 @@ export class SupportCaseSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type TopicSearchProps = {
+  basic?: PlatformCommon.TopicSearchBasic;
+  solutionJoin?: PlatformCommon.SolutionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+};
+
 export class TopicSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TopicSearchBasic;
   solutionJoin?: PlatformCommon.SolutionSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
-  constructor(props: TopicSearch) {
+  constructor(props: TopicSearchProps) {
     super();
     this.basic = props.basic;
     this.solutionJoin = props.solutionJoin;
     this.userJoin = props.userJoin;
   }
 }
+
+export type SolutionSearchRowProps = {
+  basic?: PlatformCommon.SolutionSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  relatedSolutionJoin?: PlatformCommon.SolutionSearchRowBasic;
+  topicJoin?: PlatformCommon.TopicSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class SolutionSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.SolutionSearchRowBasic;
@@ -407,7 +621,7 @@ export class SolutionSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: SolutionSearchRow) {
+  constructor(props: SolutionSearchRowProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -419,14 +633,28 @@ export class SolutionSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type SupportCaseSolutionsListProps = {
+  solutions?: SupportCaseSolutions[];
+  replaceAll?: boolean;
+};
+
 export class SupportCaseSolutionsList {
   solutions?: SupportCaseSolutions[];
   replaceAll?: boolean;
-  constructor(props: SupportCaseSolutionsList) {
+  constructor(props: SupportCaseSolutionsListProps) {
     this.solutions = props.solutions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SupportCasePriorityProps = {
+  name?: string;
+  insertBefore?: PlatformCore.RecordRef;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SupportCasePriority extends PlatformCore.Record {
   name?: string;
@@ -435,7 +663,7 @@ export class SupportCasePriority extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCasePriority) {
+  constructor(props: SupportCasePriorityProps) {
     super(props);
     this.name = props.name;
     this.insertBefore = props.insertBefore;
@@ -446,21 +674,33 @@ export class SupportCasePriority extends PlatformCore.Record {
   }
 }
 
+export type SolutionsListProps = {
+  solutions?: Solutions[];
+  replaceAll?: boolean;
+};
+
 export class SolutionsList {
   solutions?: Solutions[];
   replaceAll?: boolean;
-  constructor(props: SolutionsList) {
+  constructor(props: SolutionsListProps) {
     this.solutions = props.solutions;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type SupportCaseSearchAdvancedProps = {
+  criteria?: SupportCaseSearch;
+  columns?: SupportCaseSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class SupportCaseSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: SupportCaseSearch;
   columns?: SupportCaseSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: SupportCaseSearchAdvanced) {
+  constructor(props: SupportCaseSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -469,25 +709,46 @@ export class SupportCaseSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type SupportCaseTimeItemListProps = {
+  timeItem?: PlatformCommon.TimeItem[];
+  replaceAll?: boolean;
+};
+
 export class SupportCaseTimeItemList {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
-  constructor(props: SupportCaseTimeItemList) {
+  constructor(props: SupportCaseTimeItemListProps) {
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type IssueVersionProps = {
+  primary?: boolean;
+  version?: PlatformCore.RecordRef;
+  build?: PlatformCore.RecordRef;
+};
+
 export class IssueVersion {
   primary?: boolean;
   version?: PlatformCore.RecordRef;
   build?: PlatformCore.RecordRef;
-  constructor(props: IssueVersion) {
+  constructor(props: IssueVersionProps) {
     this.primary = props.primary;
     this.version = props.version;
     this.build = props.build;
   }
 }
+
+export type SolutionSearchProps = {
+  basic?: PlatformCommon.SolutionSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  relatedSolutionJoin?: PlatformCommon.SolutionSearchBasic;
+  topicJoin?: PlatformCommon.TopicSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class SolutionSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.SolutionSearchBasic;
@@ -497,7 +758,7 @@ export class SolutionSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: SolutionSearch) {
+  constructor(props: SolutionSearchProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -508,6 +769,52 @@ export class SolutionSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type SupportCaseProps = {
+  escalationMessage?: string;
+  lastReopenedDate?: string;
+  endDate?: string;
+  incomingMessage?: string;
+  insertSolution?: PlatformCore.RecordRef;
+  outgoingMessage?: string;
+  searchSolution?: string;
+  emailForm?: boolean;
+  newSolutionFromMsg?: string;
+  internalOnly?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  title?: string;
+  caseNumber?: string;
+  startDate?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  lastMessageDate?: string;
+  company?: PlatformCore.RecordRef;
+  profile?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  contact?: PlatformCore.RecordRef;
+  email?: string;
+  phone?: string;
+  product?: PlatformCore.RecordRef;
+  module?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  serialNumber?: PlatformCore.RecordRef;
+  inboundEmail?: string;
+  issue?: PlatformCore.RecordRef;
+  status?: PlatformCore.RecordRef;
+  isInactive?: boolean;
+  priority?: PlatformCore.RecordRef;
+  origin?: PlatformCore.RecordRef;
+  category?: PlatformCore.RecordRef;
+  assigned?: PlatformCore.RecordRef;
+  helpDesk?: boolean;
+  emailEmployeesList?: EmailEmployeesList;
+  escalateToList?: SupportCaseEscalateToList;
+  timeItemList?: SupportCaseTimeItemList;
+  solutionsList?: SupportCaseSolutionsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class SupportCase extends PlatformCore.Record {
   escalationMessage?: string;
@@ -553,7 +860,7 @@ export class SupportCase extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCase) {
+  constructor(props: SupportCaseProps) {
     super(props);
     this.escalationMessage = props.escalationMessage;
     this.lastReopenedDate = props.lastReopenedDate;
@@ -601,6 +908,17 @@ export class SupportCase extends PlatformCore.Record {
   }
 }
 
+export type TopicProps = {
+  title?: string;
+  parentTopic?: PlatformCore.RecordRef;
+  description?: string;
+  isInactive?: boolean;
+  longDescription?: string;
+  solutionList?: TopicSolutionList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class Topic extends PlatformCore.Record {
   title?: string;
   parentTopic?: PlatformCore.RecordRef;
@@ -610,7 +928,7 @@ export class Topic extends PlatformCore.Record {
   solutionList?: TopicSolutionList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Topic) {
+  constructor(props: TopicProps) {
     super(props);
     this.title = props.title;
     this.parentTopic = props.parentTopic;
@@ -623,12 +941,19 @@ export class Topic extends PlatformCore.Record {
   }
 }
 
+export type SolutionSearchAdvancedProps = {
+  criteria?: SolutionSearch;
+  columns?: SolutionSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class SolutionSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: SolutionSearch;
   columns?: SolutionSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: SolutionSearchAdvanced) {
+  constructor(props: SolutionSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -637,6 +962,15 @@ export class SolutionSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type SupportCaseIssueProps = {
+  name?: string;
+  insertBefore?: PlatformCore.RecordRef;
+  description?: string;
+  isInactive?: boolean;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class SupportCaseIssue extends PlatformCore.Record {
   name?: string;
   insertBefore?: PlatformCore.RecordRef;
@@ -644,7 +978,7 @@ export class SupportCaseIssue extends PlatformCore.Record {
   isInactive?: boolean;
   internalId?: string;
   externalId?: string;
-  constructor(props: SupportCaseIssue) {
+  constructor(props: SupportCaseIssueProps) {
     super(props);
     this.name = props.name;
     this.insertBefore = props.insertBefore;
@@ -655,6 +989,17 @@ export class SupportCaseIssue extends PlatformCore.Record {
   }
 }
 
+export type IssueSearchProps = {
+  basic?: PlatformCommon.IssueSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  productTeamJoin?: PlatformCommon.EntityGroupSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class IssueSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.IssueSearchBasic;
   caseJoin?: PlatformCommon.SupportCaseSearchBasic;
@@ -664,7 +1009,7 @@ export class IssueSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: IssueSearch) {
+  constructor(props: IssueSearchProps) {
     super();
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
@@ -676,6 +1021,23 @@ export class IssueSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type SupportCaseSearchProps = {
+  basic?: PlatformCommon.SupportCaseSearchBasic;
+  companyJoin?: PlatformCommon.EntitySearchBasic;
+  contactJoin?: PlatformCommon.ContactSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  fileJoin?: PlatformCommon.FileSearchBasic;
+  issueJoin?: PlatformCommon.IssueSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  messagesJoin?: PlatformCommon.MessageSearchBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  userNotesJoin?: PlatformCommon.NoteSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class SupportCaseSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.SupportCaseSearchBasic;
@@ -692,7 +1054,7 @@ export class SupportCaseSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: SupportCaseSearch) {
+  constructor(props: SupportCaseSearchProps) {
     super();
     this.basic = props.basic;
     this.companyJoin = props.companyJoin;
@@ -711,10 +1073,15 @@ export class SupportCaseSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type TopicSolutionListProps = {
+  solution?: TopicSolution[];
+  replaceAll?: boolean;
+};
+
 export class TopicSolutionList {
   solution?: TopicSolution[];
   replaceAll?: boolean;
-  constructor(props: TopicSolutionList) {
+  constructor(props: TopicSolutionListProps) {
     this.solution = props.solution;
     this.replaceAll = props.replaceAll;
   }
