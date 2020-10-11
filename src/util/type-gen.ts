@@ -3,7 +3,6 @@ import util from "util";
 
 interface Mappings {
   readonly name: string;
-  readonly defaultElementNamespaceURI?: string;
   readonly dependencies?: string[];
   readonly typeInfos: TypeInfo[];
 }
@@ -46,6 +45,10 @@ type NetSuitePrimitive =
   | "Int"
   | "Long";
 
+type XmlSoapPrimitive = "QName";
+
+type Primitive = NetSuitePrimitive | XmlSoapPrimitive;
+
 /**
  * JS_TYPE includes all the types that NetSuite types are transformed into.
  */
@@ -54,13 +57,14 @@ type JS_TYPE = "string" | "boolean" | "number";
 /**
  * PRIMITIVE_TYPES is a mapping between NetSuite SOAP types and JS types.
  */
-const PRIMITIVE_TYPES: Record<NetSuitePrimitive, JS_TYPE> = {
+const PRIMITIVE_TYPES: Record<Primitive, JS_TYPE> = {
   Base64Binary: "string",
   Boolean: "boolean",
   DateTime: "string",
   Double: "number",
   Int: "number",
   Long: "number",
+  QName: "string",
 };
 
 /**
@@ -268,7 +272,7 @@ export default class TypeGenerator {
     if (typeInfo === undefined) return undefined;
     if (this.isLocalType(typeInfo)) return typeInfo.substr(1);
     if (typeInfo in PRIMITIVE_TYPES) {
-      return PRIMITIVE_TYPES[typeInfo as NetSuitePrimitive]; // FIXME: Is this type assertion avoidable?
+      return PRIMITIVE_TYPES[typeInfo as Primitive]; // FIXME: Is this type assertion avoidable?
     }
     const mappingsName = typeInfo.split(".")[0];
     if (mappingsName in this.processedModules) {
@@ -296,10 +300,16 @@ export default class TypeGenerator {
   }
 }
 
-class FileModule {
-  readonly mappingsName: string; // e.g. com_netsuite_webservices_platform_faults_2019_2
-  readonly fileName: string; // e.g. platform_faults
-  readonly importName: string; // e.g. PlatformFaults
+/**
+ * A data class that holds a mappings name, the file name, and the import name.
+ */
+export class FileModule {
+  // e.g. com_netsuite_webservices_platform_faults_2019_2
+  readonly mappingsName: string;
+  // e.g. platform_faults
+  readonly fileName: string;
+  // e.g. PlatformFaults
+  readonly importName: string;
   constructor(mappingsName: string) {
     this.mappingsName = mappingsName;
     this.fileName = this.fileNameForModule(mappingsName);
@@ -307,9 +317,10 @@ class FileModule {
   }
 
   private fileNameForModule(moduleName: string): string {
-    moduleName = moduleName.replace("com_netsuite_webservices_", "");
-    moduleName = moduleName.replace("_2019_2", "");
-    return moduleName;
+    return moduleName
+      .replace("com_netsuite_webservices_", "")
+      .replace("_2019_2", "")
+      .replace("org_xmlsoap_schemas_soap_", "");
   }
 
   private toPascalCase(s: string): string {
