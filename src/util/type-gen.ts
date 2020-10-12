@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs, { WriteStream } from "fs";
 import util from "util";
 
 interface Mappings {
@@ -31,8 +31,6 @@ interface PropertyInfo {
   readonly typeInfo?: Primitive;
   readonly collection?: boolean;
 }
-
-type WriteFn = (message?: string, ...optionalParams: string[]) => void;
 
 /**
  * NETSUITE_TYPE includes all the types that appear in the NetSuite webservices schema.
@@ -83,15 +81,91 @@ function emptySuperClass(className: string): boolean {
   ].includes(className);
 }
 
+export interface Writer {
+  open(fileName: string): void;
+  close(): void;
+  write(message: string, ...optionalParams: string[]): void;
+}
+
+export class FileWriter implements Writer {
+  private readonly targetDirectory: string;
+  private writable: WriteStream | undefined;
+  constructor(targetDirectory: string) {
+    this.targetDirectory = targetDirectory;
+    fs.mkdirSync(this.targetDirectory, { recursive: true });
+  }
+
+  open(fileName: string): void {
+    if (this.writable !== undefined) {
+      throw new Error(`FileWriter is already open for ${fileName}`);
+    }
+    this.writable = fs.createWriteStream(
+      `${this.targetDirectory}/${fileName}.ts`
+    );
+  }
+
+  close(): void {
+    if (this.writable === undefined) {
+      throw new Error(`Failed to close FileWriter. Call open() first.`);
+    }
+    this.writable.close();
+    this.writable = undefined;
+  }
+
+  write(message?: string, ...optionalParams: string[]): void {
+    if (this.writable === undefined) {
+      throw new Error("FileWrite is not open. Call open() before writing");
+    }
+    this.writable.write(util.format(message, ...optionalParams));
+  }
+}
+
+/**
+ * A data class that holds a mappings name, the file name, and the import name.
+ */
+export class FileModule {
+  // e.g. com_netsuite_webservices_platform_faults_2019_2
+  readonly mappingsName: string;
+  // e.g. platform_faults
+  readonly fileName: string;
+  // e.g. PlatformFaults
+  readonly importName: string;
+  constructor(mappingsName: string) {
+    this.mappingsName = mappingsName;
+    this.fileName = this.fileNameForModule(mappingsName);
+    this.importName = this.toPascalCase(this.fileName);
+  }
+
+  private fileNameForModule(moduleName: string): string {
+    return moduleName
+      .replace("com_netsuite_webservices_", "")
+      .replace("_2019_2", "")
+      .replace("org_xmlsoap_schemas_soap_", "");
+  }
+
+  private toPascalCase(s: string): string {
+    return `_${s}`.replace(/_(\w)/g, (_, group1: string) =>
+      group1.toUpperCase()
+    );
+  }
+}
+
 export default class TypeGenerator {
   private readonly processedModules: Record<string, FileModule>;
   private readonly mappingsDir: string;
-  private readonly targetDirectory: string;
+  private readonly writer: Writer;
 
-  constructor(mappingsDir: string, targetDirectory: string) {
+  constructor(mappingsDir: string, writer: Writer) {
     this.processedModules = {};
     this.mappingsDir = mappingsDir;
-    this.targetDirectory = targetDirectory;
+    this.writer = writer;
+  }
+
+  generateTypesFromMappings(): void {
+    const mappingModules = fs
+      .readdirSync(this.mappingsDir, { withFileTypes: true })
+      .map((item) => item.name.replace(/\.js$/, ""));
+    mappingModules.forEach((mappingName) => this.generateTypes(mappingName));
   }
 
   generateTypes(mappingsName: string): void {
@@ -140,35 +214,29 @@ export default class TypeGenerator {
 
   private writeFile(module: FileModule, mappings: MappingsInfo) {
     console.log(`Writing ${module.fileName}...`);
-
-    fs.mkdirSync(this.targetDirectory, { recursive: true });
-    const writable = fs.createWriteStream(
-      `${this.targetDirectory}${module.fileName}.ts`
-    );
-    const write = function (message = "", ...optionalParams: string[]) {
-      writable.write(util.format(message, ...optionalParams) + "\n");
-    };
+    this.writer.open(module.fileName);
 
     mappings.dependencies
       ?.map((mappingsName) => this.processedModules[mappingsName])
       .forEach((dependency) => {
-        write(
-          'import * as %s from "./%s";',
+        this.writer.write(
+          'import * as %s from "./%s";\n',
           dependency.importName,
           dependency.fileName
         );
       });
-    if (mappings.dependencies?.length ?? 0 > 0) write();
 
     mappings.sortedTypeInfos.forEach((typeInfo) => {
       if (this.isEnumTypeInfo(typeInfo)) {
-        this.writeUnion(typeInfo, write);
+        this.writeUnion(typeInfo);
       } else if (typeInfo.propertyInfos && this.isSimpleSearchValue(typeInfo)) {
-        this.writeTypeAlias(typeInfo, typeInfo.propertyInfos[0], write);
+        this.writeTypeAlias(typeInfo, typeInfo.propertyInfos[0]);
       } else {
-        this.writeClass(typeInfo, write);
+        this.writeClass(typeInfo);
       }
     });
+
+    this.writer.close();
   }
 
   private isSimpleSearchValue(typeInfo: EntityTypeInfo) {
@@ -179,23 +247,23 @@ export default class TypeGenerator {
     );
   }
 
-  private writeUnion(typeInfo: EnumTypeInfo, write: WriteFn) {
-    write("\nexport type %s =", typeInfo.localName);
-    typeInfo.values.slice(0, -1).forEach((value) => write('  "%s" |', value));
-    typeInfo.values.slice(-1).forEach((value) => write('  "%s";', value));
+  private writeUnion(typeInfo: EnumTypeInfo) {
+    this.writer.write("\nexport type %s =", typeInfo.localName);
+    typeInfo.values
+      .slice(0, -1)
+      .forEach((value) => this.writer.write('  "%s" |', value));
+    typeInfo.values
+      .slice(-1)
+      .forEach((value) => this.writer.write('  "%s";\n', value));
   }
 
-  private writeTypeAlias(
-    typeInfo: EntityTypeInfo,
-    propertyInfo: PropertyInfo,
-    write: WriteFn
-  ) {
+  private writeTypeAlias(typeInfo: EntityTypeInfo, propertyInfo: PropertyInfo) {
     const optionalModifier = propertyInfo?.required ? "" : "?";
     const collectionModifier = propertyInfo?.collection ? "[]" : "";
     const propertyType = this.mappedType(propertyInfo?.typeInfo);
     const simpleType = util.format("%s%s", propertyType, collectionModifier);
-    write(
-      "\nexport type %s = %s | { %s%s: %s };",
+    this.writer.write(
+      "\nexport type %s = %s | { %s%s: %s };\n",
       typeInfo.localName,
       simpleType,
       propertyInfo?.name,
@@ -204,7 +272,7 @@ export default class TypeGenerator {
     );
   }
 
-  private writeClass(typeInfo: EntityTypeInfo, write: WriteFn) {
+  private writeClass(typeInfo: EntityTypeInfo) {
     const classProps: string[] = [];
     const constructorAssignments: string[] = [];
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
@@ -234,39 +302,46 @@ export default class TypeGenerator {
 
     // Write props type only if there are props for the associated class.
     if (classProps.length > 0) {
-      write("\nexport type %sProps = {", typeInfo.localName);
-      write(classProps.join("\n"));
+      this.writer.write("\nexport type %sProps = {\n", typeInfo.localName);
+      this.writer.write(classProps.join("\n"));
       if (superClass && !emptySuperClass(superClass)) {
-        write("\n} & %sProps", superClass);
+        this.writer.write("\n} & %sProps;\n", superClass);
       } else {
-        write("\n}");
+        this.writer.write("\n}\n");
       }
     }
 
     // Add a super class when there is one.
     if (superClass) {
-      write("\nexport class %s extends %s {", typeInfo.localName, superClass);
+      this.writer.write(
+        "\nexport class %s extends %s {",
+        typeInfo.localName,
+        superClass
+      );
     } else {
-      write("\nexport class %s {", typeInfo.localName);
+      this.writer.write("\nexport class %s {", typeInfo.localName);
     }
 
-    write(classProps.join("\n"));
+    this.writer.write(classProps.join("\n"));
 
     // Write constructor assignments where there are any.
     if (constructorAssignments.length > 0) {
-      write("  constructor(props: %sProps) {", typeInfo.localName);
+      this.writer.write(
+        "  constructor(props: %sProps) {\n",
+        typeInfo.localName
+      );
       if (superClass) {
         if (emptySuperClass(superClass)) {
-          write("    super();");
+          this.writer.write("    super();\n");
         } else {
-          write("    super(props);");
+          this.writer.write("    super(props);\n");
         }
       }
 
-      write(constructorAssignments.join("\n"));
-      write("  }\n");
+      this.writer.write(constructorAssignments.join("\n"));
+      this.writer.write("  }\n");
     }
-    write("}\n");
+    this.writer.write("}\n");
   }
 
   private mappedType(typeInfo?: string): string {
@@ -298,35 +373,5 @@ export default class TypeGenerator {
 
   private isEnumTypeInfo(typeInfo: TypeInfo): typeInfo is EnumTypeInfo {
     return (typeInfo as EnumTypeInfo).type === "enumInfo";
-  }
-}
-
-/**
- * A data class that holds a mappings name, the file name, and the import name.
- */
-export class FileModule {
-  // e.g. com_netsuite_webservices_platform_faults_2019_2
-  readonly mappingsName: string;
-  // e.g. platform_faults
-  readonly fileName: string;
-  // e.g. PlatformFaults
-  readonly importName: string;
-  constructor(mappingsName: string) {
-    this.mappingsName = mappingsName;
-    this.fileName = this.fileNameForModule(mappingsName);
-    this.importName = this.toPascalCase(this.fileName);
-  }
-
-  private fileNameForModule(moduleName: string): string {
-    return moduleName
-      .replace("com_netsuite_webservices_", "")
-      .replace("_2019_2", "")
-      .replace("org_xmlsoap_schemas_soap_", "");
-  }
-
-  private toPascalCase(s: string): string {
-    return `_${s}`.replace(/_(\w)/g, (_, group1: string) =>
-      group1.toUpperCase()
-    );
   }
 }
