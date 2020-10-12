@@ -81,6 +81,45 @@ function emptySuperClass(className: string): boolean {
   ].includes(className);
 }
 
+export function isEnumTypeInfo(typeInfo: TypeInfo): typeInfo is EnumTypeInfo {
+  return (typeInfo as EnumTypeInfo).type === "enumInfo";
+}
+
+export function typeInfoExtends(
+  typeInfo: TypeInfo,
+  localBaseType: string
+): boolean {
+  if (!isEnumTypeInfo(typeInfo)) {
+    return typeInfo.baseTypeInfo === `.${localBaseType}`;
+  }
+  return false;
+}
+
+export function isLocalType(baseTypeInfo?: string): boolean {
+  return baseTypeInfo !== undefined && baseTypeInfo.startsWith(".");
+}
+
+export function isSimpleSearchValue(typeInfo: EntityTypeInfo): boolean {
+  return (
+    typeInfo.baseTypeInfo === undefined &&
+    typeInfo.propertyInfos?.length === 1 &&
+    typeInfo.propertyInfos[0].name === "searchValue"
+  );
+}
+
+export function mappedType(typeInfo?: string): string {
+  if (typeInfo === undefined) return "string";
+  if (isLocalType(typeInfo)) return typeInfo.substr(1);
+  if (typeInfo in PRIMITIVE_TYPES) {
+    return PRIMITIVE_TYPES[typeInfo as Primitive]; // FIXME: Is this type assertion avoidable?
+  }
+  const mappingsName = typeInfo.split(".")[0];
+  return typeInfo.replace(
+    mappingsName,
+    new FileModule(mappingsName).importName
+  );
+}
+
 export interface Writer {
   open(fileName: string): void;
   close(): void;
@@ -189,18 +228,18 @@ export default class TypeGenerator {
     const referencedTypes: string[] = [];
 
     mappings.typeInfos.forEach((typeInfo) => {
-      if (this.isEnumTypeInfo(typeInfo)) {
+      if (isEnumTypeInfo(typeInfo)) {
         sortedTypeInfos.push(typeInfo);
       } else {
         if (referencedTypes.includes(typeInfo.localName)) {
           const index = sortedTypeInfos.findIndex((sortedTypeInfo) => {
-            return this.typeInfoExtends(sortedTypeInfo, typeInfo.localName);
+            return typeInfoExtends(sortedTypeInfo, typeInfo.localName);
           });
           sortedTypeInfos.splice(index, 0, typeInfo);
         } else {
           sortedTypeInfos.push(typeInfo);
         }
-        if (typeInfo.baseTypeInfo && this.isLocalType(typeInfo.baseTypeInfo)) {
+        if (typeInfo.baseTypeInfo && isLocalType(typeInfo.baseTypeInfo)) {
           referencedTypes.push(typeInfo.baseTypeInfo.substr(1));
         }
       }
@@ -227,9 +266,9 @@ export default class TypeGenerator {
       });
 
     mappings.sortedTypeInfos.forEach((typeInfo) => {
-      if (this.isEnumTypeInfo(typeInfo)) {
+      if (isEnumTypeInfo(typeInfo)) {
         this.writeUnion(typeInfo);
-      } else if (typeInfo.propertyInfos && this.isSimpleSearchValue(typeInfo)) {
+      } else if (typeInfo.propertyInfos && isSimpleSearchValue(typeInfo)) {
         this.writeTypeAlias(typeInfo, typeInfo.propertyInfos[0]);
       } else {
         this.writeClass(typeInfo);
@@ -237,14 +276,6 @@ export default class TypeGenerator {
     });
 
     this.writer.close();
-  }
-
-  private isSimpleSearchValue(typeInfo: EntityTypeInfo) {
-    return (
-      typeInfo.baseTypeInfo === undefined &&
-      typeInfo.propertyInfos?.length === 1 &&
-      typeInfo.propertyInfos[0].name === "searchValue"
-    );
   }
 
   private writeUnion(typeInfo: EnumTypeInfo) {
@@ -260,7 +291,7 @@ export default class TypeGenerator {
   private writeTypeAlias(typeInfo: EntityTypeInfo, propertyInfo: PropertyInfo) {
     const optionalModifier = propertyInfo?.required ? "" : "?";
     const collectionModifier = propertyInfo?.collection ? "[]" : "";
-    const propertyType = this.mappedType(propertyInfo?.typeInfo);
+    const propertyType = mappedType(propertyInfo?.typeInfo);
     const simpleType = util.format("%s%s", propertyType, collectionModifier);
     this.writer.write(
       "\nexport type %s = %s | { %s%s: %s };\n",
@@ -278,7 +309,7 @@ export default class TypeGenerator {
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
       const optionalModifier = propertyInfo.required ? "" : "?";
       const collectionModifier = propertyInfo.collection ? "[]" : "";
-      const propertyType = this.mappedType(propertyInfo.typeInfo);
+      const propertyType = mappedType(propertyInfo.typeInfo);
       classProps.push(
         util.format(
           "  %s%s: %s%s;",
@@ -298,7 +329,7 @@ export default class TypeGenerator {
     });
 
     const superClass =
-      typeInfo.baseTypeInfo && this.mappedType(typeInfo.baseTypeInfo);
+      typeInfo.baseTypeInfo && mappedType(typeInfo.baseTypeInfo);
 
     // Write props type only if there are props for the associated class.
     if (classProps.length > 0) {
@@ -342,36 +373,5 @@ export default class TypeGenerator {
       this.writer.write("  }\n");
     }
     this.writer.write("}\n");
-  }
-
-  private mappedType(typeInfo?: string): string {
-    if (typeInfo === undefined) return "string";
-    if (this.isLocalType(typeInfo)) return typeInfo.substr(1);
-    if (typeInfo in PRIMITIVE_TYPES) {
-      return PRIMITIVE_TYPES[typeInfo as Primitive]; // FIXME: Is this type assertion avoidable?
-    }
-    const mappingsName = typeInfo.split(".")[0];
-    if (mappingsName in this.processedModules) {
-      return typeInfo.replace(
-        mappingsName,
-        this.processedModules[mappingsName].importName
-      );
-    }
-    throw new Error(`Failed to find type info = ${typeInfo}`);
-  }
-
-  private typeInfoExtends(typeInfo: TypeInfo, localBaseType: string): boolean {
-    if (!this.isEnumTypeInfo(typeInfo)) {
-      return typeInfo.baseTypeInfo === `.${localBaseType}`;
-    }
-    return false;
-  }
-
-  private isLocalType(baseTypeInfo?: string): boolean {
-    return baseTypeInfo !== undefined && baseTypeInfo.startsWith(".");
-  }
-
-  private isEnumTypeInfo(typeInfo: TypeInfo): typeInfo is EnumTypeInfo {
-    return (typeInfo as EnumTypeInfo).type === "enumInfo";
   }
 }
