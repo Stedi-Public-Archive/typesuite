@@ -1,11 +1,16 @@
 import path from "path";
-import TypeGenerator, { FileWriter } from "../src/util/type-gen";
+import TypeGenerator, {
+  FileMappingsLoader,
+  FileWriter,
+} from "../src/util/type-gen";
 
 const ROOT_DIR = path.dirname(__dirname);
 
 const netSuitBasePath = `${ROOT_DIR}/src/netsuite_webservices/2019_2`;
+const mappingsDir = `${netSuitBasePath}/__mappings/`;
+
 const nsGenerator = new TypeGenerator(
-  `${netSuitBasePath}/__mappings/`,
+  new FileMappingsLoader(mappingsDir),
   new FileWriter(netSuitBasePath)
 );
 nsGenerator.generateTypesFromMappings();

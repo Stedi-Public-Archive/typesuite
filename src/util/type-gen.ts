@@ -159,66 +159,19 @@ export class FileWriter implements Writer {
   }
 }
 
-/**
- * A data class that holds a mappings name, the file name, and the import name.
- */
-export class FileModule {
-  // e.g. com_netsuite_webservices_platform_faults_2019_2
-  readonly mappingsName: string;
-  // e.g. platform_faults
-  readonly fileName: string;
-  // e.g. PlatformFaults
-  readonly importName: string;
-  constructor(mappingsName: string) {
-    this.mappingsName = mappingsName;
-    this.fileName = this.fileNameForModule(mappingsName);
-    this.importName = this.toPascalCase(this.fileName);
-  }
-
-  private fileNameForModule(moduleName: string): string {
-    return moduleName
-      .replace("com_netsuite_webservices_", "")
-      .replace("_2019_2", "")
-      .replace("org_xmlsoap_schemas_soap_", "");
-  }
-
-  private toPascalCase(s: string): string {
-    return `_${s}`.replace(/_(\w)/g, (_, group1: string) =>
-      group1.toUpperCase()
-    );
-  }
+export interface MappingsLoader {
+  load(mappingName: string): MappingsInfo;
+  allMappingsFiles(): string[];
 }
 
-export default class TypeGenerator {
-  private readonly processedModules: Record<string, FileModule>;
+export class FileMappingsLoader implements MappingsLoader {
   private readonly mappingsDir: string;
-  private readonly writer: Writer;
 
-  constructor(mappingsDir: string, writer: Writer) {
-    this.processedModules = {};
+  constructor(mappingsDir: string) {
     this.mappingsDir = mappingsDir;
-    this.writer = writer;
   }
 
-  generateTypesFromMappings(): void {
-    const mappingModules = fs
-      .readdirSync(this.mappingsDir, { withFileTypes: true })
-      .map((item) => item.name.replace(/\.js$/, ""));
-    mappingModules.forEach((mappingName) => this.generateTypes(mappingName));
-  }
-
-  generateTypes(mappingsName: string): void {
-    if (mappingsName in this.processedModules) return;
-    const module = new FileModule(mappingsName);
-    this.processedModules[mappingsName] = module;
-    const mappingsInfo: MappingsInfo = this.loadMappings(mappingsName);
-    mappingsInfo.dependencies?.forEach((mappingsName) =>
-      this.generateTypes(mappingsName)
-    );
-    this.writeFile(module, mappingsInfo);
-  }
-
-  private loadMappings(mappingsName: string): MappingsInfo {
+  load(mappingsName: string): MappingsInfo {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const mappings: Mappings = require(this.mappingsDir + mappingsName + ".js")[
       mappingsName
@@ -251,12 +204,77 @@ export default class TypeGenerator {
     };
   }
 
+  allMappingsFiles(): string[] {
+    return fs
+      .readdirSync(this.mappingsDir, { withFileTypes: true })
+      .map((item) => item.name.replace(/\.js$/, ""));
+  }
+}
+
+/**
+ * A data class that holds a mappings name, the file name, and the import name.
+ */
+export class FileModule {
+  // e.g. com_netsuite_webservices_platform_faults_2019_2
+  readonly mappingsName: string;
+  // e.g. platform_faults
+  readonly fileName: string;
+  // e.g. PlatformFaults
+  readonly importName: string;
+  constructor(mappingsName: string) {
+    this.mappingsName = mappingsName;
+    this.fileName = this.fileNameForModule(mappingsName);
+    this.importName = this.toPascalCase(this.fileName);
+  }
+
+  private fileNameForModule(moduleName: string): string {
+    return moduleName
+      .replace("com_netsuite_webservices_", "")
+      .replace("_2019_2", "")
+      .replace("org_xmlsoap_schemas_soap_", "");
+  }
+
+  private toPascalCase(s: string): string {
+    return `_${s}`.replace(/_(\w)/g, (_, group1: string) =>
+      group1.toUpperCase()
+    );
+  }
+}
+
+export default class TypeGenerator {
+  private readonly processedModules: Record<string, FileModule>;
+  private readonly mappingsLoader: MappingsLoader;
+  private readonly writer: Writer;
+
+  constructor(loader: MappingsLoader, writer: Writer) {
+    this.processedModules = {};
+    this.mappingsLoader = loader;
+    this.writer = writer;
+  }
+
+  generateTypesFromMappings(): void {
+    this.mappingsLoader
+      .allMappingsFiles()
+      .forEach((mappingName) => this.generateTypes(mappingName));
+  }
+
+  private generateTypes(mappingsName: string): void {
+    if (mappingsName in this.processedModules) return;
+    const module = new FileModule(mappingsName);
+    this.processedModules[mappingsName] = module;
+    const mappingsInfo: MappingsInfo = this.mappingsLoader.load(mappingsName);
+    mappingsInfo.dependencies?.forEach((mappingsName) =>
+      this.generateTypes(mappingsName)
+    );
+    this.writeFile(module, mappingsInfo);
+  }
+
   private writeFile(module: FileModule, mappings: MappingsInfo) {
     console.log(`Writing ${module.fileName}...`);
     this.writer.open(module.fileName);
 
     mappings.dependencies
-      ?.map((mappingsName) => this.processedModules[mappingsName])
+      ?.map((mappingsName) => new FileModule(mappingsName))
       .forEach((dependency) => {
         this.writer.write(
           'import * as %s from "./%s";\n',
