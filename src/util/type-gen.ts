@@ -28,7 +28,7 @@ type TypeInfo = EnumTypeInfo | EntityTypeInfo;
 interface PropertyInfo {
   readonly name: string;
   readonly required: boolean;
-  readonly typeInfo?: NetSuitePrimitive | string;
+  readonly typeInfo?: Primitive;
   readonly collection?: boolean;
 }
 
@@ -105,6 +105,39 @@ export default class TypeGenerator {
     this.writeFile(module, mappingsInfo);
   }
 
+  private loadMappings(mappingsName: string): MappingsInfo {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const mappings: Mappings = require(this.mappingsDir + mappingsName + ".js")[
+      mappingsName
+    ];
+
+    const sortedTypeInfos: TypeInfo[] = [];
+    const referencedTypes: string[] = [];
+
+    mappings.typeInfos.forEach((typeInfo) => {
+      if (this.isEnumTypeInfo(typeInfo)) {
+        sortedTypeInfos.push(typeInfo);
+      } else {
+        if (referencedTypes.includes(typeInfo.localName)) {
+          const index = sortedTypeInfos.findIndex((sortedTypeInfo) => {
+            return this.typeInfoExtends(sortedTypeInfo, typeInfo.localName);
+          });
+          sortedTypeInfos.splice(index, 0, typeInfo);
+        } else {
+          sortedTypeInfos.push(typeInfo);
+        }
+        if (typeInfo.baseTypeInfo && this.isLocalType(typeInfo.baseTypeInfo)) {
+          referencedTypes.push(typeInfo.baseTypeInfo.substr(1));
+        }
+      }
+    });
+
+    return {
+      ...mappings,
+      sortedTypeInfos,
+    };
+  }
+
   private writeFile(module: FileModule, mappings: MappingsInfo) {
     console.log(`Writing ${module.fileName}...`);
 
@@ -159,7 +192,7 @@ export default class TypeGenerator {
   ) {
     const optionalModifier = propertyInfo?.required ? "" : "?";
     const collectionModifier = propertyInfo?.collection ? "[]" : "";
-    const propertyType = this.mappedType(propertyInfo?.typeInfo) || "string";
+    const propertyType = this.mappedType(propertyInfo?.typeInfo);
     const simpleType = util.format("%s%s", propertyType, collectionModifier);
     write(
       "\nexport type %s = %s | { %s%s: %s };",
@@ -177,7 +210,7 @@ export default class TypeGenerator {
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
       const optionalModifier = propertyInfo.required ? "" : "?";
       const collectionModifier = propertyInfo.collection ? "[]" : "";
-      const propertyType = this.mappedType(propertyInfo.typeInfo) || "string";
+      const propertyType = this.mappedType(propertyInfo.typeInfo);
       classProps.push(
         util.format(
           "  %s%s: %s%s;",
@@ -196,7 +229,8 @@ export default class TypeGenerator {
       );
     });
 
-    const superClass = this.mappedType(typeInfo.baseTypeInfo);
+    const superClass =
+      typeInfo.baseTypeInfo && this.mappedType(typeInfo.baseTypeInfo);
 
     // Write props type only if there are props for the associated class.
     if (classProps.length > 0) {
@@ -235,41 +269,8 @@ export default class TypeGenerator {
     write("}\n");
   }
 
-  private loadMappings(mappingsName: string): MappingsInfo {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const mappings: Mappings = require(this.mappingsDir + mappingsName + ".js")[
-      mappingsName
-    ];
-
-    const sortedTypeInfos: TypeInfo[] = [];
-    const referencedTypes: string[] = [];
-
-    mappings.typeInfos.forEach((typeInfo) => {
-      if (this.isEnumTypeInfo(typeInfo)) {
-        sortedTypeInfos.push(typeInfo);
-      } else {
-        if (referencedTypes.includes(typeInfo.localName)) {
-          const index = sortedTypeInfos.findIndex((sortedTypeInfo) => {
-            return this.typeInfoExtends(sortedTypeInfo, typeInfo.localName);
-          });
-          sortedTypeInfos.splice(index, 0, typeInfo);
-        } else {
-          sortedTypeInfos.push(typeInfo);
-        }
-        if (typeInfo.baseTypeInfo && this.isLocalType(typeInfo.baseTypeInfo)) {
-          referencedTypes.push(typeInfo.baseTypeInfo.substr(1));
-        }
-      }
-    });
-
-    return {
-      ...mappings,
-      sortedTypeInfos,
-    };
-  }
-
-  private mappedType(typeInfo?: string): string | undefined {
-    if (typeInfo === undefined) return undefined;
+  private mappedType(typeInfo?: string): string {
+    if (typeInfo === undefined) return "string";
     if (this.isLocalType(typeInfo)) return typeInfo.substr(1);
     if (typeInfo in PRIMITIVE_TYPES) {
       return PRIMITIVE_TYPES[typeInfo as Primitive]; // FIXME: Is this type assertion avoidable?
@@ -281,7 +282,7 @@ export default class TypeGenerator {
         this.processedModules[mappingsName].importName
       );
     }
-    return typeInfo;
+    throw new Error(`Failed to find type info = ${typeInfo}`);
   }
 
   private typeInfoExtends(typeInfo: TypeInfo, localBaseType: string): boolean {
