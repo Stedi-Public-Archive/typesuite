@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "lib": [
-      "es2019"
-    ],
+    "lib": ["es2019"],
     "esModuleInterop": true,
     "declaration": true,
     "strict": true,
@@ -12,21 +10,18 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
+    "noFallthroughCasesInSwitch": true,
     "inlineSourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "strictPropertyInitialization": false,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "outDir": "./lib"
+    "strictPropertyInitialization": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types"],
+    "outDir": "./dist"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src", "test", "scripts"]
 }

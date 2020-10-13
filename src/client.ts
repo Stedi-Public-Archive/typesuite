@@ -1,4 +1,4 @@
-import got, { Got, RequestError, Response } from "got";
+import got, { Got } from "got";
 import Request from "got/dist/source/core"; // Really, got?
 import { createHmac, randomBytes } from "crypto";
 import {
@@ -103,7 +103,10 @@ import {
   UnexpectedErrorFault,
 } from "./netsuite_webservices/2019_2/platform_faults";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
-import { SoapMapper } from "./soap-mapper";
+import {
+  serializeSoapRequest,
+  deserializeSoapResponse,
+} from "./util/soap-mapper";
 
 export interface Configuration {
   account: string;
@@ -886,13 +889,13 @@ export class TypeSuiteClient implements NetSuiteClient {
 
   private async executePort<T, R>(request: T, soapAction: string): Promise<R> {
     const authToken = this.authenticateRequestWithTokenPassport();
-    const soapXML = SoapMapper.serializeSoapRequest(authToken, request);
+    const soapXML = serializeSoapRequest(authToken, request);
     const response = await this.gotClient.post(this.endpoint, {
       headers: { SOAPAction: soapAction },
       body: soapXML,
     });
     this.logLastRequest(response.request);
-    const soapObj = SoapMapper.deserializeSoapResponse(response.body);
+    const soapObj = deserializeSoapResponse(response.body);
     return soapObj.value.body.any[0].value as R;
   }
 
