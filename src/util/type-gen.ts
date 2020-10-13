@@ -81,25 +81,22 @@ function emptySuperClass(className: string): boolean {
   ].includes(className);
 }
 
-export function isEnumTypeInfo(typeInfo: TypeInfo): typeInfo is EnumTypeInfo {
+function isEnumTypeInfo(typeInfo: TypeInfo): typeInfo is EnumTypeInfo {
   return (typeInfo as EnumTypeInfo).type === "enumInfo";
 }
 
-export function typeInfoExtends(
-  typeInfo: TypeInfo,
-  localBaseType: string
-): boolean {
+function typeInfoExtends(typeInfo: TypeInfo, localBaseType: string): boolean {
   if (!isEnumTypeInfo(typeInfo)) {
     return typeInfo.baseTypeInfo === `.${localBaseType}`;
   }
   return false;
 }
 
-export function isLocalType(baseTypeInfo?: string): boolean {
+function isLocalType(baseTypeInfo?: string): boolean {
   return baseTypeInfo !== undefined && baseTypeInfo.startsWith(".");
 }
 
-export function isSimpleSearchValue(typeInfo: EntityTypeInfo): boolean {
+function isSimpleSearchValue(typeInfo: EntityTypeInfo): boolean {
   return (
     typeInfo.baseTypeInfo === undefined &&
     typeInfo.propertyInfos?.length === 1 &&
@@ -107,7 +104,7 @@ export function isSimpleSearchValue(typeInfo: EntityTypeInfo): boolean {
   );
 }
 
-export function mappedType(typeInfo?: string): string {
+function mappedType(typeInfo?: string): string {
   if (typeInfo === undefined) return "string";
   if (isLocalType(typeInfo)) return typeInfo.substr(1);
   if (typeInfo in PRIMITIVE_TYPES) {
@@ -214,7 +211,7 @@ export class FileMappingsLoader implements MappingsLoader {
 /**
  * A data class that holds a mappings name, the file name, and the import name.
  */
-export class FileModule {
+class FileModule {
   // e.g. com_netsuite_webservices_platform_faults_2019_2
   readonly mappingsName: string;
   // e.g. platform_faults
