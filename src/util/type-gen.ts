@@ -242,12 +242,10 @@ export class FileModule {
 }
 
 export default class TypeGenerator {
-  private readonly processedModules: Record<string, FileModule>;
   private readonly mappingsLoader: MappingsLoader;
   private readonly writer: Writer;
 
   constructor(loader: MappingsLoader, writer: Writer) {
-    this.processedModules = {};
     this.mappingsLoader = loader;
     this.writer = writer;
   }
@@ -255,16 +253,19 @@ export default class TypeGenerator {
   generateTypesFromMappings(): void {
     this.mappingsLoader
       .allMappingsFiles()
-      .forEach((mappingName) => this.generateTypes(mappingName));
+      .forEach((mappingName) => this.generateTypes(mappingName, {}));
   }
 
-  private generateTypes(mappingsName: string): void {
-    if (mappingsName in this.processedModules) return;
+  private generateTypes(
+    mappingsName: string,
+    processedModules: Record<string, FileModule>
+  ): void {
+    if (mappingsName in processedModules) return;
     const module = new FileModule(mappingsName);
-    this.processedModules[mappingsName] = module;
+    processedModules[mappingsName] = module;
     const mappingsInfo: MappingsInfo = this.mappingsLoader.load(mappingsName);
     mappingsInfo.dependencies?.forEach((mappingsName) =>
-      this.generateTypes(mappingsName)
+      this.generateTypes(mappingsName, processedModules)
     );
     this.writeFile(module, mappingsInfo);
   }
