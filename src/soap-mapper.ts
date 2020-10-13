@@ -1,9 +1,9 @@
 import { Jsonix } from "jsonix";
-import { TokenPassport } from "../netsuite_webservices/2019_2/platform_core";
-import NetSuiteMappings from "../netsuite_webservices/2019_2/mappings";
-import XmlSoapMappings from "../xmlsoap/mappings";
-import { Body, Envelope, Header } from "../xmlsoap/envelope";
-import { com_netsuite_webservices_platform_messages_2019_2 as platform } from "../netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2";
+import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
+import NetSuiteMappings from "./netsuite_webservices/2019_2/mappings";
+import XmlSoapMappings from "./xmlsoap/mappings";
+import { Body, Envelope, Header } from "./xmlsoap/envelope";
+import { com_netsuite_webservices_platform_messages_2019_2 as platform } from "./netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2";
 
 const ALL_MAPPINGS = [...XmlSoapMappings, ...NetSuiteMappings];
 

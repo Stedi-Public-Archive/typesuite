@@ -1,8 +1,5 @@
 import path from "path";
-import TypeGenerator, {
-  FileMappingsLoader,
-  FileWriter,
-} from "../src/util/type-gen";
+import TypeGenerator, { FileMappingsLoader, FileWriter } from "../src/type-gen";
 
 const ROOT_DIR = path.dirname(__dirname);
 
