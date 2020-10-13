@@ -1,4 +1,4 @@
-import * as SoapTypes from "../soap-types";
+import * as SoapTypes from "../../util/soap-types";
 import * as PlatformFaultsTypes from "./platform_faults_types";
 
 const mappingsName = "com_netsuite_webservices_platform_faults_2019_2";

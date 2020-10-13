@@ -1,7 +1,11 @@
 import { Jsonix } from "jsonix";
 import { TokenPassport } from "../netsuite_webservices/2019_2/platform_core";
-import { AllMappings } from "../netsuite_webservices/2019_2/__mappings/netsuite";
-import { Body, Envelope, Header } from "../xmlsoap/xmlsoap_envelope";
+import NetSuiteMappings from "../netsuite_webservices/2019_2/__mappings/netsuite";
+import XmlSoapMappings from "../xmlsoap/__mappings/xmlsoap";
+import { Body, Envelope, Header } from "../xmlsoap/envelope";
+import { com_netsuite_webservices_platform_messages_2019_2 as platform } from "../netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2";
+
+const ALL_MAPPINGS = [...XmlSoapMappings, ...NetSuiteMappings];
 
 const JSONIX_CONTEXT_OPTIONS = {
   namespacePrefixes: {
@@ -22,12 +26,10 @@ interface ElementInfo {
 }
 
 function elementKeyFor(object: { constructor: { name: string } }) {
-  const elementName = require("../netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2").com_netsuite_webservices_platform_messages_2019_2.elementInfos.find(
-    (elementInfo: ElementInfo) => {
-      const typeInfo = elementInfo.typeInfo.split(".").slice(-1)[0];
-      return typeInfo === object.constructor.name;
-    }
-  )?.elementName;
+  const elementName = platform.elementInfos.find((elementInfo: ElementInfo) => {
+    const typeInfo = elementInfo.typeInfo.split(".").slice(-1)[0];
+    return typeInfo === object.constructor.name;
+  })?.elementName;
   return `platform_messages:${
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     elementName ?? "<<" + object.constructor.name + ">>"
@@ -45,25 +47,15 @@ export function serializeSoapRequest(
     body: new Body({ any: [{ name: bodyElementKey, value: body }] }),
   });
 
-  const mappings = [
-    require("../xmlsoap/org_xmlsoap_schemas_soap_envelope")
-      .org_xmlsoap_schemas_soap_envelope,
-  ].concat(AllMappings);
-
   const data = { "soap:Envelope": envelope };
-  const context = new Jsonix.Context(mappings, JSONIX_CONTEXT_OPTIONS);
+  const context = new Jsonix.Context(ALL_MAPPINGS, JSONIX_CONTEXT_OPTIONS);
   const xmlString = context.createMarshaller().marshalString(data);
 
   return '<?xml version="1.0" encoding="utf-8"?>' + xmlString;
 }
 
 export function deserializeSoapResponse(xmlContent: string): XmlObject {
-  const mappings = [
-    require("../xmlsoap/org_xmlsoap_schemas_soap_envelope")
-      .org_xmlsoap_schemas_soap_envelope,
-  ].concat(AllMappings);
-
-  const context = new Jsonix.Context(mappings);
+  const context = new Jsonix.Context(ALL_MAPPINGS);
   return context.createUnmarshaller<XmlObject>().unmarshalString(xmlContent);
 }
 

@@ -1,4 +1,4 @@
-import * as SoapTypes from "./soap-types";
+import * as SoapTypes from "../util/soap-types";
 const mappingsName = "org_xmlsoap_schemas_soap_envelope";
 
 export class Fault extends SoapTypes.Base {

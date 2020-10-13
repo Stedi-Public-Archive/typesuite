@@ -1,4 +1,4 @@
-import * as SoapTypes from "../soap-types";
+import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsPurchasesTypes from "./transactions_purchases_types";

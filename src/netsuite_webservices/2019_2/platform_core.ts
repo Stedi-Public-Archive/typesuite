@@ -1,4 +1,4 @@
-import * as SoapTypes from "../soap-types";
+import * as SoapTypes from "../../util/soap-types";
 import * as PlatformFaultsTypes from "./platform_faults_types";
 import * as PlatformCoreTypes from "./platform_core_types";
 
