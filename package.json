@@ -52,7 +52,7 @@
     "typescript": "3.8.3"
   },
   "dependencies": {
-    "got": "11.3.0",
+    "axios": "0.20.0",
     "jsonix": "3.0.0"
   },
   "config": {
