@@ -10,7 +10,6 @@ interface Mappings {
 
 interface MappingsInfo extends Mappings {
   readonly sortedTypeInfos: TypeInfo[];
-  readonly needsSoapTypesImport: boolean;
 }
 
 interface EnumTypeInfo {
@@ -30,11 +29,55 @@ type TypeInfo = EnumTypeInfo | EntityTypeInfo;
 interface PropertyInfo {
   readonly name: string;
   readonly required: boolean;
-  readonly typeInfo?: string;
+  readonly typeInfo?: NetSuitePrimitive | string;
   readonly collection?: boolean;
 }
 
 type WriteFn = (message?: string, ...optionalParams: string[]) => void;
+
+/**
+ * NETSUITE_TYPE includes all the types that appear in the NetSuite webservices schema.
+ */
+type NetSuitePrimitive =
+  | "Base64Binary"
+  | "Boolean"
+  | "DateTime"
+  | "Double"
+  | "Int"
+  | "Long";
+
+/**
+ * JS_TYPE includes all the types that NetSuite types are transformed into.
+ */
+type JS_TYPE = "string" | "boolean" | "number";
+
+/**
+ * PRIMITIVE_TYPES is a mapping between NetSuite SOAP types and JS types.
+ */
+const PRIMITIVE_TYPES: Record<NetSuitePrimitive, JS_TYPE> = {
+  Base64Binary: "string",
+  Boolean: "boolean",
+  DateTime: "string",
+  Double: "number",
+  Int: "number",
+  Long: "number",
+};
+
+/**
+ * A number of super classes are "markers" only and do not contain any data.
+ * This function identifies those classes.
+ *
+ * @param className
+ */
+function emptySuperClass(className: string): boolean {
+  return [
+    "AsyncResult",
+    "PlatformCore.SearchRecord",
+    "PlatformCore.SearchRecordBasic",
+    "PlatformCore.SearchRow",
+    "PlatformCore.SearchRowBasic",
+  ].includes(className);
+}
 
 export default class TypeGenerator {
   private readonly processedModules: Record<string, FileModule> = {};
@@ -68,10 +111,6 @@ export default class TypeGenerator {
       writable.write(util.format(message, ...optionalParams) + "\n");
     };
 
-    if (mappings.needsSoapTypesImport) {
-      write('import * as SoapTypes from "../../util/soap-types";');
-    }
-
     mappings.dependencies
       ?.map((mappingsName) => this.processedModules[mappingsName])
       .forEach((dependency) => {
@@ -82,10 +121,6 @@ export default class TypeGenerator {
         );
       });
     if (mappings.dependencies?.length ?? 0 > 0) write();
-
-    if (mappings.needsSoapTypesImport) {
-      write('const mappingsName = "%s";', module.mappingsName);
-    }
 
     mappings.sortedTypeInfos.forEach((typeInfo) => {
       if (this.isEnumTypeInfo(typeInfo)) {
@@ -132,8 +167,12 @@ export default class TypeGenerator {
   }
 
   private writeEntityType(typeInfo: EntityTypeInfo, write: WriteFn) {
-    const baseType = this.mappedType(typeInfo.baseTypeInfo) ?? "SoapTypes.Base";
-    write("\nexport class %s extends %s {", typeInfo.localName, baseType);
+    const superClass = this.mappedType(typeInfo.baseTypeInfo);
+    if (superClass) {
+      write("\nexport class %s extends %s {", typeInfo.localName, superClass);
+    } else {
+      write("\nexport class %s {", typeInfo.localName);
+    }
 
     const constructorProps: string[] = [];
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
@@ -156,11 +195,20 @@ export default class TypeGenerator {
       );
     });
 
-    write("  constructor(props: %s) {", typeInfo.localName);
-    write("    super(SoapTypes.captureMappingsName(props, mappingsName));");
+    if (constructorProps.length > 0) {
+      write("  constructor(props: %s) {", typeInfo.localName);
+      if (superClass) {
+        if (emptySuperClass(superClass)) {
+          write("    super();");
+        } else {
+          write("    super(props);");
+        }
+      }
 
-    if (constructorProps.length > 0) write(constructorProps.join("\n"));
-    write("  }\n}");
+      write(constructorProps.join("\n"));
+      write("  }\n");
+    }
+    write("}\n");
   }
 
   private loadMappings(mappingsName: string): MappingsInfo {
@@ -170,14 +218,12 @@ export default class TypeGenerator {
     ];
 
     const sortedTypeInfos: TypeInfo[] = [];
-    let needsSoapTypesImport = false;
     const referencedTypes: string[] = [];
 
     mappings.typeInfos.forEach((typeInfo) => {
       if (this.isEnumTypeInfo(typeInfo)) {
         sortedTypeInfos.push(typeInfo);
       } else {
-        needsSoapTypesImport = true;
         if (referencedTypes.includes(typeInfo.localName)) {
           const index = sortedTypeInfos.findIndex((sortedTypeInfo) => {
             return this.typeInfoExtends(sortedTypeInfo, typeInfo.localName);
@@ -195,23 +241,14 @@ export default class TypeGenerator {
     return {
       ...mappings,
       sortedTypeInfos: sortedTypeInfos,
-      needsSoapTypesImport: needsSoapTypesImport,
     };
   }
 
   private mappedType(typeInfo?: string): string | undefined {
-    const primitiveTypes: Record<string, string> = {
-      Base64Binary: "SoapTypes.Base64Binary",
-      Boolean: "boolean",
-      DateTime: "SoapTypes.Dateish",
-      Double: "number",
-      Int: "number",
-      Long: "number",
-    };
     if (typeInfo === undefined) return undefined;
     if (this.isLocalType(typeInfo)) return typeInfo.substr(1);
-    if (typeInfo in primitiveTypes) {
-      return primitiveTypes[typeInfo];
+    if (typeInfo in PRIMITIVE_TYPES) {
+      return PRIMITIVE_TYPES[typeInfo as NetSuitePrimitive]; // FIXME: Is this type assertion avoidable?
     }
     const mappingsName = typeInfo.split(".")[0];
     if (mappingsName in this.processedModules) {

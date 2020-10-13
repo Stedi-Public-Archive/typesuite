@@ -1,36 +1,30 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsSalesTypes from "./transactions_sales_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 
-const mappingsName = "com_netsuite_webservices_transactions_sales_2019_2";
-
-export class OpportunityCompetitorsList extends SoapTypes.Base {
+export class OpportunityCompetitorsList {
   competitors?: OpportunityCompetitors[];
   replaceAll?: boolean;
   constructor(props: OpportunityCompetitorsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.competitors = props.competitors;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class OpportunityPartnersList extends SoapTypes.Base {
+export class OpportunityPartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: OpportunityPartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class SalesOrderItemList extends SoapTypes.Base {
+export class SalesOrderItemList {
   item?: SalesOrderItem[];
   replaceAll?: boolean;
   constructor(props: SalesOrderItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -45,11 +39,11 @@ export class Usage extends PlatformCore.Record {
   usageSubscription?: PlatformCore.RecordRef;
   usageSubscriptionLine?: PlatformCore.RecordRef;
   usageQuantity?: number;
-  usageDate?: SoapTypes.Dateish;
+  usageDate?: string;
   internalId?: string;
   externalId?: string;
   constructor(props: Usage) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.memo = props.memo;
     this.item = props.item;
@@ -71,7 +65,7 @@ export class UsageSearchRow extends PlatformCore.SearchRow {
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   subscriptionPlanJoin?: PlatformCommon.ItemSearchRowBasic;
   constructor(props: UsageSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.chargeJoin = props.chargeJoin;
     this.customerJoin = props.customerJoin;
@@ -80,7 +74,7 @@ export class UsageSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class ItemFulfillmentItem extends SoapTypes.Base {
+export class ItemFulfillmentItem {
   jobName?: string;
   itemReceive?: boolean;
   itemName?: string;
@@ -106,7 +100,6 @@ export class ItemFulfillmentItem extends SoapTypes.Base {
   shipMethod?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: ItemFulfillmentItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.jobName = props.jobName;
     this.itemReceive = props.itemReceive;
     this.itemName = props.itemName;
@@ -134,12 +127,11 @@ export class ItemFulfillmentItem extends SoapTypes.Base {
   }
 }
 
-export class ItemFulfillmentPackage extends SoapTypes.Base {
+export class ItemFulfillmentPackage {
   packageWeight?: number;
   packageDescr?: string;
   packageTrackingNumber?: string;
   constructor(props: ItemFulfillmentPackage) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageWeight = props.packageWeight;
     this.packageDescr = props.packageDescr;
     this.packageTrackingNumber = props.packageTrackingNumber;
@@ -166,7 +158,7 @@ export class OpportunitySearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: OpportunitySearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.actualJoin = props.actualJoin;
     this.callJoin = props.callJoin;
@@ -188,11 +180,10 @@ export class OpportunitySearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class ItemFulfillmentItemList extends SoapTypes.Base {
+export class ItemFulfillmentItemList {
   item?: ItemFulfillmentItem[];
   replaceAll?: boolean;
   constructor(props: ItemFulfillmentItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -205,7 +196,7 @@ export class UsageSearch extends PlatformCore.SearchRecord {
   itemJoin?: PlatformCommon.ItemSearchBasic;
   subscriptionPlanJoin?: PlatformCommon.ItemSearchBasic;
   constructor(props: UsageSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.chargeJoin = props.chargeJoin;
     this.customerJoin = props.customerJoin;
@@ -214,7 +205,7 @@ export class UsageSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class CashSaleItem extends SoapTypes.Base {
+export class CashSaleItem {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   line?: number;
@@ -241,8 +232,8 @@ export class CashSaleItem extends SoapTypes.Base {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   subscriptionLine?: PlatformCore.RecordRef;
   grossAmt?: number;
   costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
@@ -279,7 +270,6 @@ export class CashSaleItem extends SoapTypes.Base {
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CashSaleItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -346,11 +336,10 @@ export class CashSaleItem extends SoapTypes.Base {
   }
 }
 
-export class InvoiceTimeList extends SoapTypes.Base {
+export class InvoiceTimeList {
   time?: InvoiceTime[];
   replaceAll?: boolean;
   constructor(props: InvoiceTimeList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.time = props.time;
     this.replaceAll = props.replaceAll;
   }
@@ -362,7 +351,7 @@ export class TransactionSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TransactionSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -370,39 +359,36 @@ export class TransactionSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class CashSaleExpCostList extends SoapTypes.Base {
+export class CashSaleExpCostList {
   expCost?: CashSaleExpCost[];
   replaceAll?: boolean;
   constructor(props: CashSaleExpCostList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.expCost = props.expCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemFulfillmentPackageUpsList extends SoapTypes.Base {
+export class ItemFulfillmentPackageUpsList {
   packageUps?: ItemFulfillmentPackageUps[];
   replaceAll?: boolean;
   constructor(props: ItemFulfillmentPackageUpsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageUps = props.packageUps;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InvoiceItemCostList extends SoapTypes.Base {
+export class InvoiceItemCostList {
   itemCost?: InvoiceItemCost[];
   replaceAll?: boolean;
   constructor(props: InvoiceItemCostList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemCost = props.itemCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class ItemFulfillment extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   postingPeriod?: PlatformCore.RecordRef;
   entity?: PlatformCore.RecordRef;
@@ -411,9 +397,9 @@ export class ItemFulfillment extends PlatformCore.Record {
   createdFromShipGroup?: number;
   partner?: PlatformCore.RecordRef;
   shippingAddress?: PlatformCommon.Address;
-  pickedDate?: SoapTypes.Dateish;
-  packedDate?: SoapTypes.Dateish;
-  shippedDate?: SoapTypes.Dateish;
+  pickedDate?: string;
+  packedDate?: string;
+  shippedDate?: string;
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   shipStatus?: TransactionsSalesTypes.ItemFulfillmentShipStatus;
@@ -436,12 +422,12 @@ export class ItemFulfillment extends PlatformCore.Record {
   inbondCodeUps?: string;
   isRoutedExportTransactionUps?: boolean;
   licenseNumberUps?: string;
-  licenseDateUps?: SoapTypes.Dateish;
+  licenseDateUps?: string;
   licenseExceptionUps?: TransactionsSalesTypes.ItemFulfillmentLicenseExceptionUps;
   eccNumberUps?: string;
   recipientTaxIdUps?: string;
-  blanketStartDateUps?: SoapTypes.Dateish;
-  blanketEndDateUps?: SoapTypes.Dateish;
+  blanketStartDateUps?: string;
+  blanketEndDateUps?: string;
   shipmentWeightUps?: number;
   saturdayDeliveryFedEx?: boolean;
   saturdayPickupFedex?: boolean;
@@ -450,9 +436,9 @@ export class ItemFulfillment extends PlatformCore.Record {
   signatureHomeDeliveryFedEx?: boolean;
   shipNotifyEmailAddressFedEx?: string;
   backupEmailAddressFedEx?: string;
-  shipDateFedEx?: SoapTypes.Dateish;
+  shipDateFedEx?: string;
   homeDeliveryTypeFedEx?: TransactionsSalesTypes.ItemFulfillmentHomeDeliveryTypeFedEx;
-  homeDeliveryDateFedEx?: SoapTypes.Dateish;
+  homeDeliveryDateFedEx?: string;
   bookingConfirmationNumFedEx?: string;
   intlExemptionNumFedEx?: string;
   b13AFilingOptionFedEx?: TransactionsSalesTypes.ItemFulfillmentB13AFilingOptionFedEx;
@@ -479,7 +465,7 @@ export class ItemFulfillment extends PlatformCore.Record {
   hazmatTypeFedEx?: TransactionsSalesTypes.ItemFulfillmentHazmatTypeFedEx;
   accessibilityTypeFedEx?: TransactionsSalesTypes.ItemFulfillmentAccessibilityTypeFedEx;
   isCargoAircraftOnlyFedEx?: boolean;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   shipMethod?: PlatformCore.RecordRef;
   generateIntegratedShipperLabel?: boolean;
@@ -497,7 +483,7 @@ export class ItemFulfillment extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ItemFulfillment) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -596,13 +582,12 @@ export class ItemFulfillment extends PlatformCore.Record {
   }
 }
 
-export class OpportunitySalesTeam extends SoapTypes.Base {
+export class OpportunitySalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: OpportunitySalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -610,7 +595,7 @@ export class OpportunitySalesTeam extends SoapTypes.Base {
   }
 }
 
-export class ItemFulfillmentPackageUsps extends SoapTypes.Base {
+export class ItemFulfillmentPackageUsps {
   packageWeightUsps?: number;
   packageDescrUsps?: string;
   packageTrackingNumberUsps?: string;
@@ -624,7 +609,6 @@ export class ItemFulfillmentPackageUsps extends SoapTypes.Base {
   packageHeightUsps?: number;
   deliveryConfUsps?: TransactionsSalesTypes.ItemFulfillmentPackageUspsDeliveryConfUsps;
   constructor(props: ItemFulfillmentPackageUsps) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageWeightUsps = props.packageWeightUsps;
     this.packageDescrUsps = props.packageDescrUsps;
     this.packageTrackingNumberUsps = props.packageTrackingNumberUsps;
@@ -640,11 +624,11 @@ export class ItemFulfillmentPackageUsps extends SoapTypes.Base {
   }
 }
 
-export class InvoiceTime extends SoapTypes.Base {
+export class InvoiceTime {
   apply?: boolean;
   doc?: number;
   line?: number;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   employeeDisp?: string;
   itemDisp?: string;
   jobDisp?: string;
@@ -658,8 +642,8 @@ export class InvoiceTime extends SoapTypes.Base {
   memo?: string;
   taxAmount?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   taxDetailsReference?: string;
   tax1Amt?: number;
@@ -667,7 +651,6 @@ export class InvoiceTime extends SoapTypes.Base {
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: InvoiceTime) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -696,7 +679,7 @@ export class InvoiceTime extends SoapTypes.Base {
   }
 }
 
-export class EstimateItem extends SoapTypes.Base {
+export class EstimateItem {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   line?: number;
@@ -734,11 +717,10 @@ export class EstimateItem extends SoapTypes.Base {
   itemIsFulfilled?: boolean;
   shipAddress?: PlatformCore.RecordRef;
   shipMethod?: PlatformCore.RecordRef;
-  expectedShipDate?: SoapTypes.Dateish;
+  expectedShipDate?: string;
   chargeType?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: EstimateItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -782,31 +764,30 @@ export class EstimateItem extends SoapTypes.Base {
   }
 }
 
-export class ItemFulfillmentPackageList extends SoapTypes.Base {
+export class ItemFulfillmentPackageList {
   _package?: ItemFulfillmentPackage[];
   replaceAll?: boolean;
   constructor(props: ItemFulfillmentPackageList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this._package = props._package;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class SalesOrder extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
+  createdDate?: string;
   customForm?: PlatformCore.RecordRef;
   entity?: PlatformCore.RecordRef;
   job?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   drAccount?: PlatformCore.RecordRef;
   fxAccount?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
   source?: string;
   createdFrom?: PlatformCore.RecordRef;
   orderStatus?: TransactionsSalesTypes.SalesOrderOrderStatus;
-  nextBill?: SoapTypes.Dateish;
+  nextBill?: string;
   opportunity?: PlatformCore.RecordRef;
   salesRep?: PlatformCore.RecordRef;
   contribPct?: string;
@@ -814,11 +795,11 @@ export class SalesOrder extends PlatformCore.Record {
   salesGroup?: PlatformCore.RecordRef;
   syncSalesTeams?: boolean;
   leadSource?: PlatformCore.RecordRef;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   otherRefNum?: string;
   memo?: string;
-  salesEffectiveDate?: SoapTypes.Dateish;
+  salesEffectiveDate?: string;
   excludeCommission?: boolean;
   totalCostEstimate?: number;
   estGrossProfit?: number;
@@ -855,8 +836,8 @@ export class SalesOrder extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  shipDate?: SoapTypes.Dateish;
-  actualShipDate?: SoapTypes.Dateish;
+  shipDate?: string;
+  actualShipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   shippingCost?: number;
   shippingTax1Rate?: number;
@@ -881,7 +862,7 @@ export class SalesOrder extends PlatformCore.Record {
   revRecOnRevCommitment?: boolean;
   revCommitStatus?: PlatformCommonTypes.RevenueCommitStatus;
   ccNumber?: string;
-  ccExpireDate?: SoapTypes.Dateish;
+  ccExpireDate?: string;
   ccName?: string;
   ccStreet?: string;
   ccZipCode?: string;
@@ -900,7 +881,7 @@ export class SalesOrder extends PlatformCore.Record {
   paymentEventResult?: TransactionsSalesTypes.TransactionPaymentEventResult;
   paymentEventHoldReason?: TransactionsSalesTypes.TransactionPaymentEventHoldReason;
   paymentEventType?: TransactionsSalesTypes.TransactionPaymentEventType;
-  paymentEventDate?: SoapTypes.Dateish;
+  paymentEventDate?: string;
   paymentEventUpdatedBy?: string;
   subTotal?: number;
   discountTotal?: number;
@@ -909,8 +890,8 @@ export class SalesOrder extends PlatformCore.Record {
   altHandlingCost?: number;
   total?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   paypalAuthId?: string;
   balance?: number;
   paypalProcess?: boolean;
@@ -923,18 +904,18 @@ export class SalesOrder extends PlatformCore.Record {
   intercoTransaction?: PlatformCore.RecordRef;
   intercoStatus?: PlatformCommonTypes.IntercoStatus;
   debitCardIssueNo?: string;
-  lastModifiedDate?: SoapTypes.Dateish;
+  lastModifiedDate?: string;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
   taxRegOverride?: boolean;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   taxDetailsOverride?: boolean;
   location?: PlatformCore.RecordRef;
   pnRefNum?: string;
   status?: string;
   tax2Total?: number;
   terms?: PlatformCore.RecordRef;
-  validFrom?: SoapTypes.Dateish;
+  validFrom?: string;
   vatRegNum?: string;
   giftCertApplied?: number;
   oneTime?: number;
@@ -957,7 +938,7 @@ export class SalesOrder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SalesOrder) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.customForm = props.customForm;
     this.entity = props.entity;
@@ -1124,33 +1105,30 @@ export class SalesOrder extends PlatformCore.Record {
   }
 }
 
-export class ItemFulfillmentPackageFedExList extends SoapTypes.Base {
+export class ItemFulfillmentPackageFedExList {
   packageFedEx?: ItemFulfillmentPackageFedEx[];
   replaceAll?: boolean;
   constructor(props: ItemFulfillmentPackageFedExList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageFedEx = props.packageFedEx;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InvoiceSalesTeamList extends SoapTypes.Base {
+export class InvoiceSalesTeamList {
   salesTeam?: InvoiceSalesTeam[];
   replaceAll?: boolean;
   constructor(props: InvoiceSalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EstimateSalesTeam extends SoapTypes.Base {
+export class EstimateSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: EstimateSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1158,21 +1136,20 @@ export class EstimateSalesTeam extends SoapTypes.Base {
   }
 }
 
-export class InvoiceExpCostList extends SoapTypes.Base {
+export class InvoiceExpCostList {
   expCost?: InvoiceExpCost[];
   replaceAll?: boolean;
   constructor(props: InvoiceExpCostList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.expCost = props.expCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CashSaleTime extends SoapTypes.Base {
+export class CashSaleTime {
   apply?: boolean;
   doc?: number;
   line?: number;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   employeeDisp?: string;
   itemDisp?: string;
   jobDisp?: string;
@@ -1186,8 +1163,8 @@ export class CashSaleTime extends SoapTypes.Base {
   memo?: string;
   taxAmount?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   taxDetailsReference?: string;
   tax1Amt?: number;
@@ -1195,7 +1172,6 @@ export class CashSaleTime extends SoapTypes.Base {
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: CashSaleTime) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1224,7 +1200,7 @@ export class CashSaleTime extends SoapTypes.Base {
   }
 }
 
-export class OpportunityItem extends SoapTypes.Base {
+export class OpportunityItem {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   line?: number;
@@ -1253,11 +1229,10 @@ export class OpportunityItem extends SoapTypes.Base {
   taxCode?: PlatformCore.RecordRef;
   taxRate1?: number;
   taxRate2?: number;
-  expectedShipDate?: SoapTypes.Dateish;
+  expectedShipDate?: string;
   subscription?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: OpportunityItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -1292,7 +1267,7 @@ export class OpportunityItem extends SoapTypes.Base {
   }
 }
 
-export class InvoiceItem extends SoapTypes.Base {
+export class InvoiceItem {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   line?: number;
@@ -1323,8 +1298,8 @@ export class InvoiceItem extends SoapTypes.Base {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
   costEstimate?: number;
@@ -1357,7 +1332,6 @@ export class InvoiceItem extends SoapTypes.Base {
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: InvoiceItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -1430,7 +1404,7 @@ export class AccountingTransactionSearch extends PlatformCore.SearchRecord {
   revRecScheduleJoin?: PlatformCommon.RevRecScheduleSearchBasic;
   transactionJoin?: PlatformCommon.TransactionSearchBasic;
   constructor(props: AccountingTransactionSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
     this.revRecScheduleJoin = props.revRecScheduleJoin;
@@ -1438,22 +1412,21 @@ export class AccountingTransactionSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class SalesOrderShipGroupList extends SoapTypes.Base {
+export class SalesOrderShipGroupList {
   shipGroup?: TransactionShipGroup[];
   replaceAll?: boolean;
   constructor(props: SalesOrderShipGroupList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.shipGroup = props.shipGroup;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CashSaleItemCost extends SoapTypes.Base {
+export class CashSaleItemCost {
   apply?: boolean;
   doc?: number;
   line?: number;
   taxDetailsReference?: string;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   itemDisp?: string;
   memo?: string;
   jobDisp?: string;
@@ -1469,15 +1442,14 @@ export class CashSaleItemCost extends SoapTypes.Base {
   amount?: number;
   taxAmount?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   tax1Amt?: number;
   taxCode?: PlatformCore.RecordRef;
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: CashSaleItemCost) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1508,33 +1480,30 @@ export class CashSaleItemCost extends SoapTypes.Base {
   }
 }
 
-export class EstimateItemList extends SoapTypes.Base {
+export class EstimateItemList {
   item?: EstimateItem[];
   replaceAll?: boolean;
   constructor(props: EstimateItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InvoiceShipGroupList extends SoapTypes.Base {
+export class InvoiceShipGroupList {
   shipGroup?: TransactionShipGroup[];
   replaceAll?: boolean;
   constructor(props: InvoiceShipGroupList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.shipGroup = props.shipGroup;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InvoiceSalesTeam extends SoapTypes.Base {
+export class InvoiceSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: InvoiceSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1542,11 +1511,10 @@ export class InvoiceSalesTeam extends SoapTypes.Base {
   }
 }
 
-export class OpportunitySalesTeamList extends SoapTypes.Base {
+export class OpportunitySalesTeamList {
   salesTeam?: OpportunitySalesTeam[];
   replaceAll?: boolean;
   constructor(props: OpportunitySalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
@@ -1561,7 +1529,7 @@ export class Opportunity extends PlatformCore.Record {
   title?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   oneTime?: number;
   recurWeekly?: number;
   recurMonthly?: number;
@@ -1576,8 +1544,8 @@ export class Opportunity extends PlatformCore.Record {
   leadSource?: PlatformCore.RecordRef;
   entityStatus?: PlatformCore.RecordRef;
   probability?: number;
-  tranDate?: SoapTypes.Dateish;
-  expectedCloseDate?: SoapTypes.Dateish;
+  tranDate?: string;
+  expectedCloseDate?: string;
   daysOpen?: number;
   forecastType?: PlatformCore.RecordRef;
   currencyName?: string;
@@ -1607,9 +1575,9 @@ export class Opportunity extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   clazz?: PlatformCore.RecordRef;
-  closeDate?: SoapTypes.Dateish;
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  closeDate?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
   taxRegOverride?: boolean;
@@ -1630,7 +1598,7 @@ export class Opportunity extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Opportunity) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.currency = props.currency;
     this.estimatedBudget = props.estimatedBudget;
@@ -1710,7 +1678,7 @@ export class Opportunity extends PlatformCore.Record {
   }
 }
 
-export class SalesOrderItem extends SoapTypes.Base {
+export class SalesOrderItem {
   job?: PlatformCore.RecordRef;
   subscription?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
@@ -1742,9 +1710,9 @@ export class SalesOrderItem extends SoapTypes.Base {
   poCurrency?: string;
   poRate?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
   revRecTermInMonths?: number;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecEndDate?: string;
   deferRevRec?: boolean;
   isClosed?: boolean;
   itemFulfillmentChoice?: TransactionsSalesTypes.SalesOrderItemFulfillmentChoice;
@@ -1788,14 +1756,13 @@ export class SalesOrderItem extends SoapTypes.Base {
   vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
   vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
   vsoeDelivered?: boolean;
-  expectedShipDate?: SoapTypes.Dateish;
+  expectedShipDate?: string;
   noAutoAssignLocation?: boolean;
   locationAutoAssigned?: boolean;
   taxDetailsReference?: string;
   chargeType?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: SalesOrderItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.job = props.job;
     this.subscription = props.subscription;
     this.item = props.item;
@@ -1882,21 +1849,19 @@ export class SalesOrderItem extends SoapTypes.Base {
   }
 }
 
-export class CashSaleTimeList extends SoapTypes.Base {
+export class CashSaleTimeList {
   time?: CashSaleTime[];
   replaceAll?: boolean;
   constructor(props: CashSaleTimeList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.time = props.time;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PromotionsList extends SoapTypes.Base {
+export class PromotionsList {
   promotions?: Promotions[];
   replaceAll?: boolean;
   constructor(props: PromotionsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.promotions = props.promotions;
     this.replaceAll = props.replaceAll;
   }
@@ -1974,7 +1939,7 @@ export class TransactionSearchRow extends PlatformCore.SearchRow {
   vendorLineJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: TransactionSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
     this.accountingPeriodJoin = props.accountingPeriodJoin;
@@ -2048,14 +2013,13 @@ export class TransactionSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class OpportunityCompetitors extends SoapTypes.Base {
+export class OpportunityCompetitors {
   competitor?: PlatformCore.RecordRef;
   url?: string;
   notes?: string;
   strategy?: string;
   winner?: boolean;
   constructor(props: OpportunityCompetitors) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.competitor = props.competitor;
     this.url = props.url;
     this.notes = props.notes;
@@ -2064,31 +2028,28 @@ export class OpportunityCompetitors extends SoapTypes.Base {
   }
 }
 
-export class CashSaleItemCostList extends SoapTypes.Base {
+export class CashSaleItemCostList {
   itemCost?: CashSaleItemCost[];
   replaceAll?: boolean;
   constructor(props: CashSaleItemCostList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemCost = props.itemCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class SalesOrderSalesTeamList extends SoapTypes.Base {
+export class SalesOrderSalesTeamList {
   salesTeam?: SalesOrderSalesTeam[];
   replaceAll?: boolean;
   constructor(props: SalesOrderSalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class SalesOrderPartnersList extends SoapTypes.Base {
+export class SalesOrderPartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: SalesOrderPartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -2100,7 +2061,7 @@ export class AccountingTransactionSearchAdvanced extends PlatformCore.SearchReco
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: AccountingTransactionSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -2108,11 +2069,10 @@ export class AccountingTransactionSearchAdvanced extends PlatformCore.SearchReco
   }
 }
 
-export class OpportunityItemList extends SoapTypes.Base {
+export class OpportunityItemList {
   item?: OpportunityItem[];
   replaceAll?: boolean;
   constructor(props: OpportunityItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -2190,7 +2150,7 @@ export class TransactionSearch extends PlatformCore.SearchRecord {
   vendorLineJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: TransactionSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
     this.accountingPeriodJoin = props.accountingPeriodJoin;
@@ -2265,8 +2225,8 @@ export class TransactionSearch extends PlatformCore.SearchRecord {
 }
 
 export class CashSale extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
   taxRegOverride?: boolean;
@@ -2275,10 +2235,10 @@ export class CashSale extends PlatformCore.Record {
   entity?: PlatformCore.RecordRef;
   billingAccount?: PlatformCore.RecordRef;
   recurringBill?: boolean;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   source?: string;
   postingPeriod?: PlatformCore.RecordRef;
   createdFrom?: PlatformCore.RecordRef;
@@ -2291,19 +2251,19 @@ export class CashSale extends PlatformCore.Record {
   contribPct?: string;
   partner?: PlatformCore.RecordRef;
   leadSource?: PlatformCore.RecordRef;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   otherRefNum?: string;
   memo?: string;
-  salesEffectiveDate?: SoapTypes.Dateish;
+  salesEffectiveDate?: string;
   excludeCommission?: boolean;
   revRecSchedule?: PlatformCore.RecordRef;
   undepFunds?: boolean;
   canHaveStackable?: boolean;
   currency?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   totalCostEstimate?: number;
   estGrossProfit?: number;
   estGrossProfitPercent?: number;
@@ -2338,7 +2298,7 @@ export class CashSale extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   shippingCost?: number;
   shippingTax1Rate?: number;
@@ -2360,7 +2320,7 @@ export class CashSale extends PlatformCore.Record {
   payPalStatus?: string;
   creditCard?: PlatformCore.RecordRef;
   ccNumber?: string;
-  ccExpireDate?: SoapTypes.Dateish;
+  ccExpireDate?: string;
   ccName?: string;
   ccStreet?: string;
   ccZipCode?: string;
@@ -2420,7 +2380,7 @@ export class CashSale extends PlatformCore.Record {
   billingSchedule?: PlatformCore.RecordRef;
   email?: string;
   tax2Total?: number;
-  validFrom?: SoapTypes.Dateish;
+  validFrom?: string;
   vatRegNum?: string;
   giftCertApplied?: number;
   tranIsVsoeBundle?: boolean;
@@ -2441,7 +2401,7 @@ export class CashSale extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CashSale) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -2620,27 +2580,25 @@ export class CashSale extends PlatformCore.Record {
   }
 }
 
-export class Promotions extends SoapTypes.Base {
+export class Promotions {
   promoCode?: PlatformCore.RecordRef;
   couponCode?: PlatformCore.RecordRef;
   constructor(props: Promotions) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.promoCode = props.promoCode;
     this.couponCode = props.couponCode;
   }
 }
 
-export class CashSaleSalesTeamList extends SoapTypes.Base {
+export class CashSaleSalesTeamList {
   salesTeam?: CashSaleSalesTeam[];
   replaceAll?: boolean;
   constructor(props: CashSaleSalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ItemFulfillmentPackageFedEx extends SoapTypes.Base {
+export class ItemFulfillmentPackageFedEx {
   packageWeightFedEx?: number;
   dryIceWeightFedEx?: number;
   packageTrackingNumberFedEx?: string;
@@ -2667,7 +2625,6 @@ export class ItemFulfillmentPackageFedEx extends SoapTypes.Base {
   signatureReleaseFedEx?: string;
   authorizationNumberFedEx?: string;
   constructor(props: ItemFulfillmentPackageFedEx) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageWeightFedEx = props.packageWeightFedEx;
     this.dryIceWeightFedEx = props.dryIceWeightFedEx;
     this.packageTrackingNumberFedEx = props.packageTrackingNumberFedEx;
@@ -2696,13 +2653,12 @@ export class ItemFulfillmentPackageFedEx extends SoapTypes.Base {
   }
 }
 
-export class SalesOrderSalesTeam extends SoapTypes.Base {
+export class SalesOrderSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: SalesOrderSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -2710,21 +2666,19 @@ export class SalesOrderSalesTeam extends SoapTypes.Base {
   }
 }
 
-export class CashSaleShipGroupList extends SoapTypes.Base {
+export class CashSaleShipGroupList {
   shipGroup?: TransactionShipGroup[];
   replaceAll?: boolean;
   constructor(props: CashSaleShipGroupList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.shipGroup = props.shipGroup;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EstimateShipGroupList extends SoapTypes.Base {
+export class EstimateShipGroupList {
   shipGroup?: TransactionShipGroup[];
   replaceAll?: boolean;
   constructor(props: EstimateShipGroupList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.shipGroup = props.shipGroup;
     this.replaceAll = props.replaceAll;
   }
@@ -2736,7 +2690,7 @@ export class UsageSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: UsageSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -2744,11 +2698,10 @@ export class UsageSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class ItemFulfillmentPackageUspsList extends SoapTypes.Base {
+export class ItemFulfillmentPackageUspsList {
   packageUsps?: ItemFulfillmentPackageUsps[];
   replaceAll?: boolean;
   constructor(props: ItemFulfillmentPackageUspsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageUsps = props.packageUsps;
     this.replaceAll = props.replaceAll;
   }
@@ -2774,7 +2727,7 @@ export class OpportunitySearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: OpportunitySearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.actualJoin = props.actualJoin;
     this.callJoin = props.callJoin;
@@ -2796,12 +2749,12 @@ export class OpportunitySearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class CashSaleExpCost extends SoapTypes.Base {
+export class CashSaleExpCost {
   apply?: boolean;
   doc?: number;
   line?: number;
   taxDetailsReference?: string;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   jobDisp?: string;
   employeeDisp?: string;
   categoryDisp?: string;
@@ -2814,15 +2767,14 @@ export class CashSaleExpCost extends SoapTypes.Base {
   taxAmount?: number;
   taxableDisp?: string;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   tax1Amt?: number;
   taxCode?: PlatformCore.RecordRef;
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: CashSaleExpCost) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -2850,29 +2802,27 @@ export class CashSaleExpCost extends SoapTypes.Base {
   }
 }
 
-export class EstimateSalesTeamList extends SoapTypes.Base {
+export class EstimateSalesTeamList {
   salesTeam?: EstimateSalesTeam[];
   replaceAll?: boolean;
   constructor(props: EstimateSalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CashSalePartnersList extends SoapTypes.Base {
+export class CashSalePartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: CashSalePartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class Invoice extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
   taxRegOverride?: boolean;
@@ -2882,10 +2832,10 @@ export class Invoice extends PlatformCore.Record {
   entity?: PlatformCore.RecordRef;
   billingAccount?: PlatformCore.RecordRef;
   recurringBill?: boolean;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   source?: string;
   createdFrom?: PlatformCore.RecordRef;
   postingPeriod?: PlatformCore.RecordRef;
@@ -2896,25 +2846,25 @@ export class Invoice extends PlatformCore.Record {
   location?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
-  dueDate?: SoapTypes.Dateish;
-  discountDate?: SoapTypes.Dateish;
+  dueDate?: string;
+  discountDate?: string;
   discountAmount?: number;
   salesRep?: PlatformCore.RecordRef;
   contribPct?: string;
   partner?: PlatformCore.RecordRef;
   leadSource?: PlatformCore.RecordRef;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   otherRefNum?: string;
   memo?: string;
-  salesEffectiveDate?: SoapTypes.Dateish;
+  salesEffectiveDate?: string;
   excludeCommission?: boolean;
   totalCostEstimate?: number;
   estGrossProfit?: number;
   estGrossProfitPercent?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   amountPaid?: number;
   amountRemaining?: number;
   balance?: number;
@@ -2940,7 +2890,7 @@ export class Invoice extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   shippingCost?: number;
   shippingTax1Rate?: number;
@@ -3018,7 +2968,7 @@ export class Invoice extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Invoice) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -3168,29 +3118,28 @@ export class Invoice extends PlatformCore.Record {
   }
 }
 
-export class InvoiceItemList extends SoapTypes.Base {
+export class InvoiceItemList {
   item?: InvoiceItem[];
   replaceAll?: boolean;
   constructor(props: InvoiceItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class Estimate extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   nexus?: PlatformCore.RecordRef;
   subsidiaryTaxRegNum?: PlatformCore.RecordRef;
   taxRegOverride?: boolean;
   taxDetailsOverride?: boolean;
   entity?: PlatformCore.RecordRef;
   job?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   entityTaxRegNum?: PlatformCore.RecordRef;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   source?: string;
   customForm?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
@@ -3203,7 +3152,7 @@ export class Estimate extends PlatformCore.Record {
   department?: PlatformCore.RecordRef;
   clazz?: PlatformCore.RecordRef;
   terms?: PlatformCore.RecordRef;
-  dueDate?: SoapTypes.Dateish;
+  dueDate?: string;
   location?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   billingSchedule?: PlatformCore.RecordRef;
@@ -3212,11 +3161,11 @@ export class Estimate extends PlatformCore.Record {
   partner?: PlatformCore.RecordRef;
   contribPct?: string;
   leadSource?: PlatformCore.RecordRef;
-  expectedCloseDate?: SoapTypes.Dateish;
+  expectedCloseDate?: string;
   otherRefNum?: string;
   memo?: string;
-  endDate?: SoapTypes.Dateish;
-  startDate?: SoapTypes.Dateish;
+  endDate?: string;
+  startDate?: string;
   totalCostEstimate?: number;
   estGrossProfit?: number;
   estGrossProfitPercent?: number;
@@ -3244,7 +3193,7 @@ export class Estimate extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   shippingCost?: number;
   shippingTax1Rate?: number;
@@ -3284,7 +3233,7 @@ export class Estimate extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Estimate) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -3392,7 +3341,7 @@ export class Estimate extends PlatformCore.Record {
   }
 }
 
-export class TransactionShipGroup extends SoapTypes.Base {
+export class TransactionShipGroup {
   id?: number;
   isFulfilled?: boolean;
   weight?: number;
@@ -3417,7 +3366,6 @@ export class TransactionShipGroup extends SoapTypes.Base {
   shippingTaxAmt?: number;
   shippingTax2Amt?: number;
   constructor(props: TransactionShipGroup) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.isFulfilled = props.isFulfilled;
     this.weight = props.weight;
@@ -3444,21 +3392,19 @@ export class TransactionShipGroup extends SoapTypes.Base {
   }
 }
 
-export class InvoicePartnersList extends SoapTypes.Base {
+export class InvoicePartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: InvoicePartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EstimatePartnersList extends SoapTypes.Base {
+export class EstimatePartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: EstimatePartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -3470,7 +3416,7 @@ export class OpportunitySearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: OpportunitySearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -3478,13 +3424,12 @@ export class OpportunitySearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class CashSaleSalesTeam extends SoapTypes.Base {
+export class CashSaleSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: CashSaleSalesTeam) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -3492,22 +3437,21 @@ export class CashSaleSalesTeam extends SoapTypes.Base {
   }
 }
 
-export class CashSaleItemList extends SoapTypes.Base {
+export class CashSaleItemList {
   item?: CashSaleItem[];
   replaceAll?: boolean;
   constructor(props: CashSaleItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InvoiceExpCost extends SoapTypes.Base {
+export class InvoiceExpCost {
   apply?: boolean;
   doc?: number;
   line?: number;
   taxDetailsReference?: string;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   jobDisp?: string;
   employeeDisp?: string;
   categoryDisp?: string;
@@ -3520,15 +3464,14 @@ export class InvoiceExpCost extends SoapTypes.Base {
   taxAmount?: number;
   taxableDisp?: string;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   tax1Amt?: number;
   taxCode?: PlatformCore.RecordRef;
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: InvoiceExpCost) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -3562,7 +3505,7 @@ export class AccountingTransactionSearchRow extends PlatformCore.SearchRow {
   revRecScheduleJoin?: PlatformCommon.RevRecScheduleSearchRowBasic;
   transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
   constructor(props: AccountingTransactionSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.accountJoin = props.accountJoin;
     this.revRecScheduleJoin = props.revRecScheduleJoin;
@@ -3570,12 +3513,12 @@ export class AccountingTransactionSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class InvoiceItemCost extends SoapTypes.Base {
+export class InvoiceItemCost {
   apply?: boolean;
   doc?: number;
   line?: number;
   taxDetailsReference?: string;
-  billedDate?: SoapTypes.Dateish;
+  billedDate?: string;
   itemDisp?: string;
   memo?: string;
   jobDisp?: string;
@@ -3591,15 +3534,14 @@ export class InvoiceItemCost extends SoapTypes.Base {
   amount?: number;
   taxAmount?: number;
   revRecSchedule?: PlatformCore.RecordRef;
-  revRecStartDate?: SoapTypes.Dateish;
-  revRecEndDate?: SoapTypes.Dateish;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
   grossAmt?: number;
   tax1Amt?: number;
   taxCode?: PlatformCore.RecordRef;
   taxRate1?: number;
   taxRate2?: number;
   constructor(props: InvoiceItemCost) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -3630,7 +3572,7 @@ export class InvoiceItemCost extends SoapTypes.Base {
   }
 }
 
-export class ItemFulfillmentPackageUps extends SoapTypes.Base {
+export class ItemFulfillmentPackageUps {
   packageWeightUps?: number;
   packageDescrUps?: string;
   packageTrackingNumberUps?: string;
@@ -3648,7 +3590,6 @@ export class ItemFulfillmentPackageUps extends SoapTypes.Base {
   codMethodUps?: TransactionsSalesTypes.ItemFulfillmentPackageUpsCodMethodUps;
   deliveryConfUps?: TransactionsSalesTypes.ItemFulfillmentPackageUpsDeliveryConfUps;
   constructor(props: ItemFulfillmentPackageUps) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.packageWeightUps = props.packageWeightUps;
     this.packageDescrUps = props.packageDescrUps;
     this.packageTrackingNumberUps = props.packageTrackingNumberUps;

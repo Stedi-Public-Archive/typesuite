@@ -1,21 +1,17 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
-const mappingsName = "com_netsuite_webservices_transactions_bank_2019_2";
-
-export class CheckItemList extends SoapTypes.Base {
+export class CheckItemList {
   item?: CheckItem[];
   replaceAll?: boolean;
   constructor(props: CheckItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class DepositCashBack extends SoapTypes.Base {
+export class DepositCashBack {
   amount?: number;
   account?: PlatformCore.RecordRef;
   department?: PlatformCore.RecordRef;
@@ -23,7 +19,6 @@ export class DepositCashBack extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   memo?: string;
   constructor(props: DepositCashBack) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.amount = props.amount;
     this.account = props.account;
     this.department = props.department;
@@ -33,30 +28,28 @@ export class DepositCashBack extends SoapTypes.Base {
   }
 }
 
-export class CheckExpenseList extends SoapTypes.Base {
+export class CheckExpenseList {
   expense?: CheckExpense[];
   replaceAll?: boolean;
   constructor(props: CheckExpenseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class DepositPaymentList extends SoapTypes.Base {
+export class DepositPaymentList {
   depositPayment?: DepositPayment[];
   replaceAll?: boolean;
   constructor(props: DepositPaymentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.depositPayment = props.depositPayment;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class DepositPayment extends SoapTypes.Base {
+export class DepositPayment {
   deposit?: boolean;
   id?: number;
-  docDate?: SoapTypes.Dateish;
+  docDate?: string;
   type?: string;
   docNumber?: string;
   memo?: string;
@@ -68,7 +61,6 @@ export class DepositPayment extends SoapTypes.Base {
   paymentAmount?: number;
   lineId?: number;
   constructor(props: DepositPayment) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.deposit = props.deposit;
     this.id = props.id;
     this.docDate = props.docDate;
@@ -85,7 +77,7 @@ export class DepositPayment extends SoapTypes.Base {
   }
 }
 
-export class CheckItem extends SoapTypes.Base {
+export class CheckItem {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
   line?: number;
@@ -95,7 +87,7 @@ export class CheckItem extends SoapTypes.Base {
   description?: string;
   binNumbers?: string;
   serialNumbers?: string;
-  expirationDate?: SoapTypes.Dateish;
+  expirationDate?: string;
   rate?: string;
   taxCode?: PlatformCore.RecordRef;
   amount?: number;
@@ -112,7 +104,6 @@ export class CheckItem extends SoapTypes.Base {
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CheckItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -141,27 +132,25 @@ export class CheckItem extends SoapTypes.Base {
   }
 }
 
-export class CheckLandedCostList extends SoapTypes.Base {
+export class CheckLandedCostList {
   landedCost?: PlatformCommon.LandedCostSummary[];
   replaceAll?: boolean;
   constructor(props: CheckLandedCostList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.landedCost = props.landedCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class DepositCashBackList extends SoapTypes.Base {
+export class DepositCashBackList {
   depositCashBack?: DepositCashBack[];
   replaceAll?: boolean;
   constructor(props: DepositCashBackList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.depositCashBack = props.depositCashBack;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class CheckExpense extends SoapTypes.Base {
+export class CheckExpense {
   line?: number;
   category?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
@@ -179,7 +168,6 @@ export class CheckExpense extends SoapTypes.Base {
   grossAmt?: number;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CheckExpense) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.category = props.category;
     this.account = props.account;
@@ -200,15 +188,15 @@ export class CheckExpense extends SoapTypes.Base {
 }
 
 export class Deposit extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   currencyName?: string;
   tranId?: string;
   account?: PlatformCore.RecordRef;
   total?: number;
   exchangeRate?: number;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   memo?: string;
   toBePrinted?: boolean;
@@ -224,7 +212,7 @@ export class Deposit extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Deposit) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -251,19 +239,18 @@ export class Deposit extends PlatformCore.Record {
   }
 }
 
-export class DepositOtherList extends SoapTypes.Base {
+export class DepositOtherList {
   depositOther?: DepositOther[];
   replaceAll?: boolean;
   constructor(props: DepositOtherList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.depositOther = props.depositOther;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class Check extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   status?: string;
   customForm?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
@@ -272,7 +259,7 @@ export class Check extends PlatformCore.Record {
   address?: string;
   subsidiary?: PlatformCore.RecordRef;
   postingPeriod?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   currency?: PlatformCore.RecordRef;
   voidJournal?: PlatformCore.RecordRef;
   exchangeRate?: number;
@@ -297,7 +284,7 @@ export class Check extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Check) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.status = props.status;
@@ -335,7 +322,7 @@ export class Check extends PlatformCore.Record {
   }
 }
 
-export class DepositOther extends SoapTypes.Base {
+export class DepositOther {
   entity?: PlatformCore.RecordRef;
   amount?: number;
   account?: PlatformCore.RecordRef;
@@ -346,7 +333,6 @@ export class DepositOther extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   memo?: string;
   constructor(props: DepositOther) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.entity = props.entity;
     this.amount = props.amount;
     this.account = props.account;

@@ -1,9 +1,6 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as ListsSupplychainTypes from "./lists_supplychain_types";
-
-const mappingsName = "com_netsuite_webservices_lists_supplychain_2019_2";
 
 export class ManufacturingOperationTask extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -22,8 +19,8 @@ export class ManufacturingOperationTask extends PlatformCore.Record {
   completedQuantity?: number;
   setupTime?: number;
   runRate?: number;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   autoCalculateLag?: boolean;
   machineResources?: number;
   laborResources?: number;
@@ -33,7 +30,7 @@ export class ManufacturingOperationTask extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ManufacturingOperationTask) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.manufacturingWorkCenter = props.manufacturingWorkCenter;
     this.manufacturingCostTemplate = props.manufacturingCostTemplate;
@@ -69,7 +66,7 @@ export class ManufacturingOperationTaskSearchAdvanced extends PlatformCore.Searc
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ManufacturingOperationTaskSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -83,7 +80,7 @@ export class ManufacturingCostTemplateSearchAdvanced extends PlatformCore.Search
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ManufacturingCostTemplateSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -91,11 +88,10 @@ export class ManufacturingCostTemplateSearchAdvanced extends PlatformCore.Search
   }
 }
 
-export class ManufacturingCostDetailList extends SoapTypes.Base {
+export class ManufacturingCostDetailList {
   manufacturingCostDetail?: ManufacturingCostDetail[];
   replaceAll?: boolean;
   constructor(props: ManufacturingCostDetailList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.manufacturingCostDetail = props.manufacturingCostDetail;
     this.replaceAll = props.replaceAll;
   }
@@ -118,7 +114,7 @@ export class ManufacturingRouting extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ManufacturingRouting) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.billOfMaterials = props.billOfMaterials;
     this.subsidiary = props.subsidiary;
@@ -137,12 +133,12 @@ export class ManufacturingRouting extends PlatformCore.Record {
   }
 }
 
-export class ManufacturingOperationTaskPredecessorList extends SoapTypes.Base {
+export class ManufacturingOperationTaskPredecessorList {
   manufacturingOperationTaskPredecessor?: ManufacturingOperationTaskPredecessor[];
   replaceAll?: boolean;
   constructor(props: ManufacturingOperationTaskPredecessorList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-    this.manufacturingOperationTaskPredecessor = props.manufacturingOperationTaskPredecessor;
+    this.manufacturingOperationTaskPredecessor =
+      props.manufacturingOperationTaskPredecessor;
     this.replaceAll = props.replaceAll;
   }
 }
@@ -154,7 +150,7 @@ export class ManufacturingOperationTaskSearchRow extends PlatformCore.SearchRow 
   workOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ManufacturingOperationTaskSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.predecessorJoin = props.predecessorJoin;
     this.userJoin = props.userJoin;
@@ -169,7 +165,7 @@ export class ManufacturingCostTemplateSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ManufacturingCostTemplateSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.userJoin = props.userJoin;
@@ -177,17 +173,17 @@ export class ManufacturingCostTemplateSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class ManufacturingRoutingRoutingStepList extends SoapTypes.Base {
+export class ManufacturingRoutingRoutingStepList {
   manufacturingRoutingRoutingStep?: ManufacturingRoutingRoutingStep[];
   replaceAll?: boolean;
   constructor(props: ManufacturingRoutingRoutingStepList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-    this.manufacturingRoutingRoutingStep = props.manufacturingRoutingRoutingStep;
+    this.manufacturingRoutingRoutingStep =
+      props.manufacturingRoutingRoutingStep;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ManufacturingRoutingRoutingStep extends SoapTypes.Base {
+export class ManufacturingRoutingRoutingStep {
   operationSequence?: number;
   operationName?: string;
   manufacturingWorkCenter?: PlatformCore.RecordRef;
@@ -200,7 +196,6 @@ export class ManufacturingRoutingRoutingStep extends SoapTypes.Base {
   lagAmount?: number;
   lagUnits?: string;
   constructor(props: ManufacturingRoutingRoutingStep) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.operationSequence = props.operationSequence;
     this.operationName = props.operationName;
     this.manufacturingWorkCenter = props.manufacturingWorkCenter;
@@ -215,7 +210,7 @@ export class ManufacturingRoutingRoutingStep extends SoapTypes.Base {
   }
 }
 
-export class ManufacturingRoutingRoutingComponent extends SoapTypes.Base {
+export class ManufacturingRoutingRoutingComponent {
   itemName?: string;
   revision?: string;
   description?: string;
@@ -228,7 +223,6 @@ export class ManufacturingRoutingRoutingComponent extends SoapTypes.Base {
   component?: string;
   item?: string;
   constructor(props: ManufacturingRoutingRoutingComponent) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.itemName = props.itemName;
     this.revision = props.revision;
     this.description = props.description;
@@ -249,7 +243,7 @@ export class ManufacturingRoutingSearchAdvanced extends PlatformCore.SearchRecor
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ManufacturingRoutingSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -264,7 +258,7 @@ export class ManufacturingOperationTaskSearch extends PlatformCore.SearchRecord 
   workOrderJoin?: PlatformCommon.TransactionSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ManufacturingOperationTaskSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.predecessorJoin = props.predecessorJoin;
     this.userJoin = props.userJoin;
@@ -273,23 +267,22 @@ export class ManufacturingOperationTaskSearch extends PlatformCore.SearchRecord 
   }
 }
 
-export class ManufacturingRoutingRoutingComponentList extends SoapTypes.Base {
+export class ManufacturingRoutingRoutingComponentList {
   manufacturingRoutingRoutingComponent?: ManufacturingRoutingRoutingComponent[];
   replaceAll?: boolean;
   constructor(props: ManufacturingRoutingRoutingComponentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-    this.manufacturingRoutingRoutingComponent = props.manufacturingRoutingRoutingComponent;
+    this.manufacturingRoutingRoutingComponent =
+      props.manufacturingRoutingRoutingComponent;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class ManufacturingCostDetail extends SoapTypes.Base {
+export class ManufacturingCostDetail {
   costCategory?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   fixedRate?: number;
   runRate?: number;
   constructor(props: ManufacturingCostDetail) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.costCategory = props.costCategory;
     this.item = props.item;
     this.fixedRate = props.fixedRate;
@@ -297,16 +290,15 @@ export class ManufacturingCostDetail extends SoapTypes.Base {
   }
 }
 
-export class ManufacturingOperationTaskPredecessor extends SoapTypes.Base {
+export class ManufacturingOperationTaskPredecessor {
   task?: PlatformCore.RecordRef;
   type?: ListsSupplychainTypes.ManufacturingOperationTaskPredecessorPredecessorType;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   lagType?: ListsSupplychainTypes.ManufacturingLagType;
   lagAmount?: number;
   lagUnits?: string;
   constructor(props: ManufacturingOperationTaskPredecessor) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.task = props.task;
     this.type = props.type;
     this.startDate = props.startDate;
@@ -326,7 +318,7 @@ export class ManufacturingRoutingSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ManufacturingRoutingSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.locationJoin = props.locationJoin;
@@ -346,7 +338,7 @@ export class ManufacturingRoutingSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ManufacturingRoutingSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.locationJoin = props.locationJoin;
@@ -363,7 +355,7 @@ export class ManufacturingCostTemplateSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ManufacturingCostTemplateSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.userJoin = props.userJoin;
@@ -382,7 +374,7 @@ export class ManufacturingCostTemplate extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ManufacturingCostTemplate) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;
     this.name = props.name;

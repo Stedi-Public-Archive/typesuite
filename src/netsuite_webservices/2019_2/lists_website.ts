@@ -1,11 +1,8 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
-const mappingsName = "com_netsuite_webservices_lists_website_2019_2";
-
-export class SiteCategoryTranslation extends SoapTypes.Base {
+export class SiteCategoryTranslation {
   locale?: PlatformCommonTypes.Language;
   language?: string;
   displayName?: string;
@@ -13,7 +10,6 @@ export class SiteCategoryTranslation extends SoapTypes.Base {
   storeDetailedDescription?: string;
   pageTitle?: string;
   constructor(props: SiteCategoryTranslation) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.locale = props.locale;
     this.language = props.language;
     this.displayName = props.displayName;
@@ -48,7 +44,7 @@ export class SiteCategory extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SiteCategory) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.website = props.website;
     this.itemId = props.itemId;
     this.parentCategory = props.parentCategory;
@@ -81,7 +77,7 @@ export class SiteCategorySearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: SiteCategorySearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -94,7 +90,7 @@ export class SiteCategorySearch extends PlatformCore.SearchRecord {
   shopperJoin?: PlatformCommon.CustomerSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: SiteCategorySearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
@@ -106,28 +102,26 @@ export class SiteCategorySearchRow extends PlatformCore.SearchRow {
   shopperJoin?: PlatformCommon.CustomerSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: SiteCategorySearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
   }
 }
 
-export class SiteCategoryPresentationItemList extends SoapTypes.Base {
+export class SiteCategoryPresentationItemList {
   presentationItem?: PlatformCommon.PresentationItem[];
   replaceAll?: boolean;
   constructor(props: SiteCategoryPresentationItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.presentationItem = props.presentationItem;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class SiteCategoryTranslationList extends SoapTypes.Base {
+export class SiteCategoryTranslationList {
   translation?: SiteCategoryTranslation[];
   replaceAll?: boolean;
   constructor(props: SiteCategoryTranslationList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.translation = props.translation;
     this.replaceAll = props.replaceAll;
   }

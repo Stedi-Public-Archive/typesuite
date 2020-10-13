@@ -1,11 +1,8 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsEmployeesTypes from "./transactions_employees_types";
 
-const mappingsName = "com_netsuite_webservices_transactions_employees_2019_2";
-
-export class PaycheckJournalCompanyContribution extends SoapTypes.Base {
+export class PaycheckJournalCompanyContribution {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
   amount?: number;
@@ -14,7 +11,6 @@ export class PaycheckJournalCompanyContribution extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PaycheckJournalCompanyContribution) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -30,7 +26,7 @@ export class PaycheckSearchRow extends PlatformCore.SearchRow {
   employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
   payrollItemJoin?: PlatformCommon.PayrollItemSearchRowBasic;
   constructor(props: PaycheckSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.payrollItemJoin = props.payrollItemJoin;
@@ -40,7 +36,7 @@ export class PaycheckSearchRow extends PlatformCore.SearchRow {
 export class TimeBill extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   employee?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   approvalStatus?: PlatformCore.RecordRef;
   customer?: PlatformCore.RecordRef;
   caseTaskEvent?: PlatformCore.RecordRef;
@@ -63,8 +59,8 @@ export class TimeBill extends PlatformCore.Record {
   rejectionNote?: string;
   subsidiary?: PlatformCore.RecordRef;
   supervisorApproval?: boolean;
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   timeSheet?: PlatformCore.RecordRef;
   status?: string;
   timeModified?: boolean;
@@ -72,7 +68,7 @@ export class TimeBill extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TimeBill) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.employee = props.employee;
     this.tranDate = props.tranDate;
@@ -109,11 +105,10 @@ export class TimeBill extends PlatformCore.Record {
   }
 }
 
-export class PaycheckJournalDeductionList extends SoapTypes.Base {
+export class PaycheckJournalDeductionList {
   paycheckJournalDeduction?: PaycheckJournalDeduction[];
   replaceAll?: boolean;
   constructor(props: PaycheckJournalDeductionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckJournalDeduction = props.paycheckJournalDeduction;
     this.replaceAll = props.replaceAll;
   }
@@ -140,7 +135,7 @@ export class TimeEntrySearch extends PlatformCore.SearchRecord {
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: TimeEntrySearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
     this.caseJoin = props.caseJoin;
@@ -163,7 +158,7 @@ export class TimeEntrySearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class PaycheckJournalEarning extends SoapTypes.Base {
+export class PaycheckJournalEarning {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
   hours?: number;
@@ -173,7 +168,6 @@ export class PaycheckJournalEarning extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PaycheckJournalEarning) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.hours = props.hours;
@@ -186,8 +180,8 @@ export class PaycheckJournalEarning extends SoapTypes.Base {
 }
 
 export class ExpenseReport extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   status?: string;
   customForm?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
@@ -195,12 +189,12 @@ export class ExpenseReport extends PlatformCore.Record {
   expenseReportCurrency?: PlatformCore.RecordRef;
   expenseReportExchangeRate?: number;
   subsidiary?: PlatformCore.RecordRef;
-  taxPointDate?: SoapTypes.Dateish;
+  taxPointDate?: string;
   tranId?: string;
   acctCorpCardExp?: PlatformCore.RecordRef;
   postingPeriod?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
-  dueDate?: SoapTypes.Dateish;
+  tranDate?: string;
+  dueDate?: string;
   approvalStatus?: PlatformCore.RecordRef;
   total?: number;
   nextApprover?: PlatformCore.RecordRef;
@@ -225,7 +219,7 @@ export class ExpenseReport extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ExpenseReport) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.status = props.status;
@@ -267,34 +261,31 @@ export class ExpenseReport extends PlatformCore.Record {
   }
 }
 
-export class PaycheckPayContribList extends SoapTypes.Base {
+export class PaycheckPayContribList {
   paycheckPayContrib?: PaycheckPayContrib[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayContribList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayContrib = props.paycheckPayContrib;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayExpList extends SoapTypes.Base {
+export class PaycheckPayExpList {
   paycheckPayExp?: PaycheckPayExp[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayExpList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayExp = props.paycheckPayExp;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayDisburse extends SoapTypes.Base {
+export class PaycheckPayDisburse {
   method?: string;
   bankName?: string;
   bankAccountDecrypt?: string;
   statusName?: string;
   amount?: number;
   constructor(props: PaycheckPayDisburse) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.method = props.method;
     this.bankName = props.bankName;
     this.bankAccountDecrypt = props.bankAccountDecrypt;
@@ -306,8 +297,8 @@ export class PaycheckPayDisburse extends SoapTypes.Base {
 export class TimeSheet extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   employee?: PlatformCore.RecordRef;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   totalHours?: PlatformCore.Duration;
   approvalStatus?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
@@ -316,7 +307,7 @@ export class TimeSheet extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TimeSheet) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.employee = props.employee;
     this.startDate = props.startDate;
@@ -331,29 +322,27 @@ export class TimeSheet extends PlatformCore.Record {
   }
 }
 
-export class PaycheckJournalEmployeeTaxList extends SoapTypes.Base {
+export class PaycheckJournalEmployeeTaxList {
   paycheckJournalEmployeeTax?: PaycheckJournalEmployeeTax[];
   replaceAll?: boolean;
   constructor(props: PaycheckJournalEmployeeTaxList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckJournalEmployeeTax = props.paycheckJournalEmployeeTax;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayTime extends SoapTypes.Base {
+export class PaycheckPayTime {
   apply?: boolean;
   line?: number;
   payItem?: number;
   payItemName?: string;
-  ddate?: SoapTypes.Dateish;
+  ddate?: string;
   custJob?: string;
   serviceItem?: string;
   count?: number;
   rate?: number;
   amount?: number;
   constructor(props: PaycheckPayTime) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.line = props.line;
     this.payItem = props.payItem;
@@ -367,11 +356,10 @@ export class PaycheckPayTime extends SoapTypes.Base {
   }
 }
 
-export class PaycheckPayDeductList extends SoapTypes.Base {
+export class PaycheckPayDeductList {
   paycheckPayDeduct?: PaycheckPayDeduct[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayDeductList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayDeduct = props.paycheckPayDeduct;
     this.replaceAll = props.replaceAll;
   }
@@ -382,7 +370,7 @@ export class PaycheckSearch extends PlatformCore.SearchRecord {
   employeeJoin?: PlatformCommon.EmployeeSearchBasic;
   payrollItemJoin?: PlatformCommon.PayrollItemSearchBasic;
   constructor(props: PaycheckSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.payrollItemJoin = props.payrollItemJoin;
@@ -411,7 +399,7 @@ export class TimeBillSearch extends PlatformCore.SearchRecord {
   timeSheetJoin?: PlatformCommon.TimeSheetSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: TimeBillSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
     this.caseJoin = props.caseJoin;
@@ -439,12 +427,12 @@ export class PaycheckJournal extends PlatformCore.Record {
   subsidiary?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   exchangeRate?: number;
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   tranId?: string;
   employee?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
   department?: PlatformCore.RecordRef;
@@ -459,7 +447,7 @@ export class PaycheckJournal extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PaycheckJournal) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.subsidiary = props.subsidiary;
     this.currency = props.currency;
     this.exchangeRate = props.exchangeRate;
@@ -485,7 +473,7 @@ export class PaycheckJournal extends PlatformCore.Record {
   }
 }
 
-export class PaycheckJournalEmployeeTax extends SoapTypes.Base {
+export class PaycheckJournalEmployeeTax {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
   amount?: number;
@@ -494,7 +482,6 @@ export class PaycheckJournalEmployeeTax extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PaycheckJournalEmployeeTax) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -505,7 +492,7 @@ export class PaycheckJournalEmployeeTax extends SoapTypes.Base {
   }
 }
 
-export class PaycheckPayEarn extends SoapTypes.Base {
+export class PaycheckPayEarn {
   payItem?: PlatformCore.RecordRef;
   line?: number;
   count?: number;
@@ -514,7 +501,6 @@ export class PaycheckPayEarn extends SoapTypes.Base {
   grossAmount?: number;
   manualEntry?: boolean;
   constructor(props: PaycheckPayEarn) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payItem = props.payItem;
     this.line = props.line;
     this.count = props.count;
@@ -525,14 +511,13 @@ export class PaycheckPayEarn extends SoapTypes.Base {
   }
 }
 
-export class PaycheckPayPto extends SoapTypes.Base {
+export class PaycheckPayPto {
   payItem?: number;
   payItemName?: string;
   hoursAccrued?: number;
   hoursUsed?: number;
   hoursBalance?: number;
   constructor(props: PaycheckPayPto) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payItem = props.payItem;
     this.payItemName = props.payItemName;
     this.hoursAccrued = props.hoursAccrued;
@@ -541,7 +526,7 @@ export class PaycheckPayPto extends SoapTypes.Base {
   }
 }
 
-export class PaycheckJournalDeduction extends SoapTypes.Base {
+export class PaycheckJournalDeduction {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
   amount?: number;
@@ -550,7 +535,6 @@ export class PaycheckJournalDeduction extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PaycheckJournalDeduction) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -561,17 +545,16 @@ export class PaycheckJournalDeduction extends SoapTypes.Base {
   }
 }
 
-export class PaycheckJournalEarningList extends SoapTypes.Base {
+export class PaycheckJournalEarningList {
   paycheckJournalEarning?: PaycheckJournalEarning[];
   replaceAll?: boolean;
   constructor(props: PaycheckJournalEarningList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckJournalEarning = props.paycheckJournalEarning;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckJournalCompanyTax extends SoapTypes.Base {
+export class PaycheckJournalCompanyTax {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
   amount?: number;
@@ -580,7 +563,6 @@ export class PaycheckJournalCompanyTax extends SoapTypes.Base {
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PaycheckJournalCompanyTax) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -591,12 +573,12 @@ export class PaycheckJournalCompanyTax extends SoapTypes.Base {
   }
 }
 
-export class PaycheckJournalCompanyContributionList extends SoapTypes.Base {
+export class PaycheckJournalCompanyContributionList {
   paycheckJournalCompanyContribution?: PaycheckJournalCompanyContribution[];
   replaceAll?: boolean;
   constructor(props: PaycheckJournalCompanyContributionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
-    this.paycheckJournalCompanyContribution = props.paycheckJournalCompanyContribution;
+    this.paycheckJournalCompanyContribution =
+      props.paycheckJournalCompanyContribution;
     this.replaceAll = props.replaceAll;
   }
 }
@@ -607,7 +589,7 @@ export class TimeBillSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TimeBillSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -615,11 +597,10 @@ export class TimeBillSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class PaycheckPayDisburseList extends SoapTypes.Base {
+export class PaycheckPayDisburseList {
   paycheckPayDisburse?: PaycheckPayDisburse[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayDisburseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayDisburse = props.paycheckPayDisburse;
     this.replaceAll = props.replaceAll;
   }
@@ -647,7 +628,7 @@ export class TimeBillSearchRow extends PlatformCore.SearchRow {
   timeSheetJoin?: PlatformCommon.TimeSheetSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: TimeBillSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
     this.caseJoin = props.caseJoin;
@@ -671,34 +652,31 @@ export class TimeBillSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class ExpenseReportExpenseList extends SoapTypes.Base {
+export class ExpenseReportExpenseList {
   expense?: ExpenseReportExpense[];
   replaceAll?: boolean;
   constructor(props: ExpenseReportExpenseList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPaySummaryList extends SoapTypes.Base {
+export class PaycheckPaySummaryList {
   paycheckPaySummary?: PaycheckPaySummary[];
   replaceAll?: boolean;
   constructor(props: PaycheckPaySummaryList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPaySummary = props.paycheckPaySummary;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayDeduct extends SoapTypes.Base {
+export class PaycheckPayDeduct {
   payItem?: PlatformCore.RecordRef;
   line?: number;
   wageBase?: number;
   amount?: number;
   manualEntry?: boolean;
   constructor(props: PaycheckPayDeduct) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payItem = props.payItem;
     this.line = props.line;
     this.wageBase = props.wageBase;
@@ -728,7 +706,7 @@ export class TimeEntrySearchRow extends PlatformCore.SearchRow {
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: TimeEntrySearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
     this.caseJoin = props.caseJoin;
@@ -751,17 +729,16 @@ export class TimeEntrySearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class PaycheckPayPtoList extends SoapTypes.Base {
+export class PaycheckPayPtoList {
   paycheckPayPto?: PaycheckPayPto[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayPtoList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayPto = props.paycheckPayPto;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class TimeSheetTimeGrid extends SoapTypes.Base {
+export class TimeSheetTimeGrid {
   sunday?: TimeEntry;
   monday?: TimeEntry;
   tuesday?: TimeEntry;
@@ -770,7 +747,6 @@ export class TimeSheetTimeGrid extends SoapTypes.Base {
   friday?: TimeEntry;
   saturday?: TimeEntry;
   constructor(props: TimeSheetTimeGrid) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.sunday = props.sunday;
     this.monday = props.monday;
     this.tuesday = props.tuesday;
@@ -788,7 +764,7 @@ export class TimeSheetSearchRow extends PlatformCore.SearchRow {
   timeEntryJoin?: PlatformCommon.TimeEntrySearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: TimeSheetSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.timeBillJoin = props.timeBillJoin;
@@ -797,7 +773,7 @@ export class TimeSheetSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class PaycheckPayTax extends SoapTypes.Base {
+export class PaycheckPayTax {
   line?: number;
   apply?: boolean;
   payTax?: string;
@@ -809,7 +785,6 @@ export class PaycheckPayTax extends SoapTypes.Base {
   isResidentTax?: boolean;
   amount?: number;
   constructor(props: PaycheckPayTax) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.apply = props.apply;
     this.payTax = props.payTax;
@@ -823,11 +798,10 @@ export class PaycheckPayTax extends SoapTypes.Base {
   }
 }
 
-export class PaycheckJournalCompanyTaxList extends SoapTypes.Base {
+export class PaycheckJournalCompanyTaxList {
   paycheckJournalCompanyTax?: PaycheckJournalCompanyTax[];
   replaceAll?: boolean;
   constructor(props: PaycheckJournalCompanyTaxList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckJournalCompanyTax = props.paycheckJournalCompanyTax;
     this.replaceAll = props.replaceAll;
   }
@@ -840,7 +814,7 @@ export class TimeSheetSearch extends PlatformCore.SearchRecord {
   timeEntryJoin?: PlatformCommon.TimeEntrySearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: TimeSheetSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.timeBillJoin = props.timeBillJoin;
@@ -849,9 +823,9 @@ export class TimeSheetSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class ExpenseReportExpense extends SoapTypes.Base {
+export class ExpenseReportExpense {
   line?: number;
-  expenseDate?: SoapTypes.Dateish;
+  expenseDate?: string;
   category?: PlatformCore.RecordRef;
   quantity?: number;
   rate?: number;
@@ -878,7 +852,6 @@ export class ExpenseReportExpense extends SoapTypes.Base {
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: ExpenseReportExpense) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.expenseDate = props.expenseDate;
     this.category = props.category;
@@ -909,24 +882,22 @@ export class ExpenseReportExpense extends SoapTypes.Base {
   }
 }
 
-export class PaycheckPayTaxList extends SoapTypes.Base {
+export class PaycheckPayTaxList {
   paycheckPayTax?: PaycheckPayTax[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayTaxList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayTax = props.paycheckPayTax;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayExp extends SoapTypes.Base {
+export class PaycheckPayExp {
   apply?: boolean;
   line?: number;
   origDoc?: number;
   transaction?: string;
   amount?: number;
   constructor(props: PaycheckPayExp) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.apply = props.apply;
     this.line = props.line;
     this.origDoc = props.origDoc;
@@ -941,7 +912,7 @@ export class PaycheckSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: PaycheckSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -949,11 +920,10 @@ export class PaycheckSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class TimeSheetTimeGridList extends SoapTypes.Base {
+export class TimeSheetTimeGridList {
   timeSheetTimeGrid?: TimeSheetTimeGrid[];
   replaceAll?: boolean;
   constructor(props: TimeSheetTimeGridList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.timeSheetTimeGrid = props.timeSheetTimeGrid;
     this.replaceAll = props.replaceAll;
   }
@@ -961,8 +931,8 @@ export class TimeSheetTimeGridList extends SoapTypes.Base {
 
 export class Paycheck extends PlatformCore.Record {
   batchNumber?: string;
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   status?: string;
   entity?: PlatformCore.RecordRef;
   address?: string;
@@ -976,9 +946,9 @@ export class Paycheck extends PlatformCore.Record {
   account?: PlatformCore.RecordRef;
   payFrequency?: string;
   balance?: number;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
-  periodEnding?: SoapTypes.Dateish;
+  periodEnding?: string;
   payEarnList?: PaycheckPayEarnList;
   payTimeList?: PaycheckPayTimeList;
   payExpList?: PaycheckPayExpList;
@@ -991,7 +961,7 @@ export class Paycheck extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Paycheck) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.batchNumber = props.batchNumber;
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1025,14 +995,13 @@ export class Paycheck extends PlatformCore.Record {
   }
 }
 
-export class PaycheckPayContrib extends SoapTypes.Base {
+export class PaycheckPayContrib {
   payItem?: PlatformCore.RecordRef;
   line?: number;
   wageBase?: number;
   amount?: number;
   manualEntry?: boolean;
   constructor(props: PaycheckPayContrib) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payItem = props.payItem;
     this.line = props.line;
     this.wageBase = props.wageBase;
@@ -1041,13 +1010,12 @@ export class PaycheckPayContrib extends SoapTypes.Base {
   }
 }
 
-export class PaycheckPaySummary extends SoapTypes.Base {
+export class PaycheckPaySummary {
   payItem?: string;
   payItemType?: string;
   amount?: number;
   ytdAmount?: number;
   constructor(props: PaycheckPaySummary) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payItem = props.payItem;
     this.payItemType = props.payItemType;
     this.amount = props.amount;
@@ -1061,7 +1029,7 @@ export class TimeEntrySearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TimeEntrySearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -1071,8 +1039,8 @@ export class TimeEntrySearchAdvanced extends PlatformCore.SearchRecord {
 
 export class TimeEntry extends PlatformCore.Record {
   hours?: PlatformCore.Duration;
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customer?: PlatformCore.RecordRef;
   caseTaskEvent?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
@@ -1094,7 +1062,7 @@ export class TimeEntry extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TimeEntry) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.hours = props.hours;
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1121,21 +1089,19 @@ export class TimeEntry extends PlatformCore.Record {
   }
 }
 
-export class PaycheckPayTimeList extends SoapTypes.Base {
+export class PaycheckPayTimeList {
   paycheckPayTime?: PaycheckPayTime[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayTimeList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayTime = props.paycheckPayTime;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PaycheckPayEarnList extends SoapTypes.Base {
+export class PaycheckPayEarnList {
   paycheckPayEarn?: PaycheckPayEarn[];
   replaceAll?: boolean;
   constructor(props: PaycheckPayEarnList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.paycheckPayEarn = props.paycheckPayEarn;
     this.replaceAll = props.replaceAll;
   }
@@ -1147,7 +1113,7 @@ export class TimeSheetSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TimeSheetSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;

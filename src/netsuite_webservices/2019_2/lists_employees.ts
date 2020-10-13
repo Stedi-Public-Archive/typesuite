@@ -1,16 +1,12 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 import * as ListsEmployeesTypes from "./lists_employees_types";
 
-const mappingsName = "com_netsuite_webservices_lists_employees_2019_2";
-
-export class EmployeeRolesList extends SoapTypes.Base {
+export class EmployeeRolesList {
   roles?: EmployeeRoles[];
   replaceAll?: boolean;
   constructor(props: EmployeeRolesList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.roles = props.roles;
     this.replaceAll = props.replaceAll;
   }
@@ -31,8 +27,8 @@ export class Employee extends PlatformCore.Record {
   defaultAddress?: string;
   isInactive?: boolean;
   phoneticName?: string;
-  lastModifiedDate?: SoapTypes.Dateish;
-  dateCreated?: SoapTypes.Dateish;
+  lastModifiedDate?: string;
+  dateCreated?: string;
   initials?: string;
   officePhone?: string;
   homePhone?: string;
@@ -50,7 +46,7 @@ export class Employee extends PlatformCore.Record {
   globalSubscriptionStatus?: PlatformCommonTypes.GlobalSubscriptionStatus;
   image?: PlatformCore.RecordRef;
   payFrequency?: ListsEmployeesTypes.EmployeePayFrequency;
-  lastPaidDate?: SoapTypes.Dateish;
+  lastPaidDate?: string;
   currency?: PlatformCore.RecordRef;
   useTimeData?: ListsEmployeesTypes.EmployeeUseTimeData;
   usePerquest?: boolean;
@@ -71,16 +67,16 @@ export class Employee extends PlatformCore.Record {
   isSupportRep?: boolean;
   isJobResource?: boolean;
   laborCost?: number;
-  birthDate?: SoapTypes.Dateish;
-  hireDate?: SoapTypes.Dateish;
-  releaseDate?: SoapTypes.Dateish;
+  birthDate?: string;
+  hireDate?: string;
+  releaseDate?: string;
   terminationDetails?: string;
   terminationReason?: PlatformCore.RecordRef;
   terminationRegretted?: ListsEmployeesTypes.EmployeeTerminationRegretted;
   terminationCategory?: ListsEmployeesTypes.EmployeeTerminationCategory;
   timeOffPlan?: PlatformCore.RecordRef;
-  lastReviewDate?: SoapTypes.Dateish;
-  nextReviewDate?: SoapTypes.Dateish;
+  lastReviewDate?: string;
+  nextReviewDate?: string;
   title?: string;
   employeeStatus?: PlatformCore.RecordRef;
   jobDescription?: string;
@@ -101,7 +97,7 @@ export class Employee extends PlatformCore.Record {
   requirePwdChange?: boolean;
   inheritIPRules?: boolean;
   ipAddressRule?: string;
-  startDateTimeOffCalc?: SoapTypes.Dateish;
+  startDateTimeOffCalc?: string;
   commissionPaymentPreference?: ListsEmployeesTypes.EmployeeCommissionPaymentPreference;
   billPay?: boolean;
   defaultAcctCorpCardExp?: PlatformCore.RecordRef;
@@ -123,7 +119,7 @@ export class Employee extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: Employee) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.customForm = props.customForm;
     this.template = props.template;
     this.entityId = props.entityId;
@@ -232,7 +228,7 @@ export class Employee extends PlatformCore.Record {
   }
 }
 
-export class EmployeeDirectDeposit extends SoapTypes.Base {
+export class EmployeeDirectDeposit {
   id?: number;
   netAccount?: boolean;
   savingsAccount?: boolean;
@@ -246,7 +242,6 @@ export class EmployeeDirectDeposit extends SoapTypes.Base {
   amount?: number;
   inactive?: boolean;
   constructor(props: EmployeeDirectDeposit) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.netAccount = props.netAccount;
     this.savingsAccount = props.savingsAccount;
@@ -282,7 +277,7 @@ export class EmployeeSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: EmployeeSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.campaignResponseJoin = props.campaignResponseJoin;
     this.chargeJoin = props.chargeJoin;
@@ -304,27 +299,25 @@ export class EmployeeSearchRow extends PlatformCore.SearchRow {
   }
 }
 
-export class EmployeeRates extends SoapTypes.Base {
+export class EmployeeRates {
   entityCurrency?: PlatformCore.RecordRef;
   rate?: number;
   constructor(props: EmployeeRates) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.entityCurrency = props.entityCurrency;
     this.rate = props.rate;
   }
 }
 
-export class EmployeeEarning extends SoapTypes.Base {
+export class EmployeeEarning {
   payrollItem?: PlatformCore.RecordRef;
   payRate?: string;
   primaryEarning?: boolean;
   defaultHours?: number;
   inactive?: boolean;
   defaultEarning?: boolean;
-  effectiveDate?: SoapTypes.Dateish;
-  expirationDate?: SoapTypes.Dateish;
+  effectiveDate?: string;
+  expirationDate?: string;
   constructor(props: EmployeeEarning) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payrollItem = props.payrollItem;
     this.payRate = props.payRate;
     this.primaryEarning = props.primaryEarning;
@@ -342,7 +335,7 @@ export class PayrollItemSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: PayrollItemSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -350,15 +343,14 @@ export class PayrollItemSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class EmployeeCompanyContribution extends SoapTypes.Base {
+export class EmployeeCompanyContribution {
   payrollItem?: PlatformCore.RecordRef;
   rate?: string;
   limit?: number;
   inactive?: boolean;
-  effectiveDate?: SoapTypes.Dateish;
-  expirationDate?: SoapTypes.Dateish;
+  effectiveDate?: string;
+  expirationDate?: string;
   constructor(props: EmployeeCompanyContribution) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payrollItem = props.payrollItem;
     this.rate = props.rate;
     this.limit = props.limit;
@@ -374,7 +366,7 @@ export class EmployeeSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: EmployeeSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -382,19 +374,17 @@ export class EmployeeSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class EmployeeRoles extends SoapTypes.Base {
+export class EmployeeRoles {
   selectedRole?: PlatformCore.RecordRef;
   constructor(props: EmployeeRoles) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.selectedRole = props.selectedRole;
   }
 }
 
-export class EmployeeHrEducationList extends SoapTypes.Base {
+export class EmployeeHrEducationList {
   employeeHrEducation?: EmployeeHrEducation[];
   replaceAll?: boolean;
   constructor(props: EmployeeHrEducationList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeHrEducation = props.employeeHrEducation;
     this.replaceAll = props.replaceAll;
   }
@@ -420,7 +410,7 @@ export class EmployeeSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: EmployeeSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.campaignResponseJoin = props.campaignResponseJoin;
     this.chargeJoin = props.chargeJoin;
@@ -442,11 +432,10 @@ export class EmployeeSearch extends PlatformCore.SearchRecord {
   }
 }
 
-export class EmployeeAddressbookList extends SoapTypes.Base {
+export class EmployeeAddressbookList {
   addressbook?: EmployeeAddressbook[];
   replaceAll?: boolean;
   constructor(props: EmployeeAddressbookList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.addressbook = props.addressbook;
     this.replaceAll = props.replaceAll;
   }
@@ -456,13 +445,13 @@ export class PayrollItemSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PayrollItemSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: PayrollItemSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
 
-export class EmployeeAccruedTime extends SoapTypes.Base {
+export class EmployeeAccruedTime {
   payrollItem?: PlatformCore.RecordRef;
   accruedHours?: number;
   accrualRate?: number;
@@ -471,10 +460,9 @@ export class EmployeeAccruedTime extends SoapTypes.Base {
   accrualMethod?: ListsEmployeesTypes.EmployeeAccruedTimeAccrualMethod;
   maximumAccruedHours?: number;
   inactive?: boolean;
-  effectiveDate?: SoapTypes.Dateish;
-  expirationDate?: SoapTypes.Dateish;
+  effectiveDate?: string;
+  expirationDate?: string;
   constructor(props: EmployeeAccruedTime) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payrollItem = props.payrollItem;
     this.accruedHours = props.accruedHours;
     this.accrualRate = props.accrualRate;
@@ -488,14 +476,13 @@ export class EmployeeAccruedTime extends SoapTypes.Base {
   }
 }
 
-export class EmployeeEmergencyContact extends SoapTypes.Base {
+export class EmployeeEmergencyContact {
   id?: number;
   contact?: string;
   relationship?: string;
   address?: string;
   phone?: string;
   constructor(props: EmployeeEmergencyContact) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.id = props.id;
     this.contact = props.contact;
     this.relationship = props.relationship;
@@ -514,7 +501,7 @@ export class HcmJob extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: HcmJob) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.title = props.title;
     this.isInactive = props.isInactive;
     this.employmentCategory = props.employmentCategory;
@@ -526,27 +513,25 @@ export class HcmJob extends PlatformCore.Record {
   }
 }
 
-export class EmployeeCompanyContributionList extends SoapTypes.Base {
+export class EmployeeCompanyContributionList {
   employeeCompanyContribution?: EmployeeCompanyContribution[];
   replaceAll?: boolean;
   constructor(props: EmployeeCompanyContributionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeCompanyContribution = props.employeeCompanyContribution;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeDirectDepositList extends SoapTypes.Base {
+export class EmployeeDirectDepositList {
   employeeDirectDeposit?: EmployeeDirectDeposit[];
   replaceAll?: boolean;
   constructor(props: EmployeeDirectDepositList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeDirectDeposit = props.employeeDirectDeposit;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeHcmPosition extends SoapTypes.Base {
+export class EmployeeHcmPosition {
   position?: PlatformCore.RecordRef;
   primaryPosition?: boolean;
   positionId?: string;
@@ -557,7 +542,6 @@ export class EmployeeHcmPosition extends SoapTypes.Base {
   subsidiary?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   constructor(props: EmployeeHcmPosition) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.position = props.position;
     this.primaryPosition = props.primaryPosition;
     this.positionId = props.positionId;
@@ -570,15 +554,14 @@ export class EmployeeHcmPosition extends SoapTypes.Base {
   }
 }
 
-export class EmployeeDeduction extends SoapTypes.Base {
+export class EmployeeDeduction {
   payrollItem?: PlatformCore.RecordRef;
   rate?: string;
   limit?: number;
   inactive?: boolean;
-  effectiveDate?: SoapTypes.Dateish;
-  expirationDate?: SoapTypes.Dateish;
+  effectiveDate?: string;
+  expirationDate?: string;
   constructor(props: EmployeeDeduction) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.payrollItem = props.payrollItem;
     this.rate = props.rate;
     this.limit = props.limit;
@@ -588,34 +571,31 @@ export class EmployeeDeduction extends SoapTypes.Base {
   }
 }
 
-export class EmployeeSubscriptions extends SoapTypes.Base {
+export class EmployeeSubscriptions {
   subscribed?: string;
   subscription?: string;
-  lastModifiedDate?: SoapTypes.Dateish;
+  lastModifiedDate?: string;
   constructor(props: EmployeeSubscriptions) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.subscribed = props.subscribed;
     this.subscription = props.subscription;
     this.lastModifiedDate = props.lastModifiedDate;
   }
 }
 
-export class EmployeeSubscriptionsList extends SoapTypes.Base {
+export class EmployeeSubscriptionsList {
   subscriptions?: EmployeeSubscriptions[];
   replaceAll?: boolean;
   constructor(props: EmployeeSubscriptionsList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.subscriptions = props.subscriptions;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeHrEducation extends SoapTypes.Base {
+export class EmployeeHrEducation {
   education?: PlatformCore.RecordRef;
   degree?: string;
-  degreeDate?: SoapTypes.Dateish;
+  degreeDate?: string;
   constructor(props: EmployeeHrEducation) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.education = props.education;
     this.degree = props.degree;
     this.degreeDate = props.degreeDate;
@@ -628,7 +608,7 @@ export class HcmJobSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: HcmJobSearchAdvanced) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -636,19 +616,17 @@ export class HcmJobSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
-export class EmployeeCurrency extends SoapTypes.Base {
+export class EmployeeCurrency {
   currency?: PlatformCore.RecordRef;
   constructor(props: EmployeeCurrency) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.currency = props.currency;
   }
 }
 
-export class EmployeeRatesList extends SoapTypes.Base {
+export class EmployeeRatesList {
   employeeRates?: EmployeeRates[];
   replaceAll?: boolean;
   constructor(props: EmployeeRatesList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeRates = props.employeeRates;
     this.replaceAll = props.replaceAll;
   }
@@ -668,7 +646,7 @@ export class PayrollItem extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PayrollItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.subsidiary = props.subsidiary;
     this.itemType = props.itemType;
     this.name = props.name;
@@ -689,28 +667,26 @@ export class HcmJobSearch extends PlatformCore.SearchRecord {
   employeeJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: HcmJobSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
 
-export class EmployeeAccruedTimeList extends SoapTypes.Base {
+export class EmployeeAccruedTimeList {
   employeeAccruedTime?: EmployeeAccruedTime[];
   replaceAll?: boolean;
   constructor(props: EmployeeAccruedTimeList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeAccruedTime = props.employeeAccruedTime;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeDeductionList extends SoapTypes.Base {
+export class EmployeeDeductionList {
   employeeDeduction?: EmployeeDeduction[];
   replaceAll?: boolean;
   constructor(props: EmployeeDeductionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeDeduction = props.employeeDeduction;
     this.replaceAll = props.replaceAll;
   }
@@ -720,20 +696,19 @@ export class PayrollItemSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PayrollItemSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: PayrollItemSearch) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
 
-export class EmployeeAddressbook extends SoapTypes.Base {
+export class EmployeeAddressbook {
   defaultShipping?: boolean;
   defaultBilling?: boolean;
   label?: string;
   addressbookAddress?: PlatformCommon.Address;
   internalId?: string;
   constructor(props: EmployeeAddressbook) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.defaultShipping = props.defaultShipping;
     this.defaultBilling = props.defaultBilling;
     this.label = props.label;
@@ -742,21 +717,19 @@ export class EmployeeAddressbook extends SoapTypes.Base {
   }
 }
 
-export class EmployeeCurrencyList extends SoapTypes.Base {
+export class EmployeeCurrencyList {
   employeeCurrency?: EmployeeCurrency[];
   replaceAll?: boolean;
   constructor(props: EmployeeCurrencyList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeCurrency = props.employeeCurrency;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeEarningList extends SoapTypes.Base {
+export class EmployeeEarningList {
   employeeEarning?: EmployeeEarning[];
   replaceAll?: boolean;
   constructor(props: EmployeeEarningList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeEarning = props.employeeEarning;
     this.replaceAll = props.replaceAll;
   }
@@ -767,28 +740,26 @@ export class HcmJobSearchRow extends PlatformCore.SearchRow {
   employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: HcmJobSearchRow) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.customSearchJoin = props.customSearchJoin;
   }
 }
 
-export class EmployeeEmergencyContactList extends SoapTypes.Base {
+export class EmployeeEmergencyContactList {
   employeeEmergencyContact?: EmployeeEmergencyContact[];
   replaceAll?: boolean;
   constructor(props: EmployeeEmergencyContactList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeEmergencyContact = props.employeeEmergencyContact;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class EmployeeHcmPositionList extends SoapTypes.Base {
+export class EmployeeHcmPositionList {
   employeeHcmPosition?: EmployeeHcmPosition[];
   replaceAll?: boolean;
   constructor(props: EmployeeHcmPositionList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.employeeHcmPosition = props.employeeHcmPosition;
     this.replaceAll = props.replaceAll;
   }

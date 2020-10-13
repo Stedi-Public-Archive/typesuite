@@ -1,12 +1,9 @@
-import * as SoapTypes from "../../util/soap-types";
 import * as TransactionsInventoryTypes from "./transactions_inventory_types";
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
-const mappingsName = "com_netsuite_webservices_transactions_inventory_2019_2";
-
-export class WorkOrderItem extends SoapTypes.Base {
+export class WorkOrderItem {
   line?: number;
   item?: PlatformCore.RecordRef;
   operationSequenceNumber?: number;
@@ -34,10 +31,9 @@ export class WorkOrderItem extends SoapTypes.Base {
   contribution?: number;
   description?: string;
   commitInventory?: TransactionsInventoryTypes.WorkOrderItemItemCommitInventory;
-  plannedIssueDate?: SoapTypes.Dateish;
+  plannedIssueDate?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: WorkOrderItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
@@ -70,17 +66,16 @@ export class WorkOrderItem extends SoapTypes.Base {
   }
 }
 
-export class TransferOrderItemList extends SoapTypes.Base {
+export class TransferOrderItemList {
   item?: TransferOrderItem[];
   replaceAll?: boolean;
   constructor(props: TransferOrderItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InventoryAdjustmentInventory extends SoapTypes.Base {
+export class InventoryAdjustmentInventory {
   item?: PlatformCore.RecordRef;
   line?: number;
   inventoryDetail?: PlatformCommon.InventoryDetail;
@@ -99,10 +94,9 @@ export class InventoryAdjustmentInventory extends SoapTypes.Base {
   foreignCurrencyUnitCost?: number;
   memo?: string;
   currency?: string;
-  expirationDate?: SoapTypes.Dateish;
+  expirationDate?: string;
   exchangeRate?: number;
   constructor(props: InventoryAdjustmentInventory) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.line = props.line;
     this.inventoryDetail = props.inventoryDetail;
@@ -127,9 +121,9 @@ export class InventoryAdjustmentInventory extends SoapTypes.Base {
 }
 
 export class BinTransfer extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
-  tranDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
   memo?: string;
   location?: PlatformCore.RecordRef;
   inventoryList?: BinTransferInventoryList;
@@ -139,7 +133,7 @@ export class BinTransfer extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: BinTransfer) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.tranDate = props.tranDate;
@@ -154,24 +148,23 @@ export class BinTransfer extends PlatformCore.Record {
   }
 }
 
-export class WorkOrderIssueComponentList extends SoapTypes.Base {
+export class WorkOrderIssueComponentList {
   workOrderIssueComponent?: WorkOrderIssueComponent[];
   replaceAll?: boolean;
   constructor(props: WorkOrderIssueComponentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.workOrderIssueComponent = props.workOrderIssueComponent;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class WorkOrderIssue extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   tranId?: string;
   item?: PlatformCore.RecordRef;
   createdFrom?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   memo?: string;
   subsidiary?: PlatformCore.RecordRef;
@@ -187,7 +180,7 @@ export class WorkOrderIssue extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: WorkOrderIssue) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -212,57 +205,52 @@ export class WorkOrderIssue extends PlatformCore.Record {
   }
 }
 
-export class BinWorksheetItemList extends SoapTypes.Base {
+export class BinWorksheetItemList {
   item?: BinWorksheetItem[];
   replaceAll?: boolean;
   constructor(props: BinWorksheetItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class WorkOrderCompletionOperationList extends SoapTypes.Base {
+export class WorkOrderCompletionOperationList {
   workOrderCompletionOperation?: WorkOrderCompletionOperation[];
   replaceAll?: boolean;
   constructor(props: WorkOrderCompletionOperationList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.workOrderCompletionOperation = props.workOrderCompletionOperation;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InterCompanyTransferOrderItemList extends SoapTypes.Base {
+export class InterCompanyTransferOrderItemList {
   item?: InterCompanyTransferOrderItem[];
   replaceAll?: boolean;
   constructor(props: InterCompanyTransferOrderItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class PartnersList extends SoapTypes.Base {
+export class PartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: PartnersList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class WorkOrderItemList extends SoapTypes.Base {
+export class WorkOrderItemList {
   item?: WorkOrderItem[];
   replaceAll?: boolean;
   constructor(props: WorkOrderItemList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class BinWorksheetItem extends SoapTypes.Base {
+export class BinWorksheetItem {
   item?: PlatformCore.RecordRef;
   itemName?: string;
   description?: string;
@@ -276,7 +264,6 @@ export class BinWorksheetItem extends SoapTypes.Base {
   itemPreferBin?: string;
   itemBlank?: string;
   constructor(props: BinWorksheetItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.itemName = props.itemName;
     this.description = props.description;
@@ -292,7 +279,7 @@ export class BinWorksheetItem extends SoapTypes.Base {
   }
 }
 
-export class WorkOrderCompletionComponent extends SoapTypes.Base {
+export class WorkOrderCompletionComponent {
   item?: PlatformCore.RecordRef;
   operationSequenceNumber?: number;
   quantityPer?: number;
@@ -300,7 +287,6 @@ export class WorkOrderCompletionComponent extends SoapTypes.Base {
   componentInventoryDetail?: PlatformCommon.InventoryDetail;
   lineNumber?: number;
   constructor(props: WorkOrderCompletionComponent) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
     this.quantityPer = props.quantityPer;
@@ -311,12 +297,12 @@ export class WorkOrderCompletionComponent extends SoapTypes.Base {
 }
 
 export class AssemblyBuild extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  expirationDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  expirationDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   createdFrom?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   tranId?: string;
   item?: PlatformCore.RecordRef;
@@ -341,7 +327,7 @@ export class AssemblyBuild extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: AssemblyBuild) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.expirationDate = props.expirationDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -375,8 +361,8 @@ export class AssemblyBuild extends PlatformCore.Record {
 }
 
 export class TransferOrder extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   shippingCost?: number;
   subTotal?: number;
@@ -385,7 +371,7 @@ export class TransferOrder extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   source?: string;
   orderStatus?: TransactionsInventoryTypes.TransferOrderOrderStatus;
@@ -399,7 +385,7 @@ export class TransferOrder extends PlatformCore.Record {
   location?: PlatformCore.RecordRef;
   transferLocation?: PlatformCore.RecordRef;
   memo?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   trackingNumbers?: string;
   linkedTrackingNumbers?: string;
@@ -418,7 +404,7 @@ export class TransferOrder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TransferOrder) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -464,14 +450,13 @@ export class TransferOrder extends PlatformCore.Record {
   }
 }
 
-export class InventoryCostRevaluationCostComponent extends SoapTypes.Base {
+export class InventoryCostRevaluationCostComponent {
   cost?: number;
   componentItem?: PlatformCore.RecordRef;
   quantity?: number;
   units?: PlatformCore.RecordRef;
   costCategory?: PlatformCore.RecordRef;
   constructor(props: InventoryCostRevaluationCostComponent) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.cost = props.cost;
     this.componentItem = props.componentItem;
     this.quantity = props.quantity;
@@ -482,10 +467,10 @@ export class InventoryCostRevaluationCostComponent extends SoapTypes.Base {
 
 export class InventoryAdjustment extends PlatformCore.Record {
   postingPeriod?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
-  createdDate?: SoapTypes.Dateish;
+  tranDate?: string;
+  createdDate?: string;
   tranId?: string;
-  lastModifiedDate?: SoapTypes.Dateish;
+  lastModifiedDate?: string;
   subsidiary?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
   customForm?: PlatformCore.RecordRef;
@@ -502,7 +487,7 @@ export class InventoryAdjustment extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InventoryAdjustment) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.postingPeriod = props.postingPeriod;
     this.tranDate = props.tranDate;
     this.createdDate = props.createdDate;
@@ -526,17 +511,16 @@ export class InventoryAdjustment extends PlatformCore.Record {
   }
 }
 
-export class BinTransferInventoryList extends SoapTypes.Base {
+export class BinTransferInventoryList {
   inventory?: BinTransferInventory[];
   replaceAll?: boolean;
   constructor(props: BinTransferInventoryList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class InterCompanyTransferOrderItem extends SoapTypes.Base {
+export class InterCompanyTransferOrderItem {
   item?: PlatformCore.RecordRef;
   line?: number;
   quantityAvailable?: number;
@@ -559,7 +543,6 @@ export class InterCompanyTransferOrderItem extends SoapTypes.Base {
   averageCost?: number;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: InterCompanyTransferOrderItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.line = props.line;
     this.quantityAvailable = props.quantityAvailable;
@@ -584,14 +567,13 @@ export class InterCompanyTransferOrderItem extends SoapTypes.Base {
   }
 }
 
-export class WorkOrderIssueComponent extends SoapTypes.Base {
+export class WorkOrderIssueComponent {
   item?: PlatformCore.RecordRef;
   operationSequenceNumber?: number;
   quantity?: number;
   componentInventoryDetail?: PlatformCommon.InventoryDetail;
   lineNumber?: number;
   constructor(props: WorkOrderIssueComponent) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
     this.quantity = props.quantity;
@@ -600,32 +582,30 @@ export class WorkOrderIssueComponent extends SoapTypes.Base {
   }
 }
 
-export class SalesTeamList extends SoapTypes.Base {
+export class SalesTeamList {
   salesTeam?: PlatformCommon.CustomerSalesTeam[];
   replaceAll?: boolean;
   constructor(props: SalesTeamList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class AssemblyComponentList extends SoapTypes.Base {
+export class AssemblyComponentList {
   component?: AssemblyComponent[];
   replaceAll?: boolean;
   constructor(props: AssemblyComponentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.component = props.component;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class InventoryCostRevaluation extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   tranId?: string;
   account?: PlatformCore.RecordRef;
@@ -643,7 +623,7 @@ export class InventoryCostRevaluation extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InventoryCostRevaluation) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -669,10 +649,10 @@ export class InventoryCostRevaluation extends PlatformCore.Record {
 }
 
 export class AssemblyUnbuild extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   tranId?: string;
   item?: PlatformCore.RecordRef;
@@ -696,7 +676,7 @@ export class AssemblyUnbuild extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: AssemblyUnbuild) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -726,7 +706,7 @@ export class AssemblyUnbuild extends PlatformCore.Record {
   }
 }
 
-export class AssemblyComponent extends SoapTypes.Base {
+export class AssemblyComponent {
   item?: PlatformCore.RecordRef;
   quantity?: number;
   quantityOnHand?: number;
@@ -735,7 +715,6 @@ export class AssemblyComponent extends SoapTypes.Base {
   binNumbers?: string;
   lineNumber?: number;
   constructor(props: AssemblyComponent) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.quantity = props.quantity;
     this.quantityOnHand = props.quantityOnHand;
@@ -746,17 +725,16 @@ export class AssemblyComponent extends SoapTypes.Base {
   }
 }
 
-export class InventoryAdjustmentInventoryList extends SoapTypes.Base {
+export class InventoryAdjustmentInventoryList {
   inventory?: InventoryAdjustmentInventory[];
   replaceAll?: boolean;
   constructor(props: InventoryAdjustmentInventoryList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
 
-export class TransferOrderItem extends SoapTypes.Base {
+export class TransferOrderItem {
   item?: PlatformCore.RecordRef;
   line?: number;
   quantityAvailable?: number;
@@ -782,11 +760,10 @@ export class TransferOrderItem extends SoapTypes.Base {
   clazz?: PlatformCore.RecordRef;
   lastPurchasePrice?: number;
   averageCost?: number;
-  expectedShipDate?: SoapTypes.Dateish;
-  expectedReceiptDate?: SoapTypes.Dateish;
+  expectedShipDate?: string;
+  expectedReceiptDate?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: TransferOrderItem) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.item = props.item;
     this.line = props.line;
     this.quantityAvailable = props.quantityAvailable;
@@ -818,19 +795,18 @@ export class TransferOrderItem extends SoapTypes.Base {
   }
 }
 
-export class InventoryCostRevaluationCostComponentList extends SoapTypes.Base {
+export class InventoryCostRevaluationCostComponentList {
   costComponent?: InventoryCostRevaluationCostComponent[];
   replaceAll?: boolean;
   constructor(props: InventoryCostRevaluationCostComponentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.costComponent = props.costComponent;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class WorkOrder extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   manufacturingRouting?: PlatformCore.RecordRef;
   autoCalculateLag?: boolean;
@@ -844,7 +820,7 @@ export class WorkOrder extends PlatformCore.Record {
   quantity?: number;
   billOfMaterials?: PlatformCore.RecordRef;
   units?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   orderStatus?: TransactionsInventoryTypes.WorkOrderOrderStatus;
   firmed?: boolean;
   memo?: string;
@@ -862,8 +838,8 @@ export class WorkOrder extends PlatformCore.Record {
   buildable?: number;
   options?: PlatformCore.CustomFieldList;
   built?: number;
-  startDate?: SoapTypes.Dateish;
-  endDate?: SoapTypes.Dateish;
+  startDate?: string;
+  endDate?: string;
   revision?: PlatformCore.RecordRef;
   billOfMaterialsRevision?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
@@ -872,7 +848,7 @@ export class WorkOrder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: WorkOrder) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -918,19 +894,18 @@ export class WorkOrder extends PlatformCore.Record {
   }
 }
 
-export class InventoryTransferInventoryList extends SoapTypes.Base {
+export class InventoryTransferInventoryList {
   inventory?: InventoryTransferInventory[];
   replaceAll?: boolean;
   constructor(props: InventoryTransferInventoryList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class WorkOrderCompletion extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   tranId?: string;
   item?: PlatformCore.RecordRef;
@@ -942,7 +917,7 @@ export class WorkOrderCompletion extends PlatformCore.Record {
   total?: number;
   createdFrom?: PlatformCore.RecordRef;
   inventoryDetail?: PlatformCommon.InventoryDetail;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   memo?: string;
   subsidiary?: PlatformCore.RecordRef;
@@ -960,7 +935,7 @@ export class WorkOrderCompletion extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: WorkOrderCompletion) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -995,9 +970,9 @@ export class WorkOrderCompletion extends PlatformCore.Record {
 }
 
 export class InventoryTransfer extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
-  tranDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   tranId?: string;
   memo?: string;
@@ -1011,7 +986,7 @@ export class InventoryTransfer extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InventoryTransfer) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.tranDate = props.tranDate;
@@ -1030,7 +1005,7 @@ export class InventoryTransfer extends PlatformCore.Record {
   }
 }
 
-export class BinTransferInventory extends SoapTypes.Base {
+export class BinTransferInventory {
   line?: number;
   item?: PlatformCore.RecordRef;
   description?: string;
@@ -1041,7 +1016,6 @@ export class BinTransferInventory extends SoapTypes.Base {
   fromBins?: string;
   toBins?: string;
   constructor(props: BinTransferInventory) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.item = props.item;
     this.description = props.description;
@@ -1054,7 +1028,7 @@ export class BinTransferInventory extends SoapTypes.Base {
   }
 }
 
-export class WorkOrderCompletionOperation extends SoapTypes.Base {
+export class WorkOrderCompletionOperation {
   operationSequence?: number;
   operationName?: string;
   workCenter?: string;
@@ -1070,7 +1044,6 @@ export class WorkOrderCompletionOperation extends SoapTypes.Base {
   machineRunTime?: number;
   laborRunTime?: number;
   constructor(props: WorkOrderCompletionOperation) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.operationSequence = props.operationSequence;
     this.operationName = props.operationName;
     this.workCenter = props.workCenter;
@@ -1088,20 +1061,19 @@ export class WorkOrderCompletionOperation extends SoapTypes.Base {
   }
 }
 
-export class WorkOrderCompletionComponentList extends SoapTypes.Base {
+export class WorkOrderCompletionComponentList {
   workOrderCompletionComponent?: WorkOrderCompletionComponent[];
   replaceAll?: boolean;
   constructor(props: WorkOrderCompletionComponentList) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.workOrderCompletionComponent = props.workOrderCompletionComponent;
     this.replaceAll = props.replaceAll;
   }
 }
 
 export class BinWorksheet extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
-  tranDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
   memo?: string;
   location?: PlatformCore.RecordRef;
   tranId?: string;
@@ -1110,7 +1082,7 @@ export class BinWorksheet extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: BinWorksheet) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.tranDate = props.tranDate;
@@ -1125,8 +1097,8 @@ export class BinWorksheet extends PlatformCore.Record {
 }
 
 export class WorkOrderClose extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   tranId?: string;
   item?: PlatformCore.RecordRef;
@@ -1134,7 +1106,7 @@ export class WorkOrderClose extends PlatformCore.Record {
   orderQuantity?: number;
   scrapQuantity?: number;
   createdFrom?: PlatformCore.RecordRef;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   postingPeriod?: PlatformCore.RecordRef;
   memo?: string;
   subsidiary?: PlatformCore.RecordRef;
@@ -1146,7 +1118,7 @@ export class WorkOrderClose extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: WorkOrderClose) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1171,8 +1143,8 @@ export class WorkOrderClose extends PlatformCore.Record {
 }
 
 export class InterCompanyTransferOrder extends PlatformCore.Record {
-  createdDate?: SoapTypes.Dateish;
-  lastModifiedDate?: SoapTypes.Dateish;
+  createdDate?: string;
+  lastModifiedDate?: string;
   customForm?: PlatformCore.RecordRef;
   shippingCost?: number;
   subTotal?: number;
@@ -1181,7 +1153,7 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   shipIsResidential?: boolean;
   shipAddressList?: PlatformCore.RecordRef;
   fob?: string;
-  tranDate?: SoapTypes.Dateish;
+  tranDate?: string;
   tranId?: string;
   source?: string;
   orderStatus?: TransactionsInventoryTypes.TransferOrderOrderStatus;
@@ -1195,7 +1167,7 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   location?: PlatformCore.RecordRef;
   transferLocation?: PlatformCore.RecordRef;
   memo?: string;
-  shipDate?: SoapTypes.Dateish;
+  shipDate?: string;
   shipMethod?: PlatformCore.RecordRef;
   trackingNumbers?: string;
   linkedTrackingNumbers?: string;
@@ -1214,7 +1186,7 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InterCompanyTransferOrder) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
+    super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1260,7 +1232,7 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   }
 }
 
-export class InventoryTransferInventory extends SoapTypes.Base {
+export class InventoryTransferInventory {
   line?: number;
   item?: PlatformCore.RecordRef;
   description?: string;
@@ -1273,7 +1245,6 @@ export class InventoryTransferInventory extends SoapTypes.Base {
   inventoryDetail?: PlatformCommon.InventoryDetail;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: InventoryTransferInventory) {
-    super(SoapTypes.captureMappingsName(props, mappingsName));
     this.line = props.line;
     this.item = props.item;
     this.description = props.description;
