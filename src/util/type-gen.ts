@@ -80,11 +80,12 @@ function emptySuperClass(className: string): boolean {
 }
 
 export default class TypeGenerator {
-  private readonly processedModules: Record<string, FileModule> = {};
+  private readonly processedModules: Record<string, FileModule>;
   private readonly mappingsDir: string;
   private readonly targetDirectory: string;
 
   constructor(mappingsDir: string, targetDirectory: string) {
+    this.processedModules = {};
     this.mappingsDir = mappingsDir;
     this.targetDirectory = targetDirectory;
   }
@@ -124,11 +125,11 @@ export default class TypeGenerator {
 
     mappings.sortedTypeInfos.forEach((typeInfo) => {
       if (this.isEnumTypeInfo(typeInfo)) {
-        this.writeEnumType(typeInfo, write);
+        this.writeUnion(typeInfo, write);
       } else if (typeInfo.propertyInfos && this.isSimpleSearchValue(typeInfo)) {
-        this.writeEntityTypeAlias(typeInfo, typeInfo.propertyInfos[0], write);
+        this.writeTypeAlias(typeInfo, typeInfo.propertyInfos[0], write);
       } else {
-        this.writeEntityType(typeInfo, write);
+        this.writeClass(typeInfo, write);
       }
     });
   }
@@ -141,13 +142,13 @@ export default class TypeGenerator {
     );
   }
 
-  private writeEnumType(typeInfo: EnumTypeInfo, write: WriteFn) {
+  private writeUnion(typeInfo: EnumTypeInfo, write: WriteFn) {
     write("\nexport type %s =", typeInfo.localName);
     typeInfo.values.slice(0, -1).forEach((value) => write('  "%s" |', value));
     typeInfo.values.slice(-1).forEach((value) => write('  "%s";', value));
   }
 
-  private writeEntityTypeAlias(
+  private writeTypeAlias(
     typeInfo: EntityTypeInfo,
     propertyInfo: PropertyInfo,
     write: WriteFn
@@ -166,27 +167,23 @@ export default class TypeGenerator {
     );
   }
 
-  private writeEntityType(typeInfo: EntityTypeInfo, write: WriteFn) {
-    const superClass = this.mappedType(typeInfo.baseTypeInfo);
-    if (superClass) {
-      write("\nexport class %s extends %s {", typeInfo.localName, superClass);
-    } else {
-      write("\nexport class %s {", typeInfo.localName);
-    }
-
-    const constructorProps: string[] = [];
+  private writeClass(typeInfo: EntityTypeInfo, write: WriteFn) {
+    const classProps: string[] = [];
+    const constructorAssignments: string[] = [];
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
       const optionalModifier = propertyInfo.required ? "" : "?";
       const collectionModifier = propertyInfo.collection ? "[]" : "";
       const propertyType = this.mappedType(propertyInfo.typeInfo) || "string";
-      write(
-        "  %s%s: %s%s;",
-        propertyInfo.name,
-        optionalModifier,
-        propertyType,
-        collectionModifier
+      classProps.push(
+        util.format(
+          "  %s%s: %s%s;",
+          propertyInfo.name,
+          optionalModifier,
+          propertyType,
+          collectionModifier
+        )
       );
-      constructorProps.push(
+      constructorAssignments.push(
         util.format(
           "    this.%s = props.%s;",
           propertyInfo.name,
@@ -195,8 +192,31 @@ export default class TypeGenerator {
       );
     });
 
-    if (constructorProps.length > 0) {
-      write("  constructor(props: %s) {", typeInfo.localName);
+    const superClass = this.mappedType(typeInfo.baseTypeInfo);
+
+    // Write props type only if there are props for the associated class.
+    if (classProps.length > 0) {
+      write("\nexport type %sProps = {", typeInfo.localName);
+      write(classProps.join("\n"));
+      if (superClass && !emptySuperClass(superClass)) {
+        write("\n} & %sProps", superClass);
+      } else {
+        write("\n}");
+      }
+    }
+
+    // Add a super class when there is one.
+    if (superClass) {
+      write("\nexport class %s extends %s {", typeInfo.localName, superClass);
+    } else {
+      write("\nexport class %s {", typeInfo.localName);
+    }
+
+    write(classProps.join("\n"));
+
+    // Write constructor assignments where there are any.
+    if (constructorAssignments.length > 0) {
+      write("  constructor(props: %sProps) {", typeInfo.localName);
       if (superClass) {
         if (emptySuperClass(superClass)) {
           write("    super();");
@@ -205,7 +225,7 @@ export default class TypeGenerator {
         }
       }
 
-      write(constructorProps.join("\n"));
+      write(constructorAssignments.join("\n"));
       write("  }\n");
     }
     write("}\n");
@@ -240,7 +260,7 @@ export default class TypeGenerator {
 
     return {
       ...mappings,
-      sortedTypeInfos: sortedTypeInfos,
+      sortedTypeInfos,
     };
   }
 

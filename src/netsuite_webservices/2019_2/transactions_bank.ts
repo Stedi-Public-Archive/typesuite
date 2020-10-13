@@ -2,14 +2,28 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type CheckItemListProps = {
+  item?: CheckItem[];
+  replaceAll?: boolean;
+};
+
 export class CheckItemList {
   item?: CheckItem[];
   replaceAll?: boolean;
-  constructor(props: CheckItemList) {
+  constructor(props: CheckItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type DepositCashBackProps = {
+  amount?: number;
+  account?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+};
 
 export class DepositCashBack {
   amount?: number;
@@ -18,7 +32,7 @@ export class DepositCashBack {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   memo?: string;
-  constructor(props: DepositCashBack) {
+  constructor(props: DepositCashBackProps) {
     this.amount = props.amount;
     this.account = props.account;
     this.department = props.department;
@@ -28,23 +42,49 @@ export class DepositCashBack {
   }
 }
 
+export type CheckExpenseListProps = {
+  expense?: CheckExpense[];
+  replaceAll?: boolean;
+};
+
 export class CheckExpenseList {
   expense?: CheckExpense[];
   replaceAll?: boolean;
-  constructor(props: CheckExpenseList) {
+  constructor(props: CheckExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type DepositPaymentListProps = {
+  depositPayment?: DepositPayment[];
+  replaceAll?: boolean;
+};
+
 export class DepositPaymentList {
   depositPayment?: DepositPayment[];
   replaceAll?: boolean;
-  constructor(props: DepositPaymentList) {
+  constructor(props: DepositPaymentListProps) {
     this.depositPayment = props.depositPayment;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type DepositPaymentProps = {
+  deposit?: boolean;
+  id?: number;
+  docDate?: string;
+  type?: string;
+  docNumber?: string;
+  memo?: string;
+  paymentMethod?: PlatformCore.RecordRef;
+  refNum?: string;
+  entity?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  transactionAmount?: number;
+  paymentAmount?: number;
+  lineId?: number;
+};
 
 export class DepositPayment {
   deposit?: boolean;
@@ -60,7 +100,7 @@ export class DepositPayment {
   transactionAmount?: number;
   paymentAmount?: number;
   lineId?: number;
-  constructor(props: DepositPayment) {
+  constructor(props: DepositPaymentProps) {
     this.deposit = props.deposit;
     this.id = props.id;
     this.docDate = props.docDate;
@@ -76,6 +116,34 @@ export class DepositPayment {
     this.lineId = props.lineId;
   }
 }
+
+export type CheckItemProps = {
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  line?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  binNumbers?: string;
+  serialNumbers?: string;
+  expirationDate?: string;
+  rate?: string;
+  taxCode?: PlatformCore.RecordRef;
+  amount?: number;
+  options?: PlatformCore.CustomFieldList;
+  taxRate1?: number;
+  taxRate2?: number;
+  department?: PlatformCore.RecordRef;
+  grossAmt?: number;
+  clazz?: PlatformCore.RecordRef;
+  tax1Amt?: number;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  landedCost?: PlatformCommon.LandedCost;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CheckItem {
   item?: PlatformCore.RecordRef;
@@ -103,7 +171,7 @@ export class CheckItem {
   isBillable?: boolean;
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CheckItem) {
+  constructor(props: CheckItemProps) {
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -132,23 +200,52 @@ export class CheckItem {
   }
 }
 
+export type CheckLandedCostListProps = {
+  landedCost?: PlatformCommon.LandedCostSummary[];
+  replaceAll?: boolean;
+};
+
 export class CheckLandedCostList {
   landedCost?: PlatformCommon.LandedCostSummary[];
   replaceAll?: boolean;
-  constructor(props: CheckLandedCostList) {
+  constructor(props: CheckLandedCostListProps) {
     this.landedCost = props.landedCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type DepositCashBackListProps = {
+  depositCashBack?: DepositCashBack[];
+  replaceAll?: boolean;
+};
+
 export class DepositCashBackList {
   depositCashBack?: DepositCashBack[];
   replaceAll?: boolean;
-  constructor(props: DepositCashBackList) {
+  constructor(props: DepositCashBackListProps) {
     this.depositCashBack = props.depositCashBack;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CheckExpenseProps = {
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  tax1Amt?: number;
+  taxRate2?: number;
+  grossAmt?: number;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CheckExpense {
   line?: number;
@@ -167,7 +264,7 @@ export class CheckExpense {
   taxRate2?: number;
   grossAmt?: number;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CheckExpense) {
+  constructor(props: CheckExpenseProps) {
     this.line = props.line;
     this.category = props.category;
     this.account = props.account;
@@ -186,6 +283,32 @@ export class CheckExpense {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type DepositProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  currencyName?: string;
+  tranId?: string;
+  account?: PlatformCore.RecordRef;
+  total?: number;
+  exchangeRate?: number;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  toBePrinted?: boolean;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  paymentList?: DepositPaymentList;
+  otherList?: DepositOtherList;
+  cashBackList?: DepositCashBackList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Deposit extends PlatformCore.Record {
   createdDate?: string;
@@ -211,7 +334,7 @@ export class Deposit extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Deposit) {
+  constructor(props: DepositProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -239,14 +362,56 @@ export class Deposit extends PlatformCore.Record {
   }
 }
 
+export type DepositOtherListProps = {
+  depositOther?: DepositOther[];
+  replaceAll?: boolean;
+};
+
 export class DepositOtherList {
   depositOther?: DepositOther[];
   replaceAll?: boolean;
-  constructor(props: DepositOtherList) {
+  constructor(props: DepositOtherListProps) {
     this.depositOther = props.depositOther;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CheckProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  status?: string;
+  customForm?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  balance?: number;
+  entity?: PlatformCore.RecordRef;
+  address?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranDate?: string;
+  currency?: PlatformCore.RecordRef;
+  voidJournal?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  toBePrinted?: boolean;
+  tranId?: string;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  taxTotal?: number;
+  clazz?: PlatformCore.RecordRef;
+  tax2Total?: number;
+  location?: PlatformCore.RecordRef;
+  userTotal?: number;
+  landedCostMethod?: PlatformCommonTypes.LandedCostMethod;
+  landedCostPerLine?: boolean;
+  transactionNumber?: string;
+  expenseList?: CheckExpenseList;
+  itemList?: CheckItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  landedCostsList?: CheckLandedCostList;
+  billPay?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Check extends PlatformCore.Record {
   createdDate?: string;
@@ -283,7 +448,7 @@ export class Check extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Check) {
+  constructor(props: CheckProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -322,6 +487,18 @@ export class Check extends PlatformCore.Record {
   }
 }
 
+export type DepositOtherProps = {
+  entity?: PlatformCore.RecordRef;
+  amount?: number;
+  account?: PlatformCore.RecordRef;
+  paymentMethod?: PlatformCore.RecordRef;
+  refNum?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+};
+
 export class DepositOther {
   entity?: PlatformCore.RecordRef;
   amount?: number;
@@ -332,7 +509,7 @@ export class DepositOther {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   memo?: string;
-  constructor(props: DepositOther) {
+  constructor(props: DepositOtherProps) {
     this.entity = props.entity;
     this.amount = props.amount;
     this.account = props.account;

@@ -3,14 +3,33 @@ import * as PlatformCommon from "./platform_common";
 import * as TransactionsCustomersTypes from "./transactions_customers_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type ReturnAuthorizationSalesTeamListProps = {
+  salesTeam?: ReturnAuthorizationSalesTeam[];
+  replaceAll?: boolean;
+};
+
 export class ReturnAuthorizationSalesTeamList {
   salesTeam?: ReturnAuthorizationSalesTeam[];
   replaceAll?: boolean;
-  constructor(props: ReturnAuthorizationSalesTeamList) {
+  constructor(props: ReturnAuthorizationSalesTeamListProps) {
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CreditMemoApplyProps = {
+  apply?: boolean;
+  doc?: number;
+  applyDate?: string;
+  job?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+  line?: number;
+};
 
 export class CreditMemoApply {
   apply?: boolean;
@@ -24,7 +43,7 @@ export class CreditMemoApply {
   currency?: string;
   amount?: number;
   line?: number;
-  constructor(props: CreditMemoApply) {
+  constructor(props: CreditMemoApplyProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.applyDate = props.applyDate;
@@ -39,14 +58,32 @@ export class CreditMemoApply {
   }
 }
 
+export type CustomerPaymentDepositListProps = {
+  deposit?: CustomerPaymentDeposit[];
+  replaceAll?: boolean;
+};
+
 export class CustomerPaymentDepositList {
   deposit?: CustomerPaymentDeposit[];
   replaceAll?: boolean;
-  constructor(props: CustomerPaymentDepositList) {
+  constructor(props: CustomerPaymentDepositListProps) {
     this.deposit = props.deposit;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomerRefundApplyProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  applyDate?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+};
 
 export class CustomerRefundApply {
   apply?: boolean;
@@ -59,7 +96,7 @@ export class CustomerRefundApply {
   due?: number;
   currency?: string;
   amount?: number;
-  constructor(props: CustomerRefundApply) {
+  constructor(props: CustomerRefundApplyProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -72,6 +109,111 @@ export class CustomerRefundApply {
     this.amount = props.amount;
   }
 }
+
+export type ReturnAuthorizationProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  vatRegNum?: string;
+  tranDate?: string;
+  tranId?: string;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  source?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  intercoTransaction?: PlatformCore.RecordRef;
+  intercoStatus?: PlatformCommonTypes.IntercoStatus;
+  job?: PlatformCore.RecordRef;
+  partner?: PlatformCore.RecordRef;
+  otherRefNum?: string;
+  leadSource?: PlatformCore.RecordRef;
+  memo?: string;
+  drAccount?: PlatformCore.RecordRef;
+  fxAccount?: PlatformCore.RecordRef;
+  salesEffectiveDate?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  totalCostEstimate?: number;
+  estGrossProfit?: number;
+  estGrossProfitPercent?: number;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
+  excludeCommission?: boolean;
+  exchangeRate?: number;
+  currencyName?: string;
+  discountItem?: PlatformCore.RecordRef;
+  discountRate?: string;
+  taxItem?: PlatformCore.RecordRef;
+  taxRate?: number;
+  toBePrinted?: boolean;
+  toBeEmailed?: boolean;
+  toBeFaxed?: boolean;
+  messageSel?: PlatformCore.RecordRef;
+  message?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  shipAddressList?: PlatformCore.RecordRef;
+  shipAddress?: string;
+  salesGroup?: PlatformCore.RecordRef;
+  syncSalesTeams?: boolean;
+  revenueStatus?: PlatformCommonTypes.RevenueStatus;
+  recognizedRevenue?: number;
+  deferredRevenue?: number;
+  revRecOnRevCommitment?: boolean;
+  revCommitStatus?: PlatformCommonTypes.RevenueCommitStatus;
+  paymentMethod?: PlatformCore.RecordRef;
+  creditCard?: PlatformCore.RecordRef;
+  ccNumber?: string;
+  altSalesTotal?: number;
+  ccExpireDate?: string;
+  ccName?: string;
+  ccStreet?: string;
+  ccZipCode?: string;
+  ccApproved?: boolean;
+  pnRefNum?: string;
+  subTotal?: number;
+  discountTotal?: number;
+  total?: number;
+  creditCardProcessor?: PlatformCore.RecordRef;
+  payPalAuthId?: string;
+  payPalProcess?: boolean;
+  email?: string;
+  fax?: string;
+  debitCardIssueNo?: string;
+  isTaxable?: boolean;
+  promoCode?: PlatformCore.RecordRef;
+  status?: string;
+  taxTotal?: number;
+  tax2Total?: number;
+  validFrom?: string;
+  orderStatus?: TransactionsCustomersTypes.ReturnAuthorizationOrderStatus;
+  salesRep?: PlatformCore.RecordRef;
+  giftCert?: PlatformCore.RecordRef;
+  contribPct?: string;
+  giftCertTotal?: number;
+  giftCertApplied?: number;
+  giftCertAvailable?: number;
+  tranIsVsoeBundle?: boolean;
+  vsoeAutoCalc?: boolean;
+  syncPartnerTeams?: boolean;
+  itemList?: ReturnAuthorizationItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  salesTeamList?: ReturnAuthorizationSalesTeamList;
+  partnersList?: ReturnAuthorizationPartnersList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ReturnAuthorization extends PlatformCore.Record {
   createdDate?: string;
@@ -176,7 +318,7 @@ export class ReturnAuthorization extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ReturnAuthorization) {
+  constructor(props: ReturnAuthorizationProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -283,14 +425,47 @@ export class ReturnAuthorization extends PlatformCore.Record {
   }
 }
 
+export type CustomerRefundApplyListProps = {
+  apply?: CustomerRefundApply[];
+  replaceAll?: boolean;
+};
+
 export class CustomerRefundApplyList {
   apply?: CustomerRefundApply[];
   replaceAll?: boolean;
-  constructor(props: CustomerRefundApplyList) {
+  constructor(props: CustomerRefundApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type DepositApplicationProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  arAcct?: PlatformCore.RecordRef;
+  status?: string;
+  customer?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  deposit?: PlatformCore.RecordRef;
+  depDate?: string;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  memo?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  total?: number;
+  department?: PlatformCore.RecordRef;
+  applied?: number;
+  clazz?: PlatformCore.RecordRef;
+  unapplied?: number;
+  location?: PlatformCore.RecordRef;
+  tranId?: string;
+  applyList?: DepositApplicationApplyList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class DepositApplication extends PlatformCore.Record {
   createdDate?: string;
@@ -318,7 +493,7 @@ export class DepositApplication extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: DepositApplication) {
+  constructor(props: DepositApplicationProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -348,14 +523,36 @@ export class DepositApplication extends PlatformCore.Record {
   }
 }
 
+export type CustomerPaymentApplyListProps = {
+  apply?: CustomerPaymentApply[];
+  replaceAll?: boolean;
+};
+
 export class CustomerPaymentApplyList {
   apply?: CustomerPaymentApply[];
   replaceAll?: boolean;
-  constructor(props: CustomerPaymentApplyList) {
+  constructor(props: CustomerPaymentApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ChargeSearchProps = {
+  basic?: PlatformCommon.ChargeSearchBasic;
+  billingAccountJoin?: PlatformCommon.BillingAccountSearchBasic;
+  billingScheduleJoin?: PlatformCommon.BillingScheduleSearchBasic;
+  chargeEmployeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  invoiceJoin?: PlatformCommon.TransactionSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  salesOrderJoin?: PlatformCommon.TransactionSearchBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchBasic;
+  usageJoin?: PlatformCommon.UsageSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ChargeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ChargeSearchBasic;
@@ -372,7 +569,7 @@ export class ChargeSearch extends PlatformCore.SearchRecord {
   usageJoin?: PlatformCommon.UsageSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ChargeSearch) {
+  constructor(props: ChargeSearchProps) {
     super();
     this.basic = props.basic;
     this.billingAccountJoin = props.billingAccountJoin;
@@ -390,6 +587,107 @@ export class ChargeSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type CreditMemoProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  vatRegNum?: string;
+  tranDate?: string;
+  tranId?: string;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  job?: PlatformCore.RecordRef;
+  salesRep?: PlatformCore.RecordRef;
+  partner?: PlatformCore.RecordRef;
+  contribPct?: string;
+  otherRefNum?: string;
+  memo?: string;
+  excludeCommission?: boolean;
+  leadSource?: PlatformCore.RecordRef;
+  balance?: number;
+  account?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  onCreditHold?: string;
+  amountPaid?: number;
+  salesEffectiveDate?: string;
+  totalCostEstimate?: number;
+  estGrossProfit?: number;
+  estGrossProfitPercent?: number;
+  currencyName?: string;
+  promoCode?: PlatformCore.RecordRef;
+  amountRemaining?: number;
+  discountItem?: PlatformCore.RecordRef;
+  source?: string;
+  discountRate?: string;
+  isTaxable?: boolean;
+  taxItem?: PlatformCore.RecordRef;
+  taxRate?: number;
+  unapplied?: number;
+  autoApply?: boolean;
+  applied?: number;
+  toBePrinted?: boolean;
+  toBeEmailed?: boolean;
+  email?: string;
+  toBeFaxed?: boolean;
+  fax?: string;
+  messageSel?: PlatformCore.RecordRef;
+  message?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  shipMethod?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  shippingTax1Rate?: number;
+  shippingTaxCode?: PlatformCore.RecordRef;
+  handlingTaxCode?: PlatformCore.RecordRef;
+  shippingTax2Rate?: string;
+  handlingTax1Rate?: number;
+  handlingTax2Rate?: string;
+  handlingCost?: number;
+  subTotal?: number;
+  discountTotal?: number;
+  revenueStatus?: PlatformCommonTypes.RevenueStatus;
+  recognizedRevenue?: number;
+  deferredRevenue?: number;
+  revRecOnRevCommitment?: boolean;
+  taxTotal?: number;
+  tax2Total?: number;
+  altShippingCost?: number;
+  altHandlingCost?: number;
+  isMultiShipTo?: boolean;
+  total?: number;
+  salesGroup?: PlatformCore.RecordRef;
+  syncSalesTeams?: boolean;
+  status?: string;
+  giftCert?: PlatformCore.RecordRef;
+  giftCertTotal?: number;
+  giftCertApplied?: number;
+  giftCertAvailable?: number;
+  tranIsVsoeBundle?: boolean;
+  vsoeAutoCalc?: boolean;
+  syncPartnerTeams?: boolean;
+  salesTeamList?: CreditMemoSalesTeamList;
+  itemList?: CreditMemoItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  partnersList?: CreditMemoPartnersList;
+  applyList?: CreditMemoApplyList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CreditMemo extends PlatformCore.Record {
   createdDate?: string;
@@ -490,7 +788,7 @@ export class CreditMemo extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CreditMemo) {
+  constructor(props: CreditMemoProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -593,12 +891,19 @@ export class CreditMemo extends PlatformCore.Record {
   }
 }
 
+export type ChargeSearchAdvancedProps = {
+  criteria?: ChargeSearch;
+  columns?: ChargeSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ChargeSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ChargeSearch;
   columns?: ChargeSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ChargeSearchAdvanced) {
+  constructor(props: ChargeSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -607,14 +912,70 @@ export class ChargeSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type ReturnAuthorizationItemListProps = {
+  item?: ReturnAuthorizationItem[];
+  replaceAll?: boolean;
+};
+
 export class ReturnAuthorizationItemList {
   item?: ReturnAuthorizationItem[];
   replaceAll?: boolean;
-  constructor(props: ReturnAuthorizationItemList) {
+  constructor(props: ReturnAuthorizationItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CashRefundItemProps = {
+  job?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  orderLine?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  binNumbers?: string;
+  serialNumbers?: string;
+  description?: string;
+  price?: PlatformCore.RecordRef;
+  rate?: string;
+  amount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: string;
+  taxRate2?: string;
+  tax1Amt?: number;
+  grossAmt?: number;
+  isTaxable?: boolean;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
+  catchUpPeriod?: PlatformCore.RecordRef;
+  deferRevRec?: boolean;
+  giftCertFrom?: string;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  taxDetailsReference?: string;
+  giftCertRecipientName?: string;
+  giftCertRecipientEmail?: string;
+  giftCertMessage?: string;
+  taxAmount?: number;
+  giftCertNumber?: string;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeIsEstimate?: boolean;
+  vsoePrice?: number;
+  vsoeAmount?: number;
+  vsoeAllocation?: number;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  chargeType?: PlatformCore.RecordRef;
+  chargesList?: PlatformCore.RecordRefList;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CashRefundItem {
   job?: PlatformCore.RecordRef;
@@ -665,7 +1026,7 @@ export class CashRefundItem {
   chargeType?: PlatformCore.RecordRef;
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CashRefundItem) {
+  constructor(props: CashRefundItemProps) {
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -716,6 +1077,65 @@ export class CashRefundItem {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type CustomerRefundProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  status?: string;
+  transactionNumber?: string;
+  customer?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  balance?: number;
+  arAcct?: PlatformCore.RecordRef;
+  currencyName?: string;
+  exchangeRate?: number;
+  address?: string;
+  total?: number;
+  currency?: PlatformCore.RecordRef;
+  tranDate?: string;
+  voidJournal?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  paymentMethod?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  toBePrinted?: boolean;
+  tranId?: string;
+  debitCardIssueNo?: string;
+  creditCardProcessor?: PlatformCore.RecordRef;
+  chargeIt?: boolean;
+  pnRefNum?: string;
+  validFrom?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  paymentOption?: PlatformCore.RecordRef;
+  inputAuthCode?: string;
+  inputReferenceCode?: string;
+  checkNumber?: string;
+  paymentCardCsc?: string;
+  paymentProcessingProfile?: PlatformCore.RecordRef;
+  handlingMode?: TransactionsCustomersTypes.CustomerRefundHandlingMode;
+  outputAuthCode?: string;
+  outputReferenceCode?: string;
+  paymentOperation?: TransactionsCustomersTypes.CustomerRefundPaymentOperation;
+  dynamicDescriptor?: string;
+  creditCard?: PlatformCore.RecordRef;
+  ccIsPurchaseCardBin?: boolean;
+  ccNumber?: string;
+  ccProcessAsPurchaseCard?: boolean;
+  ccExpireDate?: string;
+  ccName?: string;
+  ccStreet?: string;
+  ccZipCode?: string;
+  ccApproved?: boolean;
+  applyList?: CustomerRefundApplyList;
+  depositList?: CustomerRefundDepositList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomerRefund extends PlatformCore.Record {
   createdDate?: string;
@@ -774,7 +1194,7 @@ export class CustomerRefund extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomerRefund) {
+  constructor(props: CustomerRefundProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -835,6 +1255,62 @@ export class CustomerRefund extends PlatformCore.Record {
   }
 }
 
+export type ReturnAuthorizationItemProps = {
+  job?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  orderLine?: number;
+  line?: number;
+  quantity?: number;
+  quantityReceived?: number;
+  quantityBilled?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  serialNumbers?: string;
+  price?: PlatformCore.RecordRef;
+  rate?: string;
+  amount?: number;
+  options?: PlatformCore.CustomFieldList;
+  revRecTermInMonths?: number;
+  deferRevRec?: boolean;
+  isClosed?: boolean;
+  isDropShipment?: boolean;
+  inventoryLocation?: PlatformCore.RecordRef;
+  inventorySubsidiary?: PlatformCore.RecordRef;
+  catchUpPeriod?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  taxDetailsReference?: string;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revRecSchedule?: PlatformCore.RecordRef;
+  revRecStartDate?: string;
+  revRecEndDate?: string;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  isTaxable?: boolean;
+  giftCertFrom?: string;
+  giftCertRecipientName?: string;
+  giftCertRecipientEmail?: string;
+  giftCertMessage?: string;
+  giftCertNumber?: string;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeIsEstimate?: boolean;
+  vsoePrice?: number;
+  vsoeAmount?: number;
+  altSalesAmt?: number;
+  taxAmount?: number;
+  vsoeAllocation?: number;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class ReturnAuthorizationItem {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
@@ -889,7 +1365,7 @@ export class ReturnAuthorizationItem {
   vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
   vsoeDelivered?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: ReturnAuthorizationItem) {
+  constructor(props: ReturnAuthorizationItemProps) {
     this.job = props.job;
     this.item = props.item;
     this.orderLine = props.orderLine;
@@ -946,6 +1422,18 @@ export class ReturnAuthorizationItem {
   }
 }
 
+export type CustomerPaymentDepositProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  depositDate?: string;
+  refNum?: string;
+  total?: number;
+  remaining?: number;
+  currency?: string;
+  amount?: number;
+};
+
 export class CustomerPaymentDeposit {
   apply?: boolean;
   doc?: number;
@@ -956,7 +1444,7 @@ export class CustomerPaymentDeposit {
   remaining?: number;
   currency?: string;
   amount?: number;
-  constructor(props: CustomerPaymentDeposit) {
+  constructor(props: CustomerPaymentDepositProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -968,6 +1456,77 @@ export class CustomerPaymentDeposit {
     this.amount = props.amount;
   }
 }
+
+export type CustomerPaymentProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  arAcct?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  balance?: number;
+  pending?: number;
+  currency?: PlatformCore.RecordRef;
+  payment?: number;
+  autoApply?: boolean;
+  tranDate?: string;
+  tranId?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  paymentMethod?: PlatformCore.RecordRef;
+  ccIsPurchaseCardBin?: boolean;
+  memo?: string;
+  ccProcessAsPurchaseCard?: boolean;
+  checkNum?: string;
+  currencyName?: string;
+  exchangeRate?: number;
+  creditCard?: PlatformCore.RecordRef;
+  chargeIt?: boolean;
+  ccNumber?: string;
+  ccExpireDate?: string;
+  ccName?: string;
+  ccStreet?: string;
+  ccZipCode?: string;
+  ccApproved?: boolean;
+  authCode?: string;
+  ccAvsStreetMatch?: PlatformCommonTypes.AvsMatchCode;
+  ccAvsZipMatch?: PlatformCommonTypes.AvsMatchCode;
+  isRecurringPayment?: boolean;
+  ccSecurityCode?: string;
+  ignoreAvs?: boolean;
+  ccSecurityCodeMatch?: PlatformCommonTypes.AvsMatchCode;
+  threeDStatusCode?: string;
+  pnRefNum?: string;
+  creditCardProcessor?: PlatformCore.RecordRef;
+  debitCardIssueNo?: string;
+  validFrom?: string;
+  undepFunds?: boolean;
+  account?: PlatformCore.RecordRef;
+  total?: number;
+  subsidiary?: PlatformCore.RecordRef;
+  applied?: number;
+  unapplied?: number;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  paymentOption?: PlatformCore.RecordRef;
+  inputAuthCode?: string;
+  inputReferenceCode?: string;
+  checkNumber?: string;
+  paymentCardCsc?: string;
+  paymentProcessingProfile?: PlatformCore.RecordRef;
+  handlingMode?: TransactionsCustomersTypes.CustomerPaymentHandlingMode;
+  outputAuthCode?: string;
+  outputReferenceCode?: string;
+  paymentOperation?: TransactionsCustomersTypes.CustomerPaymentPaymentOperation;
+  dynamicDescriptor?: string;
+  status?: string;
+  applyList?: CustomerPaymentApplyList;
+  creditList?: CustomerPaymentCreditList;
+  depositList?: CustomerPaymentDepositList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomerPayment extends PlatformCore.Record {
   createdDate?: string;
@@ -1038,7 +1597,7 @@ export class CustomerPayment extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomerPayment) {
+  constructor(props: CustomerPaymentProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1111,27 +1670,53 @@ export class CustomerPayment extends PlatformCore.Record {
   }
 }
 
+export type CreditMemoApplyListProps = {
+  apply?: CreditMemoApply[];
+  replaceAll?: boolean;
+};
+
 export class CreditMemoApplyList {
   apply?: CreditMemoApply[];
   replaceAll?: boolean;
-  constructor(props: CreditMemoApplyList) {
+  constructor(props: CreditMemoApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CashRefundSalesTeamProps = {
+  employee?: PlatformCore.RecordRef;
+  salesRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
 
 export class CashRefundSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: CashRefundSalesTeam) {
+  constructor(props: CashRefundSalesTeamProps) {
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
     this.contribution = props.contribution;
   }
 }
+
+export type CustomerPaymentCreditProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  creditDate?: string;
+  type?: string;
+  refNum?: string;
+  appliedTo?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+};
 
 export class CustomerPaymentCredit {
   apply?: boolean;
@@ -1145,7 +1730,7 @@ export class CustomerPaymentCredit {
   due?: number;
   currency?: string;
   amount?: number;
-  constructor(props: CustomerPaymentCredit) {
+  constructor(props: CustomerPaymentCreditProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1159,6 +1744,70 @@ export class CustomerPaymentCredit {
     this.amount = props.amount;
   }
 }
+
+export type CustomerDepositProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  status?: string;
+  customer?: PlatformCore.RecordRef;
+  salesOrder?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  payment?: number;
+  currency?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  paymentMethod?: PlatformCore.RecordRef;
+  ccIsPurchaseCardBin?: boolean;
+  memo?: string;
+  ccProcessAsPurchaseCard?: boolean;
+  currencyName?: string;
+  exchangeRate?: number;
+  checkNum?: string;
+  creditCardProcessor?: PlatformCore.RecordRef;
+  creditCard?: PlatformCore.RecordRef;
+  ccSecurityCode?: string;
+  ccNumber?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  paymentOption?: PlatformCore.RecordRef;
+  inputAuthCode?: string;
+  inputReferenceCode?: string;
+  checkNumber?: string;
+  paymentCardCsc?: string;
+  paymentProcessingProfile?: PlatformCore.RecordRef;
+  handlingMode?: TransactionsCustomersTypes.CustomerDepositHandlingMode;
+  outputAuthCode?: string;
+  outputReferenceCode?: string;
+  paymentOperation?: TransactionsCustomersTypes.CustomerDepositPaymentOperation;
+  dynamicDescriptor?: string;
+  ccExpireDate?: string;
+  debitCardIssueNo?: string;
+  validFrom?: string;
+  ccName?: string;
+  ccStreet?: string;
+  ccZipCode?: string;
+  chargeIt?: boolean;
+  ccApproved?: boolean;
+  pnRefNum?: string;
+  authCode?: string;
+  ccAvsStreetMatch?: PlatformCommonTypes.AvsMatchCode;
+  softDescriptor?: string;
+  ccAvsZipMatch?: PlatformCommonTypes.AvsMatchCode;
+  isRecurringPayment?: boolean;
+  ccSecurityCodeMatch?: PlatformCommonTypes.AvsMatchCode;
+  threeDStatusCode?: string;
+  ignoreAvs?: boolean;
+  account?: PlatformCore.RecordRef;
+  undepFunds?: boolean;
+  tranId?: string;
+  applyList?: CustomerDepositApplyList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CustomerDeposit extends PlatformCore.Record {
   createdDate?: string;
@@ -1222,7 +1871,7 @@ export class CustomerDeposit extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CustomerDeposit) {
+  constructor(props: CustomerDepositProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1288,23 +1937,50 @@ export class CustomerDeposit extends PlatformCore.Record {
   }
 }
 
+export type CustomerDepositApplyListProps = {
+  customerDepositApply?: CustomerDepositApply[];
+  replaceAll?: boolean;
+};
+
 export class CustomerDepositApplyList {
   customerDepositApply?: CustomerDepositApply[];
   replaceAll?: boolean;
-  constructor(props: CustomerDepositApplyList) {
+  constructor(props: CustomerDepositApplyListProps) {
     this.customerDepositApply = props.customerDepositApply;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type DepositApplicationApplyListProps = {
+  apply?: DepositApplicationApply[];
+  replaceAll?: boolean;
+};
+
 export class DepositApplicationApplyList {
   apply?: DepositApplicationApply[];
   replaceAll?: boolean;
-  constructor(props: DepositApplicationApplyList) {
+  constructor(props: DepositApplicationApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomerPaymentApplyProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  applyDate?: string;
+  job?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  discDate?: string;
+  discAmt?: number;
+  disc?: number;
+  amount?: number;
+};
 
 export class CustomerPaymentApply {
   apply?: boolean;
@@ -1321,7 +1997,7 @@ export class CustomerPaymentApply {
   discAmt?: number;
   disc?: number;
   amount?: number;
-  constructor(props: CustomerPaymentApply) {
+  constructor(props: CustomerPaymentApplyProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1339,23 +2015,89 @@ export class CustomerPaymentApply {
   }
 }
 
+export type ReturnAuthorizationPartnersListProps = {
+  partners?: PlatformCommon.Partners[];
+  replaceAll?: boolean;
+};
+
 export class ReturnAuthorizationPartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
-  constructor(props: ReturnAuthorizationPartnersList) {
+  constructor(props: ReturnAuthorizationPartnersListProps) {
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CashRefundSalesTeamListProps = {
+  salesTeam?: CashRefundSalesTeam[];
+  replaceAll?: boolean;
+};
+
 export class CashRefundSalesTeamList {
   salesTeam?: CashRefundSalesTeam[];
   replaceAll?: boolean;
-  constructor(props: CashRefundSalesTeamList) {
+  constructor(props: CashRefundSalesTeamListProps) {
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CreditMemoItemProps = {
+  job?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  orderLine?: number;
+  line?: number;
+  quantity?: number;
+  description?: string;
+  binNumbers?: string;
+  price?: PlatformCore.RecordRef;
+  rate?: string;
+  amount?: number;
+  isTaxable?: boolean;
+  options?: PlatformCore.CustomFieldList;
+  shipAddress?: PlatformCore.RecordRef;
+  shipCarrier?: PlatformCommonTypes.ShippingCarrier;
+  shipMethod?: PlatformCore.RecordRef;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  costEstimateType?: PlatformCommonTypes.ItemCostEstimateType;
+  costEstimate?: number;
+  taxDetailsReference?: string;
+  revRecSchedule?: PlatformCore.RecordRef;
+  revRecStartDate?: string;
+  revRecTermInMonths?: number;
+  revRecEndDate?: string;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  deferRevRec?: boolean;
+  giftCertFrom?: string;
+  giftCertRecipientName?: string;
+  giftCertRecipientEmail?: string;
+  giftCertMessage?: string;
+  taxAmount?: number;
+  giftCertNumber?: string;
+  vsoeSopGroup?: PlatformCommonTypes.VsoeSopGroup;
+  vsoeIsEstimate?: boolean;
+  vsoePrice?: number;
+  vsoeAmount?: number;
+  vsoeAllocation?: number;
+  vsoeDeferral?: PlatformCommonTypes.VsoeDeferral;
+  vsoePermitDiscount?: PlatformCommonTypes.VsoePermitDiscount;
+  vsoeDelivered?: boolean;
+  catchUpPeriod?: PlatformCore.RecordRef;
+  chargeType?: PlatformCore.RecordRef;
+  subscriptionLine?: PlatformCore.RecordRef;
+  chargesList?: PlatformCore.RecordRefList;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class CreditMemoItem {
   job?: PlatformCore.RecordRef;
@@ -1411,7 +2153,7 @@ export class CreditMemoItem {
   subscriptionLine?: PlatformCore.RecordRef;
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: CreditMemoItem) {
+  constructor(props: CreditMemoItemProps) {
     this.job = props.job;
     this.item = props.item;
     this.orderLine = props.orderLine;
@@ -1468,36 +2210,177 @@ export class CreditMemoItem {
   }
 }
 
+export type CashRefundItemListProps = {
+  item?: CashRefundItem[];
+  replaceAll?: boolean;
+};
+
 export class CashRefundItemList {
   item?: CashRefundItem[];
   replaceAll?: boolean;
-  constructor(props: CashRefundItemList) {
+  constructor(props: CashRefundItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CashRefundPartnersListProps = {
+  partners?: PlatformCommon.Partners[];
+  replaceAll?: boolean;
+};
+
 export class CashRefundPartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
-  constructor(props: CashRefundPartnersList) {
+  constructor(props: CashRefundPartnersListProps) {
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CreditMemoSalesTeamProps = {
+  employee?: PlatformCore.RecordRef;
+  salesRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
 
 export class CreditMemoSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: CreditMemoSalesTeam) {
+  constructor(props: CreditMemoSalesTeamProps) {
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
     this.contribution = props.contribution;
   }
 }
+
+export type CashRefundProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  vatRegNum?: string;
+  tranDate?: string;
+  tranId?: string;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  source?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  leadSource?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  salesRep?: PlatformCore.RecordRef;
+  partner?: PlatformCore.RecordRef;
+  contribPct?: string;
+  otherRefNum?: string;
+  memo?: string;
+  salesEffectiveDate?: string;
+  refundCheck?: boolean;
+  toPrint2?: boolean;
+  excludeCommission?: boolean;
+  totalCostEstimate?: number;
+  estGrossProfit?: number;
+  estGrossProfitPercent?: number;
+  account?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  currencyName?: string;
+  promoCode?: PlatformCore.RecordRef;
+  discountItem?: PlatformCore.RecordRef;
+  discountRate?: string;
+  isTaxable?: boolean;
+  taxItem?: PlatformCore.RecordRef;
+  taxRate?: number;
+  toBePrinted?: boolean;
+  toBeEmailed?: boolean;
+  email?: string;
+  toBeFaxed?: boolean;
+  fax?: string;
+  messageSel?: PlatformCore.RecordRef;
+  message?: string;
+  paymentOption?: PlatformCore.RecordRef;
+  inputAuthCode?: string;
+  inputReferenceCode?: string;
+  checkNumber?: string;
+  paymentCardCsc?: string;
+  paymentProcessingProfile?: PlatformCore.RecordRef;
+  handlingMode?: TransactionsCustomersTypes.CashRefundHandlingMode;
+  outputAuthCode?: string;
+  outputReferenceCode?: string;
+  paymentOperation?: TransactionsCustomersTypes.CashRefundPaymentOperation;
+  dynamicDescriptor?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  shipMethod?: PlatformCore.RecordRef;
+  shippingTaxCode?: PlatformCore.RecordRef;
+  shippingTax1Rate?: number;
+  shippingTax2Rate?: string;
+  shippingCost?: number;
+  handlingTaxCode?: PlatformCore.RecordRef;
+  handlingTax1Rate?: number;
+  handlingTax2Rate?: string;
+  handlingCost?: number;
+  salesGroup?: PlatformCore.RecordRef;
+  syncSalesTeams?: boolean;
+  paymentMethod?: PlatformCore.RecordRef;
+  revenueStatus?: PlatformCommonTypes.RevenueStatus;
+  recognizedRevenue?: number;
+  deferredRevenue?: number;
+  revRecOnRevCommitment?: boolean;
+  creditCard?: PlatformCore.RecordRef;
+  chargeIt?: boolean;
+  ccNumber?: string;
+  ccExpireDate?: string;
+  ccName?: string;
+  ccStreet?: string;
+  ccZipCode?: string;
+  ccApproved?: boolean;
+  creditCardProcessor?: PlatformCore.RecordRef;
+  debitCardIssueNo?: string;
+  pnRefNum?: string;
+  validFrom?: string;
+  payPalTranId?: string;
+  subTotal?: number;
+  ccIsPurchaseCardBin?: boolean;
+  discountTotal?: number;
+  ccProcessAsPurchaseCard?: boolean;
+  taxTotal?: number;
+  tax2Total?: number;
+  altShippingCost?: number;
+  payPalStatus?: string;
+  altHandlingCost?: number;
+  total?: number;
+  payPalAuthId?: string;
+  status?: string;
+  job?: PlatformCore.RecordRef;
+  giftCert?: PlatformCore.RecordRef;
+  giftCertTotal?: number;
+  giftCertApplied?: number;
+  giftCertAvailable?: number;
+  tranIsVsoeBundle?: boolean;
+  payPalProcess?: boolean;
+  vsoeAutoCalc?: boolean;
+  syncPartnerTeams?: boolean;
+  itemList?: CashRefundItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  salesTeamList?: CashRefundSalesTeamList;
+  partnersList?: CashRefundPartnersList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class CashRefund extends PlatformCore.Record {
   createdDate?: string;
@@ -1621,7 +2504,7 @@ export class CashRefund extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: CashRefund) {
+  constructor(props: CashRefundProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1747,6 +2630,18 @@ export class CashRefund extends PlatformCore.Record {
   }
 }
 
+export type CustomerDepositApplyProps = {
+  doc?: number;
+  line?: number;
+  apply?: boolean;
+  applyDate?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  amount?: number;
+  job?: string;
+};
+
 export class CustomerDepositApply {
   doc?: number;
   line?: number;
@@ -1757,7 +2652,7 @@ export class CustomerDepositApply {
   total?: number;
   amount?: number;
   job?: string;
-  constructor(props: CustomerDepositApply) {
+  constructor(props: CustomerDepositApplyProps) {
     this.doc = props.doc;
     this.line = props.line;
     this.apply = props.apply;
@@ -1769,6 +2664,23 @@ export class CustomerDepositApply {
     this.job = props.job;
   }
 }
+
+export type ChargeSearchRowProps = {
+  basic?: PlatformCommon.ChargeSearchRowBasic;
+  billingAccountJoin?: PlatformCommon.BillingAccountSearchRowBasic;
+  billingScheduleJoin?: PlatformCommon.BillingScheduleSearchRowBasic;
+  chargeEmployeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  invoiceJoin?: PlatformCommon.TransactionSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  salesOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
+  timeJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  transactionJoin?: PlatformCommon.TransactionSearchRowBasic;
+  usageJoin?: PlatformCommon.UsageSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ChargeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ChargeSearchRowBasic;
@@ -1785,7 +2697,7 @@ export class ChargeSearchRow extends PlatformCore.SearchRow {
   usageJoin?: PlatformCommon.UsageSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ChargeSearchRow) {
+  constructor(props: ChargeSearchRowProps) {
     super();
     this.basic = props.basic;
     this.billingAccountJoin = props.billingAccountJoin;
@@ -1804,30 +2716,47 @@ export class ChargeSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type CreditMemoSalesTeamListProps = {
+  salesTeam?: CreditMemoSalesTeam[];
+  replaceAll?: boolean;
+};
+
 export class CreditMemoSalesTeamList {
   salesTeam?: CreditMemoSalesTeam[];
   replaceAll?: boolean;
-  constructor(props: CreditMemoSalesTeamList) {
+  constructor(props: CreditMemoSalesTeamListProps) {
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CustomerPaymentCreditListProps = {
+  credit?: CustomerPaymentCredit[];
+  replaceAll?: boolean;
+};
+
 export class CustomerPaymentCreditList {
   credit?: CustomerPaymentCredit[];
   replaceAll?: boolean;
-  constructor(props: CustomerPaymentCreditList) {
+  constructor(props: CustomerPaymentCreditListProps) {
     this.credit = props.credit;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ReturnAuthorizationSalesTeamProps = {
+  employee?: PlatformCore.RecordRef;
+  salesRole?: PlatformCore.RecordRef;
+  isPrimary?: boolean;
+  contribution?: number;
+};
 
 export class ReturnAuthorizationSalesTeam {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
-  constructor(props: ReturnAuthorizationSalesTeam) {
+  constructor(props: ReturnAuthorizationSalesTeamProps) {
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1835,23 +2764,45 @@ export class ReturnAuthorizationSalesTeam {
   }
 }
 
+export type CreditMemoPartnersListProps = {
+  partners?: PlatformCommon.Partners[];
+  replaceAll?: boolean;
+};
+
 export class CreditMemoPartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
-  constructor(props: CreditMemoPartnersList) {
+  constructor(props: CreditMemoPartnersListProps) {
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type CreditMemoItemListProps = {
+  item?: CreditMemoItem[];
+  replaceAll?: boolean;
+};
+
 export class CreditMemoItemList {
   item?: CreditMemoItem[];
   replaceAll?: boolean;
-  constructor(props: CreditMemoItemList) {
+  constructor(props: CreditMemoItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type CustomerRefundDepositProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  depositDate?: string;
+  refNum?: string;
+  total?: number;
+  remaining?: number;
+  currency?: string;
+  amount?: number;
+};
 
 export class CustomerRefundDeposit {
   apply?: boolean;
@@ -1863,7 +2814,7 @@ export class CustomerRefundDeposit {
   remaining?: number;
   currency?: string;
   amount?: number;
-  constructor(props: CustomerRefundDeposit) {
+  constructor(props: CustomerRefundDepositProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1876,14 +2827,52 @@ export class CustomerRefundDeposit {
   }
 }
 
+export type CustomerRefundDepositListProps = {
+  customerRefundDeposit?: CustomerRefundDeposit[];
+  replaceAll?: boolean;
+};
+
 export class CustomerRefundDepositList {
   customerRefundDeposit?: CustomerRefundDeposit[];
   replaceAll?: boolean;
-  constructor(props: CustomerRefundDepositList) {
+  constructor(props: CustomerRefundDepositListProps) {
     this.customerRefundDeposit = props.customerRefundDeposit;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ChargeProps = {
+  customForm?: PlatformCore.RecordRef;
+  salesOrder?: PlatformCore.RecordRef;
+  billTo?: PlatformCore.RecordRef;
+  billingAccount?: PlatformCore.RecordRef;
+  stage?: TransactionsCustomersTypes.ChargeStage;
+  chargeDate?: string;
+  use?: TransactionsCustomersTypes.ChargeUse;
+  chargeType?: PlatformCore.RecordRef;
+  projectTask?: PlatformCore.RecordRef;
+  description?: string;
+  createdDate?: string;
+  timeRecord?: PlatformCore.RecordRef;
+  rate?: string;
+  quantity?: number;
+  amount?: number;
+  billingItem?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  transaction?: PlatformCore.RecordRef;
+  transactionLine?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  salesOrderLine?: PlatformCore.RecordRef;
+  subscriptionLine?: PlatformCore.RecordRef;
+  invoice?: PlatformCore.RecordRef;
+  invoiceLine?: PlatformCore.RecordRef;
+  rule?: PlatformCore.RecordRef;
+  runId?: string;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Charge extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -1916,7 +2905,7 @@ export class Charge extends PlatformCore.Record {
   runId?: string;
   internalId?: string;
   externalId?: string;
-  constructor(props: Charge) {
+  constructor(props: ChargeProps) {
     super(props);
     this.customForm = props.customForm;
     this.salesOrder = props.salesOrder;
@@ -1951,6 +2940,20 @@ export class Charge extends PlatformCore.Record {
   }
 }
 
+export type DepositApplicationApplyProps = {
+  doc?: number;
+  line?: number;
+  apply?: boolean;
+  applyDate?: string;
+  job?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+};
+
 export class DepositApplicationApply {
   doc?: number;
   line?: number;
@@ -1963,7 +2966,7 @@ export class DepositApplicationApply {
   due?: number;
   currency?: string;
   amount?: number;
-  constructor(props: DepositApplicationApply) {
+  constructor(props: DepositApplicationApplyProps) {
     this.doc = props.doc;
     this.line = props.line;
     this.apply = props.apply;

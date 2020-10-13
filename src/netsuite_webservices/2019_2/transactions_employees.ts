@@ -2,6 +2,16 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsEmployeesTypes from "./transactions_employees_types";
 
+export type PaycheckJournalCompanyContributionProps = {
+  id?: number;
+  payrollItem?: PlatformCore.RecordRef;
+  amount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class PaycheckJournalCompanyContribution {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
@@ -10,7 +20,7 @@ export class PaycheckJournalCompanyContribution {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PaycheckJournalCompanyContribution) {
+  constructor(props: PaycheckJournalCompanyContributionProps) {
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -21,17 +31,59 @@ export class PaycheckJournalCompanyContribution {
   }
 }
 
+export type PaycheckSearchRowProps = {
+  basic?: PlatformCommon.PaycheckSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  payrollItemJoin?: PlatformCommon.PayrollItemSearchRowBasic;
+};
+
 export class PaycheckSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PaycheckSearchRowBasic;
   employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
   payrollItemJoin?: PlatformCommon.PayrollItemSearchRowBasic;
-  constructor(props: PaycheckSearchRow) {
+  constructor(props: PaycheckSearchRowProps) {
     super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.payrollItemJoin = props.payrollItemJoin;
   }
 }
+
+export type TimeBillProps = {
+  customForm?: PlatformCore.RecordRef;
+  employee?: PlatformCore.RecordRef;
+  tranDate?: string;
+  approvalStatus?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  caseTaskEvent?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  payrollItem?: PlatformCore.RecordRef;
+  paidExternally?: boolean;
+  workplace?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  hours?: PlatformCore.Duration;
+  price?: PlatformCore.RecordRef;
+  timeType?: TransactionsEmployeesTypes.TimeBillTimeType;
+  rate?: number;
+  overrideRate?: boolean;
+  temporaryLocalJurisdiction?: PlatformCore.RecordRef;
+  temporaryStateJurisdiction?: PlatformCore.RecordRef;
+  memo?: string;
+  rejectionNote?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  supervisorApproval?: boolean;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  timeSheet?: PlatformCore.RecordRef;
+  status?: string;
+  timeModified?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class TimeBill extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -67,7 +119,7 @@ export class TimeBill extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: TimeBill) {
+  constructor(props: TimeBillProps) {
     super(props);
     this.customForm = props.customForm;
     this.employee = props.employee;
@@ -105,14 +157,41 @@ export class TimeBill extends PlatformCore.Record {
   }
 }
 
+export type PaycheckJournalDeductionListProps = {
+  paycheckJournalDeduction?: PaycheckJournalDeduction[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckJournalDeductionList {
   paycheckJournalDeduction?: PaycheckJournalDeduction[];
   replaceAll?: boolean;
-  constructor(props: PaycheckJournalDeductionList) {
+  constructor(props: PaycheckJournalDeductionListProps) {
     this.paycheckJournalDeduction = props.paycheckJournalDeduction;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TimeEntrySearchProps = {
+  basic?: PlatformCommon.TimeEntrySearchBasic;
+  callJoin?: PlatformCommon.PhoneCallSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  classJoin?: PlatformCommon.ClassificationSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  eventJoin?: PlatformCommon.CalendarEventSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchBasic;
+  taskJoin?: PlatformCommon.TaskSearchBasic;
+  timeSheetJoin?: PlatformCommon.TimeSheetSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  vendorJoin?: PlatformCommon.VendorSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class TimeEntrySearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TimeEntrySearchBasic;
@@ -134,7 +213,7 @@ export class TimeEntrySearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: TimeEntrySearch) {
+  constructor(props: TimeEntrySearchProps) {
     super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
@@ -158,6 +237,17 @@ export class TimeEntrySearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type PaycheckJournalEarningProps = {
+  id?: number;
+  payrollItem?: PlatformCore.RecordRef;
+  hours?: number;
+  amount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class PaycheckJournalEarning {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
@@ -167,7 +257,7 @@ export class PaycheckJournalEarning {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PaycheckJournalEarning) {
+  constructor(props: PaycheckJournalEarningProps) {
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.hours = props.hours;
@@ -178,6 +268,47 @@ export class PaycheckJournalEarning {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type ExpenseReportProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  status?: string;
+  customForm?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  expenseReportCurrency?: PlatformCore.RecordRef;
+  expenseReportExchangeRate?: number;
+  subsidiary?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  tranId?: string;
+  acctCorpCardExp?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranDate?: string;
+  dueDate?: string;
+  approvalStatus?: PlatformCore.RecordRef;
+  total?: number;
+  nextApprover?: PlatformCore.RecordRef;
+  advance?: number;
+  tax1Amt?: number;
+  amount?: number;
+  memo?: string;
+  complete?: boolean;
+  supervisorApproval?: boolean;
+  accountingApproval?: boolean;
+  useMultiCurrency?: boolean;
+  tax2Amt?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  expenseList?: ExpenseReportExpenseList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ExpenseReport extends PlatformCore.Record {
   createdDate?: string;
@@ -218,7 +349,7 @@ export class ExpenseReport extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ExpenseReport) {
+  constructor(props: ExpenseReportProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -261,23 +392,41 @@ export class ExpenseReport extends PlatformCore.Record {
   }
 }
 
+export type PaycheckPayContribListProps = {
+  paycheckPayContrib?: PaycheckPayContrib[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayContribList {
   paycheckPayContrib?: PaycheckPayContrib[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayContribList) {
+  constructor(props: PaycheckPayContribListProps) {
     this.paycheckPayContrib = props.paycheckPayContrib;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PaycheckPayExpListProps = {
+  paycheckPayExp?: PaycheckPayExp[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayExpList {
   paycheckPayExp?: PaycheckPayExp[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayExpList) {
+  constructor(props: PaycheckPayExpListProps) {
     this.paycheckPayExp = props.paycheckPayExp;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckPayDisburseProps = {
+  method?: string;
+  bankName?: string;
+  bankAccountDecrypt?: string;
+  statusName?: string;
+  amount?: number;
+};
 
 export class PaycheckPayDisburse {
   method?: string;
@@ -285,7 +434,7 @@ export class PaycheckPayDisburse {
   bankAccountDecrypt?: string;
   statusName?: string;
   amount?: number;
-  constructor(props: PaycheckPayDisburse) {
+  constructor(props: PaycheckPayDisburseProps) {
     this.method = props.method;
     this.bankName = props.bankName;
     this.bankAccountDecrypt = props.bankAccountDecrypt;
@@ -293,6 +442,20 @@ export class PaycheckPayDisburse {
     this.amount = props.amount;
   }
 }
+
+export type TimeSheetProps = {
+  customForm?: PlatformCore.RecordRef;
+  employee?: PlatformCore.RecordRef;
+  startDate?: string;
+  endDate?: string;
+  totalHours?: PlatformCore.Duration;
+  approvalStatus?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  timeGridList?: TimeSheetTimeGridList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class TimeSheet extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -306,7 +469,7 @@ export class TimeSheet extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: TimeSheet) {
+  constructor(props: TimeSheetProps) {
     super(props);
     this.customForm = props.customForm;
     this.employee = props.employee;
@@ -322,14 +485,32 @@ export class TimeSheet extends PlatformCore.Record {
   }
 }
 
+export type PaycheckJournalEmployeeTaxListProps = {
+  paycheckJournalEmployeeTax?: PaycheckJournalEmployeeTax[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckJournalEmployeeTaxList {
   paycheckJournalEmployeeTax?: PaycheckJournalEmployeeTax[];
   replaceAll?: boolean;
-  constructor(props: PaycheckJournalEmployeeTaxList) {
+  constructor(props: PaycheckJournalEmployeeTaxListProps) {
     this.paycheckJournalEmployeeTax = props.paycheckJournalEmployeeTax;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckPayTimeProps = {
+  apply?: boolean;
+  line?: number;
+  payItem?: number;
+  payItemName?: string;
+  ddate?: string;
+  custJob?: string;
+  serviceItem?: string;
+  count?: number;
+  rate?: number;
+  amount?: number;
+};
 
 export class PaycheckPayTime {
   apply?: boolean;
@@ -342,7 +523,7 @@ export class PaycheckPayTime {
   count?: number;
   rate?: number;
   amount?: number;
-  constructor(props: PaycheckPayTime) {
+  constructor(props: PaycheckPayTimeProps) {
     this.apply = props.apply;
     this.line = props.line;
     this.payItem = props.payItem;
@@ -356,26 +537,60 @@ export class PaycheckPayTime {
   }
 }
 
+export type PaycheckPayDeductListProps = {
+  paycheckPayDeduct?: PaycheckPayDeduct[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayDeductList {
   paycheckPayDeduct?: PaycheckPayDeduct[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayDeductList) {
+  constructor(props: PaycheckPayDeductListProps) {
     this.paycheckPayDeduct = props.paycheckPayDeduct;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PaycheckSearchProps = {
+  basic?: PlatformCommon.PaycheckSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  payrollItemJoin?: PlatformCommon.PayrollItemSearchBasic;
+};
+
 export class PaycheckSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PaycheckSearchBasic;
   employeeJoin?: PlatformCommon.EmployeeSearchBasic;
   payrollItemJoin?: PlatformCommon.PayrollItemSearchBasic;
-  constructor(props: PaycheckSearch) {
+  constructor(props: PaycheckSearchProps) {
     super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.payrollItemJoin = props.payrollItemJoin;
   }
 }
+
+export type TimeBillSearchProps = {
+  basic?: PlatformCommon.TimeBillSearchBasic;
+  callJoin?: PlatformCommon.PhoneCallSearchBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchBasic;
+  chargeJoin?: PlatformCommon.ChargeSearchBasic;
+  classJoin?: PlatformCommon.ClassificationSearchBasic;
+  customerJoin?: PlatformCommon.CustomerSearchBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  eventJoin?: PlatformCommon.CalendarEventSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  jobJoin?: PlatformCommon.JobSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchBasic;
+  taskJoin?: PlatformCommon.TaskSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  vendorJoin?: PlatformCommon.VendorSearchBasic;
+  timeSheetJoin?: PlatformCommon.TimeSheetSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class TimeBillSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TimeBillSearchBasic;
@@ -398,7 +613,7 @@ export class TimeBillSearch extends PlatformCore.SearchRecord {
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   timeSheetJoin?: PlatformCommon.TimeSheetSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: TimeBillSearch) {
+  constructor(props: TimeBillSearchProps) {
     super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
@@ -423,6 +638,31 @@ export class TimeBillSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type PaycheckJournalProps = {
+  subsidiary?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranId?: string;
+  employee?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  companyContributionList?: PaycheckJournalCompanyContributionList;
+  deductionList?: PaycheckJournalDeductionList;
+  employeeTaxList?: PaycheckJournalEmployeeTaxList;
+  companyTaxList?: PaycheckJournalCompanyTaxList;
+  earningList?: PaycheckJournalEarningList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class PaycheckJournal extends PlatformCore.Record {
   subsidiary?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
@@ -446,7 +686,7 @@ export class PaycheckJournal extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: PaycheckJournal) {
+  constructor(props: PaycheckJournalProps) {
     super(props);
     this.subsidiary = props.subsidiary;
     this.currency = props.currency;
@@ -473,6 +713,16 @@ export class PaycheckJournal extends PlatformCore.Record {
   }
 }
 
+export type PaycheckJournalEmployeeTaxProps = {
+  id?: number;
+  payrollItem?: PlatformCore.RecordRef;
+  amount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class PaycheckJournalEmployeeTax {
   id?: number;
   payrollItem?: PlatformCore.RecordRef;
@@ -481,7 +731,7 @@ export class PaycheckJournalEmployeeTax {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PaycheckJournalEmployeeTax) {
+  constructor(props: PaycheckJournalEmployeeTaxProps) {
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -492,6 +742,16 @@ export class PaycheckJournalEmployeeTax {
   }
 }
 
+export type PaycheckPayEarnProps = {
+  payItem?: PlatformCore.RecordRef;
+  line?: number;
+  count?: number;
+  rate?: string;
+  serviceItem?: PlatformCore.RecordRef;
+  grossAmount?: number;
+  manualEntry?: boolean;
+};
+
 export class PaycheckPayEarn {
   payItem?: PlatformCore.RecordRef;
   line?: number;
@@ -500,7 +760,7 @@ export class PaycheckPayEarn {
   serviceItem?: PlatformCore.RecordRef;
   grossAmount?: number;
   manualEntry?: boolean;
-  constructor(props: PaycheckPayEarn) {
+  constructor(props: PaycheckPayEarnProps) {
     this.payItem = props.payItem;
     this.line = props.line;
     this.count = props.count;
@@ -511,13 +771,21 @@ export class PaycheckPayEarn {
   }
 }
 
+export type PaycheckPayPtoProps = {
+  payItem?: number;
+  payItemName?: string;
+  hoursAccrued?: number;
+  hoursUsed?: number;
+  hoursBalance?: number;
+};
+
 export class PaycheckPayPto {
   payItem?: number;
   payItemName?: string;
   hoursAccrued?: number;
   hoursUsed?: number;
   hoursBalance?: number;
-  constructor(props: PaycheckPayPto) {
+  constructor(props: PaycheckPayPtoProps) {
     this.payItem = props.payItem;
     this.payItemName = props.payItemName;
     this.hoursAccrued = props.hoursAccrued;
@@ -525,6 +793,16 @@ export class PaycheckPayPto {
     this.hoursBalance = props.hoursBalance;
   }
 }
+
+export type PaycheckJournalDeductionProps = {
+  id?: number;
+  payrollItem?: PlatformCore.RecordRef;
+  amount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class PaycheckJournalDeduction {
   id?: number;
@@ -534,7 +812,7 @@ export class PaycheckJournalDeduction {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PaycheckJournalDeduction) {
+  constructor(props: PaycheckJournalDeductionProps) {
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -545,14 +823,29 @@ export class PaycheckJournalDeduction {
   }
 }
 
+export type PaycheckJournalEarningListProps = {
+  paycheckJournalEarning?: PaycheckJournalEarning[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckJournalEarningList {
   paycheckJournalEarning?: PaycheckJournalEarning[];
   replaceAll?: boolean;
-  constructor(props: PaycheckJournalEarningList) {
+  constructor(props: PaycheckJournalEarningListProps) {
     this.paycheckJournalEarning = props.paycheckJournalEarning;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckJournalCompanyTaxProps = {
+  id?: number;
+  payrollItem?: PlatformCore.RecordRef;
+  amount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class PaycheckJournalCompanyTax {
   id?: number;
@@ -562,7 +855,7 @@ export class PaycheckJournalCompanyTax {
   clazz?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PaycheckJournalCompanyTax) {
+  constructor(props: PaycheckJournalCompanyTaxProps) {
     this.id = props.id;
     this.payrollItem = props.payrollItem;
     this.amount = props.amount;
@@ -573,22 +866,34 @@ export class PaycheckJournalCompanyTax {
   }
 }
 
+export type PaycheckJournalCompanyContributionListProps = {
+  paycheckJournalCompanyContribution?: PaycheckJournalCompanyContribution[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckJournalCompanyContributionList {
   paycheckJournalCompanyContribution?: PaycheckJournalCompanyContribution[];
   replaceAll?: boolean;
-  constructor(props: PaycheckJournalCompanyContributionList) {
+  constructor(props: PaycheckJournalCompanyContributionListProps) {
     this.paycheckJournalCompanyContribution =
       props.paycheckJournalCompanyContribution;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type TimeBillSearchAdvancedProps = {
+  criteria?: TimeBillSearch;
+  columns?: TimeBillSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class TimeBillSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TimeBillSearch;
   columns?: TimeBillSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TimeBillSearchAdvanced) {
+  constructor(props: TimeBillSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -597,14 +902,42 @@ export class TimeBillSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type PaycheckPayDisburseListProps = {
+  paycheckPayDisburse?: PaycheckPayDisburse[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayDisburseList {
   paycheckPayDisburse?: PaycheckPayDisburse[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayDisburseList) {
+  constructor(props: PaycheckPayDisburseListProps) {
     this.paycheckPayDisburse = props.paycheckPayDisburse;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TimeBillSearchRowProps = {
+  basic?: PlatformCommon.TimeBillSearchRowBasic;
+  callJoin?: PlatformCommon.PhoneCallSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  chargeJoin?: PlatformCommon.ChargeSearchRowBasic;
+  classJoin?: PlatformCommon.ClassificationSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  eventJoin?: PlatformCommon.CalendarEventSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchRowBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchRowBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchRowBasic;
+  taskJoin?: PlatformCommon.TaskSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  vendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  timeSheetJoin?: PlatformCommon.TimeSheetSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class TimeBillSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TimeBillSearchRowBasic;
@@ -627,7 +960,7 @@ export class TimeBillSearchRow extends PlatformCore.SearchRow {
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   timeSheetJoin?: PlatformCommon.TimeSheetSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: TimeBillSearchRow) {
+  constructor(props: TimeBillSearchRowProps) {
     super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
@@ -652,23 +985,41 @@ export class TimeBillSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type ExpenseReportExpenseListProps = {
+  expense?: ExpenseReportExpense[];
+  replaceAll?: boolean;
+};
+
 export class ExpenseReportExpenseList {
   expense?: ExpenseReportExpense[];
   replaceAll?: boolean;
-  constructor(props: ExpenseReportExpenseList) {
+  constructor(props: ExpenseReportExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PaycheckPaySummaryListProps = {
+  paycheckPaySummary?: PaycheckPaySummary[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPaySummaryList {
   paycheckPaySummary?: PaycheckPaySummary[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPaySummaryList) {
+  constructor(props: PaycheckPaySummaryListProps) {
     this.paycheckPaySummary = props.paycheckPaySummary;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckPayDeductProps = {
+  payItem?: PlatformCore.RecordRef;
+  line?: number;
+  wageBase?: number;
+  amount?: number;
+  manualEntry?: boolean;
+};
 
 export class PaycheckPayDeduct {
   payItem?: PlatformCore.RecordRef;
@@ -676,7 +1027,7 @@ export class PaycheckPayDeduct {
   wageBase?: number;
   amount?: number;
   manualEntry?: boolean;
-  constructor(props: PaycheckPayDeduct) {
+  constructor(props: PaycheckPayDeductProps) {
     this.payItem = props.payItem;
     this.line = props.line;
     this.wageBase = props.wageBase;
@@ -684,6 +1035,28 @@ export class PaycheckPayDeduct {
     this.manualEntry = props.manualEntry;
   }
 }
+
+export type TimeEntrySearchRowProps = {
+  basic?: PlatformCommon.TimeEntrySearchRowBasic;
+  callJoin?: PlatformCommon.PhoneCallSearchRowBasic;
+  caseJoin?: PlatformCommon.SupportCaseSearchRowBasic;
+  classJoin?: PlatformCommon.ClassificationSearchRowBasic;
+  customerJoin?: PlatformCommon.CustomerSearchRowBasic;
+  departmentJoin?: PlatformCommon.DepartmentSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  eventJoin?: PlatformCommon.CalendarEventSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  jobJoin?: PlatformCommon.JobSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  projectTaskJoin?: PlatformCommon.ProjectTaskSearchRowBasic;
+  projectTaskAssignmentJoin?: PlatformCommon.ProjectTaskAssignmentSearchRowBasic;
+  resourceAllocationJoin?: PlatformCommon.ResourceAllocationSearchRowBasic;
+  taskJoin?: PlatformCommon.TaskSearchRowBasic;
+  timeSheetJoin?: PlatformCommon.TimeSheetSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  vendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class TimeEntrySearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TimeEntrySearchRowBasic;
@@ -705,7 +1078,7 @@ export class TimeEntrySearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: TimeEntrySearchRow) {
+  constructor(props: TimeEntrySearchRowProps) {
     super();
     this.basic = props.basic;
     this.callJoin = props.callJoin;
@@ -729,14 +1102,29 @@ export class TimeEntrySearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type PaycheckPayPtoListProps = {
+  paycheckPayPto?: PaycheckPayPto[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayPtoList {
   paycheckPayPto?: PaycheckPayPto[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayPtoList) {
+  constructor(props: PaycheckPayPtoListProps) {
     this.paycheckPayPto = props.paycheckPayPto;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TimeSheetTimeGridProps = {
+  sunday?: TimeEntry;
+  monday?: TimeEntry;
+  tuesday?: TimeEntry;
+  wednesday?: TimeEntry;
+  thursday?: TimeEntry;
+  friday?: TimeEntry;
+  saturday?: TimeEntry;
+};
 
 export class TimeSheetTimeGrid {
   sunday?: TimeEntry;
@@ -746,7 +1134,7 @@ export class TimeSheetTimeGrid {
   thursday?: TimeEntry;
   friday?: TimeEntry;
   saturday?: TimeEntry;
-  constructor(props: TimeSheetTimeGrid) {
+  constructor(props: TimeSheetTimeGridProps) {
     this.sunday = props.sunday;
     this.monday = props.monday;
     this.tuesday = props.tuesday;
@@ -757,13 +1145,21 @@ export class TimeSheetTimeGrid {
   }
 }
 
+export type TimeSheetSearchRowProps = {
+  basic?: PlatformCommon.TimeSheetSearchRowBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  timeBillJoin?: PlatformCommon.TimeBillSearchRowBasic;
+  timeEntryJoin?: PlatformCommon.TimeEntrySearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class TimeSheetSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.TimeSheetSearchRowBasic;
   employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
   timeBillJoin?: PlatformCommon.TimeBillSearchRowBasic;
   timeEntryJoin?: PlatformCommon.TimeEntrySearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: TimeSheetSearchRow) {
+  constructor(props: TimeSheetSearchRowProps) {
     super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
@@ -772,6 +1168,19 @@ export class TimeSheetSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type PaycheckPayTaxProps = {
+  line?: number;
+  apply?: boolean;
+  payTax?: string;
+  payItem?: number;
+  taxableWageBase?: number;
+  taxedWageBase?: number;
+  reportableWageBase?: number;
+  isExempt?: boolean;
+  isResidentTax?: boolean;
+  amount?: number;
+};
 
 export class PaycheckPayTax {
   line?: number;
@@ -784,7 +1193,7 @@ export class PaycheckPayTax {
   isExempt?: boolean;
   isResidentTax?: boolean;
   amount?: number;
-  constructor(props: PaycheckPayTax) {
+  constructor(props: PaycheckPayTaxProps) {
     this.line = props.line;
     this.apply = props.apply;
     this.payTax = props.payTax;
@@ -798,14 +1207,27 @@ export class PaycheckPayTax {
   }
 }
 
+export type PaycheckJournalCompanyTaxListProps = {
+  paycheckJournalCompanyTax?: PaycheckJournalCompanyTax[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckJournalCompanyTaxList {
   paycheckJournalCompanyTax?: PaycheckJournalCompanyTax[];
   replaceAll?: boolean;
-  constructor(props: PaycheckJournalCompanyTaxList) {
+  constructor(props: PaycheckJournalCompanyTaxListProps) {
     this.paycheckJournalCompanyTax = props.paycheckJournalCompanyTax;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TimeSheetSearchProps = {
+  basic?: PlatformCommon.TimeSheetSearchBasic;
+  employeeJoin?: PlatformCommon.EmployeeSearchBasic;
+  timeBillJoin?: PlatformCommon.TimeBillSearchBasic;
+  timeEntryJoin?: PlatformCommon.TimeEntrySearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class TimeSheetSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.TimeSheetSearchBasic;
@@ -813,7 +1235,7 @@ export class TimeSheetSearch extends PlatformCore.SearchRecord {
   timeBillJoin?: PlatformCommon.TimeBillSearchBasic;
   timeEntryJoin?: PlatformCommon.TimeEntrySearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: TimeSheetSearch) {
+  constructor(props: TimeSheetSearchProps) {
     super();
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
@@ -822,6 +1244,36 @@ export class TimeSheetSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type ExpenseReportExpenseProps = {
+  line?: number;
+  expenseDate?: string;
+  category?: PlatformCore.RecordRef;
+  quantity?: number;
+  rate?: number;
+  foreignAmount?: number;
+  currency?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  amount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  memo?: string;
+  taxRate1?: number;
+  tax1Amt?: number;
+  department?: PlatformCore.RecordRef;
+  grossAmt?: number;
+  taxRate2?: number;
+  clazz?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  expMediaItem?: PlatformCore.RecordRef;
+  isNonReimbursable?: boolean;
+  corporateCreditCard?: boolean;
+  receipt?: boolean;
+  refNumber?: number;
+  taxDetailsReference?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class ExpenseReportExpense {
   line?: number;
@@ -851,7 +1303,7 @@ export class ExpenseReportExpense {
   refNumber?: number;
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: ExpenseReportExpense) {
+  constructor(props: ExpenseReportExpenseProps) {
     this.line = props.line;
     this.expenseDate = props.expenseDate;
     this.category = props.category;
@@ -882,14 +1334,27 @@ export class ExpenseReportExpense {
   }
 }
 
+export type PaycheckPayTaxListProps = {
+  paycheckPayTax?: PaycheckPayTax[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayTaxList {
   paycheckPayTax?: PaycheckPayTax[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayTaxList) {
+  constructor(props: PaycheckPayTaxListProps) {
     this.paycheckPayTax = props.paycheckPayTax;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckPayExpProps = {
+  apply?: boolean;
+  line?: number;
+  origDoc?: number;
+  transaction?: string;
+  amount?: number;
+};
 
 export class PaycheckPayExp {
   apply?: boolean;
@@ -897,7 +1362,7 @@ export class PaycheckPayExp {
   origDoc?: number;
   transaction?: string;
   amount?: number;
-  constructor(props: PaycheckPayExp) {
+  constructor(props: PaycheckPayExpProps) {
     this.apply = props.apply;
     this.line = props.line;
     this.origDoc = props.origDoc;
@@ -906,12 +1371,19 @@ export class PaycheckPayExp {
   }
 }
 
+export type PaycheckSearchAdvancedProps = {
+  criteria?: PaycheckSearch;
+  columns?: PaycheckSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class PaycheckSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: PaycheckSearch;
   columns?: PaycheckSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: PaycheckSearchAdvanced) {
+  constructor(props: PaycheckSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -920,14 +1392,52 @@ export class PaycheckSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type TimeSheetTimeGridListProps = {
+  timeSheetTimeGrid?: TimeSheetTimeGrid[];
+  replaceAll?: boolean;
+};
+
 export class TimeSheetTimeGridList {
   timeSheetTimeGrid?: TimeSheetTimeGrid[];
   replaceAll?: boolean;
-  constructor(props: TimeSheetTimeGridList) {
+  constructor(props: TimeSheetTimeGridListProps) {
     this.timeSheetTimeGrid = props.timeSheetTimeGrid;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PaycheckProps = {
+  batchNumber?: string;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  status?: string;
+  entity?: PlatformCore.RecordRef;
+  address?: string;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  workplace?: PlatformCore.RecordRef;
+  tranId?: string;
+  userAmount?: number;
+  memo?: string;
+  account?: PlatformCore.RecordRef;
+  payFrequency?: string;
+  balance?: number;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  periodEnding?: string;
+  payEarnList?: PaycheckPayEarnList;
+  payTimeList?: PaycheckPayTimeList;
+  payExpList?: PaycheckPayExpList;
+  payPtoList?: PaycheckPayPtoList;
+  payDeductList?: PaycheckPayDeductList;
+  payContribList?: PaycheckPayContribList;
+  payTaxList?: PaycheckPayTaxList;
+  paySummaryList?: PaycheckPaySummaryList;
+  payDisburseList?: PaycheckPayDisburseList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class Paycheck extends PlatformCore.Record {
   batchNumber?: string;
@@ -960,7 +1470,7 @@ export class Paycheck extends PlatformCore.Record {
   payDisburseList?: PaycheckPayDisburseList;
   internalId?: string;
   externalId?: string;
-  constructor(props: Paycheck) {
+  constructor(props: PaycheckProps) {
     super(props);
     this.batchNumber = props.batchNumber;
     this.createdDate = props.createdDate;
@@ -995,13 +1505,21 @@ export class Paycheck extends PlatformCore.Record {
   }
 }
 
+export type PaycheckPayContribProps = {
+  payItem?: PlatformCore.RecordRef;
+  line?: number;
+  wageBase?: number;
+  amount?: number;
+  manualEntry?: boolean;
+};
+
 export class PaycheckPayContrib {
   payItem?: PlatformCore.RecordRef;
   line?: number;
   wageBase?: number;
   amount?: number;
   manualEntry?: boolean;
-  constructor(props: PaycheckPayContrib) {
+  constructor(props: PaycheckPayContribProps) {
     this.payItem = props.payItem;
     this.line = props.line;
     this.wageBase = props.wageBase;
@@ -1010,12 +1528,19 @@ export class PaycheckPayContrib {
   }
 }
 
+export type PaycheckPaySummaryProps = {
+  payItem?: string;
+  payItemType?: string;
+  amount?: number;
+  ytdAmount?: number;
+};
+
 export class PaycheckPaySummary {
   payItem?: string;
   payItemType?: string;
   amount?: number;
   ytdAmount?: number;
-  constructor(props: PaycheckPaySummary) {
+  constructor(props: PaycheckPaySummaryProps) {
     this.payItem = props.payItem;
     this.payItemType = props.payItemType;
     this.amount = props.amount;
@@ -1023,12 +1548,19 @@ export class PaycheckPaySummary {
   }
 }
 
+export type TimeEntrySearchAdvancedProps = {
+  criteria?: TimeEntrySearch;
+  columns?: TimeEntrySearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class TimeEntrySearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TimeEntrySearch;
   columns?: TimeEntrySearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TimeEntrySearchAdvanced) {
+  constructor(props: TimeEntrySearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -1036,6 +1568,32 @@ export class TimeEntrySearchAdvanced extends PlatformCore.SearchRecord {
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type TimeEntryProps = {
+  hours?: PlatformCore.Duration;
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customer?: PlatformCore.RecordRef;
+  caseTaskEvent?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  payrollItem?: PlatformCore.RecordRef;
+  paidExternally?: boolean;
+  price?: PlatformCore.RecordRef;
+  rate?: number;
+  overrideRate?: boolean;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  billingClass?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  approvalStatus?: PlatformCore.RecordRef;
+  timeType?: TransactionsEmployeesTypes.TimeBillTimeType;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class TimeEntry extends PlatformCore.Record {
   hours?: PlatformCore.Duration;
@@ -1061,7 +1619,7 @@ export class TimeEntry extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: TimeEntry) {
+  constructor(props: TimeEntryProps) {
     super(props);
     this.hours = props.hours;
     this.createdDate = props.createdDate;
@@ -1089,30 +1647,47 @@ export class TimeEntry extends PlatformCore.Record {
   }
 }
 
+export type PaycheckPayTimeListProps = {
+  paycheckPayTime?: PaycheckPayTime[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayTimeList {
   paycheckPayTime?: PaycheckPayTime[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayTimeList) {
+  constructor(props: PaycheckPayTimeListProps) {
     this.paycheckPayTime = props.paycheckPayTime;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PaycheckPayEarnListProps = {
+  paycheckPayEarn?: PaycheckPayEarn[];
+  replaceAll?: boolean;
+};
+
 export class PaycheckPayEarnList {
   paycheckPayEarn?: PaycheckPayEarn[];
   replaceAll?: boolean;
-  constructor(props: PaycheckPayEarnList) {
+  constructor(props: PaycheckPayEarnListProps) {
     this.paycheckPayEarn = props.paycheckPayEarn;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TimeSheetSearchAdvancedProps = {
+  criteria?: TimeSheetSearch;
+  columns?: TimeSheetSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class TimeSheetSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: TimeSheetSearch;
   columns?: TimeSheetSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: TimeSheetSearchAdvanced) {
+  constructor(props: TimeSheetSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;

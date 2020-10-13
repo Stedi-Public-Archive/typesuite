@@ -2,6 +2,35 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as ListsSupplychainTypes from "./lists_supplychain_types";
 
+export type ManufacturingOperationTaskProps = {
+  customForm?: PlatformCore.RecordRef;
+  manufacturingWorkCenter?: PlatformCore.RecordRef;
+  manufacturingCostTemplate?: PlatformCore.RecordRef;
+  title?: string;
+  operationSequence?: number;
+  workOrder?: PlatformCore.RecordRef;
+  order?: PlatformCore.RecordRef;
+  status?: ListsSupplychainTypes.ManufacturingOperationTaskStatus;
+  message?: string;
+  estimatedWork?: number;
+  actualWork?: number;
+  remainingWork?: number;
+  inputQuantity?: number;
+  completedQuantity?: number;
+  setupTime?: number;
+  runRate?: number;
+  startDate?: string;
+  endDate?: string;
+  autoCalculateLag?: boolean;
+  machineResources?: number;
+  laborResources?: number;
+  costDetailList?: ManufacturingCostDetailList;
+  predecessorList?: ManufacturingOperationTaskPredecessorList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class ManufacturingOperationTask extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   manufacturingWorkCenter?: PlatformCore.RecordRef;
@@ -29,7 +58,7 @@ export class ManufacturingOperationTask extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ManufacturingOperationTask) {
+  constructor(props: ManufacturingOperationTaskProps) {
     super(props);
     this.customForm = props.customForm;
     this.manufacturingWorkCenter = props.manufacturingWorkCenter;
@@ -60,12 +89,19 @@ export class ManufacturingOperationTask extends PlatformCore.Record {
   }
 }
 
+export type ManufacturingOperationTaskSearchAdvancedProps = {
+  criteria?: ManufacturingOperationTaskSearch;
+  columns?: ManufacturingOperationTaskSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ManufacturingOperationTaskSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ManufacturingOperationTaskSearch;
   columns?: ManufacturingOperationTaskSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ManufacturingOperationTaskSearchAdvanced) {
+  constructor(props: ManufacturingOperationTaskSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -73,13 +109,20 @@ export class ManufacturingOperationTaskSearchAdvanced extends PlatformCore.Searc
     this.savedSearchScriptId = props.savedSearchScriptId;
   }
 }
+
+export type ManufacturingCostTemplateSearchAdvancedProps = {
+  criteria?: ManufacturingCostTemplateSearch;
+  columns?: ManufacturingCostTemplateSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class ManufacturingCostTemplateSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ManufacturingCostTemplateSearch;
   columns?: ManufacturingCostTemplateSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ManufacturingCostTemplateSearchAdvanced) {
+  constructor(props: ManufacturingCostTemplateSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -88,14 +131,37 @@ export class ManufacturingCostTemplateSearchAdvanced extends PlatformCore.Search
   }
 }
 
+export type ManufacturingCostDetailListProps = {
+  manufacturingCostDetail?: ManufacturingCostDetail[];
+  replaceAll?: boolean;
+};
+
 export class ManufacturingCostDetailList {
   manufacturingCostDetail?: ManufacturingCostDetail[];
   replaceAll?: boolean;
-  constructor(props: ManufacturingCostDetailList) {
+  constructor(props: ManufacturingCostDetailListProps) {
     this.manufacturingCostDetail = props.manufacturingCostDetail;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ManufacturingRoutingProps = {
+  customForm?: PlatformCore.RecordRef;
+  billOfMaterials?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  locationList?: PlatformCore.RecordRefList;
+  name?: string;
+  memo?: string;
+  isDefault?: boolean;
+  isInactive?: boolean;
+  autoCalculateLag?: boolean;
+  routingStepList?: ManufacturingRoutingRoutingStepList;
+  routingComponentList?: ManufacturingRoutingRoutingComponentList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ManufacturingRouting extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -113,7 +179,7 @@ export class ManufacturingRouting extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ManufacturingRouting) {
+  constructor(props: ManufacturingRoutingProps) {
     super(props);
     this.customForm = props.customForm;
     this.billOfMaterials = props.billOfMaterials;
@@ -133,15 +199,28 @@ export class ManufacturingRouting extends PlatformCore.Record {
   }
 }
 
+export type ManufacturingOperationTaskPredecessorListProps = {
+  manufacturingOperationTaskPredecessor?: ManufacturingOperationTaskPredecessor[];
+  replaceAll?: boolean;
+};
+
 export class ManufacturingOperationTaskPredecessorList {
   manufacturingOperationTaskPredecessor?: ManufacturingOperationTaskPredecessor[];
   replaceAll?: boolean;
-  constructor(props: ManufacturingOperationTaskPredecessorList) {
+  constructor(props: ManufacturingOperationTaskPredecessorListProps) {
     this.manufacturingOperationTaskPredecessor =
       props.manufacturingOperationTaskPredecessor;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ManufacturingOperationTaskSearchRowProps = {
+  basic?: PlatformCommon.ManufacturingOperationTaskSearchRowBasic;
+  predecessorJoin?: PlatformCommon.ManufacturingOperationTaskSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  workOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
 
 export class ManufacturingOperationTaskSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ManufacturingOperationTaskSearchRowBasic;
@@ -149,7 +228,7 @@ export class ManufacturingOperationTaskSearchRow extends PlatformCore.SearchRow 
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   workOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ManufacturingOperationTaskSearchRow) {
+  constructor(props: ManufacturingOperationTaskSearchRowProps) {
     super();
     this.basic = props.basic;
     this.predecessorJoin = props.predecessorJoin;
@@ -159,12 +238,19 @@ export class ManufacturingOperationTaskSearchRow extends PlatformCore.SearchRow 
   }
 }
 
+export type ManufacturingCostTemplateSearchProps = {
+  basic?: PlatformCommon.ManufacturingCostTemplateSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class ManufacturingCostTemplateSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ManufacturingCostTemplateSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ManufacturingCostTemplateSearch) {
+  constructor(props: ManufacturingCostTemplateSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -173,15 +259,34 @@ export class ManufacturingCostTemplateSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type ManufacturingRoutingRoutingStepListProps = {
+  manufacturingRoutingRoutingStep?: ManufacturingRoutingRoutingStep[];
+  replaceAll?: boolean;
+};
+
 export class ManufacturingRoutingRoutingStepList {
   manufacturingRoutingRoutingStep?: ManufacturingRoutingRoutingStep[];
   replaceAll?: boolean;
-  constructor(props: ManufacturingRoutingRoutingStepList) {
+  constructor(props: ManufacturingRoutingRoutingStepListProps) {
     this.manufacturingRoutingRoutingStep =
       props.manufacturingRoutingRoutingStep;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ManufacturingRoutingRoutingStepProps = {
+  operationSequence?: number;
+  operationName?: string;
+  manufacturingWorkCenter?: PlatformCore.RecordRef;
+  machineResources?: number;
+  laborResources?: number;
+  manufacturingCostTemplate?: PlatformCore.RecordRef;
+  setupTime?: number;
+  runRate?: number;
+  lagType?: ListsSupplychainTypes.ManufacturingLagType;
+  lagAmount?: number;
+  lagUnits?: string;
+};
 
 export class ManufacturingRoutingRoutingStep {
   operationSequence?: number;
@@ -195,7 +300,7 @@ export class ManufacturingRoutingRoutingStep {
   lagType?: ListsSupplychainTypes.ManufacturingLagType;
   lagAmount?: number;
   lagUnits?: string;
-  constructor(props: ManufacturingRoutingRoutingStep) {
+  constructor(props: ManufacturingRoutingRoutingStepProps) {
     this.operationSequence = props.operationSequence;
     this.operationName = props.operationName;
     this.manufacturingWorkCenter = props.manufacturingWorkCenter;
@@ -210,6 +315,20 @@ export class ManufacturingRoutingRoutingStep {
   }
 }
 
+export type ManufacturingRoutingRoutingComponentProps = {
+  itemName?: string;
+  revision?: string;
+  description?: string;
+  yield?: number;
+  bomQuantity?: number;
+  quantity?: number;
+  units?: string;
+  operationDisplayText?: PlatformCore.RecordRef;
+  operationSequenceNumber?: number;
+  component?: string;
+  item?: string;
+};
+
 export class ManufacturingRoutingRoutingComponent {
   itemName?: string;
   revision?: string;
@@ -222,7 +341,7 @@ export class ManufacturingRoutingRoutingComponent {
   operationSequenceNumber?: number;
   component?: string;
   item?: string;
-  constructor(props: ManufacturingRoutingRoutingComponent) {
+  constructor(props: ManufacturingRoutingRoutingComponentProps) {
     this.itemName = props.itemName;
     this.revision = props.revision;
     this.description = props.description;
@@ -237,12 +356,19 @@ export class ManufacturingRoutingRoutingComponent {
   }
 }
 
+export type ManufacturingRoutingSearchAdvancedProps = {
+  criteria?: ManufacturingRoutingSearch;
+  columns?: ManufacturingRoutingSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
+
 export class ManufacturingRoutingSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: ManufacturingRoutingSearch;
   columns?: ManufacturingRoutingSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: ManufacturingRoutingSearchAdvanced) {
+  constructor(props: ManufacturingRoutingSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -251,13 +377,21 @@ export class ManufacturingRoutingSearchAdvanced extends PlatformCore.SearchRecor
   }
 }
 
+export type ManufacturingOperationTaskSearchProps = {
+  basic?: PlatformCommon.ManufacturingOperationTaskSearchBasic;
+  predecessorJoin?: PlatformCommon.ManufacturingOperationTaskSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  workOrderJoin?: PlatformCommon.TransactionSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class ManufacturingOperationTaskSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ManufacturingOperationTaskSearchBasic;
   predecessorJoin?: PlatformCommon.ManufacturingOperationTaskSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   workOrderJoin?: PlatformCommon.TransactionSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ManufacturingOperationTaskSearch) {
+  constructor(props: ManufacturingOperationTaskSearchProps) {
     super();
     this.basic = props.basic;
     this.predecessorJoin = props.predecessorJoin;
@@ -267,28 +401,50 @@ export class ManufacturingOperationTaskSearch extends PlatformCore.SearchRecord 
   }
 }
 
+export type ManufacturingRoutingRoutingComponentListProps = {
+  manufacturingRoutingRoutingComponent?: ManufacturingRoutingRoutingComponent[];
+  replaceAll?: boolean;
+};
+
 export class ManufacturingRoutingRoutingComponentList {
   manufacturingRoutingRoutingComponent?: ManufacturingRoutingRoutingComponent[];
   replaceAll?: boolean;
-  constructor(props: ManufacturingRoutingRoutingComponentList) {
+  constructor(props: ManufacturingRoutingRoutingComponentListProps) {
     this.manufacturingRoutingRoutingComponent =
       props.manufacturingRoutingRoutingComponent;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ManufacturingCostDetailProps = {
+  costCategory?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  fixedRate?: number;
+  runRate?: number;
+};
+
 export class ManufacturingCostDetail {
   costCategory?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   fixedRate?: number;
   runRate?: number;
-  constructor(props: ManufacturingCostDetail) {
+  constructor(props: ManufacturingCostDetailProps) {
     this.costCategory = props.costCategory;
     this.item = props.item;
     this.fixedRate = props.fixedRate;
     this.runRate = props.runRate;
   }
 }
+
+export type ManufacturingOperationTaskPredecessorProps = {
+  task?: PlatformCore.RecordRef;
+  type?: ListsSupplychainTypes.ManufacturingOperationTaskPredecessorPredecessorType;
+  startDate?: string;
+  endDate?: string;
+  lagType?: ListsSupplychainTypes.ManufacturingLagType;
+  lagAmount?: number;
+  lagUnits?: string;
+};
 
 export class ManufacturingOperationTaskPredecessor {
   task?: PlatformCore.RecordRef;
@@ -298,7 +454,7 @@ export class ManufacturingOperationTaskPredecessor {
   lagType?: ListsSupplychainTypes.ManufacturingLagType;
   lagAmount?: number;
   lagUnits?: string;
-  constructor(props: ManufacturingOperationTaskPredecessor) {
+  constructor(props: ManufacturingOperationTaskPredecessorProps) {
     this.task = props.task;
     this.type = props.type;
     this.startDate = props.startDate;
@@ -309,6 +465,16 @@ export class ManufacturingOperationTaskPredecessor {
   }
 }
 
+export type ManufacturingRoutingSearchRowProps = {
+  basic?: PlatformCommon.ManufacturingRoutingSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  locationJoin?: PlatformCommon.LocationSearchRowBasic;
+  manufacturingCostTemplateJoin?: PlatformCommon.ManufacturingCostTemplateSearchRowBasic;
+  manufacturingWorkCenterJoin?: PlatformCommon.EntityGroupSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ManufacturingRoutingSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ManufacturingRoutingSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
@@ -317,7 +483,7 @@ export class ManufacturingRoutingSearchRow extends PlatformCore.SearchRow {
   manufacturingWorkCenterJoin?: PlatformCommon.EntityGroupSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ManufacturingRoutingSearchRow) {
+  constructor(props: ManufacturingRoutingSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -328,6 +494,16 @@ export class ManufacturingRoutingSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type ManufacturingRoutingSearchProps = {
+  basic?: PlatformCommon.ManufacturingRoutingSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  locationJoin?: PlatformCommon.LocationSearchBasic;
+  manufacturingCostTemplateJoin?: PlatformCommon.ManufacturingCostTemplateSearchBasic;
+  manufacturingWorkCenterJoin?: PlatformCommon.EntityGroupSearchBasic;
+  userJoin?: PlatformCommon.EmployeeSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
 
 export class ManufacturingRoutingSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.ManufacturingRoutingSearchBasic;
@@ -337,7 +513,7 @@ export class ManufacturingRoutingSearch extends PlatformCore.SearchRecord {
   manufacturingWorkCenterJoin?: PlatformCommon.EntityGroupSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: ManufacturingRoutingSearch) {
+  constructor(props: ManufacturingRoutingSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -349,12 +525,19 @@ export class ManufacturingRoutingSearch extends PlatformCore.SearchRecord {
   }
 }
 
+export type ManufacturingCostTemplateSearchRowProps = {
+  basic?: PlatformCommon.ManufacturingCostTemplateSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  userJoin?: PlatformCommon.EmployeeSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class ManufacturingCostTemplateSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.ManufacturingCostTemplateSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: ManufacturingCostTemplateSearchRow) {
+  constructor(props: ManufacturingCostTemplateSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -362,6 +545,18 @@ export class ManufacturingCostTemplateSearchRow extends PlatformCore.SearchRow {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type ManufacturingCostTemplateProps = {
+  customForm?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  name?: string;
+  memo?: string;
+  isInactive?: boolean;
+  costDetailList?: ManufacturingCostDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ManufacturingCostTemplate extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
@@ -373,7 +568,7 @@ export class ManufacturingCostTemplate extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ManufacturingCostTemplate) {
+  constructor(props: ManufacturingCostTemplateProps) {
     super(props);
     this.customForm = props.customForm;
     this.subsidiary = props.subsidiary;

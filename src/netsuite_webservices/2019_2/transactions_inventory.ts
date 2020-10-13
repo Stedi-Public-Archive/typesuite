@@ -3,6 +3,38 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type WorkOrderItemProps = {
+  line?: number;
+  item?: PlatformCore.RecordRef;
+  operationSequenceNumber?: number;
+  componentYield?: number;
+  bomQuantity?: number;
+  quantityCommitted?: number;
+  quantityBackOrdered?: number;
+  quantityAvailable?: number;
+  averageCost?: number;
+  lastPurchasePrice?: number;
+  quantityOnHand?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  orderPriority?: number;
+  options?: PlatformCore.CustomFieldList;
+  itemSource?: PlatformCommonTypes.ItemSource;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  poVendor?: PlatformCore.RecordRef;
+  poRate?: number;
+  percentComplete?: number;
+  contribution?: number;
+  description?: string;
+  commitInventory?: TransactionsInventoryTypes.WorkOrderItemItemCommitInventory;
+  plannedIssueDate?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class WorkOrderItem {
   line?: number;
   item?: PlatformCore.RecordRef;
@@ -33,7 +65,7 @@ export class WorkOrderItem {
   commitInventory?: TransactionsInventoryTypes.WorkOrderItemItemCommitInventory;
   plannedIssueDate?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: WorkOrderItem) {
+  constructor(props: WorkOrderItemProps) {
     this.line = props.line;
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
@@ -66,14 +98,42 @@ export class WorkOrderItem {
   }
 }
 
+export type TransferOrderItemListProps = {
+  item?: TransferOrderItem[];
+  replaceAll?: boolean;
+};
+
 export class TransferOrderItemList {
   item?: TransferOrderItem[];
   replaceAll?: boolean;
-  constructor(props: TransferOrderItemList) {
+  constructor(props: TransferOrderItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type InventoryAdjustmentInventoryProps = {
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  units?: PlatformCore.RecordRef;
+  quantityOnHand?: number;
+  currentValue?: number;
+  adjustQtyBy?: number;
+  binNumbers?: string;
+  serialNumbers?: string;
+  newQuantity?: number;
+  unitCost?: number;
+  foreignCurrencyUnitCost?: number;
+  memo?: string;
+  currency?: string;
+  expirationDate?: string;
+  exchangeRate?: number;
+};
 
 export class InventoryAdjustmentInventory {
   item?: PlatformCore.RecordRef;
@@ -96,7 +156,7 @@ export class InventoryAdjustmentInventory {
   currency?: string;
   expirationDate?: string;
   exchangeRate?: number;
-  constructor(props: InventoryAdjustmentInventory) {
+  constructor(props: InventoryAdjustmentInventoryProps) {
     this.item = props.item;
     this.line = props.line;
     this.inventoryDetail = props.inventoryDetail;
@@ -120,6 +180,20 @@ export class InventoryAdjustmentInventory {
   }
 }
 
+export type BinTransferProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
+  memo?: string;
+  location?: PlatformCore.RecordRef;
+  inventoryList?: BinTransferInventoryList;
+  subsidiary?: PlatformCore.RecordRef;
+  tranId?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class BinTransfer extends PlatformCore.Record {
   createdDate?: string;
   lastModifiedDate?: string;
@@ -132,7 +206,7 @@ export class BinTransfer extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: BinTransfer) {
+  constructor(props: BinTransferProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -148,14 +222,43 @@ export class BinTransfer extends PlatformCore.Record {
   }
 }
 
+export type WorkOrderIssueComponentListProps = {
+  workOrderIssueComponent?: WorkOrderIssueComponent[];
+  replaceAll?: boolean;
+};
+
 export class WorkOrderIssueComponentList {
   workOrderIssueComponent?: WorkOrderIssueComponent[];
   replaceAll?: boolean;
-  constructor(props: WorkOrderIssueComponentList) {
+  constructor(props: WorkOrderIssueComponentListProps) {
     this.workOrderIssueComponent = props.workOrderIssueComponent;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type WorkOrderIssueProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranId?: string;
+  item?: PlatformCore.RecordRef;
+  createdFrom?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revision?: PlatformCore.RecordRef;
+  manufacturingRouting?: PlatformCore.RecordRef;
+  startOperation?: PlatformCore.RecordRef;
+  endOperation?: PlatformCore.RecordRef;
+  componentList?: WorkOrderIssueComponentList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class WorkOrderIssue extends PlatformCore.Record {
   createdDate?: string;
@@ -179,7 +282,7 @@ export class WorkOrderIssue extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: WorkOrderIssue) {
+  constructor(props: WorkOrderIssueProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -205,50 +308,90 @@ export class WorkOrderIssue extends PlatformCore.Record {
   }
 }
 
+export type BinWorksheetItemListProps = {
+  item?: BinWorksheetItem[];
+  replaceAll?: boolean;
+};
+
 export class BinWorksheetItemList {
   item?: BinWorksheetItem[];
   replaceAll?: boolean;
-  constructor(props: BinWorksheetItemList) {
+  constructor(props: BinWorksheetItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type WorkOrderCompletionOperationListProps = {
+  workOrderCompletionOperation?: WorkOrderCompletionOperation[];
+  replaceAll?: boolean;
+};
+
 export class WorkOrderCompletionOperationList {
   workOrderCompletionOperation?: WorkOrderCompletionOperation[];
   replaceAll?: boolean;
-  constructor(props: WorkOrderCompletionOperationList) {
+  constructor(props: WorkOrderCompletionOperationListProps) {
     this.workOrderCompletionOperation = props.workOrderCompletionOperation;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type InterCompanyTransferOrderItemListProps = {
+  item?: InterCompanyTransferOrderItem[];
+  replaceAll?: boolean;
+};
+
 export class InterCompanyTransferOrderItemList {
   item?: InterCompanyTransferOrderItem[];
   replaceAll?: boolean;
-  constructor(props: InterCompanyTransferOrderItemList) {
+  constructor(props: InterCompanyTransferOrderItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PartnersListProps = {
+  partners?: PlatformCommon.Partners[];
+  replaceAll?: boolean;
+};
+
 export class PartnersList {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
-  constructor(props: PartnersList) {
+  constructor(props: PartnersListProps) {
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type WorkOrderItemListProps = {
+  item?: WorkOrderItem[];
+  replaceAll?: boolean;
+};
+
 export class WorkOrderItemList {
   item?: WorkOrderItem[];
   replaceAll?: boolean;
-  constructor(props: WorkOrderItemList) {
+  constructor(props: WorkOrderItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BinWorksheetItemProps = {
+  item?: PlatformCore.RecordRef;
+  itemName?: string;
+  description?: string;
+  quantity?: number;
+  itemOnHand?: string;
+  itemUnitsLabel?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  itemBins?: string;
+  itemBinNumbers?: string;
+  itemBinList?: string;
+  itemPreferBin?: string;
+  itemBlank?: string;
+};
 
 export class BinWorksheetItem {
   item?: PlatformCore.RecordRef;
@@ -263,7 +406,7 @@ export class BinWorksheetItem {
   itemBinList?: string;
   itemPreferBin?: string;
   itemBlank?: string;
-  constructor(props: BinWorksheetItem) {
+  constructor(props: BinWorksheetItemProps) {
     this.item = props.item;
     this.itemName = props.itemName;
     this.description = props.description;
@@ -279,6 +422,15 @@ export class BinWorksheetItem {
   }
 }
 
+export type WorkOrderCompletionComponentProps = {
+  item?: PlatformCore.RecordRef;
+  operationSequenceNumber?: number;
+  quantityPer?: number;
+  quantity?: number;
+  componentInventoryDetail?: PlatformCommon.InventoryDetail;
+  lineNumber?: number;
+};
+
 export class WorkOrderCompletionComponent {
   item?: PlatformCore.RecordRef;
   operationSequenceNumber?: number;
@@ -286,7 +438,7 @@ export class WorkOrderCompletionComponent {
   quantity?: number;
   componentInventoryDetail?: PlatformCommon.InventoryDetail;
   lineNumber?: number;
-  constructor(props: WorkOrderCompletionComponent) {
+  constructor(props: WorkOrderCompletionComponentProps) {
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
     this.quantityPer = props.quantityPer;
@@ -295,6 +447,38 @@ export class WorkOrderCompletionComponent {
     this.lineNumber = props.lineNumber;
   }
 }
+
+export type AssemblyBuildProps = {
+  createdDate?: string;
+  expirationDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  createdFrom?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranId?: string;
+  item?: PlatformCore.RecordRef;
+  buildable?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  total?: number;
+  billOfMaterials?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  binNumbers?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revision?: PlatformCore.RecordRef;
+  billOfMaterialsRevision?: PlatformCore.RecordRef;
+  memo?: string;
+  componentList?: AssemblyComponentList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class AssemblyBuild extends PlatformCore.Record {
   createdDate?: string;
@@ -326,7 +510,7 @@ export class AssemblyBuild extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: AssemblyBuild) {
+  constructor(props: AssemblyBuildProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.expirationDate = props.expirationDate;
@@ -359,6 +543,51 @@ export class AssemblyBuild extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type TransferOrderProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  subTotal?: number;
+  status?: string;
+  shippingAddress?: PlatformCommon.Address;
+  shipIsResidential?: boolean;
+  shipAddressList?: PlatformCore.RecordRef;
+  fob?: string;
+  tranDate?: string;
+  tranId?: string;
+  source?: string;
+  orderStatus?: TransactionsInventoryTypes.TransferOrderOrderStatus;
+  subsidiary?: PlatformCore.RecordRef;
+  employee?: PlatformCore.RecordRef;
+  useItemCostAsTransferCost?: boolean;
+  incoterm?: PlatformCore.RecordRef;
+  firmed?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  transferLocation?: PlatformCore.RecordRef;
+  memo?: string;
+  shipDate?: string;
+  shipMethod?: PlatformCore.RecordRef;
+  trackingNumbers?: string;
+  linkedTrackingNumbers?: string;
+  shipComplete?: boolean;
+  altShippingCost?: number;
+  shippingTax1Rate?: number;
+  shippingTax2Rate?: number;
+  handlingTax1Rate?: number;
+  handlingTax2Rate?: number;
+  shippingTaxCode?: PlatformCore.RecordRef;
+  handlingTaxCode?: PlatformCore.RecordRef;
+  total?: number;
+  itemList?: TransferOrderItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class TransferOrder extends PlatformCore.Record {
   createdDate?: string;
@@ -403,7 +632,7 @@ export class TransferOrder extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: TransferOrder) {
+  constructor(props: TransferOrderProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -450,13 +679,21 @@ export class TransferOrder extends PlatformCore.Record {
   }
 }
 
+export type InventoryCostRevaluationCostComponentProps = {
+  cost?: number;
+  componentItem?: PlatformCore.RecordRef;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  costCategory?: PlatformCore.RecordRef;
+};
+
 export class InventoryCostRevaluationCostComponent {
   cost?: number;
   componentItem?: PlatformCore.RecordRef;
   quantity?: number;
   units?: PlatformCore.RecordRef;
   costCategory?: PlatformCore.RecordRef;
-  constructor(props: InventoryCostRevaluationCostComponent) {
+  constructor(props: InventoryCostRevaluationCostComponentProps) {
     this.cost = props.cost;
     this.componentItem = props.componentItem;
     this.quantity = props.quantity;
@@ -464,6 +701,29 @@ export class InventoryCostRevaluationCostComponent {
     this.costCategory = props.costCategory;
   }
 }
+
+export type InventoryAdjustmentProps = {
+  postingPeriod?: PlatformCore.RecordRef;
+  tranDate?: string;
+  createdDate?: string;
+  tranId?: string;
+  lastModifiedDate?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  customForm?: PlatformCore.RecordRef;
+  estimatedTotalValue?: number;
+  customer?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  adjLocation?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+  inventoryList?: InventoryAdjustmentInventoryList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class InventoryAdjustment extends PlatformCore.Record {
   postingPeriod?: PlatformCore.RecordRef;
@@ -486,7 +746,7 @@ export class InventoryAdjustment extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InventoryAdjustment) {
+  constructor(props: InventoryAdjustmentProps) {
     super(props);
     this.postingPeriod = props.postingPeriod;
     this.tranDate = props.tranDate;
@@ -511,14 +771,43 @@ export class InventoryAdjustment extends PlatformCore.Record {
   }
 }
 
+export type BinTransferInventoryListProps = {
+  inventory?: BinTransferInventory[];
+  replaceAll?: boolean;
+};
+
 export class BinTransferInventoryList {
   inventory?: BinTransferInventory[];
   replaceAll?: boolean;
-  constructor(props: BinTransferInventoryList) {
+  constructor(props: BinTransferInventoryListProps) {
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type InterCompanyTransferOrderItemProps = {
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  quantityAvailable?: number;
+  quantityOnHand?: number;
+  quantityBackOrdered?: number;
+  quantityCommitted?: number;
+  quantityFulfilled?: number;
+  quantityReceived?: number;
+  quantity?: number;
+  rate?: number;
+  units?: PlatformCore.RecordRef;
+  amount?: number;
+  description?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  commitInventory?: TransactionsInventoryTypes.TransferOrderItemCommitInventory;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  lastPurchasePrice?: number;
+  averageCost?: number;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class InterCompanyTransferOrderItem {
   item?: PlatformCore.RecordRef;
@@ -542,7 +831,7 @@ export class InterCompanyTransferOrderItem {
   lastPurchasePrice?: number;
   averageCost?: number;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: InterCompanyTransferOrderItem) {
+  constructor(props: InterCompanyTransferOrderItemProps) {
     this.item = props.item;
     this.line = props.line;
     this.quantityAvailable = props.quantityAvailable;
@@ -567,13 +856,21 @@ export class InterCompanyTransferOrderItem {
   }
 }
 
+export type WorkOrderIssueComponentProps = {
+  item?: PlatformCore.RecordRef;
+  operationSequenceNumber?: number;
+  quantity?: number;
+  componentInventoryDetail?: PlatformCommon.InventoryDetail;
+  lineNumber?: number;
+};
+
 export class WorkOrderIssueComponent {
   item?: PlatformCore.RecordRef;
   operationSequenceNumber?: number;
   quantity?: number;
   componentInventoryDetail?: PlatformCommon.InventoryDetail;
   lineNumber?: number;
-  constructor(props: WorkOrderIssueComponent) {
+  constructor(props: WorkOrderIssueComponentProps) {
     this.item = props.item;
     this.operationSequenceNumber = props.operationSequenceNumber;
     this.quantity = props.quantity;
@@ -582,23 +879,57 @@ export class WorkOrderIssueComponent {
   }
 }
 
+export type SalesTeamListProps = {
+  salesTeam?: PlatformCommon.CustomerSalesTeam[];
+  replaceAll?: boolean;
+};
+
 export class SalesTeamList {
   salesTeam?: PlatformCommon.CustomerSalesTeam[];
   replaceAll?: boolean;
-  constructor(props: SalesTeamList) {
+  constructor(props: SalesTeamListProps) {
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type AssemblyComponentListProps = {
+  component?: AssemblyComponent[];
+  replaceAll?: boolean;
+};
+
 export class AssemblyComponentList {
   component?: AssemblyComponent[];
   replaceAll?: boolean;
-  constructor(props: AssemblyComponentList) {
+  constructor(props: AssemblyComponentListProps) {
     this.component = props.component;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type InventoryCostRevaluationProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranId?: string;
+  account?: PlatformCore.RecordRef;
+  item?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+  total?: number;
+  inventoryValue?: number;
+  unitCost?: number;
+  costComponentList?: InventoryCostRevaluationCostComponentList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class InventoryCostRevaluation extends PlatformCore.Record {
   createdDate?: string;
@@ -622,7 +953,7 @@ export class InventoryCostRevaluation extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InventoryCostRevaluation) {
+  constructor(props: InventoryCostRevaluationProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -647,6 +978,35 @@ export class InventoryCostRevaluation extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type AssemblyUnbuildProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranId?: string;
+  item?: PlatformCore.RecordRef;
+  built?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  total?: number;
+  billOfMaterials?: PlatformCore.RecordRef;
+  billOfMaterialsRevision?: PlatformCore.RecordRef;
+  serialNumbers?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  binNumbers?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  memo?: string;
+  componentList?: AssemblyComponentList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class AssemblyUnbuild extends PlatformCore.Record {
   createdDate?: string;
@@ -675,7 +1035,7 @@ export class AssemblyUnbuild extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: AssemblyUnbuild) {
+  constructor(props: AssemblyUnbuildProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -706,6 +1066,16 @@ export class AssemblyUnbuild extends PlatformCore.Record {
   }
 }
 
+export type AssemblyComponentProps = {
+  item?: PlatformCore.RecordRef;
+  quantity?: number;
+  quantityOnHand?: number;
+  componentInventoryDetail?: PlatformCommon.InventoryDetail;
+  componentNumbers?: string;
+  binNumbers?: string;
+  lineNumber?: number;
+};
+
 export class AssemblyComponent {
   item?: PlatformCore.RecordRef;
   quantity?: number;
@@ -714,7 +1084,7 @@ export class AssemblyComponent {
   componentNumbers?: string;
   binNumbers?: string;
   lineNumber?: number;
-  constructor(props: AssemblyComponent) {
+  constructor(props: AssemblyComponentProps) {
     this.item = props.item;
     this.quantity = props.quantity;
     this.quantityOnHand = props.quantityOnHand;
@@ -725,14 +1095,50 @@ export class AssemblyComponent {
   }
 }
 
+export type InventoryAdjustmentInventoryListProps = {
+  inventory?: InventoryAdjustmentInventory[];
+  replaceAll?: boolean;
+};
+
 export class InventoryAdjustmentInventoryList {
   inventory?: InventoryAdjustmentInventory[];
   replaceAll?: boolean;
-  constructor(props: InventoryAdjustmentInventoryList) {
+  constructor(props: InventoryAdjustmentInventoryListProps) {
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type TransferOrderItemProps = {
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  quantityAvailable?: number;
+  quantityOnHand?: number;
+  quantityBackOrdered?: number;
+  quantityCommitted?: number;
+  quantityFulfilled?: number;
+  quantityPacked?: number;
+  quantityPicked?: number;
+  quantityReceived?: number;
+  quantity?: number;
+  rate?: number;
+  units?: PlatformCore.RecordRef;
+  amount?: number;
+  description?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  commitInventory?: TransactionsInventoryTypes.TransferOrderItemCommitInventory;
+  orderPriority?: number;
+  options?: PlatformCore.CustomFieldList;
+  isClosed?: boolean;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  lastPurchasePrice?: number;
+  averageCost?: number;
+  expectedShipDate?: string;
+  expectedReceiptDate?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class TransferOrderItem {
   item?: PlatformCore.RecordRef;
@@ -763,7 +1169,7 @@ export class TransferOrderItem {
   expectedShipDate?: string;
   expectedReceiptDate?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: TransferOrderItem) {
+  constructor(props: TransferOrderItemProps) {
     this.item = props.item;
     this.line = props.line;
     this.quantityAvailable = props.quantityAvailable;
@@ -795,14 +1201,64 @@ export class TransferOrderItem {
   }
 }
 
+export type InventoryCostRevaluationCostComponentListProps = {
+  costComponent?: InventoryCostRevaluationCostComponent[];
+  replaceAll?: boolean;
+};
+
 export class InventoryCostRevaluationCostComponentList {
   costComponent?: InventoryCostRevaluationCostComponent[];
   replaceAll?: boolean;
-  constructor(props: InventoryCostRevaluationCostComponentList) {
+  constructor(props: InventoryCostRevaluationCostComponentListProps) {
     this.costComponent = props.costComponent;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type WorkOrderProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  manufacturingRouting?: PlatformCore.RecordRef;
+  autoCalculateLag?: boolean;
+  status?: string;
+  tranId?: string;
+  entity?: PlatformCore.RecordRef;
+  job?: PlatformCore.RecordRef;
+  assemblyItem?: PlatformCore.RecordRef;
+  expandAssembly?: boolean;
+  isWip?: boolean;
+  quantity?: number;
+  billOfMaterials?: PlatformCore.RecordRef;
+  units?: PlatformCore.RecordRef;
+  tranDate?: string;
+  orderStatus?: TransactionsInventoryTypes.WorkOrderOrderStatus;
+  firmed?: boolean;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  itemList?: WorkOrderItemList;
+  location?: PlatformCore.RecordRef;
+  schedulingMethod?: TransactionsInventoryTypes.WorkOrderSchedulingMethod;
+  salesTeamList?: SalesTeamList;
+  partnersList?: PartnersList;
+  createdFrom?: PlatformCore.RecordRef;
+  sourceTransactionId?: string;
+  sourceTransactionLine?: number;
+  specialOrder?: boolean;
+  buildable?: number;
+  options?: PlatformCore.CustomFieldList;
+  built?: number;
+  startDate?: string;
+  endDate?: string;
+  revision?: PlatformCore.RecordRef;
+  billOfMaterialsRevision?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class WorkOrder extends PlatformCore.Record {
   createdDate?: string;
@@ -847,7 +1303,7 @@ export class WorkOrder extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: WorkOrder) {
+  constructor(props: WorkOrderProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -894,14 +1350,52 @@ export class WorkOrder extends PlatformCore.Record {
   }
 }
 
+export type InventoryTransferInventoryListProps = {
+  inventory?: InventoryTransferInventory[];
+  replaceAll?: boolean;
+};
+
 export class InventoryTransferInventoryList {
   inventory?: InventoryTransferInventory[];
   replaceAll?: boolean;
-  constructor(props: InventoryTransferInventoryList) {
+  constructor(props: InventoryTransferInventoryListProps) {
     this.inventory = props.inventory;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type WorkOrderCompletionProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranId?: string;
+  item?: PlatformCore.RecordRef;
+  quantity?: number;
+  scrapQuantity?: number;
+  units?: PlatformCore.RecordRef;
+  isBackflush?: boolean;
+  orderQuantity?: number;
+  total?: number;
+  createdFrom?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revision?: PlatformCore.RecordRef;
+  startOperation?: PlatformCore.RecordRef;
+  endOperation?: PlatformCore.RecordRef;
+  completedQuantity?: number;
+  manufacturingRouting?: PlatformCore.RecordRef;
+  componentList?: WorkOrderCompletionComponentList;
+  operationList?: WorkOrderCompletionOperationList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class WorkOrderCompletion extends PlatformCore.Record {
   createdDate?: string;
@@ -934,7 +1428,7 @@ export class WorkOrderCompletion extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: WorkOrderCompletion) {
+  constructor(props: WorkOrderCompletionProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -969,6 +1463,24 @@ export class WorkOrderCompletion extends PlatformCore.Record {
   }
 }
 
+export type InventoryTransferProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranId?: string;
+  memo?: string;
+  location?: PlatformCore.RecordRef;
+  transferLocation?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  inventoryList?: InventoryTransferInventoryList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class InventoryTransfer extends PlatformCore.Record {
   createdDate?: string;
   lastModifiedDate?: string;
@@ -985,7 +1497,7 @@ export class InventoryTransfer extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InventoryTransfer) {
+  constructor(props: InventoryTransferProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1005,6 +1517,18 @@ export class InventoryTransfer extends PlatformCore.Record {
   }
 }
 
+export type BinTransferInventoryProps = {
+  line?: number;
+  item?: PlatformCore.RecordRef;
+  description?: string;
+  preferredBin?: string;
+  quantity?: number;
+  itemUnitsLabel?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  fromBins?: string;
+  toBins?: string;
+};
+
 export class BinTransferInventory {
   line?: number;
   item?: PlatformCore.RecordRef;
@@ -1015,7 +1539,7 @@ export class BinTransferInventory {
   inventoryDetail?: PlatformCommon.InventoryDetail;
   fromBins?: string;
   toBins?: string;
-  constructor(props: BinTransferInventory) {
+  constructor(props: BinTransferInventoryProps) {
     this.line = props.line;
     this.item = props.item;
     this.description = props.description;
@@ -1027,6 +1551,23 @@ export class BinTransferInventory {
     this.toBins = props.toBins;
   }
 }
+
+export type WorkOrderCompletionOperationProps = {
+  operationSequence?: number;
+  operationName?: string;
+  workCenter?: string;
+  machineResources?: number;
+  laborResources?: number;
+  inputQuantity?: number;
+  quantityRemaining?: number;
+  predecessorCompletedQuantity?: number;
+  completedQuantity?: number;
+  recordSetup?: boolean;
+  machineSetupTime?: number;
+  laborSetupTime?: number;
+  machineRunTime?: number;
+  laborRunTime?: number;
+};
 
 export class WorkOrderCompletionOperation {
   operationSequence?: number;
@@ -1043,7 +1584,7 @@ export class WorkOrderCompletionOperation {
   laborSetupTime?: number;
   machineRunTime?: number;
   laborRunTime?: number;
-  constructor(props: WorkOrderCompletionOperation) {
+  constructor(props: WorkOrderCompletionOperationProps) {
     this.operationSequence = props.operationSequence;
     this.operationName = props.operationName;
     this.workCenter = props.workCenter;
@@ -1061,14 +1602,32 @@ export class WorkOrderCompletionOperation {
   }
 }
 
+export type WorkOrderCompletionComponentListProps = {
+  workOrderCompletionComponent?: WorkOrderCompletionComponent[];
+  replaceAll?: boolean;
+};
+
 export class WorkOrderCompletionComponentList {
   workOrderCompletionComponent?: WorkOrderCompletionComponent[];
   replaceAll?: boolean;
-  constructor(props: WorkOrderCompletionComponentList) {
+  constructor(props: WorkOrderCompletionComponentListProps) {
     this.workOrderCompletionComponent = props.workOrderCompletionComponent;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type BinWorksheetProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  tranDate?: string;
+  memo?: string;
+  location?: PlatformCore.RecordRef;
+  tranId?: string;
+  itemList?: BinWorksheetItemList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class BinWorksheet extends PlatformCore.Record {
   createdDate?: string;
@@ -1081,7 +1640,7 @@ export class BinWorksheet extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: BinWorksheet) {
+  constructor(props: BinWorksheetProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1095,6 +1654,29 @@ export class BinWorksheet extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type WorkOrderCloseProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  tranId?: string;
+  item?: PlatformCore.RecordRef;
+  quantity?: number;
+  orderQuantity?: number;
+  scrapQuantity?: number;
+  createdFrom?: PlatformCore.RecordRef;
+  tranDate?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  revision?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class WorkOrderClose extends PlatformCore.Record {
   createdDate?: string;
@@ -1117,7 +1699,7 @@ export class WorkOrderClose extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: WorkOrderClose) {
+  constructor(props: WorkOrderCloseProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1141,6 +1723,51 @@ export class WorkOrderClose extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type InterCompanyTransferOrderProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  shippingCost?: number;
+  subTotal?: number;
+  status?: string;
+  shippingAddress?: PlatformCommon.Address;
+  shipIsResidential?: boolean;
+  shipAddressList?: PlatformCore.RecordRef;
+  fob?: string;
+  tranDate?: string;
+  tranId?: string;
+  source?: string;
+  orderStatus?: TransactionsInventoryTypes.TransferOrderOrderStatus;
+  subsidiary?: PlatformCore.RecordRef;
+  toSubsidiary?: PlatformCore.RecordRef;
+  employee?: PlatformCore.RecordRef;
+  useItemCostAsTransferCost?: boolean;
+  incoterm?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  transferLocation?: PlatformCore.RecordRef;
+  memo?: string;
+  shipDate?: string;
+  shipMethod?: PlatformCore.RecordRef;
+  trackingNumbers?: string;
+  linkedTrackingNumbers?: string;
+  shipComplete?: boolean;
+  altShippingCost?: number;
+  shippingTax1Rate?: number;
+  handlingTax1Rate?: number;
+  shippingTax2Rate?: number;
+  handlingTax2Rate?: number;
+  shippingTaxCode?: PlatformCore.RecordRef;
+  handlingTaxCode?: PlatformCore.RecordRef;
+  total?: number;
+  itemList?: InterCompanyTransferOrderItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class InterCompanyTransferOrder extends PlatformCore.Record {
   createdDate?: string;
@@ -1185,7 +1812,7 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InterCompanyTransferOrder) {
+  constructor(props: InterCompanyTransferOrderProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1232,6 +1859,20 @@ export class InterCompanyTransferOrder extends PlatformCore.Record {
   }
 }
 
+export type InventoryTransferInventoryProps = {
+  line?: number;
+  item?: PlatformCore.RecordRef;
+  description?: string;
+  units?: PlatformCore.RecordRef;
+  quantityOnHand?: number;
+  adjustQtyBy?: number;
+  serialNumbers?: string;
+  fromBinNumbers?: string;
+  toBinNumbers?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class InventoryTransferInventory {
   line?: number;
   item?: PlatformCore.RecordRef;
@@ -1244,7 +1885,7 @@ export class InventoryTransferInventory {
   toBinNumbers?: string;
   inventoryDetail?: PlatformCommon.InventoryDetail;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: InventoryTransferInventory) {
+  constructor(props: InventoryTransferInventoryProps) {
     this.line = props.line;
     this.item = props.item;
     this.description = props.description;

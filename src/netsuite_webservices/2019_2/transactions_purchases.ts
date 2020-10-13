@@ -3,6 +3,45 @@ import * as PlatformCommon from "./platform_common";
 import * as TransactionsPurchasesTypes from "./transactions_purchases_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 
+export type VendorBillItemProps = {
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  line?: number;
+  orderDoc?: number;
+  orderLine?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  serialNumbers?: string;
+  binNumbers?: string;
+  expirationDate?: string;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  grossAmt?: number;
+  tax1Amt?: number;
+  rate?: string;
+  amount?: number;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  landedCostCategory?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  billVarianceStatus?: PlatformCommonTypes.TransactionBillVarianceStatus;
+  billreceiptsList?: PlatformCore.RecordRefList;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  taxAmount?: number;
+  taxDetailsReference?: string;
+  landedCost?: PlatformCommon.LandedCost;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class VendorBillItem {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
@@ -40,7 +79,7 @@ export class VendorBillItem {
   taxDetailsReference?: string;
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorBillItem) {
+  constructor(props: VendorBillItemProps) {
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -80,6 +119,15 @@ export class VendorBillItem {
   }
 }
 
+export type InboundShipmentSearchRowProps = {
+  basic?: PlatformCommon.InboundShipmentSearchRowBasic;
+  itemJoin?: PlatformCommon.ItemSearchRowBasic;
+  itemReceiptJoin?: PlatformCommon.TransactionSearchRowBasic;
+  purchaseOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
+  vendorJoin?: PlatformCommon.VendorSearchRowBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
+};
+
 export class InboundShipmentSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.InboundShipmentSearchRowBasic;
   itemJoin?: PlatformCommon.ItemSearchRowBasic;
@@ -87,7 +135,7 @@ export class InboundShipmentSearchRow extends PlatformCore.SearchRow {
   purchaseOrderJoin?: PlatformCommon.TransactionSearchRowBasic;
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
-  constructor(props: InboundShipmentSearchRow) {
+  constructor(props: InboundShipmentSearchRowProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -98,13 +146,21 @@ export class InboundShipmentSearchRow extends PlatformCore.SearchRow {
   }
 }
 
+export type VendorBillInstallmentProps = {
+  amount?: number;
+  dueDate?: string;
+  amountDue?: number;
+  seqNum?: number;
+  status?: string;
+};
+
 export class VendorBillInstallment {
   amount?: number;
   dueDate?: string;
   amountDue?: number;
   seqNum?: number;
   status?: string;
-  constructor(props: VendorBillInstallment) {
+  constructor(props: VendorBillInstallmentProps) {
     this.amount = props.amount;
     this.dueDate = props.dueDate;
     this.amountDue = props.amountDue;
@@ -112,6 +168,20 @@ export class VendorBillInstallment {
     this.status = props.status;
   }
 }
+
+export type VendorPaymentCreditProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  creditDate?: string;
+  type?: string;
+  refNum?: string;
+  appliedTo?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+};
 
 export class VendorPaymentCredit {
   apply?: boolean;
@@ -125,7 +195,7 @@ export class VendorPaymentCredit {
   due?: number;
   currency?: string;
   amount?: number;
-  constructor(props: VendorPaymentCredit) {
+  constructor(props: VendorPaymentCreditProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -140,23 +210,46 @@ export class VendorPaymentCredit {
   }
 }
 
+export type PurchaseRequisitionItemListProps = {
+  purchaseRequisitionItem?: PurchaseRequisitionItem[];
+  replaceAll?: boolean;
+};
+
 export class PurchaseRequisitionItemList {
   purchaseRequisitionItem?: PurchaseRequisitionItem[];
   replaceAll?: boolean;
-  constructor(props: PurchaseRequisitionItemList) {
+  constructor(props: PurchaseRequisitionItemListProps) {
     this.purchaseRequisitionItem = props.purchaseRequisitionItem;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type ItemReceiptExpenseListProps = {
+  expense?: ItemReceiptExpense[];
+  replaceAll?: boolean;
+};
+
 export class ItemReceiptExpenseList {
   expense?: ItemReceiptExpense[];
   replaceAll?: boolean;
-  constructor(props: ItemReceiptExpenseList) {
+  constructor(props: ItemReceiptExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorCreditApplyProps = {
+  apply?: boolean;
+  applyDate?: string;
+  doc?: number;
+  line?: number;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  amount?: number;
+};
 
 export class VendorCreditApply {
   apply?: boolean;
@@ -169,7 +262,7 @@ export class VendorCreditApply {
   due?: number;
   currency?: string;
   amount?: number;
-  constructor(props: VendorCreditApply) {
+  constructor(props: VendorCreditApplyProps) {
     this.apply = props.apply;
     this.applyDate = props.applyDate;
     this.doc = props.doc;
@@ -183,32 +276,64 @@ export class VendorCreditApply {
   }
 }
 
+export type PurchaseOrderItemListProps = {
+  item?: PurchaseOrderItem[];
+  replaceAll?: boolean;
+};
+
 export class PurchaseOrderItemList {
   item?: PurchaseOrderItem[];
   replaceAll?: boolean;
-  constructor(props: PurchaseOrderItemList) {
+  constructor(props: PurchaseOrderItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type ItemReceiptItemListProps = {
+  item?: ItemReceiptItem[];
+  replaceAll?: boolean;
+};
 
 export class ItemReceiptItemList {
   item?: ItemReceiptItem[];
   replaceAll?: boolean;
-  constructor(props: ItemReceiptItemList) {
+  constructor(props: ItemReceiptItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type VendorBillInstallmentListProps = {
+  vendorBillInstallment?: VendorBillInstallment[];
+  replaceAll?: boolean;
+};
+
 export class VendorBillInstallmentList {
   vendorBillInstallment?: VendorBillInstallment[];
   replaceAll?: boolean;
-  constructor(props: VendorBillInstallmentList) {
+  constructor(props: VendorBillInstallmentListProps) {
     this.vendorBillInstallment = props.vendorBillInstallment;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorPaymentApplyProps = {
+  apply?: boolean;
+  doc?: number;
+  line?: number;
+  job?: string;
+  applyDate?: string;
+  type?: string;
+  refNum?: string;
+  total?: number;
+  due?: number;
+  currency?: string;
+  discDate?: string;
+  discAmt?: number;
+  disc?: number;
+  amount?: number;
+};
 
 export class VendorPaymentApply {
   apply?: boolean;
@@ -225,7 +350,7 @@ export class VendorPaymentApply {
   discAmt?: number;
   disc?: number;
   amount?: number;
-  constructor(props: VendorPaymentApply) {
+  constructor(props: VendorPaymentApplyProps) {
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -242,6 +367,46 @@ export class VendorPaymentApply {
     this.amount = props.amount;
   }
 }
+
+export type VendorPaymentProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  balance?: number;
+  apAcct?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  address?: string;
+  tranDate?: string;
+  voidJournal?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  currencyName?: string;
+  exchangeRate?: number;
+  toAch?: boolean;
+  toBePrinted?: boolean;
+  printVoucher?: boolean;
+  tranId?: string;
+  total?: number;
+  currency?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  memo?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  status?: string;
+  transactionNumber?: string;
+  applyList?: VendorPaymentApplyList;
+  creditList?: VendorPaymentCreditList;
+  billPay?: boolean;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  availableBalance?: number;
+  isInTransitPayment?: boolean;
+  approvalStatus?: PlatformCore.RecordRef;
+  nextApprover?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class VendorPayment extends PlatformCore.Record {
   createdDate?: string;
@@ -281,7 +446,7 @@ export class VendorPayment extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: VendorPayment) {
+  constructor(props: VendorPaymentProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -323,14 +488,45 @@ export class VendorPayment extends PlatformCore.Record {
   }
 }
 
+export type VendorCreditExpenseListProps = {
+  expense?: VendorCreditExpense[];
+  replaceAll?: boolean;
+};
+
 export class VendorCreditExpenseList {
   expense?: VendorCreditExpense[];
   replaceAll?: boolean;
-  constructor(props: VendorCreditExpenseList) {
+  constructor(props: VendorCreditExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorReturnAuthorizationExpenseProps = {
+  orderLine?: number;
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  taxAmount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  taxDetailsReference?: string;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class VendorReturnAuthorizationExpense {
   orderLine?: number;
@@ -356,7 +552,7 @@ export class VendorReturnAuthorizationExpense {
   amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorReturnAuthorizationExpense) {
+  constructor(props: VendorReturnAuthorizationExpenseProps) {
     this.orderLine = props.orderLine;
     this.line = props.line;
     this.category = props.category;
@@ -382,6 +578,41 @@ export class VendorReturnAuthorizationExpense {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type VendorReturnAuthorizationItemProps = {
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  line?: number;
+  orderLine?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbersList?: PlatformCore.RecordRefList;
+  description?: string;
+  binNumbers?: string;
+  rate?: string;
+  amount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  grossAmt?: number;
+  tax1Amt?: number;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  isClosed?: boolean;
+  amortizationSched?: PlatformCore.RecordRef;
+  isDropShipment?: boolean;
+  taxAmount?: number;
+  taxDetailsReference?: string;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class VendorReturnAuthorizationItem {
   item?: PlatformCore.RecordRef;
@@ -416,7 +647,7 @@ export class VendorReturnAuthorizationItem {
   amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorReturnAuthorizationItem) {
+  constructor(props: VendorReturnAuthorizationItemProps) {
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -452,6 +683,16 @@ export class VendorReturnAuthorizationItem {
   }
 }
 
+export type InboundShipmentLandedCostProps = {
+  landedCostCostCategory?: PlatformCore.RecordRef;
+  landedCostAmount?: number;
+  landedCostCurrency?: PlatformCore.RecordRef;
+  landedCostExchangeRate?: number;
+  landedCostEffectiveDate?: string;
+  landedCostAllocationMethod?: TransactionsPurchasesTypes.InboundShipmentLandedCostAllocationMethod;
+  landedCostShipmentItemsList?: PlatformCore.RecordRefList;
+};
+
 export class InboundShipmentLandedCost {
   landedCostCostCategory?: PlatformCore.RecordRef;
   landedCostAmount?: number;
@@ -460,7 +701,7 @@ export class InboundShipmentLandedCost {
   landedCostEffectiveDate?: string;
   landedCostAllocationMethod?: TransactionsPurchasesTypes.InboundShipmentLandedCostAllocationMethod;
   landedCostShipmentItemsList?: PlatformCore.RecordRefList;
-  constructor(props: InboundShipmentLandedCost) {
+  constructor(props: InboundShipmentLandedCostProps) {
     this.landedCostCostCategory = props.landedCostCostCategory;
     this.landedCostAmount = props.landedCostAmount;
     this.landedCostCurrency = props.landedCostCurrency;
@@ -470,6 +711,34 @@ export class InboundShipmentLandedCost {
     this.landedCostShipmentItemsList = props.landedCostShipmentItemsList;
   }
 }
+
+export type ItemReceiptItemProps = {
+  itemReceive?: boolean;
+  jobName?: string;
+  item?: PlatformCore.RecordRef;
+  orderLine?: number;
+  line?: number;
+  itemName?: string;
+  description?: string;
+  location?: PlatformCore.RecordRef;
+  onHand?: number;
+  quantityRemaining?: number;
+  quantity?: number;
+  unitsDisplay?: string;
+  unitCostOverride?: number;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  binNumbers?: string;
+  expirationDate?: string;
+  rate?: string;
+  currency?: string;
+  restock?: boolean;
+  billVarianceStatus?: PlatformCommonTypes.TransactionBillVarianceStatus;
+  isDropShipment?: boolean;
+  options?: PlatformCore.CustomFieldList;
+  landedCost?: PlatformCommon.LandedCost;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class ItemReceiptItem {
   itemReceive?: boolean;
@@ -497,7 +766,7 @@ export class ItemReceiptItem {
   options?: PlatformCore.CustomFieldList;
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: ItemReceiptItem) {
+  constructor(props: ItemReceiptItemProps) {
     this.itemReceive = props.itemReceive;
     this.jobName = props.jobName;
     this.item = props.item;
@@ -526,30 +795,47 @@ export class ItemReceiptItem {
   }
 }
 
+export type InboundShipmentLandedCostListProps = {
+  inboundShipmentLandedCost?: InboundShipmentLandedCost[];
+  replaceAll?: boolean;
+};
+
 export class InboundShipmentLandedCostList {
   inboundShipmentLandedCost?: InboundShipmentLandedCost[];
   replaceAll?: boolean;
-  constructor(props: InboundShipmentLandedCostList) {
+  constructor(props: InboundShipmentLandedCostListProps) {
     this.inboundShipmentLandedCost = props.inboundShipmentLandedCost;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PurchaseOrderExpenseListProps = {
+  expense?: PurchaseOrderExpense[];
+  replaceAll?: boolean;
+};
+
 export class PurchaseOrderExpenseList {
   expense?: PurchaseOrderExpense[];
   replaceAll?: boolean;
-  constructor(props: PurchaseOrderExpenseList) {
+  constructor(props: PurchaseOrderExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type InboundShipmentSearchAdvancedProps = {
+  criteria?: InboundShipmentSearch;
+  columns?: InboundShipmentSearchRow;
+  savedSearchId?: string;
+  savedSearchScriptId?: string;
+};
 
 export class InboundShipmentSearchAdvanced extends PlatformCore.SearchRecord {
   criteria?: InboundShipmentSearch;
   columns?: InboundShipmentSearchRow;
   savedSearchId?: string;
   savedSearchScriptId?: string;
-  constructor(props: InboundShipmentSearchAdvanced) {
+  constructor(props: InboundShipmentSearchAdvancedProps) {
     super();
     this.criteria = props.criteria;
     this.columns = props.columns;
@@ -558,6 +844,15 @@ export class InboundShipmentSearchAdvanced extends PlatformCore.SearchRecord {
   }
 }
 
+export type InboundShipmentSearchProps = {
+  basic?: PlatformCommon.InboundShipmentSearchBasic;
+  itemJoin?: PlatformCommon.ItemSearchBasic;
+  itemReceiptJoin?: PlatformCommon.TransactionSearchBasic;
+  purchaseOrderJoin?: PlatformCommon.TransactionSearchBasic;
+  vendorJoin?: PlatformCommon.VendorSearchBasic;
+  customSearchJoin?: PlatformCommon.CustomSearchJoin[];
+};
+
 export class InboundShipmentSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.InboundShipmentSearchBasic;
   itemJoin?: PlatformCommon.ItemSearchBasic;
@@ -565,7 +860,7 @@ export class InboundShipmentSearch extends PlatformCore.SearchRecord {
   purchaseOrderJoin?: PlatformCommon.TransactionSearchBasic;
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
-  constructor(props: InboundShipmentSearch) {
+  constructor(props: InboundShipmentSearchProps) {
     super();
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
@@ -575,6 +870,28 @@ export class InboundShipmentSearch extends PlatformCore.SearchRecord {
     this.customSearchJoin = props.customSearchJoin;
   }
 }
+
+export type InboundShipmentItemsProps = {
+  id?: number;
+  purchaseOrder?: PlatformCore.RecordRef;
+  shipmentItem?: PlatformCore.RecordRef;
+  shipmentItemDescription?: string;
+  poVendor?: string;
+  receivingLocation?: PlatformCore.RecordRef;
+  quantityReceived?: number;
+  quantityExpected?: number;
+  quantityRemaining?: number;
+  unit?: PlatformCore.RecordRef;
+  poRate?: number;
+  expectedRate?: number;
+  shipmentItemExchangeRate?: number;
+  shipmentItemEffectiveDate?: string;
+  unitLandedCost?: number;
+  totalUnitCost?: number;
+  shipmentItemAmount?: number;
+  poCurrency?: PlatformCore.RecordRef;
+  incoterm?: PlatformCore.RecordRef;
+};
 
 export class InboundShipmentItems {
   id?: number;
@@ -596,7 +913,7 @@ export class InboundShipmentItems {
   shipmentItemAmount?: number;
   poCurrency?: PlatformCore.RecordRef;
   incoterm?: PlatformCore.RecordRef;
-  constructor(props: InboundShipmentItems) {
+  constructor(props: InboundShipmentItemsProps) {
     this.id = props.id;
     this.purchaseOrder = props.purchaseOrder;
     this.shipmentItem = props.shipmentItem;
@@ -618,6 +935,34 @@ export class InboundShipmentItems {
     this.incoterm = props.incoterm;
   }
 }
+
+export type ItemReceiptProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  entity?: PlatformCore.RecordRef;
+  currencyName?: string;
+  subsidiary?: PlatformCore.RecordRef;
+  createdFrom?: PlatformCore.RecordRef;
+  tranDate?: string;
+  partner?: PlatformCore.RecordRef;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranId?: string;
+  inboundShipment?: PlatformCore.RecordRef;
+  memo?: string;
+  itemFulfillment?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  landedCostMethod?: PlatformCommonTypes.LandedCostMethod;
+  landedCostPerLine?: boolean;
+  itemList?: ItemReceiptItemList;
+  expenseList?: ItemReceiptExpenseList;
+  landedCostsList?: PurchLandedCostList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class ItemReceipt extends PlatformCore.Record {
   createdDate?: string;
@@ -645,7 +990,7 @@ export class ItemReceipt extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: ItemReceipt) {
+  constructor(props: ItemReceiptProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -675,14 +1020,59 @@ export class ItemReceipt extends PlatformCore.Record {
   }
 }
 
+export type VendorPaymentCreditListProps = {
+  credit?: VendorPaymentCredit[];
+  replaceAll?: boolean;
+};
+
 export class VendorPaymentCreditList {
   credit?: VendorPaymentCredit[];
   replaceAll?: boolean;
-  constructor(props: VendorPaymentCreditList) {
+  constructor(props: VendorPaymentCreditListProps) {
     this.credit = props.credit;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PurchaseOrderItemProps = {
+  item?: PlatformCore.RecordRef;
+  line?: number;
+  quantityOnShipments?: number;
+  vendorName?: string;
+  quantityReceived?: number;
+  quantityBilled?: number;
+  quantityAvailable?: number;
+  quantityOnHand?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  quantity?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbers?: string;
+  description?: string;
+  purchaseContract?: PlatformCore.RecordRef;
+  rate?: string;
+  amount?: number;
+  options?: PlatformCore.CustomFieldList;
+  taxAmount?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  landedCostCategory?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  billVarianceStatus?: PlatformCommonTypes.TransactionBillVarianceStatus;
+  matchBillToReceipt?: boolean;
+  expectedReceiptDate?: string;
+  isClosed?: boolean;
+  taxDetailsReference?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  linkedOrderList?: PlatformCore.RecordRefList;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class PurchaseOrderItem {
   item?: PlatformCore.RecordRef;
@@ -722,7 +1112,7 @@ export class PurchaseOrderItem {
   createdFrom?: PlatformCore.RecordRef;
   linkedOrderList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PurchaseOrderItem) {
+  constructor(props: PurchaseOrderItemProps) {
     this.item = props.item;
     this.line = props.line;
     this.quantityOnShipments = props.quantityOnShipments;
@@ -763,23 +1153,51 @@ export class PurchaseOrderItem {
   }
 }
 
+export type InboundShipmentItemsListProps = {
+  inboundShipmentItems?: InboundShipmentItems[];
+  replaceAll?: boolean;
+};
+
 export class InboundShipmentItemsList {
   inboundShipmentItems?: InboundShipmentItems[];
   replaceAll?: boolean;
-  constructor(props: InboundShipmentItemsList) {
+  constructor(props: InboundShipmentItemsListProps) {
     this.inboundShipmentItems = props.inboundShipmentItems;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type VendorReturnAuthorizationExpenseListProps = {
+  expense?: VendorReturnAuthorizationExpense[];
+  replaceAll?: boolean;
+};
+
 export class VendorReturnAuthorizationExpenseList {
   expense?: VendorReturnAuthorizationExpense[];
   replaceAll?: boolean;
-  constructor(props: VendorReturnAuthorizationExpenseList) {
+  constructor(props: VendorReturnAuthorizationExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PurchaseRequisitionExpenseProps = {
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  isClosed?: boolean;
+  account?: PlatformCore.RecordRef;
+  poVendor?: PlatformCore.RecordRef;
+  estimatedAmount?: number;
+  amount?: number;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  linkedOrderList?: PlatformCore.RecordRefList;
+  linkedOrderStatus?: string;
+  isBillable?: boolean;
+};
 
 export class PurchaseRequisitionExpense {
   line?: number;
@@ -797,7 +1215,7 @@ export class PurchaseRequisitionExpense {
   linkedOrderList?: PlatformCore.RecordRefList;
   linkedOrderStatus?: string;
   isBillable?: boolean;
-  constructor(props: PurchaseRequisitionExpense) {
+  constructor(props: PurchaseRequisitionExpenseProps) {
     this.line = props.line;
     this.category = props.category;
     this.location = props.location;
@@ -816,14 +1234,47 @@ export class PurchaseRequisitionExpense {
   }
 }
 
+export type VendorCreditApplyListProps = {
+  apply?: VendorCreditApply[];
+  replaceAll?: boolean;
+};
+
 export class VendorCreditApplyList {
   apply?: VendorCreditApply[];
   replaceAll?: boolean;
-  constructor(props: VendorCreditApplyList) {
+  constructor(props: VendorCreditApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorBillExpenseProps = {
+  orderDoc?: number;
+  orderLine?: number;
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  taxAmount?: number;
+  tax1Amt?: number;
+  memo?: string;
+  grossAmt?: number;
+  taxDetailsReference?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  projectTask?: PlatformCore.RecordRef;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class VendorBillExpense {
   orderDoc?: number;
@@ -851,7 +1302,7 @@ export class VendorBillExpense {
   amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorBillExpense) {
+  constructor(props: VendorBillExpenseProps) {
     this.orderDoc = props.orderDoc;
     this.orderLine = props.orderLine;
     this.line = props.line;
@@ -880,14 +1331,56 @@ export class VendorBillExpense {
   }
 }
 
+export type VendorBillExpenseListProps = {
+  expense?: VendorBillExpense[];
+  replaceAll?: boolean;
+};
+
 export class VendorBillExpenseList {
   expense?: VendorBillExpense[];
   replaceAll?: boolean;
-  constructor(props: VendorBillExpenseList) {
+  constructor(props: VendorBillExpenseListProps) {
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type PurchaseRequisitionProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  customForm?: PlatformCore.RecordRef;
+  source?: string;
+  subTotal?: number;
+  currencyName?: string;
+  exchangeRate?: number;
+  vatRegNum?: string;
+  nexus?: PlatformCore.RecordRef;
+  taxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  estimatedTotal?: number;
+  status?: string;
+  currency?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  dueDate?: string;
+  tranDate?: string;
+  tranId?: string;
+  memo?: string;
+  approvalStatus?: PlatformCore.RecordRef;
+  nextApprover?: PlatformCore.RecordRef;
+  taxTotal?: number;
+  tax2Total?: number;
+  subsidiary?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  total?: number;
+  itemList?: PurchaseRequisitionItemList;
+  expenseList?: PurchaseRequisitionExpenseList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PurchaseRequisition extends PlatformCore.Record {
   createdDate?: string;
@@ -924,7 +1417,7 @@ export class PurchaseRequisition extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: PurchaseRequisition) {
+  constructor(props: PurchaseRequisitionProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -963,6 +1456,26 @@ export class PurchaseRequisition extends PlatformCore.Record {
   }
 }
 
+export type InboundShipmentProps = {
+  customForm?: PlatformCore.RecordRef;
+  shipmentNumber?: string;
+  externalDocumentNumber?: string;
+  shipmentStatus?: TransactionsPurchasesTypes.InboundShipmentShipmentStatus;
+  expectedShippingDate?: string;
+  actualShippingDate?: string;
+  expectedDeliveryDate?: string;
+  actualDeliveryDate?: string;
+  shipmentMemo?: string;
+  vesselNumber?: string;
+  billOfLading?: string;
+  landedCostList?: InboundShipmentLandedCostList;
+  itemsList?: InboundShipmentItemsList;
+  shipmentBaseCurrency?: PlatformCore.RecordRef;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
+
 export class InboundShipment extends PlatformCore.Record {
   customForm?: PlatformCore.RecordRef;
   shipmentNumber?: string;
@@ -981,7 +1494,7 @@ export class InboundShipment extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: InboundShipment) {
+  constructor(props: InboundShipmentProps) {
     super(props);
     this.customForm = props.customForm;
     this.shipmentNumber = props.shipmentNumber;
@@ -1002,6 +1515,61 @@ export class InboundShipment extends PlatformCore.Record {
     this.externalId = props.externalId;
   }
 }
+
+export type VendorBillProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  billAddressList?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  approvalStatus?: PlatformCore.RecordRef;
+  nextApprover?: PlatformCore.RecordRef;
+  vatRegNum?: string;
+  postingPeriod?: PlatformCore.RecordRef;
+  tranDate?: string;
+  currencyName?: string;
+  billingAddress?: PlatformCommon.Address;
+  exchangeRate?: number;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  terms?: PlatformCore.RecordRef;
+  dueDate?: string;
+  discountDate?: string;
+  tranId?: string;
+  userTotal?: number;
+  discountAmount?: number;
+  taxTotal?: number;
+  paymentHold?: boolean;
+  memo?: string;
+  tax2Total?: number;
+  creditLimit?: number;
+  availableVendorCredit?: number;
+  currency?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  status?: string;
+  landedCostMethod?: PlatformCommonTypes.LandedCostMethod;
+  landedCostPerLine?: boolean;
+  transactionNumber?: string;
+  expenseList?: VendorBillExpenseList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  itemList?: VendorBillItemList;
+  installmentList?: VendorBillInstallmentList;
+  landedCostsList?: PurchLandedCostList;
+  purchaseOrderList?: PlatformCore.RecordRefList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  overrideInstallments?: boolean;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class VendorBill extends PlatformCore.Record {
   createdDate?: string;
@@ -1056,7 +1624,7 @@ export class VendorBill extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: VendorBill) {
+  constructor(props: VendorBillProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1113,6 +1681,16 @@ export class VendorBill extends PlatformCore.Record {
   }
 }
 
+export type ItemReceiptExpenseProps = {
+  markReceived?: boolean;
+  orderLine?: number;
+  line?: number;
+  account?: string;
+  memo?: string;
+  amount?: number;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class ItemReceiptExpense {
   markReceived?: boolean;
   orderLine?: number;
@@ -1121,7 +1699,7 @@ export class ItemReceiptExpense {
   memo?: string;
   amount?: number;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: ItemReceiptExpense) {
+  constructor(props: ItemReceiptExpenseProps) {
     this.markReceived = props.markReceived;
     this.orderLine = props.orderLine;
     this.line = props.line;
@@ -1132,14 +1710,45 @@ export class ItemReceiptExpense {
   }
 }
 
+export type VendorBillItemListProps = {
+  item?: VendorBillItem[];
+  replaceAll?: boolean;
+};
+
 export class VendorBillItemList {
   item?: VendorBillItem[];
   replaceAll?: boolean;
-  constructor(props: VendorBillItemList) {
+  constructor(props: VendorBillItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorCreditExpenseProps = {
+  orderLine?: number;
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  taxAmount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  taxDetailsReference?: string;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class VendorCreditExpense {
   orderLine?: number;
@@ -1165,7 +1774,7 @@ export class VendorCreditExpense {
   amortizationEndDate?: string;
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorCreditExpense) {
+  constructor(props: VendorCreditExpenseProps) {
     this.orderLine = props.orderLine;
     this.line = props.line;
     this.category = props.category;
@@ -1191,6 +1800,74 @@ export class VendorCreditExpense {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type PurchaseOrderProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  purchaseContract?: PlatformCore.RecordRef;
+  vatRegNum?: string;
+  employee?: PlatformCore.RecordRef;
+  supervisorApproval?: boolean;
+  tranDate?: string;
+  tranId?: string;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  terms?: PlatformCore.RecordRef;
+  dueDate?: string;
+  otherRefNum?: string;
+  availableVendorCredit?: number;
+  memo?: string;
+  approvalStatus?: PlatformCore.RecordRef;
+  exchangeRate?: number;
+  nextApprover?: PlatformCore.RecordRef;
+  source?: string;
+  currencyName?: string;
+  toBePrinted?: boolean;
+  toBeEmailed?: boolean;
+  email?: string;
+  toBeFaxed?: boolean;
+  fax?: string;
+  message?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  currency?: PlatformCore.RecordRef;
+  shipTo?: PlatformCore.RecordRef;
+  subTotal?: number;
+  taxTotal?: number;
+  tax2Total?: number;
+  shippingAddress?: PlatformCommon.Address;
+  shipIsResidential?: boolean;
+  shipAddressList?: PlatformCore.RecordRef;
+  fob?: string;
+  shipDate?: string;
+  shipMethod?: PlatformCore.RecordRef;
+  incoterm?: PlatformCore.RecordRef;
+  trackingNumbers?: string;
+  linkedTrackingNumbers?: string;
+  total?: number;
+  clazz?: PlatformCore.RecordRef;
+  department?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  intercoTransaction?: PlatformCore.RecordRef;
+  intercoStatus?: PlatformCommonTypes.IntercoStatus;
+  status?: string;
+  orderStatus?: TransactionsPurchasesTypes.PurchaseOrderOrderStatus;
+  itemList?: PurchaseOrderItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  expenseList?: PurchaseOrderExpenseList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class PurchaseOrder extends PlatformCore.Record {
   createdDate?: string;
@@ -1258,7 +1935,7 @@ export class PurchaseOrder extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: PurchaseOrder) {
+  constructor(props: PurchaseOrderProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1328,6 +2005,36 @@ export class PurchaseOrder extends PlatformCore.Record {
   }
 }
 
+export type PurchaseRequisitionItemProps = {
+  line?: number;
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  poVendor?: PlatformCore.RecordRef;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  serialNumbers?: string;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  description?: string;
+  estimatedRate?: number;
+  estimatedAmount?: number;
+  rate?: string;
+  amount?: number;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  grossAmt?: number;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  linkedOrderList?: PlatformCore.RecordRefList;
+  linkedOrderStatus?: string;
+  expectedReceiptDate?: string;
+  isClosed?: boolean;
+  expandItemGroup?: boolean;
+};
+
 export class PurchaseRequisitionItem {
   line?: number;
   item?: PlatformCore.RecordRef;
@@ -1356,7 +2063,7 @@ export class PurchaseRequisitionItem {
   expectedReceiptDate?: string;
   isClosed?: boolean;
   expandItemGroup?: boolean;
-  constructor(props: PurchaseRequisitionItem) {
+  constructor(props: PurchaseRequisitionItemProps) {
     this.line = props.line;
     this.item = props.item;
     this.vendorName = props.vendorName;
@@ -1387,6 +2094,30 @@ export class PurchaseRequisitionItem {
   }
 }
 
+export type PurchaseOrderExpenseProps = {
+  line?: number;
+  category?: PlatformCore.RecordRef;
+  linkedOrderList?: PlatformCore.RecordRefList;
+  account?: PlatformCore.RecordRef;
+  amount?: number;
+  taxAmount?: number;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isClosed?: boolean;
+  isBillable?: boolean;
+  createdFrom?: PlatformCore.RecordRef;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  tax1Amt?: number;
+  grossAmt?: number;
+  taxDetailsReference?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
+
 export class PurchaseOrderExpense {
   line?: number;
   category?: PlatformCore.RecordRef;
@@ -1409,7 +2140,7 @@ export class PurchaseOrderExpense {
   grossAmt?: number;
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: PurchaseOrderExpense) {
+  constructor(props: PurchaseOrderExpenseProps) {
     this.line = props.line;
     this.category = props.category;
     this.linkedOrderList = props.linkedOrderList;
@@ -1433,6 +2164,49 @@ export class PurchaseOrderExpense {
     this.customFieldList = props.customFieldList;
   }
 }
+
+export type VendorCreditProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  account?: PlatformCore.RecordRef;
+  unApplied?: number;
+  billAddressList?: PlatformCore.RecordRef;
+  autoApply?: boolean;
+  applied?: number;
+  transactionNumber?: string;
+  tranId?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  total?: number;
+  userTotal?: number;
+  currency?: PlatformCore.RecordRef;
+  currencyName?: string;
+  billingAddress?: PlatformCommon.Address;
+  tranDate?: string;
+  exchangeRate?: number;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  userTaxTotal?: number;
+  postingPeriod?: PlatformCore.RecordRef;
+  memo?: string;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  expenseList?: VendorCreditExpenseList;
+  itemList?: VendorCreditItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  applyList?: VendorCreditApplyList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class VendorCredit extends PlatformCore.Record {
   createdDate?: string;
@@ -1475,7 +2249,7 @@ export class VendorCredit extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: VendorCredit) {
+  constructor(props: VendorCreditProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1520,32 +2294,85 @@ export class VendorCredit extends PlatformCore.Record {
   }
 }
 
+export type VendorCreditItemListProps = {
+  item?: VendorCreditItem[];
+  replaceAll?: boolean;
+};
+
 export class VendorCreditItemList {
   item?: VendorCreditItem[];
   replaceAll?: boolean;
-  constructor(props: VendorCreditItemList) {
+  constructor(props: VendorCreditItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type VendorPaymentApplyListProps = {
+  apply?: VendorPaymentApply[];
+  replaceAll?: boolean;
+};
+
 export class VendorPaymentApplyList {
   apply?: VendorPaymentApply[];
   replaceAll?: boolean;
-  constructor(props: VendorPaymentApplyList) {
+  constructor(props: VendorPaymentApplyListProps) {
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type VendorReturnAuthorizationItemListProps = {
+  item?: VendorReturnAuthorizationItem[];
+  replaceAll?: boolean;
+};
+
 export class VendorReturnAuthorizationItemList {
   item?: VendorReturnAuthorizationItem[];
   replaceAll?: boolean;
-  constructor(props: VendorReturnAuthorizationItemList) {
+  constructor(props: VendorReturnAuthorizationItemListProps) {
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorReturnAuthorizationProps = {
+  createdDate?: string;
+  lastModifiedDate?: string;
+  nexus?: PlatformCore.RecordRef;
+  subsidiaryTaxRegNum?: PlatformCore.RecordRef;
+  taxRegOverride?: boolean;
+  taxDetailsOverride?: boolean;
+  customForm?: PlatformCore.RecordRef;
+  tranId?: string;
+  createdFrom?: PlatformCore.RecordRef;
+  entity?: PlatformCore.RecordRef;
+  orderStatus?: TransactionsPurchasesTypes.VendorReturnAuthorizationOrderStatus;
+  tranDate?: string;
+  userTotal?: number;
+  currency?: PlatformCore.RecordRef;
+  currencyName?: string;
+  billingAddress?: PlatformCommon.Address;
+  billAddressList?: PlatformCore.RecordRef;
+  memo?: string;
+  exchangeRate?: number;
+  entityTaxRegNum?: PlatformCore.RecordRef;
+  taxPointDate?: string;
+  userTaxTotal?: number;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  subsidiary?: PlatformCore.RecordRef;
+  intercoTransaction?: PlatformCore.RecordRef;
+  intercoStatus?: PlatformCommonTypes.IntercoStatus;
+  expenseList?: VendorReturnAuthorizationExpenseList;
+  itemList?: VendorReturnAuthorizationItemList;
+  accountingBookDetailList?: PlatformCommon.AccountingBookDetailList;
+  taxDetailsList?: PlatformCommon.TaxDetailsList;
+  customFieldList?: PlatformCore.CustomFieldList;
+  internalId?: string;
+  externalId?: string;
+} & PlatformCore.RecordProps;
 
 export class VendorReturnAuthorization extends PlatformCore.Record {
   createdDate?: string;
@@ -1583,7 +2410,7 @@ export class VendorReturnAuthorization extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   externalId?: string;
-  constructor(props: VendorReturnAuthorization) {
+  constructor(props: VendorReturnAuthorizationProps) {
     super(props);
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -1623,23 +2450,66 @@ export class VendorReturnAuthorization extends PlatformCore.Record {
   }
 }
 
+export type PurchaseRequisitionExpenseListProps = {
+  purchaseRequisitionExpense?: PurchaseRequisitionExpense[];
+  replaceAll?: boolean;
+};
+
 export class PurchaseRequisitionExpenseList {
   purchaseRequisitionExpense?: PurchaseRequisitionExpense[];
   replaceAll?: boolean;
-  constructor(props: PurchaseRequisitionExpenseList) {
+  constructor(props: PurchaseRequisitionExpenseListProps) {
     this.purchaseRequisitionExpense = props.purchaseRequisitionExpense;
     this.replaceAll = props.replaceAll;
   }
 }
 
+export type PurchLandedCostListProps = {
+  landedCost?: PlatformCommon.LandedCostSummary[];
+  replaceAll?: boolean;
+};
+
 export class PurchLandedCostList {
   landedCost?: PlatformCommon.LandedCostSummary[];
   replaceAll?: boolean;
-  constructor(props: PurchLandedCostList) {
+  constructor(props: PurchLandedCostListProps) {
     this.landedCost = props.landedCost;
     this.replaceAll = props.replaceAll;
   }
 }
+
+export type VendorCreditItemProps = {
+  item?: PlatformCore.RecordRef;
+  vendorName?: string;
+  line?: number;
+  orderLine?: number;
+  quantity?: number;
+  units?: PlatformCore.RecordRef;
+  inventoryDetail?: PlatformCommon.InventoryDetail;
+  serialNumbersList?: PlatformCore.RecordRefList;
+  description?: string;
+  rate?: string;
+  amount?: number;
+  binNumbers?: string;
+  taxCode?: PlatformCore.RecordRef;
+  taxRate1?: number;
+  taxRate2?: number;
+  grossAmt?: number;
+  tax1Amt?: number;
+  options?: PlatformCore.CustomFieldList;
+  department?: PlatformCore.RecordRef;
+  clazz?: PlatformCore.RecordRef;
+  location?: PlatformCore.RecordRef;
+  customer?: PlatformCore.RecordRef;
+  isBillable?: boolean;
+  amortizationSched?: PlatformCore.RecordRef;
+  amortizStartDate?: string;
+  amortizationEndDate?: string;
+  amortizationResidual?: string;
+  taxAmount?: number;
+  taxDetailsReference?: string;
+  customFieldList?: PlatformCore.CustomFieldList;
+};
 
 export class VendorCreditItem {
   item?: PlatformCore.RecordRef;
@@ -1672,7 +2542,7 @@ export class VendorCreditItem {
   taxAmount?: number;
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
-  constructor(props: VendorCreditItem) {
+  constructor(props: VendorCreditItemProps) {
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
