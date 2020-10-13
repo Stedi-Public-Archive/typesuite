@@ -1,0 +1,91 @@
+import { com_netsuite_webservices_activities_scheduling_2019_2 } from "./__mappings/com_netsuite_webservices_activities_scheduling_2019_2";
+import { com_netsuite_webservices_activities_scheduling_2019_2_types } from "./__mappings/com_netsuite_webservices_activities_scheduling_2019_2_types";
+import { com_netsuite_webservices_documents_filecabinet_2019_2 } from "./__mappings/com_netsuite_webservices_documents_filecabinet_2019_2";
+import { com_netsuite_webservices_documents_filecabinet_2019_2_types } from "./__mappings/com_netsuite_webservices_documents_filecabinet_2019_2_types";
+import { com_netsuite_webservices_general_communication_2019_2 } from "./__mappings/com_netsuite_webservices_general_communication_2019_2";
+import { com_netsuite_webservices_general_communication_2019_2_types } from "./__mappings/com_netsuite_webservices_general_communication_2019_2_types";
+import { com_netsuite_webservices_lists_accounting_2019_2 } from "./__mappings/com_netsuite_webservices_lists_accounting_2019_2";
+import { com_netsuite_webservices_lists_accounting_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_accounting_2019_2_types";
+import { com_netsuite_webservices_lists_employees_2019_2 } from "./__mappings/com_netsuite_webservices_lists_employees_2019_2";
+import { com_netsuite_webservices_lists_employees_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_employees_2019_2_types";
+import { com_netsuite_webservices_lists_marketing_2019_2 } from "./__mappings/com_netsuite_webservices_lists_marketing_2019_2";
+import { com_netsuite_webservices_lists_marketing_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_marketing_2019_2_types";
+import { com_netsuite_webservices_lists_relationships_2019_2 } from "./__mappings/com_netsuite_webservices_lists_relationships_2019_2";
+import { com_netsuite_webservices_lists_relationships_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_relationships_2019_2_types";
+import { com_netsuite_webservices_lists_supplychain_2019_2 } from "./__mappings/com_netsuite_webservices_lists_supplychain_2019_2";
+import { com_netsuite_webservices_lists_supplychain_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_supplychain_2019_2_types";
+import { com_netsuite_webservices_lists_support_2019_2 } from "./__mappings/com_netsuite_webservices_lists_support_2019_2";
+import { com_netsuite_webservices_lists_support_2019_2_types } from "./__mappings/com_netsuite_webservices_lists_support_2019_2_types";
+import { com_netsuite_webservices_lists_website_2019_2 } from "./__mappings/com_netsuite_webservices_lists_website_2019_2";
+import { com_netsuite_webservices_platform_common_2019_2 } from "./__mappings/com_netsuite_webservices_platform_common_2019_2";
+import { com_netsuite_webservices_platform_common_2019_2_types } from "./__mappings/com_netsuite_webservices_platform_common_2019_2_types";
+import { com_netsuite_webservices_platform_core_2019_2 } from "./__mappings/com_netsuite_webservices_platform_core_2019_2";
+import { com_netsuite_webservices_platform_core_2019_2_types } from "./__mappings/com_netsuite_webservices_platform_core_2019_2_types";
+import { com_netsuite_webservices_platform_faults_2019_2 } from "./__mappings/com_netsuite_webservices_platform_faults_2019_2";
+import { com_netsuite_webservices_platform_faults_2019_2_types } from "./__mappings/com_netsuite_webservices_platform_faults_2019_2_types";
+import { com_netsuite_webservices_platform_messages_2019_2 } from "./__mappings/com_netsuite_webservices_platform_messages_2019_2";
+import { com_netsuite_webservices_setup_customization_2019_2 } from "./__mappings/com_netsuite_webservices_setup_customization_2019_2";
+import { com_netsuite_webservices_setup_customization_2019_2_types } from "./__mappings/com_netsuite_webservices_setup_customization_2019_2_types";
+import { com_netsuite_webservices_transactions_bank_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_bank_2019_2";
+import { com_netsuite_webservices_transactions_customers_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_customers_2019_2";
+import { com_netsuite_webservices_transactions_customers_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_customers_2019_2_types";
+import { com_netsuite_webservices_transactions_demandplanning_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_demandplanning_2019_2";
+import { com_netsuite_webservices_transactions_demandplanning_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_demandplanning_2019_2_types";
+import { com_netsuite_webservices_transactions_employees_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_employees_2019_2";
+import { com_netsuite_webservices_transactions_employees_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_employees_2019_2_types";
+import { com_netsuite_webservices_transactions_financial_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_financial_2019_2";
+import { com_netsuite_webservices_transactions_financial_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_financial_2019_2_types";
+import { com_netsuite_webservices_transactions_general_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_general_2019_2";
+import { com_netsuite_webservices_transactions_inventory_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_inventory_2019_2";
+import { com_netsuite_webservices_transactions_inventory_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_inventory_2019_2_types";
+import { com_netsuite_webservices_transactions_purchases_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_purchases_2019_2";
+import { com_netsuite_webservices_transactions_purchases_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_purchases_2019_2_types";
+import { com_netsuite_webservices_transactions_sales_2019_2 } from "./__mappings/com_netsuite_webservices_transactions_sales_2019_2";
+import { com_netsuite_webservices_transactions_sales_2019_2_types } from "./__mappings/com_netsuite_webservices_transactions_sales_2019_2_types";
+
+export default [
+  com_netsuite_webservices_activities_scheduling_2019_2,
+  com_netsuite_webservices_activities_scheduling_2019_2_types,
+  com_netsuite_webservices_documents_filecabinet_2019_2,
+  com_netsuite_webservices_documents_filecabinet_2019_2_types,
+  com_netsuite_webservices_general_communication_2019_2,
+  com_netsuite_webservices_general_communication_2019_2_types,
+  com_netsuite_webservices_lists_accounting_2019_2,
+  com_netsuite_webservices_lists_accounting_2019_2_types,
+  com_netsuite_webservices_lists_employees_2019_2,
+  com_netsuite_webservices_lists_employees_2019_2_types,
+  com_netsuite_webservices_lists_marketing_2019_2,
+  com_netsuite_webservices_lists_marketing_2019_2_types,
+  com_netsuite_webservices_lists_relationships_2019_2,
+  com_netsuite_webservices_lists_relationships_2019_2_types,
+  com_netsuite_webservices_lists_supplychain_2019_2,
+  com_netsuite_webservices_lists_supplychain_2019_2_types,
+  com_netsuite_webservices_lists_support_2019_2,
+  com_netsuite_webservices_lists_support_2019_2_types,
+  com_netsuite_webservices_lists_website_2019_2,
+  com_netsuite_webservices_platform_common_2019_2,
+  com_netsuite_webservices_platform_common_2019_2_types,
+  com_netsuite_webservices_platform_core_2019_2,
+  com_netsuite_webservices_platform_core_2019_2_types,
+  com_netsuite_webservices_platform_faults_2019_2,
+  com_netsuite_webservices_platform_faults_2019_2_types,
+  com_netsuite_webservices_platform_messages_2019_2,
+  com_netsuite_webservices_setup_customization_2019_2,
+  com_netsuite_webservices_setup_customization_2019_2_types,
+  com_netsuite_webservices_transactions_bank_2019_2,
+  com_netsuite_webservices_transactions_customers_2019_2,
+  com_netsuite_webservices_transactions_customers_2019_2_types,
+  com_netsuite_webservices_transactions_demandplanning_2019_2,
+  com_netsuite_webservices_transactions_demandplanning_2019_2_types,
+  com_netsuite_webservices_transactions_employees_2019_2,
+  com_netsuite_webservices_transactions_employees_2019_2_types,
+  com_netsuite_webservices_transactions_financial_2019_2,
+  com_netsuite_webservices_transactions_financial_2019_2_types,
+  com_netsuite_webservices_transactions_general_2019_2,
+  com_netsuite_webservices_transactions_inventory_2019_2,
+  com_netsuite_webservices_transactions_inventory_2019_2_types,
+  com_netsuite_webservices_transactions_purchases_2019_2,
+  com_netsuite_webservices_transactions_purchases_2019_2_types,
+  com_netsuite_webservices_transactions_sales_2019_2,
+  com_netsuite_webservices_transactions_sales_2019_2_types,
+];
