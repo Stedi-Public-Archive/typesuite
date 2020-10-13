@@ -103,10 +103,7 @@ import {
   UnexpectedErrorFault,
 } from "./netsuite_webservices/2019_2/platform_faults";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
-import {
-  serializeSoapRequest,
-  deserializeSoapResponse,
-} from "./util/soap-mapper";
+import { serializeSoapRequest, deserializeSoapResponse } from "./soap-mapper";
 
 export interface Configuration {
   account: string;

@@ -1,12 +1,12 @@
 import {
   TokenPassport,
   TokenPassportSignature,
-} from "../../src/netsuite_webservices/2019_2/platform_core";
-import { LoginRequest } from "../../src/netsuite_webservices/2019_2/platform_messages";
+} from "../src/netsuite_webservices/2019_2/platform_core";
+import { LoginRequest } from "../src/netsuite_webservices/2019_2/platform_messages";
 import {
   deserializeSoapResponse,
   serializeSoapRequest,
-} from "../../src/util/soap-mapper";
+} from "../src/soap-mapper";
 
 describe("Soap Mapper", () => {
   describe("serializing and deserializing requests", () => {
