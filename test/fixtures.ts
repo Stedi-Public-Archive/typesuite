@@ -172,3 +172,68 @@ export function expectedSearchRequestXml(date: string): string {
     "</soap:Envelope>"
   );
 }
+
+export function soapFaultXml(): string {
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>' +
+    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"' +
+    '                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
+    '                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
+    "    <soapenv:Body>" +
+    "        <soapenv:Fault>" +
+    "            <faultcode>soapenv:Server.userException</faultcode>" +
+    "            <faultstring>Invalid login attempt.</faultstring>" +
+    "            <detail>" +
+    "                <platformFaults:invalidCredentialsFault" +
+    '                        xmlns:platformFaults="urn:faults_2019_2.platform.webservices.netsuite.com">' +
+    "                    <platformFaults:code>USER_ERROR</platformFaults:code>" +
+    "                    <platformFaults:message>Invalid login attempt.</platformFaults:message>" +
+    "                </platformFaults:invalidCredentialsFault>" +
+    '                <ns1:hostname xmlns:ns1="http://xml.apache.org/axis/">partners030' +
+    "                </ns1:hostname>" +
+    "            </detail>" +
+    "        </soapenv:Fault>" +
+    "    </soapenv:Body>" +
+    "</soapenv:Envelope>"
+  );
+}
+
+export function soapSuccessXml(): string {
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\n' +
+    '                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"\n' +
+    '                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n' +
+    "    <soapenv:Header>\n" +
+    "        <platformMsgs:documentInfo\n" +
+    '                xmlns:platformMsgs="urn:messages_2019_2.platform.webservices.netsuite.com">\n' +
+    "            <platformMsgs:nsId>WEBSERVICES_TSTDRV1982068_101420206783052241624369917_9d3834</platformMsgs:nsId>\n" +
+    "        </platformMsgs:documentInfo>\n" +
+    "    </soapenv:Header>\n" +
+    "    <soapenv:Body>\n" +
+    '        <searchResponse xmlns="urn:messages_2019_2.platform.webservices.netsuite.com">\n' +
+    "            <platformCore:searchResult\n" +
+    '                    xmlns:platformCore="urn:core_2019_2.platform.webservices.netsuite.com">\n' +
+    '                <platformCore:status isSuccess="true"/>\n' +
+    "                <platformCore:totalRecords>1</platformCore:totalRecords>\n" +
+    "                <platformCore:pageSize>1000</platformCore:pageSize>\n" +
+    "                <platformCore:totalPages>1</platformCore:totalPages>\n" +
+    "                <platformCore:pageIndex>1</platformCore:pageIndex>\n" +
+    "                <platformCore:searchId>WEBSERVICES_TSTDRV1982068_101420206783052241624369917_9d3834</platformCore:searchId>\n" +
+    "                <platformCore:searchRowList>\n" +
+    '                    <platformCore:searchRow xsi:type="tranSales:TransactionSearchRow"\n' +
+    '                                            xmlns:tranSales="urn:sales_2019_2.transactions.webservices.netsuite.com">\n' +
+    "                        <tranSales:basic\n" +
+    '                                xmlns:platformCommon="urn:common_2019_2.platform.webservices.netsuite.com">\n' +
+    "                            <platformCommon:internalId>\n" +
+    '                                <platformCore:searchValue internalId="392562"/>\n' +
+    "                            </platformCommon:internalId>\n" +
+    "                        </tranSales:basic>\n" +
+    "                    </platformCore:searchRow>\n" +
+    "                </platformCore:searchRowList>\n" +
+    "            </platformCore:searchResult>\n" +
+    "        </searchResponse>\n" +
+    "    </soapenv:Body>\n" +
+    "</soapenv:Envelope>"
+  );
+}
