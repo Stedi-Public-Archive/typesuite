@@ -2,16 +2,18 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsCustomersTypes from "./transactions_customers_types";
 import * as PlatformCommonTypes from "./platform_common_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_transactions_customers_2019_2";
 export type ReturnAuthorizationSalesTeamListProps = {
   salesTeam?: ReturnAuthorizationSalesTeam[];
   replaceAll?: boolean;
 };
 
-export class ReturnAuthorizationSalesTeamList {
+export class ReturnAuthorizationSalesTeamList extends SoapMappingBase {
   salesTeam?: ReturnAuthorizationSalesTeam[];
   replaceAll?: boolean;
   constructor(props: ReturnAuthorizationSalesTeamListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
@@ -31,7 +33,7 @@ export type CreditMemoApplyProps = {
   line?: number;
 };
 
-export class CreditMemoApply {
+export class CreditMemoApply extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   applyDate?: string;
@@ -44,6 +46,7 @@ export class CreditMemoApply {
   amount?: number;
   line?: number;
   constructor(props: CreditMemoApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.applyDate = props.applyDate;
@@ -63,10 +66,11 @@ export type CustomerPaymentDepositListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerPaymentDepositList {
+export class CustomerPaymentDepositList extends SoapMappingBase {
   deposit?: CustomerPaymentDeposit[];
   replaceAll?: boolean;
   constructor(props: CustomerPaymentDepositListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.deposit = props.deposit;
     this.replaceAll = props.replaceAll;
   }
@@ -85,7 +89,7 @@ export type CustomerRefundApplyProps = {
   amount?: number;
 };
 
-export class CustomerRefundApply {
+export class CustomerRefundApply extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -97,6 +101,7 @@ export class CustomerRefundApply {
   currency?: string;
   amount?: number;
   constructor(props: CustomerRefundApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -319,7 +324,7 @@ export class ReturnAuthorization extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ReturnAuthorizationProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -430,10 +435,11 @@ export type CustomerRefundApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerRefundApplyList {
+export class CustomerRefundApplyList extends SoapMappingBase {
   apply?: CustomerRefundApply[];
   replaceAll?: boolean;
   constructor(props: CustomerRefundApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -494,7 +500,7 @@ export class DepositApplication extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: DepositApplicationProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.arAcct = props.arAcct;
@@ -528,10 +534,11 @@ export type CustomerPaymentApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerPaymentApplyList {
+export class CustomerPaymentApplyList extends SoapMappingBase {
   apply?: CustomerPaymentApply[];
   replaceAll?: boolean;
   constructor(props: CustomerPaymentApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -570,7 +577,7 @@ export class ChargeSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ChargeSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.billingAccountJoin = props.billingAccountJoin;
     this.billingScheduleJoin = props.billingScheduleJoin;
@@ -789,7 +796,7 @@ export class CreditMemo extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CreditMemoProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -904,7 +911,7 @@ export class ChargeSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ChargeSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -917,10 +924,11 @@ export type ReturnAuthorizationItemListProps = {
   replaceAll?: boolean;
 };
 
-export class ReturnAuthorizationItemList {
+export class ReturnAuthorizationItemList extends SoapMappingBase {
   item?: ReturnAuthorizationItem[];
   replaceAll?: boolean;
   constructor(props: ReturnAuthorizationItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -977,7 +985,7 @@ export type CashRefundItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class CashRefundItem {
+export class CashRefundItem extends SoapMappingBase {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   line?: number;
@@ -1027,6 +1035,7 @@ export class CashRefundItem {
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CashRefundItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.job = props.job;
     this.item = props.item;
     this.line = props.line;
@@ -1195,7 +1204,7 @@ export class CustomerRefund extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomerRefundProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.status = props.status;
@@ -1311,7 +1320,7 @@ export type ReturnAuthorizationItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class ReturnAuthorizationItem {
+export class ReturnAuthorizationItem extends SoapMappingBase {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   orderLine?: number;
@@ -1366,6 +1375,7 @@ export class ReturnAuthorizationItem {
   vsoeDelivered?: boolean;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: ReturnAuthorizationItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.job = props.job;
     this.item = props.item;
     this.orderLine = props.orderLine;
@@ -1434,7 +1444,7 @@ export type CustomerPaymentDepositProps = {
   amount?: number;
 };
 
-export class CustomerPaymentDeposit {
+export class CustomerPaymentDeposit extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -1445,6 +1455,7 @@ export class CustomerPaymentDeposit {
   currency?: string;
   amount?: number;
   constructor(props: CustomerPaymentDepositProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1598,7 +1609,7 @@ export class CustomerPayment extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomerPaymentProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1675,10 +1686,11 @@ export type CreditMemoApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class CreditMemoApplyList {
+export class CreditMemoApplyList extends SoapMappingBase {
   apply?: CreditMemoApply[];
   replaceAll?: boolean;
   constructor(props: CreditMemoApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -1691,12 +1703,13 @@ export type CashRefundSalesTeamProps = {
   contribution?: number;
 };
 
-export class CashRefundSalesTeam {
+export class CashRefundSalesTeam extends SoapMappingBase {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: CashRefundSalesTeamProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -1718,7 +1731,7 @@ export type CustomerPaymentCreditProps = {
   amount?: number;
 };
 
-export class CustomerPaymentCredit {
+export class CustomerPaymentCredit extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -1731,6 +1744,7 @@ export class CustomerPaymentCredit {
   currency?: string;
   amount?: number;
   constructor(props: CustomerPaymentCreditProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -1872,7 +1886,7 @@ export class CustomerDeposit extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CustomerDepositProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.status = props.status;
@@ -1942,10 +1956,11 @@ export type CustomerDepositApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerDepositApplyList {
+export class CustomerDepositApplyList extends SoapMappingBase {
   customerDepositApply?: CustomerDepositApply[];
   replaceAll?: boolean;
   constructor(props: CustomerDepositApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customerDepositApply = props.customerDepositApply;
     this.replaceAll = props.replaceAll;
   }
@@ -1956,10 +1971,11 @@ export type DepositApplicationApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class DepositApplicationApplyList {
+export class DepositApplicationApplyList extends SoapMappingBase {
   apply?: DepositApplicationApply[];
   replaceAll?: boolean;
   constructor(props: DepositApplicationApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -1982,7 +1998,7 @@ export type CustomerPaymentApplyProps = {
   amount?: number;
 };
 
-export class CustomerPaymentApply {
+export class CustomerPaymentApply extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -1998,6 +2014,7 @@ export class CustomerPaymentApply {
   disc?: number;
   amount?: number;
   constructor(props: CustomerPaymentApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -2020,10 +2037,11 @@ export type ReturnAuthorizationPartnersListProps = {
   replaceAll?: boolean;
 };
 
-export class ReturnAuthorizationPartnersList {
+export class ReturnAuthorizationPartnersList extends SoapMappingBase {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: ReturnAuthorizationPartnersListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -2034,10 +2052,11 @@ export type CashRefundSalesTeamListProps = {
   replaceAll?: boolean;
 };
 
-export class CashRefundSalesTeamList {
+export class CashRefundSalesTeamList extends SoapMappingBase {
   salesTeam?: CashRefundSalesTeam[];
   replaceAll?: boolean;
   constructor(props: CashRefundSalesTeamListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
@@ -2099,7 +2118,7 @@ export type CreditMemoItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class CreditMemoItem {
+export class CreditMemoItem extends SoapMappingBase {
   job?: PlatformCore.RecordRef;
   item?: PlatformCore.RecordRef;
   orderLine?: number;
@@ -2154,6 +2173,7 @@ export class CreditMemoItem {
   chargesList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CreditMemoItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.job = props.job;
     this.item = props.item;
     this.orderLine = props.orderLine;
@@ -2215,10 +2235,11 @@ export type CashRefundItemListProps = {
   replaceAll?: boolean;
 };
 
-export class CashRefundItemList {
+export class CashRefundItemList extends SoapMappingBase {
   item?: CashRefundItem[];
   replaceAll?: boolean;
   constructor(props: CashRefundItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -2229,10 +2250,11 @@ export type CashRefundPartnersListProps = {
   replaceAll?: boolean;
 };
 
-export class CashRefundPartnersList {
+export class CashRefundPartnersList extends SoapMappingBase {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: CashRefundPartnersListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -2245,12 +2267,13 @@ export type CreditMemoSalesTeamProps = {
   contribution?: number;
 };
 
-export class CreditMemoSalesTeam {
+export class CreditMemoSalesTeam extends SoapMappingBase {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: CreditMemoSalesTeamProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -2505,7 +2528,7 @@ export class CashRefund extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CashRefundProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -2642,7 +2665,7 @@ export type CustomerDepositApplyProps = {
   job?: string;
 };
 
-export class CustomerDepositApply {
+export class CustomerDepositApply extends SoapMappingBase {
   doc?: number;
   line?: number;
   apply?: boolean;
@@ -2653,6 +2676,7 @@ export class CustomerDepositApply {
   amount?: number;
   job?: string;
   constructor(props: CustomerDepositApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.doc = props.doc;
     this.line = props.line;
     this.apply = props.apply;
@@ -2698,7 +2722,7 @@ export class ChargeSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ChargeSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.billingAccountJoin = props.billingAccountJoin;
     this.billingScheduleJoin = props.billingScheduleJoin;
@@ -2721,10 +2745,11 @@ export type CreditMemoSalesTeamListProps = {
   replaceAll?: boolean;
 };
 
-export class CreditMemoSalesTeamList {
+export class CreditMemoSalesTeamList extends SoapMappingBase {
   salesTeam?: CreditMemoSalesTeam[];
   replaceAll?: boolean;
   constructor(props: CreditMemoSalesTeamListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.salesTeam = props.salesTeam;
     this.replaceAll = props.replaceAll;
   }
@@ -2735,10 +2760,11 @@ export type CustomerPaymentCreditListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerPaymentCreditList {
+export class CustomerPaymentCreditList extends SoapMappingBase {
   credit?: CustomerPaymentCredit[];
   replaceAll?: boolean;
   constructor(props: CustomerPaymentCreditListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.credit = props.credit;
     this.replaceAll = props.replaceAll;
   }
@@ -2751,12 +2777,13 @@ export type ReturnAuthorizationSalesTeamProps = {
   contribution?: number;
 };
 
-export class ReturnAuthorizationSalesTeam {
+export class ReturnAuthorizationSalesTeam extends SoapMappingBase {
   employee?: PlatformCore.RecordRef;
   salesRole?: PlatformCore.RecordRef;
   isPrimary?: boolean;
   contribution?: number;
   constructor(props: ReturnAuthorizationSalesTeamProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employee = props.employee;
     this.salesRole = props.salesRole;
     this.isPrimary = props.isPrimary;
@@ -2769,10 +2796,11 @@ export type CreditMemoPartnersListProps = {
   replaceAll?: boolean;
 };
 
-export class CreditMemoPartnersList {
+export class CreditMemoPartnersList extends SoapMappingBase {
   partners?: PlatformCommon.Partners[];
   replaceAll?: boolean;
   constructor(props: CreditMemoPartnersListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -2783,10 +2811,11 @@ export type CreditMemoItemListProps = {
   replaceAll?: boolean;
 };
 
-export class CreditMemoItemList {
+export class CreditMemoItemList extends SoapMappingBase {
   item?: CreditMemoItem[];
   replaceAll?: boolean;
   constructor(props: CreditMemoItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -2804,7 +2833,7 @@ export type CustomerRefundDepositProps = {
   amount?: number;
 };
 
-export class CustomerRefundDeposit {
+export class CustomerRefundDeposit extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -2815,6 +2844,7 @@ export class CustomerRefundDeposit {
   currency?: string;
   amount?: number;
   constructor(props: CustomerRefundDepositProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -2832,10 +2862,11 @@ export type CustomerRefundDepositListProps = {
   replaceAll?: boolean;
 };
 
-export class CustomerRefundDepositList {
+export class CustomerRefundDepositList extends SoapMappingBase {
   customerRefundDeposit?: CustomerRefundDeposit[];
   replaceAll?: boolean;
   constructor(props: CustomerRefundDepositListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customerRefundDeposit = props.customerRefundDeposit;
     this.replaceAll = props.replaceAll;
   }
@@ -2906,7 +2937,7 @@ export class Charge extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ChargeProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.salesOrder = props.salesOrder;
     this.billTo = props.billTo;
@@ -2954,7 +2985,7 @@ export type DepositApplicationApplyProps = {
   amount?: number;
 };
 
-export class DepositApplicationApply {
+export class DepositApplicationApply extends SoapMappingBase {
   doc?: number;
   line?: number;
   apply?: boolean;
@@ -2967,6 +2998,7 @@ export class DepositApplicationApply {
   currency?: string;
   amount?: number;
   constructor(props: DepositApplicationApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.doc = props.doc;
     this.line = props.line;
     this.apply = props.apply;

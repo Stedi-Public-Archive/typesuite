@@ -3,16 +3,18 @@ import * as PlatformCommon from "./platform_common";
 import * as ActivitiesSchedulingTypes from "./activities_scheduling_types";
 import * as PlatformCommonTypes from "./platform_common_types";
 import * as PlatformCoreTypes from "./platform_core_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_activities_scheduling_2019_2";
 export type TaskContactListProps = {
   contact?: TaskContact[];
   replaceAll?: boolean;
 };
 
-export class TaskContactList {
+export class TaskContactList extends SoapMappingBase {
   contact?: TaskContact[];
   replaceAll?: boolean;
   constructor(props: TaskContactListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.contact = props.contact;
     this.replaceAll = props.replaceAll;
   }
@@ -31,7 +33,7 @@ export class ProjectTaskSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ProjectTaskSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -44,10 +46,11 @@ export type CalendarEventAttendeeListProps = {
   replaceAll?: boolean;
 };
 
-export class CalendarEventAttendeeList {
+export class CalendarEventAttendeeList extends SoapMappingBase {
   attendee?: CalendarEventAttendee[];
   replaceAll?: boolean;
   constructor(props: CalendarEventAttendeeListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.attendee = props.attendee;
     this.replaceAll = props.replaceAll;
   }
@@ -88,7 +91,7 @@ export class TaskSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: TaskSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.assignedJoin = props.assignedJoin;
     this.caseJoin = props.caseJoin;
@@ -112,10 +115,11 @@ export type PhoneCallTimeItemListProps = {
   replaceAll?: boolean;
 };
 
-export class PhoneCallTimeItemList {
+export class PhoneCallTimeItemList extends SoapMappingBase {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
   constructor(props: PhoneCallTimeItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
@@ -134,7 +138,7 @@ export class CalendarEventSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: CalendarEventSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -167,7 +171,7 @@ export class ResourceAllocationSearchRow extends PlatformCore.SearchRow {
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ResourceAllocationSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customerJoin = props.customerJoin;
     this.employeeJoin = props.employeeJoin;
@@ -189,13 +193,14 @@ export type ProjectTaskPredecessorProps = {
   endDate?: string;
 };
 
-export class ProjectTaskPredecessor {
+export class ProjectTaskPredecessor extends SoapMappingBase {
   task?: PlatformCore.RecordRef;
   type?: ActivitiesSchedulingTypes.ProjectTaskPredecessorPredecessorType;
   lagDays?: number;
   startDate?: string;
   endDate?: string;
   constructor(props: ProjectTaskPredecessorProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.task = props.task;
     this.type = props.type;
     this.lagDays = props.lagDays;
@@ -229,7 +234,7 @@ export class ResourceAllocationSearch extends PlatformCore.SearchRecord {
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ResourceAllocationSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customerJoin = props.customerJoin;
     this.employeeJoin = props.employeeJoin;
@@ -248,10 +253,11 @@ export type CalendarEventResourceListProps = {
   replaceAll?: boolean;
 };
 
-export class CalendarEventResourceList {
+export class CalendarEventResourceList extends SoapMappingBase {
   resource?: CalendarEventResource[];
   replaceAll?: boolean;
   constructor(props: CalendarEventResourceListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.resource = props.resource;
     this.replaceAll = props.replaceAll;
   }
@@ -261,9 +267,10 @@ export type ExclusionDateListProps = {
   exclusionDate: string[];
 };
 
-export class ExclusionDateList {
+export class ExclusionDateList extends SoapMappingBase {
   exclusionDate: string[];
   constructor(props: ExclusionDateListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.exclusionDate = props.exclusionDate;
   }
 }
@@ -273,10 +280,11 @@ export type PhoneCallContactListProps = {
   replaceAll?: boolean;
 };
 
-export class PhoneCallContactList {
+export class PhoneCallContactList extends SoapMappingBase {
   contact?: PhoneCallContact[];
   replaceAll?: boolean;
   constructor(props: PhoneCallContactListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.contact = props.contact;
     this.replaceAll = props.replaceAll;
   }
@@ -287,10 +295,11 @@ export type CalendarEventTimeItemListProps = {
   replaceAll?: boolean;
 };
 
-export class CalendarEventTimeItemList {
+export class CalendarEventTimeItemList extends SoapMappingBase {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
   constructor(props: CalendarEventTimeItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
@@ -301,10 +310,11 @@ export type CalendarEventResourceProps = {
   location?: string;
 };
 
-export class CalendarEventResource {
+export class CalendarEventResource extends SoapMappingBase {
   resource?: PlatformCore.RecordRef;
   location?: string;
   constructor(props: CalendarEventResourceProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.resource = props.resource;
     this.location = props.location;
   }
@@ -323,7 +333,7 @@ export class ResourceAllocationSearchAdvanced extends PlatformCore.SearchRecord 
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: ResourceAllocationSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -336,10 +346,11 @@ export type ProjectTaskPredecessorListProps = {
   replaceAll?: boolean;
 };
 
-export class ProjectTaskPredecessorList {
+export class ProjectTaskPredecessorList extends SoapMappingBase {
   projectTaskPredecessor?: ProjectTaskPredecessor[];
   replaceAll?: boolean;
   constructor(props: ProjectTaskPredecessorListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.projectTaskPredecessor = props.projectTaskPredecessor;
     this.replaceAll = props.replaceAll;
   }
@@ -376,7 +387,7 @@ export class CalendarEventSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: CalendarEventSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.attendeeJoin = props.attendeeJoin;
     this.attendeeContactJoin = props.attendeeContactJoin;
@@ -398,10 +409,11 @@ export type TaskTimeItemListProps = {
   replaceAll?: boolean;
 };
 
-export class TaskTimeItemList {
+export class TaskTimeItemList extends SoapMappingBase {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
   constructor(props: TaskTimeItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
@@ -486,7 +498,7 @@ export class CalendarEvent extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CalendarEventProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.company = props.company;
     this.contact = props.contact;
     this.supportCase = props.supportCase;
@@ -554,7 +566,7 @@ export class ProjectTaskSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: ProjectTaskSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.jobJoin = props.jobJoin;
     this.predecessorJoin = props.predecessorJoin;
@@ -630,7 +642,7 @@ export class PhoneCall extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PhoneCallProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.message = props.message;
     this.company = props.company;
     this.contact = props.contact;
@@ -735,7 +747,7 @@ export class ProjectTask extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ProjectTaskProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.eventId = props.eventId;
     this.percentTimeComplete = props.percentTimeComplete;
@@ -786,7 +798,7 @@ export class TaskSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TaskSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -807,7 +819,7 @@ export class PhoneCallSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: PhoneCallSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -826,7 +838,7 @@ export type ProjectTaskAssigneeProps = {
   price?: number;
 };
 
-export class ProjectTaskAssignee {
+export class ProjectTaskAssignee extends SoapMappingBase {
   resource?: PlatformCore.RecordRef;
   units?: number;
   serviceItem?: PlatformCore.RecordRef;
@@ -836,6 +848,7 @@ export class ProjectTaskAssignee {
   cost?: number;
   price?: number;
   constructor(props: ProjectTaskAssigneeProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.resource = props.resource;
     this.units = props.units;
     this.serviceItem = props.serviceItem;
@@ -878,7 +891,7 @@ export class CalendarEventSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: CalendarEventSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.attendeeJoin = props.attendeeJoin;
     this.attendeeContactJoin = props.attendeeContactJoin;
@@ -902,12 +915,13 @@ export type PhoneCallContactProps = {
   email?: string;
 };
 
-export class PhoneCallContact {
+export class PhoneCallContact extends SoapMappingBase {
   company?: PlatformCore.RecordRef;
   contact?: PlatformCore.RecordRef;
   phone?: string;
   email?: string;
   constructor(props: PhoneCallContactProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.company = props.company;
     this.contact = props.contact;
     this.phone = props.phone;
@@ -922,12 +936,13 @@ export type CalendarEventAttendeeProps = {
   attendance?: ActivitiesSchedulingTypes.CalendarEventAttendeeAttendance;
 };
 
-export class CalendarEventAttendee {
+export class CalendarEventAttendee extends SoapMappingBase {
   sendEmail?: boolean;
   attendee?: PlatformCore.RecordRef;
   response?: PlatformCoreTypes.CalendarEventAttendeeResponse;
   attendance?: ActivitiesSchedulingTypes.CalendarEventAttendeeAttendance;
   constructor(props: CalendarEventAttendeeProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.sendEmail = props.sendEmail;
     this.attendee = props.attendee;
     this.response = props.response;
@@ -970,7 +985,7 @@ export class TaskSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: TaskSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.assignedJoin = props.assignedJoin;
     this.caseJoin = props.caseJoin;
@@ -994,10 +1009,11 @@ export type ProjectTaskAssigneeListProps = {
   replaceAll?: boolean;
 };
 
-export class ProjectTaskAssigneeList {
+export class ProjectTaskAssigneeList extends SoapMappingBase {
   projectTaskAssignee?: ProjectTaskAssignee[];
   replaceAll?: boolean;
   constructor(props: ProjectTaskAssigneeListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.projectTaskAssignee = props.projectTaskAssignee;
     this.replaceAll = props.replaceAll;
   }
@@ -1034,7 +1050,7 @@ export class PhoneCallSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: PhoneCallSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.companyCustomerJoin = props.companyCustomerJoin;
@@ -1126,7 +1142,7 @@ export class Task extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TaskProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.company = props.company;
     this.contact = props.contact;
     this.supportCase = props.supportCase;
@@ -1170,10 +1186,11 @@ export type TaskContactProps = {
   contact?: PlatformCore.RecordRef;
 };
 
-export class TaskContact {
+export class TaskContact extends SoapMappingBase {
   company?: PlatformCore.RecordRef;
   contact?: PlatformCore.RecordRef;
   constructor(props: TaskContactProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.company = props.company;
     this.contact = props.contact;
   }
@@ -1210,7 +1227,7 @@ export class PhoneCallSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: PhoneCallSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.companyCustomerJoin = props.companyCustomerJoin;
@@ -1266,7 +1283,7 @@ export class ResourceAllocation extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ResourceAllocationProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.requestedby = props.requestedby;
     this.approvalStatus = props.approvalStatus;
     this.nextApprover = props.nextApprover;
@@ -1292,10 +1309,11 @@ export type ProjectTaskTimeItemListProps = {
   replaceAll?: boolean;
 };
 
-export class ProjectTaskTimeItemList {
+export class ProjectTaskTimeItemList extends SoapMappingBase {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
   constructor(props: ProjectTaskTimeItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
@@ -1328,7 +1346,7 @@ export class ProjectTaskSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: ProjectTaskSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.jobJoin = props.jobJoin;
     this.predecessorJoin = props.predecessorJoin;

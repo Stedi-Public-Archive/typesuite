@@ -75,11 +75,13 @@ export class FileMappingsLoader implements MappingsLoader {
 
     const sortedTypeInfos: TypeInfo[] = [];
     const referencedTypes: string[] = [];
+    let needsSoapTypesImport = false;
 
     mappings.typeInfos.forEach((typeInfo) => {
       if (isEnumTypeInfo(typeInfo)) {
         sortedTypeInfos.push(typeInfo);
       } else {
+        needsSoapTypesImport = true;
         if (referencedTypes.includes(typeInfo.localName)) {
           const index = sortedTypeInfos.findIndex((sortedTypeInfo) => {
             return typeInfoExtends(sortedTypeInfo, typeInfo.localName);
@@ -97,6 +99,7 @@ export class FileMappingsLoader implements MappingsLoader {
     return {
       ...mappings,
       sortedTypeInfos,
+      needsSoapTypesImport: needsSoapTypesImport,
     };
   }
 
@@ -157,6 +160,12 @@ export default class TypeGenerator {
         fileNameForMappings(dependency)
       );
     });
+    if (mappings.needsSoapTypesImport) {
+      this.writer.write(
+        'import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";'
+      );
+      this.writer.write('const MAPPINGS_NAME = "%s";', mappings.name);
+    }
 
     mappings.sortedTypeInfos.forEach((typeInfo) => {
       if (isEnumTypeInfo(typeInfo)) {

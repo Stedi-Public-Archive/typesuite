@@ -1,7 +1,8 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsFinancialTypes from "./transactions_financial_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_transactions_financial_2019_2";
 export type BudgetProps = {
   year?: PlatformCore.RecordRef;
   customer?: PlatformCore.RecordRef;
@@ -85,7 +86,7 @@ export class Budget extends PlatformCore.Record {
   customFieldList?: PlatformCore.CustomFieldList;
   internalId?: string;
   constructor(props: BudgetProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.year = props.year;
     this.customer = props.customer;
     this.item = props.item;
@@ -137,7 +138,7 @@ export class BudgetSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.BudgetSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: BudgetSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }
@@ -156,7 +157,7 @@ export class BudgetSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: BudgetSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -173,7 +174,7 @@ export class BudgetSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.BudgetSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: BudgetSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }

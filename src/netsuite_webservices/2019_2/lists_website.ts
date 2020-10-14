@@ -1,7 +1,8 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_lists_website_2019_2";
 export type SiteCategoryTranslationProps = {
   locale?: PlatformCommonTypes.Language;
   language?: string;
@@ -11,7 +12,7 @@ export type SiteCategoryTranslationProps = {
   pageTitle?: string;
 };
 
-export class SiteCategoryTranslation {
+export class SiteCategoryTranslation extends SoapMappingBase {
   locale?: PlatformCommonTypes.Language;
   language?: string;
   displayName?: string;
@@ -19,6 +20,7 @@ export class SiteCategoryTranslation {
   storeDetailedDescription?: string;
   pageTitle?: string;
   constructor(props: SiteCategoryTranslationProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.locale = props.locale;
     this.language = props.language;
     this.displayName = props.displayName;
@@ -79,7 +81,7 @@ export class SiteCategory extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SiteCategoryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.website = props.website;
     this.itemId = props.itemId;
     this.parentCategory = props.parentCategory;
@@ -119,7 +121,7 @@ export class SiteCategorySearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: SiteCategorySearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -138,7 +140,7 @@ export class SiteCategorySearch extends PlatformCore.SearchRecord {
   shopperJoin?: PlatformCommon.CustomerSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: SiteCategorySearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
@@ -156,7 +158,7 @@ export class SiteCategorySearchRow extends PlatformCore.SearchRow {
   shopperJoin?: PlatformCommon.CustomerSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: SiteCategorySearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
@@ -168,10 +170,11 @@ export type SiteCategoryPresentationItemListProps = {
   replaceAll?: boolean;
 };
 
-export class SiteCategoryPresentationItemList {
+export class SiteCategoryPresentationItemList extends SoapMappingBase {
   presentationItem?: PlatformCommon.PresentationItem[];
   replaceAll?: boolean;
   constructor(props: SiteCategoryPresentationItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.presentationItem = props.presentationItem;
     this.replaceAll = props.replaceAll;
   }
@@ -182,10 +185,11 @@ export type SiteCategoryTranslationListProps = {
   replaceAll?: boolean;
 };
 
-export class SiteCategoryTranslationList {
+export class SiteCategoryTranslationList extends SoapMappingBase {
   translation?: SiteCategoryTranslation[];
   replaceAll?: boolean;
   constructor(props: SiteCategoryTranslationListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.translation = props.translation;
     this.replaceAll = props.replaceAll;
   }

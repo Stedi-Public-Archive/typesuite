@@ -38,8 +38,8 @@ const PRIMITIVE_TYPES: Record<Primitive, JavaScriptType> = {
   QName: "string",
 };
 
-function mappedType(typeInfo?: string): string {
-  if (typeInfo === undefined) return "string";
+function mappedType(typeInfo?: string): string | undefined {
+  if (typeInfo === undefined) return undefined;
   if (isLocalType(typeInfo)) return typeInfo.substr(1);
   if (typeInfo in PRIMITIVE_TYPES) {
     return PRIMITIVE_TYPES[typeInfo as Primitive]; // FIXME: Is this type assertion avoidable?
@@ -61,7 +61,7 @@ export class TypeAliasGenerator {
     const propertyInfo = typeInfo.propertyInfos[0];
     const optionalModifier = propertyInfo?.required ? "" : "?";
     const collectionModifier = propertyInfo?.collection ? "[]" : "";
-    const propertyType = mappedType(propertyInfo?.typeInfo);
+    const propertyType = mappedType(propertyInfo?.typeInfo) || "string";
     const simpleType = util.format("%s%s", propertyType, collectionModifier);
     this.writer.write(
       "\nexport type %s = %s | { %s%s: %s };\n",
@@ -102,7 +102,7 @@ export class ClassGenerator {
     typeInfo.propertyInfos?.forEach((propertyInfo) => {
       const optionalModifier = propertyInfo.required ? "" : "?";
       const collectionModifier = propertyInfo.collection ? "[]" : "";
-      const propertyType = mappedType(propertyInfo.typeInfo);
+      const propertyType = mappedType(propertyInfo.typeInfo) || "string";
       classProps.push(
         util.format(
           "  %s%s: %s%s;",
@@ -121,30 +121,24 @@ export class ClassGenerator {
       );
     });
 
-    const superClass =
-      typeInfo.baseTypeInfo && mappedType(typeInfo.baseTypeInfo);
+    const superClass = mappedType(typeInfo.baseTypeInfo) ?? "SoapMappingBase";
 
     // Write props type only if there are props for the associated class.
     if (classProps.length > 0) {
       this.writer.write("\nexport type %sProps = {\n", typeInfo.localName);
       this.writer.write(classProps.join("\n"));
-      if (superClass && !emptySuperClass(superClass)) {
+      if (!emptySuperClass(superClass) && superClass !== "SoapMappingBase") {
         this.writer.write("\n} & %sProps;\n", superClass);
       } else {
         this.writer.write("\n}\n");
       }
     }
 
-    // Add a super class when there is one.
-    if (superClass) {
-      this.writer.write(
-        "\nexport class %s extends %s {",
-        typeInfo.localName,
-        superClass
-      );
-    } else {
-      this.writer.write("\nexport class %s {", typeInfo.localName);
-    }
+    this.writer.write(
+      "\nexport class %s extends %s {",
+      typeInfo.localName,
+      superClass
+    );
 
     this.writer.write(classProps.join("\n"));
 
@@ -154,13 +148,9 @@ export class ClassGenerator {
         "  constructor(props: %sProps) {\n",
         typeInfo.localName
       );
-      if (superClass) {
-        if (emptySuperClass(superClass)) {
-          this.writer.write("    super();\n");
-        } else {
-          this.writer.write("    super(props);\n");
-        }
-      }
+      this.writer.write(
+        "    super(propsWithMappingsName(props, MAPPINGS_NAME));\n"
+      );
 
       this.writer.write(constructorAssignments.join("\n"));
       this.writer.write("  }\n");
