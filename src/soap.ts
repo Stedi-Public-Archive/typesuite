@@ -82,9 +82,8 @@ export async function sendSoapRequest<T, R>(
 ): Promise<R> {
   const authToken = authenticateRequestWithTokenPassport(config);
   const soapXML = serializeSoapRequest(authToken, request);
-  const response = await axios.post(endpoint(config), {
+  const response = await axios.post(endpoint(config), soapXML, {
     headers: { SOAPAction: soapAction, contentType: "text/xml; charset=UTF-8" },
-    body: soapXML,
   });
   const soapObj = deserializeSoapResponse(response.data);
   return soapObj.value.body.any[0].value as R;
