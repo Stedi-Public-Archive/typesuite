@@ -22,7 +22,8 @@
     "strictPropertyInitialization": true,
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./node_modules/@types"],
-    "outDir": "./dist"
+    "outDir": "./lib"
   },
-  "include": ["src", "test", "scripts"]
+  "include": ["src"],
+  "exclude": ["node_modules", "test", "scripts"]
 }

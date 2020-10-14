@@ -10,15 +10,14 @@
   "author": "Stedi Engineering <engineering@stedi.com>",
   "homepage": "https://github.com/Stedi/TypeSuite#README.md",
   "license": "MIT",
-  "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
-  "files": [
-    "/lib"
-  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": ["lib/**/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Stedi/TypeSuite.git"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "gen:all": "npm run gen:types && npm run gen:prettier",
     "gen:types": "ts-node scripts/generate-types.ts",
@@ -29,7 +28,7 @@
     "jest": "jest",
     "test": "tsc && jest && depcheck .",
     "tsc": "tsc",
-    "prepublishOnly": "npm run build && mv dist/src lib"
+    "prepublishOnly": "tsc"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
