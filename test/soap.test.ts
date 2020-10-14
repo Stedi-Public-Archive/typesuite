@@ -14,6 +14,7 @@ import {
   expectedLoginRequestXml,
   expectedSearchRequestXml,
   soapFaultXml,
+  soapSuccessXml,
   tokenPassport,
 } from "./fixtures";
 import { TransactionSearchBasic } from "../src/netsuite_webservices/2019_2/platform_common";
@@ -73,27 +74,126 @@ describe("serializing and deserializing requests", () => {
   });
 });
 
+function mockSoapSuccess() {
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const httpMock = mocked(axios.post).mockResolvedValue({
+    data: soapSuccessXml(),
+    status: 200,
+    statusText: "OK",
+    headers: {},
+    config: {},
+  });
+
+  return { httpMock };
+}
+
+function mockSoapFault() {
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const httpMock = mocked(axios.post).mockRejectedValue({
+    config: {},
+    response: {
+      data: soapFaultXml(),
+      status: 500,
+      statusText: "Server Error",
+      headers: {},
+      config: {},
+    },
+    isAxiosError: false,
+    toJSON: () => "",
+  });
+
+  return { httpMock };
+}
+
 describe("Sending requests", () => {
+  afterEach(jest.resetAllMocks);
+
+  it("returns the response deserialized from XML", async () => {
+    mockSoapSuccess();
+
+    const response = await sendSoapRequest(
+      {
+        account: "good-value",
+        apiVersion: "2019_2",
+        token: {
+          consumerKey: "good-value",
+          consumerSecret: "good-value",
+          tokenKey: "good-value",
+          tokenSecret: "good-value",
+        },
+      },
+      new SearchRequest({
+        searchRecord: new TransactionSearchAdvanced({
+          criteria: {
+            basic: new TransactionSearchBasic({
+              type: {
+                operator: "anyOf",
+                searchValue: ["_purchaseOrder"],
+              },
+              lastModifiedDate: {
+                operator: "after",
+                searchValue: "2020-10-13T21:31:19.359Z",
+              },
+            }),
+          },
+        }),
+      }),
+      "search"
+    );
+
+    expect(response).toEqual({
+      TYPE_NAME:
+        "com_netsuite_webservices_platform_messages_2019_2.SearchResponse",
+      searchResult: {
+        TYPE_NAME: "com_netsuite_webservices_platform_core_2019_2.SearchResult",
+        pageIndex: 1,
+        pageSize: 1000,
+        searchId:
+          "WEBSERVICES_TSTDRV1982068_101420206783052241624369917_9d3834",
+        searchRowList: {
+          TYPE_NAME:
+            "com_netsuite_webservices_platform_core_2019_2.SearchRowList",
+          searchRow: [
+            {
+              TYPE_NAME:
+                "com_netsuite_webservices_transactions_sales_2019_2.TransactionSearchRow",
+              basic: {
+                TYPE_NAME:
+                  "com_netsuite_webservices_platform_common_2019_2.TransactionSearchRowBasic",
+                internalId: [
+                  {
+                    TYPE_NAME:
+                      "com_netsuite_webservices_platform_core_2019_2.SearchColumnSelectField",
+                    searchValue: {
+                      TYPE_NAME:
+                        "com_netsuite_webservices_platform_core_2019_2.RecordRef",
+                      internalId: "392562",
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        status: {
+          TYPE_NAME: "com_netsuite_webservices_platform_core_2019_2.Status",
+          isSuccess: true,
+        },
+        totalPages: 1,
+        totalRecords: 1,
+      },
+    });
+  });
+
   it("rejects the promise when there is a fault", async () => {
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    mocked(axios.post).mockRejectedValue({
-      config: {},
-      response: {
-        data: soapFaultXml(),
-        status: 500,
-        statusText: "Server Error",
-        headers: {},
-        config: {},
-      },
-      isAxiosError: false,
-      toJSON: () => "",
-    });
+    mockSoapFault();
 
     expect.assertions(3);
     try {
       await sendSoapRequest(
         {
-          account: "fake",
+          account: "wrong-value",
           apiVersion: "2019_2",
           token: {
             consumerKey: "wrong-value",

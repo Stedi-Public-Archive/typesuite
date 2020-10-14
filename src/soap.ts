@@ -49,7 +49,6 @@ export function serializeSoapRequest(
     header: new Header({ any: [{ name: headerElementKey, value: header }] }),
     body: new Body({ any: [{ name: bodyElementKey, value: body }] }),
   });
-
   const data = { "soap:Envelope": envelope };
   const context = new Jsonix.Context(ALL_MAPPINGS, JSONIX_CONTEXT_OPTIONS);
   const xmlString = context.createMarshaller().marshalString(data);
