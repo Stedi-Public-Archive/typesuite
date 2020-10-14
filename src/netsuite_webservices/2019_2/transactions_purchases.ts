@@ -2,7 +2,8 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as TransactionsPurchasesTypes from "./transactions_purchases_types";
 import * as PlatformCommonTypes from "./platform_common_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_transactions_purchases_2019_2";
 export type VendorBillItemProps = {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
@@ -42,7 +43,7 @@ export type VendorBillItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorBillItem {
+export class VendorBillItem extends SoapMappingBase {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
   line?: number;
@@ -80,6 +81,7 @@ export class VendorBillItem {
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorBillItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -136,7 +138,7 @@ export class InboundShipmentSearchRow extends PlatformCore.SearchRow {
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: InboundShipmentSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.itemReceiptJoin = props.itemReceiptJoin;
@@ -154,13 +156,14 @@ export type VendorBillInstallmentProps = {
   status?: string;
 };
 
-export class VendorBillInstallment {
+export class VendorBillInstallment extends SoapMappingBase {
   amount?: number;
   dueDate?: string;
   amountDue?: number;
   seqNum?: number;
   status?: string;
   constructor(props: VendorBillInstallmentProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.amount = props.amount;
     this.dueDate = props.dueDate;
     this.amountDue = props.amountDue;
@@ -183,7 +186,7 @@ export type VendorPaymentCreditProps = {
   amount?: number;
 };
 
-export class VendorPaymentCredit {
+export class VendorPaymentCredit extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -196,6 +199,7 @@ export class VendorPaymentCredit {
   currency?: string;
   amount?: number;
   constructor(props: VendorPaymentCreditProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -215,10 +219,11 @@ export type PurchaseRequisitionItemListProps = {
   replaceAll?: boolean;
 };
 
-export class PurchaseRequisitionItemList {
+export class PurchaseRequisitionItemList extends SoapMappingBase {
   purchaseRequisitionItem?: PurchaseRequisitionItem[];
   replaceAll?: boolean;
   constructor(props: PurchaseRequisitionItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.purchaseRequisitionItem = props.purchaseRequisitionItem;
     this.replaceAll = props.replaceAll;
   }
@@ -229,10 +234,11 @@ export type ItemReceiptExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class ItemReceiptExpenseList {
+export class ItemReceiptExpenseList extends SoapMappingBase {
   expense?: ItemReceiptExpense[];
   replaceAll?: boolean;
   constructor(props: ItemReceiptExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
@@ -251,7 +257,7 @@ export type VendorCreditApplyProps = {
   amount?: number;
 };
 
-export class VendorCreditApply {
+export class VendorCreditApply extends SoapMappingBase {
   apply?: boolean;
   applyDate?: string;
   doc?: number;
@@ -263,6 +269,7 @@ export class VendorCreditApply {
   currency?: string;
   amount?: number;
   constructor(props: VendorCreditApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.applyDate = props.applyDate;
     this.doc = props.doc;
@@ -281,10 +288,11 @@ export type PurchaseOrderItemListProps = {
   replaceAll?: boolean;
 };
 
-export class PurchaseOrderItemList {
+export class PurchaseOrderItemList extends SoapMappingBase {
   item?: PurchaseOrderItem[];
   replaceAll?: boolean;
   constructor(props: PurchaseOrderItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -295,10 +303,11 @@ export type ItemReceiptItemListProps = {
   replaceAll?: boolean;
 };
 
-export class ItemReceiptItemList {
+export class ItemReceiptItemList extends SoapMappingBase {
   item?: ItemReceiptItem[];
   replaceAll?: boolean;
   constructor(props: ItemReceiptItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -309,10 +318,11 @@ export type VendorBillInstallmentListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorBillInstallmentList {
+export class VendorBillInstallmentList extends SoapMappingBase {
   vendorBillInstallment?: VendorBillInstallment[];
   replaceAll?: boolean;
   constructor(props: VendorBillInstallmentListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.vendorBillInstallment = props.vendorBillInstallment;
     this.replaceAll = props.replaceAll;
   }
@@ -335,7 +345,7 @@ export type VendorPaymentApplyProps = {
   amount?: number;
 };
 
-export class VendorPaymentApply {
+export class VendorPaymentApply extends SoapMappingBase {
   apply?: boolean;
   doc?: number;
   line?: number;
@@ -351,6 +361,7 @@ export class VendorPaymentApply {
   disc?: number;
   amount?: number;
   constructor(props: VendorPaymentApplyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.doc = props.doc;
     this.line = props.line;
@@ -447,7 +458,7 @@ export class VendorPayment extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: VendorPaymentProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -493,10 +504,11 @@ export type VendorCreditExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorCreditExpenseList {
+export class VendorCreditExpenseList extends SoapMappingBase {
   expense?: VendorCreditExpense[];
   replaceAll?: boolean;
   constructor(props: VendorCreditExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
@@ -528,7 +540,7 @@ export type VendorReturnAuthorizationExpenseProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorReturnAuthorizationExpense {
+export class VendorReturnAuthorizationExpense extends SoapMappingBase {
   orderLine?: number;
   line?: number;
   category?: PlatformCore.RecordRef;
@@ -553,6 +565,7 @@ export class VendorReturnAuthorizationExpense {
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorReturnAuthorizationExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.orderLine = props.orderLine;
     this.line = props.line;
     this.category = props.category;
@@ -614,7 +627,7 @@ export type VendorReturnAuthorizationItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorReturnAuthorizationItem {
+export class VendorReturnAuthorizationItem extends SoapMappingBase {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
   line?: number;
@@ -648,6 +661,7 @@ export class VendorReturnAuthorizationItem {
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorReturnAuthorizationItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;
@@ -693,7 +707,7 @@ export type InboundShipmentLandedCostProps = {
   landedCostShipmentItemsList?: PlatformCore.RecordRefList;
 };
 
-export class InboundShipmentLandedCost {
+export class InboundShipmentLandedCost extends SoapMappingBase {
   landedCostCostCategory?: PlatformCore.RecordRef;
   landedCostAmount?: number;
   landedCostCurrency?: PlatformCore.RecordRef;
@@ -702,6 +716,7 @@ export class InboundShipmentLandedCost {
   landedCostAllocationMethod?: TransactionsPurchasesTypes.InboundShipmentLandedCostAllocationMethod;
   landedCostShipmentItemsList?: PlatformCore.RecordRefList;
   constructor(props: InboundShipmentLandedCostProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.landedCostCostCategory = props.landedCostCostCategory;
     this.landedCostAmount = props.landedCostAmount;
     this.landedCostCurrency = props.landedCostCurrency;
@@ -740,7 +755,7 @@ export type ItemReceiptItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class ItemReceiptItem {
+export class ItemReceiptItem extends SoapMappingBase {
   itemReceive?: boolean;
   jobName?: string;
   item?: PlatformCore.RecordRef;
@@ -767,6 +782,7 @@ export class ItemReceiptItem {
   landedCost?: PlatformCommon.LandedCost;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: ItemReceiptItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.itemReceive = props.itemReceive;
     this.jobName = props.jobName;
     this.item = props.item;
@@ -800,10 +816,11 @@ export type InboundShipmentLandedCostListProps = {
   replaceAll?: boolean;
 };
 
-export class InboundShipmentLandedCostList {
+export class InboundShipmentLandedCostList extends SoapMappingBase {
   inboundShipmentLandedCost?: InboundShipmentLandedCost[];
   replaceAll?: boolean;
   constructor(props: InboundShipmentLandedCostListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.inboundShipmentLandedCost = props.inboundShipmentLandedCost;
     this.replaceAll = props.replaceAll;
   }
@@ -814,10 +831,11 @@ export type PurchaseOrderExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class PurchaseOrderExpenseList {
+export class PurchaseOrderExpenseList extends SoapMappingBase {
   expense?: PurchaseOrderExpense[];
   replaceAll?: boolean;
   constructor(props: PurchaseOrderExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
@@ -836,7 +854,7 @@ export class InboundShipmentSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: InboundShipmentSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -861,7 +879,7 @@ export class InboundShipmentSearch extends PlatformCore.SearchRecord {
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: InboundShipmentSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.itemJoin = props.itemJoin;
     this.itemReceiptJoin = props.itemReceiptJoin;
@@ -893,7 +911,7 @@ export type InboundShipmentItemsProps = {
   incoterm?: PlatformCore.RecordRef;
 };
 
-export class InboundShipmentItems {
+export class InboundShipmentItems extends SoapMappingBase {
   id?: number;
   purchaseOrder?: PlatformCore.RecordRef;
   shipmentItem?: PlatformCore.RecordRef;
@@ -914,6 +932,7 @@ export class InboundShipmentItems {
   poCurrency?: PlatformCore.RecordRef;
   incoterm?: PlatformCore.RecordRef;
   constructor(props: InboundShipmentItemsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.id = props.id;
     this.purchaseOrder = props.purchaseOrder;
     this.shipmentItem = props.shipmentItem;
@@ -991,7 +1010,7 @@ export class ItemReceipt extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: ItemReceiptProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1025,10 +1044,11 @@ export type VendorPaymentCreditListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorPaymentCreditList {
+export class VendorPaymentCreditList extends SoapMappingBase {
   credit?: VendorPaymentCredit[];
   replaceAll?: boolean;
   constructor(props: VendorPaymentCreditListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.credit = props.credit;
     this.replaceAll = props.replaceAll;
   }
@@ -1074,7 +1094,7 @@ export type PurchaseOrderItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class PurchaseOrderItem {
+export class PurchaseOrderItem extends SoapMappingBase {
   item?: PlatformCore.RecordRef;
   line?: number;
   quantityOnShipments?: number;
@@ -1113,6 +1133,7 @@ export class PurchaseOrderItem {
   linkedOrderList?: PlatformCore.RecordRefList;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PurchaseOrderItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.line = props.line;
     this.quantityOnShipments = props.quantityOnShipments;
@@ -1158,10 +1179,11 @@ export type InboundShipmentItemsListProps = {
   replaceAll?: boolean;
 };
 
-export class InboundShipmentItemsList {
+export class InboundShipmentItemsList extends SoapMappingBase {
   inboundShipmentItems?: InboundShipmentItems[];
   replaceAll?: boolean;
   constructor(props: InboundShipmentItemsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.inboundShipmentItems = props.inboundShipmentItems;
     this.replaceAll = props.replaceAll;
   }
@@ -1172,10 +1194,11 @@ export type VendorReturnAuthorizationExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorReturnAuthorizationExpenseList {
+export class VendorReturnAuthorizationExpenseList extends SoapMappingBase {
   expense?: VendorReturnAuthorizationExpense[];
   replaceAll?: boolean;
   constructor(props: VendorReturnAuthorizationExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
@@ -1199,7 +1222,7 @@ export type PurchaseRequisitionExpenseProps = {
   isBillable?: boolean;
 };
 
-export class PurchaseRequisitionExpense {
+export class PurchaseRequisitionExpense extends SoapMappingBase {
   line?: number;
   category?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
@@ -1216,6 +1239,7 @@ export class PurchaseRequisitionExpense {
   linkedOrderStatus?: string;
   isBillable?: boolean;
   constructor(props: PurchaseRequisitionExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.category = props.category;
     this.location = props.location;
@@ -1239,10 +1263,11 @@ export type VendorCreditApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorCreditApplyList {
+export class VendorCreditApplyList extends SoapMappingBase {
   apply?: VendorCreditApply[];
   replaceAll?: boolean;
   constructor(props: VendorCreditApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -1276,7 +1301,7 @@ export type VendorBillExpenseProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorBillExpense {
+export class VendorBillExpense extends SoapMappingBase {
   orderDoc?: number;
   orderLine?: number;
   line?: number;
@@ -1303,6 +1328,7 @@ export class VendorBillExpense {
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorBillExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.orderDoc = props.orderDoc;
     this.orderLine = props.orderLine;
     this.line = props.line;
@@ -1336,10 +1362,11 @@ export type VendorBillExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorBillExpenseList {
+export class VendorBillExpenseList extends SoapMappingBase {
   expense?: VendorBillExpense[];
   replaceAll?: boolean;
   constructor(props: VendorBillExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.expense = props.expense;
     this.replaceAll = props.replaceAll;
   }
@@ -1418,7 +1445,7 @@ export class PurchaseRequisition extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PurchaseRequisitionProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -1495,7 +1522,7 @@ export class InboundShipment extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InboundShipmentProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.shipmentNumber = props.shipmentNumber;
     this.externalDocumentNumber = props.externalDocumentNumber;
@@ -1625,7 +1652,7 @@ export class VendorBill extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: VendorBillProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -1691,7 +1718,7 @@ export type ItemReceiptExpenseProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class ItemReceiptExpense {
+export class ItemReceiptExpense extends SoapMappingBase {
   markReceived?: boolean;
   orderLine?: number;
   line?: number;
@@ -1700,6 +1727,7 @@ export class ItemReceiptExpense {
   amount?: number;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: ItemReceiptExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.markReceived = props.markReceived;
     this.orderLine = props.orderLine;
     this.line = props.line;
@@ -1715,10 +1743,11 @@ export type VendorBillItemListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorBillItemList {
+export class VendorBillItemList extends SoapMappingBase {
   item?: VendorBillItem[];
   replaceAll?: boolean;
   constructor(props: VendorBillItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -1750,7 +1779,7 @@ export type VendorCreditExpenseProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorCreditExpense {
+export class VendorCreditExpense extends SoapMappingBase {
   orderLine?: number;
   line?: number;
   category?: PlatformCore.RecordRef;
@@ -1775,6 +1804,7 @@ export class VendorCreditExpense {
   amortizationResidual?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorCreditExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.orderLine = props.orderLine;
     this.line = props.line;
     this.category = props.category;
@@ -1936,7 +1966,7 @@ export class PurchaseOrder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PurchaseOrderProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -2035,7 +2065,7 @@ export type PurchaseRequisitionItemProps = {
   expandItemGroup?: boolean;
 };
 
-export class PurchaseRequisitionItem {
+export class PurchaseRequisitionItem extends SoapMappingBase {
   line?: number;
   item?: PlatformCore.RecordRef;
   vendorName?: string;
@@ -2064,6 +2094,7 @@ export class PurchaseRequisitionItem {
   isClosed?: boolean;
   expandItemGroup?: boolean;
   constructor(props: PurchaseRequisitionItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.item = props.item;
     this.vendorName = props.vendorName;
@@ -2118,7 +2149,7 @@ export type PurchaseOrderExpenseProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class PurchaseOrderExpense {
+export class PurchaseOrderExpense extends SoapMappingBase {
   line?: number;
   category?: PlatformCore.RecordRef;
   linkedOrderList?: PlatformCore.RecordRefList;
@@ -2141,6 +2172,7 @@ export class PurchaseOrderExpense {
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PurchaseOrderExpenseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.category = props.category;
     this.linkedOrderList = props.linkedOrderList;
@@ -2250,7 +2282,7 @@ export class VendorCredit extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: VendorCreditProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -2299,10 +2331,11 @@ export type VendorCreditItemListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorCreditItemList {
+export class VendorCreditItemList extends SoapMappingBase {
   item?: VendorCreditItem[];
   replaceAll?: boolean;
   constructor(props: VendorCreditItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -2313,10 +2346,11 @@ export type VendorPaymentApplyListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorPaymentApplyList {
+export class VendorPaymentApplyList extends SoapMappingBase {
   apply?: VendorPaymentApply[];
   replaceAll?: boolean;
   constructor(props: VendorPaymentApplyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.apply = props.apply;
     this.replaceAll = props.replaceAll;
   }
@@ -2327,10 +2361,11 @@ export type VendorReturnAuthorizationItemListProps = {
   replaceAll?: boolean;
 };
 
-export class VendorReturnAuthorizationItemList {
+export class VendorReturnAuthorizationItemList extends SoapMappingBase {
   item?: VendorReturnAuthorizationItem[];
   replaceAll?: boolean;
   constructor(props: VendorReturnAuthorizationItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.replaceAll = props.replaceAll;
   }
@@ -2411,7 +2446,7 @@ export class VendorReturnAuthorization extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: VendorReturnAuthorizationProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.nexus = props.nexus;
@@ -2455,10 +2490,11 @@ export type PurchaseRequisitionExpenseListProps = {
   replaceAll?: boolean;
 };
 
-export class PurchaseRequisitionExpenseList {
+export class PurchaseRequisitionExpenseList extends SoapMappingBase {
   purchaseRequisitionExpense?: PurchaseRequisitionExpense[];
   replaceAll?: boolean;
   constructor(props: PurchaseRequisitionExpenseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.purchaseRequisitionExpense = props.purchaseRequisitionExpense;
     this.replaceAll = props.replaceAll;
   }
@@ -2469,10 +2505,11 @@ export type PurchLandedCostListProps = {
   replaceAll?: boolean;
 };
 
-export class PurchLandedCostList {
+export class PurchLandedCostList extends SoapMappingBase {
   landedCost?: PlatformCommon.LandedCostSummary[];
   replaceAll?: boolean;
   constructor(props: PurchLandedCostListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.landedCost = props.landedCost;
     this.replaceAll = props.replaceAll;
   }
@@ -2511,7 +2548,7 @@ export type VendorCreditItemProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class VendorCreditItem {
+export class VendorCreditItem extends SoapMappingBase {
   item?: PlatformCore.RecordRef;
   vendorName?: string;
   line?: number;
@@ -2543,6 +2580,7 @@ export class VendorCreditItem {
   taxDetailsReference?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: VendorCreditItemProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
     this.vendorName = props.vendorName;
     this.line = props.line;

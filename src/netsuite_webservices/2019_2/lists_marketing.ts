@@ -1,7 +1,8 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as ListsMarketingTypes from "./lists_marketing_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_lists_marketing_2019_2";
 export type CampaignEmailProps = {
   internalId?: string;
   campaignGroup?: PlatformCore.RecordRef;
@@ -16,7 +17,7 @@ export type CampaignEmailProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class CampaignEmail {
+export class CampaignEmail extends SoapMappingBase {
   internalId?: string;
   campaignGroup?: PlatformCore.RecordRef;
   template?: PlatformCore.RecordRef;
@@ -29,6 +30,7 @@ export class CampaignEmail {
   promoCode?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CampaignEmailProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.internalId = props.internalId;
     this.campaignGroup = props.campaignGroup;
     this.template = props.template;
@@ -60,7 +62,7 @@ export type CampaignEventResponseProps = {
   bouncedRatio?: number;
 };
 
-export class CampaignEventResponse {
+export class CampaignEventResponse extends SoapMappingBase {
   name?: string;
   type?: string;
   dateSent?: string;
@@ -76,6 +78,7 @@ export class CampaignEventResponse {
   bounced?: number;
   bouncedRatio?: number;
   constructor(props: CampaignEventResponseProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.type = props.type;
     this.dateSent = props.dateSent;
@@ -102,7 +105,7 @@ export class CouponCodeSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.CouponCodeSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: CouponCodeSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
@@ -112,9 +115,10 @@ export type PromotionCodeItemsProps = {
   item?: PlatformCore.RecordRef;
 };
 
-export class PromotionCodeItems {
+export class PromotionCodeItems extends SoapMappingBase {
   item?: PlatformCore.RecordRef;
   constructor(props: PromotionCodeItemsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.item = props.item;
   }
 }
@@ -140,7 +144,7 @@ export class CampaignCategory extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignCategoryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.parent = props.parent;
     this.leadSource = props.leadSource;
@@ -165,7 +169,7 @@ export class PromotionCodeSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchScriptId?: string;
   savedSearchId?: string;
   constructor(props: PromotionCodeSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchScriptId = props.savedSearchScriptId;
@@ -178,10 +182,11 @@ export type CampaignDirectMailListProps = {
   replaceAll?: boolean;
 };
 
-export class CampaignDirectMailList {
+export class CampaignDirectMailList extends SoapMappingBase {
   campaignDirectMail?: CampaignDirectMail[];
   replaceAll?: boolean;
   constructor(props: CampaignDirectMailListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.campaignDirectMail = props.campaignDirectMail;
     this.replaceAll = props.replaceAll;
   }
@@ -194,12 +199,13 @@ export type CampaignResponseResponsesProps = {
   note?: string;
 };
 
-export class CampaignResponseResponses {
+export class CampaignResponseResponses extends SoapMappingBase {
   response?: string;
   responseDate?: string;
   author?: string;
   note?: string;
   constructor(props: CampaignResponseResponsesProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.response = props.response;
     this.responseDate = props.responseDate;
     this.author = props.author;
@@ -221,7 +227,7 @@ export type CampaignDirectMailProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class CampaignDirectMail {
+export class CampaignDirectMail extends SoapMappingBase {
   internalId?: string;
   campaignGroup?: PlatformCore.RecordRef;
   template?: PlatformCore.RecordRef;
@@ -234,6 +240,7 @@ export class CampaignDirectMail {
   promoCode?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CampaignDirectMailProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.internalId = props.internalId;
     this.campaignGroup = props.campaignGroup;
     this.template = props.template;
@@ -259,7 +266,7 @@ export class PromotionCodeSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: PromotionCodeSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.userJoin = props.userJoin;
     this.customSearchJoin = props.customSearchJoin;
@@ -271,10 +278,11 @@ export type PromotionCodeCurrencyListProps = {
   replaceAll?: boolean;
 };
 
-export class PromotionCodeCurrencyList {
+export class PromotionCodeCurrencyList extends SoapMappingBase {
   currency?: PromotionCodeCurrency[];
   replaceAll?: boolean;
   constructor(props: PromotionCodeCurrencyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.currency = props.currency;
     this.replaceAll = props.replaceAll;
   }
@@ -285,10 +293,11 @@ export type CampaignEmailListProps = {
   replaceAll?: boolean;
 };
 
-export class CampaignEmailList {
+export class CampaignEmailList extends SoapMappingBase {
   campaignEmail?: CampaignEmail[];
   replaceAll?: boolean;
   constructor(props: CampaignEmailListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.campaignEmail = props.campaignEmail;
     this.replaceAll = props.replaceAll;
   }
@@ -299,10 +308,11 @@ export type CampaignResponseResponsesListProps = {
   replaceAll?: boolean;
 };
 
-export class CampaignResponseResponsesList {
+export class CampaignResponseResponsesList extends SoapMappingBase {
   responses?: CampaignResponseResponses[];
   replaceAll?: boolean;
   constructor(props: CampaignResponseResponsesListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.responses = props.responses;
     this.replaceAll = props.replaceAll;
   }
@@ -313,10 +323,11 @@ export type CampaignEventResponseListProps = {
   replaceAll?: boolean;
 };
 
-export class CampaignEventResponseList {
+export class CampaignEventResponseList extends SoapMappingBase {
   eventResponse?: CampaignEventResponse[];
   replaceAll?: boolean;
   constructor(props: CampaignEventResponseListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.eventResponse = props.eventResponse;
     this.replaceAll = props.replaceAll;
   }
@@ -347,7 +358,7 @@ export class CampaignSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: CampaignSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.campaignRecipientJoin = props.campaignRecipientJoin;
     this.fileJoin = props.fileJoin;
@@ -376,7 +387,7 @@ export class CampaignAudience extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignAudienceProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.isInactive = props.isInactive;
@@ -406,7 +417,7 @@ export class CouponCode extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CouponCodeProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.promotion = props.promotion;
     this.code = props.code;
     this.recipient = props.recipient;
@@ -435,7 +446,7 @@ export class CampaignChannel extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignChannelProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.eventType = props.eventType;
     this.description = props.description;
@@ -450,10 +461,11 @@ export type PromotionCodeCurrencyProps = {
   minimumOrderAmount?: number;
 };
 
-export class PromotionCodeCurrency {
+export class PromotionCodeCurrency extends SoapMappingBase {
   currency?: PlatformCore.RecordRef;
   minimumOrderAmount?: number;
   constructor(props: PromotionCodeCurrencyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.currency = props.currency;
     this.minimumOrderAmount = props.minimumOrderAmount;
   }
@@ -474,7 +486,7 @@ export class CampaignSearchEngine extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignSearchEngineProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.isInactive = props.isInactive;
@@ -498,7 +510,7 @@ export class CampaignOffer extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignOfferProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.isInactive = props.isInactive;
@@ -512,10 +524,11 @@ export type PromotionCodeItemsListProps = {
   replaceAll?: boolean;
 };
 
-export class PromotionCodeItemsList {
+export class PromotionCodeItemsList extends SoapMappingBase {
   items?: PromotionCodeItems[];
   replaceAll?: boolean;
   constructor(props: PromotionCodeItemsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.items = props.items;
     this.replaceAll = props.replaceAll;
   }
@@ -526,10 +539,11 @@ export type PromotionCodePartnersListProps = {
   replaceAll?: boolean;
 };
 
-export class PromotionCodePartnersList {
+export class PromotionCodePartnersList extends SoapMappingBase {
   partners?: PromotionCodePartners[];
   replaceAll?: boolean;
   constructor(props: PromotionCodePartnersListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.partners = props.partners;
     this.replaceAll = props.replaceAll;
   }
@@ -544,7 +558,7 @@ export class CouponCodeSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.CouponCodeSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: CouponCodeSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.userJoin = props.userJoin;
   }
@@ -563,7 +577,7 @@ export class CouponCodeSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchScriptId?: string;
   savedSearchId?: string;
   constructor(props: CouponCodeSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchScriptId = props.savedSearchScriptId;
@@ -584,7 +598,7 @@ export type CampaignEventProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class CampaignEvent {
+export class CampaignEvent extends SoapMappingBase {
   internalId?: string;
   campaignGroup?: PlatformCore.RecordRef;
   description?: string;
@@ -596,6 +610,7 @@ export class CampaignEvent {
   promoCode?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: CampaignEventProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.internalId = props.internalId;
     this.campaignGroup = props.campaignGroup;
     this.description = props.description;
@@ -614,10 +629,11 @@ export type PromotionCodePartnersProps = {
   code?: string;
 };
 
-export class PromotionCodePartners {
+export class PromotionCodePartners extends SoapMappingBase {
   partner?: PlatformCore.RecordRef;
   code?: string;
   constructor(props: PromotionCodePartnersProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.partner = props.partner;
     this.code = props.code;
   }
@@ -682,7 +698,7 @@ export class PromotionCode extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PromotionCodeProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.implementation = props.implementation;
     this.customForm = props.customForm;
     this.useType = props.useType;
@@ -728,7 +744,7 @@ export class CampaignVertical extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignVerticalProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.isInactive = props.isInactive;
@@ -752,7 +768,7 @@ export class CampaignFamily extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignFamilyProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.isInactive = props.isInactive;
@@ -786,7 +802,7 @@ export class CampaignSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: CampaignSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.campaignRecipientJoin = props.campaignRecipientJoin;
     this.fileJoin = props.fileJoin;
@@ -879,7 +895,7 @@ export class Campaign extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.campaignId = props.campaignId;
     this.title = props.title;
@@ -925,10 +941,11 @@ export type CampaignEventListProps = {
   replaceAll?: boolean;
 };
 
-export class CampaignEventList {
+export class CampaignEventList extends SoapMappingBase {
   campaignEvent?: CampaignEvent[];
   replaceAll?: boolean;
   constructor(props: CampaignEventListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.campaignEvent = props.campaignEvent;
     this.replaceAll = props.replaceAll;
   }
@@ -947,7 +964,7 @@ export class CampaignSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: CampaignSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -966,7 +983,7 @@ export class PromotionCodeSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: PromotionCodeSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.userJoin = props.userJoin;
     this.customSearchJoin = props.customSearchJoin;
@@ -998,7 +1015,7 @@ export class CampaignResponse extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignResponseProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.entity = props.entity;
     this.leadSource = props.leadSource;
     this.campaignEvent = props.campaignEvent;
@@ -1035,7 +1052,7 @@ export class CampaignSubscription extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: CampaignSubscriptionProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.description = props.description;
     this.subscribedByDefault = props.subscribedByDefault;

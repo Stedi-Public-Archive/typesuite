@@ -1,14 +1,16 @@
 import * as PlatformFaultsTypes from "./platform_faults_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_platform_faults_2019_2";
 export type SoapFaultProps = {
   code: PlatformFaultsTypes.FaultCodeType;
   message: string;
 };
 
-export class SoapFault {
+export class SoapFault extends SoapMappingBase {
   code: PlatformFaultsTypes.FaultCodeType;
   message: string;
   constructor(props: SoapFaultProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.code = props.code;
     this.message = props.message;
   }

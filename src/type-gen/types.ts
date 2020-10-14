@@ -6,6 +6,7 @@ export interface Mappings {
 
 export interface MappingsInfo extends Mappings {
   readonly sortedTypeInfos: TypeInfo[];
+  readonly needsSoapTypesImport: boolean;
 }
 
 export interface EnumTypeInfo {

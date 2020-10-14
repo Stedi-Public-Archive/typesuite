@@ -2,16 +2,18 @@ import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as PlatformCommonTypes from "./platform_common_types";
 import * as ListsEmployeesTypes from "./lists_employees_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_lists_employees_2019_2";
 export type EmployeeRolesListProps = {
   roles?: EmployeeRoles[];
   replaceAll?: boolean;
 };
 
-export class EmployeeRolesList {
+export class EmployeeRolesList extends SoapMappingBase {
   roles?: EmployeeRoles[];
   replaceAll?: boolean;
   constructor(props: EmployeeRolesListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.roles = props.roles;
     this.replaceAll = props.replaceAll;
   }
@@ -232,7 +234,7 @@ export class Employee extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: EmployeeProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.template = props.template;
     this.entityId = props.entityId;
@@ -356,7 +358,7 @@ export type EmployeeDirectDepositProps = {
   inactive?: boolean;
 };
 
-export class EmployeeDirectDeposit {
+export class EmployeeDirectDeposit extends SoapMappingBase {
   id?: number;
   netAccount?: boolean;
   savingsAccount?: boolean;
@@ -370,6 +372,7 @@ export class EmployeeDirectDeposit {
   amount?: number;
   inactive?: boolean;
   constructor(props: EmployeeDirectDepositProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.id = props.id;
     this.netAccount = props.netAccount;
     this.savingsAccount = props.savingsAccount;
@@ -426,7 +429,7 @@ export class EmployeeSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: EmployeeSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.campaignResponseJoin = props.campaignResponseJoin;
     this.chargeJoin = props.chargeJoin;
@@ -453,10 +456,11 @@ export type EmployeeRatesProps = {
   rate?: number;
 };
 
-export class EmployeeRates {
+export class EmployeeRates extends SoapMappingBase {
   entityCurrency?: PlatformCore.RecordRef;
   rate?: number;
   constructor(props: EmployeeRatesProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.entityCurrency = props.entityCurrency;
     this.rate = props.rate;
   }
@@ -473,7 +477,7 @@ export type EmployeeEarningProps = {
   expirationDate?: string;
 };
 
-export class EmployeeEarning {
+export class EmployeeEarning extends SoapMappingBase {
   payrollItem?: PlatformCore.RecordRef;
   payRate?: string;
   primaryEarning?: boolean;
@@ -483,6 +487,7 @@ export class EmployeeEarning {
   effectiveDate?: string;
   expirationDate?: string;
   constructor(props: EmployeeEarningProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.payrollItem = props.payrollItem;
     this.payRate = props.payRate;
     this.primaryEarning = props.primaryEarning;
@@ -507,7 +512,7 @@ export class PayrollItemSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: PayrollItemSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -524,7 +529,7 @@ export type EmployeeCompanyContributionProps = {
   expirationDate?: string;
 };
 
-export class EmployeeCompanyContribution {
+export class EmployeeCompanyContribution extends SoapMappingBase {
   payrollItem?: PlatformCore.RecordRef;
   rate?: string;
   limit?: number;
@@ -532,6 +537,7 @@ export class EmployeeCompanyContribution {
   effectiveDate?: string;
   expirationDate?: string;
   constructor(props: EmployeeCompanyContributionProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.payrollItem = props.payrollItem;
     this.rate = props.rate;
     this.limit = props.limit;
@@ -554,7 +560,7 @@ export class EmployeeSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: EmployeeSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -566,9 +572,10 @@ export type EmployeeRolesProps = {
   selectedRole?: PlatformCore.RecordRef;
 };
 
-export class EmployeeRoles {
+export class EmployeeRoles extends SoapMappingBase {
   selectedRole?: PlatformCore.RecordRef;
   constructor(props: EmployeeRolesProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.selectedRole = props.selectedRole;
   }
 }
@@ -578,10 +585,11 @@ export type EmployeeHrEducationListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeHrEducationList {
+export class EmployeeHrEducationList extends SoapMappingBase {
   employeeHrEducation?: EmployeeHrEducation[];
   replaceAll?: boolean;
   constructor(props: EmployeeHrEducationListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeHrEducation = props.employeeHrEducation;
     this.replaceAll = props.replaceAll;
   }
@@ -628,7 +636,7 @@ export class EmployeeSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: EmployeeSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.campaignResponseJoin = props.campaignResponseJoin;
     this.chargeJoin = props.chargeJoin;
@@ -655,10 +663,11 @@ export type EmployeeAddressbookListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeAddressbookList {
+export class EmployeeAddressbookList extends SoapMappingBase {
   addressbook?: EmployeeAddressbook[];
   replaceAll?: boolean;
   constructor(props: EmployeeAddressbookListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.addressbook = props.addressbook;
     this.replaceAll = props.replaceAll;
   }
@@ -673,7 +682,7 @@ export class PayrollItemSearchRow extends PlatformCore.SearchRow {
   basic?: PlatformCommon.PayrollItemSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: PayrollItemSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }
@@ -692,7 +701,7 @@ export type EmployeeAccruedTimeProps = {
   expirationDate?: string;
 };
 
-export class EmployeeAccruedTime {
+export class EmployeeAccruedTime extends SoapMappingBase {
   payrollItem?: PlatformCore.RecordRef;
   accruedHours?: number;
   accrualRate?: number;
@@ -704,6 +713,7 @@ export class EmployeeAccruedTime {
   effectiveDate?: string;
   expirationDate?: string;
   constructor(props: EmployeeAccruedTimeProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.payrollItem = props.payrollItem;
     this.accruedHours = props.accruedHours;
     this.accrualRate = props.accrualRate;
@@ -725,13 +735,14 @@ export type EmployeeEmergencyContactProps = {
   phone?: string;
 };
 
-export class EmployeeEmergencyContact {
+export class EmployeeEmergencyContact extends SoapMappingBase {
   id?: number;
   contact?: string;
   relationship?: string;
   address?: string;
   phone?: string;
   constructor(props: EmployeeEmergencyContactProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.id = props.id;
     this.contact = props.contact;
     this.relationship = props.relationship;
@@ -761,7 +772,7 @@ export class HcmJob extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: HcmJobProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.title = props.title;
     this.isInactive = props.isInactive;
     this.employmentCategory = props.employmentCategory;
@@ -778,10 +789,11 @@ export type EmployeeCompanyContributionListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeCompanyContributionList {
+export class EmployeeCompanyContributionList extends SoapMappingBase {
   employeeCompanyContribution?: EmployeeCompanyContribution[];
   replaceAll?: boolean;
   constructor(props: EmployeeCompanyContributionListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeCompanyContribution = props.employeeCompanyContribution;
     this.replaceAll = props.replaceAll;
   }
@@ -792,10 +804,11 @@ export type EmployeeDirectDepositListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeDirectDepositList {
+export class EmployeeDirectDepositList extends SoapMappingBase {
   employeeDirectDeposit?: EmployeeDirectDeposit[];
   replaceAll?: boolean;
   constructor(props: EmployeeDirectDepositListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeDirectDeposit = props.employeeDirectDeposit;
     this.replaceAll = props.replaceAll;
   }
@@ -813,7 +826,7 @@ export type EmployeeHcmPositionProps = {
   location?: PlatformCore.RecordRef;
 };
 
-export class EmployeeHcmPosition {
+export class EmployeeHcmPosition extends SoapMappingBase {
   position?: PlatformCore.RecordRef;
   primaryPosition?: boolean;
   positionId?: string;
@@ -824,6 +837,7 @@ export class EmployeeHcmPosition {
   subsidiary?: PlatformCore.RecordRef;
   location?: PlatformCore.RecordRef;
   constructor(props: EmployeeHcmPositionProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.position = props.position;
     this.primaryPosition = props.primaryPosition;
     this.positionId = props.positionId;
@@ -845,7 +859,7 @@ export type EmployeeDeductionProps = {
   expirationDate?: string;
 };
 
-export class EmployeeDeduction {
+export class EmployeeDeduction extends SoapMappingBase {
   payrollItem?: PlatformCore.RecordRef;
   rate?: string;
   limit?: number;
@@ -853,6 +867,7 @@ export class EmployeeDeduction {
   effectiveDate?: string;
   expirationDate?: string;
   constructor(props: EmployeeDeductionProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.payrollItem = props.payrollItem;
     this.rate = props.rate;
     this.limit = props.limit;
@@ -868,11 +883,12 @@ export type EmployeeSubscriptionsProps = {
   lastModifiedDate?: string;
 };
 
-export class EmployeeSubscriptions {
+export class EmployeeSubscriptions extends SoapMappingBase {
   subscribed?: string;
   subscription?: string;
   lastModifiedDate?: string;
   constructor(props: EmployeeSubscriptionsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.subscribed = props.subscribed;
     this.subscription = props.subscription;
     this.lastModifiedDate = props.lastModifiedDate;
@@ -884,10 +900,11 @@ export type EmployeeSubscriptionsListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeSubscriptionsList {
+export class EmployeeSubscriptionsList extends SoapMappingBase {
   subscriptions?: EmployeeSubscriptions[];
   replaceAll?: boolean;
   constructor(props: EmployeeSubscriptionsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.subscriptions = props.subscriptions;
     this.replaceAll = props.replaceAll;
   }
@@ -899,11 +916,12 @@ export type EmployeeHrEducationProps = {
   degreeDate?: string;
 };
 
-export class EmployeeHrEducation {
+export class EmployeeHrEducation extends SoapMappingBase {
   education?: PlatformCore.RecordRef;
   degree?: string;
   degreeDate?: string;
   constructor(props: EmployeeHrEducationProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.education = props.education;
     this.degree = props.degree;
     this.degreeDate = props.degreeDate;
@@ -923,7 +941,7 @@ export class HcmJobSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: HcmJobSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -935,9 +953,10 @@ export type EmployeeCurrencyProps = {
   currency?: PlatformCore.RecordRef;
 };
 
-export class EmployeeCurrency {
+export class EmployeeCurrency extends SoapMappingBase {
   currency?: PlatformCore.RecordRef;
   constructor(props: EmployeeCurrencyProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.currency = props.currency;
   }
 }
@@ -947,10 +966,11 @@ export type EmployeeRatesListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeRatesList {
+export class EmployeeRatesList extends SoapMappingBase {
   employeeRates?: EmployeeRates[];
   replaceAll?: boolean;
   constructor(props: EmployeeRatesListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeRates = props.employeeRates;
     this.replaceAll = props.replaceAll;
   }
@@ -985,7 +1005,7 @@ export class PayrollItem extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PayrollItemProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.subsidiary = props.subsidiary;
     this.itemType = props.itemType;
     this.name = props.name;
@@ -1012,7 +1032,7 @@ export class HcmJobSearch extends PlatformCore.SearchRecord {
   employeeJoin?: PlatformCommon.EmployeeSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: HcmJobSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.customSearchJoin = props.customSearchJoin;
@@ -1024,10 +1044,11 @@ export type EmployeeAccruedTimeListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeAccruedTimeList {
+export class EmployeeAccruedTimeList extends SoapMappingBase {
   employeeAccruedTime?: EmployeeAccruedTime[];
   replaceAll?: boolean;
   constructor(props: EmployeeAccruedTimeListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeAccruedTime = props.employeeAccruedTime;
     this.replaceAll = props.replaceAll;
   }
@@ -1038,10 +1059,11 @@ export type EmployeeDeductionListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeDeductionList {
+export class EmployeeDeductionList extends SoapMappingBase {
   employeeDeduction?: EmployeeDeduction[];
   replaceAll?: boolean;
   constructor(props: EmployeeDeductionListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeDeduction = props.employeeDeduction;
     this.replaceAll = props.replaceAll;
   }
@@ -1056,7 +1078,7 @@ export class PayrollItemSearch extends PlatformCore.SearchRecord {
   basic?: PlatformCommon.PayrollItemSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: PayrollItemSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.customSearchJoin = props.customSearchJoin;
   }
@@ -1070,13 +1092,14 @@ export type EmployeeAddressbookProps = {
   internalId?: string;
 };
 
-export class EmployeeAddressbook {
+export class EmployeeAddressbook extends SoapMappingBase {
   defaultShipping?: boolean;
   defaultBilling?: boolean;
   label?: string;
   addressbookAddress?: PlatformCommon.Address;
   internalId?: string;
   constructor(props: EmployeeAddressbookProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.defaultShipping = props.defaultShipping;
     this.defaultBilling = props.defaultBilling;
     this.label = props.label;
@@ -1090,10 +1113,11 @@ export type EmployeeCurrencyListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeCurrencyList {
+export class EmployeeCurrencyList extends SoapMappingBase {
   employeeCurrency?: EmployeeCurrency[];
   replaceAll?: boolean;
   constructor(props: EmployeeCurrencyListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeCurrency = props.employeeCurrency;
     this.replaceAll = props.replaceAll;
   }
@@ -1104,10 +1128,11 @@ export type EmployeeEarningListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeEarningList {
+export class EmployeeEarningList extends SoapMappingBase {
   employeeEarning?: EmployeeEarning[];
   replaceAll?: boolean;
   constructor(props: EmployeeEarningListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeEarning = props.employeeEarning;
     this.replaceAll = props.replaceAll;
   }
@@ -1124,7 +1149,7 @@ export class HcmJobSearchRow extends PlatformCore.SearchRow {
   employeeJoin?: PlatformCommon.EmployeeSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: HcmJobSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.employeeJoin = props.employeeJoin;
     this.customSearchJoin = props.customSearchJoin;
@@ -1136,10 +1161,11 @@ export type EmployeeEmergencyContactListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeEmergencyContactList {
+export class EmployeeEmergencyContactList extends SoapMappingBase {
   employeeEmergencyContact?: EmployeeEmergencyContact[];
   replaceAll?: boolean;
   constructor(props: EmployeeEmergencyContactListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeEmergencyContact = props.employeeEmergencyContact;
     this.replaceAll = props.replaceAll;
   }
@@ -1150,10 +1176,11 @@ export type EmployeeHcmPositionListProps = {
   replaceAll?: boolean;
 };
 
-export class EmployeeHcmPositionList {
+export class EmployeeHcmPositionList extends SoapMappingBase {
   employeeHcmPosition?: EmployeeHcmPosition[];
   replaceAll?: boolean;
   constructor(props: EmployeeHcmPositionListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.employeeHcmPosition = props.employeeHcmPosition;
     this.replaceAll = props.replaceAll;
   }

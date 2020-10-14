@@ -2,7 +2,8 @@ import * as GeneralCommunicationTypes from "./general_communication_types";
 import * as PlatformCore from "./platform_core";
 import * as DocumentsFilecabinet from "./documents_filecabinet";
 import * as PlatformCommon from "./platform_common";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_general_communication_2019_2";
 export type NoteSearchAdvancedProps = {
   criteria?: NoteSearch;
   columns?: NoteSearchRow;
@@ -16,7 +17,7 @@ export class NoteSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: NoteSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -29,10 +30,11 @@ export type MessageMediaItemListProps = {
   replaceAll?: boolean;
 };
 
-export class MessageMediaItemList {
+export class MessageMediaItemList extends SoapMappingBase {
   mediaItem: DocumentsFilecabinet.File[];
   replaceAll?: boolean;
   constructor(props: MessageMediaItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.mediaItem = props.mediaItem;
     this.replaceAll = props.replaceAll;
   }
@@ -85,7 +87,7 @@ export class NoteSearch extends PlatformCore.SearchRecord {
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: NoteSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.authorJoin = props.authorJoin;
     this.callJoin = props.callJoin;
@@ -147,7 +149,7 @@ export class MessageSearchRow extends PlatformCore.SearchRow {
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   constructor(props: MessageSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.attachmentsJoin = props.attachmentsJoin;
     this.authorJoin = props.authorJoin;
@@ -212,7 +214,7 @@ export class Note extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: NoteProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.title = props.title;
     this.noteType = props.noteType;
     this.direction = props.direction;
@@ -273,7 +275,7 @@ export class MessageSearch extends PlatformCore.SearchRecord {
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   vendorJoin?: PlatformCommon.VendorSearchBasic;
   constructor(props: MessageSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.attachmentsJoin = props.attachmentsJoin;
     this.authorJoin = props.authorJoin;
@@ -340,7 +342,7 @@ export class Message extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: MessageProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.author = props.author;
     this.authorEmail = props.authorEmail;
     this.recipient = props.recipient;
@@ -378,7 +380,7 @@ export class MessageSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: MessageSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -433,7 +435,7 @@ export class NoteSearchRow extends PlatformCore.SearchRow {
   vendorJoin?: PlatformCommon.VendorSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: NoteSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.authorJoin = props.authorJoin;
     this.callJoin = props.callJoin;

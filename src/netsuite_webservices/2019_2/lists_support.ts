@@ -1,7 +1,8 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as ListsSupportTypes from "./lists_support_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_lists_support_2019_2";
 export type SolutionProps = {
   customForm?: PlatformCore.RecordRef;
   solutionCode?: string;
@@ -39,7 +40,7 @@ export class Solution extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SolutionProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.solutionCode = props.solutionCode;
     this.title = props.title;
@@ -82,7 +83,7 @@ export class SupportCaseStatus extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCaseStatusProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.insertBefore = props.insertBefore;
     this.stage = props.stage;
@@ -184,7 +185,7 @@ export class Issue extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: IssueProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.customForm = props.customForm;
     this.issueNumber = props.issueNumber;
     this.createdDate = props.createdDate;
@@ -251,7 +252,7 @@ export class IssueSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: IssueSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.employeeJoin = props.employeeJoin;
@@ -268,10 +269,11 @@ export type SupportCaseEscalateToListProps = {
   replaceAll?: boolean;
 };
 
-export class SupportCaseEscalateToList {
+export class SupportCaseEscalateToList extends SoapMappingBase {
   escalateTo?: SupportCaseEscalateTo[];
   replaceAll?: boolean;
   constructor(props: SupportCaseEscalateToListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.escalateTo = props.escalateTo;
     this.replaceAll = props.replaceAll;
   }
@@ -294,7 +296,7 @@ export class SupportCaseOrigin extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCaseOriginProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.insertBefore = props.insertBefore;
     this.description = props.description;
@@ -310,11 +312,12 @@ export type IssueRelatedIssuesProps = {
   relationshipComment?: string;
 };
 
-export class IssueRelatedIssues {
+export class IssueRelatedIssues extends SoapMappingBase {
   relationship?: ListsSupportTypes.IssueRelationship;
   issueNumber?: PlatformCore.RecordRef;
   relationshipComment?: string;
   constructor(props: IssueRelatedIssuesProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.relationship = props.relationship;
     this.issueNumber = props.issueNumber;
     this.relationshipComment = props.relationshipComment;
@@ -334,7 +337,7 @@ export class IssueSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: IssueSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -347,10 +350,11 @@ export type TopicSolutionProps = {
   message?: string;
 };
 
-export class TopicSolution {
+export class TopicSolution extends SoapMappingBase {
   solution?: PlatformCore.RecordRef;
   message?: string;
   constructor(props: TopicSolutionProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solution = props.solution;
     this.message = props.message;
   }
@@ -361,10 +365,11 @@ export type IssueRelatedIssuesListProps = {
   replaceAll?: boolean;
 };
 
-export class IssueRelatedIssuesList {
+export class IssueRelatedIssuesList extends SoapMappingBase {
   issueRelatedIssues?: IssueRelatedIssues[];
   replaceAll?: boolean;
   constructor(props: IssueRelatedIssuesListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.issueRelatedIssues = props.issueRelatedIssues;
     this.replaceAll = props.replaceAll;
   }
@@ -383,7 +388,7 @@ export class TopicSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: TopicSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -396,10 +401,11 @@ export type IssueVersionListProps = {
   replaceAll?: boolean;
 };
 
-export class IssueVersionList {
+export class IssueVersionList extends SoapMappingBase {
   issueVersion?: IssueVersion[];
   replaceAll?: boolean;
   constructor(props: IssueVersionListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.issueVersion = props.issueVersion;
     this.replaceAll = props.replaceAll;
   }
@@ -422,7 +428,7 @@ export class SupportCaseType extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCaseTypeProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.insertBefore = props.insertBefore;
     this.description = props.description;
@@ -438,11 +444,12 @@ export type SupportCaseSolutionsProps = {
   dateApplied?: string;
 };
 
-export class SupportCaseSolutions {
+export class SupportCaseSolutions extends SoapMappingBase {
   solution?: PlatformCore.RecordRef;
   message?: string;
   dateApplied?: string;
   constructor(props: SupportCaseSolutionsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solution = props.solution;
     this.message = props.message;
     this.dateApplied = props.dateApplied;
@@ -453,9 +460,10 @@ export type SolutionTopicsProps = {
   topic?: PlatformCore.RecordRef;
 };
 
-export class SolutionTopics {
+export class SolutionTopics extends SoapMappingBase {
   topic?: PlatformCore.RecordRef;
   constructor(props: SolutionTopicsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.topic = props.topic;
   }
 }
@@ -466,11 +474,12 @@ export type SupportCaseEscalateToProps = {
   phone?: string;
 };
 
-export class SupportCaseEscalateTo {
+export class SupportCaseEscalateTo extends SoapMappingBase {
   escalatee?: PlatformCore.RecordRef;
   email?: string;
   phone?: string;
   constructor(props: SupportCaseEscalateToProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.escalatee = props.escalatee;
     this.email = props.email;
     this.phone = props.phone;
@@ -482,10 +491,11 @@ export type SolutionTopicsListProps = {
   replaceAll?: boolean;
 };
 
-export class SolutionTopicsList {
+export class SolutionTopicsList extends SoapMappingBase {
   topics?: SolutionTopics[];
   replaceAll?: boolean;
   constructor(props: SolutionTopicsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.topics = props.topics;
     this.replaceAll = props.replaceAll;
   }
@@ -502,7 +512,7 @@ export class TopicSearchRow extends PlatformCore.SearchRow {
   solutionJoin?: PlatformCommon.SolutionSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: TopicSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.solutionJoin = props.solutionJoin;
     this.userJoin = props.userJoin;
@@ -514,10 +524,11 @@ export type SolutionsProps = {
   message?: string;
 };
 
-export class Solutions {
+export class Solutions extends SoapMappingBase {
   solution?: PlatformCore.RecordRef;
   message?: string;
   constructor(props: SolutionsProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solution = props.solution;
     this.message = props.message;
   }
@@ -527,9 +538,10 @@ export type EmailEmployeesListProps = {
   emailEmployees: PlatformCore.RecordRef[];
 };
 
-export class EmailEmployeesList {
+export class EmailEmployeesList extends SoapMappingBase {
   emailEmployees: PlatformCore.RecordRef[];
   constructor(props: EmailEmployeesListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.emailEmployees = props.emailEmployees;
   }
 }
@@ -567,7 +579,7 @@ export class SupportCaseSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: SupportCaseSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.companyJoin = props.companyJoin;
     this.contactJoin = props.contactJoin;
@@ -596,7 +608,7 @@ export class TopicSearch extends PlatformCore.SearchRecord {
   solutionJoin?: PlatformCommon.SolutionSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: TopicSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.solutionJoin = props.solutionJoin;
     this.userJoin = props.userJoin;
@@ -622,7 +634,7 @@ export class SolutionSearchRow extends PlatformCore.SearchRow {
   userNotesJoin?: PlatformCommon.NoteSearchRowBasic;
   customSearchJoin?: PlatformCommon.CustomSearchRowBasic[];
   constructor(props: SolutionSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.relatedSolutionJoin = props.relatedSolutionJoin;
@@ -638,10 +650,11 @@ export type SupportCaseSolutionsListProps = {
   replaceAll?: boolean;
 };
 
-export class SupportCaseSolutionsList {
+export class SupportCaseSolutionsList extends SoapMappingBase {
   solutions?: SupportCaseSolutions[];
   replaceAll?: boolean;
   constructor(props: SupportCaseSolutionsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solutions = props.solutions;
     this.replaceAll = props.replaceAll;
   }
@@ -664,7 +677,7 @@ export class SupportCasePriority extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCasePriorityProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.insertBefore = props.insertBefore;
     this.description = props.description;
@@ -679,10 +692,11 @@ export type SolutionsListProps = {
   replaceAll?: boolean;
 };
 
-export class SolutionsList {
+export class SolutionsList extends SoapMappingBase {
   solutions?: Solutions[];
   replaceAll?: boolean;
   constructor(props: SolutionsListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solutions = props.solutions;
     this.replaceAll = props.replaceAll;
   }
@@ -701,7 +715,7 @@ export class SupportCaseSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: SupportCaseSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -714,10 +728,11 @@ export type SupportCaseTimeItemListProps = {
   replaceAll?: boolean;
 };
 
-export class SupportCaseTimeItemList {
+export class SupportCaseTimeItemList extends SoapMappingBase {
   timeItem?: PlatformCommon.TimeItem[];
   replaceAll?: boolean;
   constructor(props: SupportCaseTimeItemListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.timeItem = props.timeItem;
     this.replaceAll = props.replaceAll;
   }
@@ -729,11 +744,12 @@ export type IssueVersionProps = {
   build?: PlatformCore.RecordRef;
 };
 
-export class IssueVersion {
+export class IssueVersion extends SoapMappingBase {
   primary?: boolean;
   version?: PlatformCore.RecordRef;
   build?: PlatformCore.RecordRef;
   constructor(props: IssueVersionProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.primary = props.primary;
     this.version = props.version;
     this.build = props.build;
@@ -759,7 +775,7 @@ export class SolutionSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: SolutionSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.relatedSolutionJoin = props.relatedSolutionJoin;
@@ -861,7 +877,7 @@ export class SupportCase extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCaseProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.escalationMessage = props.escalationMessage;
     this.lastReopenedDate = props.lastReopenedDate;
     this.endDate = props.endDate;
@@ -929,7 +945,7 @@ export class Topic extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: TopicProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.title = props.title;
     this.parentTopic = props.parentTopic;
     this.description = props.description;
@@ -954,7 +970,7 @@ export class SolutionSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: SolutionSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -979,7 +995,7 @@ export class SupportCaseIssue extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: SupportCaseIssueProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.insertBefore = props.insertBefore;
     this.description = props.description;
@@ -1010,7 +1026,7 @@ export class IssueSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: IssueSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.caseJoin = props.caseJoin;
     this.employeeJoin = props.employeeJoin;
@@ -1055,7 +1071,7 @@ export class SupportCaseSearch extends PlatformCore.SearchRecord {
   userNotesJoin?: PlatformCommon.NoteSearchBasic;
   customSearchJoin?: PlatformCommon.CustomSearchJoin[];
   constructor(props: SupportCaseSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.companyJoin = props.companyJoin;
     this.contactJoin = props.contactJoin;
@@ -1078,10 +1094,11 @@ export type TopicSolutionListProps = {
   replaceAll?: boolean;
 };
 
-export class TopicSolutionList {
+export class TopicSolutionList extends SoapMappingBase {
   solution?: TopicSolution[];
   replaceAll?: boolean;
   constructor(props: TopicSolutionListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.solution = props.solution;
     this.replaceAll = props.replaceAll;
   }

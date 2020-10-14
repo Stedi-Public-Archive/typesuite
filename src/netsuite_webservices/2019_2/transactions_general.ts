@@ -1,15 +1,17 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_transactions_general_2019_2";
 export type InterCompanyJournalEntryAccountingBookDetailListProps = {
   interCompanyJournalEntryAccountingBookDetail?: InterCompanyJournalEntryAccountingBookDetail[];
   replaceAll?: boolean;
 };
 
-export class InterCompanyJournalEntryAccountingBookDetailList {
+export class InterCompanyJournalEntryAccountingBookDetailList extends SoapMappingBase {
   interCompanyJournalEntryAccountingBookDetail?: InterCompanyJournalEntryAccountingBookDetail[];
   replaceAll?: boolean;
   constructor(props: InterCompanyJournalEntryAccountingBookDetailListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.interCompanyJournalEntryAccountingBookDetail =
       props.interCompanyJournalEntryAccountingBookDetail;
     this.replaceAll = props.replaceAll;
@@ -21,10 +23,11 @@ export type StatisticalJournalEntryLineListProps = {
   replaceAll?: boolean;
 };
 
-export class StatisticalJournalEntryLineList {
+export class StatisticalJournalEntryLineList extends SoapMappingBase {
   statisticalJournalEntryLine?: StatisticalJournalEntryLine[];
   replaceAll?: boolean;
   constructor(props: StatisticalJournalEntryLineListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.statisticalJournalEntryLine = props.statisticalJournalEntryLine;
     this.replaceAll = props.replaceAll;
   }
@@ -62,7 +65,7 @@ export type JournalEntryLineProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class JournalEntryLine {
+export class JournalEntryLine extends SoapMappingBase {
   account?: PlatformCore.RecordRef;
   line?: number;
   debit?: number;
@@ -93,6 +96,7 @@ export class JournalEntryLine {
   tax1Acct?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: JournalEntryLineProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.account = props.account;
     this.line = props.line;
     this.debit = props.debit;
@@ -132,12 +136,13 @@ export type AdvInterCompanyJournalEntryAccountingBookDetailProps = {
   exchangeRate?: number;
 };
 
-export class AdvInterCompanyJournalEntryAccountingBookDetail {
+export class AdvInterCompanyJournalEntryAccountingBookDetail extends SoapMappingBase {
   accountingBook?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   exchangeRate?: number;
   constructor(props: AdvInterCompanyJournalEntryAccountingBookDetailProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.accountingBook = props.accountingBook;
     this.currency = props.currency;
     this.subsidiary = props.subsidiary;
@@ -150,10 +155,11 @@ export type AdvInterCompanyJournalEntryAccountingBookDetailListProps = {
   replaceAll?: boolean;
 };
 
-export class AdvInterCompanyJournalEntryAccountingBookDetailList {
+export class AdvInterCompanyJournalEntryAccountingBookDetailList extends SoapMappingBase {
   interCompanyJournalEntryAccountingBookDetail?: AdvInterCompanyJournalEntryAccountingBookDetail[];
   replaceAll?: boolean;
   constructor(props: AdvInterCompanyJournalEntryAccountingBookDetailListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.interCompanyJournalEntryAccountingBookDetail =
       props.interCompanyJournalEntryAccountingBookDetail;
     this.replaceAll = props.replaceAll;
@@ -225,7 +231,7 @@ export class JournalEntry extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: JournalEntryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.postingPeriod = props.postingPeriod;
     this.tranDate = props.tranDate;
     this.currency = props.currency;
@@ -264,10 +270,11 @@ export type AdvInterCompanyJournalEntryLineListProps = {
   replaceAll?: boolean;
 };
 
-export class AdvInterCompanyJournalEntryLineList {
+export class AdvInterCompanyJournalEntryLineList extends SoapMappingBase {
   line?: AdvInterCompanyJournalEntryLine[];
   replaceAll?: boolean;
   constructor(props: AdvInterCompanyJournalEntryLineListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.replaceAll = props.replaceAll;
   }
@@ -322,7 +329,7 @@ export class PeriodEndJournal extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: PeriodEndJournalProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.transactionNumber = props.transactionNumber;
@@ -405,7 +412,7 @@ export class AdvInterCompanyJournalEntry extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: AdvInterCompanyJournalEntryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.postingPeriod = props.postingPeriod;
     this.customForm = props.customForm;
     this.tranDate = props.tranDate;
@@ -440,10 +447,11 @@ export type InterCompanyJournalEntryLineListProps = {
   replaceAll?: boolean;
 };
 
-export class InterCompanyJournalEntryLineList {
+export class InterCompanyJournalEntryLineList extends SoapMappingBase {
   line?: InterCompanyJournalEntryLine[];
   replaceAll?: boolean;
   constructor(props: InterCompanyJournalEntryLineListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.replaceAll = props.replaceAll;
   }
@@ -464,7 +472,7 @@ export type StatisticalJournalEntryLineProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class StatisticalJournalEntryLine {
+export class StatisticalJournalEntryLine extends SoapMappingBase {
   account?: PlatformCore.RecordRef;
   line?: number;
   location?: PlatformCore.RecordRef;
@@ -478,6 +486,7 @@ export class StatisticalJournalEntryLine {
   previewDebit?: string;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: StatisticalJournalEntryLineProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.account = props.account;
     this.line = props.line;
     this.location = props.location;
@@ -500,12 +509,13 @@ export type InterCompanyJournalEntryAccountingBookDetailProps = {
   exchangeRate?: number;
 };
 
-export class InterCompanyJournalEntryAccountingBookDetail {
+export class InterCompanyJournalEntryAccountingBookDetail extends SoapMappingBase {
   accountingBook?: PlatformCore.RecordRef;
   currency?: PlatformCore.RecordRef;
   subsidiary?: PlatformCore.RecordRef;
   exchangeRate?: number;
   constructor(props: InterCompanyJournalEntryAccountingBookDetailProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.accountingBook = props.accountingBook;
     this.currency = props.currency;
     this.subsidiary = props.subsidiary;
@@ -572,7 +582,7 @@ export class InterCompanyJournalEntry extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: InterCompanyJournalEntryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.postingPeriod = props.postingPeriod;
     this.customForm = props.customForm;
     this.tranDate = props.tranDate;
@@ -633,7 +643,7 @@ export type InterCompanyJournalEntryLineProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class InterCompanyJournalEntryLine {
+export class InterCompanyJournalEntryLine extends SoapMappingBase {
   lineSubsidiary?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
   line?: number;
@@ -662,6 +672,7 @@ export class InterCompanyJournalEntryLine {
   tax1Acct?: PlatformCore.RecordRef;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: InterCompanyJournalEntryLineProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.lineSubsidiary = props.lineSubsidiary;
     this.account = props.account;
     this.line = props.line;
@@ -724,7 +735,7 @@ export type AdvInterCompanyJournalEntryLineProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class AdvInterCompanyJournalEntryLine {
+export class AdvInterCompanyJournalEntryLine extends SoapMappingBase {
   lineSubsidiary?: PlatformCore.RecordRef;
   account?: PlatformCore.RecordRef;
   line?: number;
@@ -755,6 +766,7 @@ export class AdvInterCompanyJournalEntryLine {
   lineFxRate?: number;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: AdvInterCompanyJournalEntryLineProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.lineSubsidiary = props.lineSubsidiary;
     this.account = props.account;
     this.line = props.line;
@@ -792,10 +804,11 @@ export type JournalEntryLineListProps = {
   replaceAll?: boolean;
 };
 
-export class JournalEntryLineList {
+export class JournalEntryLineList extends SoapMappingBase {
   line?: JournalEntryLine[];
   replaceAll?: boolean;
   constructor(props: JournalEntryLineListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.line = props.line;
     this.replaceAll = props.replaceAll;
   }
@@ -840,7 +853,7 @@ export class StatisticalJournalEntry extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: StatisticalJournalEntryProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.createdDate = props.createdDate;
     this.lastModifiedDate = props.lastModifiedDate;
     this.customForm = props.customForm;
@@ -870,7 +883,7 @@ export type PeriodEndJournalLineProps = {
   customFieldList?: PlatformCore.CustomFieldList;
 };
 
-export class PeriodEndJournalLine {
+export class PeriodEndJournalLine extends SoapMappingBase {
   account?: PlatformCore.RecordRef;
   debit?: number;
   credit?: number;
@@ -878,6 +891,7 @@ export class PeriodEndJournalLine {
   line?: number;
   customFieldList?: PlatformCore.CustomFieldList;
   constructor(props: PeriodEndJournalLineProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.account = props.account;
     this.debit = props.debit;
     this.credit = props.credit;
@@ -892,10 +906,11 @@ export type PeriodEndJournalLineListProps = {
   replaceAll?: boolean;
 };
 
-export class PeriodEndJournalLineList {
+export class PeriodEndJournalLineList extends SoapMappingBase {
   periodEndJournalLine?: PeriodEndJournalLine[];
   replaceAll?: boolean;
   constructor(props: PeriodEndJournalLineListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.periodEndJournalLine = props.periodEndJournalLine;
     this.replaceAll = props.replaceAll;
   }

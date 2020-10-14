@@ -1,16 +1,18 @@
 import * as PlatformCore from "./platform_core";
 import * as PlatformCommon from "./platform_common";
 import * as DocumentsFilecabinetTypes from "./documents_filecabinet_types";
-
+import { SoapMappingBase, propsWithMappingsName } from "../../soap-types";
+const MAPPINGS_NAME = "com_netsuite_webservices_documents_filecabinet_2019_2";
 export type FileSiteCategoryListProps = {
   siteCategory?: FileSiteCategory[];
   replaceAll?: boolean;
 };
 
-export class FileSiteCategoryList {
+export class FileSiteCategoryList extends SoapMappingBase {
   siteCategory?: FileSiteCategory[];
   replaceAll?: boolean;
   constructor(props: FileSiteCategoryListProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.siteCategory = props.siteCategory;
     this.replaceAll = props.replaceAll;
   }
@@ -29,7 +31,7 @@ export class FileSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: FileSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
@@ -44,12 +46,13 @@ export type FileSiteCategoryProps = {
   website?: PlatformCore.RecordRef;
 };
 
-export class FileSiteCategory {
+export class FileSiteCategory extends SoapMappingBase {
   isDefault?: boolean;
   category?: PlatformCore.RecordRef;
   categoryDescription?: string;
   website?: PlatformCore.RecordRef;
   constructor(props: FileSiteCategoryProps) {
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.isDefault = props.isDefault;
     this.category = props.category;
     this.categoryDescription = props.categoryDescription;
@@ -68,7 +71,7 @@ export class FileSearch extends PlatformCore.SearchRecord {
   shopperJoin?: PlatformCommon.CustomerSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: FileSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
@@ -86,7 +89,7 @@ export class FileSearchRow extends PlatformCore.SearchRow {
   shopperJoin?: PlatformCommon.CustomerSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: FileSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.shopperJoin = props.shopperJoin;
     this.userJoin = props.userJoin;
@@ -104,7 +107,7 @@ export class FolderSearchRow extends PlatformCore.SearchRow {
   fileJoin?: PlatformCommon.FileSearchRowBasic;
   userJoin?: PlatformCommon.EmployeeSearchRowBasic;
   constructor(props: FolderSearchRowProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
     this.userJoin = props.userJoin;
@@ -178,7 +181,7 @@ export class File extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: FileProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.attachFrom = props.attachFrom;
     this.mediaTypeName = props.mediaTypeName;
@@ -250,7 +253,7 @@ export class Folder extends PlatformCore.Record {
   internalId?: string;
   externalId?: string;
   constructor(props: FolderProps) {
-    super(props);
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.name = props.name;
     this.department = props.department;
     this.description = props.description;
@@ -281,7 +284,7 @@ export class FolderSearch extends PlatformCore.SearchRecord {
   fileJoin?: PlatformCommon.FileSearchBasic;
   userJoin?: PlatformCommon.EmployeeSearchBasic;
   constructor(props: FolderSearchProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.basic = props.basic;
     this.fileJoin = props.fileJoin;
     this.userJoin = props.userJoin;
@@ -301,7 +304,7 @@ export class FolderSearchAdvanced extends PlatformCore.SearchRecord {
   savedSearchId?: string;
   savedSearchScriptId?: string;
   constructor(props: FolderSearchAdvancedProps) {
-    super();
+    super(propsWithMappingsName(props, MAPPINGS_NAME));
     this.criteria = props.criteria;
     this.columns = props.columns;
     this.savedSearchId = props.savedSearchId;
