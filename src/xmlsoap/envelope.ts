@@ -13,7 +13,7 @@ export class Fault {
 
 export class Detail {
   otherAttributes?: string;
-  any?: string[];
+  any?: any[];
   constructor(props: Detail) {
     this.otherAttributes = props.otherAttributes;
     this.any = props.any;
@@ -24,7 +24,7 @@ export class Envelope {
   otherAttributes?: string;
   header?: Header;
   body: Body;
-  any?: string[];
+  any?: any[];
   constructor(props: Envelope) {
     this.otherAttributes = props.otherAttributes;
     this.header = props.header;

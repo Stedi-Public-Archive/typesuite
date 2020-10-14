@@ -4,7 +4,7 @@ import { Jsonix } from "jsonix";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
 import NetSuiteMappings from "./netsuite_webservices/2019_2/mappings";
 import XmlSoapMappings from "./xmlsoap/mappings";
-import { Body, Envelope, Header } from "./xmlsoap/envelope";
+import { Body, Envelope, Fault, Header } from "./xmlsoap/envelope";
 import { com_netsuite_webservices_platform_messages_2019_2 as platform } from "./netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2";
 import { Configuration } from "./types";
 
@@ -75,6 +75,18 @@ function endpoint(config: Configuration): string {
   return `https://${account}.suitetalk.api.netsuite.com/services/NetSuitePort_${config.apiVersion}`;
 }
 
+/**
+ * Serializes the provided request into XML and sends a SOAP request to the configured
+ * endpoint. For successful responses, returns the data extracted the envelope and cast
+ * into the type specified by the generic type parameter R.
+ *
+ * If the SOAP request results in a failed response, returns the SOAP Fault within
+ * the envelope as a rejected promise.
+ *
+ * @param config
+ * @param request
+ * @param soapAction
+ */
 export async function sendSoapRequest<T, R>(
   config: Configuration,
   request: T,
@@ -82,11 +94,26 @@ export async function sendSoapRequest<T, R>(
 ): Promise<R> {
   const authToken = authenticateRequestWithTokenPassport(config);
   const soapXML = serializeSoapRequest(authToken, request);
-  const response = await axios.post(endpoint(config), soapXML, {
-    headers: { SOAPAction: soapAction, contentType: "text/xml; charset=UTF-8" },
-  });
-  const soapObj = deserializeSoapResponse(response.data);
-  return soapObj.value.body.any[0].value as R;
+  try {
+    const response = await axios.post(endpoint(config), soapXML, {
+      headers: {
+        SOAPAction: soapAction,
+        contentType: "text/xml; charset=UTF-8",
+      },
+    });
+    const soapEnvelope = deserializeSoapResponse(response.data);
+    return soapEnvelope.value.body.any[0].value as R;
+  } catch (error) {
+    if (error.response) {
+      // Non 20x response
+      const soapEnvelope = deserializeSoapResponse(error.response.data);
+      const fault = soapEnvelope.value.body.any[0].value as Fault;
+      return Promise.reject(fault);
+    } else {
+      // Network error.
+      throw error;
+    }
+  }
 }
 
 function authenticateRequestWithTokenPassport(

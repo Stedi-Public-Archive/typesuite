@@ -172,3 +172,28 @@ export function expectedSearchRequestXml(date: string): string {
     "</soap:Envelope>"
   );
 }
+
+export function soapFaultXml(): string {
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>' +
+    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"' +
+    '                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
+    '                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
+    "    <soapenv:Body>" +
+    "        <soapenv:Fault>" +
+    "            <faultcode>soapenv:Server.userException</faultcode>" +
+    "            <faultstring>Invalid login attempt.</faultstring>" +
+    "            <detail>" +
+    "                <platformFaults:invalidCredentialsFault" +
+    '                        xmlns:platformFaults="urn:faults_2019_2.platform.webservices.netsuite.com">' +
+    "                    <platformFaults:code>USER_ERROR</platformFaults:code>" +
+    "                    <platformFaults:message>Invalid login attempt.</platformFaults:message>" +
+    "                </platformFaults:invalidCredentialsFault>" +
+    '                <ns1:hostname xmlns:ns1="http://xml.apache.org/axis/">partners030' +
+    "                </ns1:hostname>" +
+    "            </detail>" +
+    "        </soapenv:Fault>" +
+    "    </soapenv:Body>" +
+    "</soapenv:Envelope>"
+  );
+}

@@ -85,20 +85,6 @@ import {
   UpsertRequest,
   UpsertResponse,
 } from "./netsuite_webservices/2019_2/platform_messages";
-import {
-  AsyncFault,
-  ExceededConcurrentRequestLimitFault,
-  ExceededRecordCountFault,
-  ExceededRequestLimitFault,
-  ExceededRequestSizeFault,
-  ExceededUsageLimitFault,
-  InsufficientPermissionFault,
-  InvalidAccountFault,
-  InvalidCredentialsFault,
-  InvalidSessionFault,
-  InvalidVersionFault,
-  UnexpectedErrorFault,
-} from "./netsuite_webservices/2019_2/platform_faults";
 import { Configuration } from "./types";
 import { sendSoapRequest } from "./soap";
 
@@ -108,447 +94,137 @@ export class TypeSuiteClient {
     this.config = config;
   }
 
-  add(
-    request: AddRequest
-  ): Promise<
-    | AddResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  add(request: AddRequest): Promise<AddResponse> {
     return sendSoapRequest(this.config, request, "add");
   }
 
-  addList(
-    request: AddListRequest
-  ): Promise<
-    | AddListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  addList(request: AddListRequest): Promise<AddListResponse> {
     return sendSoapRequest(this.config, request, "addList");
   }
 
-  asyncAddList(
-    request: AsyncAddListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  asyncAddList(request: AsyncAddListRequest): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncAddList");
   }
 
   asyncDeleteList(
     request: AsyncDeleteListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncDeleteList");
   }
 
-  asyncGetList(
-    request: AsyncGetListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  asyncGetList(request: AsyncGetListRequest): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncGetList");
   }
 
   asyncInitializeList(
     request: AsyncInitializeListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncInitializeList");
   }
 
-  asyncSearch(
-    request: AsyncSearchRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  asyncSearch(request: AsyncSearchRequest): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncSearch");
   }
 
   asyncUpdateList(
     request: AsyncUpdateListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncUpdateList");
   }
 
   asyncUpsertList(
     request: AsyncUpsertListRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "asyncUpsertList");
   }
 
-  attach(
-    request: AttachRequest
-  ): Promise<
-    | AttachResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  attach(request: AttachRequest): Promise<AttachResponse> {
     return sendSoapRequest(this.config, request, "attach");
   }
 
-  changeEmail(
-    request: ChangeEmailRequest
-  ): Promise<
-    | ChangeEmailResponse
-    | InsufficientPermissionFault
-    | InvalidAccountFault
-    | InvalidCredentialsFault
-    | InvalidSessionFault
-    | InvalidVersionFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  changeEmail(request: ChangeEmailRequest): Promise<ChangeEmailResponse> {
     return sendSoapRequest(this.config, request, "changeEmail");
   }
 
   changePassword(
     request: ChangePasswordRequest
-  ): Promise<
-    | ChangePasswordResponse
-    | InsufficientPermissionFault
-    | InvalidAccountFault
-    | InvalidCredentialsFault
-    | InvalidSessionFault
-    | InvalidVersionFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<ChangePasswordResponse> {
     return sendSoapRequest(this.config, request, "changePassword");
   }
 
   checkAsyncStatus(
     request: CheckAsyncStatusRequest
-  ): Promise<
-    | AsyncStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-    | AsyncFault
-  > {
+  ): Promise<AsyncStatusResponse> {
     return sendSoapRequest(this.config, request, "checkAsyncStatus");
   }
 
-  delete(
-    request: DeleteRequest
-  ): Promise<
-    | DeleteResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  delete(request: DeleteRequest): Promise<DeleteResponse> {
     return sendSoapRequest(this.config, request, "delete");
   }
 
-  deleteList(
-    request: DeleteListRequest
-  ): Promise<
-    | DeleteListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  deleteList(request: DeleteListRequest): Promise<DeleteListResponse> {
     return sendSoapRequest(this.config, request, "deleteList");
   }
 
-  detach(
-    request: DetachRequest
-  ): Promise<
-    | DetachResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  detach(request: DetachRequest): Promise<DetachResponse> {
     return sendSoapRequest(this.config, request, "detach");
   }
 
-  get(
-    request: GetRequest
-  ): Promise<
-    | GetResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  get(request: GetRequest): Promise<GetResponse> {
     return sendSoapRequest(this.config, request, "get");
   }
 
-  getAll(
-    request: GetAllRequest
-  ): Promise<
-    | GetAllResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  getAll(request: GetAllRequest): Promise<GetAllResponse> {
     return sendSoapRequest(this.config, request, "getAll");
   }
 
   getAsyncResult(
     request: GetAsyncResultRequest
-  ): Promise<
-    | GetAsyncResultResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-    | AsyncFault
-  > {
+  ): Promise<GetAsyncResultResponse> {
     return sendSoapRequest(this.config, request, "getAsyncResult");
   }
 
   getBudgetExchangeRate(
     request: GetBudgetExchangeRateRequest
-  ): Promise<
-    | GetBudgetExchangeRateResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetBudgetExchangeRateResponse> {
     return sendSoapRequest(this.config, request, "getBudgetExchangeRate");
   }
 
   getCurrencyRate(
     request: GetCurrencyRateRequest
-  ): Promise<
-    | GetCurrencyRateResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetCurrencyRateResponse> {
     return sendSoapRequest(this.config, request, "getCurrencyRate");
   }
 
   getCustomizationId(
     request: GetCustomizationIdRequest
-  ): Promise<
-    | GetCustomizationIdResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetCustomizationIdResponse> {
     return sendSoapRequest(this.config, request, "getCustomizationId");
   }
 
   getDataCenterUrls(
     request: GetDataCenterUrlsRequest
-  ): Promise<
-    | GetDataCenterUrlsResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetDataCenterUrlsResponse> {
     return sendSoapRequest(this.config, request, "getDataCenterUrls");
   }
 
-  getDeleted(
-    request: GetDeletedRequest
-  ): Promise<
-    | GetDeletedResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  getDeleted(request: GetDeletedRequest): Promise<GetDeletedResponse> {
     return sendSoapRequest(this.config, request, "getDeleted");
   }
 
   getItemAvailability(
     request: GetItemAvailabilityRequest
-  ): Promise<
-    | GetItemAvailabilityResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetItemAvailabilityResponse> {
     return sendSoapRequest(this.config, request, "getItemAvailability");
   }
 
-  getList(
-    request: GetListRequest
-  ): Promise<
-    | GetListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  getList(request: GetListRequest): Promise<GetListResponse> {
     return sendSoapRequest(this.config, request, "getList");
   }
 
   getPostingTransactionSummary(
     request: GetPostingTransactionSummaryRequest
-  ): Promise<
-    | GetPostingTransactionSummaryResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetPostingTransactionSummaryResponse> {
     return sendSoapRequest(
       this.config,
       request,
@@ -558,311 +234,89 @@ export class TypeSuiteClient {
 
   getSavedSearch(
     request: GetSavedSearchRequest
-  ): Promise<
-    | GetSavedSearchResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetSavedSearchResponse> {
     return sendSoapRequest(this.config, request, "getSavedSearch");
   }
 
   getSelectValue(
     request: GetSelectValueRequest
-  ): Promise<
-    | GetSelectValueResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<GetSelectValueResponse> {
     return sendSoapRequest(this.config, request, "getSelectValue");
   }
 
-  getServerTime(
-    request: GetServerTimeRequest
-  ): Promise<
-    | GetServerTimeResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | UnexpectedErrorFault
-  > {
+  getServerTime(request: GetServerTimeRequest): Promise<GetServerTimeResponse> {
     return sendSoapRequest(this.config, request, "getServerTime");
   }
 
-  initialize(
-    request: InitializeRequest
-  ): Promise<
-    | InitializeResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  initialize(request: InitializeRequest): Promise<InitializeResponse> {
     return sendSoapRequest(this.config, request, "initialize");
   }
 
   initializeList(
     request: InitializeListRequest
-  ): Promise<
-    | InitializeListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<InitializeListResponse> {
     return sendSoapRequest(this.config, request, "initializeList");
   }
 
-  login(
-    request: LoginRequest
-  ): Promise<
-    | LoginResponse
-    | InsufficientPermissionFault
-    | InvalidAccountFault
-    | InvalidCredentialsFault
-    | InvalidSessionFault
-    | InvalidVersionFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  login(request: LoginRequest): Promise<LoginResponse> {
     return sendSoapRequest(this.config, request, "login");
   }
 
-  logout(
-    request: LogoutRequest
-  ): Promise<
-    | LogoutResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  logout(request: LogoutRequest): Promise<LogoutResponse> {
     return sendSoapRequest(this.config, request, "logout");
   }
 
-  mapSso(
-    request: MapSsoRequest
-  ): Promise<
-    | MapSsoResponse
-    | InsufficientPermissionFault
-    | InvalidAccountFault
-    | InvalidCredentialsFault
-    | InvalidSessionFault
-    | InvalidVersionFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  mapSso(request: MapSsoRequest): Promise<MapSsoResponse> {
     return sendSoapRequest(this.config, request, "mapSso");
   }
 
-  search(
-    request: SearchRequest
-  ): Promise<
-    | SearchResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  search(request: SearchRequest): Promise<SearchResponse> {
     return sendSoapRequest(this.config, request, "search");
   }
 
-  searchMore(
-    request: SearchMoreRequest
-  ): Promise<
-    | SearchMoreResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  searchMore(request: SearchMoreRequest): Promise<SearchMoreResponse> {
     return sendSoapRequest(this.config, request, "searchMore");
   }
 
   searchMoreWithId(
     request: SearchMoreWithIdRequest
-  ): Promise<
-    | SearchMoreWithIdResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<SearchMoreWithIdResponse> {
     return sendSoapRequest(this.config, request, "searchMoreWithId");
   }
 
-  searchNext(
-    request: SearchNextRequest
-  ): Promise<
-    | SearchNextResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  searchNext(request: SearchNextRequest): Promise<SearchNextResponse> {
     return sendSoapRequest(this.config, request, "searchNext");
   }
 
-  ssoLogin(
-    request: SsoLoginRequest
-  ): Promise<
-    | SsoLoginResponse
-    | InsufficientPermissionFault
-    | InvalidAccountFault
-    | InvalidCredentialsFault
-    | InvalidSessionFault
-    | InvalidVersionFault
-    | ExceededRequestLimitFault
-    | UnexpectedErrorFault
-  > {
+  ssoLogin(request: SsoLoginRequest): Promise<SsoLoginResponse> {
     return sendSoapRequest(this.config, request, "ssoLogin");
   }
 
-  update(
-    request: UpdateRequest
-  ): Promise<
-    | UpdateResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  update(request: UpdateRequest): Promise<UpdateResponse> {
     return sendSoapRequest(this.config, request, "update");
   }
 
   updateInviteeStatus(
     request: UpdateInviteeStatusRequest
-  ): Promise<
-    | UpdateInviteeStatusResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<UpdateInviteeStatusResponse> {
     return sendSoapRequest(this.config, request, "updateInviteeStatus");
   }
 
   updateInviteeStatusList(
     request: UpdateInviteeStatusListRequest
-  ): Promise<
-    | UpdateInviteeStatusListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  ): Promise<UpdateInviteeStatusListResponse> {
     return sendSoapRequest(this.config, request, "updateInviteeStatusList");
   }
 
-  updateList(
-    request: UpdateListRequest
-  ): Promise<
-    | UpdateListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  updateList(request: UpdateListRequest): Promise<UpdateListResponse> {
     return sendSoapRequest(this.config, request, "updateList");
   }
 
-  upsert(
-    request: UpsertRequest
-  ): Promise<
-    | UpsertResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  upsert(request: UpsertRequest): Promise<UpsertResponse> {
     return sendSoapRequest(this.config, request, "upsert");
   }
 
-  upsertList(
-    request: UpsertListRequest
-  ): Promise<
-    | UpsertListResponse
-    | InsufficientPermissionFault
-    | InvalidSessionFault
-    | InvalidCredentialsFault
-    | ExceededConcurrentRequestLimitFault
-    | ExceededRequestLimitFault
-    | ExceededUsageLimitFault
-    | ExceededRecordCountFault
-    | ExceededRequestSizeFault
-    | UnexpectedErrorFault
-  > {
+  upsertList(request: UpsertListRequest): Promise<UpsertListResponse> {
     return sendSoapRequest(this.config, request, "upsertList");
   }
 }
