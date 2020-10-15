@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Stedi/typesuite/compare/v1.0.2...v1.0.3) (2020-10-15)
+
+
+### Bug Fixes
+
+* specify package as public ([#129](https://github.com/Stedi/typesuite/issues/129)) ([88ebcfd](https://github.com/Stedi/typesuite/commit/88ebcfdf430951fdb89e0dfb6dd105333662a5fc))
+
 ## [1.0.2](https://github.com/Stedi/typesuite/compare/v1.0.1...v1.0.2) (2020-10-15)
 
 
