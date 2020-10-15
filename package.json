@@ -1,6 +1,6 @@
 {
   "name": "@stedi-oss/typesuite",
-  "version": "0.7.1",
+  "version": "0.0.0",
   "description": "TypeScript client for NetSuite SuiteTalk SOAP API",
   "keywords": [
     "TypeScript",
