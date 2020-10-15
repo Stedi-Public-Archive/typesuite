@@ -1,6 +1,8 @@
 ignores: [
   "@types/jest",
   "@commitlint/cli",
-  "@commitlint/config-conventional"
+  "@commitlint/config-conventional",
+  "@semantic-release/changelog",
+  "@semantic-release/git"
 ]
 ignore-dirs: ["lib"]
