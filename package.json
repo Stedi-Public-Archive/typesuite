@@ -1,6 +1,6 @@
 {
   "name": "@stedi/typesuite",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "TypeScript client for NetSuite SuiteTalk SOAP API",
   "keywords": [
     "TypeScript",
@@ -32,11 +32,14 @@
     "jest": "jest",
     "test": "tsc && jest && depcheck .",
     "tsc": "tsc",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "tsc",
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@types/jest": "26.0.14",
     "@types/node": "14.11.8",
     "@typescript-eslint/eslint-plugin": "4.0.0",
@@ -44,12 +47,13 @@
     "cz-conventional-changelog": "3.3.0",
     "depcheck": "1.2.0",
     "eslint": "7.11.0",
-    "eslint-plugin-jest": "24.1.0",
     "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-jest": "24.1.0",
     "eslint-plugin-prettier": "3.1.4",
     "husky": "4.3.0",
     "jest": "25.5.4",
     "prettier": "2.1.2",
+    "semantic-release": "^17.2.1",
     "ts-jest": "25.5.1",
     "ts-node": "9.0.0",
     "typescript": "3.9.7"
