@@ -21,6 +21,7 @@ const JSONIX_CONTEXT_OPTIONS = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface soapObject {}
 
 interface ElementInfo {

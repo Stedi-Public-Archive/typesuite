@@ -13,6 +13,7 @@ export class Fault {
 
 export class Detail {
   otherAttributes?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any?: any[];
   constructor(props: Detail) {
     this.otherAttributes = props.otherAttributes;
@@ -24,6 +25,7 @@ export class Envelope {
   otherAttributes?: string;
   header?: Header;
   body: Body;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any?: any[];
   constructor(props: Envelope) {
     this.otherAttributes = props.otherAttributes;
@@ -35,6 +37,7 @@ export class Envelope {
 
 export class Body {
   otherAttributes?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any?: any[];
   constructor(props: Body) {
     this.otherAttributes = props.otherAttributes;
@@ -44,6 +47,7 @@ export class Body {
 
 export class Header {
   otherAttributes?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any?: any[];
   constructor(props: Header) {
     this.otherAttributes = props.otherAttributes;
