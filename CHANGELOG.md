@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Stedi/TypeSuite/compare/v1.0.0...v1.0.1) (2020-10-15)
+
+
+### Bug Fixes
+
+* remove erroneous publish config ([#126](https://github.com/Stedi/TypeSuite/issues/126)) ([61e9e4b](https://github.com/Stedi/TypeSuite/commit/61e9e4ba4df01ad9c798bd4af138ca74a0d3eb8e))
+
 # 1.0.0 (2020-10-15)
 
 
