@@ -3,6 +3,7 @@ ignores: [
   "@commitlint/cli",
   "@commitlint/config-conventional",
   "@semantic-release/changelog",
-  "@semantic-release/git"
+  "@semantic-release/git",
+  "semantic-release"
 ]
 ignore-dirs: ["lib"]
