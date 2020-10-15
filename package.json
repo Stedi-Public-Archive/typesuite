@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/Stedi/typesuite.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "gen:all": "npm run gen:types && npm run gen:prettier",
     "gen:types": "ts-node scripts/generate-types.ts",
