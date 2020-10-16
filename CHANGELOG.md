@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Stedi/typesuite/compare/v1.0.3...v1.0.4) (2020-10-16)
+
+
+### Bug Fixes
+
+* **dependabot:** increase amount of characters allowed in commit msg ([#131](https://github.com/Stedi/typesuite/issues/131)) ([ae66648](https://github.com/Stedi/typesuite/commit/ae666483420312a6832b1f9cb44b92c8c8558eb5))
+
 ## [1.0.3](https://github.com/Stedi/typesuite/compare/v1.0.2...v1.0.3) (2020-10-15)
 
 
