@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Stedi/typesuite/compare/v1.0.4...v1.0.5) (2020-10-26)
+
+
+### Bug Fixes
+
+* **deps:** bump axios from 0.20.0 to 0.21.0 ([72d4b5b](https://github.com/Stedi/typesuite/commit/72d4b5b0b805305f90f0871b1316f25553772a5f))
+
 ## [1.0.4](https://github.com/Stedi/typesuite/compare/v1.0.3...v1.0.4) (2020-10-16)
 
 
