@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Stedi/typesuite/compare/v1.0.5...v1.0.6) (2020-11-03)
+
+
+### Bug Fixes
+
+* **deps:** [security] bump npm-user-validate from 1.0.0 to 1.0.1 ([#130](https://github.com/Stedi/typesuite/issues/130)) ([bdb31b3](https://github.com/Stedi/typesuite/commit/bdb31b34cd06000901c5c4901b57123ab5d50fba))
+
 ## [1.0.5](https://github.com/Stedi/typesuite/compare/v1.0.4...v1.0.5) (2020-10-26)
 
 
