@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Stedi/typesuite/compare/v1.0.6...v1.1.0) (2020-12-01)
+
+
+### Features
+
+* support passing Preferences ([#167](https://github.com/Stedi/typesuite/issues/167)) ([02bc9b4](https://github.com/Stedi/typesuite/commit/02bc9b464b0fa03ecada9d4c24635791f062459e)), closes [#138](https://github.com/Stedi/typesuite/issues/138)
+
 ## [1.0.6](https://github.com/Stedi/typesuite/compare/v1.0.5...v1.0.6) (2020-11-03)
 
 
