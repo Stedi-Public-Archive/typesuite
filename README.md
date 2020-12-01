@@ -61,6 +61,23 @@ const config: Configuration = {
 };
 ```
 
+### Preferences
+
+The `Configuration` can optionally contain preferences, which will be passed in each request.
+
+```ts
+const client = new TypesSuiteClient({
+  ...,
+  preferences: {
+    ignoreReadOnlyFields: true
+  }
+})
+```
+
+See [here](https://system.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2020_1/schema/other/preferences.html?mode=package) for supported preferences.
+
+Sending per-request preferences is not currently supported.
+
 #### API Version
 
 Currently, TypeSuite only supports the [2019_2 WSDL](https://webservices.netsuite.com/wsdl/v2019_2_0/netsuite.wsdl);
