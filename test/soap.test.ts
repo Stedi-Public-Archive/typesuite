@@ -1,6 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import {
   LoginRequest,
+  Preferences,
   SearchRequest,
 } from "../src/netsuite_webservices/2019_2/platform_messages";
 import { TransactionSearchAdvanced } from "../src/netsuite_webservices/2019_2/transactions_sales";
@@ -25,6 +26,25 @@ import { Fault } from "../src/xmlsoap/envelope";
 jest.mock("axios");
 
 describe("serializing and deserializing requests", () => {
+  it("supports preferences", () => {
+    const result = serializeSoapRequest(
+      tokenPassport(),
+      new LoginRequest({
+        passport: {
+          email: "email",
+          password: "password",
+          account: "account",
+        },
+      }),
+      new Preferences({
+        ignoreReadOnlyFields: true,
+      })
+    );
+    expect(result).toContain(
+      "<platform_messages:preferences><platform_messages:ignoreReadOnlyFields>true</platform_messages:ignoreReadOnlyFields></platform_messages:preferences></soap:Header>"
+    );
+  });
+
   it("works in both directions", () => {
     const result = serializeSoapRequest(
       tokenPassport(),

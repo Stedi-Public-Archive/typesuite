@@ -7,6 +7,10 @@ import XmlSoapMappings from "./xmlsoap/mappings";
 import { Body, Envelope, Fault, Header } from "./xmlsoap/envelope";
 import { com_netsuite_webservices_platform_messages_2019_2 as platform } from "./netsuite_webservices/2019_2/__mappings/com_netsuite_webservices_platform_messages_2019_2";
 import { Configuration } from "./types";
+import {
+  Preferences,
+  PreferencesProps,
+} from "./netsuite_webservices/2019_2/platform_messages";
 
 const ALL_MAPPINGS = [...XmlSoapMappings, ...NetSuiteMappings];
 
@@ -41,14 +45,23 @@ function elementKeyFor(object: { constructor: { name: string } }) {
 }
 
 export function serializeSoapRequest(
-  header: TokenPassport,
-  body: soapObject
+  passport: TokenPassport,
+  body: soapObject,
+  preferences?: PreferencesProps
 ): string {
-  const headerElementKey = elementKeyFor(header);
-  const bodyElementKey = elementKeyFor(body);
+  const passportElement = { name: elementKeyFor(passport), value: passport };
+  const headerElements: any[] = [passportElement];
+  if (preferences) {
+    const prefs = new Preferences(preferences);
+    headerElements.push({
+      name: elementKeyFor(prefs),
+      value: prefs,
+    });
+  }
+  const bodyElement = { name: elementKeyFor(body), value: body };
   const envelope = new Envelope({
-    header: new Header({ any: [{ name: headerElementKey, value: header }] }),
-    body: new Body({ any: [{ name: bodyElementKey, value: body }] }),
+    header: new Header({ any: headerElements }),
+    body: new Body({ any: [bodyElement] }),
   });
   const data = { "soap:Envelope": envelope };
   const context = new Jsonix.Context(ALL_MAPPINGS, JSONIX_CONTEXT_OPTIONS);
@@ -93,7 +106,7 @@ export async function sendSoapRequest<T, R>(
   soapAction: string
 ): Promise<R> {
   const authToken = authenticateRequestWithTokenPassport(config);
-  const soapXML = serializeSoapRequest(authToken, request);
+  const soapXML = serializeSoapRequest(authToken, request, config.preferences);
   try {
     const response = await axios.post(endpoint(config), soapXML, {
       headers: {

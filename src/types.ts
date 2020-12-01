@@ -1,3 +1,5 @@
+import { PreferencesProps } from "./netsuite_webservices/2019_2/platform_messages";
+
 export interface Configuration {
   account: string;
   apiVersion: "2019_2";
@@ -7,4 +9,5 @@ export interface Configuration {
     tokenKey: string;
     tokenSecret: string;
   };
+  preferences?: PreferencesProps;
 }
