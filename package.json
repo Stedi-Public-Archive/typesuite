@@ -55,7 +55,7 @@
     "prettier": "2.2.1",
     "semantic-release": "^17.2.1",
     "ts-jest": "25.5.1",
-    "ts-node": "9.0.0",
+    "ts-node": "9.1.0",
     "typescript": "3.9.7"
   },
   "dependencies": {
