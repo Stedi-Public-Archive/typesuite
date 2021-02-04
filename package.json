@@ -59,7 +59,7 @@
     "typescript": "3.9.7"
   },
   "dependencies": {
-    "axios": "0.21.0",
+    "axios": "0.21.1",
     "jsonix": "3.0.0"
   },
   "config": {
@@ -77,7 +77,11 @@
       "@commitlint/config-conventional"
     ],
     "rules": {
-      "body-max-line-length": [1, "always", 144]
+      "body-max-line-length": [
+        1,
+        "always",
+        144
+      ]
     }
   }
 }
