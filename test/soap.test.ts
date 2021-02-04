@@ -63,7 +63,13 @@ describe("serializing and deserializing requests", () => {
   });
 
   it("works for types with super classes", () => {
-    const aDate = new Date().toISOString();
+    // When a Date is marshalled to XML, and there is a trailing `0` on the ms value (such as 250),
+    // the `0` gets dropped, causing a mismatch in the expected XML vs. the result. For example:
+    //  Expected: <platform_core:searchValue>2021-02-03T22:02:23.280Z</platform_core:searchValue>
+    //  Result:   <platform_core:searchValue>2021-02-03T22:02:23.28Z</platform_core:searchValue>
+    //
+    // As a workaround, use a fixed date of: 2021-02-03T14:44:41:259Z
+    const aDate = new Date(2021, 2, 3, 14, 44, 41, 259).toISOString();
     const searchRecord = new TransactionSearchAdvanced({
       criteria: {
         basic: {
