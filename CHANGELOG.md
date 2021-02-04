@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/Stedi/typesuite/compare/v1.1.0...v1.1.1) (2021-02-04)
+
+
+### Bug Fixes
+
+* add commit signing for semantic release ([#210](https://github.com/Stedi/typesuite/issues/210)) ([cd24d2e](https://github.com/Stedi/typesuite/commit/cd24d2e20801eeb87adfbc00c3ed07530b5f2245))
+* point to new keys for release workflow ([#211](https://github.com/Stedi/typesuite/issues/211)) ([83ae28a](https://github.com/Stedi/typesuite/commit/83ae28af29e562abe9fc18206ad4431f0f17d076))
+* **deps:** [security] bump ini from 1.3.5 to 1.3.7 ([#179](https://github.com/Stedi/typesuite/issues/179)) ([19d3534](https://github.com/Stedi/typesuite/commit/19d353425ed7e29ef8a17fec4616b0c4ed71b867))
+
 # [1.1.0](https://github.com/Stedi/typesuite/compare/v1.0.6...v1.1.0) (2020-12-01)
 
 
