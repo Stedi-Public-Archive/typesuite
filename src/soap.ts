@@ -1,5 +1,6 @@
 import { createHmac, randomBytes } from "crypto";
 import axios from "axios";
+import httpAdapter from "axios/lib/adapters/http";
 import { Jsonix } from "jsonix";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
 import NetSuiteMappings from "./netsuite_webservices/2019_2/mappings";
@@ -113,6 +114,8 @@ export async function sendSoapRequest<T, R>(
         SOAPAction: soapAction,
         contentType: "text/xml; charset=UTF-8",
       },
+      // We are using this library in Node, this works well for Jest and Production.
+      adapter: httpAdapter,
     });
     const soapEnvelope = deserializeSoapResponse(response.data);
     return soapEnvelope.value.body.any[0].value as R;
