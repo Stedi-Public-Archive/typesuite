@@ -1,0 +1,11 @@
+export declare type ReturnAuthorizationOrderStatus = "_pendingApproval" | "_pendingReceipt";
+export declare type ChargeStage = "_hold" | "_nonBillable" | "_processed" | "_ready";
+export declare type CashRefundHandlingMode = "_process" | "_recordExternalEvent" | "_saveOnly";
+export declare type CustomerPaymentPaymentOperation = "_authorization" | "_capture" | "_sale" | "_refund" | "_credit" | "_refresh" | "_void";
+export declare type CustomerDepositPaymentOperation = "_authorization" | "_capture" | "_sale" | "_refund" | "_credit" | "_refresh" | "_void";
+export declare type ChargeUse = "_actual" | "_forecast";
+export declare type CustomerRefundHandlingMode = "_process" | "_recordExternalEvent" | "_saveOnly";
+export declare type CustomerDepositHandlingMode = "_process" | "_recordExternalEvent" | "_saveOnly";
+export declare type CustomerPaymentHandlingMode = "_process" | "_recordExternalEvent" | "_saveOnly";
+export declare type CashRefundPaymentOperation = "_authorization" | "_capture" | "_sale" | "_refund" | "_credit" | "_refresh" | "_void";
+export declare type CustomerRefundPaymentOperation = "_authorization" | "_capture" | "_sale" | "_refund" | "_credit" | "_refresh" | "_void";

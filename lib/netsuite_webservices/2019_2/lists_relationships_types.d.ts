@@ -1,0 +1,16 @@
+export declare type CustomerMonthlyClosing = "_one" | "_five" | "_ten" | "_fifteen" | "_twenty" | "_twentyFive" | "_endOfTheMonth";
+export declare type CustomerCreditHoldOverride = "_auto" | "_on" | "_off";
+export declare type PartnerOtherRelationships = "_customer" | "_otherName" | "_vendor";
+export declare type CustomerNegativeNumberFormat = "_bracketSurrounded" | "_minusSigned";
+export declare type CustomerStatusStage = "_customer" | "_lead" | "_prospect";
+export declare type ContactType = "_customer" | "_employee" | "_otherName" | "_partner" | "_vendor";
+export declare type JobBillingType = "_none" | "_chargeBased" | "_fixedBidInterval" | "_fixedBidMilestone" | "_timeAndMaterials";
+export declare type EntityGroupType = "_contact" | "_customer" | "_employee" | "_partner" | "_vendor";
+export declare type EntityType = "_company" | "_contact" | "_customer" | "_employee" | "_genericResource" | "_group" | "_internal" | "_job" | "_otherName" | "_partner" | "_resourceGroup" | "_vendor";
+export declare type VendorOtherRelationships = "_customer" | "_otherName" | "_partner";
+export declare type CustomerOtherRelationships = "_otherName" | "_partner" | "_vendor";
+export declare type EmailPreference = "_default" | "_hTML" | "_pDF";
+export declare type CustomerStage = "_customer" | "_lead" | "_prospect";
+export declare type BillingAccountFrequency = "_annually" | "_custom" | "_daily" | "_endOfPeriod" | "_everyFourWeeks" | "_everyThreeYears" | "_everyTwoMonths" | "_everyTwoWeeks" | "_everyTwoYears" | "_hourly" | "_monthly" | "_never" | "_oneTime" | "_quarterly" | "_startOfPeriod" | "_twiceAMonth" | "_twiceAYear" | "_weekly";
+export declare type TaxRounding = "_roundDown" | "_roundOff" | "_roundUp";
+export declare type CustomerNumberFormat = "_spaceAsDigitGroupSeparatorAndDecimalComma" | "_spaceAsDigitGroupSeparatorAndDecimalPoint" | "_commaAsDigitGroupSeparatorAndDecimalPoint" | "_pointAsDigitGroupSeparatorAndDecimalComma" | "_apostropheAsDigitGroupSeparatorAndDecimalComma" | "_apostropheAsDigitGroupSeparatorAndDecimalPoint";
