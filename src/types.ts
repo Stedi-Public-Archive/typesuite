@@ -1,4 +1,5 @@
 import { PreferencesProps } from "./netsuite_webservices/2019_2/platform_messages";
+import { AxiosInstance } from "axios";
 
 export interface Configuration {
   account: string;
@@ -10,4 +11,5 @@ export interface Configuration {
     tokenSecret: string;
   };
   preferences?: PreferencesProps;
+  axiosInstance?: AxiosInstance;
 }

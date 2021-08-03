@@ -108,8 +108,9 @@ export async function sendSoapRequest<T, R>(
 ): Promise<R> {
   const authToken = authenticateRequestWithTokenPassport(config);
   const soapXML = serializeSoapRequest(authToken, request, config.preferences);
+  const axiosInstance = config.axiosInstance || axios;
   try {
-    const response = await axios.post(endpoint(config), soapXML, {
+    const response = await axiosInstance.post(endpoint(config), soapXML, {
       headers: {
         SOAPAction: soapAction,
         contentType: "text/xml; charset=UTF-8",
