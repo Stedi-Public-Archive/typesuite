@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Stedi/typesuite/compare/v1.1.1...v1.1.2) (2022-04-26)
+
+
+### Bug Fixes
+
+* remove cz-conventional-changelog ([#381](https://github.com/Stedi/typesuite/issues/381)) ([6f56134](https://github.com/Stedi/typesuite/commit/6f561344c1d1b563ab812e64e7976eacc384e539))
+
 ## [1.1.1](https://github.com/Stedi/typesuite/compare/v1.1.0...v1.1.1) (2021-02-04)
 
 
