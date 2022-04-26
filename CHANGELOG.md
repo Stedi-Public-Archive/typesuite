@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/Stedi/typesuite/compare/v1.1.2...v1.1.3) (2022-04-26)
+
+
+### Bug Fixes
+
+* **security:** release for security deps updates ([#392](https://github.com/Stedi/typesuite/issues/392)) ([390ce83](https://github.com/Stedi/typesuite/commit/390ce836cb61dbf4a32c14f6378412f275bade86))
+
 ## [1.1.2](https://github.com/Stedi/typesuite/compare/v1.1.1...v1.1.2) (2022-04-26)
 
 
