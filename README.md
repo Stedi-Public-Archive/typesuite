@@ -15,7 +15,7 @@ TypeSuite to improve how your business operates, we'd love to hear from you.
 You can install TypeSuite via npm:
 
 ```sh
-npm install --save git+https://github.com/Stedi/TypeSuite.git
+npm install --save @stedi-oss/typesuite
 ```
 
 Or add it to your `package.json` manually.
