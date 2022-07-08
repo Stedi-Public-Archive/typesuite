@@ -1,6 +1,5 @@
 import { createHmac, randomBytes } from "crypto";
 import axios from "axios";
-import { Jsonix } from "jsonix";
 import { TokenPassport } from "./netsuite_webservices/2019_2/platform_core";
 import NetSuiteMappings from "./netsuite_webservices/2019_2/mappings";
 import XmlSoapMappings from "./xmlsoap/mappings";
@@ -11,6 +10,7 @@ import {
   Preferences,
   PreferencesProps,
 } from "./netsuite_webservices/2019_2/platform_messages";
+import { Jsonix } from "jsonix";
 
 const ALL_MAPPINGS = [...XmlSoapMappings, ...NetSuiteMappings];
 
