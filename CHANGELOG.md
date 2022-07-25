@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/Stedi/typesuite/compare/v1.1.3...v1.1.4) (2022-07-25)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([#399](https://github.com/Stedi/typesuite/issues/399)) ([0eff959](https://github.com/Stedi/typesuite/commit/0eff95933ee832cf20ed3f88c8e4997504b039b6))
+
 ## [1.1.3](https://github.com/Stedi/typesuite/compare/v1.1.2...v1.1.3) (2022-04-26)
 
 
